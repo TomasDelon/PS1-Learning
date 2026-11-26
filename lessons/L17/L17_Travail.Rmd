@@ -1,0 +1,179 @@
+---
+title: "L17 · Médiation, variables qualitatives et bootstrap appliqué"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L17
+  document_role: work
+  content_status: complete_authored
+  minutes: 45
+  exercise_ids: ["L17-E01", "L17-E02", "L17-E03", "L17-E04"]
+  block_ids: ["L17-B01", "L17-B02", "L17-B03", "L17-B04", "L17-B05"]
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**45 min :** mise en place 5, concepts 4, justification et choix de méthode 13, R 12, correction 4, Anki 2, révision adaptative 5. Les blocs se consultent au moment de leur application. Le bootstrap percentile prolonge L10; seule la statistique composée et son unité de rééchantillonnage changent.
+
+**Prérequis :** L10 (intervalle et bootstrap), L12 (interprétation du test), L16 (modèle multiple, échantillon commun, rang). R : `factor` L02-B08, tirages L03-B14, fonctions L03-B15, `replicate` L06-B07 et `lm` L15-B11.
+
+## 1/6 · Comprendre
+
+Un coefficient de groupe est un contraste. Dans un système à intermédiaire, une association totale peut combiner deux composantes de signes opposés. Avant d’en raconter un mécanisme, vérifier le codage, les mêmes observations et les hypothèses qui rendent les équations compatibles.
+
+### Facteur et catégorie de référence {#L17-B01}
+
+> **DEF [L17-B01] · Facteur et catégorie de référence**
+>
+> Un facteur qualitatif à $k$ catégories n’est pas une mesure numérique ordonnée. Dans un modèle additif sans interaction, avec intercept et codage de traitement, choisir une catégorie de référence et utiliser $k-1$ indicatrices. L’intercept représente la moyenne de référence quand les prédicteurs numériques sont nuls; chaque coefficient de catégorie est une différence avec la référence, à autres prédicteurs fixés. Changer la référence change les coefficients, pas les valeurs ajustées du même modèle.
+
+### Composantes d’un modèle linéaire de médiation {#L17-B02}
+
+> **DEF [L17-B02] · Composantes d’un modèle linéaire de médiation**
+>
+> Pour un prédicteur $X$, un intermédiaire $M$ et une réponse $Y$, considérer
+> $$M=\alpha_1+aX+u,\qquad Y=\alpha_2+bM+cX+v,$$
+> et la régression totale $Y=\alpha_3+dX+w$. Dans cette écriture sans interaction, $c$ est la composante directe conditionnelle, $ab$ la composante indirecte modélisée et $d$ l’association totale. Ces appellations décrivent des coefficients; leur interprétation comme effets d’interventions nécessite des hypothèses causales supplémentaires, notamment l’absence de confusion pertinente non contrôlée.
+
+### Décomposition sous modèles compatibles {#L17-B03}
+
+> **THM [L17-B03] · Décomposition sous modèles compatibles**
+>
+> Supposer $X,M,Y,u,v$ intégrables, $\mathbb E[u\mid X]=0$ et $\mathbb E[v\mid X,M]=0$ dans L17-B02. L’espérance totale conditionnelle donne
+> $$\mathbb E[Y\mid X]=(\alpha_2+b\alpha_1)+(ab+c)X,$$
+> donc $d=ab+c$ si le modèle total décrit cette moyenne et le coefficient est identifiable. Pour les MCO, la même identité observée $\widehat d=\widehat a\widehat b+\widehat c$ tient algébriquement si les trois modèles utilisent exactement les mêmes lignes, pondérations, intercepts et codage, sans interaction, avec rang plein. Cette identité ne prouve pas un mécanisme causal.
+
+## 2/6 · Expliquer
+
+### Changer la référence {#L17-E01}
+
+**Budget : 4 min.**
+
+Un modèle sans autre prédicteur a pour référence l’atelier « classique ». Son intercept vaut 20; les coefficients des catégories « visuel » et « mixte » sont 3 et -2. Écrire les trois moyennes ajustées. Si « mixte » devient la référence, quels seront l’intercept et les deux coefficients ? Une catégorie est-elle intrinsèquement « meilleure » parce que son coefficient est positif ?
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Pourquoi le total peut cacher deux signes opposés {#L17-E02}
+
+**Budget : 7 min.**
+
+On compare deux modes de préparation d’une tâche, codés $X=0$ et $X=1$. Le modèle pédagogique est
+$$M=10+4X+u,\qquad Y=30+1{,}5M-2X+v,$$
+avec $\mathbb E[u\mid X]=0$ et $\mathbb E[v\mid X,M]=0$. $M$ est une durée de préparation (minutes) et $Y$ un score. Dériver la moyenne conditionnelle de $Y$ sachant $X$, puis identifier composantes directe, indirecte et totale. Expliquer leur compensation en trois phrases, sans affirmer une causalité à partir du seul ajustement.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Bootstrap d’un produit de coefficients {#L17-B04}
+
+> **MTH [L17-B04] · Bootstrap d’un produit de coefficients**
+>
+> Pour des observations i.i.d. complètes $(x_i,m_i,y_i)$, ajuster les modèles $M=\alpha_1+aX+u$ et $Y=\alpha_2+bM+cX+v$, puis choisir comme statistique $T=\widehat a\widehat b$. Pour chaque réplication, tirer avec remise $n$ indices, reprendre les lignes entières, réajuster les deux modèles et recalculer le produit. Les quantiles empiriques 2,5 % et 97,5 % donnent un IC percentile approché à 95 %, pas une couverture exacte garantie. Conserver graine, nombre de réplications et méthode. Signaler les ajustements non identifiables; ne pas les supprimer silencieusement. Si les lignes d’une même personne ou d’un même groupe sont dépendantes, les lignes ne sont plus les unités indépendantes à rééchantillonner.
+
+### Choisir ce qui est rééchantillonné {#L17-E03}
+
+**Budget : 6 min.**
+
+On dispose d’une ligne indépendante par participant avec colonnes `groupe`, `duree`, `score`. Pour estimer l’incertitude du produit $ab$, trois propositions sont faites : (A) mélanger séparément chaque colonne avec remise; (B) rééchantillonner des lignes entières et réajuster les deux modèles sur chaque même rééchantillon; (C) calculer deux IC de coefficients, puis multiplier leurs bornes. Choisir et justifier la procédure. Que change le fait d’avoir quatre lignes par participant ? Que faut-il signaler si un rééchantillon ne contient qu’une catégorie ?
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Fixer et changer la référence d’un facteur {#L17-B05}
+
+> **SYX [L17-B05] · Fixer et changer la référence d’un facteur**
+>
+> Après l’introduction de `factor` en L02-B08, `relevel(g, ref = "A")` place la catégorie `A` en référence d’un facteur non ordonné sous codage de traitement. `levels(g)` vérifie les catégories. Exemple distinct : `g <- factor(c("B","A","B")); g <- relevel(g, ref="A")`. `contrasts(g) <- contr.treatment(levels(g))` fixe explicitement ce codage. Lire `names(coef(mod))` et extraire un coefficient par son nom plutôt que supposer sa position. Une catégorie absente d’un rééchantillon peut rendre le modèle non identifiable.
+
+### Ajuster les chemins et quantifier leur incertitude {#L17-E04}
+
+**Budget : 12 min.**
+
+Données synthétiques, une ligne indépendante par participant :
+
+```{r L17-donnees}
+set.seed(1717)
+x <- rbinom(120, size=1, prob=.5)
+d <- data.frame(groupe=factor(ifelse(x==1,"guide","classique"),
+                              levels=c("classique","guide")))
+d$duree <- 20 + 5*x + rnorm(120, sd=3)
+d$score <- 40 + .7*d$duree - 2*x + rnorm(120, sd=3)
+contrasts(d$groupe) <- contr.treatment(levels(d$groupe))
+```
+
+Ajuster les trois modèles de médiation sur les mêmes lignes; identifier $\widehat a,\widehat b,\widehat c,\widehat d$ par leurs noms et vérifier l’identité. Donner test et IC à 95 % de $c$. Puis définir une fonction qui réajuste les deux modèles sur un tableau et renvoie leur produit, ou `NA_real_` si le modèle n’est pas identifiable. Réaliser 399 réplications avec `set.seed(1718)`, par lignes complètes, et obtenir l’IC percentile du produit. Rapporter le nombre d’échecs. Rédiger quatre lignes : codage, décomposition, incertitude, limite causale.
+
+Fonctions déjà connues : `lm` et `confint` (L15-B11), `sample` et `set.seed` (L03-B14), `function` (L03-B15), `replicate` (L06-B07), `quantile` (L10-B14). Le schéma i.i.d. est ici une hypothèse explicite des données pédagogiques.
+
+```{r L17-E04}
+# Vos trois modèles et votre fonction de statistique bootstrap.
+```
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**6 min au total pour les sections 5 et 6.** Enregistrer ce Rmd et ses images locales. Préserver la première tentative avant d’ouvrir `L17_Corrige.Rmd`. Pour chaque réponse, identifier une erreur de concept, d’hypothèse, de méthode, de calcul, de rédaction ou de R. Corriger en gardant la première version lisible.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur précise et bloc utile |
+|:--|:--|:--|
+| L17-E01 | | |
+| L17-E02 | | |
+| L17-E03 | | |
+| L17-E04 | | |
+
+## 6/6 · Retenir puis rappeler
+
+Mémoire : signification des chemins et unités complètes du bootstrap. Reconstruction : $d=ab+c$ avec ses hypothèses. A4 : nom de la référence, critères d’identification, méthode percentile. Les interprétations causales du TP sont reformulées ici comme hypothèses à examiner, sans attribuer de caractéristiques intrinsèques aux catégories.
+
+Dans les minutes restantes, retrouver une hypothèse et une interprétation sans regarder. Une carte réussie ne remplace pas une application. Choisir au plus une variante pertinente pour un prochain créneau déjà prévu (X02 ou F01), puis noter ici la question encore incertaine :
+
+## Réserve de rappels et de transfert
+
+Ces adaptations pédagogiques remplacent un créneau de rappel ou de réparation déjà budgété. Ne pas les ajouter à la durée de cette leçon. Choisir la variante selon l’erreur observée; garder le corrigé fermé pendant la tentative.
+
+### L17-V01 · 5 min {#L17-V01}
+
+Un autre programme compare les modes « distance » ($X=0$) et « salle » ($X=1$). Les coefficients sont $a=-2$, $b=0{,}6$ et $c=1{,}7$. Calculer le total. On recode maintenant $X'=1-X$ : donner les nouveaux coefficients de chemin $a'$, $b'$, $c'$, $d'$ et expliquer ce qui change dans les prédictions.
+
+### L17-V02 · 6 min {#L17-V02}
+
+Pour $X\in\{0,1\}$, on a $\mathbb E[M\mid X]=10+4X$ et $\mathbb E[Y\mid X,M]=\alpha+0{,}5M-X+0{,}2XM$. Calculer $\mathbb E[Y\mid X=1]-\mathbb E[Y\mid X=0]$. Le produit $4\times0{,}5$ plus le coefficient de $X$ suffit-il ? Identifier l’hypothèse du modèle simple qui a disparu.
+
+### L17-V03 · 6 min {#L17-V03}
+
+Une nouvelle étude comporte 25 participants, chacun observé quatre fois. On veut un IC du produit de deux coefficients ajustés à toutes les mesures. Un script tire 100 lignes avec remise comme si elles étaient indépendantes. Expliquer le problème, proposer l’unité de tirage et décrire ce qu’il faut réajuster dans chaque réplication. Si seuls deux participants appartiennent à une catégorie, quel risque faut-il contrôler ?
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `tp04` : Partie III Q1-Q3, lignes 242-306; Partie IV Q1-Q4, lignes 310-391. Facteur, association totale/directe/indirecte, inférence et bootstrap du produit.
+- `syllabus_ps1` : Descriptions FRANÇAIS, Contenu : « bootstrap » et « Régression à 1 et 2 variables, facteur de confusion, facteur de médiation ». Le bootstrap et la médiation appartiennent au programme explicite.
+- `blocks_v2` : PS1-197, PS1-207, PS1-244, PS1-245, PS1-257, PS1-261 à PS1-263. Conditionnement, espérance totale, coefficients partiels et sorties R; la médiation est dérivée du TP04 et n’usurpe pas un ancien ID.
+
+
+## Révision adaptative · 5 min
+
+<!-- ps1:adaptive-review-slot minutes=5 -->
+
+Traiter une variante ciblée, encore non tentée, d’une leçon antérieure si elle a été préparée. À défaut, fermer les notes, rappeler une méthode antérieure et vérifier ses hypothèses. Ces cinq minutes sont distinctes de la correction et des cartes de cette leçon. Une variante trop longue est reportée à un créneau de F01.

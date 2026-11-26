@@ -1,0 +1,175 @@
+---
+title: "L15 · Régression simple : estimation, qualité et inférence · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L15
+  document_role: correction
+  content_status: complete_authored
+  minutes: 60
+  exercise_ids: ["L15-E01", "L15-E02", "L15-E03", "L15-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Ce qu’un ajustement permet de dire {#L15-E01}
+
+<!-- ps1:solution id=L15-E01 -->
+
+Les résidus observés sont des écarts aux coefficients estimés; ils sont liés entre eux par l’ajustement et ne sont pas les erreurs vraies indépendantes. Un $R^2$ de 0,8 signifie que 80 % de la dispersion empirique de la réponse autour de sa moyenne est expliquée par cet ajustement avec intercept. Le Q-Q plot peut rendre une normalité plausible; il ne vérifie ni l’indépendance des observations, ni la forme affine, ni la variance constante.
+
+Une pente décrit une différence de moyenne conditionnelle associée à une différence du prédicteur. Dire que modifier $X$ provoquerait cette différence est une affirmation causale qui exige des hypothèses ou un plan d’étude supplémentaires.
+
+**Critères indépendants :** Distinguer erreur aléatoire et résidu observé; Interpréter R² sur l’échantillon; Nommer au moins deux hypothèses non contrôlées par le Q-Q plot; Séparer association et intervention.
+
+### Retrouver les MCO et leur minimum {#L15-E02}
+
+<!-- ps1:solution id=L15-E02 -->
+
+Les équations du gradient sont $\sum_i(y_i-u-vx_i)=0$ et $\sum_i x_i(y_i-u-vx_i)=0$. La première donne $u=\bar y-v\bar x$; substituer dans la seconde donne $vS_{xx}=S_{xy}$. D’où $\widehat b_1=S_{xy}/S_{xx}$ et $\widehat b_0=\bar y-\widehat b_1\bar x$.
+
+Pour des variations $a=u-\widehat b_0$ et $b=v-\widehat b_1$, l’orthogonalité annule les termes croisés :
+$$Q(u,v)-Q(\widehat b_0,\widehat b_1)=\sum_i(a+bx_i)^2=n(a+b\bar x)^2+b^2S_{xx}.$$
+Cette quantité est positive sauf si $a=b=0$, car $S_{xx}>0$. Le point est donc l’unique minimum.
+
+Ici $\widehat b_1=1{,}5$ ms/Mo, $\widehat b_0=5$ ms, la somme expliquée vaut $\widehat b_1^2S_{xx}=22{,}5$, RSS vaut $30-22{,}5=7{,}5$ et $R^2=0{,}75$. La moyenne ajustée pour 3 Mo est $9{,}5$ ms. Selon le modèle ajusté, un volume supérieur de 1 Mo est associé à un temps moyen supérieur de 1,5 ms; cela ne prédit pas exactement le temps d’une observation individuelle.
+
+**Critères indépendants :** Résoudre les deux équations normales; Prouver l’unicité sans supposer le résultat; Calculer RSS par orthogonalité; Conserver les unités et la cible moyenne.
+
+### Inférence sur une pente et lien t-F {#L15-E03}
+
+<!-- ps1:solution id=L15-E03 -->
+
+Ici $\nu=6-2=4$, $s^2=7{,}5/4=1{,}875$ et $\mathrm{SE}(\widehat b_1)=\sqrt{1{,}875/10}=\sqrt{3}/4\simeq0{,}4330$. La statistique observée vaut $t=1{,}5/(\sqrt3/4)=2\sqrt3\simeq3{,}464$.
+
+Comme $|t|>2{,}776$, on rejette $H_0$ au seuil 5 %. L’IC est $1{,}5\pm2{,}776(0{,}4330)$, environ $[0{,}298;2{,}702]$ ms/Mo. Il décrit l’incertitude sur la pente, pas les valeurs possibles des temps individuels.
+
+Comme $\mathrm{TSS}-\mathrm{RSS}=\widehat b_1^2S_{xx}$,
+$$F=\frac{\mathrm{TSS}-\mathrm{RSS}}{\mathrm{RSS}/(n-2)}=\frac{\widehat b_1^2S_{xx}}{s^2}=t^2=12.$$
+Sous $H_0$, $F\sim F_{1,4}$; sa queue droite et les deux queues de $t_4$ donnent la même p-valeur. Celle-ci est une probabilité de résultats au moins aussi extrêmes sous $H_0$, pas $\mathbb P(H_0\mid\text{données})$.
+
+```{r L15-E03}
+t_obs <- 2*sqrt(3)
+p_t <- 2*pt(-abs(t_obs), df = 4)
+p_f <- pf(t_obs^2, df1 = 1, df2 = 4, lower.tail = FALSE)
+ci <- 1.5 + c(-1,1)*qt(.975, df = 4)*sqrt(1.875/10)
+stopifnot(abs(p_t-p_f) < 1e-12)
+list(t = t_obs, df = 4, p = p_t, IC = ci, F = t_obs^2)
+```
+
+**Critères indépendants :** Employer n-2 et la variance résiduelle corrigée; Formuler nullité et alternative; Justifier F=t² avec les sommes de carrés; Interpréter la p-valeur conditionnellement.
+
+### Une analyse complète de mesures simulées {#L15-E04}
+
+<!-- ps1:solution id=L15-E04 -->
+
+Tous les calculs doivent porter sur le même tableau et la même réponse. Les contrôles suivants confrontent une formule manuelle à une autre voie de calcul.
+
+```{r L15-donnees-corrige}
+set.seed(1515)
+mesures <- data.frame(volume = runif(80, 5, 25))
+mesures$temps <- 12 + .8*mesures$volume + rnorm(80, sd = 4)
+```
+
+```{r L15-E04}
+mod <- lm(temps ~ volume, data = mesures)
+x <- mesures$volume; y <- mesures$temps
+b1 <- cov(x,y)/var(x)
+b0 <- mean(y)-b1*mean(x)
+e <- y-(b0+b1*x)
+RSS <- sum(e^2); TSS <- sum((y-mean(y))^2)
+R2 <- 1-RSS/TSS
+nu <- length(y)-2
+Sxx <- sum((x-mean(x))^2)
+s <- sqrt(RSS/nu); se <- s/sqrt(Sxx)
+t_obs <- b1/se
+p <- 2*pt(-abs(t_obs), df = nu)
+IC <- b1 + c(-1,1)*qt(.975, df = nu)*se
+stopifnot(abs(b1-coef(mod)["volume"]) < 1e-10,
+          abs(R2-summary(mod)$r.squared) < 1e-10,
+          max(abs(IC-confint(mod,"volume"))) < 1e-10,
+          abs(sum(e)) < 1e-8, abs(sum(x*e)) < 1e-8)
+plot(x,y, xlab = "Volume (Mo)", ylab = "Temps (ms)", pch = 19)
+abline(mod, col = "steelblue", lwd = 2)
+legend("topleft", legend = sprintf("R² = %.3f", R2), bty = "n")
+cat(sprintf("Un Mo supplémentaire est associé à %.3f ms de plus en moyenne (IC 95 %% [%.3f ; %.3f]).\n", b1, IC[1], IC[2]))
+cat(sprintf("Sous le modèle gaussien, le test bilatéral de pente nulle donne t = %.3f, ddl = %d et p = %.4g.\n", t_obs, nu, p))
+IC_moy <- predict(mod, data.frame(volume=15), interval="confidence")
+IP_ind <- predict(mod, data.frame(volume=15), interval="prediction")
+print(IC_moy); print(IP_ind)
+stopifnot((IP_ind[1,3]-IP_ind[1,2]) > (IC_moy[1,3]-IC_moy[1,2]))
+plot(fitted(mod), residuals(mod), xlab="Temps ajusté (ms)",
+     ylab="Résidu (ms)", pch=19)
+abline(h=0, lty=2)
+qqnorm(residuals(mod), pch=19); qqline(residuals(mod), col="steelblue")
+```
+
+L’intervalle de prédiction est plus large car il inclut une nouvelle erreur individuelle. Sous les hypothèses du modèle, les demi-largeurs sont respectivement $t_{\nu,.975}s\sqrt{1/n+(x_0-\bar x)^2/S_{xx}}$ et $t_{\nu,.975}s\sqrt{1+1/n+(x_0-\bar x)^2/S_{xx}}$. Cette formule de prédiction est un complément pédagogique explicite à la prédiction ponctuelle du CTD.
+
+La simulation a été construite avec erreurs gaussiennes indépendantes, mais dans une étude réelle l’indépendance se discute à partir de la collecte. Une courbure, un éventail ou des points extrêmes demanderaient une remise en question du modèle. L’absence de motif net dans 80 résidus n’établit pas que le modèle est vrai. Le fait que l’intercept corresponde à un volume nul ne justifie pas une interprétation physique hors de la plage 5 à 25 Mo.
+
+**Critères indépendants :** Ajuster dans le bon sens et conserver les mêmes lignes; Comparer deux calculs de la pente et de R²; Reporter estimation et incertitude en unités originales; Distinguer moyenne et observation future; Relier les diagnostics aux hypothèses qu’ils examinent.
+
+**Vérifications précises des étapes demandées :**
+
+- Recalculer la covariance empirique et la pente à partir des observations appariées.
+- Reconstruire RSS et TSS à partir des résidus et des réponses centrées, puis R².
+- Utiliser s²=RSS/(n-2) et SE(pente)=s/racine(Sxx) dans le test et l'intervalle.
+- Distinguer Estimate, Std. Error, t value et Pr(>|t|) en comparant les calculs au résumé.
+
+## Corrections des variantes
+
+### L15-V01 {#L15-V01}
+
+Le doublement ajoute $\log_{10}2$ au prédicteur transformé. Le facteur de médiane conditionnelle est $10^{0{,}6\log_{10}2}=2^{0{,}6}\simeq1{,}516$. L’IC du facteur est $[2^{0{,}3};2^{0{,}9}]\simeq[1{,}231;1{,}866]$, car la transformation est croissante. Pour une erreur normale d’écart-type $\sigma$ sur l’échelle log10, la moyenne arithmétique vaut $10^{a+b\log_{10}x}\exp((\ln10)^2\sigma^2/2)$ : elle n’est pas simplement l’exponentielle de la moyenne logarithmique. Sous homoscédasticité, ce facteur supplémentaire est le même aux deux valeurs de $X$ et s’annule dans leur rapport. Sans modèle d’erreur précis, ne pas l’inventer.
+
+**Critères :** Transformer le doublement en différence de logarithmes; Employer une transformation monotone pour l’IC; Identifier la cible médiane plutôt que moyenne brute.
+
+### L15-V02 {#L15-V02}
+
+```{r L15-V02}
+resumes <- t(vapply(1:4, function(j) {
+  x <- anscombe[[paste0("x",j)]]
+  y <- anscombe[[paste0("y",j)]]
+  m <- lm(y~x)
+  c(pente=unname(coef(m)[2]), R2=summary(m)$r.squared)
+}, numeric(2)))
+print(resumes)
+ancien <- par(mfrow=c(2,2))
+for (j in 1:4) {
+  x <- anscombe[[paste0("x",j)]]; y <- anscombe[[paste0("y",j)]]
+  plot(x,y, main=paste("Nuage",j), pch=19, xlab="x", ylab="y")
+  abline(lm(y~x), col="steelblue")
+}
+par(ancien)
+```
+
+Les résumés sont presque identiques (arrondis des données). Le premier nuage est compatible avec une tendance affine bruitée; le second montre une courbure; le troisième comporte une observation atypique; le quatrième tire sa pente d’un seul point ayant une abscisse différente. Il faut examiner le nuage puis les diagnostics et le plan d’observation. Une même p-valeur ne rend pas ces situations équivalentes.
+
+**Critères :** Comparer les valeurs sans conclure à la même structure; Identifier courbure, atypie et levier; Discuter la sensibilité du modèle.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `ctd08` : Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570. Formules MCO, qualité, inférence et sorties R.
+- `tp04` : Partie I Q1-Q7, lignes 86-149. Relier graphiques, coefficient, incertitude et portée de l’association.
+- `st09` : PDF p.4, « Le quartet d’Anscombe ». Les résumés numériques ne remplacent pas le nuage de points.
+- `cm08` : PDF pp.1-10, revue intégrale; particulièrement pp.6-10. Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md.
+- `blocks_v2` : PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263. Distinction erreur/résidu, formules, conditions et diagnostics.

@@ -1,0 +1,60 @@
+{
+  "schema_version": "2.0.0",
+  "lesson_id": "S01",
+  "minutes": 180,
+  "source_refs": [
+    {
+      "source_id": "syllabus_ps1",
+      "locator": "Evaluation FRANÇAIS, première session : examen individuel de 3h sur machine et résumé manuscrit A4 autorisé",
+      "use_fr": "Justifie une durée de simulation de 180 minutes et le contrôle des ressources autorisées, sans accéder à un sujet."
+    }
+  ],
+  "blocks": [],
+  "exercises": [
+    {
+      "id": "S01-E01",
+      "title_fr": "Protocole de tentative réservée",
+      "prompt_md": "Cette activité réserve 180 minutes pour une tentative que vous déciderez explicitement de commencer. Aucun sujet, donnée d’examen, question, réponse ou lien vers une épreuve réservée n’est fourni ici. Ne pas commencer une épreuve à la seule ouverture de ce fichier.\n\n**Avant le départ, décision personnelle :** choisir l’épreuve et vérifier ses consignes sans ouvrir de correction. Préparer l’environnement, l’A4 manuscrite autorisée et le fichier de réponse. Cette préparation matérielle ne doit pas transformer le document présent en aperçu du sujet. Le compteur effectif commence à l’ouverture volontaire de l’épreuve choisie.\n\n**0 à 10 minutes :** lire ses consignes, vérifier les fichiers nécessaires et répartir le temps. Consigner l’heure de départ et la durée prévue. Garder toute correction, assistance et solution fermée selon les conditions de la simulation.\n\n**10 à 160 minutes :** produire la première tentative. Enregistrer régulièrement. Distinguer une question non traitée d’une question traitée partiellement. Si une difficulté bloque, laisser une trace du raisonnement et poursuivre selon le temps disponible. Toute aide ou incident effectivement survenu est consigné, sans le masquer.\n\n**160 à 175 minutes :** relire les objets, hypothèses, unités, degrés de liberté, code et conclusions. Si une compilation est permise dans l’environnement choisi, vérifier que le document s’exécute depuis une session propre. Garder le fichier original et la trace des questions non achevées.\n\n**175 à 180 minutes :** arrêter les nouvelles résolutions, sauvegarder la version remise et conserver une copie immuable de la première tentative. Ne pas consulter la correction avant l’arrêt du chronomètre et la sauvegarde.\n\n| Élément à renseigner lors d’une tentative réelle | Valeur |\n|:--|:--|\n| Décision explicite de commencer et date | |\n| Heure de départ | |\n| Heure d’arrêt | |\n| Ressources effectivement utilisées | |\n| Incidents ou aide reçue | |\n| Fichier de réponse enregistré | |\n| Emplacement de la copie conservée | |\n\nSi ce Rmd contient vos réponses et des images locales dans `images/`, la commande suivante, lancée depuis la racine du dossier, conserve ce Rmd et ses images liées dans un nouveau dossier. Elle ne copie pas automatiquement d’autres fichiers de code ou de données; les conserver séparément si l’épreuve en utilise.\n\n```sh\npython3 tools/snapshot_attempt.py lessons/S01/S01_Travail.Rmd evidence/S01-premier-essai\n```\n\nChoisir un nouveau nom de dossier si celui-ci existe déjà. Cette commande n’est pas exécutée par la préparation du parcours. Si vous répondez dans un autre Rmd, utiliser le chemin de ce fichier réel; toutes les images référencées doivent rester locales et à l’intérieur de son dossier.\n\n**Espace de travail libre, uniquement lors de la tentative volontaire :**\n\n\n\n**Après l’arrêt seulement :** ouvrir le document de bilan de procédure `S01_Corrige.Rmd`. Il ne contient aucun corrigé d’épreuve. La correction du contenu, lorsqu’elle sera explicitement choisie, relève du créneau F01 et de ses 120 minutes, sans consultation anticipée ici.",
+      "correction_md": "Ce document vérifie uniquement le déroulement d’une tentative. Il ne contient ni réponse attendue, ni indication sur les questions d’une épreuve, ni barème disciplinaire.\n\nContrôler après l’arrêt : la décision de commencer a été explicite; les 180 minutes ont été suivies ou l’écart réel est noté; les ressources utilisées sont décrites; le fichier de réponse et ses images sont enregistrés; une copie de la première tentative existe avant toute consultation de solution. Vérifier que les fichiers supplémentaires nécessaires ont aussi été conservés, car l’outil de snapshot porte sur le Rmd et ses images locales.\n\nSi une de ces conditions manque, le constater sans reconstruire rétrospectivement une fausse tentative « sans aide ». Une compilation réussie ne démontre pas une réponse correcte. Un travail terminé ne démontre pas une maîtrise. Une épreuve incomplète reste une trace utile pour sélectionner les réparations de F01, sans changer automatiquement aucun état de progression.\n\nLe contenu réservé reste fermé dans ce protocole. Toute analyse future d’une épreuve et de sa correction doit correspondre à une décision explicite de l’étudiant, distincte de la création de cette activité.",
+      "minutes": 180,
+      "kind": "writing",
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "rubric_fr": [
+        "Départ volontaire et temps réellement consignés",
+        "Absence de consultation anticipée de correction",
+        "Première tentative conservée avant correction",
+        "Ressources et incidents rapportés honnêtement",
+        "Aucune inférence automatique de maîtrise"
+      ],
+      "error_tags": [
+        "attempt_integrity",
+        "time_budget",
+        "unsupported_mastery"
+      ],
+      "has_r": false,
+      "family": "sealed_attempt_protocol"
+    }
+  ],
+  "variants": [],
+  "time_budget": {
+    "read_instructions_and_allocate": 10,
+    "independent_work": 150,
+    "review_attempt": 15,
+    "save_and_seal": 5
+  },
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Contenu relu lors de l’auteur; exécution R native, knit et RStudio Visual doivent être consignés séparément."
+    ]
+  },
+  "learner_state": "not_created",
+  "pedagogical_status": "authored_not_mastery_evidence",
+  "content_status": "sealed_protocol_only",
+  "exam_content_present": false,
+  "exam_content_accessed": false,
+  "learner_attempt_created": false,
+  "assessment_state": "not_evaluated"
+}

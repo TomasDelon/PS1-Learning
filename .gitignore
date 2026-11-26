@@ -1,0 +1,39 @@
+# Runtime/editor caches; never commit credentials or local private materials.
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+__pycache__/
+*.py[cod]
+*.nb.html
+*_files/
+.ipynb_checkpoints/
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.sqlite
+*.sqlite3
+*.anki2
+*.anki21
+*.log
+.coach-lock/
+.adapt-lock/
+.capture-*/
+.next-*/
+.ps1-*
+/sources/
+/private/
+/reports/
+/evidence/
+/exams/
+/Examens/
+# Raw official documents and exam files are never part of the public repository.
+*.pdf
+*.rda
+*.RData
+# Only the prebuilt study deck is intentionally included.
+*.apkg
+!/anki/deck/deck.apkg

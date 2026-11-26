@@ -1,0 +1,505 @@
+{
+  "lesson_id": "L13",
+  "minutes": 40,
+  "source_refs": [
+    {
+      "source_id": "ctd06",
+      "locator": "Exercice 4 Q1-Q6",
+      "use_fr": "Indépendance, marges, attendus et statistique."
+    },
+    {
+      "source_id": "tp03",
+      "locator": "Q3-Q4, Q7 et Q13",
+      "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+    },
+    {
+      "source_id": "tp03",
+      "locator": "Q8-Q10",
+      "use_fr": "Portée des modèles de comptages et de l'indépendance."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L13-B01",
+      "type": "DEF",
+      "title_fr": "Effectifs observés et attendus",
+      "source_block_ids": [
+        "PS1-180"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment relier les effectifs observés et attendus à une partition complète ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "c46c1ccaf9c9b9b9d5ffa58eb3b88918326e580e39d81f872fe76f9087b08582",
+      "external_refs": []
+    },
+    {
+      "id": "L13-B02",
+      "type": "THM",
+      "title_fr": "Adéquation à des probabilités fixées",
+      "source_block_ids": [
+        "PS1-182",
+        "PS1-183"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Adéquation à des probabilités fixées : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "9301aae0590961cd161cbcfbf270ede5f61a98b60103090a6adc34380cedba92",
+      "external_refs": []
+    },
+    {
+      "id": "L13-B03",
+      "type": "MTH",
+      "title_fr": "Adéquation après estimation de paramètres",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Que vérifier dans un test d'adéquation lorsque le modèle a été ajusté sur les données ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "7d8399177b00b744466449292002d962b9c6ac3cae1396036462fa41ed947880",
+      "external_refs": [
+        {
+          "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm",
+          "title": "NIST/SEMATECH : Chi-Square Goodness-of-Fit Test",
+          "locator": "Definition: estimation from observed bin counts; Critical Region",
+          "use_fr": "Précision externe explicitée : estimation sur catégories et degrés de liberté.",
+          "block_ids": [
+            "L13-B03"
+          ],
+          "provenance": "EXTERNAL",
+          "read_date": "2026-11-26"
+        }
+      ],
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L13-B04",
+      "type": "DEF",
+      "title_fr": "Tableau de contingence et marges",
+      "source_block_ids": [
+        "PS1-184"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Tableau de contingence et marges : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "44d438d5e5a1d1614c04eccf0741da829d875bfbb4517d56b98fe787d146da19",
+      "external_refs": []
+    },
+    {
+      "id": "L13-B05",
+      "type": "MTH",
+      "title_fr": "Attendus sous indépendance",
+      "source_block_ids": [
+        "PS1-185"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Attendus sous indépendance : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "63c52a9da762ca8bf2d25272891e624ee36ee88698b039e8119ff30aa0872d17",
+      "external_refs": []
+    },
+    {
+      "id": "L13-B06",
+      "type": "THM",
+      "title_fr": "Khi-deux d'indépendance",
+      "source_block_ids": [
+        "PS1-186",
+        "PS1-187"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Khi-deux d'indépendance : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "2220e42656cd1f88989a2072c9c9269dc6e7bcabfe64f0a92da3a767af44bf52",
+      "external_refs": []
+    },
+    {
+      "id": "L13-B07",
+      "type": "MTH",
+      "title_fr": "Vérifier l'approximation et regrouper",
+      "source_block_ids": [
+        "PS1-181",
+        "PS1-188"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Quels contrôles précèdent l'interprétation d'un test du khi-deux ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "2378f9a8ea773bd5ff564c9b66663f34245b59f1671dbdc6ccdae18ede16090e",
+      "external_refs": []
+    },
+    {
+      "id": "L13-B08",
+      "type": "SYX",
+      "title_fr": "Tableaux et chisq.test",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "use_fr": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "use_fr": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "use_fr": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": true,
+      "cue_fr": "Comment contrôler les entrées et les sorties de chisq.test ?",
+      "reason_fr": "Syntaxe courte qui prévient deux confusions de modèle récurrentes.",
+      "canonical_body_sha256": "51e04f5d9126fff761b043b9b5171cffc88e6f1607ea025e6625b062246e593c",
+      "external_refs": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/chisq.test.html",
+          "title": "Documentation officielle R : chisq.test",
+          "locator": "Arguments, Details, Value",
+          "use_fr": "Différence entre adéquation et table de contingence; correction et sorties.",
+          "block_ids": [
+            "L13-B08"
+          ],
+          "provenance": "EXTERNAL",
+          "read_date": "2026-11-26"
+        }
+      ],
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L13-E01",
+      "minutes": 4,
+      "kind": "concept",
+      "family": "count_partition_fit",
+      "topic_ids": [
+        "chi_observed",
+        "chi_fit",
+        "chi_validity"
+      ],
+      "competency_ids": [
+        "comp.ps1.chi_square_grouping",
+        "comp.ps1.chi_square_fit"
+      ],
+      "block_ids": [
+        "L13-B01",
+        "L13-B03"
+      ],
+      "rubric_fr": [
+        "Conserver les catégories de probabilité positive même non observées.",
+        "Conserver toute la queue de la loi.",
+        "Distinguer probabilités fixées et estimées."
+      ],
+      "error_tags": [
+        "missing_categories",
+        "tail_mass",
+        "fitted_parameters"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L13-E02",
+      "minutes": 13,
+      "kind": "math",
+      "family": "contingency_hand_calculation",
+      "topic_ids": [
+        "chi_independent",
+        "chi_validity",
+        "chi_observed"
+      ],
+      "competency_ids": [
+        "comp.ps1.contingency_independence",
+        "comp.ps1.test_interpret"
+      ],
+      "block_ids": [
+        "L13-B04",
+        "L13-B05",
+        "L13-B06",
+        "L13-B07"
+      ],
+      "rubric_fr": [
+        "Reconstituer les marges et conserver leur total dans les attendus.",
+        "Obtenir 88/15 avec deux degrés de liberté.",
+        "Utiliser une queue droite.",
+        "Formuler un non-rejet sans preuve d'indépendance."
+      ],
+      "error_tags": [
+        "expected_counts",
+        "degrees_freedom",
+        "tail",
+        "nonrejection_proof"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L13-E03",
+      "minutes": 12,
+      "kind": "R",
+      "family": "fitted_poisson_calibration",
+      "topic_ids": [
+        "chi_fit",
+        "chi_observed",
+        "chi_validity",
+        "r_matrix",
+        "matrix_tools"
+      ],
+      "competency_ids": [
+        "comp.ps1.chi_square_fit",
+        "comp.ps1.poisson_expected_counts",
+        "comp.ps1.contingency_independence"
+      ],
+      "block_ids": [
+        "L13-B01",
+        "L13-B02",
+        "L13-B03",
+        "L13-B08"
+      ],
+      "rubric_fr": [
+        "Conserver la queue >=3 et la somme des probabilités.",
+        "Contrôler les effectifs attendus.",
+        "Utiliser deux degrés de liberté sous les conditions d'estimation données.",
+        "Identifier la limite du degré de liberté automatique."
+      ],
+      "error_tags": [
+        "tail_mass",
+        "fitted_parameters",
+        "degrees_freedom",
+        "software_authority"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L13-V01",
+      "family": "sparse_table_method",
+      "for_exercise_ids": [
+        "L13-E02"
+      ],
+      "error_tags": [
+        "expected_counts",
+        "chi_approximation"
+      ],
+      "prompt_md": "Un tableau $2\\times2$ contient les lignes $(1,7)$ et $(6,2)$. Calculer les attendus d'indépendance. La règle pratique « tous les attendus au moins 5 » est-elle vérifiée ? Quelle autre méthode de référence peut être envisagée sans supprimer une modalité ?",
+      "correction_md": "Les marges des lignes sont $(8,8)$ et celles des colonnes $(7,9)$, pour $n=16$. Chaque ligne attendue vaut $(3{,}5,4{,}5)$; la règle pratique n'est pas vérifiée. Un test exact de Fisher peut être envisagé pour ce tableau, sous indépendance des unités et dans son cadre conditionnel aux marges. Supprimer une modalité changerait le problème et perdrait des observations.",
+      "rubric_fr": [
+        "Calculer des attendus, pas examiner seulement les observés.",
+        "Choisir une alternative adaptée aux faibles effectifs.",
+        "Conserver toutes les observations."
+      ],
+      "block_ids": [
+        "L13-B05",
+        "L13-B07"
+      ],
+      "minutes": 4,
+      "transfer": "Discrimination : reconnaître quand une approximation doit être remplacée, sans forcer son utilisation.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L13-V02",
+      "family": "regroup_refit_calibration",
+      "for_exercise_ids": [
+        "L13-E03"
+      ],
+      "error_tags": [
+        "fitted_parameters",
+        "degrees_freedom",
+        "tail_mass"
+      ],
+      "prompt_md": "Un test d'adéquation utilise six classes et un paramètre estimé par maximum de vraisemblance sur les effectifs regroupés. On fusionne les deux dernières classes pour satisfaire le repère d'effectifs. Quels éléments faut-il recalculer ? Donner les degrés de liberté avant et après, si les conditions régulières restent valides.",
+      "correction_md": "Avant fusion, les degrés de liberté valent $6-1-1=4$. Après fusion, il reste cinq classes : additionner les deux effectifs observés et leurs probabilités, ajuster à nouveau le paramètre sur la nouvelle vraisemblance regroupée, recalculer attendus, statistique et p-valeur. Les degrés de liberté valent alors $5-1-1=3$. Garder automatiquement l'ancien paramètre ajusté et seulement changer le ddl ne rétablit pas la justification de L13-B03.",
+      "rubric_fr": [
+        "Conserver masse et effectif dans la fusion.",
+        "Reconsidérer l'estimation après regroupement.",
+        "Compter les classes et paramètres du modèle effectivement testé."
+      ],
+      "block_ids": [
+        "L13-B03",
+        "L13-B07"
+      ],
+      "minutes": 4,
+      "transfer": "Transfert : un changement de partition modifie aussi la procédure d'ajustement, pas seulement le nombre de cases.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "cours": 5,
+    "concept_checks": 4,
+    "maths": 13,
+    "R": 12,
+    "self_correction_review": 6
+  },
+  "review_allocation": {
+    "correction_minutes": 4,
+    "anki_minutes": 2
+  },
+  "coverage_note_fr": "L'ajustement sur catégories et ses conditions sont explicités. La loi de Fisher et le théorème asymptotique général ne sont pas démontrés dans le cœur de 40 minutes.",
+  "external_clarifications": [
+    {
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm",
+      "title": "NIST/SEMATECH : Chi-Square Goodness-of-Fit Test",
+      "locator": "Definition: estimation from observed bin counts; Critical Region",
+      "use_fr": "Précision externe explicitée : estimation sur catégories et degrés de liberté.",
+      "block_ids": [
+        "L13-B03"
+      ]
+    },
+    {
+      "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/chisq.test.html",
+      "title": "Documentation officielle R : chisq.test",
+      "locator": "Arguments, Details, Value",
+      "use_fr": "Différence entre adéquation et table de contingence; correction et sorties.",
+      "block_ids": [
+        "L13-B08"
+      ]
+    }
+  ]
+}

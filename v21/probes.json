@@ -1,0 +1,866 @@
+{
+  "schema_version": "2.1",
+  "policy_fr": "Un contrôle ciblé et un transfert possible pour chaque point auparavant non résolu. Les deux formes restent facultatives, dans le budget disponible. Aucune validation personnelle.",
+  "records": [
+    {
+      "id": "P01",
+      "point_id": "kp.bernoulli_law.encode_binary_trial",
+      "primary_lesson_id": "L05",
+      "inherited_primary_lesson_id": "L05",
+      "source_block_ids": [
+        "PS1-064"
+      ],
+      "objective_fr": "Relier événement succès-échec et paramètre p",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Relier la valeur 1 à l'événement effectivement codé et identifier les deux masses.",
+      "forms": {
+        "A": {
+          "prompt_md": "Un capteur déclenche une alerte avec probabilité $0{,}08$. Définir une variable qui code une alerte et donner sa loi.",
+          "correction_md": "Soit $X=\\mathbf 1_{\\{\\text{alerte}\\}}$. Alors $X\\sim\\mathrm{Bernoulli}(0{,}08)$ : $\\mathbb P(X=1)=0{,}08$, $\\mathbb P(X=0)=0{,}92$.",
+          "rubric_fr": "Relier la valeur 1 à l'événement effectivement codé et identifier les deux masses."
+        },
+        "B": {
+          "prompt_md": "Une pièce est conforme avec probabilité $0{,}96$. On code 1 si elle est défectueuse. Donner la loi du code.",
+          "correction_md": "Le code vaut 1 avec probabilité $0{,}04$ et 0 avec probabilité $0{,}96$ : loi $\\mathrm{Bernoulli}(0{,}04)$.",
+          "rubric_fr": "Identifier le paramètre à partir du complément et donner les deux masses."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P02",
+      "point_id": "kp.boxplot.interpret_quartile_display",
+      "primary_lesson_id": "L12",
+      "inherited_primary_lesson_id": "L12",
+      "source_block_ids": [
+        "PS1-189"
+      ],
+      "objective_fr": "Lire quartiles, dispersion, valeurs atypiques",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Lire la médiane et les charnières; calculer l'écart interquartile et interpréter le graphique sans extrapoler.",
+      "forms": {
+        "A": {
+          "prompt_md": "Une boîte de Tukey a pour charnières 4 et 10, médiane 7; une observation vaut 20. Calculer l'écart interquartile et décider si 20 doit être tracée à part.",
+          "correction_md": "$h=10-4=6$. La borne supérieure de Tukey vaut $10+1{,}5\\times6=19$. L'observation 20 est atypique selon cette convention; cela ne justifie pas de la supprimer.",
+          "rubric_fr": "Lire les charnières, calculer l'écart interquartile et la borne de Tukey; ne pas confondre valeur atypique et erreur."
+        },
+        "B": {
+          "prompt_md": "Deux boîtes ont la même médiane 5, mais leurs charnières sont (3,7) et (4,6). Comparer les dispersions centrales. Peut-on en déduire les variances exactes ?",
+          "correction_md": "Les écarts interquartiles valent 4 et 2. La première boîte a une dispersion centrale plus grande; les variances exactes ne sont pas déterminées par ces résumés.",
+          "rubric_fr": "Calculer les deux écarts interquartiles et distinguer dispersion centrale et variance."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P03",
+      "point_id": "kp.cdf_intervals.handle_interval_endpoints",
+      "primary_lesson_id": "L03",
+      "inherited_primary_lesson_id": "L03",
+      "source_block_ids": [
+        "PS1-050"
+      ],
+      "objective_fr": "Distinguer P(a<X≤b) et présence éventuelle d'atomes",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Choisir les bonnes limites à gauche ou valeurs de F selon l'inclusion des bornes.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soit $X$ une variable réelle de CDF $F$. On sait que $F(1^-)=0{,}2$, $F(1)=0{,}4$, $F(3)=0{,}8$. Calculer $\\mathbb P(1\\le X\\le3)$ et $\\mathbb P(1<X\\le3)$.",
+          "correction_md": "$\\mathbb P(1\\le X\\le3)=F(3)-F(1^-)=0{,}6$; $\\mathbb P(1<X\\le3)=F(3)-F(1)=0{,}4$. La masse en 1 vaut $0{,}2$.",
+          "rubric_fr": "Choisir les bonnes limites à gauche ou valeurs de F selon l'inclusion des bornes."
+        },
+        "B": {
+          "prompt_md": "Soit $X$ de CDF $F$, avec $F(0)=0{,}3$, $F(2^-)=0{,}7$, $F(2)=0{,}9$. Calculer $\\mathbb P(0<X<2)$ et $\\mathbb P(X=2)$.",
+          "correction_md": "$F(2^-)-F(0)=0{,}4$ et $F(2)-F(2^-)=0{,}2$.",
+          "rubric_fr": "Choisir la limite à gauche pour une borne exclue et calculer le saut en 2."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P04",
+      "point_id": "kp.cdf_properties.check_distribution_function",
+      "primary_lesson_id": "L03",
+      "inherited_primary_lesson_id": "L03",
+      "source_block_ids": [
+        "PS1-049"
+      ],
+      "objective_fr": "Croissance, continuité à droite et limites",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Contrôler monotonie, continuité à droite et les deux limites; interpréter les sauts si nécessaire.",
+      "forms": {
+        "A": {
+          "prompt_md": "La fonction $G$ vaut 0 pour $t\\le0$ et 1 pour $t>0$. Est-elle une fonction de répartition ? Justifier avec toutes les propriétés pertinentes.",
+          "correction_md": "Elle est croissante et a les bonnes limites à l'infini, mais elle n'est pas continue à droite en 0 ($G(0)=0$ et $G(0^+)=1$). Ce n'est pas une CDF.",
+          "rubric_fr": "Contrôler monotonie, continuité à droite et les deux limites; interpréter les sauts si nécessaire."
+        },
+        "B": {
+          "prompt_md": "La fonction $H$ vaut 0 sur $]-\\infty,0[$, $1/3$ sur $[0,2[$ et 1 sur $[2,+\\infty[$. Vérifier si c'est une CDF et identifier les masses.",
+          "correction_md": "Elle est croissante, continue à droite, de limites 0 et 1. C'est une CDF : masses $1/3$ en 0 et $2/3$ en 2.",
+          "rubric_fr": "Vérifier les propriétés de la CDF et déterminer les masses par ses sauts."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P05",
+      "point_id": "kp.chi_fit.calibrate_fixed_probability_test",
+      "primary_lesson_id": "L13",
+      "inherited_primary_lesson_id": "L13",
+      "source_block_ids": [
+        "PS1-182",
+        "PS1-183"
+      ],
+      "objective_fr": "Appliquer le khi-deux d’adéquation lorsque les probabilités sont fixées.",
+      "attempt_minutes": 4,
+      "correction_minutes": 2,
+      "rubric_fr": "Vérifier i.i.d., attendus, probabilités fixées; calculer Q, k-1 ddl, queue droite et conclusion conditionnée.",
+      "forms": {
+        "A": {
+          "prompt_md": "On observe 100 tirages indépendants parmi trois catégories, avec effectifs $(40,30,30)$. Sous $H_0$, les probabilités fixées sont $(0{,}5,0{,}3,0{,}2)$. Proposer le test, calculer sa statistique et sa p-valeur avec R. Conclure au seuil de 5 %.",
+          "correction_md": "Les attendus $(50,30,20)$ sont suffisants pour l'approximation. $Q=100/50+0+100/20=7$. Sous $H_0$, la loi est asymptotiquement $\\chi^2_2$. `pchisq(7,df=2,lower.tail=FALSE)` vaut environ $0{,}0302$; on rejette les probabilités fixées à 5 %.",
+          "rubric_fr": "Vérifier i.i.d., attendus, probabilités fixées; calculer Q, k-1 ddl, queue droite et conclusion conditionnée."
+        },
+        "B": {
+          "prompt_md": "Les effectifs de 120 tirages i.i.d. sont $(33,27,29,31)$; on teste quatre probabilités égales fixées. Donner attendus, statistique, ddl, p-valeur et conclusion à 5 %.",
+          "correction_md": "Les attendus valent tous 30. $Q=(9+9+1+1)/30=2/3$, ddl 3. `pchisq(2/3,3,lower.tail=FALSE)` est supérieur à $0{,}05$. On ne rejette pas l'équiprobabilité; on ne la prouve pas.",
+          "rubric_fr": "Calculer attendus, statistique, ddl et p-valeur; conclure sans accepter H0 comme vraie."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P06",
+      "point_id": "kp.chisq_law.identify_squared_normal_sum",
+      "primary_lesson_id": "L05",
+      "inherited_primary_lesson_id": "L05",
+      "source_block_ids": [
+        "PS1-075"
+      ],
+      "objective_fr": "Relier somme de carrés normaux et Gamma",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Identifier la standardisation, l'indépendance, le nombre de carrés et les paramètres Gamma.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soient $Z_1,\\ldots,Z_6$ indépendantes de loi $\\mathcal N(0,1)$. Donner la loi de $\\sum_{i=1}^6Z_i^2$, puis ses paramètres Gamma (forme, taux).",
+          "correction_md": "La somme suit $\\chi^2_6=\\mathrm{Gamma}(3,1/2)$ en forme-taux.",
+          "rubric_fr": "Compter les carrés de normales standard indépendantes et donner les paramètres du khi-deux et de Gamma."
+        },
+        "B": {
+          "prompt_md": "Soient $X_1,\\ldots,X_4$ indépendantes de loi $\\mathcal N(2,9)$. Donner la loi de $\\sum_{i=1}^4((X_i-2)/3)^2$ et sa forme Gamma.",
+          "correction_md": "Les variables standardisées sont indépendantes $\\mathcal N(0,1)$. La somme suit $\\chi^2_4=\\mathrm{Gamma}(2,1/2)$.",
+          "rubric_fr": "Identifier les normales standard indépendantes et déduire les paramètres du khi-deux et de Gamma."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P07",
+      "point_id": "kp.conv_distribution.restrict_continuity_points",
+      "primary_lesson_id": "L06",
+      "inherited_primary_lesson_id": "L06",
+      "source_block_ids": [
+        "PS1-116"
+      ],
+      "objective_fr": "Comparer convergence des fonctions de répartition aux points de continuité",
+      "attempt_minutes": 3,
+      "correction_minutes": 2,
+      "rubric_fr": "Énoncer le critère aux points de continuité de la CDF limite et l'appliquer, sans exiger les points de saut.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soit $X_n=1/n$ presque sûrement et $X=0$ presque sûrement. Comparer les CDF en 0 et aux autres points. A-t-on convergence en loi ?",
+          "correction_md": "Pour $t<0$, les CDF valent 0; pour $t>0$, elles valent 1 à partir d'un certain rang. En 0, $F_{X_n}(0)=0$ mais $F_X(0)=1$. Le point 0 est une discontinuité : il n'empêche pas la convergence en loi vers $X$.",
+          "rubric_fr": "Énoncer le critère aux points de continuité de la CDF limite et l'appliquer, sans exiger les points de saut."
+        },
+        "B": {
+          "prompt_md": "Soit $Y_n=-1/n$ presque sûrement et $Y=0$ presque sûrement. Comparer les CDF en tout $t\\ne0$. La convergence en loi exige-t-elle aussi une vérification en 0 ?",
+          "correction_md": "Pour $t<0$, $F_{Y_n}(t)=0$ pour n assez grand; pour $t>0$, $F_{Y_n}(t)=1$. La convergence en loi est acquise aux points de continuité. En 0, les CDF valent ici toutes 1, mais ce contrôle n'est pas exigé.",
+          "rubric_fr": "Vérifier la convergence aux points de continuité, sans exiger celle en 0."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P08",
+      "point_id": "kp.gamma_fn.evaluate_integer_gamma",
+      "primary_lesson_id": "L05",
+      "inherited_primary_lesson_id": "L05",
+      "source_block_ids": [
+        "PS1-073"
+      ],
+      "objective_fr": "Relier Gamma(n) à (n-1)!",
+      "attempt_minutes": 1,
+      "correction_minutes": 2,
+      "rubric_fr": "Utiliser (n-1)! et non n!, avec le domaine correct.",
+      "forms": {
+        "A": {
+          "prompt_md": "Calculer $\\Gamma(5)$ en rappelant la relation valable aux entiers strictement positifs.",
+          "correction_md": "Pour $n\\ge1$ entier, $\\Gamma(n)=(n-1)!$. Donc $\\Gamma(5)=4!=24$.",
+          "rubric_fr": "Utiliser (n-1)! et non n!, avec le domaine correct."
+        },
+        "B": {
+          "prompt_md": "On sait que $\\Gamma(k)=120$, avec $k$ entier et $k\\ge3$. Déterminer $k$.",
+          "correction_md": "$120=5!$, donc $k=6$.",
+          "rubric_fr": "Inverser la relation factorielle dans le domaine entier indiqué."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P09",
+      "point_id": "kp.gamma_law.distinguish_shape_rate",
+      "primary_lesson_id": "L05",
+      "inherited_primary_lesson_id": "L05",
+      "source_block_ids": [
+        "PS1-074"
+      ],
+      "objective_fr": "Reconnaître forme et taux et leur influence",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Distinguer forme, taux et échelle; utiliser la moyenne dans la convention annoncée.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soit $X\\sim\\mathrm{Gamma}(3,2)$, en convention forme-taux. Donner son espérance et l'échelle équivalente; que devient l'espérance si le taux double ?",
+          "correction_md": "$\\mathbb E[X]=3/2$. L'échelle est $1/2$. Si le taux devient 4, la moyenne devient $3/4$.",
+          "rubric_fr": "Distinguer forme, taux et échelle; utiliser la moyenne dans la convention annoncée."
+        },
+        "B": {
+          "prompt_md": "R simule `rgamma(n, shape=4, scale=3)`. Quels sont la forme et le taux ? Donner la moyenne théorique.",
+          "correction_md": "Forme 4, taux $1/3$. La moyenne est $4/(1/3)=12$.",
+          "rubric_fr": "Convertir l'échelle en taux et calculer la moyenne avec la convention correcte."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P10",
+      "point_id": "kp.koenig_huygens.derive_second_moment_identity",
+      "primary_lesson_id": "L04",
+      "inherited_primary_lesson_id": "L04",
+      "source_block_ids": [
+        "PS1-086"
+      ],
+      "objective_fr": "Montrer Var(X)=E(X²)-E(X)²",
+      "attempt_minutes": 3,
+      "correction_minutes": 2,
+      "rubric_fr": "Dériver l'identité à partir du carré centré, en déclarant les conditions d'intégrabilité.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soit $X$ une variable réelle de carré intégrable. Démontrer l'identité reliant sa variance et ses deux premiers moments, à partir de la définition.",
+          "correction_md": "Posons $m=\\mathbb E[X]$, qui existe par Cauchy-Schwarz. $\\mathbb V(X)=\\mathbb E[X^2-2mX+m^2]=\\mathbb E[X^2]-2m^2+m^2=\\mathbb E[X^2]-m^2$ par linéarité.",
+          "rubric_fr": "Dériver l'identité à partir du carré centré, en déclarant les conditions d'intégrabilité."
+        },
+        "B": {
+          "prompt_md": "Soit $Y$ de carré intégrable, avec $\\mathbb E[Y]=3$ et $\\mathbb V(Y)=5$. Retrouver $\\mathbb E[Y^2]$ en justifiant l'identité utilisée.",
+          "correction_md": "En développant $\\mathbb E[(Y-3)^2]$, on trouve $\\mathbb V(Y)=\\mathbb E[Y^2]-9$. Donc $\\mathbb E[Y^2]=14$.",
+          "rubric_fr": "Développer le carré centré et reconstruire le moment d'ordre deux."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P11",
+      "point_id": "kp.mc_precision.compare_variance_standard_error",
+      "primary_lesson_id": "L07",
+      "inherited_primary_lesson_id": "L07",
+      "source_block_ids": [
+        "PS1-121"
+      ],
+      "objective_fr": "Expliquer ordre n^{-1/2} et IC asymptotique",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Distinguer variance en 1/n et erreur-type en 1/racine(n), avec conditions du TCL pour l'IC.",
+      "forms": {
+        "A": {
+          "prompt_md": "On estime une intégrale par la moyenne de $n=100$ contributions i.i.d. de variance 16. Quelle est la variance de l'estimateur et son erreur-type ? Quel n divise l'erreur-type par 2 ?",
+          "correction_md": "Variance $16/100=0{,}16$; erreur-type $0{,}4$. Pour diviser l'erreur-type par 2, multiplier n par 4, soit 400. Sous les hypothèses du TCL, la largeur d'un IC normal asymptotique suit le même ordre.",
+          "rubric_fr": "Distinguer variance en 1/n et erreur-type en 1/racine(n), avec conditions du TCL pour l'IC."
+        },
+        "B": {
+          "prompt_md": "Un estimateur de Monte-Carlo, moyenne i.i.d. à variance finie positive, a une erreur-type estimée de 0,12 à 900 tirages. Approximativement combien de tirages donnent 0,04 ?",
+          "correction_md": "Un facteur 3 sur l'erreur-type nécessite un facteur $3^2=9$ sur n, soit 8100 tirages, à variance des contributions inchangée.",
+          "rubric_fr": "Utiliser la décroissance en racine de n à variance inchangée."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P12",
+      "point_id": "kp.parametric_model.specify_family_parameter",
+      "primary_lesson_id": "L08",
+      "inherited_primary_lesson_id": "L08",
+      "source_block_ids": [
+        "PS1-124"
+      ],
+      "objective_fr": "Énoncer la famille des lois et le rôle de theta",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Spécifier le domaine, la famille de lois des données et le rôle du paramètre fixe.",
+      "forms": {
+        "A": {
+          "prompt_md": "On observe $n$ durées i.i.d. exponentielles de taux inconnu. Écrire le modèle paramétrique de l'échantillon et distinguer paramètre et données.",
+          "correction_md": "$\\Theta=]0,+\\infty[$ et $\\{\\mathrm{Exp}(\\lambda)^{\\otimes n}:\\lambda\\in\\Theta\\}$. Le taux $\\lambda$ est fixe et inconnu; le vecteur des durées est aléatoire avant observation.",
+          "rubric_fr": "Spécifier le domaine, la famille de lois des données et le rôle du paramètre fixe."
+        },
+        "B": {
+          "prompt_md": "On observe n essais indépendants de même probabilité de succès inconnue p. Donner l'espace des paramètres et la famille de lois de l'échantillon.",
+          "correction_md": "$p\\in[0,1]$ et $\\{\\mathrm{Bernoulli}(p)^{\\otimes n}:p\\in[0,1]\\}$. Les observations binaires informent sur le paramètre fixe p.",
+          "rubric_fr": "Donner le domaine de p et la famille produit; distinguer paramètre et données."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P13",
+      "point_id": "kp.pmf.verify_mass_normalization",
+      "primary_lesson_id": "L03",
+      "inherited_primary_lesson_id": "L03",
+      "source_block_ids": [
+        "PS1-046"
+      ],
+      "objective_fr": "Vérifier positivité et somme des masses égale à un",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Vérifier séparément non-négativité et normalisation des masses.",
+      "forms": {
+        "A": {
+          "prompt_md": "On propose une masse sur $\\{0,1,2\\}$ égale à $(a,2a,1/4)$. Déterminer a pour obtenir une loi.",
+          "correction_md": "$3a+1/4=1$, donc $a=1/4$. Les masses $(1/4,1/2,1/4)$ sont non négatives et somment à 1.",
+          "rubric_fr": "Vérifier séparément non-négativité et normalisation des masses."
+        },
+        "B": {
+          "prompt_md": "Un modèle discret propose les masses $(-0{,}1,0{,}5,0{,}6)$ sur trois valeurs. Est-ce une loi ? Peut-on l'accepter parce que la somme vaut 1 ?",
+          "correction_md": "Non, une masse négative est interdite. Normalisation et non-négativité sont toutes deux nécessaires.",
+          "rubric_fr": "Refuser une masse négative malgré la normalisation."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P14",
+      "point_id": "kp.prob_measure.apply_probability_axioms",
+      "primary_lesson_id": "L02",
+      "inherited_primary_lesson_id": "L02",
+      "source_block_ids": [
+        "PS1-010"
+      ],
+      "objective_fr": "Énoncer normalisation et additivité",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Utiliser normalisation et additivité sur des événements disjoints, en énonçant leurs conditions.",
+      "forms": {
+        "A": {
+          "prompt_md": "Sur un espace probabilisé $(\\Omega,\\mathcal F,\\mathbb P)$, rappeler les deux axiomes de normalisation et d'additivité dénombrable. Si A,B sont disjoints de probabilités 0,2 et 0,3, calculer la probabilité de leur union.",
+          "correction_md": "$\\mathbb P(\\Omega)=1$; pour des événements deux à deux disjoints $(E_i)_{i\\ge1}$, $\\mathbb P(\\bigcup_i E_i)=\\sum_i\\mathbb P(E_i)$. Ici $\\mathbb P(A\\cup B)=0{,}5$.",
+          "rubric_fr": "Utiliser normalisation et additivité sur des événements disjoints, en énonçant leurs conditions."
+        },
+        "B": {
+          "prompt_md": "On partitionne $\\Omega$ en trois événements disjoints $A,B,C$; leurs deux premières probabilités valent $0{,}35$ et $0{,}2$. Trouver $\\mathbb P(C)$ et justifier.",
+          "correction_md": "Par additivité et normalisation, $\\mathbb P(C)=1-0{,}35-0{,}2=0{,}45$.",
+          "rubric_fr": "Utiliser l'additivité sur une partition et la normalisation pour obtenir la masse manquante."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P15",
+      "point_id": "kp.qqplot.assess_reference_alignment",
+      "primary_lesson_id": "L03",
+      "inherited_primary_lesson_id": "L03",
+      "source_block_ids": [
+        "PS1-109"
+      ],
+      "objective_fr": "Comparer empiriquement une loi à une loi de référence",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Identifier les quantiles comparés, distinguer forme et paramètres, interpréter sans prétendre prouver la loi.",
+      "forms": {
+        "A": {
+          "prompt_md": "Un QQ-plot normal (quantiles théoriques en abscisse) montre des points proches d'une droite, sauf des écarts importants aux extrémités. Interpréter sans conclure à une égalité des lois.",
+          "correction_md": "Le centre est compatible avec une forme normale à translation et échelle près, mais les queues s'écartent du modèle. Un QQ-plot ne prouve ni la normalité ni son absence; tenir compte de la taille et des fluctuations.",
+          "rubric_fr": "Identifier les quantiles comparés, distinguer forme et paramètres, interpréter sans prétendre prouver la loi."
+        },
+        "B": {
+          "prompt_md": "Un QQ-plot contre $\\mathcal N(0,1)$ est presque rectiligne, avec pente 2 et intercept 5. Peut-on affirmer que la population est $\\mathcal N(0,1)$ ?",
+          "correction_md": "Non. Une droite de pente 2 et intercept 5 est compatible avec une forme normale de moyenne environ 5 et écart-type environ 2, pas une preuve de normalité ni de la loi standard.",
+          "rubric_fr": "Distinguer forme, pente et intercept; ne pas conclure à la loi standard."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P16",
+      "point_id": "kp.r_law_funcs.choose_d_p_q_r",
+      "primary_lesson_id": "L03",
+      "inherited_primary_lesson_id": "L03",
+      "source_block_ids": [
+        "PS1-111"
+      ],
+      "objective_fr": "Distinguer densité/masse, CDF, quantile et simulation",
+      "attempt_minutes": 3,
+      "correction_minutes": 2,
+      "rubric_fr": "Choisir d/p/q/r selon la quantité demandée et le bon paramétrage R.",
+      "forms": {
+        "A": {
+          "prompt_md": "Pour $X\\sim\\mathcal N(10,4)$, écrire les quatre commandes R donnant $f_X(11)$, $\\mathbb P(X\\le11)$, le quantile d'ordre 0,9 et 30 tirages.",
+          "correction_md": "`dnorm(11,10,2)`, `pnorm(11,10,2)`, `qnorm(0.9,10,2)`, `rnorm(30,10,2)`. R reçoit l'écart-type 2, non la variance 4.",
+          "rubric_fr": "Choisir d/p/q/r selon la quantité demandée et le bon paramétrage R."
+        },
+        "B": {
+          "prompt_md": "Pour $Y\\sim\\mathrm{Poisson}(3)$, écrire les commandes donnant $\\mathbb P(Y=2)$, $\\mathbb P(Y\\le2)$, le quantile d'ordre 0,95 et 20 tirages.",
+          "correction_md": "`dpois(2,3)`, `ppois(2,3)`, `qpois(0.95,3)`, `rpois(20,3)`. Le préfixe d donne ici une masse, pas une densité continue.",
+          "rubric_fr": "Choisir les quatre fonctions Poisson, leur paramètre et la taille des tirages."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P17",
+      "point_id": "kp.r_objects.assign_named_values",
+      "primary_lesson_id": "L01",
+      "inherited_primary_lesson_id": "L01",
+      "source_block_ids": [
+        "PS1-023"
+      ],
+      "objective_fr": "Créer et modifier un objet",
+      "attempt_minutes": 1,
+      "correction_minutes": 2,
+      "rubric_fr": "Créer et modifier un objet; expliquer l'effet et vérifier la valeur obtenue.",
+      "forms": {
+        "A": {
+          "prompt_md": "En R, créer `x` contenant 3, puis augmenter sa valeur de 2 et afficher `x`. Expliquer la différence entre l'affectation et une égalité.",
+          "correction_md": "`x <- 3; x <- x + 2; print(x)` affiche 5. L'affectation modifie l'objet; elle n'énonce pas l'égalité mathématique $x=x+2$.",
+          "rubric_fr": "Créer et modifier un objet; expliquer l'effet et vérifier la valeur obtenue."
+        },
+        "B": {
+          "prompt_md": "Après `a <- 4; b <- a; a <- 10`, que vaut b ? Justifier et vérifier dans R.",
+          "correction_md": "`b` vaut 4. L'affectation de la nouvelle valeur à `a` ne change pas la valeur déjà affectée à `b`.",
+          "rubric_fr": "Prédire b=4 et vérifier que réaffecter a ne modifie pas b."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P18",
+      "point_id": "kp.r_rmd.report_reproducible_results",
+      "primary_lesson_id": "L01",
+      "inherited_primary_lesson_id": "L01",
+      "source_block_ids": [
+        "PS1-040",
+        "PS1-112"
+      ],
+      "objective_fr": "Présenter code, résultats et interprétation cohérents dans le document.",
+      "attempt_minutes": 4,
+      "correction_minutes": 2,
+      "rubric_fr": "Code exécutable en session vide, graine avant tirage, résultat et interprétation cohérents, sauvegarde et contrôle de reproductibilité.",
+      "forms": {
+        "A": {
+          "prompt_md": "Dans ce Rmd, écrire un chunk qui simule 5 valeurs normales standard avec une graine fixée, calcule leur moyenne et affiche une phrase qui distingue moyenne simulée et moyenne théorique. Réexécuter dans une session propre et enregistrer le résultat.",
+          "correction_md": "Dans un chunk : `set.seed(23); x <- rnorm(5); mean(x)`. La moyenne calculée est celle de cinq tirages, pas la moyenne théorique 0. Relancer dans une session propre avec la même graine et le même environnement reproduit le résultat. Vérifier le Rmd sauvegardé et son rendu si nécessaire.",
+          "rubric_fr": "Code exécutable en session vide, graine avant tirage, résultat et interprétation cohérents, sauvegarde et contrôle de reproductibilité."
+        },
+        "B": {
+          "prompt_md": "On vous transmet un Rmd avec `eval=FALSE` sur le seul chunk qui crée un échantillon, et un autre chunk calcule sa moyenne. Réparer le document pour que l'exécution soit reproductible à partir d'une session vide.",
+          "correction_md": "Activer l'évaluation du chunk de création, fixer la graine avant le tirage, exécuter dans l'ordre, afficher le résultat et l'interpréter comme une statistique empirique. Vérifier en session propre puis enregistrer le Rmd; un rendu de contrôle ne remplace pas le travail dans Visual.",
+          "rubric_fr": "Rétablir l'exécution de la création de l'échantillon, fixer la graine et vérifier en session propre."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P19",
+      "point_id": "kp.r_summaries.compute_sample_summaries",
+      "primary_lesson_id": "L04",
+      "inherited_primary_lesson_id": "L01",
+      "source_block_ids": [
+        "PS1-110"
+      ],
+      "objective_fr": "Utiliser mean, median, var, sd et quantile",
+      "attempt_minutes": 3,
+      "correction_minutes": 2,
+      "rubric_fr": "Employer les cinq fonctions, interpréter les quantiles et le diviseur n-1, traiter NA explicitement.",
+      "forms": {
+        "A": {
+          "prompt_md": "Pour `x <- c(1,3,5)`, écrire les commandes R calculant moyenne, médiane, variance corrigée, écart-type corrigé et quantile d'ordre 0,25 (type par défaut). Donner les valeurs.",
+          "correction_md": "`mean(x)=3`, `median(x)=3`, `var(x)=4`, `sd(x)=2`, `quantile(x,0.25)=2` (type 7). La variance empirique avec diviseur n serait $8/3$.",
+          "rubric_fr": "Calculer les cinq résumés avec le bon type de quantile et distinguer variance corrigée et variance avec diviseur n."
+        },
+        "B": {
+          "prompt_md": "Pour `y <- c(2,2,8,NA)`, calculer les mêmes cinq résumés en excluant explicitement les données manquantes. Expliquer le dénominateur de la variance.",
+          "correction_md": "Avec `na.rm=TRUE` ou après filtrage, moyenne 4, médiane 2, variance corrigée 12, écart-type $\\sqrt{12}$, quantile 0,25 égal à 2. La variance utilise les trois observations présentes et le diviseur $3-1=2$.",
+          "rubric_fr": "Calculer les cinq résumés après exclusion explicite des NA; justifier n-1 sur les valeurs présentes."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P20",
+      "point_id": "kp.r_types.distinguish_data_classes",
+      "primary_lesson_id": "L01",
+      "inherited_primary_lesson_id": "L01",
+      "source_block_ids": [
+        "PS1-024"
+      ],
+      "objective_fr": "Identifier les types et convertir sans perdre de sens",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Identifier classes et différence entre code interne, étiquette et valeur quantitative.",
+      "forms": {
+        "A": {
+          "prompt_md": "Dans R, expliquer les classes de `c(1,2)`, `c(TRUE,FALSE)`, `c('1','2')` et `factor(c('1','2'))`. Comment obtenir les nombres représentés par les étiquettes du facteur ?",
+          "correction_md": "Classes usuelles : numeric, logical, character, factor. Pour ce facteur à étiquettes numériques, `as.numeric(as.character(f))` convertit les étiquettes; `as.numeric(f)` renvoie les codes internes.",
+          "rubric_fr": "Identifier classes et différence entre code interne, étiquette et valeur quantitative."
+        },
+        "B": {
+          "prompt_md": "Soit `f <- factor(c('10','20','10'))`. Pourquoi `mean(as.numeric(f))` n'est-elle pas la moyenne des nombres affichés ? Corriger.",
+          "correction_md": "Les codes internes valent 1,2,1. Les étiquettes numériques se récupèrent par `as.numeric(as.character(f))`; leur moyenne vaut $40/3$. Pour une catégorie non numérique, une telle moyenne n'a pas de sens.",
+          "rubric_fr": "Expliquer le codage interne, convertir les étiquettes et retrouver la moyenne."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P21",
+      "point_id": "kp.r_vectorize.compute_elementwise",
+      "primary_lesson_id": "L01",
+      "inherited_primary_lesson_id": "L01",
+      "source_block_ids": [
+        "PS1-027"
+      ],
+      "objective_fr": "Appliquer une fonction sur un vecteur entier",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Appliquer des opérations terme à terme sur des vecteurs compatibles et distinguer vecteur et agrégat.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soit `x <- c(1,3,4)`. Calculer sans boucle le vecteur des carrés puis celui des écarts à la moyenne. Prédire la longueur des résultats.",
+          "correction_md": "`x^2` donne 1,9,16. `x-mean(x)` donne $(-5/3,1/3,4/3)$. Les deux vecteurs ont longueur 3.",
+          "rubric_fr": "Appliquer des opérations terme à terme sur des vecteurs compatibles et distinguer vecteur et agrégat."
+        },
+        "B": {
+          "prompt_md": "Soient `x <- c(2,5,7)` et `y <- c(1,2,3)`. Écrire un calcul vectorisé des écarts au carré et de leur somme.",
+          "correction_md": "`(x-y)^2` donne 1,9,16 et `sum((x-y)^2)` vaut 26.",
+          "rubric_fr": "Calculer le vecteur des écarts au carré puis son agrégat."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P22",
+      "point_id": "kp.r_vectors.construct_vectors_lists",
+      "primary_lesson_id": "L01",
+      "inherited_primary_lesson_id": "L01",
+      "source_block_ids": [
+        "PS1-025"
+      ],
+      "objective_fr": "Construire des vecteurs et listes",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Construire vecteur et liste; expliquer homogénéisation, extraction et longueurs.",
+      "forms": {
+        "A": {
+          "prompt_md": "Créer un vecteur numérique de trois éléments et une liste contenant ce vecteur et une chaîne. Donner leurs longueurs et extraire le vecteur de la liste.",
+          "correction_md": "`x <- c(2,4,6); L <- list(x,'a')`. `length(x)` vaut 3, `length(L)` vaut 2, `L[[1]]` renvoie x. La liste accepte des objets hétérogènes.",
+          "rubric_fr": "Construire vecteur et liste; expliquer homogénéisation, extraction et longueurs."
+        },
+        "B": {
+          "prompt_md": "Prédire le type et la longueur de `c(2,'a')` puis de `list(2,'a')`. Vérifier et expliquer.",
+          "correction_md": "Les deux objets ont longueur 2. Le premier est un vecteur de caractères par coercition; le second une liste dont le premier élément reste numérique.",
+          "rubric_fr": "Prédire classes et longueurs, expliquer coercition et hétérogénéité."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P23",
+      "point_id": "kp.reg_cond_mean.justify_conditional_mean",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-215"
+      ],
+      "objective_fr": "Montrer E(Y|X=x)=b0+b1*x",
+      "attempt_minutes": 3,
+      "correction_minutes": 2,
+      "rubric_fr": "Utiliser la mesurabilité et l'espérance conditionnelle nulle; distinguer centrage marginal et conditionnel.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soient $X,Y,\\varepsilon$ intégrables avec $Y=b_0+b_1X+\\varepsilon$ et $\\mathbb E[\\varepsilon\\mid X]=0$. Démontrer l'expression de $\\mathbb E[Y\\mid X]$.",
+          "correction_md": "Par linéarité conditionnelle et mesurabilité de $b_0+b_1X$ par rapport à $X$, $\\mathbb E[Y\\mid X]=b_0+b_1X+\\mathbb E[\\varepsilon\\mid X]=b_0+b_1X$. On obtient une version $\\mathbb E[Y\\mid X=x]=b_0+b_1x$ presque partout pour la loi de X.",
+          "rubric_fr": "Utiliser la mesurabilité et l'espérance conditionnelle nulle; distinguer centrage marginal et conditionnel."
+        },
+        "B": {
+          "prompt_md": "Dans le même modèle, supposons seulement $\\mathbb E[\\varepsilon]=0$. Est-ce suffisant pour obtenir la moyenne conditionnelle affine ? Donner un contre-exemple.",
+          "correction_md": "Non. Si $X$ vaut -1 ou 1 équiprobablement et $\\varepsilon=X$, alors $\\mathbb E[\\varepsilon]=0$ mais $\\mathbb E[\\varepsilon\\mid X]=X$. Le terme conditionnel ne disparaît pas.",
+          "rubric_fr": "Donner un contre-exemple centré marginalement mais non conditionnellement."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P24",
+      "point_id": "kp.reg_empirical_corr.distinguish_empirical_population",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-222"
+      ],
+      "objective_fr": "Distinguer corrélation empirique et rho théorique",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Distinguer statistique empirique variable et paramètre théorique; préciser les conditions de la corrélation.",
+      "forms": {
+        "A": {
+          "prompt_md": "Un échantillon de 50 paires fournit `cor(x,y)=0.6`. Quel objet a été calculé ? Est-ce nécessairement la corrélation de population ? Donner sa définition théorique.",
+          "correction_md": "C'est la corrélation empirique r, calculée sur l'échantillon. Elle n'est pas nécessairement égale à $\\rho=\\operatorname{Cov}(X,Y)/(\\sigma_X\\sigma_Y)$ pour des variables de carré intégrable à variances positives.",
+          "rubric_fr": "Distinguer statistique empirique variable et paramètre théorique; préciser les conditions de la corrélation."
+        },
+        "B": {
+          "prompt_md": "Deux échantillons indépendants de la même population donnent des corrélations 0,45 et 0,58. Est-ce contradictoire ? Quelle quantité est fixe dans le modèle ?",
+          "correction_md": "Non. Les corrélations empiriques sont des statistiques qui fluctuent; la corrélation de population est fixe pour une loi conjointe fixée, si elle existe.",
+          "rubric_fr": "Expliquer la fluctuation de la statistique et le caractère fixe du paramètre théorique."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P25",
+      "point_id": "kp.reg_intercept.center_theoretical_line",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-217"
+      ],
+      "objective_fr": "Écrire b0=E(Y)-b1 E(X)",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Déduire la constante de l'équation d'espérance sous centrage et interpréter le point moyen.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soient $X,Y,\\varepsilon$ intégrables avec $Y=b_0+b_1X+\\varepsilon$ et $\\mathbb E[\\varepsilon]=0$. Déduire l'ordonnée à l'origine à partir des espérances.",
+          "correction_md": "Par linéarité, $\\mathbb E[Y]=b_0+b_1\\mathbb E[X]$, donc $b_0=\\mathbb E[Y]-b_1\\mathbb E[X]$. La droite passe par le point des espérances.",
+          "rubric_fr": "Déduire la constante de l'équation d'espérance sous centrage et interpréter le point moyen."
+        },
+        "B": {
+          "prompt_md": "Dans un modèle centré en erreur, $\\mathbb E[X]=4$, $\\mathbb E[Y]=11$, $b_1=-2$. Retrouver la constante et justifier.",
+          "correction_md": "$b_0=11-(-2)4=19$ par l'espérance du modèle. Il faut le centrage de l'erreur.",
+          "rubric_fr": "Retrouver b0 par linéarité et centrage de l'erreur."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P26",
+      "point_id": "kp.reg_multi_ols.solve_full_rank_least_squares",
+      "primary_lesson_id": "L16",
+      "inherited_primary_lesson_id": "L16",
+      "source_block_ids": [
+        "PS1-249"
+      ],
+      "objective_fr": "Minimiser RSS sur d+1 coefficients",
+      "attempt_minutes": 4,
+      "correction_minutes": 2,
+      "rubric_fr": "Formuler le critère, dériver les équations normales, établir le rôle du rang plein et la distinction coefficient/prédiction.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soit $A\\in\\mathbb R^{n\\times(d+1)}$ de rang $d+1$ et $y\\in\\mathbb R^n$. Formuler les MCO, obtenir les équations normales et justifier l'unicité de la solution.",
+          "correction_md": "Minimiser $\\|y-Ab\\|^2$ sur $b\\in\\mathbb R^{d+1}$. Le gradient vaut $2A^\\top(Ab-y)$, donc $A^\\top A\\widehat b=A^\\top y$. Comme $A$ est de rang plein, $A^\\top A$ est définie positive : le minimum unique est $(A^\\top A)^{-1}A^\\top y$.",
+          "rubric_fr": "Formuler le critère, dériver les équations normales, établir le rôle du rang plein et la distinction coefficient/prédiction."
+        },
+        "B": {
+          "prompt_md": "Dans un modèle avec intercept et deux prédicteurs, le second vaut exactement deux fois le premier pour toutes les observations. Peut-on identifier les trois coefficients par MCO ? Que peut-on encore identifier ?",
+          "correction_md": "Le rang est insuffisant : une direction non nulle appartient au noyau, les coefficients ne sont pas uniques. Les valeurs ajustées, projection orthogonale de y sur l'espace colonne, sont uniques.",
+          "rubric_fr": "Reconnaître le rang déficient et distinguer coefficients non uniques et projection unique."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P27",
+      "point_id": "kp.reg_multi_resvar.use_residual_degrees_freedom",
+      "primary_lesson_id": "L16",
+      "inherited_primary_lesson_id": "L16",
+      "source_block_ids": [
+        "PS1-255"
+      ],
+      "objective_fr": "Calculer RSS/(n-d-1)",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Compter paramètres dont intercept et lignes utilisées; appliquer le diviseur résiduel et préciser les hypothèses.",
+      "forms": {
+        "A": {
+          "prompt_md": "Une régression avec intercept et 3 prédicteurs, matrice de rang plein, utilise 24 observations et donne RSS=80. Calculer l'estimateur corrigé de variance résiduelle et préciser les hypothèses de non-biais.",
+          "correction_md": "Il reste $24-3-1=20$ ddl; $\\widehat\\sigma^2=80/20=4$. Pour le non-biais, erreurs centrées non corrélées de variance commune $\\sigma^2$ conditionnellement à la matrice de conception (fixe ou conditionnée), rang plein.",
+          "rubric_fr": "Compter paramètres dont intercept et lignes utilisées; appliquer le diviseur résiduel et préciser les hypothèses."
+        },
+        "B": {
+          "prompt_md": "Un modèle avec intercept et 4 prédicteurs utilise 30 lignes complètes; RSS=50, rang plein. Quel estimateur corrigé obtient-on ? Pourquoi ne pas diviser par 30 ?",
+          "correction_md": "$50/(30-4-1)=2$. L'ajustement de cinq coefficients consomme cinq dimensions; sous les hypothèses usuelles le diviseur 25 donne l'estimation sans biais.",
+          "rubric_fr": "Compter cinq coefficients, calculer le diviseur 25 et expliquer le coût en degrés de liberté."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P28",
+      "point_id": "kp.reg_multiple.distinguish_multiple_predictors",
+      "primary_lesson_id": "L16",
+      "inherited_primary_lesson_id": "L16",
+      "source_block_ids": [
+        "PS1-244"
+      ],
+      "objective_fr": "Énoncer Y=b0+sum(bj Xj)+epsilon",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Énoncer la somme affine avec erreur et interpréter chaque pente à autres variables fixées.",
+      "forms": {
+        "A": {
+          "prompt_md": "Une réponse Y est modélisée à partir de température $X_1$ et pression $X_2$. Écrire le modèle multiple avec intercept et erreur; interpréter le coefficient de température sous moyenne conditionnelle nulle.",
+          "correction_md": "$Y=b_0+b_1X_1+b_2X_2+\\varepsilon$, avec $\\mathbb E[\\varepsilon\\mid X_1,X_2]=0$. À pression fixée, une unité supplémentaire de température correspond à $b_1$ unités de variation de la moyenne conditionnelle de Y; pas une preuve de causalité.",
+          "rubric_fr": "Énoncer le modèle avec intercept et erreur; interpréter la pente demandée à l'autre variable fixée."
+        },
+        "B": {
+          "prompt_md": "On ajoute un prédicteur $X_3$ à ce modèle. Écrire la nouvelle moyenne conditionnelle et expliquer pourquoi la pente de $X_1$ peut changer.",
+          "correction_md": "Sous $\\mathbb E[\\varepsilon\\mid X_1,X_2,X_3]=0$, la moyenne est $b_0+b_1X_1+b_2X_2+b_3X_3$. La comparaison est maintenant à $X_2$ et $X_3$ fixés; le coefficient peut changer si les prédicteurs sont associés.",
+          "rubric_fr": "Écrire la moyenne conditionnelle et interpréter la comparaison à autres prédicteurs fixés."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P29",
+      "point_id": "kp.reg_r2_rho.restrict_simple_intercept_identity",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-231"
+      ],
+      "objective_fr": "Énoncer les hypothèses de l'identité",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Limiter l'identité aux MCO simples avec intercept et variances empiriques positives; ne pas récupérer le signe de r à partir de R².",
+      "forms": {
+        "A": {
+          "prompt_md": "Une régression simple avec intercept sur des données non constantes donne $r_{xy}=-0{,}8$. Donner $R^2$. Est-ce encore garanti sans intercept ?",
+          "correction_md": "Pour des variances empiriques positives et les MCO simples avec intercept, $R^2=r_{xy}^2=0{,}64$. L'identité n'est pas garantie sans intercept.",
+          "rubric_fr": "Appliquer R²=r² en MCO simples avec intercept et variances positives; refuser l'extension sans intercept."
+        },
+        "B": {
+          "prompt_md": "Une régression multiple avec intercept donne $R^2=0{,}81$. Peut-on en déduire que la corrélation empirique entre Y et le premier prédicteur vaut 0,9 ?",
+          "correction_md": "Non. L'identité avec le carré d'une corrélation Y-prédicteur concerne les MCO simples avec intercept et variances positives. Le R² multiple ne fixe pas la corrélation marginale avec un prédicteur.",
+          "rubric_fr": "Refuser l'identification de la corrélation marginale à partir du R² multiple."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P30",
+      "point_id": "kp.reg_rss_objective.specify_squared_error_criterion",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-220"
+      ],
+      "objective_fr": "Formuler la somme des carrés résiduels",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Former les résidus puis la somme de leurs carrés, sans les confondre avec la somme des résidus.",
+      "forms": {
+        "A": {
+          "prompt_md": "Pour trois paires $(x_i,y_i)=(0,2),(1,4),(2,3)$, formuler RSS en fonction de $(b_0,b_1)$ et évaluer le critère en $(2,1)$.",
+          "correction_md": "$\\mathrm{RSS}(b_0,b_1)=\\sum_{i=1}^3(y_i-b_0-b_1x_i)^2$. En $(2,1)$, les résidus valent 0,1,-1, donc RSS=2.",
+          "rubric_fr": "Former les résidus puis la somme de leurs carrés, sans les confondre avec la somme des résidus."
+        },
+        "B": {
+          "prompt_md": "Deux droites donnent les vecteurs de résidus $(2,-2,0)$ et $(1,1,1)$. Quel ajustement a le plus petit critère des moindres carrés ?",
+          "correction_md": "Les RSS valent 8 et 3. Le second a le critère le plus petit, même si la somme algébrique des résidus du premier est nulle.",
+          "rubric_fr": "Comparer les deux sommes de carrés plutôt que les sommes des résidus."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P31",
+      "point_id": "kp.reg_simple.distinguish_mean_and_error",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-213"
+      ],
+      "objective_fr": "Énoncer Y=b0+b1X+epsilon et hypothèses",
+      "attempt_minutes": 2,
+      "correction_minutes": 2,
+      "rubric_fr": "Distinguer moyenne conditionnelle, erreur et résidu; préciser les hypothèses pour les résultats utilisés.",
+      "forms": {
+        "A": {
+          "prompt_md": "Écrire un modèle linéaire simple de consommation Y en fonction de distance X. Distinguer la réponse moyenne, l'erreur aléatoire et un résidu ajusté.",
+          "correction_md": "$Y=b_0+b_1X+\\varepsilon$ avec $\\mathbb E[\\varepsilon\\mid X]=0$. La moyenne conditionnelle est $b_0+b_1X$; l'erreur est la variation autour de cette vraie moyenne, et le résidu observé est $y_i-\\widehat b_0-\\widehat b_1x_i$. Pour l'inférence exacte gaussienne classique, ajouter les hypothèses de normalité, indépendance et variance commune conditionnelles à la conception.",
+          "rubric_fr": "Distinguer moyenne conditionnelle, erreur et résidu; préciser les hypothèses pour les résultats utilisés."
+        },
+        "B": {
+          "prompt_md": "Dans une régression ajustée, le résidu d'une mesure vaut 0. Cela prouve-t-il que son erreur du modèle vaut 0 ? Justifier.",
+          "correction_md": "Non. Le résidu utilise les coefficients estimés alors que l'erreur utilise les vrais coefficients inconnus. Une mesure sur la droite ajustée n'implique pas une mesure sur la vraie droite.",
+          "rubric_fr": "Distinguer vraie erreur et résidu calculé; refuser l'implication proposée."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P32",
+      "point_id": "kp.reg_slope.derive_covariance_slope",
+      "primary_lesson_id": "L15",
+      "inherited_primary_lesson_id": "L15",
+      "source_block_ids": [
+        "PS1-216"
+      ],
+      "objective_fr": "Prouver b1=Cov(X,Y)/Var(X) si Var(X)>0",
+      "attempt_minutes": 3,
+      "correction_minutes": 2,
+      "rubric_fr": "Déployer la covariance, justifier l'annulation ou conserver le terme d'erreur, diviser par une variance positive.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soient $X,Y$ de carré intégrable, $\\mathbb V(X)>0$, et $Y=b_0+b_1X+\\varepsilon$ avec $\\operatorname{Cov}(X,\\varepsilon)=0$. Démontrer une expression de $b_1$ en fonction des moments de X,Y.",
+          "correction_md": "Par bilinéarité, $\\operatorname{Cov}(X,Y)=b_1\\mathbb V(X)+\\operatorname{Cov}(X,\\varepsilon)=b_1\\mathbb V(X)$. La variance positive permet de diviser : $b_1=\\operatorname{Cov}(X,Y)/\\mathbb V(X)$.",
+          "rubric_fr": "Déployer la covariance, justifier l'annulation ou conserver le terme d'erreur, diviser par une variance positive."
+        },
+        "B": {
+          "prompt_md": "Soient $X,Y,\\varepsilon$ de carré intégrable, $Y=b_0+b_1X+\\varepsilon$, $\\mathbb V(X)=4$, $\\operatorname{Cov}(X,Y)=10$, $\\operatorname{Cov}(X,\\varepsilon)=2$. Retrouver $b_1$; pourquoi le rapport habituel est-il incorrect ici ?",
+          "correction_md": "$10=4b_1+2$, donc $b_1=2$. Le rapport $10/4$ ne convient pas, car l'erreur a une covariance non nulle avec X.",
+          "rubric_fr": "Conserver la covariance avec l'erreur et résoudre l'équation pour la pente."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    },
+    {
+      "id": "P33",
+      "point_id": "kp.sum_notation.expand_indexed_sum",
+      "primary_lesson_id": "L03",
+      "inherited_primary_lesson_id": "L03",
+      "source_block_ids": [
+        "PS1-001"
+      ],
+      "objective_fr": "Lire une somme et manipuler des indices",
+      "attempt_minutes": 1,
+      "correction_minutes": 2,
+      "rubric_fr": "Lire les bornes, développer correctement et compter les constantes répétées.",
+      "forms": {
+        "A": {
+          "prompt_md": "Soient $a_1=2,a_2=4,a_3=6$. Développer $\\sum_{i=1}^3(a_i+1)$ et réécrire la somme en changeant le nom de l'indice.",
+          "correction_md": "$\\sum_{i=1}^3(a_i+1)=3+5+7=15$. C'est aussi $\\sum_{j=1}^3(a_j+1)$; le nom de l'indice muet n'a pas d'effet.",
+          "rubric_fr": "Lire les bornes, développer correctement et compter les constantes répétées."
+        },
+        "B": {
+          "prompt_md": "Soient $x_1,\\ldots,x_n$ réels et $n\\ge1$. Développer $\\sum_{i=1}^n(x_i-c)$ puis donner l'expression pour $n=3$, $x=(2,3,4)$ et $c=1$.",
+          "correction_md": "Pour $c\\in\\mathbb R$, $\\sum_{i=1}^n(x_i-c)=\\sum_{i=1}^nx_i-nc$. Dans le cas indiqué : $9-3=6$.",
+          "rubric_fr": "Développer la somme, compter n constantes et effectuer le calcul numérique."
+        }
+      },
+      "assessment_status": "authored_not_administered"
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+---
+title: "L14 · Couples, espérance conditionnelle et variance totale"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L14
+  document_role: work
+  content_status: complete_authored
+  minutes: 45
+  exercise_ids: ["L14-E01", "L14-E02", "L14-E03", "L14-E04"]
+  block_ids: ["L14-B01", "L14-B02", "L14-B03", "L14-B04", "L14-B05", "L14-B06", "L14-B07", "L14-B08", "L14-B09", "L14-B10"]
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**45 min :** prise en main du cours 6, concepts 5, mathématiques 17, R 11, correction et rappel 6. Lire d’abord les blocs B01 à B06; consulter les autres au moment de leur emploi, dans le temps des tâches.
+
+**Prérequis :** L04 (espérance, covariance, variance), L05 (moyennes et variances empiriques), L03 (densités et simulation). Ne pas assimiler une leçon parcourue à un prérequis acquis.
+
+## 1/6 · Comprendre
+
+Marginaliser signifie oublier une coordonnée. Conditionner signifie fixer une information, puis renormaliser ce qui reste. Imaginez des mesures regroupées par machine : la moyenne générale mêle les moyennes des machines et leur fréquence. La variance générale mêle également la dispersion au sein de chaque machine et la différence entre leurs centres.
+
+### Intégrer sur un domaine {#L14-B01}
+
+> **MTH [L14-B01] · Intégrer sur un domaine**
+>
+> Pour $D=\{(x,y):a<x<b,\ u(x)<y<v(x)\}$ et $h\geq0$ mesurable, Tonelli donne
+> $$\iint_D h=\int_a^b\left(\int_{u(x)}^{v(x)}h(x,y)\,dy\right)dx.$$
+> Pour un $h$ signé, l’échange est justifié si $\iint_D|h|<\infty$ (Fubini). Dessiner le domaine puis fixer la variable extérieure avant de choisir les bornes. Exemple : sur $0<x<2$, $0<y<x$, la coupe verticale est $0<y<x$, pas $0<y<2$.
+
+### Loi jointe et densité associée {#L14-B02}
+
+> **DEF [L14-B02] · Loi jointe et densité associée**
+>
+> La loi jointe de deux variables réelles $X,Y$ est $\mathbb P_{X,Y}(D)=\mathbb P((X,Y)\in D)$, pour tout borélien $D\subseteq\mathbb R^2$. Une densité sur $\mathbb R^2$ est une fonction mesurable $f\geq0$ d’intégrale 1. Elle est une densité de $(X,Y)$ si $\mathbb P((X,Y)\in D)=\iint_D f$. Les densités sont définies à égalité presque partout près, pour la mesure de Lebesgue. Dans le cas discret, la masse jointe est $p(x,y)=\mathbb P(X=x,Y=y)$ et sa somme vaut 1.
+
+### Marginaliser et reconnaître l’indépendance {#L14-B03}
+
+> **THM [L14-B03] · Marginaliser et reconnaître l’indépendance**
+>
+> Pour un couple de densité $f$, des densités marginales sont $f_X(x)=\int_{\mathbb R}f(x,y)\,dy$ et $f_Y(y)=\int_{\mathbb R}f(x,y)\,dx$, presque partout. Les variables sont indépendantes si et seulement si $f(x,y)=f_X(x)f_Y(y)$ presque partout. Pour une loi discrète, remplacer les intégrales par des sommes, et la factorisation vaut pour toutes les paires de valeurs.
+
+### Loi conditionnelle {#L14-B04}
+
+> **DEF [L14-B04] · Loi conditionnelle**
+>
+> Pour un couple $(X,Y)$ de masse jointe $p$, pour $p_X(x)>0$, $p_{Y\mid X=x}(y)=p(x,y)/p_X(x)$. Pour un couple $(X,Y)$ de densité jointe $f$, pour $\mathbb P_X$-presque tout $x$ tel que $f_X(x)>0$, une densité conditionnelle est
+> $$f_{Y\mid X=x}(y)=\frac{f(x,y)}{f_X(x)}.$$
+> On renormalise la coupe correspondant à l’information fixée. L’intégrale en $y$ doit valoir 1. Si $f_X(x)=0$, ce quotient ne définit rien; on ne divise pas par la probabilité de l’événement $\{X=x\}$, qui vaut 0 dans le cas continu.
+
+### Moyenne conditionnelle : nombre puis variable {#L14-B05}
+
+> **DEF [L14-B05] · Moyenne conditionnelle : nombre puis variable**
+>
+> Si $Y$ est intégrable, $m(x)=\mathbb E[Y\mid X=x]$ est la moyenne calculée sous la loi conditionnelle : $\sum_y y\,p_{Y\mid X=x}(y)$ ou $\int y f_{Y\mid X=x}(y)\,dy$. Pour un $x$ fixé admissible, c’est un nombre. La variable aléatoire $m(X)$ est notée $\mathbb E[Y\mid X]$; elle est déterminée presque sûrement. Elle varie avec l’information $X$.
+
+### Espérance totale {#L14-B06}
+
+> **THM [L14-B06] · Espérance totale**
+>
+> Pour toute variable $Y$ intégrable et toute variable réelle $X$,
+> $$\mathbb E[Y]=\mathbb E[\mathbb E[Y\mid X]].$$
+> On moyenne les moyennes conditionnelles selon la loi de $X$, et non en donnant arbitrairement le même poids aux groupes.
+
+### Variance conditionnelle {#L14-B07}
+
+> **DEF [L14-B07] · Variance conditionnelle**
+>
+> Si $\mathbb E[Y^2]<\infty$ et $m(X)=\mathbb E[Y\mid X]$, la variance conditionnelle est la variable
+> $$\mathbb V(Y\mid X)=\mathbb E[(Y-m(X))^2\mid X]
+> =\mathbb E[Y^2\mid X]-m(X)^2.$$
+> Sa valeur peut dépendre de $X$. Elle ne doit pas être confondue avec le nombre $\mathbb V(m(X))$.
+
+### Variance totale et meilleure prédiction {#L14-B08}
+
+> **THM [L14-B08] · Variance totale et meilleure prédiction**
+>
+> Si $Y$ est de carré intégrable et $m(X)=\mathbb E[Y\mid X]$, alors
+> $$\mathbb V(Y)=\mathbb E[\mathbb V(Y\mid X)]+\mathbb V(m(X)).$$
+> Le premier terme est la dispersion résiduelle moyenne; le second est la dispersion des moyennes conditionnelles. Pour toute prédiction $g(X)$ de carré intégrable,
+> $$\mathbb E[(Y-g(X))^2]=\mathbb E[(Y-m(X))^2]+\mathbb E[(m(X)-g(X))^2].$$
+> Ainsi $m(X)$ minimise l’erreur quadratique, à égalité presque sûrement près. « Expliquée » ne signifie pas « causée ».
+
+### Calculer intra et intergroupes {#L14-B09}
+
+> **MTH [L14-B09] · Calculer intra et intergroupes**
+>
+> Pour un groupe $G\in\{g_1,\ldots,g_k\}$ de probabilités $p_j>0$, poser $m_j=\mathbb E[Y\mid G=g_j]$, $v_j=\mathbb V(Y\mid G=g_j)$ et $m=\sum_jp_jm_j$. La variance intra est $\sum_jp_jv_j$; la variance inter est $\sum_jp_j(m_j-m)^2$. Leur somme vaut $\mathbb V(Y)$. Si celle-ci est positive, la part expliquée par $G$ est le rapport inter/total.
+
+## 2/6 · Expliquer
+
+### Distinguer les objets {#L14-E01}
+
+**Budget : 5 min.**
+
+Une durée $Y$ est observée dans un groupe aléatoire $G$. Dire si $\mathbb E[Y\mid G=1]$, $\mathbb E[Y\mid G]$ et $\mathbb V(\mathbb E[Y\mid G])$ sont des nombres ou des variables aléatoires. Puis prendre $U\sim\mathcal U(-1,1)$ et $V=|U|$ : calculer $\operatorname{Cov}(U,V)$ et décider si $U,V$ sont indépendantes. Justifier la seconde réponse par un événement, pas par une formule de corrélation.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Une zone triangulaire de fonctionnement {#L14-E02}
+
+**Budget : 10 min.**
+
+On mesure deux fractions de temps $(X,Y)$ dont la densité est $f(x,y)=2\,\mathbf 1_{\{0<x<y<1\}}$. Dessiner le support. Vérifier la normalisation, calculer $f_X$, $f_Y$, puis les densités de $Y\mid X=x$ et $X\mid Y=y$ sur leurs domaines admissibles. Calculer les deux moyennes conditionnelles et retrouver $\mathbb E[Y]$ par l’espérance totale. Conclure sur l’indépendance.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Reconstruire la décomposition {#L14-E03}
+
+**Budget : 7 min.**
+
+Poser $m(X)=\mathbb E[Y\mid X]$ et supposer $Y$ de carré intégrable. À partir de $\mathbb V(Y\mid X)=\mathbb E[Y^2\mid X]-m(X)^2$, démontrer la formule de variance totale en trois lignes.
+
+Application : $G\sim\mathrm{Bernoulli}(1/3)$, $Y\mid G=0\sim\mathcal N(10,4)$ et $Y\mid G=1\sim\mathcal N(16,1)$, où le deuxième paramètre est la variance. Calculer moyenne, variance intra, variance inter, variance totale et part expliquée. Les variances des groupes doivent-elles être égales ?
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Appliquer une fonction dans chaque groupe avec tapply {#L14-B10}
+
+> **SYX [L14-B10] · Appliquer une fonction dans chaque groupe avec tapply**
+>
+> Pour des vecteurs appariés `z` et `g` sans valeurs manquantes, `tapply(z, g, mean)` renvoie les moyennes par niveau de `g`. `tapply(z, g, function(a) mean((a-mean(a))^2))` renvoie les variances empiriques à dénominateur $n_g$. Exemple distinct : `tapply(c(2,4,7,9), c("A","A","B","B"), mean)`. Les poids des groupes proviennent de `prop.table(table(g))`. Aligner les noms avant une combinaison; ne pas mélanger des dénominateurs $n_g$ et $n_g-1$ dans une identité empirique exacte.
+
+### Simuler puis contrôler une identité empirique {#L14-E04}
+
+**Budget : 11 min.**
+
+Simuler 6000 observations du modèle de l’exercice précédent, avec `set.seed(1414)`. Avant l’exécution, indiquer les cibles de la moyenne et de la variance. Calculer les moyennes et variances par groupe, puis la décomposition empirique exacte intra/inter avec des dénominateurs $n_g$ et $n$. Vérifier numériquement l’égalité avec la variance empirique à dénominateur $n$; comparer ensuite aux valeurs théoriques. Faire un boxplot par groupe et commenter ce qu’il révèle.
+
+Syntaxe déjà disponible : `rbinom`, `rnorm` et `set.seed` (L03-B14), `mean` et filtrage (L01-B04), `var` (L04-B08). Pour `rnorm`, `sd` désigne l’écart-type.
+
+```{r L14-E04}
+# Votre simulation, vos contrôles et votre graphique.
+```
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**6 min au total pour les sections 5 et 6.** Enregistrer ce Rmd et ses images locales. Préserver la première tentative avant d’ouvrir `L14_Corrige.Rmd`. Pour chaque réponse, identifier une erreur de concept, d’hypothèse, de méthode, de calcul, de rédaction ou de R. Corriger en gardant la première version lisible.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur précise et bloc utile |
+|:--|:--|:--|
+| L14-E01 | | |
+| L14-E02 | | |
+| L14-E03 | | |
+| L14-E04 | | |
+
+## 6/6 · Retenir puis rappeler
+
+Mémoire : loi conditionnelle, différence entre $m(x)$ et $m(X)$, espérance totale et sens des deux termes de la variance totale. À reconstruire : la preuve en deux identités de moments. Référence : support et bornes d’intégration, syntaxe `tapply`.
+
+Dans les minutes restantes, retrouver une hypothèse et une interprétation sans regarder. Une carte réussie ne remplace pas une application. Choisir au plus une variante pertinente pour un prochain créneau déjà prévu (X02 ou F01), puis noter ici la question encore incertaine :
+
+## Réserve de rappels et de transfert
+
+Ces adaptations pédagogiques remplacent un créneau de rappel ou de réparation déjà budgété. Ne pas les ajouter à la durée de cette leçon. Choisir la variante selon l’erreur observée; garder le corrigé fermé pendant la tentative.
+
+### L14-V01 · 6 min {#L14-V01}
+
+Un serveur est en mode $G=0$ ou $G=1$. Le tableau donne la loi jointe de $(G,N)$, où $N$ est le nombre d’erreurs :
+
+| | $N=0$ | $N=2$ |
+|:--|--:|--:|
+| $G=0$ | $3/8$ | $1/8$ |
+| $G=1$ | $1/8$ | $3/8$ |
+
+Déterminer les lois de $N\mid G=g$, puis $\mathbb E[N\mid G]$ et les composantes intra/inter. Est-ce $N$ indépendant de $G$ ? Justifier en choisissant une paire de valeurs.
+
+### L14-V02 · 6 min {#L14-V02}
+
+Une entrée $X\sim\mathcal U(-1,1)$ produit une réponse $Y=X^2+\varepsilon$, avec $\varepsilon$ indépendante de $X$, centrée et de variance $1/45$. Calculer $\operatorname{Cov}(X,Y)$ et la part de variance de $Y$ expliquée par $X$. On rappelle $\mathbb E[X^2]=1/3$ et $\mathbb E[X^4]=1/5$. Le carré de la corrélation est-il toujours cette part expliquée ?
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `ctd07` : Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360. Marginaliser, conditionner, mélange, variance totale, simulation et comparaison.
+- `st07_08` : PDF pp.1-2, « Couple continu » et « Couple discret ». Utiliser un support conjoint explicite et distinguer les deux espérances conditionnelles.
+- `st09` : PDF p.3, « Lien entre covariance et indépendance ». Contre-exemple à la réciproque de l’indépendance.
+- `blocks_v2` : Blocs PS1-057, PS1-058, PS1-191 à PS1-212. Formulations des objets, hypothèses et décomposition quadratique.

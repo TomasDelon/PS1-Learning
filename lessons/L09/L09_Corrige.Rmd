@@ -1,0 +1,137 @@
+---
+title: "L09 · Méthode des moments et maximum de vraisemblance · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L09"
+  document_role: correction
+  content_status: complete_derived
+  minutes: 25
+  exercise_ids: ["L09-E01", "L09-E02", "L09-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+**Corrigé pédagogique dérivé.** À ouvrir après sauvegarde de la première tentative. Chaque critère porte sur un raisonnement observable; aucune lecture de ce corrigé ne valide automatiquement une compétence.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+### Que fait-on varier ? {#L09-E01}
+
+<!-- ps1:solution id=L09-E01 -->
+
+Dans $x\mapsto f(x;\theta)$, le paramètre est fixé et l'on décrit la loi des observations. Dans $\theta\mapsto L(\theta;\mathbf x)$, les observations sont fixées et l'on compare les paramètres possibles.
+
+L'argument est incomplet : un point critique peut être un minimum ou ne pas être un maximum global; un maximum peut aussi être au bord. Il faut vérifier le domaine, la nature des candidats et les frontières. Par exemple, $g(\theta)=\theta^2$ a une dérivée nulle en $0$, mais $0$ est un minimum.
+
+**Critères observables :**
+
+- Indiquer exactement ce qui est fixé et ce qui varie.
+- Identifier le manque dans l'argument du point critique.
+
+### Un paramètre qui borne les observations {#L09-E02}
+
+<!-- ps1:solution id=L09-E02 -->
+
+La méthode des moments résout $a/2=\overline x_6$. Comme $\overline x_6=3{,}4$, elle donne $\widehat a_{\rm MM}(\mathbf x)=6{,}8$ et l'estimateur $2\overline X_n$.
+
+Posons $x_{\max}=\max_i x_i=5{,}4$. Pour les données positives observées,
+$$
+L(a;\mathbf x)=a^{-n}\mathbf 1_{\{a\ge x_{\max}\}},\qquad a>0.
+$$
+La fonction $a^{-n}$ est strictement décroissante sur $[x_{\max},+\infty[$. Son maximum est donc atteint au bord $a=x_{\max}$ : l'estimation est $5{,}4$, et l'estimateur est $\max_iX_i$. La convention fermée sur le support rend ce maximum atteint; supprimer l'indicatrice aurait produit un faux problème.
+
+Les méthodes optimisent deux critères différents. Maximiser une vraisemblance ne garantit pas l'absence de biais. Ici $\mathbb P_a(\max_iX_i\le t)=(t/a)^n$ pour $0\le t\le a$, d'où $\mathbb E_a[\max_iX_i]=na/(n+1)<a$. Ce dernier calcul est une vérification de référence, non requis pour trouver le maximum.
+
+**Critères observables :**
+
+- Obtenir 2 moyenne pour les moments et max pour l'EMV.
+- Conserver a >= max(x) dans la vraisemblance.
+- Justifier le maximum par décroissance sur le domaine compatible.
+- Ne pas confondre maximum et absence de biais.
+
+### Taux et attente moyenne {#L09-E03}
+
+<!-- ps1:solution id=L09-E03 -->
+
+$\ell'(\lambda)=n/\lambda-\sum_i x_i$ s'annule en $n/\sum_i x_i$, et $\ell''(\lambda)=-n/\lambda^2<0$ sur $]0,+\infty[$. C'est donc l'unique maximum global.
+
+```{r L09-E03}
+x <- c(0.8, 0.4, 1.6, 0.7, 2.1, 0.9)
+lambda_hat <- length(x) / sum(x)
+attente_hat <- mean(x)
+c(taux_par_minute = lambda_hat, attente_minutes = attente_hat)
+```
+
+Le taux estimé vaut environ $0{,}9231$ par minute et l'attente moyenne estimée $1{,}0833$ minute. Ils sont inverses; ce ne sont pas deux estimations du même paramètre.
+
+**Critères observables :**
+
+- Justifier la concavité globale.
+- Distinguer taux et moyenne, avec leurs unités.
+
+## Auto-correction
+
+Pour chaque exercice, comparer objets, hypothèses, méthode, calcul et conclusion. Nommer la première erreur qui explique les suivantes, puis refaire le passage concerné sans regarder. Garder distincts le travail autonome, les aides reçues et la correction.
+
+## Variantes, corrections à consulter après un nouvel essai
+
+### L09-V01 {#L09-V01}
+
+Le maximum sans contrainte serait $6/4=1{,}5$, hors du domaine. Sur $]0,1]$, $\ell'(\lambda)=6/\lambda-4>0$. La log-vraisemblance y est croissante, donc l'EMV contraint est $1$. Il faut réoptimiser sur le domaine autorisé, pas conserver une solution inadmissible.
+
+**Critères :**
+
+- Écarter le candidat hors domaine.
+- Justifier le maximum de bord par monotonie.
+
+### L09-V02 {#L09-V02}
+
+L'identité $\sum_i(x_i-m)^2=\sum_i(x_i-\overline x)^2+n(m-\overline x)^2$ découle de $\sum_i(x_i-\overline x)=0$. Le premier terme ne dépend pas de $m$; le second est positif et nul seulement pour $m=\overline x$. La log-vraisemblance est donc uniquement maximale en $\overline x$.
+
+**Critères :**
+
+- Écrire l'identité des carrés.
+- Utiliser la positivité pour établir un maximum global unique.
+
+### L09-V03 {#L09-V03}
+
+**Énoncé :**
+
+Des comptages i.i.d. suivent une loi de Poisson de paramètre $\lambda>0$; on observe $(0,2,1,3)$. Sans partir d'une log-vraisemblance fournie, écrire la vraisemblance puis sa transformée logarithmique, en séparant les termes constants en $\lambda$. Expliquer pourquoi les deux fonctions ont les mêmes maximisateurs sur ce domaine. Trouver l'EMV et justifier qu'il s'agit d'un maximum global.
+
+**Correction :**
+
+Pour les observations fixées $y=(0,2,1,3)$, $n=4$ et $\sum_i y_i=6$,
+$$
+L(\lambda;y)=\prod_{i=1}^4\frac{e^{-\lambda}\lambda^{y_i}}{y_i!}
+=\frac{e^{-4\lambda}\lambda^6}{0!\,2!\,1!\,3!},\qquad \lambda>0.
+$$
+Cette vraisemblance est strictement positive sur le domaine. Le logarithme est strictement croissant sur $(0,\infty)$, donc il conserve l'ordre des valeurs et les maximisateurs :
+$$
+\ell(\lambda;y)=-4\lambda+6\log\lambda-\log(0!\,2!\,1!\,3!).
+$$
+Le dernier terme ne dépend pas de $\lambda$. On trouve $\ell'(\lambda)=-4+6/\lambda$ et $\ell''(\lambda)=-6/\lambda^2<0$ : l'unique point critique $\widehat\lambda=6/4=1{,}5$ est le maximum global sur $(0,\infty)$, par stricte concavité. Le modèle estime une moyenne de 1,5 événement par fenêtre; cette valeur n'est pas un comptage futur certain.
+
+**Critères :**
+
+- Passer du produit positif aux sommes logarithmiques et identifier la constante indépendante du paramètre.
+- Justifier la conservation des maximisateurs par la stricte croissance du logarithme.
+- Obtenir 1,5 et prouver le maximum global sur le domaine annoncé.
+
+## Références et limites
+
+- `ctd04` (source non redistribuée), Exercice 2 Q1-Q3 : Moments, vraisemblance exponentielle et distinction avec le sans-biais.
+- `ctd05` (source non redistribuée), Exercice 1 Q1 : Maximisation normale par identité des carrés.
+- `st04_05` (source non redistribuée), PDF pp.5-8 : Deux méthodes et support dépendant du paramètre.
+- `st04_attente` (source non redistribuée), PDF pp.1-2 : Progression modèle, estimation puis comparaison; nouveaux contexte et données.
+
+
+Les raisonnements de ce fichier sont des corrections originales dérivées. Une simulation illustre un résultat dans un modèle; elle n'en remplace pas la preuve. Les formules annoncées approchées conservent cette qualification dans les conclusions.

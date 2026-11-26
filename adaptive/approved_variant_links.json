@@ -1,0 +1,169 @@
+{
+  "schema_version": "2.0.0",
+  "kind": "reviewed_targeted_variant_links",
+  "links": [
+    {
+      "exercise_id": "L02-E01",
+      "variant_id": "L02-V01",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        1,
+        2
+      ],
+      "error_tags": [
+        "denominator",
+        "conditional_direction"
+      ],
+      "scope_fr": "Événements, dénominateur conditionnel et effet du taux de base; aucune revendication sur réunion ou redondance.",
+      "exercise_rubric_sha256": "c0c13e4d5b2857ccdde7a30b74231ba910d3f6fe5a3eff52f42e4d3f4669eec4",
+      "variant_content_sha256": "e54e8eeaa330fb3227afb9b5eebfb1db2dc40b75f246b570e9c7e477ee22069e"
+    },
+    {
+      "exercise_id": "L04-E03",
+      "variant_id": "L04-V94",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        1
+      ],
+      "error_tags": [
+        "independence",
+        "cross_term"
+      ],
+      "scope_fr": "Linéarité et dépendance commune avec covariance; ne vérifie pas spécifiquement le signe négatif du terme croisé de E03.",
+      "exercise_rubric_sha256": "df294ec83c7f7e1dbd326e1876c4ca10da8dd2eddff6d6f4c406552c7676a771",
+      "variant_content_sha256": "272a8e18755c1429057f674ee8e98b914a732839d0ef6b3d0ac9d4a2341005f0"
+    },
+    {
+      "exercise_id": "L09-E01",
+      "variant_id": "L09-V01",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        2
+      ],
+      "error_tags": [
+        "maximum_unjustified"
+      ],
+      "scope_fr": "Validité du candidat, domaine et maximum de bord; pas une preuve complète de distinction densité/vraisemblance.",
+      "exercise_rubric_sha256": "7a3e4f8b2ed4d4b806caf8841ef45be737210e19731d7673c1ce9564f9d6a4d1",
+      "variant_content_sha256": "639b07d4ac56c13ecc51e79bb291434504d23f8f811f7a2b9cf15b88fbe61e59"
+    },
+    {
+      "exercise_id": "L09-E01",
+      "variant_id": "L09-V02",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        2
+      ],
+      "error_tags": [
+        "maximum_unjustified"
+      ],
+      "scope_fr": "Maximum global par identité de carrés et positivité, sans se limiter à un point critique.",
+      "exercise_rubric_sha256": "7a3e4f8b2ed4d4b806caf8841ef45be737210e19731d7673c1ce9564f9d6a4d1",
+      "variant_content_sha256": "5a84112984c0ae8b07e4ac1a9a65d930935bd9cd95f561f4c753c684019c06fe"
+    },
+    {
+      "exercise_id": "L09-E02",
+      "variant_id": "L09-V01",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        2,
+        3
+      ],
+      "error_tags": [
+        "support",
+        "boundary",
+        "maximum_unjustified"
+      ],
+      "scope_fr": "Domaine compatible et monotonie pour un maximum de bord; ne recontrôle pas méthode des moments ou biais.",
+      "exercise_rubric_sha256": "5cf17b9ac8eb0b0ffbd2d7e2ad8ead32980da054ca6fe537aa58fc57e0439653",
+      "variant_content_sha256": "639b07d4ac56c13ecc51e79bb291434504d23f8f811f7a2b9cf15b88fbe61e59"
+    },
+    {
+      "exercise_id": "L11-E01",
+      "variant_id": "L11-V01",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        3
+      ],
+      "error_tags": [
+        "sidedness"
+      ],
+      "scope_fr": "Direction de la question préspécifiée et inversion moyenne/taux; pas une nouvelle interprétation bayésienne de la p-valeur.",
+      "exercise_rubric_sha256": "dce5a376f0926fc4774feeebae831abf520742af259a2d2975abf11f059dc5e5",
+      "variant_content_sha256": "0fd95b782b3b6c853fcf13323fc2710d74fa5641176cb0c6fb36d9c2239e78b7"
+    },
+    {
+      "exercise_id": "L13-E01",
+      "variant_id": "L13-V02",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        2,
+        3
+      ],
+      "error_tags": [
+        "tail_mass",
+        "fitted_parameters"
+      ],
+      "scope_fr": "Préserver masse et effectif et réexaminer les paramètres ajustés; ne teste pas spécifiquement une cellule positive jamais observée.",
+      "exercise_rubric_sha256": "a58f358ef3fc3c5c2884b14c368d62a735d858088866f614991f4c17490ad5b7",
+      "variant_content_sha256": "4dfa37cbd0c93a8eb74d96863ffbe4144f484a27b1ba1d127e2e471243663c42"
+    },
+    {
+      "exercise_id": "L14-E01",
+      "variant_id": "L14-V01",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        1,
+        3
+      ],
+      "error_tags": [
+        "object_type",
+        "independence"
+      ],
+      "scope_fr": "Construire la variable m(G) et tester une factorisation; pas le calcul par symétrie de la covariance.",
+      "exercise_rubric_sha256": "7604b95998e6a993d07df6827e1a6a246a1b83d359a977e37a69bffd7f28f96f",
+      "variant_content_sha256": "61e668ab267eb5e0a504f15a21b9b953a0c6f3d010c360b485e07ae330b89902"
+    },
+    {
+      "exercise_id": "L17-E04",
+      "variant_id": "L17-V91",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        4,
+        6
+      ],
+      "error_tags": [
+        "bootstrap_unit"
+      ],
+      "scope_fr": "Unité, multiplicité, pondération et limites du bootstrap; ne réajuste pas les trois régressions.",
+      "exercise_rubric_sha256": "f87dbcd9209fe9449d4b79042551c0b42981c451e5614961ac0fa172ac35ed6c",
+      "variant_content_sha256": "9da1ffcc446c783b44fabf9883cb28cdab7402b1f3cf08df6f94de3afd927879"
+    },
+    {
+      "exercise_id": "L17-E04",
+      "variant_id": "L17-V01",
+      "status": "INDEPENDENTLY_APPROVED",
+      "reviewer": "independent_qa",
+      "target_rubric_indices": [
+        1,
+        3
+      ],
+      "error_tags": [
+        "reference_level",
+        "mediation_paths"
+      ],
+      "scope_fr": "Changement de codage et identité de décomposition; pas une exécution complète du bootstrap.",
+      "exercise_rubric_sha256": "f87dbcd9209fe9449d4b79042551c0b42981c451e5614961ac0fa172ac35ed6c",
+      "variant_content_sha256": "672714e64bc5fc3f5947f7ca5bf6a73122eb0d44e45ce851a433d6a590a5d49e"
+    }
+  ]
+}

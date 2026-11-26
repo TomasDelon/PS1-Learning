@@ -1,0 +1,527 @@
+{
+  "lesson_id": "L06",
+  "minutes": 45,
+  "source_refs": [
+    {
+      "source_id": "ctd03",
+      "locator": "Exercice 1 Q0-Q3,Q5-Q6; Exercice 2 Q6; Exercice 3 Q1-Q3",
+      "use_fr": "Moyenne, Chebyshev, LGN, TCL, normalité exacte et simulations."
+    },
+    {
+      "source_id": "tp02",
+      "locator": "Partie 1 Q1-Q3",
+      "use_fr": "Convergence, précision et moyenne cumulative."
+    },
+    {
+      "source_id": "st06_risque",
+      "locator": "PDF pp.9-11, annexe",
+      "use_fr": "Variables parentes et observations, loi de la moyenne normale; raccourcis corrigés."
+    },
+    {
+      "source_id": "st_poly_continues",
+      "locator": "PDF pp.17-18",
+      "use_fr": "TCL standardisé et approximation finie, traités distinctement."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-102, PS1-103, PS1-105, PS1-113, PS1-094, PS1-114, PS1-115, PS1-116, PS1-117, PS1-096, PS1-118, PS1-123, PS1-125, PS1-112, PS1-034, PS1-109",
+      "use_fr": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L06-B01",
+      "type": "DEF",
+      "title_fr": "Échantillon i.i.d.",
+      "source_block_ids": [
+        "PS1-102"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-102 · Échantillon i.i.d.",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Échantillon i.i.d.",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L06-B02",
+      "type": "DEF",
+      "title_fr": "Moyenne empirique aléatoire et valeur observée",
+      "source_block_ids": [
+        "PS1-103"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-103 · Moyenne empirique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Moyenne empirique aléatoire et valeur observée",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document.",
+      "canonical_body_sha256": "030a1e3cc87bcfd57d7564e0af4f93624ff8ecaf2921b8c7079bcf7ffff7ab6f",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L06-B03",
+      "type": "THM",
+      "title_fr": "Moments de la moyenne",
+      "source_block_ids": [
+        "PS1-105"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-105 · Espérance et variance de la moyenne empirique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Moments de la moyenne",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L06-B04",
+      "type": "DEF",
+      "title_fr": "Convergence en probabilité",
+      "source_block_ids": [
+        "PS1-113"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-113 · Convergence en probabilité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": false,
+      "cue_fr": "Convergence en probabilité",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L06-B05",
+      "type": "THM",
+      "title_fr": "Inégalité de Bienaymé-Tchebychev",
+      "source_block_ids": [
+        "PS1-094"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-094 · Inégalité de Bienaymé-Tchebychev",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Inégalité de Bienaymé-Tchebychev",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L06-B06",
+      "type": "THM",
+      "title_fr": "Loi faible des grands nombres",
+      "source_block_ids": [
+        "PS1-114",
+        "PS1-115"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-114 · Loi faible des grands nombres",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-115 · Démontrer la loi faible des grands nombres par Chebyshev",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": true,
+      "cue_fr": "Loi faible des grands nombres",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L06-B09",
+      "type": "DEF",
+      "title_fr": "Convergence en loi",
+      "source_block_ids": [
+        "PS1-116"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-116 · Convergence en loi",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": false,
+      "cue_fr": "Convergence en loi",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L06-B10",
+      "type": "THM",
+      "title_fr": "Théorème central limite",
+      "source_block_ids": [
+        "PS1-117"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-117 · Théorème central limite",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Théorème central limite",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L06-B11",
+      "type": "THM",
+      "title_fr": "Moyenne d’un échantillon normal",
+      "source_block_ids": [
+        "PS1-096",
+        "PS1-105"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-096 · Stabilité de la somme de normales indépendantes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-105 · Espérance et variance de la moyenne empirique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Moyenne d’un échantillon normal",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L06-B12",
+      "type": "MTH",
+      "title_fr": "Standardiser une question de probabilité",
+      "source_block_ids": [
+        "PS1-118"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-118 · Approximation normale et standardisation",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Standardiser une question de probabilité",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L06-B13",
+      "type": "DEF",
+      "title_fr": "Statistique et paramètre",
+      "source_block_ids": [
+        "PS1-123",
+        "PS1-125"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-123 · Paramètre inconnu d'un modèle",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-125 · Statistique de l'échantillon",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Statistique et paramètre",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L06-B07",
+      "type": "SYX",
+      "title_fr": "Répéter une expérience avec replicate",
+      "source_block_ids": [
+        "PS1-112"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-112 · Graine et simulation reproductible",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Répéter une expérience avec replicate",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L06-B08",
+      "type": "SYX",
+      "title_fr": "Moyennes cumulées, boucle et graphique quantile-quantile",
+      "source_block_ids": [
+        "PS1-034",
+        "PS1-109"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-034 · Boucle for",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-109 · Graphe quantile-quantile",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Moyennes cumulées, boucle et graphique quantile-quantile",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L06-E01",
+      "family": "lln_clt_distinction",
+      "minutes": 5,
+      "kind": "concept",
+      "rubric_fr": [
+        "Retrouver une variance égale à 1.",
+        "Distinguer probabilité et trajectoire observée.",
+        "Identifier une convergence en loi et non vers un nombre.",
+        "Expliquer la dépendance de Z au paramètre inconnu."
+      ],
+      "block_ids": [
+        "L06-B03",
+        "L06-B04",
+        "L06-B09",
+        "L06-B10",
+        "L06-B13"
+      ],
+      "competency_ids": [
+        "comp.ps1.clt_standardize"
+      ],
+      "topic_ids": [
+        "conv_prob",
+        "conv_distribution",
+        "statistic",
+        "parameter"
+      ],
+      "error_tags": [
+        "convergence",
+        "object_type"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L06-E02",
+      "family": "chebyshev_sample_size",
+      "minutes": 7,
+      "kind": "proof",
+      "rubric_fr": [
+        "Vérifier indépendance, loi commune et variance finie.",
+        "Démontrer la borne qui tend vers zéro.",
+        "Résoudre 16/n ≤ 0,05 et trouver 320.",
+        "Distinguer taille suffisante via une borne et minimum réel."
+      ],
+      "block_ids": [
+        "L06-B03",
+        "L06-B05",
+        "L06-B06",
+        "L05-B06"
+      ],
+      "competency_ids": [
+        "comp.ps1.wlln_apply"
+      ],
+      "topic_ids": [
+        "chebyshev",
+        "wlln",
+        "sample_mean_moments"
+      ],
+      "error_tags": [
+        "hypotheses",
+        "bound_vs_equality"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L06-E03",
+      "family": "clt_exponential_tail",
+      "minutes": 6,
+      "kind": "math",
+      "rubric_fr": [
+        "Donner 0,5, 0,0025 et 0,05 pour les bons objets.",
+        "Standardiser avec racine de n.",
+        "Séparer transformation exacte et approximation de loi.",
+        "Identifier le cas normal exact."
+      ],
+      "block_ids": [
+        "L06-B10",
+        "L06-B11",
+        "L06-B12"
+      ],
+      "competency_ids": [
+        "comp.ps1.clt_standardize",
+        "comp.ps1.normal_tail_probability"
+      ],
+      "topic_ids": [
+        "clt",
+        "normal_approx",
+        "sample_mean"
+      ],
+      "error_tags": [
+        "sqrt_n",
+        "exact_vs_approx"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L06-E04",
+      "family": "running_mean_clt_replicates",
+      "minutes": 11,
+      "kind": "R",
+      "rubric_fr": [
+        "Distinguer une trajectoire cumulative et des expériences répétées.",
+        "Créer de nouveaux tirages dans replicate.",
+        "Standardiser avec les paramètres théoriques corrects.",
+        "Comparer une réduction par deux de l’écart-type et une variance standardisée constante.",
+        "Limiter les conclusions de la simulation."
+      ],
+      "block_ids": [
+        "L06-B07",
+        "L06-B08",
+        "L03-B14",
+        "L04-B08"
+      ],
+      "competency_ids": [
+        "comp.ps1.r_running_mean",
+        "comp.ps1.clt_standardize",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.simulation_diagnostic"
+      ],
+      "topic_ids": [
+        "r_for",
+        "sample_mean",
+        "clt"
+      ],
+      "error_tags": [
+        "replicate_vs_repeat",
+        "sqrt_n",
+        "simulation_vs_proof"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L06-V01",
+      "family": "dependent_clones_lgn",
+      "for_exercise_ids": [
+        "L06-E01",
+        "L06-E02"
+      ],
+      "error_tags": [
+        "independence",
+        "convergence"
+      ],
+      "prompt_md": "On tire une seule variable $Z$ de Bernoulli(1/2), puis on définit $X_i=Z$ pour tous les indices. Toutes les variables ont la même loi. La moyenne converge-t-elle en probabilité vers 1/2 ? Calculer sa variance et une probabilité d'écart.",
+      "correction_md": "La moyenne vaut toujours $Z$, donc sa variance vaut 1/4, quel que soit n.\nPour $\\varepsilon=1/4$, $\\mathbb P(|\\overline X_n-1/2|>\\varepsilon)=1$.\nElle ne converge pas en probabilité vers 1/2. Les variables ont même loi\nmais ne sont pas indépendantes; les covariances ne disparaissent pas.",
+      "rubric_fr": [
+        "Calculer la moyenne exactement avant d’appliquer une limite.",
+        "Exhiber une probabilité qui ne tend pas vers zéro.",
+        "Nommer l’hypothèse manquante."
+      ],
+      "block_ids": [
+        "L06-B01",
+        "L06-B04",
+        "L06-B06"
+      ],
+      "minutes": 4,
+      "transfer": "Tester la validité de la LGN face à des répétitions dépendantes, au lieu de supposer i.i.d. à partir d’une même loi.",
+      "has_r": false
+    },
+    {
+      "id": "L06-V02",
+      "family": "rare_count_normal_failure",
+      "for_exercise_ids": [
+        "L06-E03"
+      ],
+      "error_tags": [
+        "approximation_regime",
+        "density_mass"
+      ],
+      "prompt_md": "Un nombre de pannes suit exactement $\\mathcal B(100,0{,}01)$. Peut-on justifier une approximation normale par la seule phrase « n=100 est grand » ? Calculer la probabilité exacte d'aucune panne et expliquer une limite de la loi normale pour cette question.",
+      "correction_md": "La probabilité exacte est $(0{,}99)^{100}\\simeq0{,}366$.\nLe nombre moyen de pannes vaut $np=1$, alors que $n(1-p)=99$ :\nla loi est très asymétrique et possède une forte masse en 0.\nUne normale n'a aucune masse ponctuelle. Une approximation nécessiterait\nde traiter une plage avec correction de continuité et de contrôler son erreur;\nn=100 seul n'est pas une justification.",
+      "rubric_fr": [
+        "Utiliser la masse binomiale en 0.",
+        "Examiner np et n(1-p), pas n seulement.",
+        "Distinguer point discret et probabilité d’intervalle continue."
+      ],
+      "block_ids": [
+        "L06-B12",
+        "L05-B02",
+        "L03-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Reconnaître qu’un seuil d’effectif seul ne suffit pas et changer de méthode pour une probabilité ponctuelle.",
+      "has_r": false
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé."
+    ]
+  },
+  "time_breakdown": {
+    "cours": 5,
+    "concept_checks": 5,
+    "maths": 13,
+    "R": 11,
+    "self_correction_review": 11
+  },
+  "review_allocation": {
+    "correction_minutes": 4,
+    "anki_minutes": 2,
+    "replaceable_retrieval_minutes": 5
+  }
+}

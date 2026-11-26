@@ -1,0 +1,156 @@
+---
+title: "L13 · Effectifs, adéquation et indépendance · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L13"
+  document_role: correction
+  content_status: complete_derived
+  minutes: 40
+  exercise_ids: ["L13-E01", "L13-E02", "L13-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+**Corrigé pédagogique dérivé.** À ouvrir après sauvegarde de la première tentative. Chaque critère porte sur un raisonnement observable; aucune lecture de ce corrigé ne valide automatiquement une compétence.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+### Des classes peuvent-elles disparaître ? {#L13-E01}
+
+<!-- ps1:solution id=L13-E01 -->
+
+1. Non. L'effectif observé de $2$ est nul, mais son effectif attendu peut être positif. Il faut une partition définie indépendamment des seules catégories apparues.
+2. La renormalisation correspond à conditionner sur $X\le3$; ce n'est plus le modèle inconditionnel annoncé. Il faut conserver une classe $X\ge4$ et sa probabilité de queue, ou annoncer et justifier un véritable échantillonnage conditionnel.
+3. L'ajustement utilise l'information des mêmes effectifs et impose des contraintes supplémentaires. Dans un cadre régulier avec estimation adéquate sur les catégories, on retranche le nombre de paramètres ajustés; dans d'autres cadres, il faut justifier la calibration.
+
+**Critères observables :**
+
+- Conserver les catégories de probabilité positive même non observées.
+- Conserver toute la queue de la loi.
+- Distinguer probabilités fixées et estimées.
+
+### Association entre deux catégories {#L13-E02}
+
+<!-- ps1:solution id=L13-E02 -->
+
+$H_0$ affirme l'indépendance du canal et du type de besoin; $H_1$ affirme une dépendance.
+Les deux lignes totalisent $60$; les colonnes totalisent $30,36,54$, avec $n=120$.
+Chaque ligne attendue vaut
+$(60\times30/120,\ 60\times36/120,\ 60\times54/120)=(15,18,27)$.
+
+Les différences observé-attendu sont $(3,-6,3)$ puis $(-3,6,-3)$. Ainsi
+$$
+q=2\left(\frac9{15}+\frac{36}{18}+\frac9{27}\right)
+=\frac{88}{15}\simeq5{,}8667.
+$$
+Les attendus sont tous supérieurs à $5$. Le nombre de degrés de liberté vaut $(2-1)(3-1)=2$, soit $5-3$ probabilités libres après ajustement des marges.
+La p-valeur approchée est $P(\chi^2_2\ge5{,}8667)\simeq0{,}05322$.
+
+Au niveau de $5\,\%$, on ne rejette pas l'indépendance. Les données ne fournissent pas assez d'éléments pour mettre en évidence une association avec ce test. Ce résultat proche du seuil ne prouve pas l'indépendance; le plan observationnel ne permet pas non plus d'identifier un effet causal du canal.
+
+**Critères observables :**
+
+- Reconstituer les marges et conserver leur total dans les attendus.
+- Obtenir 88/15 avec deux degrés de liberté.
+- Utiliser une queue droite.
+- Formuler un non-rejet sans preuve d'indépendance.
+
+### Contrôler une sortie automatique {#L13-E03}
+
+<!-- ps1:solution id=L13-E03 -->
+
+```{r L13-E03}
+O <- matrix(c(18, 12, 30, 12, 24, 24), nrow = 2, byrow = TRUE)
+E <- outer(rowSums(O), colSums(O)) / sum(O)
+Q <- sum((O-E)^2 / E)
+indep <- chisq.test(O, correct = FALSE)
+E
+indep
+stopifnot(max(abs(indep$expected-E)) < 1e-12,
+          abs(unname(indep$statistic)-Q) < 1e-12)
+
+effectifs <- c(24, 36, 28, 32)
+lambda_hat <- 1.7144833204
+probabilites <- c(dpois(0:2, lambda = lambda_hat),
+                  ppois(2, lambda = lambda_hat, lower.tail = FALSE))
+attendus <- sum(effectifs) * probabilites
+stopifnot(abs(sum(probabilites)-1) < 1e-12, min(attendus) >= 5)
+Q_ajuste <- sum((effectifs-attendus)^2/attendus)
+ddl_ajuste <- length(effectifs) - 1 - 1
+c(Q = Q_ajuste, ddl = ddl_ajuste,
+  p = pchisq(Q_ajuste, df = ddl_ajuste, lower.tail = FALSE))
+brut <- chisq.test(effectifs, p = probabilites)
+c(ddl_automatique = unname(brut$parameter), p_brute = brut$p.value)
+```
+
+Les attendus du modèle de Poisson sont environ $(21{,}607,\ 37{,}045,\ 31{,}756,\ 29{,}593)$ et totalisent $120$. On obtient $q\simeq0{,}93464$ et $4-1-1=2$ degrés de liberté, donc $p\simeq0{,}62668$. On ne rejette pas l'adéquation au modèle de Poisson ajusté; cela ne prouve pas que la loi est Poisson.
+
+La commande brute utilise $4-1=3$ degrés de liberté parce qu'elle ne sait pas que $\lambda$ a été estimé. Ici le résultat à rapporter utilise la calibration justifiée à deux degrés de liberté.
+
+**Référence de calcul, hors travail principal :** la valeur fournie maximise
+$24\log p_0(\lambda)+36\log p_1(\lambda)+28\log p_2(\lambda)+32\log P_\lambda(X\ge3)$.
+Le calcul ci-dessous documente son origine; il n'ajoute pas une tâche d'étude.
+
+```{r L13-verification-estimation}
+proba_classes <- function(lambda) {
+  c(dpois(0:2, lambda), ppois(2, lambda, lower.tail = FALSE))
+}
+moins_log_vraisemblance <- function(lambda) {
+  -sum(effectifs * log(proba_classes(lambda)))
+}
+ajustement <- optimize(moins_log_vraisemblance,
+                      interval = c(0.05, 10), tol = 1e-10)
+c(lambda_fourni = lambda_hat, lambda_recalcule = ajustement$minimum)
+stopifnot(abs(ajustement$minimum-lambda_hat) < 1e-5)
+```
+
+**Critères observables :**
+
+- Conserver la queue >=3 et la somme des probabilités.
+- Contrôler les effectifs attendus.
+- Utiliser deux degrés de liberté sous les conditions d'estimation données.
+- Identifier la limite du degré de liberté automatique.
+
+## Auto-correction
+
+Pour chaque exercice, comparer objets, hypothèses, méthode, calcul et conclusion. Nommer la première erreur qui explique les suivantes, puis refaire le passage concerné sans regarder. Garder distincts le travail autonome, les aides reçues et la correction.
+
+## Variantes, corrections à consulter après un nouvel essai
+
+### L13-V01 {#L13-V01}
+
+Les marges des lignes sont $(8,8)$ et celles des colonnes $(7,9)$, pour $n=16$. Chaque ligne attendue vaut $(3{,}5,4{,}5)$; la règle pratique n'est pas vérifiée. Un test exact de Fisher peut être envisagé pour ce tableau, sous indépendance des unités et dans son cadre conditionnel aux marges. Supprimer une modalité changerait le problème et perdrait des observations.
+
+**Critères :**
+
+- Calculer des attendus, pas examiner seulement les observés.
+- Choisir une alternative adaptée aux faibles effectifs.
+- Conserver toutes les observations.
+
+### L13-V02 {#L13-V02}
+
+Avant fusion, les degrés de liberté valent $6-1-1=4$. Après fusion, il reste cinq classes : additionner les deux effectifs observés et leurs probabilités, ajuster à nouveau le paramètre sur la nouvelle vraisemblance regroupée, recalculer attendus, statistique et p-valeur. Les degrés de liberté valent alors $5-1-1=3$. Garder automatiquement l'ancien paramètre ajusté et seulement changer le ddl ne rétablit pas la justification de L13-B03.
+
+**Critères :**
+
+- Conserver masse et effectif dans la fusion.
+- Reconsidérer l'estimation après regroupement.
+- Compter les classes et paramètres du modèle effectivement testé.
+
+## Références et limites
+
+- `ctd06` (source non redistribuée), Exercice 4 Q1-Q6 : Indépendance, marges, attendus et statistique.
+- `tp03` (source non redistribuée), Q3-Q4, Q7 et Q13 : Comptages Poisson, regroupements et comparaison au modèle ajusté.
+- `tp03` (source non redistribuée), Q8-Q10 : Portée des modèles de comptages et de l'indépendance.
+- Clarification externe consultée le 26/11/2026 : [NIST/SEMATECH : Chi-Square Goodness-of-Fit Test](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm), Definition: estimation from observed bin counts; Critical Region. Précision externe explicitée : estimation sur catégories et degrés de liberté.
+- Clarification externe consultée le 26/11/2026 : [Documentation officielle R : chisq.test](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/chisq.test.html), Arguments, Details, Value. Différence entre adéquation et table de contingence; correction et sorties.
+
+Les raisonnements de ce fichier sont des corrections originales dérivées. Une simulation illustre un résultat dans un modèle; elle n'en remplace pas la preuve. Les formules annoncées approchées conservent cette qualification dans les conclusions.

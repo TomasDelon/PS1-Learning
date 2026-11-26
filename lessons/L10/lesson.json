@@ -1,0 +1,829 @@
+{
+  "lesson_id": "L10",
+  "minutes": 55,
+  "source_refs": [
+    {
+      "source_id": "ctd05",
+      "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+      "use_fr": "Pivots, couverture, inversion et bootstrap."
+    },
+    {
+      "source_id": "tp02",
+      "locator": "Partie 3 Q1-Q3",
+      "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+    },
+    {
+      "source_id": "tp03",
+      "locator": "Q5 et Q11",
+      "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+    },
+    {
+      "source_id": "st04_05",
+      "locator": "PDF pp.14-15",
+      "use_fr": "Fluctuation, confiance et inversion positive."
+    },
+    {
+      "source_id": "st10_sondages",
+      "locator": "PDF p.1 Temps1; pp.8-9",
+      "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L10-B01",
+      "type": "DEF",
+      "title_fr": "Intervalle de confiance fréquentiste",
+      "source_block_ids": [
+        "PS1-148",
+        "PS1-154"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Que garantit le niveau d'un intervalle de confiance fréquentiste ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "1b040e067eb78f560b9cbb35fe4a8aa478a80e1f78c0c81649a0076f16ad216c",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B02",
+      "type": "DEF",
+      "title_fr": "Pivot",
+      "source_block_ids": [
+        "PS1-149"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Quelle propriété caractérise un pivot ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "1c5de063b087c267d36c927d2aa54596c3d4628c1f31b501f3a4f7549df45995",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B03",
+      "type": "MTH",
+      "title_fr": "Inverser un pivot",
+      "source_block_ids": [
+        "PS1-155",
+        "PS1-159"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": true,
+      "cue_fr": "Comment obtenir un intervalle de confiance à partir d'un pivot ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "100228b44699aec76ce32b35a6b150cbfa067757652c5775ad65d51b1eddffd3",
+      "external_refs": [],
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L10-B04",
+      "type": "THM",
+      "title_fr": "Moyenne normale, variance connue",
+      "source_block_ids": [
+        "PS1-150",
+        "PS1-156"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Moyenne normale, variance connue : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "7ef7c0afebf56e912bc0085402fd2ba678a2638c40e38ecb65135519ab880ac9",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B05",
+      "type": "DEF",
+      "title_fr": "Loi de Student",
+      "source_block_ids": [
+        "PS1-151"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi de Student : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "228214bbd1d3d2de3fb8106daf07025ec5043f4d92bf256945560a0683741922",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B06",
+      "type": "THM",
+      "title_fr": "Moyenne normale, variance inconnue",
+      "source_block_ids": [
+        "PS1-152",
+        "PS1-157"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Moyenne normale, variance inconnue : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "03235036f851cb9a51a4cbe915ffb8ec389ea2fa683bf171c81493a9ba85a3b1",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B07",
+      "type": "THM",
+      "title_fr": "Pivot exponentiel",
+      "source_block_ids": [
+        "PS1-097"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Pivot exponentiel : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "9ac017d21e7ef5ad6b82f3880ff43e9553a955da6b492ac8f969033fdcaba768",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B08",
+      "type": "THM",
+      "title_fr": "Variance normale",
+      "source_block_ids": [
+        "PS1-153",
+        "PS1-158"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Variance normale : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "f83b3f6d6a59810ac7c33c97f2dfb7304c969ad286acb4fc32e0fd426f2bd653",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B09",
+      "type": "MTH",
+      "title_fr": "Intervalle asymptotique d'une moyenne",
+      "source_block_ids": [
+        "PS1-161"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Intervalle asymptotique d'une moyenne : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "be76c920e14da2c818fa306bbbdbc3aa24baf3b646c4f330feb3b1edf7873d08",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B10",
+      "type": "MTH",
+      "title_fr": "Intervalle approché pour une moyenne de Poisson",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Intervalle approché pour une moyenne de Poisson : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "cea88b2b2ef5e949da6a1c2fe5ccc2344791296958eba339f4cfdc4622243231",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B11",
+      "type": "MTH",
+      "title_fr": "Intervalle approché pour une proportion",
+      "source_block_ids": [
+        "PS1-160"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Intervalle approché pour une proportion : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "86f390bb3490444c0dbb8d29c66f31994a5e6f072b34a1eb9f0e90ee860da0b6",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B12",
+      "type": "DEF",
+      "title_fr": "Échantillon bootstrap",
+      "source_block_ids": [
+        "PS1-162"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment construit-on un échantillon bootstrap, et quelle unité faut-il rééchantillonner ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "19efbc8c1462218f925cee86ed964842c51339e410fd4e1240a984c92e4a995f",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B13",
+      "type": "MTH",
+      "title_fr": "Intervalle bootstrap percentile",
+      "source_block_ids": [
+        "PS1-163"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Intervalle bootstrap percentile : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "7b1b7cdcd6ffa25b8c359be7684337d977d65f0c6c7c845fe21fa43533d28e65",
+      "external_refs": []
+    },
+    {
+      "id": "L10-B14",
+      "type": "SYX",
+      "title_fr": "Quantiles empiriques dans R",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "use_fr": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "use_fr": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "use_fr": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "use_fr": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "use_fr": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Quantiles empiriques dans R : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "3224d5c237d29099b42d2ae3c15378324bad9a9782a5a88da7dd928dbd7ffa78",
+      "external_refs": []
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L10-E01",
+      "minutes": 5,
+      "kind": "concept",
+      "family": "coverage_bootstrap_unit",
+      "topic_ids": [
+        "ci_definition",
+        "ci_coverage",
+        "bootstrap"
+      ],
+      "competency_ids": [
+        "comp.ps1.confidence_interval_interpret"
+      ],
+      "block_ids": [
+        "L10-B01",
+        "L10-B12",
+        "L10-B13"
+      ],
+      "rubric_fr": [
+        "Faire porter la couverture sur une procédure aléatoire.",
+        "Distinguer simulation conditionnelle et nouvel échantillonnage de population.",
+        "Préserver l'unité indépendante et l'appariement."
+      ],
+      "error_tags": [
+        "coverage_posterior",
+        "bootstrap_unit",
+        "simulation_information"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L10-E02",
+      "minutes": 17,
+      "kind": "math",
+      "family": "pivot_inversion_two_families",
+      "topic_ids": [
+        "ci_pivot",
+        "ci_normal_known",
+        "pivot",
+        "ci_coverage"
+      ],
+      "competency_ids": [
+        "comp.ps1.confidence_interval",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.r_interval_compute"
+      ],
+      "block_ids": [
+        "L10-B03",
+        "L10-B04",
+        "L10-B07"
+      ],
+      "rubric_fr": [
+        "Nommer le pivot et sa loi sous les hypothèses.",
+        "Maintenir l'équivalence des événements.",
+        "Renverser l'ordre des quantiles lors de l'inversion positive.",
+        "Distinguer moyenne en minutes et taux par minute."
+      ],
+      "error_tags": [
+        "pivot",
+        "quantile_order",
+        "parameterization",
+        "formal_language"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L10-E03",
+      "minutes": 15,
+      "kind": "R",
+      "family": "coverage_bootstrap_simulation",
+      "topic_ids": [
+        "bootstrap",
+        "ci_coverage",
+        "mc_confidence"
+      ],
+      "competency_ids": [
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.r_interval_compute"
+      ],
+      "block_ids": [
+        "L10-B01",
+        "L10-B12",
+        "L10-B13",
+        "L10-B14"
+      ],
+      "rubric_fr": [
+        "Tirer avec remise exactement n unités.",
+        "Appliquer les quantiles aux moyennes bootstrap.",
+        "Régénérer un échantillon à chaque simulation de couverture.",
+        "Nommer les garanties exacte et approximative sans les confondre."
+      ],
+      "error_tags": [
+        "bootstrap_unit",
+        "quantile_object",
+        "coverage_posterior",
+        "simulation_proof"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L10-V01",
+      "family": "unknown_variance_student",
+      "for_exercise_ids": [
+        "L10-E02"
+      ],
+      "error_tags": [
+        "known_unknown_sigma",
+        "quantile_order"
+      ],
+      "prompt_md": "Neuf observations normales i.i.d. donnent $\\overline x=12$ et $s=3$ (écart-type corrigé). La variance de population est inconnue. Construire l'IC central à 90 % de la moyenne. Pourquoi le quantile normal ne donne-t-il pas ici l'IC exact ?",
+      "correction_md": "Le pivot est $\\sqrt9(\\overline X-m)/S\\sim t_8$. L'IC est $12\\pm t_{8,0,95}\\times3/\\sqrt9$, soit environ $[10{,}1405;13{,}8595]$. L'écart-type est estimé sur le même échantillon; la loi du rapport est Student et non normale. L'exactitude suppose des observations normales i.i.d.",
+      "rubric_fr": [
+        "Choisir Student avec 8 degrés de liberté.",
+        "Identifier s comme une valeur observée d'une statistique."
+      ],
+      "block_ids": [
+        "L10-B05",
+        "L10-B06"
+      ],
+      "minutes": 4,
+      "transfer": "Nouvelle décision : le statut connu ou estimé de la variance change la loi de référence.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L10-V02",
+      "family": "count_proportion_ci_discriminate",
+      "for_exercise_ids": [
+        "L10-E02",
+        "L10-E03"
+      ],
+      "error_tags": [
+        "parameterization",
+        "normal_approximation"
+      ],
+      "prompt_md": "Une série de 200 fenêtres indépendantes donne 340 arrivées au total; les comptages suivent un modèle de Poisson de même moyenne $\\lambda$. Une autre enquête Bernoulli i.i.d. relève 240 réponses positives sur 400 personnes. Écrire les deux erreurs-types estimées, puis les IC normaux approchés à 95 %. Expliquer pourquoi les formules diffèrent.",
+      "correction_md": "Pour les arrivées, $\\widehat\\lambda=340/200=1{,}7$ et l'erreur-type est $\\sqrt{1{,}7/200}$ : l'IC vaut environ $[1{,}5193;1{,}8807]$. Pour les réponses, $\\widehat p=0{,}6$ et l'erreur-type est $\\sqrt{0{,}6(1-0{,}6)/400}$ : l'IC vaut environ $[0{,}5520;0{,}6480]$. La variance d'une Poisson est $\\lambda$, celle d'une Bernoulli est $p(1-p)$. Les deux garanties sont asymptotiques, sous indépendance et modèle commun.",
+      "rubric_fr": [
+        "Identifier la quantité aléatoire observée et son modèle.",
+        "Employer la variance correspondant au modèle.",
+        "Qualifier les intervalles d'approchés."
+      ],
+      "block_ids": [
+        "L10-B10",
+        "L10-B11"
+      ],
+      "minutes": 5,
+      "transfer": "Transfert de discrimination : choisir une variance et une erreur-type à partir de la nature des observations.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L10-V03",
+      "family": "variance_pivot_inversion",
+      "for_exercise_ids": [
+        "L10-E02"
+      ],
+      "error_tags": [
+        "quantile_order",
+        "parameterization"
+      ],
+      "prompt_md": "Un échantillon normal i.i.d. de taille 16 a une variance corrigée observée $s^2=9$. Construire un IC central à 95 % pour la variance, puis pour l'écart-type. L'unité est le millimètre pour les observations.",
+      "correction_md": "Avec $Q=15S^2/\\sigma^2\\sim\\chi^2_{15}$, l'IC de $\\sigma^2$ est $[135/q_{0,975},135/q_{0,025}]$, en mm carrés. Comme la racine carrée est croissante sur les réels positifs, l'IC de $\\sigma$ s'obtient en prenant la racine de chaque borne, sans inverser leur ordre; il s'exprime en mm.",
+      "rubric_fr": [
+        "Inverser correctement le pivot.",
+        "Distinguer transformations inverse et racine.",
+        "Donner les bonnes unités."
+      ],
+      "block_ids": [
+        "L10-B03",
+        "L10-B08"
+      ],
+      "minutes": 4,
+      "transfer": "Transfert de paramétrisation : une transformation croissante conserve l'ordre, contrairement à l'inversion.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "cours": 6,
+    "concept_checks": 5,
+    "maths": 17,
+    "R": 15,
+    "self_correction_review": 12
+  },
+  "review_allocation": {
+    "correction_minutes": 5,
+    "anki_minutes": 2,
+    "replaceable_retrieval_minutes": 5
+  },
+  "coverage_note_fr": "Deux familles d'IC sont exercées au cœur; Student, variance, proportion et Poisson sont accessibles par références et variantes, sans ajouter de minutes.",
+  "external_clarifications": []
+}

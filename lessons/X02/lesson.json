@@ -1,0 +1,197 @@
+{
+  "schema_version": "2.0.0",
+  "lesson_id": "X02",
+  "minutes": 60,
+  "source_refs": [
+    {
+      "source_id": "ctd07",
+      "locator": "E2 Q1-Q11, lignes 141-360",
+      "use_fr": "Mélange, conditionnement et variance totale."
+    },
+    {
+      "source_id": "ctd08",
+      "locator": "E1-E4, lignes 54-570",
+      "use_fr": "Pente, MCO, qualité, inférence et prédiction."
+    },
+    {
+      "source_id": "ctd10",
+      "locator": "E1 Q1-Q4, lignes 35-149",
+      "use_fr": "Omission d’un prédicteur et interprétation du décalage."
+    },
+    {
+      "source_id": "tp04",
+      "locator": "Parties III-IV, lignes 242-391",
+      "use_fr": "Contraste de groupe, médiation et bootstrap."
+    },
+    {
+      "source_id": "syllabus_ps1",
+      "locator": "Descriptions FRANÇAIS, Objectifs et Contenu",
+      "use_fr": "Relier modélisation, calcul, simulation et critique du modèle."
+    }
+  ],
+  "blocks": [],
+  "exercises": [
+    {
+      "id": "X02-E01",
+      "title_fr": "Loi jointe et conditionnement",
+      "prompt_md": "Donner la loi de $M\\mid G=g$, puis la densité marginale de $M$ comme mélange. Calculer $\\mathbb P(G=1,M>24)$ en fonction de $\\Phi$. Les deux marginales permettent-elles de multiplier leurs probabilités pour ce calcul ? Expliquer pourquoi la loi de $(G,M)$ n’est pas représentée par une densité ordinaire sur $\\mathbb R^2$ par rapport à l’aire.",
+      "correction_md": "Pour $g\\in\\{0,1\\}$, $M\\mid G=g\\sim\\mathcal N(20+3g,1)$. En notant $\\varphi(t)=(2\\pi)^{-1/2}e^{-t^2/2}$,\n$$f_M(m)=0{,}6\\varphi(m-20)+0{,}4\\varphi(m-23).$$\nLa probabilité jointe vaut $\\mathbb P(G=1)\\mathbb P(M>24\\mid G=1)=0{,}4[1-\\Phi(1)]\\simeq0{,}06346$. Les lois conditionnelles changent avec $g$, donc $G$ et $M$ ne sont pas indépendantes. On ne remplace pas la probabilité conditionnelle par la marginale.\n\n$G$ ne prend que deux valeurs. Le couple vit sur les droites verticales $g=0$ et $g=1$, d’aire nulle. Une densité ordinaire par rapport à l’aire ne peut lui donner probabilité 1. On décrit correctement la loi par des masses en $g$ et des densités conditionnelles en $m$.\n\n```{r X02-E01}\n0.4*pnorm(1, lower.tail=FALSE)\n```",
+      "minutes": 8,
+      "kind": "math",
+      "block_ids": [
+        "L14-B02",
+        "L14-B04",
+        "L14-B06"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "joint_density",
+        "conditional_density",
+        "marginals"
+      ],
+      "rubric_fr": [
+        "Identifier la loi conditionnelle et ses paramètres",
+        "Pondérer le mélange",
+        "Employer la bonne condition dans la probabilité jointe",
+        "Distinguer une variable discrète d’une variable à densité"
+      ],
+      "error_tags": [
+        "joint_type",
+        "conditioning_direction",
+        "independence"
+      ],
+      "has_r": true,
+      "family": "mixed_joint_model"
+    },
+    {
+      "id": "X02-E02",
+      "title_fr": "Du groupe à la régression",
+      "prompt_md": "Calculer $\\mathbb E[Y\\mid G]$, $\\mathbb V(Y\\mid G)$ et $\\mathbb V(Y)$ par la variance totale. Déterminer la part de variance expliquée par $G$ seul, puis par $(G,M)$. Identifier les coefficients théoriques total, direct conditionnel et indirect. Retrouver la différence entre pente totale et pente partielle avec une covariance.",
+      "correction_md": "Après substitution, $Y=55+5G+2Z+E$. Donc $\\mathbb E[Y\\mid G]=55+5G$ et $\\mathbb V(Y\\mid G)=4+4=8$. Comme $\\mathbb V(G)=0{,}4(0{,}6)=0{,}24$, la variance intergroupes vaut $25(0{,}24)=6$; la variance totale vaut $6+8=14$. La part expliquée par $G$ seul est $6/14=3/7$.\n\nSachant $(G,M)$, la moyenne est $15+2M-G$ et la variance résiduelle vaut 4. La part expliquée par le couple est donc $(14-4)/14=5/7$. Les coefficients de chemin sont $a=3$, $b=2$, $c=-1$ et le total vaut $d=ab+c=5$.\n\nEnfin $\\operatorname{Cov}(G,M)=3\\mathbb V(G)=0{,}72$. L’omission de $M$ décale le coefficient de groupe de $b\\operatorname{Cov}(G,M)/\\mathbb V(G)=2\\times3=6$. La pente passe donc de -1 à 5. Les mots « expliqué » et « indirect » désignent ici les composantes du modèle donné.",
+      "minutes": 8,
+      "kind": "math",
+      "block_ids": [
+        "L14-B08",
+        "L16-B04",
+        "L16-B06",
+        "L17-B03"
+      ],
+      "competency_ids": [
+        "comp.ps1.omitted_variable_bias",
+        "comp.ps1.mediation_decompose",
+        "comp.ps1.mediation_interpret"
+      ],
+      "topic_ids": [
+        "law_total_variance",
+        "reg_multi_r2",
+        "reg_omitted"
+      ],
+      "rubric_fr": [
+        "Séparer bruit intra et variation des moyennes",
+        "Utiliser le bon ensemble de variables conditionnantes",
+        "Identifier les quatre coefficients",
+        "Relier covariance et décomposition"
+      ],
+      "error_tags": [
+        "conditioning_set",
+        "variance_total",
+        "mediation_paths"
+      ],
+      "has_r": false,
+      "family": "variance_omission_mediation"
+    },
+    {
+      "id": "X02-E03",
+      "title_fr": "Deux modèles, deux interprétations et une unité modifiée",
+      "prompt_md": "Avec `essai`, ajuster le score sur le groupe seul, puis sur le groupe et la durée. Comparer les coefficients de groupe et les $R^2$. Vérifier manuellement la pente simple par les deux moyennes de groupe. Donner l’IC à 95 % de la composante de groupe ajustée et ses degrés de liberté. Tracer le Q-Q plot des résidus du modèle multiple et un graphique résidus/valeurs ajustées.\n\nCréer ensuite une durée en heures et réajuster le même modèle. Prédire avant exécution ce qui doit changer parmi le coefficient de durée, son erreur standard, sa statistique $t$, les valeurs ajustées et $R^2$. Vérifier et rédiger une conclusion en unités explicites.\n\n```{r X02-E03}\n# Vos ajustements et contrôles d’unité.\n```",
+      "correction_md": "```{r X02-donnees-corrige}\nset.seed(2202)\nessai <- data.frame(groupe=rbinom(160, size=1, prob=.4))\nessai$duree <- 20 + 3*essai$groupe + rnorm(160)\nessai$score <- 15 + 2*essai$duree - essai$groupe + rnorm(160, sd=2)\n```\n\n```{r X02-E03}\nm_simple <- lm(score~groupe,data=essai)\nm_multiple <- lm(score~groupe+duree,data=essai)\ndifference <- mean(essai$score[essai$groupe==1])-mean(essai$score[essai$groupe==0])\nstopifnot(abs(difference-coef(m_simple)[\"groupe\"]) < 1e-10)\nIC_g <- confint(m_multiple,\"groupe\")\nprint(list(simple=coef(m_simple),multiple=coef(m_multiple),IC_groupe=IC_g,\n           ddl=df.residual(m_multiple),\n           R2=c(simple=summary(m_simple)$r.squared,multiple=summary(m_multiple)$r.squared)))\nplot(fitted(m_multiple),residuals(m_multiple),xlab=\"Score ajusté\",ylab=\"Résidu\",pch=19)\nabline(h=0,lty=2)\nqqnorm(residuals(m_multiple),pch=19);qqline(residuals(m_multiple),col=\"steelblue\")\nessai$heures <- essai$duree/60\nm_heures <- lm(score~groupe+heures,data=essai)\nse_min <- coef(summary(m_multiple))[\"duree\",\"Std. Error\"]\nse_h <- coef(summary(m_heures))[\"heures\",\"Std. Error\"]\nstopifnot(abs(coef(m_heures)[\"heures\"]-60*coef(m_multiple)[\"duree\"])<1e-8,\n          abs(se_h-60*se_min)<1e-8,\n          max(abs(fitted(m_heures)-fitted(m_multiple)))<1e-8,\n          abs(summary(m_heures)$r.squared-summary(m_multiple)$r.squared)<1e-10)\nprint(c(t_min=coef(summary(m_multiple))[\"duree\",\"t value\"],\n        t_heures=coef(summary(m_heures))[\"heures\",\"t value\"]))\n```\n\nLes degrés de liberté valent $160-3=157$. La pente simple pour un indicateur est exactement la différence des deux moyennes empiriques. Le coefficient ajusté de groupe compare les scores à durée fixée. Le passage des minutes aux heures multiplie par 60 le coefficient de durée et son erreur standard, en points/heure; leur rapport $t$ reste identique. Les colonnes décrivent le même espace de modèles, donc les valeurs ajustées, les résidus et $R^2$ ne changent pas. Le graphique peut signaler une incohérence, mais il ne transforme pas l’ajustement en preuve causale.",
+      "minutes": 14,
+      "kind": "R",
+      "block_ids": [
+        "L15-B03",
+        "L15-B09",
+        "L15-B10",
+        "L16-B01",
+        "L16-B07"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_multiple_fit",
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_partial_interpret"
+      ],
+      "topic_ids": [
+        "reg_multi_df",
+        "reg_coef_se",
+        "reg_standardized"
+      ],
+      "rubric_fr": [
+        "Ajuster les modèles sur le même échantillon",
+        "Vérifier la pente binaire par les moyennes",
+        "Employer 157 degrés de liberté",
+        "Prévoir puis contrôler l’effet du changement d’unité",
+        "Interpréter correctement les diagnostics"
+      ],
+      "error_tags": [
+        "sample_mismatch",
+        "units",
+        "degrees_freedom",
+        "diagnostics"
+      ],
+      "has_r": true,
+      "family": "unit_invariant_multiple_regression"
+    },
+    {
+      "id": "X02-E04",
+      "title_fr": "Inférence d’un produit et conclusion complète",
+      "prompt_md": "Estimer les composantes de médiation sur `essai`. Utiliser 299 réplications avec `set.seed(2203)` pour un IC percentile à 95 % de l’indirect. Préciser et justifier l’unité rééchantillonnée; traiter les modèles non identifiables. Conclure en quatre phrases qui contiennent les unités, la compensation des signes, la méthode d’incertitude et la limite de l’interprétation. Que faudrait-il revoir si chaque appareil fournissait plusieurs lignes dépendantes ?\n\n```{r X02-E04}\n# Votre statistique, votre bootstrap et votre conclusion.\n```",
+      "correction_md": "```{r X02-E04}\nm_M <- lm(duree~groupe,data=essai)\nm_Y <- lm(score~duree+groupe,data=essai)\nm_T <- lm(score~groupe,data=essai)\na <- unname(coef(m_M)[\"groupe\"]);b <- unname(coef(m_Y)[\"duree\"])\nc_direct <- unname(coef(m_Y)[\"groupe\"]);d_total <- unname(coef(m_T)[\"groupe\"])\nstat <- function(tab) {\n  if(length(unique(tab$groupe))<2) return(NA_real_)\n  m <- lm(duree~groupe,data=tab); y <- lm(score~duree+groupe,data=tab)\n  if(m$rank<2 || y$rank<3) return(NA_real_)\n  unname(coef(m)[\"groupe\"]*coef(y)[\"duree\"])\n}\nset.seed(2203)\nB <- 299\nproduits <- replicate(B, {\n  index <- sample(seq_len(nrow(essai)),nrow(essai),replace=TRUE)\n  stat(essai[index,,drop=FALSE])\n})\nechecs <- sum(!is.finite(produits))\nif(echecs/B>.05) stop(\"Schéma instable : revoir les données et les modèles.\")\nIC <- quantile(produits[is.finite(produits)],c(.025,.975))\nstopifnot(abs(d_total-(a*b+c_direct))<1e-10)\nprint(list(composantes=c(direct=c_direct,indirect=a*b,total=d_total),\n           IC_percentile=IC,B=B,echecs=echecs))\ncat(sprintf(\"Le contraste 1 moins 0 se décompose en %.3f points conditionnels directs et %.3f points indirects modélisés, pour %.3f points au total.\\n\",c_direct,a*b,d_total))\ncat(sprintf(\"L'IC percentile du produit, sur %d rééchantillons de lignes complètes avec %d échec(s), est [%.3f ; %.3f] points.\\n\",B,echecs,IC[1],IC[2]))\n```\n\nChaque ligne représente ici une unité indépendante et garde ensemble groupe, durée et score. Les composantes directe et indirecte peuvent se compenser; leur somme correcte n’établit pas un mécanisme causal. La couverture du percentile est approchée, et 299 réplications induisent une variabilité Monte-Carlo des bornes. Avec des observations répétées par appareil, il faudrait revoir à la fois le modèle d’erreur et l’unité du bootstrap; rééchantillonner les appareils indépendants avec toutes leurs lignes est une piste, sous des hypothèses adaptées.",
+      "minutes": 10,
+      "kind": "R",
+      "block_ids": [
+        "L17-B02",
+        "L17-B03",
+        "L17-B04"
+      ],
+      "competency_ids": [
+        "comp.ps1.bootstrap_interval",
+        "comp.ps1.mediation_estimate",
+        "comp.ps1.mediation_interpret"
+      ],
+      "topic_ids": [
+        "bootstrap"
+      ],
+      "rubric_fr": [
+        "Conserver chaque triplet dans le bootstrap",
+        "Réajuster les deux chemins",
+        "Rapporter les échecs et la méthode approximative",
+        "Contrôler la compensation des signes",
+        "Reconnaître le changement d’unité si les lignes sont dépendantes"
+      ],
+      "error_tags": [
+        "bootstrap_unit",
+        "mediation_paths",
+        "coverage",
+        "causality"
+      ],
+      "has_r": true,
+      "family": "synthesis_mediation_bootstrap"
+    }
+  ],
+  "variants": [],
+  "time_budget": {
+    "independent_attempt": 40,
+    "self_correction": 15,
+    "triage_and_anki": 5
+  },
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Contenu relu lors de l’auteur; exécution R native, knit et RStudio Visual doivent être consignés séparément."
+    ]
+  },
+  "learner_state": "not_created",
+  "pedagogical_status": "authored_not_mastery_evidence",
+  "exam_status": "original_pedagogical_synthesis_not_exam_archive",
+  "first_attempt_minutes": 40
+}

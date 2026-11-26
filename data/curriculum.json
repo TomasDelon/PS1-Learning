@@ -1,0 +1,3003 @@
+{
+  "schema_version": "1.0.0",
+  "curriculum_id": "PS1-20H-v2",
+  "version": "2.0.0",
+  "budget_minutes": 1200,
+  "nodes": [
+    {
+      "id": "D00",
+      "kind": "diagnostic",
+      "title_fr": "Diagnostic de départ",
+      "minutes": 60,
+      "order": 0,
+      "module_id": "M00",
+      "depends_on": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Identifier les prérequis disponibles, les erreurs reconnues et les erreurs à forte confiance."
+      ],
+      "exit_criteria_fr": [
+        "Huit familles courtes évaluées; les zones non évaluées restent explicites."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Exercices 0,2-4; Mise en œuvre Q1-Q4",
+          "purpose": "Repères R, sélection et probabilités conditionnelles."
+        },
+        {
+          "source_id": "ctd02",
+          "locator": "Exercices 1-3",
+          "purpose": "Variables, densités, transformations et moments."
+        },
+        {
+          "source_id": "ctd03",
+          "locator": "Exercice 1 Q0-Q3; Exercice 3 Q1-Q3",
+          "purpose": "Moyennes, convergence et standardisation."
+        },
+        {
+          "source_id": "st01",
+          "locator": "PDF pp.6-13",
+          "purpose": "Modélisation et distinction variable/loi."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-001 à PS1-004; PS1-017; PS1-041 à PS1-054; PS1-080 à PS1-094; PS1-102 à PS1-118",
+          "purpose": "Questions originales de diagnostic sur les prérequis et notions fondamentales."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/D00/D00_Travail.Rmd",
+      "correction_path": "lessons/D00/D00_Corrige.Rmd",
+      "review_competency_ids": [],
+      "content_manifest_path": "lessons/D00/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "planning_source_refs": [
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Objectifs; Evaluation",
+          "purpose": "Alignement du plan et des conditions"
+        }
+      ],
+      "exercise_count": 8,
+      "variant_count": 2,
+      "block_count": 0
+    },
+    {
+      "id": "L01",
+      "kind": "lesson",
+      "title_fr": "R : environnement, données et vérification",
+      "minutes": 30,
+      "order": 1,
+      "module_id": "M01",
+      "depends_on": [
+        "D00"
+      ],
+      "competency_ids": [
+        "comp.ps1.r_data_clean",
+        "comp.ps1.r_data_import",
+        "comp.ps1.statistical_writeup"
+      ],
+      "topic_ids": [
+        "r_boolean",
+        "r_console",
+        "r_df",
+        "r_help",
+        "r_if",
+        "r_import",
+        "r_index",
+        "r_objects",
+        "r_recycling",
+        "r_rmd",
+        "r_summaries",
+        "r_types",
+        "r_vectorize",
+        "r_vectors"
+      ],
+      "objectives_fr": [
+        "Importer, inspecter et filtrer un tableau en expliquant la population conservée.",
+        "Retrouver un argument avec help(), puis vérifier une prédiction par un petit test reproductible."
+      ],
+      "exit_criteria_fr": [
+        "Un script court réexécuté dans une session propre reproduit le résultat; chaque filtre et valeur manquante est justifié.",
+        "Une recherche d’aide conduit à un test minimal expliqué, sans recopie aveugle."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Préliminaire; Exercice 0 Q1-Q2; Exercice 2 Q1-Q3; Exercice 3; Exercice 4 Q1-Q3; Mise en œuvre Q1",
+          "purpose": "Importation, objets, sélection, aide, données manquantes."
+        },
+        {
+          "source_id": "tp01",
+          "locator": "Consignes; Introduction; Exercice 1 Q1-Q2",
+          "purpose": "Code expliqué, texte interprétatif et enchaînement reproductible."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-021, PS1-040, PS1-023, PS1-024, PS1-025, PS1-026, PS1-027, PS1-028, PS1-029, PS1-033, PS1-031, PS1-032, PS1-110, PS1-022",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L01/L01_Travail.Rmd",
+      "correction_path": "lessons/L01/L01_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 4,
+        "concept_checks": 3,
+        "maths": 3,
+        "R": 14,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "Importer, filtrer, expliquer; aide R et exécution propre.",
+      "depth_limit_fr": "while, portée détaillée et matrices reportés au premier besoin.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [
+        "comp.ps1.r_code_explain",
+        "comp.ps1.r_data_clean",
+        "comp.ps1.r_data_import",
+        "comp.ps1.r_documentation",
+        "comp.ps1.r_filter",
+        "comp.ps1.r_pipeline",
+        "comp.ps1.rmd_reproducible",
+        "comp.ps1.statistical_writeup"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L01/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Préliminaire; E0; E2 Q1-Q3; E3; E4 Q1-Q3",
+          "purpose": "Structure des données, filtres, aide et document reproductible"
+        },
+        {
+          "source_id": "tp01",
+          "locator": "instructions; setup",
+          "purpose": "Code expliqué et réponses rédigées"
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 2,
+      "block_count": 5
+    },
+    {
+      "id": "L02",
+      "kind": "lesson",
+      "title_fr": "Événements, conditionnement et prédiction",
+      "minutes": 30,
+      "order": 2,
+      "module_id": "M01",
+      "depends_on": [
+        "L01"
+      ],
+      "competency_ids": [
+        "comp.ps1.binary_feature_redundancy",
+        "comp.ps1.categorical_counts",
+        "comp.ps1.classification_threshold",
+        "comp.ps1.confusion_matrix",
+        "comp.ps1.prediction_compare",
+        "comp.ps1.probability_compare",
+        "comp.ps1.r_filter",
+        "comp.ps1.r_plot"
+      ],
+      "topic_ids": [
+        "bayes",
+        "conditional_prob",
+        "contingency_table",
+        "prob_event",
+        "prob_measure",
+        "r_graph",
+        "r_table",
+        "set_ops",
+        "total_prob"
+      ],
+      "objectives_fr": [
+        "Modéliser un événement et choisir le dénominateur d’une fréquence conditionnelle.",
+        "Construire une prédiction par profil, lire sa matrice de confusion et limiter la portée de la conclusion."
+      ],
+      "exit_criteria_fr": [
+        "Une variante non annoncée de conditionnement est résolue avec événements nommés et dénominateur correct.",
+        "La matrice de confusion est orientée et la conclusion distingue association, prédiction et causalité."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Mise en œuvre de quelques principes Q2-Q5",
+          "purpose": "Dénominateurs conditionnels et prédiction par seuil."
+        },
+        {
+          "source_id": "tp01",
+          "locator": "Exercice 1 Q1-Q6; Exercice 2 Q1-Q7; Exercice 3 Q1-Q3,Q6-Q7",
+          "purpose": "Fréquences, prédictions, matrice de confusion et portée descriptive."
+        },
+        {
+          "source_id": "st01",
+          "locator": "PDF pp.6-10, boîtes de Bertrand",
+          "purpose": "Modélisation des issues avant conditionnement."
+        },
+        {
+          "source_id": "st_poly_formalisme",
+          "locator": "PDF pp.9-19, ``2.1-3.3",
+          "purpose": "Événements, probabilités, indépendance, probabilités totales et Bayes."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-006, PS1-007, PS1-008, PS1-010, PS1-011, PS1-014, PS1-012, PS1-013, PS1-017, PS1-016, PS1-019, PS1-020, PS1-018, PS1-039, PS1-038",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L02/L02_Travail.Rmd",
+      "correction_path": "lessons/L02/L02_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 4,
+        "concept_checks": 4,
+        "maths": 7,
+        "R": 9,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "Conditionnement et comparaison de prédictions.",
+      "depth_limit_fr": "ROC et modèle neuronal fourni: lecture ciblée, pas apprentissage de leur optimisation.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.binary_feature_redundancy",
+        "comp.ps1.categorical_counts",
+        "comp.ps1.causal_distinction",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.classification_threshold",
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_predict",
+        "comp.ps1.conditional_probability",
+        "comp.ps1.confusion_matrix",
+        "comp.ps1.empirical_probability",
+        "comp.ps1.prediction_compare",
+        "comp.ps1.probabilistic_model_interpret",
+        "comp.ps1.probability_compare",
+        "comp.ps1.provided_model_execute",
+        "comp.ps1.r_plot",
+        "comp.ps1.r_vectorized_summary"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L02/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Mise en oeuvre de quelques principes, Q2-Q5",
+          "purpose": "Conditionnement, prédiction et seuil"
+        },
+        {
+          "source_id": "tp01",
+          "locator": "E1 Q1-Q6; E2 Q1-Q7; E3 Q1-Q3,Q6-Q7",
+          "purpose": "Fréquences, prédiction, comparaison et conclusion"
+        },
+        {
+          "source_id": "st01",
+          "locator": "PDF pp.6-10, activité Bertrand",
+          "purpose": "Modéliser les issues avant de calculer; confronter une intuition au conditionnement, puis refaire une variante sans réponses proposées."
+        },
+        {
+          "source_id": "st_poly_formalisme",
+          "locator": "PDF pp.1-4,9-19",
+          "purpose": "Référence ciblée pour ensembles, événements, conditionnement et indépendance; ne pas ajouter la totalité du dénombrement au budget."
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 2,
+      "block_count": 8
+    },
+    {
+      "id": "L03",
+      "kind": "lesson",
+      "title_fr": "Variables aléatoires, lois, densités et transformations",
+      "minutes": 35,
+      "order": 3,
+      "module_id": "M01",
+      "depends_on": [
+        "L02"
+      ],
+      "competency_ids": [
+        "comp.ps1.inverse_transform",
+        "comp.ps1.provided_model_execute",
+        "comp.ps1.r_code_explain",
+        "comp.ps1.r_documentation",
+        "comp.ps1.r_functions",
+        "comp.ps1.r_pipeline",
+        "comp.ps1.r_vectorized_summary",
+        "comp.ps1.rmd_reproducible",
+        "comp.ps1.simulation_diagnostic"
+      ],
+      "topic_ids": [
+        "calculus_tools",
+        "cdf",
+        "cdf_atoms",
+        "cdf_intervals",
+        "cdf_properties",
+        "continuous_intervals",
+        "density",
+        "density_cdf",
+        "discrete_law",
+        "discrete_uniform",
+        "distribution",
+        "empirical_cdf",
+        "exponential_law",
+        "histogram",
+        "integral_tools",
+        "inverse_transform",
+        "log_tools",
+        "pmf",
+        "qqplot",
+        "quantile",
+        "r_functions",
+        "r_law_funcs",
+        "r_scope",
+        "r_seed",
+        "rv",
+        "rv_support",
+        "sum_notation",
+        "transform_cdf",
+        "transform_density",
+        "uniform_law"
+      ],
+      "objectives_fr": [
+        "Distinguer variable, réalisation, loi, densité et fonction de répartition.",
+        "Déterminer un support puis transformer ou simuler une variable en contrôlant les probabilités obtenues."
+      ],
+      "exit_criteria_fr": [
+        "Le support et les bornes d’une transformation sont justifiés avant la dérivation.",
+        "Une valeur de densité n’est jamais utilisée comme probabilité ponctuelle; le graphe de contrôle est interprété."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd02",
+          "locator": "Exercice 1 Q1-Q6; Exercice 4 Q1-Q2; Exercice 5 Q1-Q2 (consultation)",
+          "purpose": "CDF, transformation, inversion et distinction entre masse et densité."
+        },
+        {
+          "source_id": "st01",
+          "locator": "PDF pp.11-13",
+          "purpose": "Même loi et variables différentes; majuscules et minuscules."
+        },
+        {
+          "source_id": "st02_03",
+          "locator": "PDF pp.3-4,7-9",
+          "purpose": "Probabilité ponctuelle, support et transformation par la CDF."
+        },
+        {
+          "source_id": "st02_prime",
+          "locator": "PDF p.1, Temps 2-4",
+          "purpose": "Anticipation qualitative puis choix autonome des outils."
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.1-4",
+          "purpose": "Variable et loi discrète, avec correction des raccourcis du texte ancien."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.1-5,8-10",
+          "purpose": "Densité, répartition, transformation et loi exponentielle."
+        },
+        {
+          "source_id": "tp01",
+          "locator": "Exercice 3, code du modèle fourni et Q1-Q3",
+          "purpose": "Passerelle originale L03-V03 : exécution et interprétation d’une fonction donnée, sans apprentissage de son optimisation."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-041, PS1-042, PS1-009, PS1-043, PS1-044, PS1-045, PS1-046, PS1-047, PS1-052, PS1-053, PS1-265, PS1-048, PS1-049, PS1-050, PS1-051, PS1-054, PS1-056, PS1-063, PS1-070, PS1-076, PS1-077, PS1-059, PS1-078, PS1-111, PS1-112, PS1-036, PS1-037, PS1-106, PS1-108",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L03/L03_Travail.Rmd",
+      "correction_path": "lessons/L03/L03_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 5,
+        "concept_checks": 4,
+        "maths": 10,
+        "R": 10,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "CDF, densité, support et une transformation.",
+      "depth_limit_fr": "Tribus, presque partout et lois mixtes: vocabulaire/consultation ciblée; pas de théorie de la mesure développée.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [
+        "comp.ps1.inverse_transform",
+        "comp.ps1.r_functions",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.simulation_diagnostic"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L03/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd02",
+          "locator": "E1 Q1-Q6; E4; E5 facultatif",
+          "purpose": "Support, CDF, transformation, simulation et loi mixte"
+        },
+        {
+          "source_id": "st01",
+          "locator": "PDF pp.11-13, variables de deux dés",
+          "purpose": "Distinguer même loi et même variable; imposer majuscules pour variables et minuscules pour réalisations."
+        },
+        {
+          "source_id": "st02_03",
+          "locator": "PDF pp.3-4 et7-9",
+          "purpose": "Faire anticiper la forme d’une densité, définir le support puis passer par la CDF; une valeur de densité n’est pas une probabilité ponctuelle."
+        },
+        {
+          "source_id": "st02_prime",
+          "locator": "PDF p.1, phases2-4",
+          "purpose": "Conserver le choix autonome de l’outil et la prédiction qualitative avant calcul; adapter les nombres et séparer la correction dans Corrige.Rmd."
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.1-11",
+          "purpose": "Référence ciblée variable/loi, moments et lois usuelles; classer une variable par sa loi/support, écrire les conditions d’intégrabilité, et utiliser la linéarité de l’espérance dans la preuve de variance."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.1-13",
+          "purpose": "Appui ciblé pour CDF, densité, moments et paramétrage; utiliser le texte mathématique audité pour les hypothèses exactes."
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 3,
+      "block_count": 17
+    },
+    {
+      "id": "L04",
+      "kind": "lesson",
+      "title_fr": "Espérance, variance et covariance",
+      "minutes": 45,
+      "order": 4,
+      "module_id": "M01",
+      "depends_on": [
+        "L03"
+      ],
+      "competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.transformed_moments"
+      ],
+      "topic_ids": [
+        "cov_bilinear",
+        "covariance",
+        "expect_linear",
+        "expectation",
+        "indep_cov",
+        "independent_rv",
+        "indicator_event",
+        "joint_law",
+        "koenig_huygens",
+        "moments_k",
+        "transfer",
+        "var_sum",
+        "variance",
+        "variance_affine"
+      ],
+      "objectives_fr": [
+        "Calculer et justifier espérance, variance et covariance de transformations affines.",
+        "Distinguer variance théorique, variance empirique corrigée et écart-type, avec leurs unités."
+      ],
+      "exit_criteria_fr": [
+        "Les coefficients de variance sont au carré et les termes de covariance sont traités avec leurs signes.",
+        "Les hypothèses d’intégrabilité et d’indépendance réellement utilisées sont écrites; un changement d’unité est interprété correctement."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd02",
+          "locator": "Exercice 2 Q1-Q3",
+          "purpose": "Espérance, transfert, variance et contrôle numérique."
+        },
+        {
+          "source_id": "tp01",
+          "locator": "Exercice 3 Q4-Q5, première occurrence de Question 5",
+          "purpose": "Espérance d’un comptage par somme de probabilités."
+        },
+        {
+          "source_id": "st02_03",
+          "locator": "PDF pp.5-12",
+          "purpose": "Anticiper les effets de translation et d’échelle, interpréter les unités."
+        },
+        {
+          "source_id": "st02_prime",
+          "locator": "PDF p.1, Temps 2-4",
+          "purpose": "Choisir les outils avant le calcul."
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.3",
+          "purpose": "Covariance nulle et dépendance."
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.5-11",
+          "purpose": "Espérance, moments, variance; la preuve emploie la linéarité de l’espérance."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.5-10",
+          "purpose": "Intégrabilité, moments et transformations."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-080, PS1-081, PS1-082, PS1-084, PS1-079, PS1-088, PS1-085, PS1-086, PS1-087, PS1-089, PS1-090, PS1-091, PS1-092, PS1-093, PS1-104, PS1-110",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-202 et PS1-203, lignes 1336-1344, octets relus dans PS1_Cours_DEF_THM_MTH_v2.md",
+          "purpose": "Borne de covariance et définition de la corrélation avec variances strictement positives."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L04/L04_Travail.Rmd",
+      "correction_path": "lessons/L04/L04_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 6,
+        "concept_checks": 5,
+        "maths": 17,
+        "R": 8,
+        "self_correction_review": 9
+      },
+      "core_focus_fr": "Identités de moments, variance et covariance.",
+      "depth_limit_fr": "Une preuve réutilisable et une application nouvelle; pas une liste d’exercices redondants.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [
+        "comp.ps1.covariance_expand",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.sample_moments",
+        "comp.ps1.transformed_moments",
+        "comp.ps1.variance_linear_combination"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L04/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd02",
+          "locator": "E2 Q1-Q3",
+          "purpose": "Espérance, transfert et variance"
+        },
+        {
+          "source_id": "tp01",
+          "locator": "E3 Q4-Q5, dont deux occurrences distinctes de Question 5",
+          "purpose": "Espérance d’un comptage sans indépendance imposée"
+        },
+        {
+          "source_id": "st02_03",
+          "locator": "PDF pp.5-12",
+          "purpose": "Comparer translation, changement d’échelle et transformation non linéaire; expliquer dispersion et unités avant les calculs."
+        },
+        {
+          "source_id": "st02_prime",
+          "locator": "PDF p.1, phases2-4",
+          "purpose": "Conserver le choix autonome de l’outil et la prédiction qualitative avant calcul; adapter les nombres et séparer la correction dans Corrige.Rmd."
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.3",
+          "purpose": "Prévoir et calculer une covariance pour réfuter covariance nulle donc indépendance; varier le contexte au rappel."
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.1-11",
+          "purpose": "Référence ciblée variable/loi, moments et lois usuelles; classer une variable par sa loi/support, écrire les conditions d’intégrabilité, et utiliser la linéarité de l’espérance dans la preuve de variance."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.1-13",
+          "purpose": "Appui ciblé pour CDF, densité, moments et paramétrage; utiliser le texte mathématique audité pour les hypothèses exactes."
+        }
+      ],
+      "exercise_count": 6,
+      "variant_count": 2,
+      "block_count": 16,
+      "review_allocation": {
+        "correction_minutes": 2,
+        "anki_minutes": 2,
+        "replaceable_retrieval_minutes": 5
+      }
+    },
+    {
+      "id": "L05",
+      "kind": "lesson",
+      "title_fr": "Lois usuelles, sommes et fonctions génératrices",
+      "minutes": 25,
+      "order": 5,
+      "module_id": "M01",
+      "depends_on": [
+        "L03",
+        "L04"
+      ],
+      "competency_ids": [
+        "comp.ps1.poisson_model"
+      ],
+      "topic_ids": [
+        "bernoulli_law",
+        "bernoulli_sum",
+        "binomial_law",
+        "chisq_law",
+        "convolution",
+        "exp_gamma_sum",
+        "gamma_fn",
+        "gamma_law",
+        "geometric_law",
+        "mgf",
+        "mgf_moments",
+        "normal_law",
+        "normal_sum",
+        "poisson_law",
+        "poisson_sum",
+        "standard_normal"
+      ],
+      "objectives_fr": [
+        "Choisir une loi usuelle avec ses paramètres, son support et ses moments.",
+        "Reconnaître une somme indépendante et calculer une probabilité de queue avec la bonne fonction R."
+      ],
+      "exit_criteria_fr": [
+        "Le choix de loi et le paramétrage sont justifiés sans liste de méthodes imposée.",
+        "La réponse distingue variance et sd, rate et scale, et explicite la queue calculée."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Exercice 4 Q5",
+          "purpose": "Reconnaître un modèle de Poisson et distinguer modèle et données."
+        },
+        {
+          "source_id": "ctd02",
+          "locator": "Exercice 2 Q4-Q8; Exercice 3 Q1-Q5",
+          "purpose": "Sommes indépendantes, normale, gamma et FGM."
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.8-11, ``3.1-3.5",
+          "purpose": "Lois discrètes usuelles et moments."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.8-13",
+          "purpose": "Uniforme, exponentielle et normale; convention de variance auditée."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-064, PS1-065, PS1-066, PS1-067, PS1-068, PS1-072, PS1-100, PS1-101, PS1-069, PS1-096, PS1-111, PS1-074, PS1-073, PS1-075, PS1-097, PS1-098, PS1-099, PS1-093, PS1-095",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        }
+      ],
+      "depth": "targeted",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L05/L05_Travail.Rmd",
+      "correction_path": "lessons/L05/L05_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 4,
+        "concept_checks": 3,
+        "maths": 8,
+        "R": 5,
+        "self_correction_review": 5
+      },
+      "core_focus_fr": "Reconnaître les lois et leurs paramètres, puis une somme.",
+      "depth_limit_fr": "FGM/Gamma: preuve ou cas spécial seulement si D00 le justifie; le registre complet reste disponible.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [
+        "comp.ps1.model_observation_compare",
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.poisson_model"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L05/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd02",
+          "locator": "E2 Q4-Q8; E3 Q1-Q5",
+          "purpose": "Sommes indépendantes, FGM, loi normale et paramétrage"
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q1-Q3",
+          "purpose": "Modèle de Poisson et comparaison au modèle"
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.1-11",
+          "purpose": "Référence ciblée variable/loi, moments et lois usuelles; classer une variable par sa loi/support, écrire les conditions d’intégrabilité, et utiliser la linéarité de l’espérance dans la preuve de variance."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.1-13",
+          "purpose": "Appui ciblé pour CDF, densité, moments et paramétrage; utiliser le texte mathématique audité pour les hypothèses exactes."
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 2,
+      "block_count": 15
+    },
+    {
+      "id": "L06",
+      "kind": "lesson",
+      "title_fr": "Échantillon, loi des grands nombres et TCL",
+      "minutes": 45,
+      "order": 6,
+      "module_id": "M02",
+      "depends_on": [
+        "L04",
+        "L05"
+      ],
+      "competency_ids": [
+        "comp.ps1.clt_standardize",
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_predict",
+        "comp.ps1.conditional_probability",
+        "comp.ps1.empirical_probability",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.r_running_mean",
+        "comp.ps1.variance_linear_combination",
+        "comp.ps1.wlln_apply"
+      ],
+      "topic_ids": [
+        "chebyshev",
+        "clt",
+        "conv_distribution",
+        "conv_prob",
+        "iid_sample",
+        "normal_approx",
+        "parameter",
+        "r_for",
+        "sample_mean",
+        "sample_mean_moments",
+        "statistic",
+        "wlln"
+      ],
+      "objectives_fr": [
+        "Justifier convergence et fluctuations d’une moyenne sous des hypothèses explicites.",
+        "Standardiser correctement une moyenne et distinguer loi exacte, limite et approximation finie."
+      ],
+      "exit_criteria_fr": [
+        "Le facteur racine de n et le dénominateur sont corrects, avec les hypothèses du TCL.",
+        "La LGN n’est pas confondue avec une absence d’erreur à taille finie; une preuve courte par Chebyshev est reconstruite si requise."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd03",
+          "locator": "Exercice 1 Q0-Q3,Q5-Q6; Exercice 2 Q6; Exercice 3 Q1-Q3",
+          "purpose": "Moyenne, Chebyshev, LGN, TCL, normalité exacte et simulations."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 1 Q1-Q3",
+          "purpose": "Convergence, précision et moyenne cumulative."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.9-11, annexe",
+          "purpose": "Variables parentes et observations, loi de la moyenne normale; raccourcis corrigés."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.17-18",
+          "purpose": "TCL standardisé et approximation finie, traités distinctement."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-102, PS1-103, PS1-105, PS1-113, PS1-094, PS1-114, PS1-115, PS1-116, PS1-117, PS1-096, PS1-118, PS1-123, PS1-125, PS1-112, PS1-034, PS1-109",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L06/L06_Travail.Rmd",
+      "correction_path": "lessons/L06/L06_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 5,
+        "concept_checks": 5,
+        "maths": 13,
+        "R": 11,
+        "self_correction_review": 11
+      },
+      "core_focus_fr": "Moments de la moyenne, LGN/TCL et standardisation.",
+      "depth_limit_fr": "Distinctions conceptuelles avant détails de convergence générale.",
+      "review_competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.transformed_moments"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.clt_standardize",
+        "comp.ps1.r_running_mean",
+        "comp.ps1.wlln_apply"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L06/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd03",
+          "locator": "E1 Q0-Q3,Q5; E2 Q6; E3 Q1-Q3",
+          "purpose": "Moments de la moyenne, LGN, TCL et standardisation"
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 1 Q1-Q3",
+          "purpose": "Convergence et précision Monte-Carlo"
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.9-11, annexe",
+          "purpose": "Revenir aux variables parentes et à la loi de la moyenne normale; corriger la confusion variable/valeur et ne pas reprendre les raccourcis de l’annexe."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.14-18",
+          "purpose": "Référence pour couples et approximation de moyennes; séparer TCL standardisé et approximation à taille finie, et vérifier les deux effectifs théoriques pour une approximation binomiale."
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 2,
+      "block_count": 13,
+      "review_allocation": {
+        "correction_minutes": 4,
+        "anki_minutes": 2,
+        "replaceable_retrieval_minutes": 5
+      }
+    },
+    {
+      "id": "L07",
+      "kind": "lesson",
+      "title_fr": "Monte-Carlo et échantillonnage préférentiel",
+      "minutes": 30,
+      "order": 7,
+      "module_id": "M02",
+      "depends_on": [
+        "L03",
+        "L06"
+      ],
+      "competency_ids": [
+        "comp.ps1.geometric_integral",
+        "comp.ps1.importance_sampling",
+        "comp.ps1.mc_implement",
+        "comp.ps1.mc_integral"
+      ],
+      "topic_ids": [
+        "importance_sampling",
+        "mc_indicator",
+        "mc_integral",
+        "mc_precision",
+        "r_while"
+      ],
+      "objectives_fr": [
+        "Réécrire une intégrale comme espérance et implémenter un estimateur reproductible.",
+        "Comparer deux méthodes à budget identique, en expliquant le rôle du support, des poids et de la variance."
+      ],
+      "exit_criteria_fr": [
+        "La cible, la loi de tirage et les poids sont justifiés et restent cohérents avec le code.",
+        "La précision est évaluée sur plusieurs répétitions; une seule erreur observée ne sert pas à classer les méthodes."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd03",
+          "locator": "Exercice 1 Q4-Q6; Exercice 2 Q1-Q5",
+          "purpose": "Simulation de moyennes, aire par indicatrices et précision."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 1 Q1-Q3; Partie 2 Q1-Q4",
+          "purpose": "Intégrale comme espérance, inversion instrumentale et comparaison de variances."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-119, PS1-120, PS1-121, PS1-105, PS1-122, PS1-035",
+          "purpose": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L07/L07_Travail.Rmd",
+      "correction_path": "lessons/L07/L07_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 4,
+        "concept_checks": 3,
+        "maths": 9,
+        "R": 8,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "Cible, poids, support, implémentation et précision comparée.",
+      "depth_limit_fr": "Démonstration intégrale longue de variance: reprise ciblée si la courte variante échoue.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [
+        "comp.ps1.geometric_integral",
+        "comp.ps1.importance_sampling",
+        "comp.ps1.mc_implement",
+        "comp.ps1.mc_integral",
+        "comp.ps1.mc_precision",
+        "comp.ps1.variance_reduction_compare"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L07/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd03",
+          "locator": "E1 Q4-Q6; E2 Q1-Q5",
+          "purpose": "Intégrale, simulation et justification"
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Parties 1-2",
+          "purpose": "Deux méthodes et variance de l’estimateur"
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 2,
+      "block_count": 5
+    },
+    {
+      "id": "L08",
+      "kind": "lesson",
+      "title_fr": "Estimateurs, biais, variance et EQM",
+      "minutes": 35,
+      "order": 8,
+      "module_id": "M02",
+      "depends_on": [
+        "L06"
+      ],
+      "competency_ids": [
+        "comp.ps1.mc_precision",
+        "comp.ps1.model_observation_compare",
+        "comp.ps1.probabilistic_model_interpret",
+        "comp.ps1.sample_moments",
+        "comp.ps1.variance_reduction_compare"
+      ],
+      "topic_ids": [
+        "asymptotic_normality",
+        "bias",
+        "bias_variance",
+        "consistency",
+        "estimation_error",
+        "estimator",
+        "estimator_comparison",
+        "estimator_variance",
+        "mse",
+        "mse_consistency",
+        "parametric_model",
+        "sample_var",
+        "unbiased"
+      ],
+      "objectives_fr": [
+        "Distinguer paramètre, estimateur et estimation et comparer biais, variance et EQM.",
+        "Reconstruire la décomposition biais-variance et expliquer le diviseur de la variance empirique."
+      ],
+      "exit_criteria_fr": [
+        "L’étudiant explique quel objet est aléatoire et quel paramètre est fixe, puis compare deux procédures selon un critère annoncé.",
+        "La décomposition EQM et la correction de Bessel sont reconstruisibles sans consulter une solution."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "purpose": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "purpose": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "purpose": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L08/L08_Travail.Rmd",
+      "correction_path": "lessons/L08/L08_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 5,
+        "concept_checks": 4,
+        "maths": 13,
+        "R": 7,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "Biais, variance, EQM et Bessel.",
+      "depth_limit_fr": "Calculs inverses Gamma détaillés reportés au registre de référence.",
+      "review_competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.clt_standardize",
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_predict",
+        "comp.ps1.conditional_probability",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.empirical_probability",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.r_running_mean",
+        "comp.ps1.transformed_moments",
+        "comp.ps1.variance_linear_combination",
+        "comp.ps1.wlln_apply"
+      ],
+      "first_practice_competency_ids": [],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L08/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "E1 Q1-Q3; E2 Q4-Q7",
+          "purpose": "Biais, Bessel, EQM et comparaison; annotations personnelles distinguées"
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "purpose": "Passer des observations fixées aux variables parentes; comparer qualité de procédures sur des répétitions, pas une seule estimation."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF p.1; pistes p.2 réservées au corrigé",
+          "purpose": "Réutiliser la progression modélisation, choix d’estimateur, comparaison; les pistes de la deuxième page ne figurent pas dans la première tentative."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "purpose": "Version courte de l’activité déjà développée dans ST04-05; ressource de retour ciblé, sans doubler le temps prévu."
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 2,
+      "block_count": 11,
+      "review_allocation": {
+        "correction_minutes": 4,
+        "anki_minutes": 2
+      }
+    },
+    {
+      "id": "L09",
+      "kind": "lesson",
+      "title_fr": "Méthode des moments et maximum de vraisemblance",
+      "minutes": 25,
+      "order": 9,
+      "module_id": "M02",
+      "depends_on": [
+        "L05",
+        "L08"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "argmax",
+        "likelihood",
+        "loglikelihood",
+        "method_moments",
+        "mle",
+        "score_eq"
+      ],
+      "objectives_fr": [
+        "Construire un estimateur par moments ou vraisemblance sur le bon domaine.",
+        "Justifier un maximum, y compris lorsque le support dépend du paramètre."
+      ],
+      "exit_criteria_fr": [
+        "La vraisemblance est une fonction du paramètre pour les observations fixées; le domaine est présent.",
+        "Un argument de maximum complète la dérivée ou le raisonnement de bord, sans se limiter à une équation du score."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 2 Q1-Q3",
+          "purpose": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q1",
+          "purpose": "Maximisation normale par identité des carrés."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "purpose": "Deux méthodes et support dépendant du paramètre."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF pp.1-2",
+          "purpose": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+        }
+      ],
+      "depth": "targeted",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L09/L09_Travail.Rmd",
+      "correction_path": "lessons/L09/L09_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 4,
+        "concept_checks": 3,
+        "maths": 10,
+        "R": 3,
+        "self_correction_review": 5
+      },
+      "core_focus_fr": "Un EMV ou un MM complet avec domaine et maximum.",
+      "depth_limit_fr": "Ne pas dérouler tous les EMV du CTD en 25 minutes; cibler le mécanisme et une frontière.",
+      "review_competency_ids": [],
+      "first_practice_competency_ids": [],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L09/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "E2 Q1-Q3",
+          "purpose": "Moments, EMV et correction de biais; annotations personnelles distinguées"
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "E1 Q1",
+          "purpose": "Vraisemblance normale"
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "purpose": "Relier moments et vraisemblance à deux stratégies; faire vérifier le domaine quand le paramètre borne le support."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF p.1; pistes p.2 réservées au corrigé",
+          "purpose": "Réutiliser la progression modélisation, choix d’estimateur, comparaison; les pistes de la deuxième page ne figurent pas dans la première tentative."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "purpose": "Version courte de l’activité déjà développée dans ST04-05; ressource de retour ciblé, sans doubler le temps prévu."
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 3,
+      "block_count": 5,
+      "review_allocation": {
+        "correction_minutes": 3,
+        "anki_minutes": 2
+      }
+    },
+    {
+      "id": "L10",
+      "kind": "lesson",
+      "title_fr": "Pivots, intervalles de confiance et bootstrap",
+      "minutes": 55,
+      "order": 10,
+      "module_id": "M03",
+      "depends_on": [
+        "L05",
+        "L06",
+        "L08",
+        "L09"
+      ],
+      "competency_ids": [
+        "comp.ps1.confidence_interval",
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.proportion_interval",
+        "comp.ps1.r_interval_compute"
+      ],
+      "topic_ids": [
+        "bootstrap",
+        "ci_coverage",
+        "ci_definition",
+        "ci_normal_known",
+        "ci_normal_unknown",
+        "ci_pivot",
+        "ci_proportion",
+        "ci_variance",
+        "confidence_level",
+        "mc_confidence",
+        "pivot",
+        "student_law",
+        "student_pivot"
+      ],
+      "objectives_fr": [
+        "Construire un intervalle par inversion d’un pivot et expliquer sa couverture.",
+        "Calculer les bornes, vérifier l’ordre des quantiles et distinguer intervalle exact, asymptotique et bootstrap."
+      ],
+      "exit_criteria_fr": [
+        "La transformation de l’événement conserve son sens et produit des bornes ordonnées.",
+        "La phrase de couverture porte sur la procédure; elle n’attribue pas une probabilité fréquentiste au paramètre après observation."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q7; Problème Q2-Q5",
+          "purpose": "Pivots, couverture, inversion et bootstrap."
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3 Q1-Q3",
+          "purpose": "Couverture approchée d'un calcul Monte-Carlo."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5 et Q11",
+          "purpose": "Intervalle de comptage et intervalle exact de moyenne exponentielle."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "purpose": "Fluctuation, confiance et inversion positive."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps1; pp.8-9",
+          "purpose": "Critique d'une interprétation a posteriori et modèle de sondage."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L10/L10_Travail.Rmd",
+      "correction_path": "lessons/L10/L10_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 6,
+        "concept_checks": 5,
+        "maths": 17,
+        "R": 15,
+        "self_correction_review": 12
+      },
+      "core_focus_fr": "Pivot, couverture et deux familles d’intervalles.",
+      "depth_limit_fr": "Autres formules sur A4 avec hypothèses; bootstrap de coefficients repris en L17.",
+      "review_competency_ids": [
+        "comp.ps1.clt_standardize",
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_predict",
+        "comp.ps1.conditional_probability",
+        "comp.ps1.empirical_probability",
+        "comp.ps1.inverse_transform",
+        "comp.ps1.mc_precision",
+        "comp.ps1.model_observation_compare",
+        "comp.ps1.probabilistic_model_interpret",
+        "comp.ps1.provided_model_execute",
+        "comp.ps1.r_code_explain",
+        "comp.ps1.r_documentation",
+        "comp.ps1.r_functions",
+        "comp.ps1.r_pipeline",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.r_running_mean",
+        "comp.ps1.r_vectorized_summary",
+        "comp.ps1.rmd_reproducible",
+        "comp.ps1.sample_moments",
+        "comp.ps1.simulation_diagnostic",
+        "comp.ps1.variance_linear_combination",
+        "comp.ps1.variance_reduction_compare",
+        "comp.ps1.wlln_apply"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.confidence_interval",
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.proportion_interval",
+        "comp.ps1.r_interval_compute"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L10/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd03",
+          "locator": "E3 Q4-Q6",
+          "purpose": "Couverture empirique"
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "E1 Q3-Q7; Problème Q1-Q5",
+          "purpose": "Pivot, intervalle et bootstrap"
+        },
+        {
+          "source_id": "tp02",
+          "locator": "Partie 3",
+          "purpose": "Intervalle Monte-Carlo"
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5,Q11",
+          "purpose": "Intervalles pour comptages et moyenne exponentielle"
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.14-15",
+          "purpose": "Distinguer intervalle de fluctuation à bornes fixes et intervalle de confiance aléatoire; inverser un événement pivot."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1, Temps1; article FranceInfo PDF pp.8-9",
+          "purpose": "Classer aléatoire, choisi et fixe inconnu; reformuler une phrase médiatique de confiance en couverture fréquentiste, sous un modèle explicite."
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 3,
+      "block_count": 14,
+      "review_allocation": {
+        "correction_minutes": 5,
+        "anki_minutes": 2,
+        "replaceable_retrieval_minutes": 5
+      }
+    },
+    {
+      "id": "L11",
+      "kind": "lesson",
+      "title_fr": "Tests : hypothèses, p-valeur et proportions",
+      "minutes": 45,
+      "order": 11,
+      "module_id": "M03",
+      "depends_on": [
+        "L10"
+      ],
+      "competency_ids": [
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty"
+      ],
+      "topic_ids": [
+        "choose_test",
+        "hypotheses",
+        "one_two_sided",
+        "power",
+        "pvalue",
+        "rejection_region",
+        "risk_first",
+        "risk_second",
+        "test_decision",
+        "test_statistic"
+      ],
+      "objectives_fr": [
+        "Formuler les hypothèses et la direction du test avant de consulter le résultat.",
+        "Calculer une p-valeur sous H0, décider au seuil fixé et expliquer les risques sans inverser les probabilités."
+      ],
+      "exit_criteria_fr": [
+        "La p-valeur est reliée à une statistique au moins aussi extrême sous H0, avec la bonne alternative.",
+        "Le non-rejet ne devient pas une preuve de H0; le seuil et la portée pratique sont distingués."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "purpose": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "purpose": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "purpose": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "purpose": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L11/L11_Travail.Rmd",
+      "correction_path": "lessons/L11/L11_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 6,
+        "concept_checks": 5,
+        "maths": 14,
+        "R": 13,
+        "self_correction_review": 7
+      },
+      "core_focus_fr": "Choisir hypothèses/queue, calculer p et conclure.",
+      "depth_limit_fr": "Puissance: intuition correcte et exemple simple, pas un panorama de tests.",
+      "review_competency_ids": [
+        "comp.ps1.binary_feature_redundancy",
+        "comp.ps1.categorical_counts",
+        "comp.ps1.classification_threshold",
+        "comp.ps1.confidence_interval",
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.confusion_matrix",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.prediction_compare",
+        "comp.ps1.probability_compare",
+        "comp.ps1.proportion_interval",
+        "comp.ps1.r_filter",
+        "comp.ps1.r_interval_compute",
+        "comp.ps1.r_plot"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.proportion_test",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L11/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "E1 Q8-Q9; Problème Q6-Q7",
+          "purpose": "Hypothèses, risque et p-valeur"
+        },
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Objectifs; Contenu",
+          "purpose": "Interprétation, erreur et puissance"
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, notamment tableau p.2 et graphe p.7",
+          "purpose": "Relier H0/H1, région de rejet, risques et p-valeur sur un même modèle; traduire explicitement la convention beta=puissance utilisée par ce soutien."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "purpose": "Faire expliquer quelle loi sert à calculer chaque risque, puis modifier seuil ou observation; la convention de beta est héritée du document décision-risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1, Temps3 Q1-Q3",
+          "purpose": "Relier binom.test, taille d’échantillon et portée de l’interprétation; vérifier indépendance et même cible avant de regrouper des sondages."
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 2,
+      "block_count": 10,
+      "review_allocation": {
+        "correction_minutes": 5,
+        "anki_minutes": 2
+      }
+    },
+    {
+      "id": "L12",
+      "kind": "lesson",
+      "title_fr": "Tests de moyennes et diagnostics",
+      "minutes": 45,
+      "order": 12,
+      "module_id": "M03",
+      "depends_on": [
+        "L11"
+      ],
+      "competency_ids": [
+        "comp.ps1.distribution_compare",
+        "comp.ps1.normality_assess",
+        "comp.ps1.practical_significance",
+        "comp.ps1.two_mean_test"
+      ],
+      "topic_ids": [
+        "boxplot",
+        "levene_test",
+        "pooled_variance",
+        "shapiro_test",
+        "student_test_one",
+        "student_test_two",
+        "welch_test"
+      ],
+      "objectives_fr": [
+        "Choisir une comparaison de moyennes selon le plan, les variances et les hypothèses.",
+        "Rapporter estimation, incertitude et portée pratique en exploitant les diagnostics."
+      ],
+      "exit_criteria_fr": [
+        "Le plan indépendant ou apparié est identifié avant l’appel R; une option inadaptée est rejetée.",
+        "L’effet estimé, son incertitude et la conclusion sont cohérents; Shapiro n’est pas une preuve de normalité."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "purpose": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "purpose": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "purpose": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L12/L12_Travail.Rmd",
+      "correction_path": "lessons/L12/L12_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 5,
+        "concept_checks": 5,
+        "maths": 12,
+        "R": 12,
+        "self_correction_review": 11
+      },
+      "core_focus_fr": "Plan, variante du test et interprétation.",
+      "depth_limit_fr": "Levene/Fisher exact: consultation si demandé; pas de preuve de leur distribution.",
+      "review_competency_ids": [
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.distribution_compare",
+        "comp.ps1.normality_assess",
+        "comp.ps1.practical_significance",
+        "comp.ps1.two_mean_test"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L12/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "E1 Q1-Q4; E2 Q1-Q2; E3 Q1-Q4",
+          "purpose": "Student, Welch et diagnostics"
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6,Q12",
+          "purpose": "Comparer des moyennes selon le plan"
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie 3",
+          "purpose": "Comparaison par groupes et pertinence pratique"
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 3,
+      "block_count": 9,
+      "review_allocation": {
+        "correction_minutes": 4,
+        "anki_minutes": 2,
+        "replaceable_retrieval_minutes": 5
+      }
+    },
+    {
+      "id": "L13",
+      "kind": "lesson",
+      "title_fr": "Effectifs, adéquation et indépendance",
+      "minutes": 40,
+      "order": 13,
+      "module_id": "M03",
+      "depends_on": [
+        "L02",
+        "L05",
+        "L11"
+      ],
+      "competency_ids": [
+        "comp.ps1.chi_square_fit",
+        "comp.ps1.chi_square_grouping",
+        "comp.ps1.contingency_independence",
+        "comp.ps1.poisson_expected_counts",
+        "comp.ps1.proportion_test"
+      ],
+      "topic_ids": [
+        "chi_fit",
+        "chi_independent",
+        "chi_observed",
+        "chi_validity",
+        "fisher_exact",
+        "matrix_tools",
+        "r_matrix"
+      ],
+      "objectives_fr": [
+        "Construire des effectifs attendus cohérents et vérifier le domaine de validité d’un test du khi-deux.",
+        "Distinguer adéquation, indépendance et ajustement d’un paramètre sur les mêmes données."
+      ],
+      "exit_criteria_fr": [
+        "Les catégories couvrent toutes les observations; les effectifs et degrés de liberté sont vérifiés.",
+        "L’ajustement d’un paramètre est pris en compte et la sortie automatique de chisq.test n’est pas acceptée sans contrôle."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 4 Q1-Q6",
+          "purpose": "Indépendance, marges, attendus et statistique."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q3-Q4, Q7 et Q13",
+          "purpose": "Comptages Poisson, regroupements et comparaison au modèle ajusté."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q8-Q10",
+          "purpose": "Portée des modèles de comptages et de l'indépendance."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L13/L13_Travail.Rmd",
+      "correction_path": "lessons/L13/L13_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 5,
+        "concept_checks": 4,
+        "maths": 13,
+        "R": 12,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "Effectifs complets, modèle estimé, ddl et décision.",
+      "depth_limit_fr": "Fisher exact: réserve de consultation; pas d’ajout d’un exercice complet.",
+      "review_competency_ids": [
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.poisson_model",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.chi_square_fit",
+        "comp.ps1.chi_square_grouping",
+        "comp.ps1.contingency_independence",
+        "comp.ps1.joint_model_probability",
+        "comp.ps1.poisson_expected_counts"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L13/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "E4 Q1-Q6",
+          "purpose": "Indépendance, effectifs et ddl"
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q4,Q7-Q10,Q13",
+          "purpose": "Adéquation, indépendance, probabilités conjointes et limites"
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 2,
+      "block_count": 8,
+      "review_allocation": {
+        "correction_minutes": 4,
+        "anki_minutes": 2
+      }
+    },
+    {
+      "id": "X01",
+      "kind": "synthesis",
+      "title_fr": "Synthèse: probabilités, estimation et tests",
+      "minutes": 60,
+      "order": 14,
+      "module_id": "M03",
+      "depends_on": [
+        "L07",
+        "L09",
+        "L12",
+        "L13"
+      ],
+      "competency_ids": [],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Choisir et combiner des méthodes dans un contexte inédit, sans intitulé révélant la méthode."
+      ],
+      "exit_criteria_fr": [
+        "40 min de tentative, 15 min de correction et 5 min de tri; choix, hypothèses, calcul et conclusion vérifiés."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q1-Q3",
+          "purpose": "Compétences de construction et d'analyse d'un estimateur."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q9",
+          "purpose": "Pivots, tests et conclusions."
+        },
+        {
+          "source_id": "ctd06",
+          "locator": "Exercices 1,3 et 4",
+          "purpose": "Plans de comparaison, diagnostics et indépendance."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q1",
+          "purpose": "Mélange et probabilités totales."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5-Q7",
+          "purpose": "Intervalles de comptages, appariement et table croisée."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/X01/X01_Travail.Rmd",
+      "correction_path": "lessons/X01/X01_Corrige.Rmd",
+      "review_competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.binary_feature_redundancy",
+        "comp.ps1.categorical_counts",
+        "comp.ps1.chi_square_fit",
+        "comp.ps1.chi_square_grouping",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.classification_threshold",
+        "comp.ps1.clt_standardize",
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_predict",
+        "comp.ps1.conditional_probability",
+        "comp.ps1.confidence_interval",
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.confusion_matrix",
+        "comp.ps1.contingency_independence",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.distribution_compare",
+        "comp.ps1.empirical_probability",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.geometric_integral",
+        "comp.ps1.importance_sampling",
+        "comp.ps1.mc_implement",
+        "comp.ps1.mc_integral",
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.normality_assess",
+        "comp.ps1.poisson_expected_counts",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.practical_significance",
+        "comp.ps1.prediction_compare",
+        "comp.ps1.probability_compare",
+        "comp.ps1.proportion_interval",
+        "comp.ps1.proportion_test",
+        "comp.ps1.r_filter",
+        "comp.ps1.r_interval_compute",
+        "comp.ps1.r_plot",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.r_running_mean",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty",
+        "comp.ps1.transformed_moments",
+        "comp.ps1.two_mean_test",
+        "comp.ps1.variance_linear_combination",
+        "comp.ps1.wlln_apply"
+      ],
+      "content_manifest_path": "lessons/X01/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "planning_source_refs": [
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Objectifs; Evaluation",
+          "purpose": "Alignement du plan et des conditions"
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1, Temps3 Q1-Q3",
+          "purpose": "Relier binom.test, taille d’échantillon et portée de l’interprétation; vérifier indépendance et même cible avant de regrouper des sondages."
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 2,
+      "block_count": 1,
+      "time_breakdown": {
+        "tentative": 40,
+        "correction": 15,
+        "tri_rappel_anki": 5
+      },
+      "review_allocation": {
+        "correction_minutes": 15,
+        "anki_minutes": 5
+      }
+    },
+    {
+      "id": "L14",
+      "kind": "lesson",
+      "title_fr": "Couples, espérance conditionnelle et variance totale",
+      "minutes": 45,
+      "order": 15,
+      "module_id": "M04",
+      "depends_on": [
+        "L04",
+        "L05"
+      ],
+      "competency_ids": [
+        "comp.ps1.joint_model_probability"
+      ],
+      "topic_ids": [
+        "best_predictor",
+        "cond_exp_value",
+        "cond_exp_var",
+        "cond_variance",
+        "conditional_density",
+        "correlation",
+        "cov_cauchy",
+        "explained_var",
+        "indep_factorization",
+        "joint_density",
+        "joint_transfer",
+        "law_total_expectation",
+        "law_total_variance",
+        "marginals",
+        "uncorrelated",
+        "within_between"
+      ],
+      "objectives_fr": [
+        "Obtenir lois marginales et conditionnelles en respectant le support conjoint.",
+        "Distinguer espérance conditionnelle numérique et aléatoire, puis démontrer et interpréter la variance totale."
+      ],
+      "exit_criteria_fr": [
+        "Le domaine des intégrales et la normalisation conditionnelle sont corrects.",
+        "Les deux termes de variance totale ont une interprétation précise; covariance nulle ne devient pas indépendance."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "purpose": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        },
+        {
+          "source_id": "st07_08",
+          "locator": "PDF pp.1-2, « Couple continu » et « Couple discret »",
+          "purpose": "Utiliser un support conjoint explicite et distinguer les deux espérances conditionnelles."
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.3, « Lien entre covariance et indépendance »",
+          "purpose": "Contre-exemple à la réciproque de l’indépendance."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "purpose": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L14/L14_Travail.Rmd",
+      "correction_path": "lessons/L14/L14_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 6,
+        "concept_checks": 5,
+        "maths": 17,
+        "R": 11,
+        "self_correction_review": 6
+      },
+      "core_focus_fr": "Une loi jointe, deux conditionnements, espérance et variance totales.",
+      "depth_limit_fr": "Normale bivariée facultative reste en réserve.",
+      "review_competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.inverse_transform",
+        "comp.ps1.provided_model_execute",
+        "comp.ps1.r_code_explain",
+        "comp.ps1.r_documentation",
+        "comp.ps1.r_functions",
+        "comp.ps1.r_pipeline",
+        "comp.ps1.r_vectorized_summary",
+        "comp.ps1.rmd_reproducible",
+        "comp.ps1.simulation_diagnostic",
+        "comp.ps1.transformed_moments"
+      ],
+      "first_practice_competency_ids": [],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L14/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "E1 Q1-Q4; E2 Q0-Q11",
+          "purpose": "Couples, conditionnement, espérance et variance totales"
+        },
+        {
+          "source_id": "st07_08",
+          "locator": "PDF p.1, couple continu et discret; résultats p.2 séparés",
+          "purpose": "Garder un même objet pour marginaliser, conditionner, passer de E(X|Y=y) à E(X|Y), puis reconstruire la variance totale; correction hors Travail.Rmd."
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.3",
+          "purpose": "Prévoir et calculer une covariance pour réfuter covariance nulle donc indépendance; varier le contexte au rappel."
+        },
+        {
+          "source_id": "st_poly_discretes",
+          "locator": "PDF pp.12-14",
+          "purpose": "Appui tabulaire pour passer d’une loi jointe aux marginales et à l’indépendance."
+        },
+        {
+          "source_id": "st_poly_continues",
+          "locator": "PDF pp.14-18",
+          "purpose": "Référence pour couples et approximation de moyennes; séparer TCL standardisé et approximation à taille finie, et vérifier les deux effectifs théoriques pour une approximation binomiale."
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 2,
+      "block_count": 10
+    },
+    {
+      "id": "L15",
+      "kind": "lesson",
+      "title_fr": "Régression simple : estimation, qualité et inférence",
+      "minutes": 60,
+      "order": 16,
+      "module_id": "M04",
+      "depends_on": [
+        "L09",
+        "L12",
+        "L14"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_fit",
+        "comp.ps1.regression_interpret",
+        "comp.ps1.regression_r2",
+        "comp.ps1.regression_slope"
+      ],
+      "topic_ids": [
+        "fisher_law",
+        "r_lm",
+        "r_model_output",
+        "reg_coef_ci",
+        "reg_coef_se",
+        "reg_coef_t",
+        "reg_cond_mean",
+        "reg_diagnostics",
+        "reg_empirical_corr",
+        "reg_empirical_cov",
+        "reg_errors",
+        "reg_f_test",
+        "reg_fit",
+        "reg_intercept",
+        "reg_ols",
+        "reg_ols_formulas",
+        "reg_orthogonality",
+        "reg_pop_var",
+        "reg_r2",
+        "reg_r2_rho",
+        "reg_resid_var",
+        "reg_residuals",
+        "reg_rss",
+        "reg_rss_objective",
+        "reg_scatter",
+        "reg_simple",
+        "reg_slope",
+        "reg_standardized",
+        "reg_t_f_equiv",
+        "reg_tss",
+        "reg_unbiased"
+      ],
+      "objectives_fr": [
+        "Ajuster et vérifier une régression simple en reliant pente, covariance, résidus et R².",
+        "Reconstruire un test ou intervalle de coefficient et produire une interprétation conditionnelle en français."
+      ],
+      "exit_criteria_fr": [
+        "Pente, RSS/TSS et R² concordent entre calcul et R; un graphique vérifie la plausibilité du modèle.",
+        "Le t observé, ses degrés de liberté et la conclusion en unités originales sont corrects; erreur et résidu sont distingués."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "purpose": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie I Q1-Q7, lignes 86-149",
+          "purpose": "Relier graphiques, coefficient, incertitude et portée de l’association."
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.4, « Le quartet d’Anscombe »",
+          "purpose": "Les résumés numériques ne remplacent pas le nuage de points."
+        },
+        {
+          "source_id": "cm08",
+          "locator": "PDF pp.1-10, revue intégrale; particulièrement pp.6-10",
+          "purpose": "Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "purpose": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L15/L15_Travail.Rmd",
+      "correction_path": "lessons/L15/L15_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 6,
+        "concept_checks": 5,
+        "maths": 19,
+        "R": 18,
+        "self_correction_review": 12
+      },
+      "core_focus_fr": "Calculs MCO/R², sortie lm, t/IC et rédaction.",
+      "depth_limit_fr": "Lois admises et Gauss-Markov: énoncé/hypothèses, pas une preuve artificielle.",
+      "review_competency_ids": [
+        "comp.ps1.confidence_interval",
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.joint_model_probability",
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.proportion_interval",
+        "comp.ps1.r_interval_compute",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_coefficient_test",
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_fit",
+        "comp.ps1.regression_interpret",
+        "comp.ps1.regression_r2",
+        "comp.ps1.regression_slope"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L15/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "E1 Q1-Q6; E2 Q1-Q2; E3 Q1-Q7; E4 Q1-Q6",
+          "purpose": "MCO, R², sorties R et inférence"
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie 1 Q1-Q7",
+          "purpose": "Régression, tests, diagnostics et interprétation"
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.4",
+          "purpose": "Comparer des jeux ayant les mêmes résumés et des graphes différents; imposer le graphique avant l’interprétation du modèle."
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 2,
+      "block_count": 13,
+      "review_allocation": {
+        "correction_minutes": 5,
+        "anki_minutes": 2,
+        "replaceable_retrieval_minutes": 5
+      }
+    },
+    {
+      "id": "L16",
+      "kind": "lesson",
+      "title_fr": "Régression multiple, confusion et variance expliquée",
+      "minutes": 55,
+      "order": 17,
+      "module_id": "M04",
+      "depends_on": [
+        "L15"
+      ],
+      "competency_ids": [
+        "comp.ps1.causal_distinction",
+        "comp.ps1.confounding_assess",
+        "comp.ps1.omitted_variable_bias",
+        "comp.ps1.regression_coefficient_test",
+        "comp.ps1.regression_multiple_fit",
+        "comp.ps1.regression_partial_interpret"
+      ],
+      "topic_ids": [
+        "reg_covmatrix",
+        "reg_formula",
+        "reg_fullrank",
+        "reg_multi_coef",
+        "reg_multi_df",
+        "reg_multi_f",
+        "reg_multi_intercept",
+        "reg_multi_ols",
+        "reg_multi_pred",
+        "reg_multi_r2",
+        "reg_multi_resvar",
+        "reg_multi_t",
+        "reg_multiple",
+        "reg_omitted",
+        "reg_partial"
+      ],
+      "objectives_fr": [
+        "Interpréter un effet partiel et expliquer le changement de coefficient après ajustement.",
+        "Dériver le système des covariances, contrôler les degrés de liberté et discuter la confusion."
+      ],
+      "exit_criteria_fr": [
+        "Les modèles sont comparés sur les mêmes lignes; les effets partiels sont formulés conditionnellement.",
+        "Un biais d’omission est dérivé par covariance et son signe interprété; les tests individuels et globaux sont distingués."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd09",
+          "locator": "E2 Q1-Q9, lignes 273-489",
+          "purpose": "Système des covariances, intercept, tests individuels et globaux, part expliquée."
+        },
+        {
+          "source_id": "ctd10",
+          "locator": "E1 Q1-Q4 lignes 35-149; E2 Q1-Q5 lignes 154-274; E3 Q1-Q2 lignes 285-350",
+          "purpose": "Omission, confusion, comparaison de modèles et prédicteurs décorrélés."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie II Q1-Q3, lignes 154-239",
+          "purpose": "Formule non standardisée de l’omission et interprétation partielle."
+        },
+        {
+          "source_id": "st10_simpson",
+          "locator": "PDF p.1, tableau stratifié et question finale",
+          "purpose": "Changer les pondérations peut inverser un classement agrégé."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-244 à PS1-264; PS1-005; PS1-030",
+          "purpose": "Rang plein, covariance matricielle, degrés de liberté et limites de R²."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L16/L16_Travail.Rmd",
+      "correction_path": "lessons/L16/L16_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 6,
+        "concept_checks": 5,
+        "maths": 18,
+        "R": 19,
+        "self_correction_review": 7
+      },
+      "core_focus_fr": "Effet partiel, système des covariances et confusion.",
+      "depth_limit_fr": "CTD10 E4: réserve; effets standardisés avancés selon D00.",
+      "review_competency_ids": [
+        "comp.ps1.association_explain",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.expected_count",
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_fit",
+        "comp.ps1.regression_interpret",
+        "comp.ps1.regression_r2",
+        "comp.ps1.regression_slope",
+        "comp.ps1.transformed_moments"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.confounding_assess",
+        "comp.ps1.omitted_variable_bias",
+        "comp.ps1.regression_multiple_fit",
+        "comp.ps1.regression_partial_interpret"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L16/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "ctd09",
+          "locator": "E2 Q1-Q9",
+          "purpose": "Coefficients, covariances, t/F et variance expliquée"
+        },
+        {
+          "source_id": "ctd10",
+          "locator": "E1 Q1-Q4; E2 Q1-Q5; E3 Q1-Q2",
+          "purpose": "Confusion, biais d’omission et ajustements multiples"
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie 2 Q1-Q3",
+          "purpose": "Modèle incomplet, confusion et effet partiel"
+        },
+        {
+          "source_id": "st10_simpson",
+          "locator": "PDF p.1, tableau stratifié",
+          "purpose": "Comparer proportions agrégées et conditionnelles puis expliquer les poids et la confusion; transposer ensuite au coefficient d’un modèle incomplet."
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 2,
+      "block_count": 9
+    },
+    {
+      "id": "L17",
+      "kind": "lesson",
+      "title_fr": "Médiation, variables qualitatives et bootstrap appliqué",
+      "minutes": 45,
+      "order": 18,
+      "module_id": "M04",
+      "depends_on": [
+        "L10",
+        "L12",
+        "L16"
+      ],
+      "competency_ids": [
+        "comp.ps1.bootstrap_interval",
+        "comp.ps1.categorical_model",
+        "comp.ps1.mediation_decompose",
+        "comp.ps1.mediation_estimate",
+        "comp.ps1.mediation_interpret"
+      ],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Interpréter un facteur qualitatif et les composantes d’un modèle de médiation cohérent.",
+        "Rééchantillonner les lignes entières pour un effet indirect et expliciter les limites causales."
+      ],
+      "exit_criteria_fr": [
+        "Les modèles compatibles, la catégorie de référence et l’unité de rééchantillonnage sont contrôlés.",
+        "La décomposition algébrique est justifiée; aucune conclusion causale ne découle de la seule significativité."
+      ],
+      "source_refs": [
+        {
+          "source_id": "tp04",
+          "locator": "Partie III Q1-Q3, lignes 242-306; Partie IV Q1-Q4, lignes 310-391",
+          "purpose": "Facteur, association totale/directe/indirecte, inférence et bootstrap du produit."
+        },
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Descriptions FRANÇAIS, Contenu : « bootstrap » et « Régression à 1 et 2 variables, facteur de confusion, facteur de médiation »",
+          "purpose": "Le bootstrap et la médiation appartiennent au programme explicite."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-197, PS1-207, PS1-244, PS1-245, PS1-257, PS1-261 à PS1-263",
+          "purpose": "Conditionnement, espérance totale, coefficients partiels et sorties R; la médiation est dérivée du TP04 et n’usurpe pas un ancien ID."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/L17/L17_Travail.Rmd",
+      "correction_path": "lessons/L17/L17_Corrige.Rmd",
+      "time_breakdown": {
+        "cours": 5,
+        "concept_checks": 4,
+        "maths": 13,
+        "R": 12,
+        "self_correction_review": 11
+      },
+      "core_focus_fr": "Codage du facteur, décomposition et bootstrap cohérent.",
+      "depth_limit_fr": "Médiation conserve une place réelle, même si la théorie causale complète dépasse PS1.",
+      "review_competency_ids": [
+        "comp.ps1.causal_distinction",
+        "comp.ps1.confidence_interval",
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.confounding_assess",
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.omitted_variable_bias",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.proportion_interval",
+        "comp.ps1.r_interval_compute",
+        "comp.ps1.regression_coefficient_test",
+        "comp.ps1.regression_multiple_fit",
+        "comp.ps1.regression_partial_interpret"
+      ],
+      "first_practice_competency_ids": [
+        "comp.ps1.bootstrap_interval",
+        "comp.ps1.categorical_model",
+        "comp.ps1.mediation_decompose",
+        "comp.ps1.mediation_estimate",
+        "comp.ps1.mediation_interpret"
+      ],
+      "competency_scope_note_fr": "Les objectifs locaux peuvent introduire une partie d’une compétence. Sa validation complète attend ses connaissances requises et sa rubrique indépendante.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "content_manifest_path": "lessons/L17/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "planning_source_refs": [
+        {
+          "source_id": "tp04",
+          "locator": "Partie 3 Q1-Q3; Partie 4 Q1-Q4",
+          "purpose": "Facteur, effet direct/indirect et bootstrap"
+        },
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Contenu: facteur de médiation",
+          "purpose": "Maintien explicite dans le parcours"
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 3,
+      "block_count": 5,
+      "review_allocation": {
+        "correction_minutes": 4,
+        "anki_minutes": 2,
+        "replaceable_retrieval_minutes": 5
+      }
+    },
+    {
+      "id": "X02",
+      "kind": "synthesis",
+      "title_fr": "Synthèse: couples, régression et interprétation",
+      "minutes": 60,
+      "order": 19,
+      "module_id": "M04",
+      "depends_on": [
+        "L14",
+        "L15",
+        "L16",
+        "L17"
+      ],
+      "competency_ids": [],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Relier théorie, code et interprétation sur des observations nouvelles."
+      ],
+      "exit_criteria_fr": [
+        "40 min de tentative, 15 min de correction et 5 min de tri; limites causales et changements d’unité contrôlés."
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "E2 Q1-Q11, lignes 141-360",
+          "purpose": "Mélange, conditionnement et variance totale."
+        },
+        {
+          "source_id": "ctd08",
+          "locator": "E1-E4, lignes 54-570",
+          "purpose": "Pente, MCO, qualité, inférence et prédiction."
+        },
+        {
+          "source_id": "ctd10",
+          "locator": "E1 Q1-Q4, lignes 35-149",
+          "purpose": "Omission d’un prédicteur et interprétation du décalage."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Parties III-IV, lignes 242-391",
+          "purpose": "Contraste de groupe, médiation et bootstrap."
+        },
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Descriptions FRANÇAIS, Objectifs et Contenu",
+          "purpose": "Relier modélisation, calcul, simulation et critique du modèle."
+        }
+      ],
+      "depth": "essential",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/X02/X02_Travail.Rmd",
+      "correction_path": "lessons/X02/X02_Corrige.Rmd",
+      "review_competency_ids": [
+        "comp.ps1.bootstrap_interval",
+        "comp.ps1.categorical_model",
+        "comp.ps1.causal_distinction",
+        "comp.ps1.confounding_assess",
+        "comp.ps1.joint_model_probability",
+        "comp.ps1.mediation_decompose",
+        "comp.ps1.mediation_estimate",
+        "comp.ps1.mediation_interpret",
+        "comp.ps1.omitted_variable_bias",
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_coefficient_test",
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_fit",
+        "comp.ps1.regression_interpret",
+        "comp.ps1.regression_multiple_fit",
+        "comp.ps1.regression_partial_interpret",
+        "comp.ps1.regression_r2",
+        "comp.ps1.regression_slope"
+      ],
+      "content_manifest_path": "lessons/X02/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "planning_source_refs": [
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Objectifs; Evaluation",
+          "purpose": "Alignement du plan et des conditions"
+        }
+      ],
+      "exercise_count": 4,
+      "variant_count": 0,
+      "block_count": 0
+    },
+    {
+      "id": "A4",
+      "kind": "reference",
+      "title_fr": "Finaliser et tester la feuille A4",
+      "minutes": 60,
+      "order": 20,
+      "module_id": "M05",
+      "depends_on": [
+        "X01",
+        "X02"
+      ],
+      "competency_ids": [],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Sélectionner les références utiles et vérifier leur consultation rapide."
+      ],
+      "exit_criteria_fr": [
+        "10 min de sélection, 40 min d’écriture, 10 min de recherche; chaque formule porte ses hypothèses et paramètres."
+      ],
+      "source_refs": [
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Evaluation FRANÇAIS : examen individuel de 3h sur machine; documents autorisés : résumé manuscrit au format A4",
+          "purpose": "Le support ci-dessous prépare une feuille manuscrite, pas un substitut numérique autorisé à l’épreuve."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-063 à PS1-075; PS1-096, PS1-097; PS1-114 à PS1-121; PS1-128, PS1-132, PS1-139 à PS1-160; PS1-170, PS1-181 à PS1-190; PS1-197 à PS1-264",
+          "purpose": "Base relue des lois, limites, estimation, intervalles, tests, couples et régression. Les condensations ci-dessous sont des adaptations avec hypothèses conservées."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie IV Q1-Q4, lignes 310-391",
+          "purpose": "Référence compacte de médiation et de bootstrap; les conditions sont détaillées dans L17."
+        },
+        {
+          "source_id": "ctd08",
+          "locator": "E4 Q1-Q6, lignes 426-570",
+          "purpose": "Tests t/F et intervalle de pente."
+        },
+        {
+          "source_id": "ctd09",
+          "locator": "E2 Q5-Q9, lignes 393-489",
+          "purpose": "Degrés de liberté multiples, test global et variance expliquée."
+        }
+      ],
+      "depth": "closing",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/A4/A4_Travail.Rmd",
+      "correction_path": "lessons/A4/A4_Corrige.Rmd",
+      "review_competency_ids": [],
+      "content_manifest_path": "lessons/A4/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "planning_source_refs": [
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Objectifs; Evaluation",
+          "purpose": "Alignement du plan et des conditions"
+        }
+      ],
+      "exercise_count": 3,
+      "variant_count": 0,
+      "block_count": 0
+    },
+    {
+      "id": "S01",
+      "kind": "mock",
+      "title_fr": "Simulation chronométrée réservée",
+      "minutes": 180,
+      "order": 21,
+      "module_id": "M05",
+      "depends_on": [
+        "A4"
+      ],
+      "competency_ids": [],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Résoudre une épreuve dans les conditions autorisées, sur décision explicite de l’étudiant."
+      ],
+      "exit_criteria_fr": [
+        "Tentative préservée avec temps et fichiers; aucune correction consultée avant la fin."
+      ],
+      "source_refs": [],
+      "depth": "closing",
+      "lesson_status": "protocol_available",
+      "work_path": "lessons/S01/S01_Travail.Rmd",
+      "correction_path": "lessons/S01/S01_Corrige.Rmd",
+      "review_competency_ids": [],
+      "content_manifest_path": "lessons/S01/lesson.json",
+      "content_scope_fr": "Protocole seul; aucun sujet, aucune réponse d’épreuve.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "planning_source_refs": [],
+      "exercise_count": 1,
+      "variant_count": 0,
+      "block_count": 0
+    },
+    {
+      "id": "F01",
+      "kind": "review",
+      "title_fr": "Réparer les erreurs prioritaires",
+      "minutes": 90,
+      "order": 22,
+      "module_id": "M05",
+      "depends_on": [
+        "S01"
+      ],
+      "competency_ids": [],
+      "topic_ids": [],
+      "objectives_fr": [
+        "Classer les erreurs puis vérifier les réparations sur des variantes nouvelles."
+      ],
+      "exit_criteria_fr": [
+        "25 min d’analyse, quatre créneaux de 10 min, 15 min de rappel mixte, 10 min d’A4; difficultés persistantes signalées."
+      ],
+      "source_refs": [
+        {
+          "source_id": "st09",
+          "locator": "PDF p.7, « Consignes pour l’écrit réflexif »",
+          "purpose": "Reprendre l’exigence de vocabulaire exact et de conception corrigée, sans rédiger l’écrit personnel demandé en soutien."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1, questions : aléatoire, choisi, inconnu mais non aléatoire; interprétation de tests de proportion",
+          "purpose": "Distinguer paramètre, hasard d’échantillonnage et décision; aucune reprise des articles comme autorité mathématique."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-017, PS1-064 à PS1-075, PS1-114 à PS1-121, PS1-128, PS1-132, PS1-139 à PS1-160, PS1-170, PS1-181 à PS1-190, PS1-197 à PS1-264",
+          "purpose": "Banque de réparations originales des concepts et méthodes déjà travaillés."
+        },
+        {
+          "source_id": "ctd10",
+          "locator": "E1 Q1-Q4, lignes 35-149",
+          "purpose": "Omission et interprétation conditionnelle."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Parties II-IV, lignes 154-391",
+          "purpose": "Échantillon commun, médiation et bootstrap."
+        }
+      ],
+      "depth": "closing",
+      "lesson_status": "complete_available",
+      "work_path": "lessons/F01/F01_Travail.Rmd",
+      "correction_path": "lessons/F01/F01_Corrige.Rmd",
+      "review_competency_ids": [],
+      "content_manifest_path": "lessons/F01/lesson.json",
+      "content_scope_fr": "Cours et exercices rédigés, corrigé pédagogique séparé; aucune maîtrise d’étudiant déduite.",
+      "demonstration_depth": "Support rédigé; preuves et lois admises distinguées dans lesson.json et le registre de couverture.",
+      "planning_source_refs": [
+        {
+          "source_id": "syllabus_ps1",
+          "locator": "Objectifs; Evaluation",
+          "purpose": "Alignement du plan et des conditions"
+        },
+        {
+          "source_id": "st09",
+          "locator": "PDF p.7, exigences de précision et de prise de recul",
+          "purpose": "Reprendre le principe d’un bilan de conception erronée et de formulation corrigée; ne pas rédiger à la place de l’étudiant son devoir réflexif personnel."
+        }
+      ],
+      "exercise_count": 10,
+      "variant_count": 0,
+      "block_count": 0
+    }
+  ],
+  "edges": [
+    {
+      "to": "L01",
+      "type": "prerequisite",
+      "from": "D00"
+    },
+    {
+      "to": "L02",
+      "type": "prerequisite",
+      "from": "L01"
+    },
+    {
+      "to": "L03",
+      "type": "prerequisite",
+      "from": "L02"
+    },
+    {
+      "to": "L04",
+      "type": "prerequisite",
+      "from": "L03"
+    },
+    {
+      "to": "L05",
+      "type": "prerequisite",
+      "from": "L03"
+    },
+    {
+      "to": "L05",
+      "type": "prerequisite",
+      "from": "L04"
+    },
+    {
+      "to": "L06",
+      "type": "prerequisite",
+      "from": "L04"
+    },
+    {
+      "to": "L06",
+      "type": "prerequisite",
+      "from": "L05"
+    },
+    {
+      "to": "L07",
+      "type": "prerequisite",
+      "from": "L03"
+    },
+    {
+      "to": "L07",
+      "type": "prerequisite",
+      "from": "L06"
+    },
+    {
+      "to": "L08",
+      "type": "prerequisite",
+      "from": "L06"
+    },
+    {
+      "to": "L09",
+      "type": "prerequisite",
+      "from": "L05"
+    },
+    {
+      "to": "L09",
+      "type": "prerequisite",
+      "from": "L08"
+    },
+    {
+      "to": "L10",
+      "type": "prerequisite",
+      "from": "L05"
+    },
+    {
+      "to": "L10",
+      "type": "prerequisite",
+      "from": "L06"
+    },
+    {
+      "to": "L10",
+      "type": "prerequisite",
+      "from": "L08"
+    },
+    {
+      "to": "L10",
+      "type": "prerequisite",
+      "from": "L09"
+    },
+    {
+      "to": "L11",
+      "type": "prerequisite",
+      "from": "L10"
+    },
+    {
+      "to": "L12",
+      "type": "prerequisite",
+      "from": "L11"
+    },
+    {
+      "to": "L13",
+      "type": "prerequisite",
+      "from": "L02"
+    },
+    {
+      "to": "L13",
+      "type": "prerequisite",
+      "from": "L05"
+    },
+    {
+      "to": "L13",
+      "type": "prerequisite",
+      "from": "L11"
+    },
+    {
+      "to": "X01",
+      "type": "prerequisite",
+      "from": "L07"
+    },
+    {
+      "to": "X01",
+      "type": "prerequisite",
+      "from": "L09"
+    },
+    {
+      "to": "X01",
+      "type": "prerequisite",
+      "from": "L12"
+    },
+    {
+      "to": "X01",
+      "type": "prerequisite",
+      "from": "L13"
+    },
+    {
+      "to": "L14",
+      "type": "prerequisite",
+      "from": "L04"
+    },
+    {
+      "to": "L14",
+      "type": "prerequisite",
+      "from": "L05"
+    },
+    {
+      "to": "L15",
+      "type": "prerequisite",
+      "from": "L09"
+    },
+    {
+      "to": "L15",
+      "type": "prerequisite",
+      "from": "L12"
+    },
+    {
+      "to": "L15",
+      "type": "prerequisite",
+      "from": "L14"
+    },
+    {
+      "to": "L16",
+      "type": "prerequisite",
+      "from": "L15"
+    },
+    {
+      "to": "L17",
+      "type": "prerequisite",
+      "from": "L10"
+    },
+    {
+      "to": "L17",
+      "type": "prerequisite",
+      "from": "L12"
+    },
+    {
+      "to": "L17",
+      "type": "prerequisite",
+      "from": "L16"
+    },
+    {
+      "to": "X02",
+      "type": "prerequisite",
+      "from": "L14"
+    },
+    {
+      "to": "X02",
+      "type": "prerequisite",
+      "from": "L15"
+    },
+    {
+      "to": "X02",
+      "type": "prerequisite",
+      "from": "L16"
+    },
+    {
+      "to": "X02",
+      "type": "prerequisite",
+      "from": "L17"
+    },
+    {
+      "to": "A4",
+      "type": "prerequisite",
+      "from": "X01"
+    },
+    {
+      "to": "A4",
+      "type": "prerequisite",
+      "from": "X02"
+    },
+    {
+      "to": "S01",
+      "type": "prerequisite",
+      "from": "A4"
+    },
+    {
+      "to": "F01",
+      "type": "prerequisite",
+      "from": "S01"
+    },
+    {
+      "to": "L01",
+      "type": "sequence",
+      "from": "D00"
+    },
+    {
+      "to": "L02",
+      "type": "sequence",
+      "from": "L01"
+    },
+    {
+      "to": "L03",
+      "type": "sequence",
+      "from": "L02"
+    },
+    {
+      "to": "L04",
+      "type": "sequence",
+      "from": "L03"
+    },
+    {
+      "to": "L05",
+      "type": "sequence",
+      "from": "L04"
+    },
+    {
+      "to": "L06",
+      "type": "sequence",
+      "from": "L05"
+    },
+    {
+      "to": "L07",
+      "type": "sequence",
+      "from": "L06"
+    },
+    {
+      "to": "L08",
+      "type": "sequence",
+      "from": "L07"
+    },
+    {
+      "to": "L09",
+      "type": "sequence",
+      "from": "L08"
+    },
+    {
+      "to": "L10",
+      "type": "sequence",
+      "from": "L09"
+    },
+    {
+      "to": "L11",
+      "type": "sequence",
+      "from": "L10"
+    },
+    {
+      "to": "L12",
+      "type": "sequence",
+      "from": "L11"
+    },
+    {
+      "to": "L13",
+      "type": "sequence",
+      "from": "L12"
+    },
+    {
+      "to": "X01",
+      "type": "sequence",
+      "from": "L13"
+    },
+    {
+      "to": "L14",
+      "type": "sequence",
+      "from": "X01"
+    },
+    {
+      "to": "L15",
+      "type": "sequence",
+      "from": "L14"
+    },
+    {
+      "to": "L16",
+      "type": "sequence",
+      "from": "L15"
+    },
+    {
+      "to": "L17",
+      "type": "sequence",
+      "from": "L16"
+    },
+    {
+      "to": "X02",
+      "type": "sequence",
+      "from": "L17"
+    },
+    {
+      "to": "A4",
+      "type": "sequence",
+      "from": "X02"
+    },
+    {
+      "to": "S01",
+      "type": "sequence",
+      "from": "A4"
+    },
+    {
+      "to": "F01",
+      "type": "sequence",
+      "from": "S01"
+    }
+  ],
+  "modules": [
+    {
+      "id": "M00",
+      "title_fr": "Diagnostic"
+    },
+    {
+      "id": "M01",
+      "title_fr": "Probabilités et R"
+    },
+    {
+      "id": "M02",
+      "title_fr": "Simulation et estimation"
+    },
+    {
+      "id": "M03",
+      "title_fr": "Inférence et première synthèse"
+    },
+    {
+      "id": "M04",
+      "title_fr": "Couples et régression"
+    },
+    {
+      "id": "M05",
+      "title_fr": "Clôture et simulation"
+    }
+  ],
+  "learner_state_included": false,
+  "competency_catalog_scope": "84 compétences TP/mock; les critères de sortie couvrent aussi les exigences théoriques CTD non individualisées dans ce catalogue.",
+  "budget_note_fr": "Minutes de travail effectif; correction et rappel compris. Aucune garantie de maîtrise universelle en 20 heures.",
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "encompassing_references": [
+    {
+      "category_topic_id": "choose_test",
+      "member_topic_id": "chi_fit",
+      "category_lesson_id": "L11",
+      "member_lesson_id": "L13",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_reference_not_prerequisite"
+    },
+    {
+      "category_topic_id": "choose_test",
+      "member_topic_id": "chi_independent",
+      "category_lesson_id": "L11",
+      "member_lesson_id": "L13",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_reference_not_prerequisite"
+    },
+    {
+      "category_topic_id": "choose_test",
+      "member_topic_id": "student_test_one",
+      "category_lesson_id": "L11",
+      "member_lesson_id": "L12",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_reference_not_prerequisite"
+    },
+    {
+      "category_topic_id": "choose_test",
+      "member_topic_id": "student_test_two",
+      "category_lesson_id": "L11",
+      "member_lesson_id": "L12",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_reference_not_prerequisite"
+    },
+    {
+      "category_topic_id": "choose_test",
+      "member_topic_id": "welch_test",
+      "category_lesson_id": "L11",
+      "member_lesson_id": "L12",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_reference_not_prerequisite"
+    }
+  ],
+  "content_status": "23_paired_activities_authored",
+  "content_warning_fr": "La disponibilité d’un support et sa validation technique ne sont pas une preuve de maîtrise. S01 ne contient qu’un protocole.",
+  "legacy_pilot_path": "pilot/L04_Travail.Rmd"
+}

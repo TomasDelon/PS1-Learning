@@ -1,0 +1,303 @@
+---
+title: "L06 · Échantillon, loi des grands nombres et TCL"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L06
+  document_role: work
+  content_status: authored_complete
+  minutes: 45
+  exercise_ids: ["L06-E01", "L06-E02", "L06-E03", "L06-E04"]
+  block_ids: ["L06-B01", "L06-B02", "L06-B03", "L06-B04", "L06-B05", "L06-B06", "L06-B09", "L06-B10", "L06-B11", "L06-B12", "L06-B13", "L06-B07", "L06-B08"]
+  learner_state: not_created
+---
+**45 min :** cours 5, compréhension 5, mathématiques 13, R 11, correction 4, Anki 2, révision adaptative 5.
+La loi des grands nombres décrit le rapprochement d'une moyenne vers un centre.
+Le TCL décrit la forme de ses fluctuations après changement d'échelle.
+Une moyenne peut devenir plus précise tandis que sa version standardisée
+garde une variance égale à 1.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+### Échantillon i.i.d. {#L06-B01}
+
+> **DEF [L06-B01] · Échantillon i.i.d.**
+>
+> Une famille $(X_i)$ est i.i.d. si les variables sont indépendantes
+> et ont une même loi. Pour toute sous-famille finie et des boréliens $A_i$,
+> l'indépendance signifie
+> $\mathbb P(\bigcap_i\{X_i\in A_i\})=\prod_i\mathbb P(X_i\in A_i)$.
+> Les réalisations observées se notent $x_i$. Une répétition de la même
+> observation ne crée pas des variables indépendantes.
+
+### Moyenne empirique aléatoire et valeur observée {#L06-B02}
+
+> **DEF [L06-B02] · Moyenne empirique aléatoire et valeur observée**
+>
+> Pour $n\ge1$ et des variables $X_1,\ldots,X_n$ de même loi, leur moyenne est
+> $\overline X_n=n^{-1}\sum_{i=1}^nX_i$, une variable aléatoire.
+> Sur des observations $x_1,\ldots,x_n$, sa valeur est
+> $\overline x_n=n^{-1}\sum_i x_i$. Si la loi commune est intégrable, sa moyenne $m=\mathbb E[X_1]$
+> est un paramètre fixé; ni $\overline X_n$ ni $\overline x_n$ ne lui sont
+> identiques en général.
+
+### Moments de la moyenne {#L06-B03}
+
+> **THM [L06-B03] · Moments de la moyenne**
+>
+> Pour $X_1,\ldots,X_n$ i.i.d. de moyenne $m$ et variance
+> $\sigma^2<\infty$,
+> $$\mathbb E[\overline X_n]=m,\qquad
+> \mathbb V(\overline X_n)=\frac{\sigma^2}{n}.$$
+> La première formule utilise la linéarité; la seconde utilise en plus
+> l'annulation des covariances. L'écart-type de la moyenne vaut
+> $\sigma/\sqrt n$, et non $\sigma/n$.
+
+### Convergence en probabilité {#L06-B04}
+
+> **DEF [L06-B04] · Convergence en probabilité**
+>
+> $T_n$ converge en probabilité vers le nombre $a$, noté
+> $T_n\xrightarrow{\mathbb P}a$, si, pour tout $\varepsilon>0$,
+> $$\mathbb P(|T_n-a|>\varepsilon)\longrightarrow0.$$
+> Cela ne signifie ni égalité à taille finie, ni diminution monotone de l'erreur
+> dans chaque réalisation.
+
+### Inégalité de Bienaymé-Tchebychev {#L06-B05}
+
+> **THM [L06-B05] · Inégalité de Bienaymé-Tchebychev**
+>
+> Si $T$ est de carré intégrable et $\varepsilon>0$,
+> $$\mathbb P(|T-\mathbb E[T]|\ge\varepsilon)
+> \le \frac{\mathbb V(T)}{\varepsilon^2}.$$
+> C'est une majoration, pas une égalité de probabilités.
+> Une borne supérieure à 1 reste vraie mais n'apporte pas d'information utile.
+
+### Loi faible des grands nombres {#L06-B06}
+
+> **THM [L06-B06] · Loi faible des grands nombres**
+>
+> Si $X_1,X_2,\ldots$ sont i.i.d. et intégrables, de moyenne $m$,
+> alors $\overline X_n\xrightarrow{\mathbb P}m$.
+> Sous l'hypothèse plus forte de variance finie $\sigma^2$,
+> Chebyshev fournit la preuve courte :
+> $$\mathbb P(|\overline X_n-m|\ge\varepsilon)
+> \le\frac{\sigma^2}{n\varepsilon^2}\longrightarrow0.$$
+> La preuve ci-dessus ne couvre pas à elle seule le cas intégrable de variance infinie.
+
+### Convergence en loi {#L06-B09}
+
+> **DEF [L06-B09] · Convergence en loi**
+>
+> $T_n\xrightarrow{\mathcal L}T$ signifie
+> $F_{T_n}(t)\to F_T(t)$ en tout point où $F_T$ est continue.
+> L'écriture $T_n\xrightarrow{\mathcal L}\mathcal N(0,1)$ signifie une
+> convergence vers une variable de cette loi. Il ne s'agit pas d'une
+> convergence vers le nombre 0.
+
+### Théorème central limite {#L06-B10}
+
+> **THM [L06-B10] · Théorème central limite**
+>
+> Si $X_1,X_2,\ldots$ sont i.i.d., de moyenne $m$ et de variance
+> $0<\sigma^2<\infty$, alors
+> $$Z_n=\frac{\sqrt n(\overline X_n-m)}{\sigma}
+> \xrightarrow[n\to\infty]{\mathcal L}\mathcal N(0,1).$$
+> À taille finie, remplacer la loi de $Z_n$ par $\mathcal N(0,1)$ est en général
+> une approximation. Le théorème ne fournit pas à lui seul un seuil universel
+> « n assez grand ».
+
+### Moyenne d’un échantillon normal {#L06-B11}
+
+> **THM [L06-B11] · Moyenne d’un échantillon normal**
+>
+> Si les $X_i$ sont indépendantes de loi $\mathcal N(m,\sigma^2)$
+> avec $\sigma>0$, alors, pour tout $n\ge1$,
+> $$\overline X_n\sim\mathcal N(m,\sigma^2/n),\qquad
+> \frac{\sqrt n(\overline X_n-m)}{\sigma}\sim\mathcal N(0,1).$$
+> Ici les lois sont exactes, par stabilité de la famille normale.
+
+### Standardiser une question de probabilité {#L06-B12}
+
+> **MTH [L06-B12] · Standardiser une question de probabilité**
+>
+> Nommer la quantité aléatoire (observation, somme ou moyenne), calculer
+> son centre et son écart-type, puis transformer **chaque borne** avec ces
+> mêmes paramètres. Annoncer si la loi utilisée est exacte ou approximative.
+> Pour la moyenne i.i.d. de variance non nulle, utiliser
+> $(\overline X_n-m)/(\sigma/\sqrt n)$.
+> Pour un comptage binomial approché par une normale, vérifier que $np$ et
+> $n(1-p)$ sont tous deux suffisamment grands; aucune règle unique ne garantit
+> la précision voulue. La correction de continuité s'applique aux bornes discrètes.
+
+### Statistique et paramètre {#L06-B13}
+
+> **DEF [L06-B13] · Statistique et paramètre**
+>
+> Un paramètre $\theta$ est un nombre ou vecteur fixé qui caractérise la
+> loi du modèle. Une statistique $T(X_1,\ldots,X_n)$ est une fonction mesurable
+> calculable sans connaître le paramètre inconnu. Avant observation elle est
+> aléatoire; après observation sa valeur est $T(x_1,\ldots,x_n)$.
+> Une expression utilisant un paramètre inconnu peut servir à une preuve
+> sans être une statistique calculable à partir des seules données.
+
+## 2/6 · Expliquer les objets
+
+### L06-E01 · Comparer les objets (5 min) {#L06-E01}
+
+Pour un échantillon i.i.d. de moyenne $m$ et variance $\sigma^2>0$,
+on pose $Z_n=\sqrt n(\overline X_n-m)/\sigma$.
+Calculer sa variance. La LGN dit-elle que chaque nouvelle observation diminue
+$|\overline x_n-m|$ ? Le TCL affirme-t-il que $Z_n$ converge vers 0 ?
+Si $m$ est inconnu, $Z_n$ est-il calculable à partir des seules données ?
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### L06-E02 · Construire une garantie finie (7 min) {#L06-E02}
+
+Les $X_i$ sont i.i.d. de loi $\mathcal E(1/2)$.
+Démontrer leur LGN par Chebyshev. Trouver un entier $n$ suffisant pour que
+$\mathbb P(|\overline X_n-2|\ge0{,}5)\le0{,}05$.
+Cet entier est-il nécessairement le plus petit qui satisfait la vraie probabilité ?
+Écrire les hypothèses à l'endroit où elles servent.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### L06-E03 · Standardiser une moyenne (6 min) {#L06-E03}
+
+Pour $n=100$ variables i.i.d. de loi $\mathcal E(2)$, approcher
+$\mathbb P(\overline X_{100}>0{,}6)$ par le TCL.
+Donner le centre, la variance et l'écart-type de la moyenne.
+Indiquer exactement où intervient une approximation.
+Que devient le raisonnement si la loi commune est $\mathcal N(0{,}5,0{,}25)$ ?
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### Répéter une expérience avec replicate {#L06-B07}
+
+> **SYX [L06-B07] · Répéter une expérience avec replicate**
+>
+> `replicate(B, expression)` réévalue l'expression B fois. Exemple :
+> `replicate(500, mean(runif(20)))` produit 500 moyennes d'échantillons
+> de taille 20. B est le nombre de répétitions, 20 la taille de chaque échantillon.
+> Fixer la graine une seule fois avant les répétitions. Répéter une valeur
+> déjà calculée avec `rep` ne simule pas de nouvelles expériences.
+
+### Moyennes cumulées, boucle et graphique quantile-quantile {#L06-B08}
+
+> **SYX [L06-B08] · Moyennes cumulées, boucle et graphique quantile-quantile**
+>
+> Pour `x` non vide, `cumsum(x)/seq_along(x)` donne les moyennes des
+> préfixes de longueurs 1,2,... Une boucle `for (k in seq_along(x)) { ... }`
+> parcourt les indices; une forme vectorisée suffit ici.
+> `plot(k, moyennes, type="l")` trace la trajectoire; `abline(h=m)` ajoute
+> une référence horizontale. Pour des données standardisées, `qqnorm(z)`
+> compare quantiles observés et normaux; `abline(0,1)` donne l'identité.
+> `qqline(z)` ajuste une droite par les quartiles, utile à la forme mais qui
+> peut masquer une erreur de centrage ou d'échelle.
+
+### L06-E04 · Observer moyenne et fluctuations (11 min) {#L06-E04}
+
+Avec graine 606, simuler une trajectoire de 2 000 exponentielles de
+taux 2 et tracer les moyennes cumulées.
+Puis simuler 1 000 moyennes indépendantes de taille 25 et 1 000 de taille 100.
+Comparer leurs dispersions, puis standardiser celles de taille 100.
+Tracer un QQ-graphe contre l'identité et estimer la probabilité de E03.
+Commenter ce qui change lorsque la taille quadruple, en distinguant taille
+d'échantillon et nombre de répétitions.
+
+```{r L06-E04}
+set.seed(606)
+# Trajectoire, répétitions, standardisation et graphiques.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `L06_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| L06-E01 | | |
+| L06-E02 | | |
+| L06-E03 | | |
+| L06-E04 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Retenir le facteur racine de n, les hypothèses i.i.d. et variance finie du TCL. Reconstruire la preuve par Chebyshev. Garder séparés loi exacte, limite asymptotique et approximation à taille finie.
+
+Les variantes L06-V01, L06-V02 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### L06-V01 (4 min, en remplacement) {#L06-V01}
+
+On tire une seule variable $Z$ de Bernoulli(1/2), puis on définit $X_i=Z$ pour tous les indices. Toutes les variables ont la même loi. La moyenne converge-t-elle en probabilité vers 1/2 ? Calculer sa variance et une probabilité d'écart.
+
+**Nouvelle tentative sans correction :**
+
+
+### L06-V02 (4 min, en remplacement) {#L06-V02}
+
+Un nombre de pannes suit exactement $\mathcal B(100,0{,}01)$. Peut-on justifier une approximation normale par la seule phrase « n=100 est grand » ? Calculer la probabilité exacte d'aucune panne et expliquer une limite de la loi normale pour cette question.
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd03` (source non redistribuée), Exercice 1 Q0-Q3,Q5-Q6; Exercice 2 Q6; Exercice 3 Q1-Q3 : Moyenne, Chebyshev, LGN, TCL, normalité exacte et simulations.
+- `tp02` (source non redistribuée), Partie 1 Q1-Q3 : Convergence, précision et moyenne cumulative.
+- `st06_risque` (source non redistribuée), PDF pp.9-11, annexe : Variables parentes et observations, loi de la moyenne normale; raccourcis corrigés.
+- `st_poly_continues` (source non redistribuée), PDF pp.17-18 : TCL standardisé et approximation finie, traités distinctement.
+- `blocks_v2` (source non redistribuée), PS1-102, PS1-103, PS1-105, PS1-113, PS1-094, PS1-114, PS1-115, PS1-116, PS1-117, PS1-096, PS1-118, PS1-123, PS1-125, PS1-112, PS1-034, PS1-109 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+
+
+
+## Révision adaptative · 5 min
+
+<!-- ps1:adaptive-review-slot minutes=5 -->
+
+Traiter une variante ciblée, encore non tentée, d’une leçon antérieure si elle a été préparée. À défaut, fermer les notes, rappeler une méthode antérieure et vérifier ses hypothèses. Ces cinq minutes sont distinctes de la correction et des cartes de cette leçon. Une variante trop longue est reportée à un créneau de F01.

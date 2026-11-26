@@ -1,0 +1,78 @@
+---
+title: "A4 · Finaliser et tester la feuille A4 · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: A4
+  document_role: correction
+  content_status: complete_authored
+  minutes: 60
+  exercise_ids: ["A4-E01", "A4-E02", "A4-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Sélectionner les références utiles {#A4-E01}
+
+<!-- ps1:solution id=A4-E01 -->
+
+Une sélection défendable suit des besoins concrets. Exemple de plan, à adapter sans prétendre décrire vos difficultés : lois et paramétrages en haut; moments et conditionnement à côté; intervalles et tests regroupés; régression et syntaxe sur la partie restante. Une erreur de `rate` justifie une mention explicite; une définition comprise et rappelée facilement peut occuper moins de place.
+
+Le sens d’une p-valeur, la différence paramètre/estimateur, la moyenne conditionnelle et la portée causale doivent rester récupérables. Les quantiles, degrés de liberté et options R se prêtent à une référence courte. Une formule longue sans hypothèse ne remplit pas son rôle. Il n’existe pas de nombre de lignes universel qui fasse une bonne feuille.
+
+**Critères indépendants :** Relier chaque sélection à un usage précis; Garder paramètres et conditions; Distinguer mémoire et consultation; Ne pas inventer un état de maîtrise.
+
+### Écrire puis contrôler le résumé manuscrit {#A4-E02}
+
+<!-- ps1:solution id=A4-E02 -->
+
+Le contrôle mathématique porte sur les clauses qui changent le résultat :
+
+- `sd` reçoit $\sigma$, non $\sigma^2$; Gamma est ici forme-taux.
+- La variance d’une somme contient un terme de covariance, sauf justification de son annulation.
+- TCL, Wald, chi-deux asymptotique et percentile ne doivent pas être étiquetés « exacts ».
+- Le dénominateur d’un test de proportion sous $H_0$ utilise $p_0$; celui de l’IC de Wald utilise $\widehat p$.
+- Un intervalle inversé d’un pivot doit conserver l’ordre des bornes, notamment pour une variance ou une attente exponentielle.
+- Les degrés de liberté de régression sont $n-\operatorname{rang}(A)$, et $n-d-1$ dans le cadre de rang plein avec intercept.
+- L’intervalle de moyenne et l’intervalle d’observation future ont des cibles différentes.
+- $d=ab+c$ exige le système linéaire compatible, sans interaction, avec codage et observations communs pour son identité empirique.
+
+Une feuille est utilisable si vous pouvez la lire, choisir la bonne formule et dire pourquoi elle s’applique. Elle n’a pas besoin de reproduire toute la banque. Les consignes de l’épreuve, notamment le caractère manuscrit et le format, restent prioritaires.
+
+**Critères indépendants :** Rendre les notations autonomes et lisibles; Conserver hypothèses et cibles; Étiqueter approximations et lois exactes; Contrôler unités et paramétrages.
+
+### Tester dix recherches en dix minutes {#A4-E03}
+
+<!-- ps1:solution id=A4-E03 -->
+
+Les réponses de contrôle sont : (1) moyenne $1/4$, et `sd` reçoit l’écart-type; (2) `ppois(3, lambda=2, lower.tail=FALSE)`; (3) $\sqrt n(\bar X_n-m)/\sigma$ sous les hypothèses i.i.d. et variance finie strictement positive; (4) 13; (5) une couverture de 95 % de la procédure sur des échantillons répétés sous le modèle, pas une probabilité a posteriori du paramètre fixe; (6) $p_0$, donc $p_0(1-p_0)/n$; (7) 4 pour le calibrage asymptotique, avec conditions d’approximation; (8) quatre colonnes explicatives, donc $80-4-1=75$; (9) `interval="prediction"`; (10) le participant, si les participants sont indépendants, en conservant ses mesures et en adaptant aussi le modèle.
+
+Si une recherche dépasse une minute, la corriger dans le créneau A4 de F01. Ne pas allonger cette séance. Une bonne recherche exige de retrouver la condition autant que la formule.
+
+**Critères indépendants :** Trouver le bon emplacement rapidement; Associer formule et hypothèse; Compter les colonnes du facteur; Distinguer paramètre, variance nulle et unité indépendante.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `syllabus_ps1` : Evaluation FRANÇAIS : examen individuel de 3h sur machine; documents autorisés : résumé manuscrit au format A4. Le support ci-dessous prépare une feuille manuscrite, pas un substitut numérique autorisé à l’épreuve.
+- `blocks_v2` : PS1-063 à PS1-075; PS1-096, PS1-097; PS1-114 à PS1-121; PS1-128, PS1-132, PS1-139 à PS1-160; PS1-170, PS1-181 à PS1-190; PS1-197 à PS1-264. Base relue des lois, limites, estimation, intervalles, tests, couples et régression. Les condensations ci-dessous sont des adaptations avec hypothèses conservées.
+- `tp04` : Partie IV Q1-Q4, lignes 310-391. Référence compacte de médiation et de bootstrap; les conditions sont détaillées dans L17.
+- `ctd08` : E4 Q1-Q6, lignes 426-570. Tests t/F et intervalle de pente.
+- `ctd09` : E2 Q5-Q9, lignes 393-489. Degrés de liberté multiples, test global et variance expliquée.

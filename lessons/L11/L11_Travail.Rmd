@@ -1,0 +1,205 @@
+---
+title: "L11 · Tests : hypothèses, p-valeur et proportions"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L11"
+  document_role: work
+  content_status: complete_derived
+  minutes: 45
+  exercise_ids: ["L11-E01", "L11-E02", "L11-E03"]
+  block_ids: ["L11-B01", "L11-B02", "L11-B03", "L11-B04", "L11-B05", "L11-B06", "L11-B07", "L11-B08", "L11-B09", "L11-B10"]
+  learner_state: not_created
+---
+
+**Durée totale : 45 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Un test mesure la compatibilité des données avec une hypothèse selon une règle fixée. Le seuil contrôle des rejets sur des répétitions; la p-valeur décrit les données observées sous la loi nulle.
+
+**Prérequis :** L10-B01 à B04 (couverture et pivot normal); L03-B14 (fonctions de lois).
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+**Répartition :** 6 min de cours; 5 min de vérification conceptuelle; 14 min de raisonnement; 13 min de R; 5 min de correction et 2 min de rappel/Anki.
+
+## 1/6 · Comprendre
+
+### Hypothèses et direction {#L11-B01}
+
+> **DEF [L11-B01] · Hypothèses et direction**
+>
+> Dans un modèle de paramètre $\theta\in\Theta$, un test oppose $H_0:\theta\in\Theta_0$ à $H_1:\theta\in\Theta_1$, ensembles disjoints. Par exemple, $H_0:\theta=\theta_0$ contre $\theta\ne\theta_0$ est bilatéral; $H_0:\theta\le\theta_0$ contre $\theta>\theta_0$ est unilatéral à droite. La question scientifique fixe la direction avant de consulter les résultats. Une décision est « rejeter » ou « ne pas rejeter $H_0$ ».
+
+### Statistique et loi sous l'hypothèse nulle {#L11-B02}
+
+> **DEF [L11-B02] · Statistique et loi sous l'hypothèse nulle**
+>
+> Une statistique de test $T(\mathbf X)$ résume l'écart pertinent à $H_0$; $t_{\rm obs}=T(\mathbf x)$ est sa valeur observée. La notation $T\overset{H_0}{\sim}\mathcal L_0$ signifie que $T$ suit la loi $\mathcal L_0$ sous $H_0$ et les hypothèses du modèle. Une loi approchée doit être annoncée comme telle. Une région de rejet $R_\alpha$ contient les valeurs de $T$ qui conduisent au rejet.
+
+### Niveau et erreur de première espèce {#L11-B03}
+
+> **DEF [L11-B03] · Niveau et erreur de première espèce**
+>
+> Un test est de niveau $\alpha\in]0,1[$ si $\sup_{\theta\in\Theta_0}\mathbb P_\theta(\text{rejeter }H_0)\le\alpha$. Une erreur de première espèce est un rejet lorsque $H_0$ est vraie. Cette probabilité concerne la procédure sous une valeur de $H_0$; elle n'est pas la probabilité que la décision déjà prise soit erronée.
+
+### p-valeur {#L11-B04}
+
+> **DEF [L11-B04] · p-valeur**
+>
+> Pour une hypothèse nulle simple et une règle d'extrémalité fixée par l'alternative, la p-valeur est la probabilité, sous $H_0$, d'obtenir une statistique au moins aussi extrême que $t_{\rm obs}$. Dans un test à droite, elle vaut $\mathbb P_{H_0}(T\ge t_{\rm obs})$. Pour une statistique continue symétrique et un bilatéral fondé sur $|T|$, elle vaut $\mathbb P_{H_0}(|T|\ge|t_{\rm obs}|)$. Ce n'est ni $\mathbb P(H_0\mid\mathbf x)$ ni le risque personnel de se tromper après un rejet.
+
+### Décision et conclusion {#L11-B05}
+
+> **MTH [L11-B05] · Décision et conclusion**
+>
+> Fixer le niveau $\alpha$ et la direction avant l'analyse, vérifier le plan et les hypothèses, calculer la p-valeur, puis rejeter $H_0$ si $p\le\alpha$; sinon ne pas la rejeter. Rapporter aussi l'effet estimé et son incertitude. Un non-rejet ne prouve pas $H_0$; une significativité statistique n'établit ni un effet important en pratique ni une causalité.
+
+### Erreur de deuxième espèce {#L11-B06}
+
+> **DEF [L11-B06] · Erreur de deuxième espèce**
+>
+> Pour une valeur fixée $\theta\in\Theta_1$, le risque de deuxième espèce est $\beta(\theta)=\mathbb P_\theta(\text{ne pas rejeter }H_0)$. Il dépend de l'alternative considérée; il n'existe généralement pas un unique risque valable pour toutes les valeurs de $H_1$.
+
+### Puissance {#L11-B07}
+
+> **DEF [L11-B07] · Puissance**
+>
+> Pour une alternative $\theta\in\Theta_1$, la puissance est $\pi(\theta)=\mathbb P_\theta(\text{rejeter }H_0)=1-\beta(\theta)$, où $\beta(\theta)=\mathbb P_\theta(\text{ne pas rejeter }H_0)$ est le risque de deuxième espèce. À effectif et modèle fixés, rétrécir une région de rejet ne peut augmenter sa probabilité, sous $H_0$ comme sous chaque alternative. Le niveau et la puissance ne peuvent donc qu’être plus faibles ou égaux; le risque de manquer un effet ne peut diminuer. Modifier l’effectif peut modifier ce compromis.
+
+### Test d'une proportion {#L11-B08}
+
+> **MTH [L11-B08] · Test d'une proportion**
+>
+> Si $X_1,\ldots,X_n$ sont i.i.d. Bernoulli de probabilité $p$, le nombre de succès $K=\sum_iX_i$ suit $\mathcal B(n,p)$. Pour $H_0:p\le p_0$ contre $p>p_0$, une p-valeur exacte est $\mathbb P_{p_0}(K\ge k_{\rm obs})$; cette queue est maximale à la frontière $p=p_0$ sous $H_0$. Pour $n$ assez grand et $np_0,n(1-p_0)$ suffisamment grands, $Z=(K-np_0)/\sqrt{np_0(1-p_0)}$ est approximativement normal sous la frontière nulle. L'erreur-type du test utilise $p_0$.
+
+### Dualité d'un test et d'un intervalle {#L11-B10}
+
+> **MTH [L11-B10] · Dualité d'un test et d'un intervalle**
+>
+> Lorsqu'un IC central est construit en inversant exactement le même pivot que le test bilatéral, au même niveau et sous les mêmes hypothèses, le test rejette la valeur $\theta_0$ si et seulement si l'IC exclut $\theta_0$ (à la convention de frontière près). Cette dualité ne permet pas de comparer automatiquement un test unilatéral à un IC bilatéral, ni deux méthodes utilisant des approximations différentes.
+
+## 2/6 · Expliquer
+
+### Réparer une conclusion {#L11-E01}
+
+**L11-E01 · 5 min.**
+
+Corriger chacune de ces phrases en une ou deux lignes.
+
+1. « La p-valeur vaut $0{,}04$ : $H_0$ a une probabilité de $4\,\%$ d'être vraie. »
+2. « À $5\,\%$, on ne rejette pas l'égalité des moyennes; les moyennes sont donc égales. »
+3. « Le résultat est supérieur à la cible; je choisis maintenant un test unilatéral à droite pour obtenir une plus petite p-valeur. »
+
+Dans chaque cas, indiquer la distinction qui manque.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Un test que l'on peut reconstruire {#L11-E02}
+
+**L11-E02 · 14 min.**
+
+Des mesures indépendantes suivent $\mathcal N(m,16)$, avec écart-type connu $4$.
+Avant l'expérience, on décide de tester $H_0:m\le20$ contre $H_1:m>20$, au niveau $\alpha=0{,}05$.
+Pour $n=16$, la moyenne observée est $22$.
+
+1. Donner la statistique standardisée et sa loi à la frontière $m=20$. Déterminer la région de rejet en fonction de $\overline X$.
+2. Calculer la statistique observée et exprimer la p-valeur. Expliquer pourquoi la frontière $m=20$ contrôle tout $H_0$.
+3. Exprimer la puissance au vrai paramètre $m=22$ et le risque de deuxième espèce correspondant. Quelle loi utilise-t-on ici ?
+4. Si l'on réduit $\alpha$ à $0{,}01$ en gardant le même effectif, que deviennent la valeur critique et la puissance ? Conclure formellement au niveau initial.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Tests de proportion dans R {#L11-B09}
+
+> **SYX [L11-B09] · Tests de proportion dans R**
+>
+> `binom.test(k, n, p = p0, alternative = "greater")` réalise un test binomial exact à droite pour `k` succès sur `n` essais. `"less"` choisit la gauche et `"two.sided"` un bilatéral. L'objet renvoyé contient `$p.value` et `$conf.int`. Son intervalle de Clopper-Pearson a, sous le modèle binomial, une couverture au moins égale à `conf.level`; il est unilatéral si le test l'est. Le test bilatéral exact additionne les probabilités binomiales au plus égales à celle du résultat observé; il n'est pas en général « deux fois une queue ».
+>
+> `prop.test(k, n, p = p0, alternative = "greater", correct = FALSE)` utilise une approximation; `correct = FALSE` retire la correction de continuité. Le niveau de confiance et la direction de l'intervalle dépendent des arguments. Ne pas confondre la garantie exacte du test binomial avec cette approximation.
+
+### Même question, deux calibrations {#L11-E03}
+
+**L11-E03 · 13 min.**
+
+Un service veut savoir si sa probabilité de résolution au premier contact dépasse $0{,}60$.
+Le protocole, fixé avant observation, retient $n=120$ demandes indépendantes de même probabilité de résolution et un test à droite au seuil $5\,\%$. On compte $83$ succès.
+
+1. Calculer l'estimation, la p-valeur binomiale exacte, puis la p-valeur normale approchée sans correction de continuité. Expliquer pourquoi les deux nombres peuvent différer.
+2. Vérifier l'approximation avec `prop.test(..., correct = FALSE)` en fixant explicitement la direction. Pour un bilatéral, vérifier séparément que sa statistique est $Z^2$ et comparer ses p-valeurs, sous les mêmes options.
+3. Rapporter décision, effet estimé par rapport à $0{,}60$ et hypothèses. Un rejet suffirait-il à assurer la résolution de la prochaine demande ?
+
+La famille d/p/q/r a été introduite en L03-B14. Pour un entier $k$, `pbinom(k - 1, ..., lower.tail = FALSE)` calcule la queue $P(K\ge k)$.
+
+```{r L11-E03}
+k <- 83
+n <- 120
+p0 <- 0.60
+# Tests, contrôle des options, puis conclusion.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**5 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `L11_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| L11-E01 | | |
+| L11-E02 | | |
+| L11-E03 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+**2 minutes.** À rappeler : L11-B03, B04 et B07. Les expressions numériques des queues se reconstruisent. Convention de cette leçon : beta est le risque de deuxième espèce et pi la puissance. Dans le soutien décision-risque, beta désigne la puissance et 1-beta le risque; traduire les mots avant les lettres.
+
+Blocs sélectionnés pour les cartes initiales : L11-B01, L11-B03, L11-B04, L11-B07. Leur contenu exact est celui des encadrés; les calculs d'exercice ne sont pas des cartes supplémentaires.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### L11-V01 · 4 min {#L11-V01}
+
+Des attentes sont i.i.d. exponentielles de taux $\lambda$. On veut détecter une attente moyenne supérieure à 8 minutes. Formuler $H_0,H_1$ en termes de $m$, puis de $\lambda$. Pour une somme observée $s$, quelle queue de la loi Gamma sous la frontière sert au test ?
+
+#### L11-V02 · 4 min {#L11-V02}
+
+Deux sondages portent chacun sur 1000 comptes, mais 600 comptes apparaissent dans les deux. Une équipe additionne succès et effectifs, puis applique un test binomial de taille 2000. Quel point invalide ce raisonnement ? Quelles informations faudrait-il pour une analyse défendable ?
+
+## Références et provenance
+
+- `ctd05` (source non redistribuée), Exercice 1 Q7-Q9; Problème Q6-Q7 : Hypothèses, queues, p-valeur et relation avec les IC.
+- `st06_risque` (source non redistribuée), PDF pp.1-8, tableau p.2 et calculs pp.5-8 : Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié.
+- `st06_tests` (source non redistribuée), PDF pp.2-3 : Identifier la loi utilisée pour chaque risque.
+- `st10_sondages` (source non redistribuée), PDF p.1 Temps3 Q1-Q3 : Test binomial et limites du regroupement d'échantillons.
+- Clarification externe consultée le 26/11/2026 : [Documentation officielle R : binom.test](https://stat.ethz.ch/R-manual/R-patched/library/stats/html/binom.test.html), Usage, Arguments, Details, Value. Syntaxe et garantie de couverture de l'intervalle de Clopper-Pearson.
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.

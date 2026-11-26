@@ -1,0 +1,365 @@
+---
+title: "L04 · Espérance, variance et covariance"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L04
+  document_role: work
+  content_status: authored_complete
+  minutes: 45
+  exercise_ids: ["L04-E01", "L04-E02", "L04-E03", "L04-E04", "L04-E05", "L04-E06"]
+  block_ids: ["L04-B09", "L04-B10", "L04-B11", "L04-B12", "L04-B13", "L04-B14", "L04-B01", "L04-B02", "L04-B03", "L04-B04", "L04-B15", "L04-B05", "L04-B06", "L04-B07", "L04-B08", "L04-B16"]
+  learner_state: not_created
+---
+**45 min :** cours 6, questions et mathématiques 22, R 8, correction 2, Anki 2, révision adaptative 5.
+L'espérance fournit un centre; la variance mesure les écarts au carré autour
+de ce centre. Les blocs B09 à B14 introduisent l'espérance et l'indépendance
+avant les blocs B01 à B08 du pilote. Les identifiants du pilote sont conservés.
+
+L04-E01 à E05 gardent leurs objets et leurs questions d'origine. E06 complète
+la leçon avec l'espérance d'un comptage. Les variantes remplacent un créneau
+de rappel; elles ne s'ajoutent pas aux 45 minutes.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+### Espérance et intégrabilité {#L04-B09}
+
+> **DEF [L04-B09] · Espérance et intégrabilité**
+>
+> Une variable $X$ discrète de masse $p_X$ est intégrable si
+> $\sum_x |x|p_X(x)<\infty$; alors $\mathbb E[X]=\sum_x xp_X(x)$.
+> Si $X$ a une densité $f_X$, elle est intégrable si
+> $\int_{\mathbb R}|x|f_X(x)\,dx<\infty$; alors
+> $\mathbb E[X]=\int_{\mathbb R}xf_X(x)\,dx$.
+> Pour une loi mixte, on additionne les parties ponctuelles et continues.
+> L'espérance est un nombre déterminé par la loi, pas une observation.
+
+### Linéarité de l’espérance {#L04-B10}
+
+> **THM [L04-B10] · Linéarité de l’espérance**
+>
+> Si $X,Y$ sont intégrables sur le même espace et $a,b,c\in\mathbb R$,
+> alors $aX+bY+c$ est intégrable et
+> $$\mathbb E[aX+bY+c]=a\mathbb E[X]+b\mathbb E[Y]+c.$$
+> Aucune indépendance n'est nécessaire. Le résultat s'étend à toute somme
+> finie de variables intégrables.
+
+### Transfert et moments {#L04-B11}
+
+> **THM [L04-B11] · Transfert et moments**
+>
+> Si $g:\mathbb R\to\mathbb R$ est mesurable et
+> $\mathbb E[|g(X)|]<\infty$, alors
+> $$\mathbb E[g(X)]=\sum_x g(x)p_X(x)
+> \quad\text{ou}\quad
+> \mathbb E[g(X)]=\int_{\mathbb R}g(x)f_X(x)\,dx,$$
+> selon que la loi est discrète ou à densité.
+> On ne calcule pas d'abord la loi de $g(X)$.
+> Pour $g(x)=x^k$, avec $k\ge1$ entier et $\mathbb E[|X|^k]<\infty$,
+> on obtient le moment d'ordre $k$.
+
+### Indicatrice {#L04-B12}
+
+> **DEF [L04-B12] · Indicatrice**
+>
+> Pour un événement $E$, l'indicatrice $\mathbf1_E$ est la variable qui
+> vaut 1 lorsque $E$ se réalise et 0 sinon.
+> Pour une famille finie $E_1,\ldots,E_n$, la somme
+> $N=\sum_{i=1}^n\mathbf1_{E_i}$ compte le nombre d'événements réalisés.
+
+### Espérance d’un comptage {#L04-B13}
+
+> **THM [L04-B13] · Espérance d’un comptage**
+>
+> Pour des événements $E_1,\ldots,E_n$ et
+> $N=\sum_{i=1}^n\mathbf1_{E_i}$,
+> $$\mathbb E[\mathbf1_{E_i}]=\mathbb P(E_i),
+> \qquad \mathbb E[N]=\sum_{i=1}^n\mathbb P(E_i).$$
+> Les indicatrices sont bornées, donc intégrables. La seconde égalité utilise
+> la linéarité et ne suppose pas l'indépendance des événements.
+
+### Loi conjointe et indépendance de variables {#L04-B14}
+
+> **DEF [L04-B14] · Loi conjointe et indépendance de variables**
+>
+> La loi conjointe de $X,Y$ décrit
+> $\mathbb P(X\in A,Y\in B)$ pour les boréliens $A,B$.
+> Deux variables définies sur le même espace sont indépendantes si
+> $$\forall A,B\in\mathcal B(\mathbb R),\quad
+> \mathbb P(X\in A,Y\in B)=\mathbb P(X\in A)\mathbb P(Y\in B).$$
+> Pour réfuter l'indépendance, un seul couple d'événements contredisant cette
+> égalité suffit. Pour une famille, l'indépendance exige la factorisation pour
+> chaque sous-famille finie, pas seulement deux à deux.
+
+### Variance et écart-type {#L04-B01}
+
+> **DEF [L04-B01] · Variance et écart-type**
+>
+> Soit $X$ une variable aléatoire réelle telle que
+> $\mathbb E[X^2]<+\infty$. Elle est alors intégrable. Sa variance et son
+> écart-type sont
+> $$\mathbb V(X)=\mathbb E[(X-\mathbb E[X])^2],
+> \qquad \sigma_X=\sqrt{\mathbb V(X)}.$$
+> Si $X$ s'exprime en secondes, la variance est en secondes au carré et
+> l'écart-type en secondes.
+
+### Identité de König-Huygens {#L04-B02}
+
+> **THM [L04-B02] · Identité de König-Huygens**
+>
+> Pour toute variable réelle $X$ de carré intégrable,
+> $$\mathbb V(X)=\mathbb E[X^2]-\mathbb E[X]^2.$$
+> Développer le carré centré et appliquer la linéarité de l'espérance démontre
+> cette identité.
+
+### Variance et écart-type après changement d’échelle {#L04-B03}
+
+> **THM [L04-B03] · Variance et écart-type après changement d’échelle**
+>
+> Si $X$ est de carré intégrable et $a,b\in\mathbb R$, alors
+> $$\mathbb V(aX+b)=a^2\mathbb V(X),
+> \qquad \sigma_{aX+b}=|a|\sigma_X.$$
+> La translation ne change pas la dispersion. Le signe de $a$ renverse
+> éventuellement les écarts, mais leur amplitude est multipliée par $|a|$.
+
+### Covariance {#L04-B04}
+
+> **DEF [L04-B04] · Covariance**
+>
+> Pour $X,Y$ de carré intégrable sur un même espace probabilisé,
+> $$\operatorname{Cov}(X,Y)=
+> \mathbb E[(X-\mathbb E[X])(Y-\mathbb E[Y])].$$
+> Le produit centré est intégrable, par l'inégalité de Cauchy-Schwarz.
+> La covariance compare les écarts simultanés; son signe décrit une tendance
+> linéaire et n'établit pas de causalité.
+
+### Expression développée de la covariance {#L04-B15}
+
+> **THM [L04-B15] · Expression développée de la covariance**
+>
+> Pour $X,Y$ de carré intégrable sur le même espace,
+> $$\operatorname{Cov}(X,Y)=\mathbb E[XY]-\mathbb E[X]\mathbb E[Y].$$
+> La formule résulte du développement du produit centré et de la linéarité.
+> Elle est une propriété de la définition L04-B04.
+
+### Variance d’une combinaison linéaire {#L04-B05}
+
+> **THM [L04-B05] · Variance d’une combinaison linéaire**
+>
+> Pour $X,Y$ de carré intégrable sur le même espace et
+> $a,b,c\in\mathbb R$,
+> $$\mathbb V(aX+bY+c)=a^2\mathbb V(X)+b^2\mathbb V(Y)
+> +2ab\operatorname{Cov}(X,Y).$$
+> La covariance est symétrique et bilinéaire :
+> $\operatorname{Cov}(aX+bY,Z)=a\operatorname{Cov}(X,Z)+b\operatorname{Cov}(Y,Z)$
+> si $Z$ est aussi de carré intégrable. Une constante a une covariance nulle
+> avec toute variable intégrable.
+
+### Indépendance et covariance {#L04-B06}
+
+> **THM [L04-B06] · Indépendance et covariance**
+>
+> Si $X,Y$ sont indépendantes et de carré intégrable sur le même espace,
+> alors $\operatorname{Cov}(X,Y)=0$.
+> La réciproque est fausse en général. L'indépendance permet en effet de
+> factoriser $\mathbb E[XY]=\mathbb E[X]\mathbb E[Y]$; la linéarité seule
+> ne permet pas cette factorisation.
+
+### Corrélation et borne de Cauchy-Schwarz {#L04-B16}
+
+> **DEF [L04-B16] · Corrélation et borne de Cauchy-Schwarz**
+>
+> Pour $X,Y$ de carré intégrable sur le même espace probabilisé, Cauchy-Schwarz appliquée aux variables centrées donne
+> $$|\operatorname{Cov}(X,Y)|\le\sigma_X\sigma_Y,\qquad \sigma_X=\sqrt{\mathbb V(X)},\quad\sigma_Y=\sqrt{\mathbb V(Y)}.$$
+> Si les deux variances sont strictement positives, leur corrélation est
+> $$\rho(X,Y)=\frac{\operatorname{Cov}(X,Y)}{\sigma_X\sigma_Y},\qquad -1\le\rho(X,Y)\le1.$$
+> Elle mesure une association linéaire sans unité. Elle n’est pas définie si une variance est nulle. L’indépendance implique une corrélation nulle; la réciproque est fausse en général. Une corrélation ne démontre aucun lien causal.
+
+
+### Construire une phrase mathématique justifiée {#L04-B07}
+
+> **MTH [L04-B07] · Construire une phrase mathématique justifiée**
+>
+> Nommer les objets et les hypothèses utiles; citer la propriété utilisée;
+> effectuer l'opération; conclure sur la quantité demandée. Vérifier que
+> « donc » relie réellement une hypothèse à sa conséquence.
+> Écrire « par indépendance » seulement à l'endroit où cette hypothèse permet
+> une simplification. Une sortie R doit être accompagnée de son interprétation.
+
+## 2/6 · Expliquer les objets
+
+### L04-E01 · Changement d’échelle (3 min) {#L04-E01}
+
+Soit $X$ de carré intégrable et $W=-3X+8$. Expliquer en deux phrases
+comment changent variance et écart-type. Indiquer pourquoi le résultat pour
+l'écart-type ne dépend pas du signe du coefficient. Si $X$ est mesurée en
+secondes, préciser l'unité de sa variance et celle de son écart-type.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### L04-E02 · Revenir à la définition (5 min) {#L04-E02}
+
+Soient $X$ de carré intégrable et $a,b\in\mathbb R$. Démontrer L04-B03
+à partir de L04-B01 et de la linéarité de l'espérance, sans prendre le théorème
+à démontrer comme justification. En déduire la formule de l'écart-type.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### L04-E03 · Tenir compte de la dépendance (5 min) {#L04-E03}
+
+Soient $X,Y$ de carré intégrable telles que
+$\mathbb E[X]=1$, $\mathbb E[Y]=-2$, $\mathbb V(X)=4$,
+$\mathbb V(Y)=9$ et $\operatorname{Cov}(X,Y)=1$.
+On pose $U=2X-Y+7$. Calculer son espérance, sa variance et son écart-type.
+L'indépendance est-elle nécessaire au calcul de l'espérance ?
+Serait-elle compatible avec les données ?
+Calculer aussi $\rho(X,Y)$, préciser son unité et expliquer ce que son signe permet, ou non, de conclure. Vérifier aussi la borne de Cauchy-Schwarz pour la covariance donnée.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### L04-E04 · Tester une réciproque (5 min) {#L04-E04}
+
+Soit $X$ uniforme sur $\{-1,0,1\}$ et $Y=X^2$.
+Calculer $\operatorname{Cov}(X,Y)$, puis décider si $X,Y$ sont indépendantes.
+Pour la seconde partie, donner une justification portant sur des événements.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### L04-E06 · Compter des réussites (4 min) {#L04-E06}
+
+Trois sauvegardes aboutissent avec probabilités 0,8, 0,7 et 0,9.
+Elles peuvent dépendre d'un même réseau. Définir le nombre $N$ de sauvegardes
+réussies à l'aide d'indicatrices puis calculer son espérance.
+Les données suffisent-elles à calculer sa variance ? Justifier.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### var, sd et cov {#L04-B08}
+
+> **SYX [L04-B08] · var, sd et cov**
+>
+> Pour un vecteur numérique `x` sans valeur manquante de longueur $n\ge2$,
+> `var(x)` renvoie $\sum_{i=1}^n(x_i-\bar x)^2/(n-1)$ et `sd(x)` sa racine
+> carrée. Pour deux vecteurs numériques appariés `x` et `y`, sans valeur
+> manquante et de même longueur $n\ge2$, `cov(x,y)` renvoie
+> $\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)/(n-1)$.
+> Exemple : `var(c(2,4,6))`.
+> Le dénominateur $n-1$ concerne cette convention empirique; il ne remplace
+> pas la définition probabiliste de la variance.
+
+### L04-E05 · Deux objets à distinguer (8 min) {#L04-E05}
+
+Une variable $Z$ prend chacune des quatre valeurs de `x` avec
+probabilité $1/4$.
+Avant le code, prédire si `var(x)` et $\mathbb V(Z)$ sont égales.
+Calculer les deux en R, vérifier la convention dans l'aide de `var` et
+expliquer la différence. Vérifier l'identité affine sur `x` avec un
+coefficient négatif et une constante de votre choix. Dire ce que ce contrôle
+démontre et ce qu'il ne démontre pas.
+
+```{r L04-E05}
+x <- c(-2, 0, 1, 5)
+# Calculs et contrôle.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `L04_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| L04-E01 | | |
+| L04-E02 | | |
+| L04-E03 | | |
+| L04-E04 | | |
+| L04-E05 | | |
+| L04-E06 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Mémoriser définitions, linéarité, coefficients au carré et sens de l’implication indépendance vers covariance nulle. Reconstruire la preuve affine. Retrouver la convention empirique de var au besoin.
+
+Les variantes L04-V01, L04-V02 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### L04-V01 (4 min, en remplacement) {#L04-V01}
+
+Un seul capteur choisit exactement une des catégories A, B, C, de probabilités 0,2, 0,5 et 0,3. Poser $I_A=\mathbf1_A$ et $I_B=\mathbf1_B$. Calculer l'espérance et la variance de $I_A+I_B$ sans invoquer l'indépendance.
+
+**Nouvelle tentative sans correction :**
+
+
+### L04-V02 (5 min, en remplacement) {#L04-V02}
+
+Une amplitude $U$ est uniforme sur (-1,1); l'énergie est $Y=U^2$. Peut-on utiliser la formule de variance affine ? Calculer $\mathbb E[Y]$ et $\mathbb V(Y)$ par transfert, puis déterminer si $\operatorname{Cov}(U,Y)=0$ permet de conclure à l'indépendance.
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd02` (source non redistribuée), Exercice 2 Q1-Q3 : Espérance, transfert, variance et contrôle numérique.
+- `tp01` (source non redistribuée), Exercice 3 Q4-Q5, première occurrence de Question 5 : Espérance d’un comptage par somme de probabilités.
+- `st02_03` (source non redistribuée), PDF pp.5-12 : Anticiper les effets de translation et d’échelle, interpréter les unités.
+- `st02_prime` (source non redistribuée), PDF p.1, Temps 2-4 : Choisir les outils avant le calcul.
+- `st09` (source non redistribuée), PDF p.3 : Covariance nulle et dépendance.
+- `st_poly_discretes` (source non redistribuée), PDF pp.5-11 : Espérance, moments, variance; la preuve emploie la linéarité de l’espérance.
+- `st_poly_continues` (source non redistribuée), PDF pp.5-10 : Intégrabilité, moments et transformations.
+- `blocks_v2` (source non redistribuée), PS1-080, PS1-081, PS1-082, PS1-084, PS1-079, PS1-088, PS1-085, PS1-086, PS1-087, PS1-089, PS1-090, PS1-091, PS1-092, PS1-093, PS1-104, PS1-110 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+
+
+
+## Révision adaptative · 5 min
+
+<!-- ps1:adaptive-review-slot minutes=5 -->
+
+Traiter une variante ciblée, encore non tentée, d’une leçon antérieure si elle a été préparée. À défaut, fermer les notes, rappeler une méthode antérieure et vérifier ses hypothèses. Ces cinq minutes sont distinctes de la correction et des cartes de cette leçon. Une variante trop longue est reportée à un créneau de F01.

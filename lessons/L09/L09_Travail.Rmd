@@ -1,0 +1,167 @@
+---
+title: "L09 · Méthode des moments et maximum de vraisemblance"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L09"
+  document_role: work
+  content_status: complete_derived
+  minutes: 25
+  exercise_ids: ["L09-E01", "L09-E02", "L09-E03"]
+  block_ids: ["L09-B01", "L09-B02", "L09-B03", "L09-B04", "L09-B05"]
+  learner_state: not_created
+---
+
+**Durée totale : 25 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Les moments rapprochent des résumés théoriques et observés. La vraisemblance compare les paramètres selon la densité ou la masse qu'ils attribuent aux observations. Le domaine fait partie du problème d'optimisation.
+
+**Prérequis :** L05 (uniforme, exponentielle); L08-B01 à B03 (modèle, statistique, estimation).
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+**Répartition :** 4 min de cours; 3 min de vérification conceptuelle; 10 min de raisonnement; 3 min de R; 3 min de correction et 2 min de rappel/Anki.
+
+## 1/6 · Comprendre
+
+### Argmax {#L09-B01}
+
+> **DEF [L09-B01] · Argmax**
+>
+> Pour une fonction $g:\Theta\to\mathbb R$, $\operatorname*{argmax}_{\theta\in\Theta}g(\theta)=\{\theta\in\Theta:\forall u\in\Theta,\ g(\theta)\ge g(u)\}$ est l'ensemble de ses maximisateurs. Il peut être vide ou contenir plusieurs points. Une valeur maximisante appartient à cet ensemble; le maximum est la valeur de la fonction.
+
+### Méthode des moments {#L09-B02}
+
+> **MTH [L09-B02] · Méthode des moments**
+>
+> Dans un modèle i.i.d. de paramètre $\theta\in\Theta$, choisir des moments théoriques existants qui identifient $\theta$. Les égaler aux moments empiriques, puis résoudre dans $\Theta$. Par exemple, si $\mathbb E_\theta[X]=h(\theta)$ et $h$ est inversible, l'estimation est $h^{-1}(\overline x_n)$ lorsqu'elle existe dans le domaine. La même recette appliquée à $\mathbf X$ définit l'estimateur.
+
+### Vraisemblance i.i.d. {#L09-B03}
+
+> **DEF [L09-B03] · Vraisemblance i.i.d.**
+>
+> Soient $X_1,\ldots,X_n$ i.i.d. de masse ou densité $f(x;\theta)$, $\theta\in\Theta$, et des observations fixées $\mathbf x$. La vraisemblance est $L(\theta;\mathbf x)=\prod_{i=1}^n f(x_i;\theta)$, fonction de $\theta$. Le produit utilise l'indépendance et la même loi. Dans le cas continu, il s'agit d'une densité évaluée aux données, pas de la probabilité de ces valeurs exactes. Le point-virgule sépare données et paramètre.
+
+### Log-vraisemblance {#L09-B04}
+
+> **MTH [L09-B04] · Log-vraisemblance**
+>
+> Sur le domaine où $L(\theta;\mathbf x)>0$, poser $\ell(\theta;\mathbf x)=\log L(\theta;\mathbf x)$. Pour des données i.i.d., $\ell=\sum_i\log f(x_i;\theta)$. Le logarithme strictement croissant conserve les maximisateurs. Les paramètres qui rendent une observation impossible doivent rester exclus; on ne supprime pas l'indicatrice du support sans traiter sa contrainte.
+
+### Maximum de vraisemblance {#L09-B05}
+
+> **MTH [L09-B05] · Maximum de vraisemblance**
+>
+> Une estimation par maximum de vraisemblance est un élément $\widehat\theta_{\rm MV}(\mathbf x)\in\operatorname*{argmax}_{\theta\in\Theta}L(\theta;\mathbf x)$.
+> Écrire le domaine compatible avec toutes les observations, trouver les candidats intérieurs, puis examiner les frontières. Une dérivée nulle n'est qu'une condition nécessaire à un maximum intérieur différentiable. La stricte concavité sur tout un intervalle, avec un point critique dans l'intervalle, assure un unique maximum global. Si le support dépend du paramètre, le maximum peut être à la frontière.
+
+## 2/6 · Expliquer
+
+### Que fait-on varier ? {#L09-E01}
+
+**L09-E01 · 3 min.**
+
+Une densité est notée $f(x;\theta)$. Expliquer en deux phrases la différence entre étudier $x\mapsto f(x;\theta)$ et $\theta\mapsto L(\theta;\mathbf x)$. Puis diagnostiquer l'argument : « J'ai trouvé $\ell'(\theta)=0$, donc j'ai prouvé que cette valeur est l'EMV. »
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Un paramètre qui borne les observations {#L09-E02}
+
+**L09-E02 · 10 min.**
+
+Les délais d'un ordonnanceur sont modélisés par des $X_i$ i.i.d. uniformes sur $[0,a]$, avec $a>0$ inconnu. On fixe la version de la densité
+$f(x;a)=a^{-1}\mathbf 1_{[0,a]}(x)$, y compris aux bornes. Les observations sont
+$(1{,}2,\ 2{,}4,\ 3{,}0,\ 3{,}6,\ 4{,}8,\ 5{,}4)$.
+
+1. En utilisant $\mathbb E_a[X]=a/2$, déterminer l'estimation par moments et écrire l'estimateur correspondant.
+2. Écrire toute la vraisemblance, y compris son domaine compatible. Trouver son maximum sans résoudre une équation $\ell'=0$.
+3. Expliquer pourquoi les deux résultats peuvent différer. Préciser ce que cette maximisation permet de conclure sur le biais de l'EMV.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Taux et attente moyenne {#L09-E03}
+
+**L09-E03 · 3 min.**
+
+Pour des observations exponentielles positives de taux $\lambda>0$, la log-vraisemblance est $\ell(\lambda)=n\log\lambda-\lambda\sum_i x_i$.
+Sur les données ci-dessous, calculer l'estimation qui annule la dérivée; vérifier la stricte concavité. Calculer aussi l'attente moyenne estimée et donner l'unité de chaque quantité si $x$ est en minutes.
+
+Fonctions déjà disponibles : L01-B04 et L03-B15. Aucune syntaxe nouvelle.
+
+```{r L09-E03}
+x <- c(0.8, 0.4, 1.6, 0.7, 2.1, 0.9)
+# Calculs et phrase d'interprétation.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**3 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `L09_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| L09-E01 | | |
+| L09-E02 | | |
+| L09-E03 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+**2 minutes.** À retenir : le sens de L09-B03 et les contrôles de L09-B05. La dérivation d'un EMV doit être reconstruite. Ne pas mémoriser une collection de formules sans leurs domaines.
+
+Blocs sélectionnés pour les cartes initiales : L09-B02, L09-B03, L09-B05. Leur contenu exact est celui des encadrés; les calculs d'exercice ne sont pas des cartes supplémentaires.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### L09-V01 · 4 min {#L09-V01}
+
+Le même modèle exponentiel est maintenant limité à $0<\lambda\le1$. Pour $n=6$ et $\sum_i x_i=4$, trouver l'EMV sous cette contrainte. Une valeur critique hors du domaine est-elle admissible ?
+
+#### L09-V02 · 4 min {#L09-V02}
+
+Pour un échantillon normal i.i.d. de moyenne $m\in\mathbb R$ et variance connue $\sigma^2>0$, la log-vraisemblance vaut $C-\sum_i(x_i-m)^2/(2\sigma^2)$, où $C$ ne dépend pas de $m$. Trouver le maximum sans dériver.
+
+#### L09-V03 · 3 min {#L09-V03}
+
+Des comptages i.i.d. suivent une loi de Poisson de paramètre $\lambda>0$; on observe $(0,2,1,3)$. Sans partir d'une log-vraisemblance fournie, écrire la vraisemblance puis sa transformée logarithmique, en séparant les termes constants en $\lambda$. Expliquer pourquoi les deux fonctions ont les mêmes maximisateurs sur ce domaine. Trouver l'EMV et justifier qu'il s'agit d'un maximum global.
+
+Cette reprise remplace trois minutes du créneau de révision choisi.
+
+## Références et provenance
+
+- `ctd04` (source non redistribuée), Exercice 2 Q1-Q3 : Moments, vraisemblance exponentielle et distinction avec le sans-biais.
+- `ctd05` (source non redistribuée), Exercice 1 Q1 : Maximisation normale par identité des carrés.
+- `st04_05` (source non redistribuée), PDF pp.5-8 : Deux méthodes et support dépendant du paramètre.
+- `st04_attente` (source non redistribuée), PDF pp.1-2 : Progression modèle, estimation puis comparaison; nouveaux contexte et données.
+
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.

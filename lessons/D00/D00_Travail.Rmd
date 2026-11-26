@@ -1,0 +1,210 @@
+---
+title: "D00 · Diagnostic de départ"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: D00
+  document_role: work
+  content_status: authored_complete
+  minutes: 60
+  exercise_ids: ["D00-E01", "D00-E02", "D00-E03", "D00-E04", "D00-E05", "D00-E06", "D00-E07", "D00-E08"]
+  block_ids: []
+  learner_state: not_created
+---
+**Document de diagnostic préparé, non administré.** Aucune réponse, note,
+confiance ou compétence personnelle n'a été enregistrée.
+
+**60 min au moment où le diagnostic sera choisi :** lecture des consignes 5,
+huit familles courtes 45, comparaison guidée 10. Ne pas consulter les leçons
+ni le corrigé pendant la première tentative. Un blocage est une information
+utile : écrire ce qui manque et passer à la suite. Le diagnostic n'est pas
+un examen et ne couvre pas toute la statistique inférentielle.
+
+Pour chaque famille, distinguer « réponse certaine », « réponse tentée » et
+« non traité ». La confiance n'est pas une note de compétence. Les résultats
+ne peuvent être interprétés qu'après une tentative effectivement produite.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+Le diagnostic ne fournit pas le cours avant la première tentative. Écrire les hypothèses utilisées et signaler les notions inconnues.
+
+## 2/6 · Expliquer les objets
+
+Les distinctions conceptuelles sont intégrées aux huit familles de questions ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### D00-E01 · Calcul préalable (4 min) {#D00-E01}
+
+Calculer $\int_0^1 3x^2\,dx$ et la dérivée de $1-e^{-2t}$.
+Résoudre $1-e^{-2t}=1/2$ en précisant le domaine de t. Écrire les étapes
+suffisantes pour vérifier le signe et le facteur 2.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### D00-E02 · Conditionner sur la bonne population (6 min) {#D00-E02}
+
+Parmi 50 pièces, 20 viennent de l'atelier A. On observe 6 défauts,
+dont 4 sur des pièces de A. On tire une pièce au hasard. Calculer la probabilité
+d'un défaut sachant A et celle de A sachant un défaut. Nommer les événements
+et expliquer pourquoi les dénominateurs diffèrent.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### D00-E03 · Variable, loi et densité (6 min) {#D00-E03}
+
+Soit X de densité $f(x)=2x$ sur (0,1), nulle ailleurs.
+Vérifier que f est une densité. Donner $\mathbb P(X=1/2)$,
+$\mathbb P(X\le1/2)$ et la CDF sur toute la droite.
+Dans une observation $x=0{,}7$, quelle est la nature de X, de x et de f ?
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### D00-E04 · Espérance et transformation (6 min) {#D00-E04}
+
+X vaut -1 avec probabilité 1/4 et 3 avec probabilité 3/4.
+Calculer $\mathbb E[X]$, $\mathbb V(X)$ et $\mathbb V(2-X)$.
+Présenter une justification qui distingue linéarité de l'espérance
+et transformation de la variance.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### D00-E05 · Indépendance et carré (5 min) {#D00-E05}
+
+X est uniforme sur {-1,0,1} et Y=X². Décider si X et Y sont indépendantes,
+en comparant deux probabilités d'événements précis. Si vous connaissez la
+covariance, la calculer et expliquer sa portée.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### D00-E06 · Moyenne et fluctuation (6 min) {#D00-E06}
+
+Les X_i sont i.i.d. de moyenne 10 et d'écart-type 4.
+Donner l'espérance, la variance et l'écart-type de leur moyenne pour n=64.
+Écrire la variable standardisée. Une hypothèse supplémentaire permet-elle
+d'affirmer sa normalité exacte à cette taille ? Sinon, que dit le TCL ?
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### D00-E08 · Réparer une conclusion (5 min) {#D00-E08}
+
+Réviser cette conclusion en trois phrases :
+« Sur notre tableau de 20 objets, le groupe A réussit davantage que B.
+Donc appartenir à A cause la réussite. Le programme fonctionne, donc le modèle
+est vrai. » Conserver ce que les observations permettent de dire et signaler
+les informations qui manquent.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### D00-E07 · Lire et corriger du R (7 min) {#D00-E07}
+
+On dispose des trois colonnes ci-dessous. Écrire un code conservant les
+mesures connues du groupe B, puis calculer leur effectif et leur moyenne.
+Expliquer pourquoi `x == NA` ne teste pas correctement les données manquantes.
+Ne pas remplacer les NA par zéro.
+
+```{r D00-E07}
+groupe <- c("A","B","B","A","B")
+x <- c(2, NA, 4, 8, 10)
+# Votre code et une phrase d'interprétation.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `D00_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| D00-E01 | | |
+| D00-E02 | | |
+| D00-E03 | | |
+| D00-E04 | | |
+| D00-E05 | | |
+| D00-E06 | | |
+| D00-E07 | | |
+| D00-E08 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Après administration seulement, distinguer erreur de calcul, objet confondu, hypothèse manquante, formulation imprécise et question non traitée. Aucun total ne constitue une preuve de maîtrise. Les estimateurs avancés, intervalles, tests, couples à densité et régression restent non évalués par ce diagnostic.
+
+Les variantes D00-V01, D00-V02 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+Les variantes diagnostiques servent à clarifier un doute après une première tentative réelle, sans attribuer automatiquement de compétence.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### D00-V01 (4 min, en remplacement) {#D00-V01}
+
+Une note affirme : « 80 % des alertes correspondent à un défaut, donc 80 % des défauts provoquent une alerte. » Sans inventer de données, expliquer si cette déduction est valide et proposer les marges nécessaires pour la vérifier.
+
+**Nouvelle tentative sans correction :**
+
+
+### D00-V02 (4 min, en remplacement) {#D00-V02}
+
+Deux capteurs renvoient exactement le même bruit X, de moyenne 0 et variance 9. Leur moyenne a-t-elle une variance 9/2 ? Justifier sans appliquer automatiquement une formule d'échantillon indépendant.
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Exercices 0,2-4; Mise en œuvre Q1-Q4 : Repères R, sélection et probabilités conditionnelles.
+- `ctd02` (source non redistribuée), Exercices 1-3 : Variables, densités, transformations et moments.
+- `ctd03` (source non redistribuée), Exercice 1 Q0-Q3; Exercice 3 Q1-Q3 : Moyennes, convergence et standardisation.
+- `st01` (source non redistribuée), PDF pp.6-13 : Modélisation et distinction variable/loi.
+- `blocks_v2` (source non redistribuée), PS1-001 à PS1-004; PS1-017; PS1-041 à PS1-054; PS1-080 à PS1-094; PS1-102 à PS1-118 : Questions originales de diagnostic sur les prérequis et notions fondamentales.
+

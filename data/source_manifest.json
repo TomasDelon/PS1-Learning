@@ -1,0 +1,482 @@
+{
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "source_id": "baseline_acceptance",
+      "title": "final_acceptance.md",
+      "kind": "previous_acceptance_report",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "baseline_annotations",
+      "title": "source_annotations.json",
+      "kind": "retained_source_annotations",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "block_ledger",
+      "title": "PS1_Cours_DEF_THM_MTH_v2_ledger.json",
+      "kind": "retained_knowledge_source",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "blocks_v2",
+      "title": "PS1_Cours_DEF_THM_MTH_v2.md",
+      "kind": "retained_knowledge_source",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm01",
+      "title": "PS1_CM01_introduction-langage-r.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm02",
+      "title": "PS1_CM02_variables-aleatoires-reelles.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm03",
+      "title": "PS1_CM03_loi-grands-nombres-monte-carlo.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm04",
+      "title": "PS1_CM04_estimation-statistique.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm05",
+      "title": "PS1_CM05_intervalles-confiance-tests.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm06",
+      "title": "PS1_CM06_tests-statistiques.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm07",
+      "title": "PS1_CM07_couples-conditionnement-variance.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm08",
+      "title": "PS1_CM08_regression-lineaire-simple.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "cm09",
+      "title": "PS1_CM09_regression-lineaire-multiple.pdf",
+      "kind": "course",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd01",
+      "title": "PS1_CTD01_initiation-r-probabilites.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd02",
+      "title": "PS1_CTD02_variables-aleatoires-reelles.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd03",
+      "title": "PS1_CTD03_loi-grands-nombres.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd04",
+      "title": "PS1_CTD04_estimation-statistique.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd05",
+      "title": "PS1_CTD05_intervalles-confiance-tests.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd06",
+      "title": "PS1_CTD06_tests-statistiques.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd07",
+      "title": "PS1_CTD07_decomposition-variance.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd08",
+      "title": "PS1_CTD08_regression-lineaire-simple.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd09",
+      "title": "PS1_CTD09_regression-lineaire.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd10",
+      "title": "PS1_CTD10_regression-lineaire-multiple-suite.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "ctd11",
+      "title": "PS1_CTD11_odds-ratio-regression-logistique_bonus.Rmd",
+      "kind": "tutorial_repository_version",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "legacy_graph",
+      "title": "knowledge_graph.json",
+      "kind": "retained_knowledge_source",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "mock_dec2025",
+      "title": "December 2025 mock skill mappings",
+      "kind": "inherited_competency_classification",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa02",
+      "title": "PS1_QA02_variables-aleatoires-reelles.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa03",
+      "title": "PS1_QA03_loi-grands-nombres-monte-carlo.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa04",
+      "title": "PS1_QA04_estimation-statistique.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa05",
+      "title": "PS1_QA05_intervalles-confiance-tests.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa06",
+      "title": "PS1_QA06_tests-statistiques.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa07",
+      "title": "PS1_QA07_couples-conditionnement-variance.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa08",
+      "title": "PS1_QA08_regression-lineaire-simple.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "qa09",
+      "title": "PS1_QA09_regression-lineaire-multiple.pdf",
+      "kind": "course_questions_answers",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "repo_agents",
+      "title": "AGENTS.md",
+      "kind": "repository_policy_metadata",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "repo_readme",
+      "title": "README.md",
+      "kind": "repository_policy_metadata",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "roadmap_v1",
+      "title": "PS1_Roadmap_20h_v1.md",
+      "kind": "previous_authored_plan",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st01",
+      "title": "PS1_ST01_formalisme-variables.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st02_03",
+      "title": "PS1_ST02_ST03_variables-continues.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st02_prime",
+      "title": "PS1_ST02_prime-exceptionnelle_enonce.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st04_05",
+      "title": "PS1_ST04_ST05_estimation-intervalles-confiance.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st04_attente",
+      "title": "PS1_ST04_attente-maximum_enonce.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st04_estimateur",
+      "title": "PS1_ST04_estimation-estimateur.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st06_risque",
+      "title": "PS1_ST06_decision-risque.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st06_tests",
+      "title": "PS1_ST06_tests-hypotheses.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st07_08",
+      "title": "PS1_ST07_ST08_couples-variables-aleatoires_enonce-corrige.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st09",
+      "title": "PS1_ST09_covariance-anscombe-ecrit-reflexif.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st10_simpson",
+      "title": "PS1_ST10_paradoxe-simpson.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st10_sondages",
+      "title": "PS1_ST10_sondages.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st_poly_continues",
+      "title": "PS1_ST_poly_variables-aleatoires-continues.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st_poly_discretes",
+      "title": "PS1_ST_poly_variables-aleatoires-discretes.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "st_poly_formalisme",
+      "title": "PS1_ST_poly_formalisme-base.pdf",
+      "kind": "soutien",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "syllabus_ps1",
+      "title": "PS1_RENF.html",
+      "kind": "official_syllabus_snapshot",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "tp01",
+      "title": "PS1_TP01_titanic_enonce.Rmd",
+      "kind": "tp_statement",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "tp02",
+      "title": "PS1_TP02_monte-carlo_enonce.Rmd",
+      "kind": "tp_statement",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "tp03",
+      "title": "PS1_TP03_poisson-football_enonce.Rmd",
+      "kind": "tp_statement",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "tp04",
+      "title": "PS1_TP04_analyse-scores-pisa_enonce.Rmd",
+      "kind": "tp_statement",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_BreastCancer",
+      "title": "BreastCancer.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_saison_2022",
+      "title": "saison_2022.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_co2_per_capita",
+      "title": "co2_per_capita.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_donnees_exercice_2",
+      "title": "donnees_exercice_2.rda",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_donnees_exercice_3",
+      "title": "donnees_exercice_3.rda",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_titanic_train",
+      "title": "titanic_train.rda",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_saison2003",
+      "title": "saison2003.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_saison2022",
+      "title": "saison2022.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_saison2023",
+      "title": "saison2023.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_temps_attente",
+      "title": "temps_attente.txt",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    },
+    {
+      "source_id": "data_PISA2018subset",
+      "title": "PISA2018subset.csv",
+      "kind": "official_companion_dataset",
+      "package_path": null,
+      "access_status": "citation_only"
+    }
+  ],
+  "notice_fr": "Références bibliographiques uniquement. Les originaux universitaires ne sont pas redistribués."
+}

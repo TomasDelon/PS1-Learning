@@ -1,0 +1,128 @@
+---
+title: "L14 · Couples, espérance conditionnelle et variance totale · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L14
+  document_role: correction
+  content_status: complete_authored
+  minutes: 45
+  exercise_ids: ["L14-E01", "L14-E02", "L14-E03", "L14-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Distinguer les objets {#L14-E01}
+
+<!-- ps1:solution id=L14-E01 -->
+
+Pour un groupe 1 de probabilité positive, $\mathbb E[Y\mid G=1]$ est un nombre; $\mathbb E[Y\mid G]$ est une variable, et sa variance est un nombre. Ces objets supposent respectivement l’intégrabilité puis le carré intégrable.
+
+Par symétrie, $\mathbb E[U]=0$ et $\mathbb E[U|U|]=0$, donc la covariance vaut 0. Pourtant $\{V<1/2\}=\{|U|<1/2\}$ a probabilité $1/2$. L’intersection a probabilité $1/2$, alors que le produit des probabilités vaut $1/4$. Les variables ne sont pas indépendantes. Une covariance nulle exclut ici une liaison linéaire, pas une dépendance.
+
+**Critères indépendants :** Distinguer nombre et variable; Utiliser la symétrie pour la covariance; Produire une inégalité de probabilités qui réfute l’indépendance.
+
+### Une zone triangulaire de fonctionnement {#L14-E02}
+
+<!-- ps1:solution id=L14-E02 -->
+
+Le support est le triangle au-dessus de la diagonale dans le carré unité. Sa description verticale est $0<x<1$, $x<y<1$. Ainsi $\int_0^1\int_x^1 2\,dy\,dx=1$.
+
+Pour $0<x<1$, $f_X(x)=2(1-x)$; pour $0<y<1$, $f_Y(y)=2y$; les densités sont nulles ailleurs. Pour les valeurs intérieures admissibles,
+$$f_{Y\mid X=x}(y)=\frac{1}{1-x}\mathbf1_{\{x<y<1\}},\qquad
+f_{X\mid Y=y}(x)=\frac1y\mathbf1_{\{0<x<y\}}.$$
+Ce sont des lois uniformes, d’où $\mathbb E[Y\mid X=x]=(1+x)/2$ et $\mathbb E[X\mid Y=y]=y/2$. Comme $\mathbb E[X]=\int_0^1 2x(1-x)\,dx=1/3$, l’espérance totale donne $\mathbb E[Y]=(1+1/3)/2=2/3$.
+
+Les marginales sont strictement positives à l’intérieur du carré, tandis que la densité jointe est nulle sur le triangle $y<x$. La factorisation échoue sur une région d’aire positive : les variables ne sont pas indépendantes. Ne pas écrire une probabilité $\mathbb P(X=x)$ au dénominateur.
+
+**Critères indépendants :** Fixer les bornes à partir du support; Normaliser chaque loi conditionnelle; Retrouver 2/3 par la loi de X; Réfuter la factorisation sur une région de mesure positive.
+
+**Vérifications précises des étapes demandées :**
+
+- Vérifier que la densité jointe est positive et que son intégrale sur 0<x<y<1 vaut 1.
+- Calculer les deux marginales 2(1-x) et 2y sur leurs supports, nulles ailleurs.
+- Intégrer les lois conditionnelles et obtenir (1+x)/2 et y/2 sur les domaines admissibles.
+
+### Reconstruire la décomposition {#L14-E03}
+
+<!-- ps1:solution id=L14-E03 -->
+
+L’espérance totale appliquée à $Y^2$ et à $Y$ donne
+$$\begin{aligned}
+\mathbb E[\mathbb V(Y\mid X)]&=\mathbb E[Y^2]-\mathbb E[m(X)^2],\\
+\mathbb V(m(X))&=\mathbb E[m(X)^2]-\mathbb E[Y]^2.
+\end{aligned}$$
+Leur somme est $\mathbb E[Y^2]-\mathbb E[Y]^2=\mathbb V(Y)$. Les termes sont finis car $Y$ est de carré intégrable; l’espérance conditionnelle l’est également.
+
+Dans l’application, $m=12$, la variance intra est $(2/3)4+(1/3)1=3$ et la variance inter est $(2/3)(10-12)^2+(1/3)(16-12)^2=8$. La variance totale vaut 11 et la part expliquée $8/11\simeq72{,}7\%$. L’homoscédasticité n’est pas requise pour la formule de variance totale. La dispersion résiduelle au sein des groupes compte pour 3 unités au carré, pas pour une moyenne non pondérée des deux variances.
+
+**Critères indépendants :** Utiliser deux fois l’espérance totale sans circularité; Pondérer par les probabilités des groupes; Distinguer variance conditionnelle et sa moyenne; Interpréter 8/11 sans causalité.
+
+### Simuler puis contrôler une identité empirique {#L14-E04}
+
+<!-- ps1:solution id=L14-E04 -->
+
+Le modèle peut se simuler en tirant d’abord $G$, puis un bruit normal dont l’écart-type dépend du groupe. Les cibles probabilistes sont 12 et 11. Voici une réalisation et un contrôle algébrique indépendant de ces cibles :
+
+```{r L14-E04}
+set.seed(1414)
+n <- 6000
+g <- rbinom(n, size = 1, prob = 1/3)
+y <- rnorm(n, mean = 10 + 6*g, sd = ifelse(g == 0, 2, 1))
+p <- prop.table(table(g))
+m <- tapply(y, g, mean)
+v <- tapply(y, g, function(z) mean((z-mean(z))^2))
+m <- m[names(p)]; v <- v[names(p)]
+intra <- sum(p*v)
+inter <- sum(p*(m-mean(y))^2)
+total <- mean((y-mean(y))^2)
+stopifnot(abs(total-intra-inter) < 1e-10)
+data.frame(quantite = c("moyenne", "intra", "inter", "total", "part expliquee"),
+           theorique = c(12, 3, 8, 11, 8/11),
+           observee = c(mean(y), intra, inter, total, inter/total))
+boxplot(y ~ factor(g), names = c("G = 0", "G = 1"),
+        xlab = "Groupe", ylab = "Réponse simulée", col = c("grey85","steelblue2"))
+```
+
+L’égalité empirique vaut, à l’arrondi machine près, pour cet échantillon parce que les mêmes données et les mêmes dénominateurs sont utilisés. La proximité des composantes avec 3 et 8 est une observation de simulation, pas une identité. Les centres et les dispersions diffèrent entre groupes; un boxplot ne prouve pas une loi normale. `var(y)` utiliserait $n-1$ et doit être multiplié par $(n-1)/n$ pour retrouver `total`.
+
+**Critères indépendants :** Traduire chaque loi conditionnelle en moyenne et sd; Conserver l’appariement groupe-réponse; Employer les mêmes poids et dénominateurs; Distinguer identité empirique et approximation de Monte-Carlo.
+
+## Corrections des variantes
+
+### L14-V01 {#L14-V01}
+
+Chaque groupe a probabilité $1/2$. $\mathbb P(N=2\mid G=0)=1/4$ et $\mathbb P(N=2\mid G=1)=3/4$. Ainsi $m(G)=1/2+G$, $\mathbb E[N]=1$, et $\mathbb V(N\mid G)=4(1/4)(3/4)=3/4$. La variance inter vaut $\mathbb V(G)=1/4$, le total vaut 1. La loi marginale de $N$ attribue probabilité $1/2$ à 0 et 2. Or $\mathbb P(G=0,N=0)=3/8\ne(1/2)(1/2)$, donc il n’y a pas indépendance.
+
+**Critères :** Normaliser chaque ligne; Construire une variable m(G); Pondérer les variances; Tester une factorisation.
+
+### L14-V02 {#L14-V02}
+
+La symétrie donne $\mathbb E[X^3]=\mathbb E[X]=0$; l’indépendance donne $\operatorname{Cov}(X,\varepsilon)=0$. La covariance et la corrélation valent 0. Pourtant $m(X)=X^2$ et $\mathbb V(X^2)=1/5-1/9=4/45$. La variance totale vaut $5/45$, donc la part expliquée vaut $4/5$. L’égalité avec $\rho^2$ exige une moyenne conditionnelle affine pour ce cadre de régression; une prédiction non linéaire peut être excellente avec une corrélation linéaire nulle.
+
+**Critères :** Exploiter symétrie et indépendance séparément; Calculer V(X²) avec le quatrième moment; Distinguer corrélation et variance expliquée.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `ctd07` : Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360. Marginaliser, conditionner, mélange, variance totale, simulation et comparaison.
+- `st07_08` : PDF pp.1-2, « Couple continu » et « Couple discret ». Utiliser un support conjoint explicite et distinguer les deux espérances conditionnelles.
+- `st09` : PDF p.3, « Lien entre covariance et indépendance ». Contre-exemple à la réciproque de l’indépendance.
+- `blocks_v2` : Blocs PS1-057, PS1-058, PS1-191 à PS1-212. Formulations des objets, hypothèses et décomposition quadratique.

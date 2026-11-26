@@ -1,0 +1,213 @@
+---
+title: "L01 · R : environnement, données et vérification"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L01
+  document_role: work
+  content_status: authored_complete
+  minutes: 30
+  exercise_ids: ["L01-E01", "L01-E02", "L01-E03", "L01-E04"]
+  block_ids: ["L01-B01", "L01-B02", "L01-B03", "L01-B04", "L01-B05"]
+  learner_state: not_created
+---
+**30 min :** repères 4, compréhension 3, rédaction 3, R 14, correction et rappel 6.
+Une ligne du tableau représente une observation. Un filtre change la population
+décrite. Le résultat numérique ne devient interprétable qu'après avoir dit quelles
+lignes et quelles valeurs ont été conservées.
+
+Le fichier `data/mesures.csv` est un petit jeu **synthétique** livré avec cette
+leçon. Travailler depuis le dossier L01. L'objectif est de pouvoir relancer les
+commandes dans leur ordre, sans objet créé à la main dans une ancienne session.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+### Exécuter et conserver un calcul R {#L01-B01}
+
+> **SYX [L01-B01] · Exécuter et conserver un calcul R**
+>
+> La console exécute une commande; un fichier `.Rmd` conserve texte et code.
+> Un bloc R s'exécute avec sa flèche dans RStudio Visual. `eval=FALSE` empêche
+> l'exécution; `include=FALSE` exécute sans afficher le bloc. `Knit` relance le
+> document dans une session distincte. Les objets nécessaires doivent donc être
+> créés par le document. Un résultat présent dans la console ne garantit pas la
+> reproductibilité. `getwd()` indique le dossier courant.
+
+### Objets, vecteurs et opérations {#L01-B02}
+
+> **SYX [L01-B02] · Objets, vecteurs et opérations**
+>
+> `x <- c(3, 6, 9)` crée un vecteur; `length(x)` donne sa longueur,
+> `x[2]` son deuxième élément et `x[-1]` un nouveau vecteur sans le premier.
+> `class(x)` inspecte la classe. `x > 5` produit des booléens; `==` compare,
+> `&` signifie « et », `|` « ou », `!` « non », composante par composante.
+> `x * 2` est vectorisé. Deux vecteurs de longueurs différentes peuvent subir
+> un recyclage, parfois sans avertissement : vérifier leur longueur.
+> `if (condition) { ... } else { ... }` exige une seule valeur logique non
+> manquante; il ne filtre pas un vecteur.
+> `as.integer` convertit FALSE en 0 et TRUE en 1 pour coder une catégorie binaire.
+
+### Importer et inspecter un tableau {#L01-B03}
+
+> **SYX [L01-B03] · Importer et inspecter un tableau**
+>
+> `d <- read.csv("data/mesures.csv", na.strings="NA")` lit un CSV à
+> virgules et décimales avec un point. `read.csv2` convient au format à
+> points-virgules et décimales avec une virgule. Vérifier le format réel.
+> `names(d)`, `str(d)` et `head(d)` contrôlent noms, types et premières lignes.
+> `d$mesure` extrait une colonne; `d[condition, ]` sélectionne des lignes.
+> Une colonne numérique doit rester numérique, et une ligne doit garder le même
+> sens après importation.
+> `nrow(d)` donne le nombre de lignes; `ncol(d)` le nombre de colonnes.
+
+### Filtrer, compter et résumer sans confondre NA et zéro {#L01-B04}
+
+> **SYX [L01-B04] · Filtrer, compter et résumer sans confondre NA et zéro**
+>
+> `NA` signifie « manquant ». `is.na(x)` le détecte; `x == NA` ne convient pas.
+> Pour sélectionner les valeurs connues strictement supérieures à 4, écrire
+> `ok <- !is.na(x) & x > 4` puis `x[ok]`. Si cette sélection est non vide,
+> `mean(x[ok])` en calcule la moyenne. `sum(ok)` compte les valeurs vraies,
+> `mean(x)` calcule la moyenne et `mean(x, na.rm=TRUE)` omet les manquantes.
+> `mean(test)` est une fréquence si `test` est un vecteur logique non vide sans
+> NA. Une suppression doit être annoncée, avec l'effectif restant.
+> `x |> mean(na.rm=TRUE)` transmet `x` comme premier argument, sous R 4.1 ou
+> ultérieur. `mean(x, na.rm=TRUE)` reste une écriture équivalente.
+
+## 2/6 · Expliquer les objets
+
+### L01-E01 · Lire une sélection (3 min) {#L01-E01}
+
+On pose `x <- c(2, NA, 7, 0)`. Sans exécuter, donner la longueur de `x`,
+le type de `x > 3` et l'effet du NA sur ce test. Expliquer pourquoi remplacer
+NA par 0 modifie la question scientifique. Le vecteur `c(10,20)` peut-il être
+ajouté à `x` sans avertissement ? Cette absence d'avertissement suffit-elle ?
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### L01-E02 · Dire qui est décrit (3 min) {#L01-E02}
+
+Un relevé contient 18 trajets, dont 3 sans durée. On souhaite décrire les
+trajets de durée connue effectués en vélo. Écrire en français le filtre voulu,
+la population conservée et ce que la moyenne obtenue ne permettra pas d'affirmer.
+On ne connaît pas le nombre de trajets en vélo.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### Lire l’aide et contrôler une prédiction {#L01-B05}
+
+> **SYX [L01-B05] · Lire l’aide et contrôler une prédiction**
+>
+> `help(mean)` ou `?mean` ouvre la documentation; `args(mean)` affiche la
+> signature. Lire les arguments, les valeurs par défaut et la valeur renvoyée.
+> Avant l'exécution, prédire un petit cas. Puis comparer avec la sortie et
+> expliquer tout écart. `stopifnot(condition)` arrête le script si une condition
+> n'est pas vraie. `isTRUE(all.equal(a,b))` compare deux résultats numériques avec
+> une tolérance, sans exiger une égalité binaire exacte.
+
+### L01-E03 · Importer et résumer les capteurs (11 min) {#L01-E03}
+
+Importer `data/mesures.csv`. Contrôler noms, types et nombre de lignes.
+Compter les mesures manquantes. Conserver les lignes du site B dont la mesure
+est connue et strictement positive. Calculer l'effectif et la mesure moyenne
+de ce sous-ensemble. Vérifier l'argument `na.rm` dans l'aide de `mean`.
+Écrire une phrase avec l'unité, l'effectif et la règle de sélection.
+
+```{r L01-E03}
+# Écrire les commandes, puis les exécuter dans l'ordre.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### L01-E04 · Rejouer et vérifier (3 min) {#L01-E04}
+
+Réexécuter les commandes de E03 dans une session R redémarrée, puis
+réécrire le calcul de moyenne avec `|>`. Ajouter un contrôle qui s'arrête si
+aucune ligne n'est conservée. Expliquer la différence entre une vérification
+sur ce fichier et une preuve valable pour tous les fichiers.
+
+```{r L01-E04}
+# Contrôle et seconde écriture.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `L01_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| L01-E01 | | |
+| L01-E02 | | |
+| L01-E03 | | |
+| L01-E04 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Retrouver un argument dans l’aide, conserver le sens des lignes et annoncer les données écartées. La syntaxe de référence reste dans L01-B01 à B05; seul le traitement des valeurs manquantes entre dans la sélection initiale Anki.
+
+Les variantes L01-V01, L01-V02 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### L01-V01 (4 min, en remplacement) {#L01-V01}
+
+Sur 12 réservations, 9 statuts sont connus et 6 indiquent une présence. Quelle fréquence décrit les statuts connus ? Quelle quantité donnerait la division par 12 ? Rédiger sans décider arbitrairement du sort des trois absences d'information.
+
+**Nouvelle tentative sans correction :**
+
+
+### L01-V02 (4 min, en remplacement) {#L01-V02}
+
+Après une sélection sur des températures strictement supérieures à 50 °C, aucune ligne ne reste. Un script affiche NaN. Un collègue propose de remplacer ce résultat par 0. Décider ce qu'il faut renvoyer et quel contrôle ajouter, puis justifier.
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Préliminaire; Exercice 0 Q1-Q2; Exercice 2 Q1-Q3; Exercice 3; Exercice 4 Q1-Q3; Mise en œuvre Q1 : Importation, objets, sélection, aide, données manquantes.
+- `tp01` (source non redistribuée), Consignes; Introduction; Exercice 1 Q1-Q2 : Code expliqué, texte interprétatif et enchaînement reproductible.
+- `blocks_v2` (source non redistribuée), PS1-021, PS1-040, PS1-023, PS1-024, PS1-025, PS1-026, PS1-027, PS1-028, PS1-029, PS1-033, PS1-031, PS1-032, PS1-110, PS1-022 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

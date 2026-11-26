@@ -1,0 +1,4668 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "TP and December mock competency catalogue plus legacy topic catalogue; not complete PS1 mastery.",
+  "topics": [
+    {
+      "id": "argmax",
+      "label_fr": "Argmin, argmax et optimisation",
+      "prerequisite_topic_ids": [
+        "calculus_tools"
+      ]
+    },
+    {
+      "id": "asymptotic_normality",
+      "label_fr": "Normalité asymptotique",
+      "prerequisite_topic_ids": [
+        "clt",
+        "estimator",
+        "conv_distribution"
+      ]
+    },
+    {
+      "id": "bayes",
+      "label_fr": "Formule de Bayes",
+      "prerequisite_topic_ids": [
+        "conditional_prob",
+        "total_prob"
+      ]
+    },
+    {
+      "id": "bernoulli_law",
+      "label_fr": "Loi de Bernoulli",
+      "prerequisite_topic_ids": [
+        "pmf"
+      ]
+    },
+    {
+      "id": "bernoulli_sum",
+      "label_fr": "Somme de Bernoulli indépendantes",
+      "prerequisite_topic_ids": [
+        "binomial_law",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "best_predictor",
+      "label_fr": "Espérance conditionnelle comme meilleur prédicteur quadratique",
+      "prerequisite_topic_ids": [
+        "cond_exp_var",
+        "variance",
+        "expectation"
+      ]
+    },
+    {
+      "id": "bias",
+      "label_fr": "Biais d'un estimateur",
+      "prerequisite_topic_ids": [
+        "estimator",
+        "expectation"
+      ]
+    },
+    {
+      "id": "bias_variance",
+      "label_fr": "Décomposition biais-variance de l'EQM",
+      "prerequisite_topic_ids": [
+        "mse",
+        "bias",
+        "estimator_variance"
+      ]
+    },
+    {
+      "id": "binomial_law",
+      "label_fr": "Loi binomiale",
+      "prerequisite_topic_ids": [
+        "bernoulli_law",
+        "discrete_law"
+      ]
+    },
+    {
+      "id": "bootstrap",
+      "label_fr": "Bootstrap non paramétrique d'un estimateur",
+      "prerequisite_topic_ids": [
+        "iid_sample",
+        "estimator",
+        "r_seed"
+      ]
+    },
+    {
+      "id": "boxplot",
+      "label_fr": "Boîte à moustaches et quartiles",
+      "prerequisite_topic_ids": [
+        "quantile",
+        "r_graph"
+      ]
+    },
+    {
+      "id": "calculus_tools",
+      "label_fr": "Dérivées et optimisation",
+      "prerequisite_topic_ids": []
+    },
+    {
+      "id": "cdf",
+      "label_fr": "Fonction de répartition F_X",
+      "prerequisite_topic_ids": [
+        "distribution"
+      ]
+    },
+    {
+      "id": "cdf_atoms",
+      "label_fr": "Sauts d'une répartition",
+      "prerequisite_topic_ids": [
+        "cdf_properties"
+      ]
+    },
+    {
+      "id": "cdf_intervals",
+      "label_fr": "Probabilités d'intervalles via F_X",
+      "prerequisite_topic_ids": [
+        "cdf_properties"
+      ]
+    },
+    {
+      "id": "cdf_properties",
+      "label_fr": "Propriétés de la répartition",
+      "prerequisite_topic_ids": [
+        "cdf"
+      ]
+    },
+    {
+      "id": "chebyshev",
+      "label_fr": "Inégalité de Bienaymé-Tchebychev",
+      "prerequisite_topic_ids": [
+        "variance",
+        "prob_measure"
+      ]
+    },
+    {
+      "id": "chi_fit",
+      "label_fr": "Test khi-deux d'adéquation",
+      "prerequisite_topic_ids": [
+        "chi_observed",
+        "chisq_law",
+        "chi_validity",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "chi_independent",
+      "label_fr": "Test khi-deux d'indépendance",
+      "prerequisite_topic_ids": [
+        "contingency_table",
+        "chisq_law",
+        "chi_observed",
+        "chi_validity",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "chi_observed",
+      "label_fr": "Effectifs observés et attendus",
+      "prerequisite_topic_ids": [
+        "r_table",
+        "hypotheses"
+      ]
+    },
+    {
+      "id": "chi_validity",
+      "label_fr": "Conditions d'approximation du khi-deux",
+      "prerequisite_topic_ids": [
+        "chi_observed",
+        "chisq_law"
+      ]
+    },
+    {
+      "id": "chisq_law",
+      "label_fr": "Loi du khi-deux",
+      "prerequisite_topic_ids": [
+        "gamma_law",
+        "normal_law"
+      ]
+    },
+    {
+      "id": "choose_test",
+      "label_fr": "Choisir un test selon les données",
+      "prerequisite_topic_ids": [
+        "student_test_one",
+        "student_test_two",
+        "welch_test",
+        "chi_fit",
+        "chi_independent"
+      ]
+    },
+    {
+      "id": "ci_coverage",
+      "label_fr": "Couverture d'un intervalle",
+      "prerequisite_topic_ids": [
+        "ci_definition",
+        "wlln"
+      ]
+    },
+    {
+      "id": "ci_definition",
+      "label_fr": "Intervalle de confiance fréquentiste",
+      "prerequisite_topic_ids": [
+        "estimator",
+        "confidence_level"
+      ]
+    },
+    {
+      "id": "ci_normal_known",
+      "label_fr": "IC gaussien si variance connue",
+      "prerequisite_topic_ids": [
+        "standard_normal",
+        "sample_mean",
+        "ci_pivot"
+      ]
+    },
+    {
+      "id": "ci_normal_unknown",
+      "label_fr": "IC gaussien si variance inconnue",
+      "prerequisite_topic_ids": [
+        "student_pivot",
+        "ci_pivot"
+      ]
+    },
+    {
+      "id": "ci_pivot",
+      "label_fr": "Construire un IC par inversion d'un pivot",
+      "prerequisite_topic_ids": [
+        "pivot",
+        "quantile",
+        "ci_definition"
+      ]
+    },
+    {
+      "id": "ci_proportion",
+      "label_fr": "IC asymptotique pour une proportion",
+      "prerequisite_topic_ids": [
+        "ci_definition",
+        "clt",
+        "bernoulli_law",
+        "sample_mean"
+      ]
+    },
+    {
+      "id": "ci_variance",
+      "label_fr": "IC sur la variance d'une normale",
+      "prerequisite_topic_ids": [
+        "chisq_law",
+        "sample_var",
+        "ci_pivot"
+      ]
+    },
+    {
+      "id": "clt",
+      "label_fr": "Théorème central limite",
+      "prerequisite_topic_ids": [
+        "iid_sample",
+        "sample_mean_moments",
+        "normal_law",
+        "conv_distribution"
+      ]
+    },
+    {
+      "id": "cond_exp_value",
+      "label_fr": "Espérance de Y sachant X=x",
+      "prerequisite_topic_ids": [
+        "conditional_density",
+        "expectation"
+      ]
+    },
+    {
+      "id": "cond_exp_var",
+      "label_fr": "Espérance conditionnelle E(Y sachant X)",
+      "prerequisite_topic_ids": [
+        "cond_exp_value",
+        "rv"
+      ]
+    },
+    {
+      "id": "cond_variance",
+      "label_fr": "Variance conditionnelle Var(Y sachant X)",
+      "prerequisite_topic_ids": [
+        "conditional_density",
+        "variance",
+        "cond_exp_var"
+      ]
+    },
+    {
+      "id": "conditional_density",
+      "label_fr": "Densité conditionnelle",
+      "prerequisite_topic_ids": [
+        "joint_density",
+        "marginals"
+      ]
+    },
+    {
+      "id": "conditional_prob",
+      "label_fr": "Probabilité conditionnelle",
+      "prerequisite_topic_ids": [
+        "prob_measure",
+        "set_ops"
+      ]
+    },
+    {
+      "id": "confidence_level",
+      "label_fr": "Niveau de confiance et risque alpha",
+      "prerequisite_topic_ids": [
+        "prob_measure"
+      ]
+    },
+    {
+      "id": "consistency",
+      "label_fr": "Consistance de l'estimateur",
+      "prerequisite_topic_ids": [
+        "estimator",
+        "conv_prob"
+      ]
+    },
+    {
+      "id": "contingency_table",
+      "label_fr": "Tableau de contingence",
+      "prerequisite_topic_ids": [
+        "r_table",
+        "prob_event"
+      ]
+    },
+    {
+      "id": "continuous_intervals",
+      "label_fr": "Probabilités par intégration",
+      "prerequisite_topic_ids": [
+        "density_cdf"
+      ]
+    },
+    {
+      "id": "conv_distribution",
+      "label_fr": "Convergence en loi",
+      "prerequisite_topic_ids": [
+        "cdf",
+        "cdf_properties"
+      ]
+    },
+    {
+      "id": "conv_prob",
+      "label_fr": "Convergence en probabilité",
+      "prerequisite_topic_ids": [
+        "rv",
+        "prob_measure"
+      ]
+    },
+    {
+      "id": "convolution",
+      "label_fr": "Convolution pour une somme indépendante",
+      "prerequisite_topic_ids": [
+        "density",
+        "independent_rv",
+        "integral_tools"
+      ]
+    },
+    {
+      "id": "correlation",
+      "label_fr": "Corrélation linéaire rho",
+      "prerequisite_topic_ids": [
+        "covariance",
+        "variance",
+        "cov_cauchy"
+      ]
+    },
+    {
+      "id": "cov_bilinear",
+      "label_fr": "Symétrie et bilinéarité de la covariance",
+      "prerequisite_topic_ids": [
+        "covariance",
+        "expect_linear"
+      ]
+    },
+    {
+      "id": "cov_cauchy",
+      "label_fr": "Inégalité de Cauchy-Schwarz pour covariance",
+      "prerequisite_topic_ids": [
+        "covariance",
+        "variance"
+      ]
+    },
+    {
+      "id": "covariance",
+      "label_fr": "Covariance",
+      "prerequisite_topic_ids": [
+        "expectation",
+        "variance"
+      ]
+    },
+    {
+      "id": "density",
+      "label_fr": "Loi à densité et normalisation",
+      "prerequisite_topic_ids": [
+        "distribution",
+        "integral_tools"
+      ]
+    },
+    {
+      "id": "density_cdf",
+      "label_fr": "Relation entre densité et répartition",
+      "prerequisite_topic_ids": [
+        "density",
+        "cdf",
+        "integral_tools"
+      ]
+    },
+    {
+      "id": "discrete_law",
+      "label_fr": "Loi discrète",
+      "prerequisite_topic_ids": [
+        "distribution",
+        "rv_support"
+      ]
+    },
+    {
+      "id": "discrete_uniform",
+      "label_fr": "Loi uniforme discrète",
+      "prerequisite_topic_ids": [
+        "pmf",
+        "rv_support"
+      ]
+    },
+    {
+      "id": "distribution",
+      "label_fr": "Loi de probabilité d'une variable",
+      "prerequisite_topic_ids": [
+        "rv",
+        "prob_measure"
+      ]
+    },
+    {
+      "id": "empirical_cdf",
+      "label_fr": "Fonction de répartition empirique",
+      "prerequisite_topic_ids": [
+        "cdf",
+        "r_summaries"
+      ]
+    },
+    {
+      "id": "estimation_error",
+      "label_fr": "Erreur de l'estimation",
+      "prerequisite_topic_ids": [
+        "estimator"
+      ]
+    },
+    {
+      "id": "estimator",
+      "label_fr": "Estimateur et estimation ponctuelle",
+      "prerequisite_topic_ids": [
+        "statistic",
+        "parameter"
+      ]
+    },
+    {
+      "id": "estimator_comparison",
+      "label_fr": "Comparer des estimateurs",
+      "prerequisite_topic_ids": [
+        "bias_variance",
+        "consistency"
+      ]
+    },
+    {
+      "id": "estimator_variance",
+      "label_fr": "Variance d'un estimateur",
+      "prerequisite_topic_ids": [
+        "estimator",
+        "variance"
+      ]
+    },
+    {
+      "id": "exp_gamma_sum",
+      "label_fr": "Somme d'exponentielles et loi gamma",
+      "prerequisite_topic_ids": [
+        "exponential_law",
+        "gamma_law",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "expect_linear",
+      "label_fr": "Linéarité de l'espérance",
+      "prerequisite_topic_ids": [
+        "expectation"
+      ]
+    },
+    {
+      "id": "expectation",
+      "label_fr": "Espérance et intégrabilité",
+      "prerequisite_topic_ids": [
+        "distribution",
+        "sum_notation",
+        "integral_tools"
+      ]
+    },
+    {
+      "id": "explained_var",
+      "label_fr": "Variance expliquée et non expliquée",
+      "prerequisite_topic_ids": [
+        "law_total_variance"
+      ]
+    },
+    {
+      "id": "exponential_law",
+      "label_fr": "Loi exponentielle",
+      "prerequisite_topic_ids": [
+        "density"
+      ]
+    },
+    {
+      "id": "fisher_exact",
+      "label_fr": "Test exact de Fisher (mention)",
+      "prerequisite_topic_ids": [
+        "contingency_table",
+        "chi_validity",
+        "hypotheses"
+      ]
+    },
+    {
+      "id": "fisher_law",
+      "label_fr": "Loi de Fisher-Snedecor F",
+      "prerequisite_topic_ids": [
+        "chisq_law",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "gamma_fn",
+      "label_fr": "Fonction gamma",
+      "prerequisite_topic_ids": [
+        "integral_tools"
+      ]
+    },
+    {
+      "id": "gamma_law",
+      "label_fr": "Loi gamma (forme, taux)",
+      "prerequisite_topic_ids": [
+        "density",
+        "gamma_fn"
+      ]
+    },
+    {
+      "id": "geometric_law",
+      "label_fr": "Loi géométrique",
+      "prerequisite_topic_ids": [
+        "bernoulli_law",
+        "discrete_law"
+      ]
+    },
+    {
+      "id": "histogram",
+      "label_fr": "Histogramme de densité",
+      "prerequisite_topic_ids": [
+        "r_graph",
+        "density"
+      ]
+    },
+    {
+      "id": "hypotheses",
+      "label_fr": "Hypothèses nulle H0 et alternative H1",
+      "prerequisite_topic_ids": [
+        "parametric_model"
+      ]
+    },
+    {
+      "id": "iid_sample",
+      "label_fr": "Échantillon i.i.d.",
+      "prerequisite_topic_ids": [
+        "independent_rv",
+        "distribution"
+      ]
+    },
+    {
+      "id": "importance_sampling",
+      "label_fr": "Échantillonnage préférentiel",
+      "prerequisite_topic_ids": [
+        "mc_integral",
+        "density",
+        "variance"
+      ]
+    },
+    {
+      "id": "indep_cov",
+      "label_fr": "Indépendance implique covariance nulle",
+      "prerequisite_topic_ids": [
+        "independent_rv",
+        "covariance"
+      ]
+    },
+    {
+      "id": "indep_factorization",
+      "label_fr": "Factorisation et indépendance",
+      "prerequisite_topic_ids": [
+        "joint_density",
+        "marginals",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "independent_rv",
+      "label_fr": "Indépendance de variables aléatoires",
+      "prerequisite_topic_ids": [
+        "distribution",
+        "conditional_prob"
+      ]
+    },
+    {
+      "id": "indicator_event",
+      "label_fr": "Indicatrice d'un événement",
+      "prerequisite_topic_ids": [
+        "prob_event",
+        "rv"
+      ]
+    },
+    {
+      "id": "integral_tools",
+      "label_fr": "Intégrales et primitives",
+      "prerequisite_topic_ids": []
+    },
+    {
+      "id": "inverse_transform",
+      "label_fr": "Simulation par fonction quantile",
+      "prerequisite_topic_ids": [
+        "quantile",
+        "uniform_law"
+      ]
+    },
+    {
+      "id": "joint_density",
+      "label_fr": "Densité jointe f_(X,Y)",
+      "prerequisite_topic_ids": [
+        "joint_law",
+        "density"
+      ]
+    },
+    {
+      "id": "joint_law",
+      "label_fr": "Loi jointe d'un couple (X,Y)",
+      "prerequisite_topic_ids": [
+        "distribution",
+        "rv"
+      ]
+    },
+    {
+      "id": "joint_transfer",
+      "label_fr": "Espérance d'une fonction du couple",
+      "prerequisite_topic_ids": [
+        "joint_density",
+        "transfer"
+      ]
+    },
+    {
+      "id": "koenig_huygens",
+      "label_fr": "Identité de König-Huygens",
+      "prerequisite_topic_ids": [
+        "variance",
+        "expect_linear"
+      ]
+    },
+    {
+      "id": "law_total_expectation",
+      "label_fr": "Formule de l'espérance totale",
+      "prerequisite_topic_ids": [
+        "cond_exp_var",
+        "expectation"
+      ]
+    },
+    {
+      "id": "law_total_variance",
+      "label_fr": "Formule de la variance totale (Eve)",
+      "prerequisite_topic_ids": [
+        "cond_variance",
+        "law_total_expectation",
+        "variance"
+      ]
+    },
+    {
+      "id": "levene_test",
+      "label_fr": "Test de Levene (mention)",
+      "prerequisite_topic_ids": [
+        "variance",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "likelihood",
+      "label_fr": "Vraisemblance d'un échantillon i.i.d.",
+      "prerequisite_topic_ids": [
+        "parametric_model",
+        "distribution",
+        "iid_sample"
+      ]
+    },
+    {
+      "id": "log_tools",
+      "label_fr": "Logarithmes et exponentielles",
+      "prerequisite_topic_ids": [
+        "calculus_tools"
+      ]
+    },
+    {
+      "id": "loglikelihood",
+      "label_fr": "Log-vraisemblance",
+      "prerequisite_topic_ids": [
+        "likelihood",
+        "log_tools"
+      ]
+    },
+    {
+      "id": "marginals",
+      "label_fr": "Densités marginales",
+      "prerequisite_topic_ids": [
+        "joint_density",
+        "integral_tools"
+      ]
+    },
+    {
+      "id": "matrix_tools",
+      "label_fr": "Matrices, inverse et produit matriciel",
+      "prerequisite_topic_ids": [
+        "sum_notation"
+      ]
+    },
+    {
+      "id": "mc_confidence",
+      "label_fr": "Intervalle de confiance Monte-Carlo",
+      "prerequisite_topic_ids": [
+        "mc_precision",
+        "quantile",
+        "sample_var"
+      ]
+    },
+    {
+      "id": "mc_indicator",
+      "label_fr": "Simulation d'une probabilité par indicatrices",
+      "prerequisite_topic_ids": [
+        "bernoulli_law",
+        "wlln",
+        "indicator_event"
+      ]
+    },
+    {
+      "id": "mc_integral",
+      "label_fr": "Méthode de Monte-Carlo pour une intégrale",
+      "prerequisite_topic_ids": [
+        "expectation",
+        "wlln",
+        "uniform_law"
+      ]
+    },
+    {
+      "id": "mc_precision",
+      "label_fr": "Erreur et précision de Monte-Carlo",
+      "prerequisite_topic_ids": [
+        "mc_integral",
+        "sample_mean_moments",
+        "clt"
+      ]
+    },
+    {
+      "id": "method_moments",
+      "label_fr": "Méthode des moments",
+      "prerequisite_topic_ids": [
+        "moments_k",
+        "sample_mean",
+        "estimator",
+        "parametric_model"
+      ]
+    },
+    {
+      "id": "mgf",
+      "label_fr": "Fonction génératrice des moments",
+      "prerequisite_topic_ids": [
+        "expectation",
+        "log_tools"
+      ]
+    },
+    {
+      "id": "mgf_moments",
+      "label_fr": "Dérivées de la FGM",
+      "prerequisite_topic_ids": [
+        "mgf",
+        "moments_k",
+        "calculus_tools"
+      ]
+    },
+    {
+      "id": "mle",
+      "label_fr": "Maximum de vraisemblance (EMV)",
+      "prerequisite_topic_ids": [
+        "likelihood",
+        "argmax",
+        "estimator"
+      ]
+    },
+    {
+      "id": "moments_k",
+      "label_fr": "Moments d'ordre k",
+      "prerequisite_topic_ids": [
+        "expectation"
+      ]
+    },
+    {
+      "id": "mse",
+      "label_fr": "Erreur quadratique moyenne (EQM/MSE)",
+      "prerequisite_topic_ids": [
+        "estimation_error",
+        "expectation"
+      ]
+    },
+    {
+      "id": "mse_consistency",
+      "label_fr": "EQM tendant vers 0 implique consistance",
+      "prerequisite_topic_ids": [
+        "mse",
+        "consistency",
+        "chebyshev"
+      ]
+    },
+    {
+      "id": "normal_approx",
+      "label_fr": "Approximation normale et standardisation",
+      "prerequisite_topic_ids": [
+        "clt",
+        "quantile"
+      ]
+    },
+    {
+      "id": "normal_law",
+      "label_fr": "Loi normale N(mu,sigma²)",
+      "prerequisite_topic_ids": [
+        "density"
+      ]
+    },
+    {
+      "id": "normal_sum",
+      "label_fr": "Stabilité de la somme de normales indépendantes",
+      "prerequisite_topic_ids": [
+        "normal_law",
+        "var_sum",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "one_two_sided",
+      "label_fr": "Tests bilatéraux et unilatéraux",
+      "prerequisite_topic_ids": [
+        "hypotheses"
+      ]
+    },
+    {
+      "id": "parameter",
+      "label_fr": "Paramètre inconnu d'un modèle",
+      "prerequisite_topic_ids": [
+        "distribution"
+      ]
+    },
+    {
+      "id": "parametric_model",
+      "label_fr": "Modèle statistique paramétrique",
+      "prerequisite_topic_ids": [
+        "parameter",
+        "iid_sample"
+      ]
+    },
+    {
+      "id": "pivot",
+      "label_fr": "Statistique pivot",
+      "prerequisite_topic_ids": [
+        "statistic",
+        "parametric_model"
+      ]
+    },
+    {
+      "id": "pmf",
+      "label_fr": "Fonction de masse de probabilité",
+      "prerequisite_topic_ids": [
+        "discrete_law"
+      ]
+    },
+    {
+      "id": "poisson_law",
+      "label_fr": "Loi de Poisson",
+      "prerequisite_topic_ids": [
+        "pmf"
+      ]
+    },
+    {
+      "id": "poisson_sum",
+      "label_fr": "Somme de Poisson indépendantes",
+      "prerequisite_topic_ids": [
+        "poisson_law",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "pooled_variance",
+      "label_fr": "Variance poolée de deux groupes",
+      "prerequisite_topic_ids": [
+        "sample_var",
+        "iid_sample"
+      ]
+    },
+    {
+      "id": "power",
+      "label_fr": "Puissance d'un test",
+      "prerequisite_topic_ids": [
+        "risk_second"
+      ]
+    },
+    {
+      "id": "prob_event",
+      "label_fr": "Expérience, univers et événement",
+      "prerequisite_topic_ids": []
+    },
+    {
+      "id": "prob_measure",
+      "label_fr": "Mesure de probabilité",
+      "prerequisite_topic_ids": [
+        "prob_event",
+        "set_ops"
+      ]
+    },
+    {
+      "id": "pvalue",
+      "label_fr": "p-valeur",
+      "prerequisite_topic_ids": [
+        "test_statistic",
+        "hypotheses",
+        "one_two_sided"
+      ]
+    },
+    {
+      "id": "qqplot",
+      "label_fr": "Graphe quantile-quantile",
+      "prerequisite_topic_ids": [
+        "quantile",
+        "r_graph"
+      ]
+    },
+    {
+      "id": "quantile",
+      "label_fr": "Quantile et médiane",
+      "prerequisite_topic_ids": [
+        "cdf_properties"
+      ]
+    },
+    {
+      "id": "r_boolean",
+      "label_fr": "Conditions logiques et filtrage",
+      "prerequisite_topic_ids": [
+        "r_types",
+        "r_index"
+      ]
+    },
+    {
+      "id": "r_console",
+      "label_fr": "Console, scripts et RStudio",
+      "prerequisite_topic_ids": []
+    },
+    {
+      "id": "r_df",
+      "label_fr": "Data frames et variables",
+      "prerequisite_topic_ids": [
+        "r_vectors",
+        "r_types"
+      ]
+    },
+    {
+      "id": "r_for",
+      "label_fr": "Boucle for",
+      "prerequisite_topic_ids": [
+        "r_vectors"
+      ]
+    },
+    {
+      "id": "r_functions",
+      "label_fr": "Fonctions, arguments et valeur de retour",
+      "prerequisite_topic_ids": [
+        "r_objects"
+      ]
+    },
+    {
+      "id": "r_graph",
+      "label_fr": "Graphiques descriptifs R",
+      "prerequisite_topic_ids": [
+        "r_vectors",
+        "r_df"
+      ]
+    },
+    {
+      "id": "r_help",
+      "label_fr": "Documentation R",
+      "prerequisite_topic_ids": [
+        "r_console"
+      ]
+    },
+    {
+      "id": "r_if",
+      "label_fr": "Conditions if/else",
+      "prerequisite_topic_ids": [
+        "r_boolean"
+      ]
+    },
+    {
+      "id": "r_import",
+      "label_fr": "Importation CSV et accès aux colonnes",
+      "prerequisite_topic_ids": [
+        "r_df"
+      ]
+    },
+    {
+      "id": "r_index",
+      "label_fr": "Indices, sélection et exclusion",
+      "prerequisite_topic_ids": [
+        "r_vectors"
+      ]
+    },
+    {
+      "id": "r_law_funcs",
+      "label_fr": "Fonctions de lois d/p/q/r",
+      "prerequisite_topic_ids": [
+        "r_functions"
+      ]
+    },
+    {
+      "id": "r_lm",
+      "label_fr": "Formule y ~ x et lm",
+      "prerequisite_topic_ids": [
+        "r_df",
+        "r_functions"
+      ]
+    },
+    {
+      "id": "r_matrix",
+      "label_fr": "Matrices en R",
+      "prerequisite_topic_ids": [
+        "r_vectors"
+      ]
+    },
+    {
+      "id": "r_model_output",
+      "label_fr": "Lecture de summary(lm)",
+      "prerequisite_topic_ids": [
+        "r_lm",
+        "r_summaries"
+      ]
+    },
+    {
+      "id": "r_objects",
+      "label_fr": "Affectation et noms des objets",
+      "prerequisite_topic_ids": [
+        "r_console"
+      ]
+    },
+    {
+      "id": "r_recycling",
+      "label_fr": "Recyclage des vecteurs",
+      "prerequisite_topic_ids": [
+        "r_vectorize"
+      ]
+    },
+    {
+      "id": "r_rmd",
+      "label_fr": "R Markdown et exécution des chunks",
+      "prerequisite_topic_ids": [
+        "r_console"
+      ]
+    },
+    {
+      "id": "r_scope",
+      "label_fr": "Portée locale et globale",
+      "prerequisite_topic_ids": [
+        "r_functions"
+      ]
+    },
+    {
+      "id": "r_seed",
+      "label_fr": "Graine et simulation reproductible",
+      "prerequisite_topic_ids": [
+        "r_console"
+      ]
+    },
+    {
+      "id": "r_summaries",
+      "label_fr": "Statistiques descriptives avec R",
+      "prerequisite_topic_ids": [
+        "r_vectors"
+      ]
+    },
+    {
+      "id": "r_table",
+      "label_fr": "Fréquences et tableaux avec table",
+      "prerequisite_topic_ids": [
+        "r_df",
+        "r_boolean"
+      ]
+    },
+    {
+      "id": "r_types",
+      "label_fr": "Classes et types (numeric, logical, character, factor)",
+      "prerequisite_topic_ids": [
+        "r_objects"
+      ]
+    },
+    {
+      "id": "r_vectorize",
+      "label_fr": "Calcul vectorisé",
+      "prerequisite_topic_ids": [
+        "r_vectors"
+      ]
+    },
+    {
+      "id": "r_vectors",
+      "label_fr": "Vecteurs et listes",
+      "prerequisite_topic_ids": [
+        "r_objects",
+        "r_types"
+      ]
+    },
+    {
+      "id": "r_while",
+      "label_fr": "Boucle while",
+      "prerequisite_topic_ids": [
+        "r_boolean"
+      ]
+    },
+    {
+      "id": "reg_coef_ci",
+      "label_fr": "IC de pente",
+      "prerequisite_topic_ids": [
+        "reg_coef_se",
+        "ci_pivot",
+        "student_law"
+      ]
+    },
+    {
+      "id": "reg_coef_se",
+      "label_fr": "Erreur standard des estimateurs MCO",
+      "prerequisite_topic_ids": [
+        "reg_resid_var",
+        "sample_var"
+      ]
+    },
+    {
+      "id": "reg_coef_t",
+      "label_fr": "Test t de pente H0:b1=0",
+      "prerequisite_topic_ids": [
+        "reg_coef_se",
+        "student_law",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "reg_cond_mean",
+      "label_fr": "Espérance conditionnelle affine",
+      "prerequisite_topic_ids": [
+        "reg_simple",
+        "cond_exp_var",
+        "reg_errors"
+      ]
+    },
+    {
+      "id": "reg_covmatrix",
+      "label_fr": "Matrice de covariance des prédicteurs",
+      "prerequisite_topic_ids": [
+        "covariance",
+        "matrix_tools"
+      ]
+    },
+    {
+      "id": "reg_diagnostics",
+      "label_fr": "Diagnostic graphique des résidus",
+      "prerequisite_topic_ids": [
+        "reg_residuals",
+        "r_graph"
+      ]
+    },
+    {
+      "id": "reg_empirical_corr",
+      "label_fr": "Corrélation empirique de Pearson",
+      "prerequisite_topic_ids": [
+        "reg_empirical_cov",
+        "sample_var",
+        "correlation"
+      ]
+    },
+    {
+      "id": "reg_empirical_cov",
+      "label_fr": "Covariance empirique",
+      "prerequisite_topic_ids": [
+        "iid_sample",
+        "sample_mean",
+        "covariance"
+      ]
+    },
+    {
+      "id": "reg_errors",
+      "label_fr": "Erreur gaussienne indépendante et homoscédasticité",
+      "prerequisite_topic_ids": [
+        "reg_simple",
+        "normal_law"
+      ]
+    },
+    {
+      "id": "reg_f_test",
+      "label_fr": "Test F global de régression simple",
+      "prerequisite_topic_ids": [
+        "reg_r2",
+        "fisher_law",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "reg_fit",
+      "label_fr": "Valeurs ajustées et prédiction",
+      "prerequisite_topic_ids": [
+        "reg_ols_formulas",
+        "reg_cond_mean"
+      ]
+    },
+    {
+      "id": "reg_formula",
+      "label_fr": "Formules R: +, *, :, I(), 0+x",
+      "prerequisite_topic_ids": [
+        "r_lm",
+        "reg_multiple"
+      ]
+    },
+    {
+      "id": "reg_fullrank",
+      "label_fr": "Condition de non-colinéarité / rang plein",
+      "prerequisite_topic_ids": [
+        "reg_covmatrix",
+        "matrix_tools"
+      ]
+    },
+    {
+      "id": "reg_intercept",
+      "label_fr": "Intercept b0",
+      "prerequisite_topic_ids": [
+        "reg_simple",
+        "expect_linear",
+        "reg_slope"
+      ]
+    },
+    {
+      "id": "reg_multi_coef",
+      "label_fr": "Formule à deux prédicteurs K_X^{-1} Cov(X,Y)",
+      "prerequisite_topic_ids": [
+        "reg_covmatrix",
+        "reg_multi_ols"
+      ]
+    },
+    {
+      "id": "reg_multi_df",
+      "label_fr": "Degrés de liberté n-d-1",
+      "prerequisite_topic_ids": [
+        "reg_multi_ols",
+        "statistic"
+      ]
+    },
+    {
+      "id": "reg_multi_f",
+      "label_fr": "Test F global H0:b1=...=bd=0",
+      "prerequisite_topic_ids": [
+        "reg_multi_r2",
+        "reg_multi_df",
+        "fisher_law",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "reg_multi_intercept",
+      "label_fr": "Intercept en régression multiple",
+      "prerequisite_topic_ids": [
+        "reg_multi_coef",
+        "expect_linear"
+      ]
+    },
+    {
+      "id": "reg_multi_ols",
+      "label_fr": "MCO en dimension d",
+      "prerequisite_topic_ids": [
+        "reg_multiple",
+        "reg_ols",
+        "reg_fullrank"
+      ]
+    },
+    {
+      "id": "reg_multi_pred",
+      "label_fr": "Prédiction conditionnelle multiple",
+      "prerequisite_topic_ids": [
+        "reg_partial",
+        "reg_multi_ols"
+      ]
+    },
+    {
+      "id": "reg_multi_r2",
+      "label_fr": "Coefficient R² en multiple",
+      "prerequisite_topic_ids": [
+        "reg_multi_ols",
+        "reg_r2"
+      ]
+    },
+    {
+      "id": "reg_multi_resvar",
+      "label_fr": "Variance résiduelle multiple estimée",
+      "prerequisite_topic_ids": [
+        "reg_multi_df",
+        "reg_rss"
+      ]
+    },
+    {
+      "id": "reg_multi_t",
+      "label_fr": "Tests t individuels des coefficients",
+      "prerequisite_topic_ids": [
+        "reg_multi_resvar",
+        "reg_coef_t",
+        "reg_multi_df"
+      ]
+    },
+    {
+      "id": "reg_multiple",
+      "label_fr": "Modèle de régression linéaire multiple",
+      "prerequisite_topic_ids": [
+        "reg_simple",
+        "joint_law"
+      ]
+    },
+    {
+      "id": "reg_ols",
+      "label_fr": "Moindres carrés ordinaires (MCO)",
+      "prerequisite_topic_ids": [
+        "reg_rss_objective",
+        "argmax"
+      ]
+    },
+    {
+      "id": "reg_ols_formulas",
+      "label_fr": "Formules des coefficients MCO",
+      "prerequisite_topic_ids": [
+        "reg_ols",
+        "sample_mean",
+        "sample_var",
+        "covariance"
+      ]
+    },
+    {
+      "id": "reg_omitted",
+      "label_fr": "Biais de variable omise (CTD10, complément)",
+      "prerequisite_topic_ids": [
+        "reg_multiple",
+        "reg_partial",
+        "covariance",
+        "reg_slope"
+      ]
+    },
+    {
+      "id": "reg_orthogonality",
+      "label_fr": "Orthogonalité des résidus MCO",
+      "prerequisite_topic_ids": [
+        "reg_residuals",
+        "reg_ols"
+      ]
+    },
+    {
+      "id": "reg_partial",
+      "label_fr": "Interprétation à autres prédicteurs fixés",
+      "prerequisite_topic_ids": [
+        "reg_multiple",
+        "reg_cond_mean"
+      ]
+    },
+    {
+      "id": "reg_pop_var",
+      "label_fr": "Décomposition théorique de Var(Y)",
+      "prerequisite_topic_ids": [
+        "reg_cond_mean",
+        "law_total_variance",
+        "reg_errors"
+      ]
+    },
+    {
+      "id": "reg_r2",
+      "label_fr": "Coefficient de détermination R²",
+      "prerequisite_topic_ids": [
+        "reg_rss",
+        "reg_tss"
+      ]
+    },
+    {
+      "id": "reg_r2_rho",
+      "label_fr": "R² et corrélation² (régression simple avec intercept)",
+      "prerequisite_topic_ids": [
+        "reg_r2",
+        "correlation",
+        "reg_ols_formulas"
+      ]
+    },
+    {
+      "id": "reg_resid_var",
+      "label_fr": "Variance résiduelle sans biais",
+      "prerequisite_topic_ids": [
+        "reg_rss",
+        "reg_ols"
+      ]
+    },
+    {
+      "id": "reg_residuals",
+      "label_fr": "Résidus observés et erreur du modèle",
+      "prerequisite_topic_ids": [
+        "reg_fit",
+        "reg_errors"
+      ]
+    },
+    {
+      "id": "reg_rss",
+      "label_fr": "RSS évaluée au minimum",
+      "prerequisite_topic_ids": [
+        "reg_residuals"
+      ]
+    },
+    {
+      "id": "reg_rss_objective",
+      "label_fr": "Fonction RSS(b0,b1)",
+      "prerequisite_topic_ids": [
+        "reg_simple",
+        "r_summaries",
+        "sum_notation"
+      ]
+    },
+    {
+      "id": "reg_scatter",
+      "label_fr": "Nuage de points et prédicteur",
+      "prerequisite_topic_ids": [
+        "r_graph",
+        "joint_law"
+      ]
+    },
+    {
+      "id": "reg_simple",
+      "label_fr": "Modèle de régression linéaire simple",
+      "prerequisite_topic_ids": [
+        "rv",
+        "expectation",
+        "covariance",
+        "independent_rv"
+      ]
+    },
+    {
+      "id": "reg_slope",
+      "label_fr": "Pente théorique b1",
+      "prerequisite_topic_ids": [
+        "reg_simple",
+        "covariance",
+        "variance"
+      ]
+    },
+    {
+      "id": "reg_standardized",
+      "label_fr": "Pente après normalisation",
+      "prerequisite_topic_ids": [
+        "reg_slope",
+        "correlation"
+      ]
+    },
+    {
+      "id": "reg_t_f_equiv",
+      "label_fr": "Équivalence des tests t et F en régression simple",
+      "prerequisite_topic_ids": [
+        "reg_f_test",
+        "reg_coef_t"
+      ]
+    },
+    {
+      "id": "reg_tss",
+      "label_fr": "TSS, dispersion totale des observations",
+      "prerequisite_topic_ids": [
+        "sample_mean"
+      ]
+    },
+    {
+      "id": "reg_unbiased",
+      "label_fr": "Absence de biais des estimateurs MCO",
+      "prerequisite_topic_ids": [
+        "reg_ols_formulas",
+        "reg_errors",
+        "expect_linear"
+      ]
+    },
+    {
+      "id": "rejection_region",
+      "label_fr": "Région de rejet et valeur critique",
+      "prerequisite_topic_ids": [
+        "test_statistic",
+        "quantile",
+        "risk_first"
+      ]
+    },
+    {
+      "id": "risk_first",
+      "label_fr": "Erreur de première espèce",
+      "prerequisite_topic_ids": [
+        "hypotheses",
+        "prob_measure"
+      ]
+    },
+    {
+      "id": "risk_second",
+      "label_fr": "Erreur de deuxième espèce",
+      "prerequisite_topic_ids": [
+        "hypotheses",
+        "rejection_region"
+      ]
+    },
+    {
+      "id": "rv",
+      "label_fr": "Variable aléatoire réelle",
+      "prerequisite_topic_ids": [
+        "prob_measure"
+      ]
+    },
+    {
+      "id": "rv_support",
+      "label_fr": "Support d'une loi",
+      "prerequisite_topic_ids": [
+        "rv"
+      ]
+    },
+    {
+      "id": "sample_mean",
+      "label_fr": "Moyenne empirique",
+      "prerequisite_topic_ids": [
+        "iid_sample",
+        "sum_notation"
+      ]
+    },
+    {
+      "id": "sample_mean_moments",
+      "label_fr": "Espérance et variance de la moyenne empirique",
+      "prerequisite_topic_ids": [
+        "sample_mean",
+        "expect_linear",
+        "var_sum"
+      ]
+    },
+    {
+      "id": "sample_var",
+      "label_fr": "Variance empirique et corrigée",
+      "prerequisite_topic_ids": [
+        "iid_sample",
+        "sample_mean",
+        "variance"
+      ]
+    },
+    {
+      "id": "score_eq",
+      "label_fr": "Équations de vraisemblance",
+      "prerequisite_topic_ids": [
+        "mle",
+        "loglikelihood",
+        "calculus_tools"
+      ]
+    },
+    {
+      "id": "set_ops",
+      "label_fr": "Réunion, intersection, complémentaire",
+      "prerequisite_topic_ids": [
+        "prob_event"
+      ]
+    },
+    {
+      "id": "shapiro_test",
+      "label_fr": "Test de Shapiro-Wilk (mention)",
+      "prerequisite_topic_ids": [
+        "normal_law",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "standard_normal",
+      "label_fr": "Standardisation gaussienne",
+      "prerequisite_topic_ids": [
+        "normal_law",
+        "variance_affine"
+      ]
+    },
+    {
+      "id": "statistic",
+      "label_fr": "Statistique de l'échantillon",
+      "prerequisite_topic_ids": [
+        "iid_sample"
+      ]
+    },
+    {
+      "id": "student_law",
+      "label_fr": "Loi de Student",
+      "prerequisite_topic_ids": [
+        "normal_law",
+        "chisq_law"
+      ]
+    },
+    {
+      "id": "student_pivot",
+      "label_fr": "Pivot t pour moyenne normale",
+      "prerequisite_topic_ids": [
+        "student_law",
+        "sample_mean",
+        "sample_var",
+        "pivot"
+      ]
+    },
+    {
+      "id": "student_test_one",
+      "label_fr": "Test t à un échantillon",
+      "prerequisite_topic_ids": [
+        "student_pivot",
+        "test_decision",
+        "one_two_sided"
+      ]
+    },
+    {
+      "id": "student_test_two",
+      "label_fr": "Test t à deux échantillons indépendants",
+      "prerequisite_topic_ids": [
+        "pooled_variance",
+        "student_law",
+        "test_decision"
+      ]
+    },
+    {
+      "id": "sum_notation",
+      "label_fr": "Sommes et indices",
+      "prerequisite_topic_ids": []
+    },
+    {
+      "id": "test_decision",
+      "label_fr": "Décision par comparaison p et alpha",
+      "prerequisite_topic_ids": [
+        "pvalue",
+        "risk_first"
+      ]
+    },
+    {
+      "id": "test_statistic",
+      "label_fr": "Statistique de test et loi sous H0",
+      "prerequisite_topic_ids": [
+        "hypotheses",
+        "statistic"
+      ]
+    },
+    {
+      "id": "total_prob",
+      "label_fr": "Formule des probabilités totales",
+      "prerequisite_topic_ids": [
+        "conditional_prob",
+        "set_ops"
+      ]
+    },
+    {
+      "id": "transfer",
+      "label_fr": "Théorème de transfert",
+      "prerequisite_topic_ids": [
+        "expectation",
+        "distribution"
+      ]
+    },
+    {
+      "id": "transform_cdf",
+      "label_fr": "Loi de g(X) par répartition",
+      "prerequisite_topic_ids": [
+        "cdf",
+        "rv"
+      ]
+    },
+    {
+      "id": "transform_density",
+      "label_fr": "Changement de variable pour une densité",
+      "prerequisite_topic_ids": [
+        "density",
+        "transform_cdf",
+        "calculus_tools"
+      ]
+    },
+    {
+      "id": "unbiased",
+      "label_fr": "Estimateur sans biais",
+      "prerequisite_topic_ids": [
+        "bias"
+      ]
+    },
+    {
+      "id": "uncorrelated",
+      "label_fr": "Décorrélation et indépendance",
+      "prerequisite_topic_ids": [
+        "correlation",
+        "indep_cov"
+      ]
+    },
+    {
+      "id": "uniform_law",
+      "label_fr": "Loi uniforme continue",
+      "prerequisite_topic_ids": [
+        "density",
+        "rv_support"
+      ]
+    },
+    {
+      "id": "var_sum",
+      "label_fr": "Variance d'une somme",
+      "prerequisite_topic_ids": [
+        "variance",
+        "covariance",
+        "cov_bilinear"
+      ]
+    },
+    {
+      "id": "variance",
+      "label_fr": "Variance et écart-type",
+      "prerequisite_topic_ids": [
+        "expectation",
+        "moments_k"
+      ]
+    },
+    {
+      "id": "variance_affine",
+      "label_fr": "Variance d'une transformation affine",
+      "prerequisite_topic_ids": [
+        "variance"
+      ]
+    },
+    {
+      "id": "welch_test",
+      "label_fr": "Test de Welch pour deux moyennes",
+      "prerequisite_topic_ids": [
+        "student_test_two",
+        "sample_var"
+      ]
+    },
+    {
+      "id": "within_between",
+      "label_fr": "Variance intra/intergroupes",
+      "prerequisite_topic_ids": [
+        "explained_var",
+        "cond_exp_var"
+      ]
+    },
+    {
+      "id": "wlln",
+      "label_fr": "Loi faible des grands nombres",
+      "prerequisite_topic_ids": [
+        "sample_mean_moments",
+        "chebyshev",
+        "conv_prob"
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "comp.ps1.association_explain",
+      "label_fr": "Discuter l’association entre caractéristiques et résultat sans affirmer une causalité non identifiée.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "conditional_prob",
+        "independent_rv"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Relier la conclusion aux fréquences ou comparaisons effectivement observées.",
+          "Préciser les variables ou profils comparés.",
+          "Distinguer association dans l’échantillon, utilité prédictive et causalité."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q07.sub1",
+        "tp01.ex3.q07.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.binary_feature_redundancy",
+      "label_fr": "Reconnaître l’information redondante dans un codage d’événements binaires.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_boolean",
+        "r_df",
+        "set_ops"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Relier chaque indicatrice aux catégories du codage.",
+          "Vérifier les relations de complément ou d’exclusivité nécessaires.",
+          "Justifier l’information reconstructible à partir des variables conservées sans supposer des relations non vérifiées."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex3.q05.occ2.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.bootstrap_interval",
+      "label_fr": "Construire un intervalle bootstrap pour une statistique composée de coefficients.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.regression_multiple_fit"
+      ],
+      "required_topic_ids": [
+        "bootstrap",
+        "ci_definition",
+        "quantile",
+        "r_functions",
+        "r_seed"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Définir la statistique et l’unité de rééchantillonnage.",
+          "Rééchantillonner conjointement les lignes utiles, réajuster les modèles à chaque réplication et traiter les échecs.",
+          "Préciser méthode d’intervalle, nombre de réplications et reproductibilité.",
+          "Interpréter l’incertitude sous les hypothèses du schéma d’échantillonnage."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Construire un intervalle pour une autre statistique composée et justifier l’unité de rééchantillonnage."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part4.q04.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.categorical_counts",
+      "label_fr": "Construire un tableau d’effectifs correctement étiqueté pour une variable qualitative.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_summaries",
+        "r_table",
+        "r_types"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier les modalités réellement présentes et le traitement des valeurs manquantes.",
+          "Compter les observations sans confondre effectifs et proportions.",
+          "Vérifier les labels, le total et le dénominateur éventuel."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q01.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.categorical_model",
+      "label_fr": "Interpréter le codage d’un facteur et les coefficients associés dans une régression.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.regression_fit"
+      ],
+      "required_topic_ids": [
+        "indicator_event",
+        "r_types",
+        "reg_formula",
+        "reg_multi_coef"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier catégories et référence du codage utilisé.",
+          "Relier intercept et coefficient aux groupes correspondants.",
+          "Conserver le codage lors de comparaisons de modèles."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Interpréter des coefficients après changement de la catégorie de référence."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part4.q02.sub1",
+        "tp04.setup.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.causal_distinction",
+      "label_fr": "Distinguer association, explication statistique et affirmation causale.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "correlation",
+        "reg_omitted",
+        "reg_partial"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Décrire ce que mesurerait une relation causale sans l’inférer de la seule corrélation.",
+          "Proposer un mécanisme alternatif compatible avec l’association observée.",
+          "Nommer les limites d’une étude observationnelle et des variables de contrôle disponibles."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Critiquer une conclusion causale tirée d’une autre étude observationnelle."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q07.sub1",
+        "tp04.part1.q07.sub2",
+        "tp04.part1.q07.sub3",
+        "tp04.part2.q02.sub1",
+        "tp04.part2.q02.sub3",
+        "tp04.part3.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.chi_square_fit",
+      "label_fr": "Conduire et justifier un test du khi-deux d’adéquation.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.chi_square_grouping",
+        "comp.ps1.poisson_expected_counts",
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "chi_fit",
+        "chi_validity",
+        "pvalue",
+        "test_decision"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Énoncer une hypothèse de loi et distinguer paramètre fixé ou estimé.",
+          "Vérifier classes, effectifs attendus et degrés de liberté adaptés au paramètre ajusté.",
+          "Rapporter statistique, p-valeur et décision sans affirmer que la loi est prouvée."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Sélectionner et conduire une adéquation sur un nouveau modèle discret avec ou sans paramètre estimé."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q09.sub2",
+        "cf2025-12.q09.sub3",
+        "tp03.part1.q04.sub2",
+        "tp03.part1.q04.sub3",
+        "tp03.part1.q13.sub1",
+        "tp03.part1.q13.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.chi_square_grouping",
+      "label_fr": "Regrouper les catégories en préservant les effectifs et les conditions d’approximation.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.empirical_probability"
+      ],
+      "required_topic_ids": [
+        "chi_observed",
+        "chi_validity",
+        "r_table"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Justifier les regroupements au regard des effectifs attendus.",
+          "Appliquer la même partition au modèle et aux observations.",
+          "Vérifier conservation du total et classes exhaustives."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Réviser un regroupement inadéquat sur de nouvelles catégories sans s’appuyer sur leur ordre d’affichage."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q04.sub1",
+        "tp03.part1.q07.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.classification_accuracy",
+      "label_fr": "Mesurer les classements corrects et incorrects ainsi que leur proportion.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "indicator_event",
+        "r_boolean",
+        "r_summaries"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Comparer prédictions et observations appariées.",
+          "Distinguer effectif de bonnes réponses et proportion.",
+          "Préciser si la mesure porte sur les données d’apprentissage ou de test."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q03.sub2",
+        "tp01.ex2.q05.sub2",
+        "tp01.ex2.q06.sub2",
+        "tp01.ex3.q01.sub1",
+        "tp01.ex3.q01.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.classification_threshold",
+      "label_fr": "Transformer une probabilité prédite en décision binaire avec un seuil explicite.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "conditional_prob",
+        "r_boolean"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer score probabiliste et classe prédite.",
+          "Appliquer de façon cohérente le seuil et préciser le cas d’égalité.",
+          "Conserver le même ordre entre scores, décisions et observations."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q03.sub2",
+        "tp01.ex2.q05.sub2",
+        "tp01.ex2.q06.sub2",
+        "tp01.ex3.q01.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.clt_standardize",
+      "label_fr": "Utiliser le théorème central limite pour approcher la loi d’une moyenne.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.variance_linear_combination"
+      ],
+      "required_topic_ids": [
+        "clt",
+        "iid_sample",
+        "normal_approx",
+        "sample_mean_moments"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Vérifier indépendance, même loi, variance finie et non nulle pour la version utilisée.",
+          "Centrer et normaliser avec l’écart-type de la moyenne.",
+          "Distinguer convergence asymptotique et égalité exacte de lois à taille finie."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q02.sub3",
+        "tp02.part3.q01.sub1",
+        "tp02.part3.q01.sub2",
+        "tp02.part3.q02.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.conditional_direction",
+      "label_fr": "Distinguer une probabilité conditionnelle de son conditionnement inversé.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.conditional_probability"
+      ],
+      "required_topic_ids": [
+        "bayes",
+        "conditional_prob"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier la population de référence dans une phrase.",
+          "Écrire le conditionnement dans le bon sens.",
+          "Ne pas identifier les deux probabilités inversées sans hypothèse ou calcul supplémentaire."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q05.sub2",
+        "tp01.ex2.q02.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.conditional_predict",
+      "label_fr": "Construire une prédiction probabiliste à partir de fréquences conditionnelles par profil.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.conditional_probability",
+        "comp.ps1.r_filter"
+      ],
+      "required_topic_ids": [
+        "conditional_prob",
+        "r_boolean",
+        "r_df",
+        "r_functions"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Construire le profil demandé et sélectionner ses observations de référence.",
+          "Associer à chaque individu la fréquence conditionnelle de son profil.",
+          "Signaler le caractère empirique et le risque de profils peu représentés; ne pas confondre apprentissage et validation externe."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q03.sub1",
+        "tp01.ex2.q05.sub1",
+        "tp01.ex2.q06.sub1",
+        "tp01.ex3.q05.occ2.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.conditional_probability",
+      "label_fr": "Estimer une probabilité conditionnelle en identifiant événement et conditionnement.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.empirical_probability"
+      ],
+      "required_topic_ids": [
+        "conditional_prob",
+        "indicator_event",
+        "r_boolean",
+        "r_index"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Nommer séparément événement cible et conditionnement.",
+          "Choisir comme dénominateur la sous-population conditionnante, non la population totale.",
+          "Vérifier que cette sous-population est non vide et interpréter le résultat comme fréquence conditionnelle."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q03.sub1",
+        "tp01.ex1.q04.sub1",
+        "tp01.ex1.q05.sub1",
+        "tp01.ex1.q06.sub1",
+        "tp01.ex2.q01.sub1",
+        "tp01.ex2.q02.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.confidence_interval",
+      "label_fr": "Construire un intervalle de confiance en inversant une probabilité ou un pivot approprié.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval_interpret"
+      ],
+      "required_topic_ids": [
+        "ci_definition",
+        "ci_pivot",
+        "confidence_level",
+        "pivot",
+        "quantile"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Choisir et justifier la loi ou approximation du pivot.",
+          "Attribuer correctement les niveaux de queue et les quantiles.",
+          "Distinguer bornes aléatoires avant observation et intervalle observé; ne pas présenter l’approximation comme une garantie exacte.",
+          "Identifier la loi du pivot et ses paramètres connus.",
+          "Choisir la région de probabilité voulue et respecter l’ordre des inégalités lors de l’inversion.",
+          "Vérifier l’ordre des bornes et le domaine du paramètre."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Inverser sans aide un pivot de forme différente en justifiant le sens des inégalités."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part3.q02.sub1",
+        "tp03.part1.q11.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.confidence_interval_interpret",
+      "label_fr": "Interpréter un intervalle de confiance et les conditions de sa construction.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "ci_coverage",
+        "ci_definition",
+        "confidence_level"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier le paramètre et les données aléatoires dont dépend l’intervalle.",
+          "Donner le sens fréquentiste du niveau et distinguer intervalle de confiance et intervalle de valeurs individuelles.",
+          "Mentionner les hypothèses et l’éventuelle approximation."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Expliquer un intervalle fourni pour un nouveau paramètre et détecter une interprétation probabiliste incorrecte."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q08.sub2",
+        "tp03.part1.q05.sub2",
+        "tp03.part1.q11.sub2",
+        "tp04.part4.q03.sub3",
+        "tp04.part4.q04.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.confounding_assess",
+      "label_fr": "Évaluer une hypothèse de confusion à partir de relations observées et d’hypothèses causales explicites.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.causal_distinction",
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "correlation",
+        "reg_multiple",
+        "reg_omitted",
+        "reg_partial"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Examiner les associations pertinentes et les coefficients conditionnels.",
+          "Choisir les vérifications statistiques adaptées sans assimiler tests significatifs à preuve causale.",
+          "Conclure avec une formulation compatible avec le plan observationnel."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Évaluer un candidat confondeur dans une nouvelle situation, y compris lorsque les seules corrélations sont insuffisantes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q07.sub3",
+        "tp04.part2.q02.sub1",
+        "tp04.part2.q02.sub2",
+        "tp04.part2.q02.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.confusion_matrix",
+      "label_fr": "Construire et lire une matrice de confusion sans inverser observations et prédictions.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "contingency_table",
+        "r_table"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Étiqueter correctement lignes et colonnes.",
+          "Retrouver les effectifs corrects et les types d’erreurs.",
+          "Vérifier que les marges et le total correspondent à la population comparée."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q04.sub1",
+        "tp01.ex2.q05.sub3",
+        "tp01.ex2.q06.sub3",
+        "tp01.ex3.q01.sub3",
+        "tp01.ex3.q05.occ2.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.contingency_independence",
+      "label_fr": "Tester l’indépendance de deux variables catégorisées à partir d’une table de contingence.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.chi_square_grouping",
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "chi_independent",
+        "chi_validity",
+        "contingency_table"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Construire la table sur les paires d’observations correspondantes.",
+          "Distinguer indépendance entre variables et indépendance entre lignes échantillonnées.",
+          "Vérifier l’approximation et interpréter le test sans prouver l’indépendance par non-rejet."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Choisir et mettre en œuvre un test d’indépendance dans un nouveau tableau avec classes rares."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q07.sub1",
+        "tp03.part1.q07.sub3",
+        "tp03.part1.q07.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.covariance_expand",
+      "label_fr": "Développer une covariance avec une combinaison linéaire en justifiant chaque simplification.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "cov_bilinear",
+        "covariance",
+        "indep_cov"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Utiliser correctement bilinéarité et constantes.",
+          "Identifier les termes annulés et citer l’hypothèse pertinente.",
+          "Ne pas remplacer absence de covariance par indépendance générale."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Développer une covariance inédite avec coefficients de signes différents et dépendances précisées."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part2.q01.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.distribution_compare",
+      "label_fr": "Comparer des distributions par groupe à partir d’un boxplot.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_plot",
+        "comp.ps1.sample_moments"
+      ],
+      "required_topic_ids": [
+        "boxplot",
+        "quantile",
+        "r_graph",
+        "r_summaries"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Choisir la variable quantitative et les groupes appropriés.",
+          "Comparer position, dispersion et observations atypiques.",
+          "Distinguer constat visuel et test sur un paramètre."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Comparer des distributions d’une nouvelle variable lorsque les dispersions diffèrent."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part3.q01.sub1",
+        "tp04.part3.q01.sub4",
+        "tp04.part3.q02.sub1",
+        "tp04.part3.q02.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.empirical_probability",
+      "label_fr": "Estimer une probabilité d’événement par une fréquence empirique.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_data_import"
+      ],
+      "required_topic_ids": [
+        "indicator_event",
+        "prob_measure",
+        "r_boolean",
+        "r_summaries",
+        "r_table",
+        "sample_mean"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Définir l’événement et la population de référence.",
+          "Relier indicatrice, effectif et fréquence; distinguer estimation empirique et probabilité exacte du modèle.",
+          "Contrôler dénominateur, valeurs manquantes et précision de l’affichage.",
+          "Traduire l’événement par une condition exacte.",
+          "Utiliser le bon dénominateur et conserver les cas d’égalité.",
+          "Présenter fréquence et précision d’affichage sans confondre estimation et probabilité vraie."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Estimer des événements disjoints et un événement conjoint dans un autre tableau."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q01.sub1",
+        "tp03.part1.q02.sub5",
+        "tp03.part1.q08.sub1",
+        "tp03.part1.q08.sub2",
+        "tp03.part1.q08.sub3",
+        "tp03.part1.q10.sub1",
+        "tp03.part1.q10.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.expectation_linear_combination",
+      "label_fr": "Calculer l’espérance d’une combinaison affine de variables intégrables.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "expect_linear",
+        "expectation"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Vérifier l’existence des espérances utilisées.",
+          "Distribuer correctement constantes et coefficients dans la linéarité.",
+          "Ne pas exiger l’indépendance pour la linéarité de l’espérance."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q02.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.expected_count",
+      "label_fr": "Calculer et justifier un effectif espéré à partir de probabilités individuelles.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "expect_linear",
+        "expectation",
+        "indicator_event",
+        "r_summaries"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Définir le compte comme somme d’indicatrices.",
+          "Utiliser la linéarité de l’espérance sans ajouter une hypothèse d’indépendance inutile.",
+          "Distinguer compte observé, compte attendu et nombre de décisions positives."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q09.sub1",
+        "tp01.ex3.q04.sub1",
+        "tp01.ex3.q04.sub2",
+        "tp01.ex3.q05.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.exponential_mean_interval",
+      "label_fr": "Construire et calculer un intervalle pour la moyenne d’un modèle exponentiel.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval",
+        "comp.ps1.sample_moments"
+      ],
+      "required_topic_ids": [
+        "chisq_law",
+        "ci_pivot",
+        "exp_gamma_sum",
+        "exponential_law",
+        "r_law_funcs"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer paramétrage par taux et paramétrage par moyenne.",
+          "Vérifier l’hypothèse d’échantillon exponentiel indépendant.",
+          "Utiliser les quantiles et degrés de liberté du pivot annoncé.",
+          "Interpréter les bornes en conservant les unités."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Construire un intervalle de durée dans un contexte inédit et signaler une donnée censurée ou dépendante."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q11.sub2",
+        "tp03.part1.q11.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.geometric_integral",
+      "label_fr": "Justifier une intégrale d’une fonction positive par l’aire géométrique correspondante.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "integral_tools"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier la région, ses bornes et son aire.",
+          "Vérifier que la courbe et le domaine correspondent à l’intégrale.",
+          "Distinguer argument géométrique exact et approximation numérique."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q01.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.importance_sampling",
+      "label_fr": "Construire un estimateur d’intégrale avec une densité instrumentale et des poids justifiés.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.mc_integral"
+      ],
+      "required_topic_ids": [
+        "density",
+        "importance_sampling",
+        "mc_integral",
+        "transfer"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Vérifier la positivité de la densité instrumentale sur la partie utile du support.",
+          "Obtenir une espérance pondérée de la bonne intégrale.",
+          "Justifier l’estimateur transformé et vérifier les conditions de moment avant toute comparaison de variance."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part2.q02.sub1",
+        "tp02.part2.q02.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.inverse_transform",
+      "label_fr": "Construire un simulateur par inversion d’une fonction de répartition.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "density_cdf",
+        "inverse_transform",
+        "quantile",
+        "uniform_law"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Déterminer la fonction de répartition sur tout le support.",
+          "Identifier une inverse ou un quantile valide et son domaine.",
+          "Justifier la loi de la transformation de l’uniforme, en vérifiant support et sens des inégalités."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part2.q01.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.joint_model_probability",
+      "label_fr": "Calculer la probabilité modélisée d’un événement défini par deux variables.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.poisson_model"
+      ],
+      "required_topic_ids": [
+        "indep_factorization",
+        "independent_rv",
+        "joint_law",
+        "poisson_law",
+        "r_law_funcs"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Définir exactement l’événement conjoint.",
+          "Rendre explicite l’hypothèse permettant de combiner les lois marginales.",
+          "Contrôler les calculs numériques et les éventuelles troncatures."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Calculer une autre forme d’événement conjoint avec des marginales données, en signalant toute hypothèse ajoutée."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q09.sub1",
+        "tp03.part1.q09.sub2",
+        "tp03.part1.q09.sub3",
+        "tp03.part1.q10.sub3",
+        "tp03.part1.q10.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.mc_implement",
+      "label_fr": "Implémenter un estimateur de Monte-Carlo à partir de tirages et d’une fonction ou de poids.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.mc_integral",
+        "comp.ps1.r_random_sample"
+      ],
+      "required_topic_ids": [
+        "mc_integral",
+        "r_summaries",
+        "r_vectorize"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Traduire l’estimateur mathématique en opérations sur les tirages.",
+          "Respecter le nombre de termes et la normalisation.",
+          "Contrôler unités, domaine et finitude des valeurs sans substituer la valeur théorique au calcul."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q03.sub1",
+        "tp02.part2.q02.sub1",
+        "tp02.part3_setup.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.mc_integral",
+      "label_fr": "Réécrire une intégrale comme espérance d’une variable simulable.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "density",
+        "integral_tools",
+        "mc_integral",
+        "transfer"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier loi, support et fonction évaluée.",
+          "Vérifier que l’espérance correspond exactement à l’intégrale visée.",
+          "Contrôler l’intégrabilité avant d’utiliser une convergence."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q01.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.mc_precision",
+      "label_fr": "Relier précision d’un estimateur, écart-type et taille de simulation.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.variance_linear_combination"
+      ],
+      "required_topic_ids": [
+        "estimator_variance",
+        "mc_precision",
+        "sample_mean_moments"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier la précision comme échelle d’écart-type lorsque c’est le critère demandé.",
+          "Distinguer ordre de la variance et ordre de l’écart-type.",
+          "Interpréter l’effet de la taille de simulation sans promettre une erreur déterministe."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q02.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.mediation_decompose",
+      "label_fr": "Justifier la décomposition d’une association totale dans un modèle linéaire de médiation.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.covariance_expand",
+        "comp.ps1.regression_interpret"
+      ],
+      "required_topic_ids": [
+        "cov_bilinear",
+        "expect_linear",
+        "reg_cond_mean",
+        "reg_multiple"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Aligner variables, modèles et codage du prédicteur.",
+          "Énoncer les conditions sur les erreurs ou projections nécessaires au rapprochement des coefficients.",
+          "Distinguer décomposition algébrique d’une identification d’effets causaux."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Justifier la décomposition d’un autre système linéaire et signaler une interaction ou une hypothèse manquante."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part4.q01.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.mediation_estimate",
+      "label_fr": "Estimer et contrôler les composantes d’un modèle linéaire de médiation.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.categorical_model",
+        "comp.ps1.mediation_decompose",
+        "comp.ps1.regression_multiple_fit"
+      ],
+      "required_topic_ids": [
+        "r_lm",
+        "r_model_output",
+        "reg_multi_coef",
+        "reg_multiple",
+        "reg_partial"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Ajuster les modèles sur le même échantillon avec le même codage.",
+          "Identifier les coefficients correspondant aux chemins du modèle.",
+          "Calculer les composantes et vérifier la cohérence numérique sans les présenter comme causalement établies."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Estimer et contrôler les composantes dans une nouvelle application avec catégories recodées."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part4.q02.sub1",
+        "tp04.part4.q02.sub2",
+        "tp04.part4.q02.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.mediation_interpret",
+      "label_fr": "Interpréter les composantes et compensations d’un modèle de médiation avec leurs limites.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.causal_distinction",
+        "comp.ps1.mediation_estimate"
+      ],
+      "required_topic_ids": [
+        "correlation",
+        "reg_omitted",
+        "reg_partial"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer association totale, directe conditionnelle et composante indirecte modélisée.",
+          "Relier signes, ampleurs et incertitude sans essentialiser les groupes.",
+          "Présenter les mécanismes causaux comme hypothèses nécessitant des éléments supplémentaires."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Expliquer une compensation dans un autre système sans déduire une causalité de l’identité des coefficients."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part4.q02.sub4",
+        "tp04.part4.q04.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.model_observation_compare",
+      "label_fr": "Comparer effectifs ou fréquences observés aux quantités prévues par un modèle, sans surinterprétation.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.empirical_probability"
+      ],
+      "required_topic_ids": [
+        "distribution",
+        "estimation_error",
+        "r_table"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Conserver des catégories identiques et clairement étiquetées pour les séries comparées.",
+          "Ne pas confondre catégories chevauchantes et partition exhaustive.",
+          "Décrire les écarts sans les transformer en test non effectué.",
+          "Comparer des quantités sur la même échelle et le même événement.",
+          "Distinguer écart empirique, incertitude et défaut possible de modèle.",
+          "Éviter de qualifier un ajustement de vrai sur une seule concordance."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Commenter une nouvelle comparaison modèle/données dont les événements ont des fréquences très différentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex3.q05.sub2",
+        "tp01.ex3.q05.sub3",
+        "tp03.part1.q03.sub4",
+        "tp03.part1.q09.sub4",
+        "tp03.part1.q10.sub5"
+      ]
+    },
+    {
+      "id": "comp.ps1.normal_tail_probability",
+      "label_fr": "Calculer et interpréter une probabilité de queue sous une loi normale de référence.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "cdf_intervals",
+        "one_two_sided",
+        "r_law_funcs",
+        "standard_normal"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Traduire l’événement en zone de queue avant l’appel logiciel.",
+          "Vérifier centrage, échelle, orientation et nombre de queues.",
+          "Utiliser la fonction de répartition sans transformer une approximation en loi exacte."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q04.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.normality_assess",
+      "label_fr": "Examiner une hypothèse de normalité avec un diagnostic et un test interprétés prudemment.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_plot",
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "normal_law",
+        "pvalue",
+        "qqplot",
+        "shapiro_test"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Préciser si l’hypothèse vise les observations d’un groupe ou les erreurs du modèle.",
+          "Utiliser un diagnostic graphique et vérifier les limites d’application de l’outil statistique.",
+          "Ne pas interpréter non-rejet comme preuve de normalité ni substituer ce test au contrôle du plan d’observation."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Discuter une hypothèse de distribution sur un nouvel échantillon et expliquer une divergence entre graphique et test."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part3.q01.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.omitted_variable_bias",
+      "label_fr": "Dériver et interpréter l’effet de l’omission d’un prédicteur corrélé.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.covariance_expand",
+        "comp.ps1.regression_slope"
+      ],
+      "required_topic_ids": [
+        "correlation",
+        "cov_bilinear",
+        "reg_omitted",
+        "reg_slope"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Relier les coefficients complet et réduit à leurs définitions.",
+          "Distinguer hypothèses de projection et éventuelle indépendance de l’erreur.",
+          "Discuter conditions d’annulation, signe et effet d’une standardisation sans supprimer les hypothèses de variance."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Analyser une omission dans un autre modèle linéaire en séparant calcul et causalité."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part2.q01.sub2",
+        "tp04.part2.q01.sub3",
+        "tp04.part2.q01.sub4",
+        "tp04.part2.q01.sub5",
+        "tp04.part2.q03.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.poisson_expected_counts",
+      "label_fr": "Calculer des effectifs attendus sous une loi de Poisson ajustée.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.poisson_model",
+        "comp.ps1.sample_moments"
+      ],
+      "required_topic_ids": [
+        "poisson_law",
+        "r_law_funcs",
+        "r_table"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Aligner classes observées et probabilités modélisées, y compris les classes non observées.",
+          "Traiter explicitement une queue regroupée.",
+          "Distinguer probabilités et effectifs et vérifier la somme."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Construire les effectifs attendus d’un autre tableau de comptages comportant une modalité absente."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q03.sub1",
+        "tp03.part1.q03.sub2",
+        "tp03.part1.q03.sub3",
+        "tp03.part1.q04.sub1",
+        "tp03.part1.q13.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.poisson_mean_interval",
+      "label_fr": "Construire un intervalle approché pour la moyenne d’un échantillon de comptages.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.poisson_model",
+        "comp.ps1.sample_moments"
+      ],
+      "required_topic_ids": [
+        "ci_definition",
+        "clt",
+        "normal_approx",
+        "poisson_law",
+        "quantile",
+        "r_law_funcs",
+        "sample_mean_moments"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier les hypothèses sur les observations et l’estimateur utilisé.",
+          "Justifier une approximation portant sur la moyenne et sa précision, sans la confondre avec une approximation arbitraire de chaque observation.",
+          "Calculer les bornes avec un quantile cohérent et discuter leur validité."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Reprendre la construction dans un autre contexte de comptage en expliquant ce qui change avec la taille de l’échantillon."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q05.sub2",
+        "tp03.part1.q05.sub3",
+        "tp03.part1.q05.sub4",
+        "tp03.part1.q05.sub5"
+      ]
+    },
+    {
+      "id": "comp.ps1.poisson_model",
+      "label_fr": "Reconnaître un modèle de Poisson et expliquer son paramètre et ses moments.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "expectation",
+        "poisson_law",
+        "variance"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Relier le support aux comptages étudiés.",
+          "Interpréter le paramètre avec l’unité et la fenêtre d’observation.",
+          "Énoncer les propriétés de moments et distinguer modèle et échantillon."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Discuter l’adéquation conceptuelle d’un modèle de comptage dans un domaine inédit."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q01.sub1",
+        "tp03.part1.q01.sub2",
+        "tp03.part1.q01.sub3",
+        "tp03.part1.q02.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.practical_significance",
+      "label_fr": "Distinguer significativité statistique et importance pratique d’une différence.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.sample_moments",
+        "comp.ps1.test_interpret"
+      ],
+      "required_topic_ids": [
+        "confidence_level",
+        "estimation_error",
+        "pvalue"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Quantifier l’écart dans les unités du problème.",
+          "Mettre l’incertitude et la taille d’échantillon en perspective.",
+          "Justifier tout seuil d’importance pratique plutôt que le déduire de la seule p-valeur."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Comparer un effet faible mais précis à un effet plus grand mais incertain dans un autre contexte."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q12.sub3",
+        "tp04.part2.q03.sub4",
+        "tp04.part3.q02.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.prediction_compare",
+      "label_fr": "Comparer des prédicteurs en séparant accord, performance et portée de la conclusion.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "conditional_prob",
+        "r_summaries",
+        "r_table"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Comparer les mêmes individus avec la même règle de décision.",
+          "Distinguer table d’accord entre modèles et matrice face aux observations réelles.",
+          "Décrire l’évolution des résultats sans conclure à la généralisation à partir de l’apprentissage seul."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q05.sub4",
+        "tp01.ex2.q06.sub4",
+        "tp01.ex3.q02.sub1",
+        "tp01.ex3.q02.sub2",
+        "tp01.ex3.q05.occ2.sub3",
+        "tp01.ex3.q05.occ2.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.probabilistic_model_interpret",
+      "label_fr": "Expliquer ce que représente la sortie d’un prédicteur probabiliste fourni.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "conditional_prob",
+        "estimation_error"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier entrée, score probabiliste et décision éventuelle.",
+          "Ne pas confondre fréquence observée, estimation du modèle et certitude individuelle.",
+          "Limiter la conclusion aux capacités établies par les comparaisons réalisées."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex3.q06.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.probability_compare",
+      "label_fr": "Comparer deux séries de probabilités prédites sur les mêmes observations.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "conditional_prob",
+        "r_graph",
+        "r_index"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Apparier correctement les deux séries.",
+          "Construire une représentation permettant de distinguer groupes et écarts.",
+          "Interpréter les écarts entre scores sans les confondre avec les seuls écarts de classes."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex3.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.proportion_interval",
+      "label_fr": "Construire avec R un intervalle documenté pour une proportion inconnue.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval_interpret"
+      ],
+      "required_topic_ids": [
+        "ci_coverage",
+        "ci_proportion",
+        "confidence_level",
+        "r_help"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier le paramètre de population ciblé et la convention de succès.",
+          "Nommer la méthode effectivement utilisée par le logiciel et son niveau.",
+          "Vérifier conditions, domaine des bornes et caractère exact ou approché sans supposer un intervalle particulier non nommé."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q08.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.proportion_test",
+      "label_fr": "Configurer un test de proportion en identifiant hypothèses, calibration et corrections.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "bernoulli_law",
+        "binomial_law",
+        "chi_fit",
+        "chi_validity",
+        "hypotheses",
+        "r_help",
+        "test_statistic"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier le nombre de succès, les effectifs, la proportion nulle et l’alternative.",
+          "Rendre explicites approximation et éventuelle correction de continuité.",
+          "Lire la statistique, la loi de référence et la p-valeur en conservant les hypothèses."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q06.sub1",
+        "cf2025-12.q06.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.provided_model_execute",
+      "label_fr": "Exécuter un modèle probabiliste fourni comme boîte noire avec des entrées et une graine contrôlées.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_df",
+        "r_functions",
+        "r_index",
+        "r_seed"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Séparer variables explicatives et résultat à prédire.",
+          "Exécuter le code fourni avec une graine fixée et obtenir un score par observation.",
+          "Ne pas revendiquer une maîtrise de l’architecture ou de l’optimisation du modèle."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex3_setup.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_code_explain",
+      "label_fr": "Expliquer le rôle d’un code R dans un calcul statistique.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_functions",
+        "r_index",
+        "r_objects"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Chaque étape utile est reliée à son entrée, sa sortie et son rôle statistique.",
+          "Les commentaires distinguent sous-population, valeur calculée et affichage.",
+          "Un commentaire ne se contente pas de répéter le nom de la fonction."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex2.q02.sub2",
+        "tp01.ex2.q03.sub3",
+        "tp01.instructions.sub3",
+        "tp02.part2.q04.sub5",
+        "tp02.part3_setup.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_data_clean",
+      "label_fr": "Préparer les variables et les valeurs manquantes en conservant une population d’analyse explicite.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_data_import"
+      ],
+      "required_topic_ids": [
+        "r_boolean",
+        "r_df",
+        "r_index",
+        "r_types"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Expliquer les observations conservées et exclues.",
+          "Traiter correctement les facteurs et leurs niveaux.",
+          "Construire la variable étudiée sans modifier les données originales."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Préparer un petit tableau inédit contenant valeurs manquantes et catégories inutilisées."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q02.sub1",
+        "tp04.setup.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_data_import",
+      "label_fr": "Charger un jeu de données et vérifier sa structure avant calcul.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_df",
+        "r_import",
+        "r_types"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Charger le bon objet avec un chemin valide.",
+          "Identifier lignes, variables et types utiles.",
+          "Vérifier les dimensions attendues sans supposer que les objets d’une ancienne session existent.",
+          "Choisir un lecteur adapté au fichier.",
+          "Vérifier noms de variables, types et nombre d’observations.",
+          "Distinguer un chemin relatif à corriger d’une donnée absente."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Importer un autre fichier au séparateur annoncé, puis vérifier sa structure."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.instructions.sub3",
+        "tp01.setup.sub1",
+        "tp03.part1.q11.sub1",
+        "tp03.part1.q12.sub2",
+        "tp03.setup.sub3",
+        "tp04.setup.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_documentation",
+      "label_fr": "Utiliser l’aide de R pour compléter un appel de fonction.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_functions",
+        "r_help"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier la fonction et les arguments pertinents dans l’aide.",
+          "Vérifier le type et les dimensions de la valeur rendue.",
+          "Ne pas remplacer un argument au hasard sans comprendre son effet."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.instructions.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_filter",
+      "label_fr": "Construire un masque logique pour sélectionner une sous-population.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_data_import"
+      ],
+      "required_topic_ids": [
+        "r_boolean",
+        "r_df",
+        "r_index",
+        "set_ops"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Traduire correctement conjonction, disjonction et complément.",
+          "Appliquer le masque au bon vecteur ou aux bonnes lignes.",
+          "Vérifier la population retenue, y compris les catégories vides et les valeurs manquantes.",
+          "Identifier l’unité d’observation et la condition de sélection.",
+          "Contrôler la taille de la sélection et la cohérence des colonnes assemblées."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Changer le périmètre d’un tableau sans mélanger les groupes ni les variables."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q03.sub1",
+        "tp01.ex1.q05.sub1",
+        "tp01.ex2.q01.sub1",
+        "tp01.ex2.q02.sub1",
+        "tp01.ex3.q03.sub2",
+        "tp03.part1.q06.sub3",
+        "tp03.setup.sub3",
+        "tp04.setup.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_functions",
+      "label_fr": "Écrire une fonction R paramétrée qui produit une quantité demandée.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_functions",
+        "r_index",
+        "r_scope"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Le paramètre contrôle réellement le groupe ou l’indice traité.",
+          "Le résultat est retourné avec la bonne longueur et le bon type.",
+          "La fonction ne dépend pas d’un objet implicite non défini."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q06.sub1",
+        "tp01.ex2.q03.sub1",
+        "tp02.part2.q04.sub5"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_interval_compute",
+      "label_fr": "Calculer les bornes numériques d’un intervalle de confiance à partir d’une formule justifiée.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval"
+      ],
+      "required_topic_ids": [
+        "ci_definition",
+        "quantile",
+        "r_law_funcs",
+        "r_summaries"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Utiliser la fonction quantile et les probabilités de queue adéquates.",
+          "Insérer estimation, erreur standard et taille cohérentes.",
+          "Présenter des bornes ordonnées avec une précision raisonnable et le niveau de confiance."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part3.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_pipeline",
+      "label_fr": "Composer une suite de transformations avec le pipe de R.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_functions",
+        "r_objects",
+        "r_vectorize"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Respecter la position de l’objet transmis dans chaque appel.",
+          "Expliquer les objets intermédiaires.",
+          "Obtenir le même résultat que la composition équivalente sans pipe."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q02.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_plot",
+      "label_fr": "Construire ou exploiter un graphique adapté à une comparaison statistique.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_graph",
+        "r_types"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Choisir des axes, unités et légendes correspondant aux quantités comparées.",
+          "Préserver l’appariement des observations et l’ordre des catégories.",
+          "La lecture du graphique soutient une conclusion précise sans la confondre avec une preuve.",
+          "Choisir le type de graphique en fonction des variables et de la comparaison.",
+          "Nommer axes et groupes, ajouter une légende utile.",
+          "Ne pas interpréter une figure au-delà de ce qu’elle montre."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Choisir et produire une représentation pour un nouveau couple de variables."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q01.sub2",
+        "tp01.ex1.q04.sub1",
+        "tp01.ex3.q03.sub1",
+        "tp01.ex3.q03.sub2",
+        "tp01.ex3.q05.sub2",
+        "tp02.part1.q03.sub2",
+        "tp02.part2.q04.sub2",
+        "tp02.part2.q04.sub3",
+        "tp03.part1.q03.sub1",
+        "tp03.part1.q03.sub2",
+        "tp03.part1.q03.sub3",
+        "tp04.part1.q01.sub1",
+        "tp04.part1.q03.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_random_sample",
+      "label_fr": "Simuler des variables selon une loi prescrite de façon reproductible.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "iid_sample",
+        "r_law_funcs",
+        "r_seed",
+        "r_vectors"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Choisir une fonction de génération et ses paramètres pertinents.",
+          "Produire le nombre de tirages voulu avec une graine contrôlée.",
+          "Respecter la loi et le support sans confondre densité, quantile et générateur.",
+          "Choisir la famille de fonction et le paramétrage annoncés.",
+          "Contrôler taille, support et reproductibilité de l’échantillon.",
+          "Distinguer réalisation simulée et propriétés théoriques."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Simuler une autre loi du programme sans confondre fonction de masse, de répartition, quantile et simulation."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q03.sub1",
+        "tp02.part2.q01.sub2",
+        "tp03.part1.q05.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_running_mean",
+      "label_fr": "Calculer une suite de moyennes partielles pour plusieurs tailles d’échantillon.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_functions",
+        "r_index",
+        "r_vectorize",
+        "sample_mean"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Pour chaque taille, utiliser exactement les observations prévues.",
+          "Aligner les moyennes calculées avec l’axe des tailles.",
+          "Éviter de répéter une constante ou de confondre taille maximale et taille courante."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q03.sub2",
+        "tp02.part2.q04.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.r_vectorized_summary",
+      "label_fr": "Appliquer un résumé à plusieurs colonnes ou groupes en conservant leurs labels.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_df",
+        "r_functions",
+        "r_summaries",
+        "r_vectorize"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Choisir la dimension ou l’index d’itération adéquat.",
+          "Produire un résultat par variable ou groupe demandé.",
+          "Conserver le bon alignement des labels et n’arrondir que pour l’affichage."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp01.ex1.q01.sub2",
+        "tp01.ex1.q06.sub2",
+        "tp01.ex3.q05.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_coefficient_interval",
+      "label_fr": "Calculer un intervalle pour un coefficient de régression et le relier aux hypothèses.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.confidence_interval_interpret",
+        "comp.ps1.regression_fit"
+      ],
+      "required_topic_ids": [
+        "ci_definition",
+        "reg_coef_ci",
+        "reg_coef_se",
+        "student_law"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier le coefficient et le niveau demandés.",
+          "Utiliser l’erreur standard et les degrés de liberté du modèle pertinent.",
+          "Interpréter l’incertitude et les hypothèses plutôt qu’un intervalle de valeurs individuelles."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Construire et interpréter l’intervalle d’un coefficient dans un nouveau modèle."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q06.sub1",
+        "tp04.part4.q03.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_coefficient_test",
+      "label_fr": "Tester un coefficient de régression et lire sa p-valeur.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.regression_fit",
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "pvalue",
+        "reg_coef_t",
+        "reg_multi_t"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Formuler l’hypothèse sur le coefficient choisi.",
+          "Lire la ligne et la colonne pertinentes sans confondre test individuel et global.",
+          "Interpréter la décision conditionnellement au modèle."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Identifier et interpréter un test de coefficient parmi plusieurs sorties d’un nouveau modèle."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q06.sub2",
+        "tp04.part1.q06.sub3",
+        "tp04.part2.q02.sub2",
+        "tp04.part4.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_diagnostics",
+      "label_fr": "Évaluer graphiquement les limites d’un modèle linéaire à partir des résidus.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_plot",
+        "comp.ps1.regression_fit"
+      ],
+      "required_topic_ids": [
+        "qqplot",
+        "reg_diagnostics",
+        "reg_errors",
+        "reg_residuals"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer résidus observés et erreurs du modèle.",
+          "Interpréter un graphique quantile-quantile sans traiter un alignement comme preuve.",
+          "Identifier ce qu’un seul graphique de normalité ne vérifie pas, notamment forme du lien, variance et indépendance."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Comparer plusieurs diagnostics d’un autre modèle et proposer une limite argumentée."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q02.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_fit",
+      "label_fr": "Ajuster un modèle de régression simple et identifier les sorties utiles.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_data_import"
+      ],
+      "required_topic_ids": [
+        "r_lm",
+        "r_model_output",
+        "reg_fit",
+        "reg_simple"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Écrire la formule dans le bon sens réponse/prédicteur.",
+          "Utiliser la même population pour le modèle et les graphiques.",
+          "Identifier coefficients, valeurs ajustées et résidus dans la sortie."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Ajuster un modèle simple sur une nouvelle paire de variables sans template de formule."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q02.sub1",
+        "tp04.part1.q02.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_interpret",
+      "label_fr": "Interpréter une pente et une prédiction de régression simple en unités originales.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.regression_fit"
+      ],
+      "required_topic_ids": [
+        "reg_cond_mean",
+        "reg_intercept",
+        "reg_slope"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Relier le coefficient à une variation du prédicteur dans le sens du modèle.",
+          "Conserver les unités et distinguer moyenne prévue et valeur individuelle.",
+          "Éviter toute conclusion causale automatique."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Interpréter une pente lorsque les unités ou la mise à l’échelle du prédicteur changent."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q02.sub3",
+        "tp04.part1.q05.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_multiple_fit",
+      "label_fr": "Ajuster un modèle linéaire à plusieurs prédicteurs sur un échantillon commun.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_data_clean",
+        "comp.ps1.regression_fit"
+      ],
+      "required_topic_ids": [
+        "r_lm",
+        "r_model_output",
+        "reg_formula",
+        "reg_fullrank",
+        "reg_multiple"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Définir réponse, prédicteurs et codage.",
+          "Contrôler que les modèles comparés utilisent les mêmes observations.",
+          "Identifier les coefficients partiels et les sorties nécessaires."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Ajuster deux modèles emboîtés sur un autre tableau et vérifier l’échantillon commun."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part2.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_partial_interpret",
+      "label_fr": "Interpréter et comparer les coefficients simples et partiels.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.causal_distinction",
+        "comp.ps1.regression_multiple_fit"
+      ],
+      "required_topic_ids": [
+        "reg_multi_coef",
+        "reg_omitted",
+        "reg_partial"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Décrire le prédicteur et les autres variables maintenues fixes dans le modèle.",
+          "Comparer des coefficients sur une échelle et un échantillon compatibles.",
+          "Qualifier l’ampleur d’un changement avec une référence explicite plutôt qu’une étiquette arbitraire."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Expliquer un changement de coefficient dans un autre modèle sans présumer son interprétation causale."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part2.q03.sub2",
+        "tp04.part2.q03.sub3",
+        "tp04.part2.q03.sub4",
+        "tp04.part3.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_r2",
+      "label_fr": "Calculer, vérifier et interpréter la part de variabilité expliquée par une régression.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.regression_fit"
+      ],
+      "required_topic_ids": [
+        "reg_empirical_corr",
+        "reg_r2",
+        "reg_r2_rho",
+        "reg_rss",
+        "reg_tss"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier les sommes de carrés et leur population.",
+          "Vérifier la concordance du calcul manuel et de la sortie du modèle.",
+          "Expliquer le pourcentage dans le sens réponse/prédicteur, sans causalité ni extrapolation automatique."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Quantifier et interpréter la variabilité expliquée dans un nouveau modèle, y compris un faible ajustement."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q03.sub1",
+        "tp04.part1.q03.sub2",
+        "tp04.part1.q03.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.regression_slope",
+      "label_fr": "Calculer une pente de moindres carrés et contrôler sa concordance avec R.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.regression_fit",
+        "comp.ps1.sample_moments"
+      ],
+      "required_topic_ids": [
+        "reg_empirical_cov",
+        "reg_ols_formulas",
+        "sample_var"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Utiliser covariance et variance sur les mêmes observations.",
+          "Vérifier que le prédicteur n’est pas constant et conserver les unités.",
+          "Comparer au bon coefficient du modèle ajusté."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Retrouver une pente sur un autre jeu et expliquer un changement d’unités."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp04.part1.q04.sub1",
+        "tp04.part1.q04.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.rmd_reproducible",
+      "label_fr": "Exécuter et produire un document R Markdown reproductible.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_import",
+        "r_rmd",
+        "r_seed"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Les chemins relatifs et l’ordre des chunks fonctionnent dans une session propre.",
+          "Les chunks nécessaires sont exécutés et le rendu PDF contient code, résultats et explications.",
+          "Les calculs aléatoires utiles au rendu sont reproductibles.",
+          "Exécuter les chunks nécessaires et détecter un résultat périmé.",
+          "Compiler le document avec les chemins de données corrects.",
+          "Rédiger une conclusion compréhensible à côté du code et signaler une aide extérieure conformément aux consignes."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes.",
+          "Compiler sans assistance un court rapport inédit mêlant code, résultat et interprétation."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.instructions.sub1",
+        "tp01.ex3_setup.sub1",
+        "tp01.instructions.sub1",
+        "tp02.instructions.sub1",
+        "tp03.setup.sub1",
+        "tp03.setup.sub2",
+        "tp04.setup.sub1",
+        "tp04.setup.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.sample_moments",
+      "label_fr": "Estimer et comparer les moments empiriques d’une variable quantitative.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.r_data_import"
+      ],
+      "required_topic_ids": [
+        "r_summaries",
+        "sample_mean",
+        "sample_var"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Calculer les résumés sur la bonne variable et les mêmes observations.",
+          "Distinguer moyenne, variance et unités.",
+          "Interpréter une comparaison empirique sans en faire une validation de loi."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Calculer et discuter des moments d’un nouveau petit échantillon."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q02.sub1",
+        "tp03.part1.q02.sub2",
+        "tp03.part1.q02.sub3",
+        "tp03.part1.q02.sub4",
+        "tp03.part1.q11.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.simulation_diagnostic",
+      "label_fr": "Vérifier empiriquement une simulation en comparant histogramme de densité et densité théorique.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "density",
+        "histogram",
+        "r_graph"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Utiliser un histogramme normalisé en densité.",
+          "Superposer la densité théorique sur le même support et la même échelle.",
+          "Interpréter la concordance comme diagnostic numérique, pas comme preuve de la loi."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part2.q01.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.statistical_writeup",
+      "label_fr": "Rédiger une réponse statistique concise qui relie méthode, résultat et limites.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "r_rmd"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "La réponse traite toutes les demandes, au-delà du code.",
+          "Les objets et populations concernés sont nommés sans ambiguïté.",
+          "La conclusion reste proportionnée aux données et au modèle."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.instructions.sub2",
+        "cf2025-12.q01.sub3",
+        "cf2025-12.q03.sub2",
+        "cf2025-12.q04.sub2",
+        "tp01.ex3.q02.sub2",
+        "tp01.ex3.q05.occ2.sub4",
+        "tp01.ex3.q05.sub3",
+        "tp01.ex3.q07.sub1",
+        "tp01.instructions.sub2",
+        "tp02.instructions.sub2",
+        "tp02.part2.q04.sub4",
+        "tp02.part3.q01.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.test_equivalence",
+      "label_fr": "Établir si deux procédures de test sont équivalentes sous les mêmes hypothèses et options.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "chisq_law",
+        "normal_law",
+        "one_two_sided",
+        "test_statistic"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Comparer statistiques, transformations et lois de référence.",
+          "Comparer alternatives, seuils et corrections avant de conclure à l’équivalence.",
+          "Fournir un argument de loi ou de région de rejet, et distinguer égalité théorique et simple proximité numérique."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q06.sub2",
+        "cf2025-12.q07.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.test_interpret",
+      "label_fr": "Interpréter une p-valeur et une décision de test en contexte.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "pvalue",
+        "risk_first",
+        "test_decision"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Relier la p-valeur au modèle nul, sans la présenter comme probabilité de ce modèle.",
+          "Distinguer non-rejet et confirmation.",
+          "Conclure sur la question étudiée avec les limites de l’échantillonnage."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Interpréter des résultats contrastés dans deux contextes sans indices sur la conclusion attendue."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q05.sub2",
+        "cf2025-12.q09.sub4",
+        "tp03.part1.q04.sub3",
+        "tp03.part1.q06.sub2",
+        "tp03.part1.q06.sub4",
+        "tp03.part1.q07.sub4",
+        "tp03.part1.q12.sub3",
+        "tp03.part1.q13.sub3",
+        "tp04.part1.q06.sub3",
+        "tp04.part3.q01.sub4",
+        "tp04.part3.q02.sub4",
+        "tp04.part4.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.test_select",
+      "label_fr": "Choisir un test adapté à la question, au plan d’observation et aux hypothèses.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "choose_test",
+        "hypotheses",
+        "one_two_sided"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier paramètre ciblé, unités, groupes et éventuel appariement.",
+          "Formuler hypothèses et orientation avant la décision.",
+          "Vérifier conditions et limites du modèle d’échantillonnage."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Choisir entre méthodes plausibles dans une tâche mixte dont le test n’est pas nommé."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q05.sub1",
+        "tp03.part1.q06.sub1",
+        "tp03.part1.q07.sub3",
+        "tp03.part1.q12.sub1",
+        "tp03.part1.q13.sub1",
+        "tp04.part2.q02.sub2",
+        "tp04.part3.q01.sub3",
+        "tp04.part3.q02.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.test_statistic_compute",
+      "label_fr": "Calculer une statistique observée et identifier l’objet aléatoire correspondant.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "indicator_event",
+        "r_summaries",
+        "statistic",
+        "test_statistic"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer variable aléatoire, réalisation observée et paramètre hypothétique.",
+          "Vérifier codage des observations, effectif et formule avant calcul.",
+          "Conserver la précision interne et arrondir seulement la présentation."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q03.sub1",
+        "cf2025-12.q07.sub1",
+        "cf2025-12.q09.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.test_uncertainty",
+      "label_fr": "Analyser la variabilité des décisions de test et la distinction entre non-rejet, erreur et validité.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.test_interpret"
+      ],
+      "required_topic_ids": [
+        "power",
+        "pvalue",
+        "risk_first",
+        "risk_second",
+        "test_decision"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer la vérité du paramètre du résultat aléatoire d’une procédure.",
+          "Expliquer qu’une décision isolée ne prouve ni réfute sa calibration.",
+          "Examiner les hypothèses, les risques et la puissance sans attribuer une probabilité a posteriori à l’hypothèse nulle."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q10.sub1",
+        "cf2025-12.q10.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.transformed_moments",
+      "label_fr": "Calculer les moments nécessaires d’une transformation de variable aléatoire.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "expectation",
+        "integral_tools",
+        "koenig_huygens",
+        "moments_k",
+        "transfer"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Choisir somme ou intégrale selon la loi et son support.",
+          "Établir l’existence des moments utilisés.",
+          "Distinguer second moment et variance, puis contrôler que la variance est non négative."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q02.sub1",
+        "tp02.part2.q03.sub1",
+        "tp02.part2.q03.sub2"
+      ]
+    },
+    {
+      "id": "comp.ps1.two_mean_test",
+      "label_fr": "Exécuter une comparaison de moyennes en justifiant sa variante et son plan.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [
+        "comp.ps1.sample_moments",
+        "comp.ps1.test_select"
+      ],
+      "required_topic_ids": [
+        "covariance",
+        "r_summaries",
+        "sample_mean",
+        "student_test_one",
+        "student_test_two",
+        "welch_test"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Distinguer observations appariées et échantillons indépendants.",
+          "Choisir et expliciter la variante et les hypothèses de variance/distribution.",
+          "Présenter la statistique, les degrés de liberté pertinents et la p-valeur.",
+          "Interpréter l’écart sans confondre signification et grandeur."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Comparer des moyennes dans un cas inédit où l’appariement doit être identifié."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp03.part1.q06.sub1",
+        "tp03.part1.q06.sub4",
+        "tp03.part1.q12.sub2",
+        "tp04.part3.q01.sub3",
+        "tp04.part3.q02.sub3"
+      ]
+    },
+    {
+      "id": "comp.ps1.variance_linear_combination",
+      "label_fr": "Calculer la variance d’une combinaison linéaire en traitant coefficients et dépendance correctement.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "covariance",
+        "independent_rv",
+        "sample_mean_moments",
+        "var_sum",
+        "variance_affine"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Élever les coefficients au carré pour les termes de variance.",
+          "Conserver les covariances sauf justification de leur nullité.",
+          "Justifier le passage à la variance d’une moyenne et distinguer variance et écart-type."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "cf2025-12.q02.sub2",
+        "tp02.part1.q02.sub1",
+        "tp02.part2.q03.sub1"
+      ]
+    },
+    {
+      "id": "comp.ps1.variance_reduction_compare",
+      "label_fr": "Comparer la précision de deux estimateurs de la même cible.",
+      "priority_tier": "P1",
+      "prerequisite_competency_ids": [
+        "comp.ps1.mc_precision"
+      ],
+      "required_topic_ids": [
+        "bias",
+        "estimator_comparison",
+        "estimator_variance",
+        "mc_precision"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Comparer la même cible et des coûts ou tailles explicitement définis.",
+          "Relier la précision à la variance ou à un autre risque clairement justifié.",
+          "Ne pas déduire un ordre théorique de variance d’une seule trajectoire simulée."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part2.q04.sub1",
+        "tp02.part2.q04.sub4"
+      ]
+    },
+    {
+      "id": "comp.ps1.wlln_apply",
+      "label_fr": "Justifier une convergence de moyenne empirique par la loi faible des grands nombres.",
+      "priority_tier": "P0",
+      "prerequisite_competency_ids": [],
+      "required_topic_ids": [
+        "conv_prob",
+        "expectation",
+        "iid_sample",
+        "wlln"
+      ],
+      "rubric": {
+        "observable_checks_fr": [
+          "Identifier les variables moyennées et établir leur caractère iid.",
+          "Vérifier l’hypothèse de moment de la version du théorème utilisée.",
+          "Énoncer la convergence en probabilité vers l’espérance identifiée."
+        ],
+        "minimum_independent_applications": 2,
+        "changed_context_required": true,
+        "delayed_mixed_retrieval_required": true,
+        "hinted_success_is_independent": false,
+        "source_question_is_not_mastery_evidence": true,
+        "transfer_requirements_fr": [
+          "Appliquer cette compétence sans aide dans un autre contexte, avec données et présentation différentes; expliquer le choix et vérifier les hypothèses pertinentes."
+        ],
+        "threshold_provenance": "Explicit PS1 design heuristic, not a calibrated performance guarantee."
+      },
+      "evidence_ids": [
+        "tp02.part1.q01.sub1",
+        "tp02.part1.q01.sub2",
+        "tp02.part2.q02.sub3"
+      ]
+    }
+  ]
+}

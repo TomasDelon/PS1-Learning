@@ -1,0 +1,142 @@
+---
+title: "X02 · Synthèse: couples, régression et interprétation · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: X02
+  document_role: correction
+  content_status: complete_authored
+  minutes: 60
+  exercise_ids: ["X02-E01", "X02-E02", "X02-E03", "X02-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Loi jointe et conditionnement {#X02-E01}
+
+<!-- ps1:solution id=X02-E01 -->
+
+Pour $g\in\{0,1\}$, $M\mid G=g\sim\mathcal N(20+3g,1)$. En notant $\varphi(t)=(2\pi)^{-1/2}e^{-t^2/2}$,
+$$f_M(m)=0{,}6\varphi(m-20)+0{,}4\varphi(m-23).$$
+La probabilité jointe vaut $\mathbb P(G=1)\mathbb P(M>24\mid G=1)=0{,}4[1-\Phi(1)]\simeq0{,}06346$. Les lois conditionnelles changent avec $g$, donc $G$ et $M$ ne sont pas indépendantes. On ne remplace pas la probabilité conditionnelle par la marginale.
+
+$G$ ne prend que deux valeurs. Le couple vit sur les droites verticales $g=0$ et $g=1$, d’aire nulle. Une densité ordinaire par rapport à l’aire ne peut lui donner probabilité 1. On décrit correctement la loi par des masses en $g$ et des densités conditionnelles en $m$.
+
+```{r X02-E01}
+0.4*pnorm(1, lower.tail=FALSE)
+```
+
+**Critères indépendants :** Identifier la loi conditionnelle et ses paramètres; Pondérer le mélange; Employer la bonne condition dans la probabilité jointe; Distinguer une variable discrète d’une variable à densité.
+
+### Du groupe à la régression {#X02-E02}
+
+<!-- ps1:solution id=X02-E02 -->
+
+Après substitution, $Y=55+5G+2Z+E$. Donc $\mathbb E[Y\mid G]=55+5G$ et $\mathbb V(Y\mid G)=4+4=8$. Comme $\mathbb V(G)=0{,}4(0{,}6)=0{,}24$, la variance intergroupes vaut $25(0{,}24)=6$; la variance totale vaut $6+8=14$. La part expliquée par $G$ seul est $6/14=3/7$.
+
+Sachant $(G,M)$, la moyenne est $15+2M-G$ et la variance résiduelle vaut 4. La part expliquée par le couple est donc $(14-4)/14=5/7$. Les coefficients de chemin sont $a=3$, $b=2$, $c=-1$ et le total vaut $d=ab+c=5$.
+
+Enfin $\operatorname{Cov}(G,M)=3\mathbb V(G)=0{,}72$. L’omission de $M$ décale le coefficient de groupe de $b\operatorname{Cov}(G,M)/\mathbb V(G)=2\times3=6$. La pente passe donc de -1 à 5. Les mots « expliqué » et « indirect » désignent ici les composantes du modèle donné.
+
+**Critères indépendants :** Séparer bruit intra et variation des moyennes; Utiliser le bon ensemble de variables conditionnantes; Identifier les quatre coefficients; Relier covariance et décomposition.
+
+### Deux modèles, deux interprétations et une unité modifiée {#X02-E03}
+
+<!-- ps1:solution id=X02-E03 -->
+
+```{r X02-donnees-corrige}
+set.seed(2202)
+essai <- data.frame(groupe=rbinom(160, size=1, prob=.4))
+essai$duree <- 20 + 3*essai$groupe + rnorm(160)
+essai$score <- 15 + 2*essai$duree - essai$groupe + rnorm(160, sd=2)
+```
+
+```{r X02-E03}
+m_simple <- lm(score~groupe,data=essai)
+m_multiple <- lm(score~groupe+duree,data=essai)
+difference <- mean(essai$score[essai$groupe==1])-mean(essai$score[essai$groupe==0])
+stopifnot(abs(difference-coef(m_simple)["groupe"]) < 1e-10)
+IC_g <- confint(m_multiple,"groupe")
+print(list(simple=coef(m_simple),multiple=coef(m_multiple),IC_groupe=IC_g,
+           ddl=df.residual(m_multiple),
+           R2=c(simple=summary(m_simple)$r.squared,multiple=summary(m_multiple)$r.squared)))
+plot(fitted(m_multiple),residuals(m_multiple),xlab="Score ajusté",ylab="Résidu",pch=19)
+abline(h=0,lty=2)
+qqnorm(residuals(m_multiple),pch=19);qqline(residuals(m_multiple),col="steelblue")
+essai$heures <- essai$duree/60
+m_heures <- lm(score~groupe+heures,data=essai)
+se_min <- coef(summary(m_multiple))["duree","Std. Error"]
+se_h <- coef(summary(m_heures))["heures","Std. Error"]
+stopifnot(abs(coef(m_heures)["heures"]-60*coef(m_multiple)["duree"])<1e-8,
+          abs(se_h-60*se_min)<1e-8,
+          max(abs(fitted(m_heures)-fitted(m_multiple)))<1e-8,
+          abs(summary(m_heures)$r.squared-summary(m_multiple)$r.squared)<1e-10)
+print(c(t_min=coef(summary(m_multiple))["duree","t value"],
+        t_heures=coef(summary(m_heures))["heures","t value"]))
+```
+
+Les degrés de liberté valent $160-3=157$. La pente simple pour un indicateur est exactement la différence des deux moyennes empiriques. Le coefficient ajusté de groupe compare les scores à durée fixée. Le passage des minutes aux heures multiplie par 60 le coefficient de durée et son erreur standard, en points/heure; leur rapport $t$ reste identique. Les colonnes décrivent le même espace de modèles, donc les valeurs ajustées, les résidus et $R^2$ ne changent pas. Le graphique peut signaler une incohérence, mais il ne transforme pas l’ajustement en preuve causale.
+
+**Critères indépendants :** Ajuster les modèles sur le même échantillon; Vérifier la pente binaire par les moyennes; Employer 157 degrés de liberté; Prévoir puis contrôler l’effet du changement d’unité; Interpréter correctement les diagnostics.
+
+### Inférence d’un produit et conclusion complète {#X02-E04}
+
+<!-- ps1:solution id=X02-E04 -->
+
+```{r X02-E04}
+m_M <- lm(duree~groupe,data=essai)
+m_Y <- lm(score~duree+groupe,data=essai)
+m_T <- lm(score~groupe,data=essai)
+a <- unname(coef(m_M)["groupe"]);b <- unname(coef(m_Y)["duree"])
+c_direct <- unname(coef(m_Y)["groupe"]);d_total <- unname(coef(m_T)["groupe"])
+stat <- function(tab) {
+  if(length(unique(tab$groupe))<2) return(NA_real_)
+  m <- lm(duree~groupe,data=tab); y <- lm(score~duree+groupe,data=tab)
+  if(m$rank<2 || y$rank<3) return(NA_real_)
+  unname(coef(m)["groupe"]*coef(y)["duree"])
+}
+set.seed(2203)
+B <- 299
+produits <- replicate(B, {
+  index <- sample(seq_len(nrow(essai)),nrow(essai),replace=TRUE)
+  stat(essai[index,,drop=FALSE])
+})
+echecs <- sum(!is.finite(produits))
+if(echecs/B>.05) stop("Schéma instable : revoir les données et les modèles.")
+IC <- quantile(produits[is.finite(produits)],c(.025,.975))
+stopifnot(abs(d_total-(a*b+c_direct))<1e-10)
+print(list(composantes=c(direct=c_direct,indirect=a*b,total=d_total),
+           IC_percentile=IC,B=B,echecs=echecs))
+cat(sprintf("Le contraste 1 moins 0 se décompose en %.3f points conditionnels directs et %.3f points indirects modélisés, pour %.3f points au total.\n",c_direct,a*b,d_total))
+cat(sprintf("L'IC percentile du produit, sur %d rééchantillons de lignes complètes avec %d échec(s), est [%.3f ; %.3f] points.\n",B,echecs,IC[1],IC[2]))
+```
+
+Chaque ligne représente ici une unité indépendante et garde ensemble groupe, durée et score. Les composantes directe et indirecte peuvent se compenser; leur somme correcte n’établit pas un mécanisme causal. La couverture du percentile est approchée, et 299 réplications induisent une variabilité Monte-Carlo des bornes. Avec des observations répétées par appareil, il faudrait revoir à la fois le modèle d’erreur et l’unité du bootstrap; rééchantillonner les appareils indépendants avec toutes leurs lignes est une piste, sous des hypothèses adaptées.
+
+**Critères indépendants :** Conserver chaque triplet dans le bootstrap; Réajuster les deux chemins; Rapporter les échecs et la méthode approximative; Contrôler la compensation des signes; Reconnaître le changement d’unité si les lignes sont dépendantes.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `ctd07` : E2 Q1-Q11, lignes 141-360. Mélange, conditionnement et variance totale.
+- `ctd08` : E1-E4, lignes 54-570. Pente, MCO, qualité, inférence et prédiction.
+- `ctd10` : E1 Q1-Q4, lignes 35-149. Omission d’un prédicteur et interprétation du décalage.
+- `tp04` : Parties III-IV, lignes 242-391. Contraste de groupe, médiation et bootstrap.
+- `syllabus_ps1` : Descriptions FRANÇAIS, Objectifs et Contenu. Relier modélisation, calcul, simulation et critique du modèle.

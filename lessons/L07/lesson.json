@@ -1,0 +1,298 @@
+{
+  "lesson_id": "L07",
+  "minutes": 30,
+  "source_refs": [
+    {
+      "source_id": "ctd03",
+      "locator": "Exercice 1 Q4-Q6; Exercice 2 Q1-Q5",
+      "use_fr": "Simulation de moyennes, aire par indicatrices et précision."
+    },
+    {
+      "source_id": "tp02",
+      "locator": "Partie 1 Q1-Q3; Partie 2 Q1-Q4",
+      "use_fr": "Intégrale comme espérance, inversion instrumentale et comparaison de variances."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-119, PS1-120, PS1-121, PS1-105, PS1-122, PS1-035",
+      "use_fr": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L07-B01",
+      "type": "MTH",
+      "title_fr": "Écrire une intégrale comme une espérance",
+      "source_block_ids": [
+        "PS1-119",
+        "PS1-120"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-119 · Méthode de Monte-Carlo pour une intégrale",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-120 · Simulation d'une probabilité par indicatrices",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Écrire une intégrale comme une espérance",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L07-B02",
+      "type": "THM",
+      "title_fr": "Précision d’une moyenne Monte-Carlo",
+      "source_block_ids": [
+        "PS1-121",
+        "PS1-105"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-121 · Erreur et précision de Monte-Carlo",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-105 · Espérance et variance de la moyenne empirique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Précision d’une moyenne Monte-Carlo",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L07-B03",
+      "type": "MTH",
+      "title_fr": "Échantillonnage préférentiel",
+      "source_block_ids": [
+        "PS1-122"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-122 · Échantillonnage préférentiel",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Échantillonnage préférentiel",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L07-B04",
+      "type": "MTH",
+      "title_fr": "Comparer des méthodes à budget identique",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd03",
+          "locator": "Exercice 1 Q4-Q6; Exercice 2 Q1-Q5",
+          "use_fr": "Simulation de moyennes, aire par indicatrices et précision."
+        }
+      ],
+      "provenance": "original_method",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Comparer des méthodes à budget identique",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L07-B05",
+      "type": "SYX",
+      "title_fr": "Boucle while avec arrêt contrôlé",
+      "source_block_ids": [
+        "PS1-035"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-035 · Boucle while",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Boucle while avec arrêt contrôlé",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L07-E01",
+      "family": "mc_interval_length",
+      "minutes": 3,
+      "kind": "concept",
+      "rubric_fr": [
+        "Écrire la densité 1/3 avec le bon intervalle.",
+        "Identifier la cible effective du programme.",
+        "Justifier le facteur 3 et l’application de la LGN."
+      ],
+      "block_ids": [
+        "L07-B01",
+        "L03-B09",
+        "L06-B06"
+      ],
+      "competency_ids": [
+        "comp.ps1.mc_integral"
+      ],
+      "topic_ids": [
+        "mc_integral"
+      ],
+      "error_tags": [
+        "normalization",
+        "target"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L07-E02",
+      "family": "importance_polynomial",
+      "minutes": 9,
+      "kind": "math",
+      "rubric_fr": [
+        "Calculer la cible avant de simuler.",
+        "Normaliser q et obtenir V par inversion.",
+        "Justifier le poids et la couverture du support.",
+        "Vérifier les seconds moments et les deux variances.",
+        "Comparer les variances de moyennes au même n."
+      ],
+      "block_ids": [
+        "L07-B01",
+        "L07-B02",
+        "L07-B03",
+        "L03-B13",
+        "L04-B11"
+      ],
+      "competency_ids": [
+        "comp.ps1.importance_sampling",
+        "comp.ps1.mc_integral",
+        "comp.ps1.mc_precision",
+        "comp.ps1.variance_reduction_compare"
+      ],
+      "topic_ids": [
+        "importance_sampling",
+        "mc_precision",
+        "mc_integral"
+      ],
+      "error_tags": [
+        "support",
+        "weights",
+        "second_moment",
+        "budget"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L07-E03",
+      "family": "mc_equal_budget_replicates",
+      "minutes": 8,
+      "kind": "R",
+      "rubric_fr": [
+        "Passer n comme argument, sans dépendance cachée.",
+        "Créer de nouveaux tirages à chaque répétition.",
+        "Comparer les dispersions au même coût et à la théorie.",
+        "Écrire une conclusion sur la variance plutôt que sur une seule réalisation."
+      ],
+      "block_ids": [
+        "L07-B04",
+        "L03-B15",
+        "L06-B07",
+        "L04-B08",
+        "L02-B08"
+      ],
+      "competency_ids": [
+        "comp.ps1.mc_implement",
+        "comp.ps1.variance_reduction_compare",
+        "comp.ps1.mc_precision"
+      ],
+      "topic_ids": [
+        "importance_sampling",
+        "mc_precision"
+      ],
+      "error_tags": [
+        "replicate_vs_repeat",
+        "budget",
+        "one_run_conclusion"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L07-V01",
+      "family": "instrumental_missing_support",
+      "for_exercise_ids": [
+        "L07-E01",
+        "L07-E02"
+      ],
+      "error_tags": [
+        "support",
+        "target"
+      ],
+      "prompt_md": "Pour calculer $\\int_0^1(1+x)\\,dx$, on propose de tirer V uniformément sur (1/2,1) et de moyenner $(1+V)/2$. Déterminer la cible réelle de cette moyenne. Peut-on corriger le défaut uniquement en augmentant n ?",
+      "correction_md": "La densité instrumentale vaut 2 sur $(1/2,1)$ et 0 ailleurs.\nLa moyenne proposée a pour espérance\n$\\int_{1/2}^1(1+x)\\,dx=7/8$, tandis que la cible vaut $3/2$.\nLa contribution de $(0,1/2)$ est perdue. Augmenter n concentre l'estimation\nautour de 7/8; il ne corrige pas le support manquant.",
+      "rubric_fr": [
+        "Identifier le support non couvert.",
+        "Calculer 7/8 et le comparer à 3/2.",
+        "Distinguer réduction de variance et correction de cible."
+      ],
+      "block_ids": [
+        "L07-B03",
+        "L06-B06"
+      ],
+      "minutes": 4,
+      "transfer": "Vérifier qu’une instrumentalisation change accidentellement la cible, puis refuser une réparation par le seul effectif.",
+      "has_r": false
+    },
+    {
+      "id": "L07-V02",
+      "family": "importance_infinite_variance",
+      "for_exercise_ids": [
+        "L07-E02",
+        "L07-E03"
+      ],
+      "error_tags": [
+        "integrability",
+        "second_moment",
+        "method_choice"
+      ],
+      "prompt_md": "Pour $I=\\int_0^1(x-1/2)\\,dx$, on garde la densité instrumentale q(x)=2x.\nLe poids est $Y=(V-1/2)/(2V)$. Vérifier que son espérance existe, puis décider\nsi l'erreur-type usuelle en $1/\\sqrt n$ est justifiée par une variance finie.\nQuel théorème de convergence reste utilisable ?",
+      "correction_md": "Le support est couvert et\n$\\mathbb E|Y|=\\int_0^1|x-1/2|\\,dx=1/4<\\infty$; ainsi $\\mathbb E[Y]=I=0$.\nMais\n$\\mathbb E[Y^2]=\\int_0^1(x-1/2)^2/(2x)\\,dx=\\infty$ :\npour $0<x<1/4$, l'intégrande est au moins $1/(32x)$.\nLa variance finie et le TCL standard ne sont donc pas disponibles.\nLa LGN pour variables i.i.d. intégrables s'applique toujours.\nUn changement d'intégrande peut dégrader radicalement une densité instrumentale.",
+      "rubric_fr": [
+        "Vérifier l’intégrabilité absolue du poids.",
+        "Montrer la divergence du second moment près de 0.",
+        "Distinguer hypothèses de LGN et de TCL."
+      ],
+      "block_ids": [
+        "L07-B03",
+        "L06-B06",
+        "L06-B10"
+      ],
+      "minutes": 5,
+      "transfer": "Vérifier à nouveau les conditions de variance après un changement de signe et d’intégrande; une densité précédemment efficace devient inadéquate.",
+      "has_r": false
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé."
+    ]
+  }
+}

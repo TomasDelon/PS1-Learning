@@ -1,0 +1,188 @@
+---
+title: "A4 · Finaliser et tester la feuille A4"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: A4
+  document_role: work
+  content_status: complete_authored
+  minutes: 60
+  exercise_ids: ["A4-E01", "A4-E02", "A4-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+## 1/6 · Choisir une organisation qui se consulte vite
+
+**60 min :** sélectionner 10, écrire et contrôler 40, tester la consultation 10. Cette séance produit votre résumé manuscrit A4. Le syllabus autorise ce format; le nombre de faces doit rester celui des consignes effectivement autorisées. Le texte ci-dessous est une banque précise à sélectionner, pas une obligation de tout recopier.
+
+Donner un emplacement stable à huit zones : lois, moments/conditionnement, limites/simulation, estimation, intervalles, tests, régression, syntaxe/rédaction. Garder les paramètres et les hypothèses à côté de la formule. Le temps de cartes éventuellement révisées remplace des minutes de sélection, sans prolonger la séance.
+
+## 2/6 · Banque de références à sélectionner
+
+### 1. Lois : vérifier le support et le paramétrage
+
+Dans cette table, le deuxième paramètre de $\mathcal N(m,\sigma^2)$ est la variance, tandis que R attend `sd = sigma`. $a,b$ sont des bornes avec $a<b$; $k,\lambda>0$ sont forme et taux; $p\in(0,1)$ sauf cas limites explicitement traités.
+
+| Loi | Support et formule utile | Espérance; variance | Repère R |
+|:--|:--|:--|:--|
+| Bernoulli $p$ | $\{0,1\}$, succès de probabilité $p$ | $p$; $p(1-p)$ | `rbinom(n,1,p)` |
+| Binomiale $m,p$ | $j=0,\ldots,m$; $\binom mjp^j(1-p)^{m-j}$, essais indépendants | $mp$; $mp(1-p)$ | `dbinom(j,m,p)` |
+| Poisson $\lambda$ | $j\ge0$; $e^{-\lambda}\lambda^j/j!$ | $\lambda$; $\lambda$ | `ppois(j,lambda)` |
+| Géométrique, rang du succès | $j\ge1$; $(1-p)^{j-1}p$ | $1/p$; $(1-p)/p^2$ | R compte les échecs : `rgeom(n,p)+1` |
+| Uniforme $(a,b)$ | $f(x)=1/(b-a)$ sur $(a,b)$ | $(a+b)/2$; $(b-a)^2/12$ | `runif(n,a,b)` |
+| Exponentielle, taux $\lambda$ | $f(x)=\lambda e^{-\lambda x}$, $x>0$ | $1/\lambda$; $1/\lambda^2$ | `rexp(n,rate=lambda)` |
+| Gamma, forme $k$, taux $\lambda$ | $f(x)=\lambda^kx^{k-1}e^{-\lambda x}/\Gamma(k)$, $x>0$ | $k/\lambda$; $k/\lambda^2$ | `rgamma(n,shape=k,rate=lambda)` |
+| Normale $m,\sigma^2$ | $(X-m)/\sigma\sim\mathcal N(0,1)$ | $m$; $\sigma^2$ | `pnorm(x,mean=m,sd=sigma)` |
+
+Les sommes de normales indépendantes sont normales avec moyennes et variances additionnées. Les sommes de Poisson indépendantes additionnent leurs paramètres. La somme de $n$ exponentielles indépendantes de même taux $\lambda$ suit $\mathrm{Gamma}(n,\lambda)$. Ces règles demandent leurs hypothèses, elles ne s’appliquent pas à n’importe quelles variables de mêmes marginales.
+
+### 2. Moments et conditionnement
+
+Pour les moments requis finis : $\mathbb E[aX+bY+c]=a\mathbb E[X]+b\mathbb E[Y]+c$;
+$$\mathbb V(aX+bY)=a^2\mathbb V(X)+b^2\mathbb V(Y)+2ab\operatorname{Cov}(X,Y),$$
+$\operatorname{Cov}(X,Y)=\mathbb E[XY]-\mathbb E[X]\mathbb E[Y]$. Indépendance et carré intégrable impliquent covariance nulle; la réciproque est fausse.
+
+Densité jointe : intégrer sur le vrai support, puis $f_X(x)=\int f(x,y)dy$ et $f_{Y\mid X=x}(y)=f(x,y)/f_X(x)$ lorsque $f_X(x)>0$, presque partout. Cas discret : sommer puis diviser par la masse de la condition. Indépendance : factorisation de la loi jointe.
+
+Pour $Y$ intégrable, $\mathbb E[Y]=\mathbb E[\mathbb E[Y\mid X]]$. Pour $Y$ de carré intégrable,
+$$\mathbb V(Y)=\mathbb E[\mathbb V(Y\mid X)]+\mathbb V(\mathbb E[Y\mid X]).$$
+Le premier terme est la moyenne des variances conditionnelles, pas la variance d’une moyenne conditionnelle.
+
+### 3. Limites et Monte-Carlo
+
+I.i.d. intégrables : $\bar X_n\xrightarrow{\mathbb P}m$. Si $0<\sigma^2<\infty$, le TCL donne $\sqrt n(\bar X_n-m)/\sigma\xrightarrow{\mathcal L}\mathcal N(0,1)$. Une loi asymptotique n’est pas une identité à taille finie.
+
+Pour $a<b$, une fonction $h$ mesurable et intégrable sur $(a,b)$ et des $U_i$ i.i.d. uniformes sur cet intervalle, $\int_a^b h=(b-a)\mathbb E[h(U)]$ : estimateur $(b-a)\overline{h(U)}$. Erreur standard estimée $(b-a)s_h/\sqrt n$ si le second moment existe. Diviser l’erreur standard par 2 demande environ quatre fois plus de tirages. Si on change la loi de tirage, il faut réécrire l’intégrale avec les poids corrects.
+
+### 4. Estimation
+
+Paramètre fixe $\theta$, estimateur aléatoire $\widehat\theta(\mathbf X)$, valeur observée $\widehat\theta(\mathbf x)$. Biais $=\mathbb E_\theta[\widehat\theta]-\theta$; EQM $=\mathbb V_\theta(\widehat\theta)+\mathrm{biais}^2$.
+
+Sous i.i.d., $L(\theta;\mathbf x)=\prod_i f(x_i;\theta)$. Écrire le domaine du paramètre et le support avant de prendre le logarithme. Dériver ne fournit que des candidats; vérifier maximum global et bords. Pour une exponentielle de taux $\lambda$ et $x_i>0$, $\ell=n\ln\lambda-\lambda\sum x_i$, donc $\widehat\lambda=n/\sum x_i$.
+
+### 5. Intervalles et pivots
+
+Dans cette section, $0<\alpha<1$. Les lois normales ont une variance strictement positive; $n\ge2$ dès que l’écart-type corrigé $s$ intervient.
+
+Notation : $z_q$ quantile de $\mathcal N(0,1)$, $t_{\nu,q}$ quantile de Student, $\chi^2_{\nu,q}$ quantile du khi-deux; $s$ est l’écart-type corrigé observé. Le paramètre reste fixe, la procédure a une couverture sous un modèle d’échantillonnage.
+
+| Cible | Hypothèses et formule |
+|:--|:--|
+| Moyenne normale, $\sigma$ connu | I.i.d. normales : $\bar x\pm z_{1-\alpha/2}\sigma/\sqrt n$, exact |
+| Moyenne normale, $\sigma$ inconnu | I.i.d. normales, $n\ge2$ : $\bar x\pm t_{n-1,1-\alpha/2}s/\sqrt n$, exact |
+| Variance normale | I.i.d. normales : $[(n-1)s^2/\chi^2_{n-1,1-\alpha/2};(n-1)s^2/\chi^2_{n-1,\alpha/2}]$ |
+| Proportion | Bernoulli i.i.d., taille suffisante et loin des bords : $\widehat p\pm z_{1-\alpha/2}\sqrt{\widehat p(1-\widehat p)/n}$, approximation de Wald; éviter près de 0 ou 1 |
+| Attente moyenne exponentielle $\theta=1/\lambda$ | I.i.d. exponentielles, somme $S$ : $2S/\theta\sim\chi^2_{2n}$, donc $[2S/\chi^2_{2n,1-\alpha/2};2S/\chi^2_{2n,\alpha/2}]$, exact |
+| Statistique composée | Bootstrap selon l’unité indépendante; percentile $[q^*_{\alpha/2};q^*_{1-\alpha/2}]$, couverture approchée |
+
+### 6. Choix et rédaction d’un test
+
+D’abord : unité indépendante, paramètre visé, $H_0$, alternative, seuil. La p-valeur est calculée sous $H_0$, dans la queue déterminée par l’alternative. Elle n’est pas la probabilité de $H_0$ après observation. Le non-rejet ne prouve pas l’égalité.
+
+| Question | Repère de méthode et condition |
+|:--|:--|
+| Une moyenne normale | $t=(\bar x-m_0)/(s/\sqrt n)$, ddl $n-1$, normalité et indépendance pour l’exactitude |
+| Deux moyennes indépendantes | Welch si variances inconnues non supposées égales, `t.test(x,y,var.equal=FALSE)`; Student groupé seulement avec variance commune justifiée, ddl $n_1+n_2-2$ |
+| Une proportion | Test binomial exact `binom.test(k,n,p=p0,alternative=...)`; approximation normale sous $H_0$ utilise $p_0(1-p_0)/n$ |
+| Adéquation de catégories | $Q=\sum_i(O_i-E_i)^2/E_i$, $E_i=np_i$; ddl $k-1$ si probabilités fixées, approximation à vérifier |
+| Indépendance de catégories | $E_{ij}=O_{i\cdot}O_{\cdot j}/n$, $Q=\sum_{ij}(O_{ij}-E_{ij})^2/E_{ij}$, ddl $(r-1)(c-1)$ asymptotiques |
+
+Si des paramètres de la loi sont ajustés sur le même échantillon, le calibrage de l’adéquation doit en tenir compte; la règle $k-1-q$ demande un cadre régulier compatible et ne s’applique pas à l’aveugle. Les petites fréquences attendues peuvent demander regroupement justifié, test exact ou simulation adaptée. Des observations appariées ne deviennent pas indépendantes parce qu’on les place dans deux vecteurs.
+
+### 7. Régression et médiation
+
+Avec intercept, $S_{xx}>0$ : $\widehat b_1=S_{xy}/S_{xx}$ et $\widehat b_0=\bar y-\widehat b_1\bar x$. Résidu $e_i=y_i-\widehat y_i$, différent de l’erreur vraie. RSS $=\sum e_i^2$, TSS $=\sum(y_i-\bar y)^2$, $R^2=1-\mathrm{RSS}/\mathrm{TSS}$ si TSS $>0$. Simple avec intercept : $R^2=r^2$.
+
+Pour un modèle avec intercept, conditionnellement à un plan fixe de rang plein comportant $d\ge1$ colonnes explicatives et avec $n>d+1$ : $\nu=n-d-1$, $s^2=\mathrm{RSS}/\nu$. Pour l’inférence exacte, les erreurs sont indépendantes de loi $\mathcal N(0,\sigma^2)$ avec $\sigma>0$. Test individuel $t=(\widehat b_j-b_{j,0})/\mathrm{SE}(\widehat b_j)$, loi $t_\nu$ sous $H_0$. IC $\widehat b_j\pm t_{\nu,1-\alpha/2}\mathrm{SE}(\widehat b_j)$. Global sous toutes les pentes nulles : $F=[(\mathrm{TSS}-\mathrm{RSS})/d]/[\mathrm{RSS}/\nu]\sim F_{d,\nu}$, queue droite. Pour $d=1$ et nullité de pente, $F=t^2$.
+
+Deux prédicteurs : $K\mathbf b=\operatorname{Cov}(\mathbf X,Y)$ si $K$ inversible et erreurs décorrélées des prédicteurs. Omission : $a_1-b_1=b_2\operatorname{Cov}(X_1,X_2)/\mathbb V(X_1)$.
+
+Médiation sans interaction : $M=\alpha_1+aX+u$, $Y=\alpha_2+bM+cX+v$, avec moyennes conditionnelles d’erreur nulles, donne $d=ab+c$. Même codage et mêmes lignes pour les trois ajustements. Le bootstrap du produit rééchantillonne les lignes complètes sous i.i.d.; sinon choisir l’unité indépendante. Association et causalité restent distinctes.
+
+### 8. Syntaxe et phrases de contrôle
+
+`d...` masse/densité; `p...` répartition; `q...` quantile; `r...` simulation. Pour une variable entière $K$, $\mathbb P(K\ge k)=1-\mathbb P(K\le k-1)$. `var` et `cov` emploient $n-1$; `sd` est un écart-type; `rate` est un taux. `set.seed` stabilise une simulation, sans rendre une hypothèse vraie.
+
+`lm(y~x1+x2,data=d)`; `coef(summary(m))`; `confint(m)`; `df.residual(m)`; `predict(m,newdata=...,interval="confidence")` pour la moyenne, `"prediction"` pour un nouvel individu. Examiner nuage, résidus/ajustés et Q-Q plot. Vérifier l’indépendance par le plan de collecte.
+
+Phrase de résultat à adapter : « Sous [modèle et hypothèses], l’estimation de [paramètre, unité] est […], avec un IC de niveau […] égal à […]. Le test de [hypothèse] contre […] donne [statistique, ddl, p]; au seuil […], [décision et portée]. »
+
+## 3/6 · Sélectionner, 10 min
+
+### Sélectionner les références utiles {#A4-E01}
+
+**Budget : 10 min.**
+
+Pendant 10 minutes, choisir au plus huit zones dans la banque. Pour chaque zone retenue, inscrire son emplacement, la difficulté concrète qu’elle aide à résoudre et ce qui doit rester mémorisé plutôt que recopié. Supprimer les doublons. Ne pas utiliser une difficulté supposée comme diagnostic personnel : se fonder sur une tentative réellement disponible ou noter « non évalué ».
+
+| Zone | Emplacement prévu | Utilité observée ou non évaluée | Mémoire / reconstruction / consultation |
+|:--|:--|:--|:--|
+| | | | |
+| | | | |
+| | | | |
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Produire, 40 min
+
+### Écrire puis contrôler le résumé manuscrit {#A4-E02}
+
+**Budget : 40 min.**
+
+Pendant 40 minutes, écrire la feuille sélectionnée. Réserver les cinq dernières minutes de ce créneau au contrôle suivant : chaque symbole est défini; toute loi est paramétrée; les résultats exacts et approximatifs sont séparés; chaque test indique sa question et ses degrés de liberté; les formules de régression distinguent nombre de colonnes, individus et unités.
+
+Si une zone ne tient pas, retirer un exemple redondant avant de retirer une hypothèse. Noter un repère de source ou de leçon pour toute formule que vous n’êtes pas en mesure de justifier. Un exemple de problème et son corrigé ne sont pas une référence générale.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Mettre à l’épreuve, 10 min
+
+### Tester dix recherches en dix minutes {#A4-E03}
+
+**Budget : 10 min.**
+
+Sans revenir au cours, trouver sur votre feuille de quoi répondre à chaque question. Noter le temps et la zone consultée; une réponse de mémoire est distinguée d’une recherche. Corriger seulement après les dix essais.
+
+1. Quelle moyenne correspond à une exponentielle de taux 4 ? Quel argument reçoit un écart-type normal ?
+2. Quel appel donne $\mathbb P(K\ge4)$ pour $K\sim\mathrm{Poisson}(2)$ ?
+3. Quelle variable standardise le TCL pour une moyenne ?
+4. Quels degrés de liberté pour l’IC d’une moyenne de 14 observations i.i.d. normales, variance inconnue ?
+5. Que signifie le niveau 95 % d’une procédure d’intervalle ?
+6. Dans le test $H_0:p=p_0$, quel $p$ intervient dans la variance nulle de $\widehat p$ ?
+7. Combien de degrés de liberté pour une adéquation à cinq probabilités fixées ?
+8. Avec 80 observations, deux prédicteurs numériques et un facteur à trois catégories, quel ddl résiduel sous rang plein et intercept ?
+9. Quelle option `predict` concerne un individu nouveau ?
+10. Si trois mesures proviennent de chaque participant, quelle unité indépendante faut-il examiner avant un bootstrap ?
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 6/6 · Conserver le résultat
+
+Conserver la feuille manuscrite et une photo lisible si vous le souhaitez. Un repère d’erreur peut être reporté dans les dix minutes A4 prévues en F01. La finalisation de cette feuille n’est pas une évaluation automatique de vos connaissances.
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `syllabus_ps1` : Evaluation FRANÇAIS : examen individuel de 3h sur machine; documents autorisés : résumé manuscrit au format A4. Le support ci-dessous prépare une feuille manuscrite, pas un substitut numérique autorisé à l’épreuve.
+- `blocks_v2` : PS1-063 à PS1-075; PS1-096, PS1-097; PS1-114 à PS1-121; PS1-128, PS1-132, PS1-139 à PS1-160; PS1-170, PS1-181 à PS1-190; PS1-197 à PS1-264. Base relue des lois, limites, estimation, intervalles, tests, couples et régression. Les condensations ci-dessous sont des adaptations avec hypothèses conservées.
+- `tp04` : Partie IV Q1-Q4, lignes 310-391. Référence compacte de médiation et de bootstrap; les conditions sont détaillées dans L17.
+- `ctd08` : E4 Q1-Q6, lignes 426-570. Tests t/F et intervalle de pente.
+- `ctd09` : E2 Q5-Q9, lignes 393-489. Degrés de liberté multiples, test global et variance expliquée.

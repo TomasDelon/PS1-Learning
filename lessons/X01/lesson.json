@@ -1,0 +1,277 @@
+{
+  "lesson_id": "X01",
+  "minutes": 60,
+  "source_refs": [
+    {
+      "source_id": "ctd04",
+      "locator": "Exercice 1 Q1-Q3; Exercice 2 Q1-Q3",
+      "use_fr": "Compétences de construction et d'analyse d'un estimateur."
+    },
+    {
+      "source_id": "ctd05",
+      "locator": "Exercice 1 Q3-Q9",
+      "use_fr": "Pivots, tests et conclusions."
+    },
+    {
+      "source_id": "ctd06",
+      "locator": "Exercices 1,3 et 4",
+      "use_fr": "Plans de comparaison, diagnostics et indépendance."
+    },
+    {
+      "source_id": "ctd07",
+      "locator": "Exercice 2 Q1",
+      "use_fr": "Mélange et probabilités totales."
+    },
+    {
+      "source_id": "tp03",
+      "locator": "Q5-Q7",
+      "use_fr": "Intervalles de comptages, appariement et table croisée."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "X01-B01",
+      "type": "MTH",
+      "title_fr": "Relire une décision statistique",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q1-Q3",
+          "use_fr": "Compétences de construction et d'analyse d'un estimateur."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q3-Q9",
+          "use_fr": "Pivots, tests et conclusions."
+        },
+        {
+          "source_id": "ctd06",
+          "locator": "Exercices 1,3 et 4",
+          "use_fr": "Plans de comparaison, diagnostics et indépendance."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q1",
+          "use_fr": "Mélange et probabilités totales."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q5-Q7",
+          "use_fr": "Intervalles de comptages, appariement et table croisée."
+        }
+      ],
+      "provenance": "original_method",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Quels contrôles structurent la relecture d'une analyse statistique ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "b52c2212d5a4f2d9cbe7bb88fdd8d6b47347bddd5e000f73d619fe5cf958a353",
+      "external_refs": []
+    }
+  ],
+  "exercises": [
+    {
+      "id": "X01-E01",
+      "minutes": 7,
+      "kind": "math",
+      "family": "mixed_conditional_expectation",
+      "topic_ids": [
+        "conditional_prob",
+        "bayes",
+        "total_prob",
+        "expect_linear"
+      ],
+      "competency_ids": [
+        "comp.ps1.conditional_probability",
+        "comp.ps1.conditional_direction",
+        "comp.ps1.expected_count"
+      ],
+      "block_ids": [],
+      "rubric_fr": [
+        "Définir les événements et appliquer une partition.",
+        "Inverser correctement le conditionnement.",
+        "Justifier l'espérance par linéarité sans supposer inutilement l'indépendance."
+      ],
+      "error_tags": [
+        "conditional_direction",
+        "partition",
+        "independence"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "X01-E02",
+      "minutes": 10,
+      "kind": "math",
+      "family": "mixed_estimation_count_interval",
+      "topic_ids": [
+        "method_moments",
+        "mle",
+        "estimator",
+        "unbiased",
+        "estimator_variance",
+        "ci_definition"
+      ],
+      "competency_ids": [
+        "comp.ps1.sample_moments",
+        "comp.ps1.poisson_mean_interval",
+        "comp.ps1.confidence_interval_interpret"
+      ],
+      "block_ids": [],
+      "rubric_fr": [
+        "Distinguer estimation 1.6 et estimateur moyenne.",
+        "Justifier la variance par le modèle et l'indépendance.",
+        "Qualifier l'intervalle d'approché.",
+        "Distinguer paramètre moyen et observation future."
+      ],
+      "error_tags": [
+        "object_confusion",
+        "independence",
+        "coverage_posterior",
+        "prediction_interval"
+      ],
+      "has_r": true
+    },
+    {
+      "id": "X01-E03",
+      "minutes": 12,
+      "kind": "R",
+      "family": "mixed_paired_practical",
+      "topic_ids": [
+        "student_test_one",
+        "hypotheses",
+        "one_two_sided",
+        "pvalue"
+      ],
+      "competency_ids": [
+        "comp.ps1.two_mean_test",
+        "comp.ps1.practical_significance",
+        "comp.ps1.test_interpret"
+      ],
+      "block_ids": [],
+      "rubric_fr": [
+        "Choisir l'appariement et définir avant-après.",
+        "Formuler une alternative avant de lire le signe de l'estimation.",
+        "Distinguer test à droite et intervalle bilatéral.",
+        "Ne pas confondre gain positif et gain supérieur à la cible pratique."
+      ],
+      "error_tags": [
+        "pairing",
+        "sidedness",
+        "effect_size",
+        "causality"
+      ],
+      "has_r": true
+    },
+    {
+      "id": "X01-E04",
+      "minutes": 11,
+      "kind": "R",
+      "family": "mixed_counts_model",
+      "topic_ids": [
+        "chi_independent",
+        "chi_fit",
+        "chi_validity"
+      ],
+      "competency_ids": [
+        "comp.ps1.contingency_independence",
+        "comp.ps1.chi_square_fit",
+        "comp.ps1.test_interpret"
+      ],
+      "block_ids": [],
+      "rubric_fr": [
+        "Choisir indépendance pour une table croisée.",
+        "Vérifier les attendus et les deux degrés de liberté.",
+        "Interpréter un résultat proche du seuil sans certitude abusive.",
+        "Retrancher les deux paramètres dans le cadre régulier effectivement annoncé."
+      ],
+      "error_tags": [
+        "model_choice",
+        "degrees_freedom",
+        "fitted_parameters",
+        "nonrejection_proof"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "X01-V01",
+      "family": "zero_count_interval_failure",
+      "for_exercise_ids": [
+        "X01-E02"
+      ],
+      "error_tags": [
+        "normal_approximation",
+        "boundary",
+        "prediction_interval"
+      ],
+      "prompt_md": "On observe maintenant zéro événement dans $n$ fenêtres Poisson indépendantes. L'intervalle normal obtenu en remplaçant la variance par la moyenne observée se réduit à $[0,0]$. Est-ce une garantie valable ? À partir de $P_\\lambda(\\sum_iX_i=0)=e^{-n\\lambda}$, trouver la borne supérieure obtenue en résolvant $e^{-n\\lambda}=0{,}05$.",
+      "correction_md": "L'intervalle $[0,0]$ ne reflète pas l'incertitude : zéro observation ne prouve pas $\\lambda=0$, et le plug-in normal est inadapté à cette frontière. L'équation donne $\\lambda=-\\log(0{,}05)/n\\simeq2{,}996/n$. Cette borne supérieure issue de l'inversion d'un test de comptage quantifie les taux qui rendent zéro événement encore compatible au niveau fixé; il s'agit d'une borne unilatérale, pas d'un IC central obtenu par la formule normale.",
+      "rubric_fr": [
+        "Détecter une approximation dégénérée.",
+        "Résoudre l'équation en gardant lambda positif.",
+        "Distinguer borne unilatérale et intervalle bilatéral."
+      ],
+      "block_ids": [
+        "L10-B10"
+      ],
+      "minutes": 5,
+      "transfer": "Transfert négatif : reconnaître une frontière où l'approximation normale cesse d'être pertinente.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "X01-V02",
+      "family": "mixed_conclusion_repair",
+      "for_exercise_ids": [
+        "X01-E03",
+        "X01-E04"
+      ],
+      "error_tags": [
+        "pvalue_posterior",
+        "effect_size",
+        "nonrejection_proof"
+      ],
+      "prompt_md": "Relire : « Le gain vaut 0,2 seconde avec un IC à 95 % de [0,1;0,3], donc notre objectif de 0,5 seconde est atteint. De plus, p=0,08 pour l'indépendance prouve que les deux variables sont indépendantes avec 92 % de probabilité. » Corriger les deux conclusions sans refaire les calculs.",
+      "correction_md": "L'intervalle du gain est positif mais reste sous l'objectif de 0,5 seconde; il appuie un gain plus petit que la cible pratique, sous les hypothèses de sa construction. Pour p=0,08, on ne rejette pas l'indépendance au seuil de 5 %, mais ce non-rejet ne prouve pas l'indépendance. Ni p ni 1-p ne sont une probabilité a posteriori de H0.",
+      "rubric_fr": [
+        "Comparer l'incertitude à la cible pratique.",
+        "Ne pas convertir une p-valeur en probabilité d'hypothèse."
+      ],
+      "block_ids": [
+        "L11-B04",
+        "L11-B05",
+        "L12-B07"
+      ],
+      "minutes": 4,
+      "transfer": "Remédiation de rédaction et de portée : deux résultats ne justifient pas les affirmations formulées.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "tentative": 40,
+    "correction": 15,
+    "tri_rappel_anki": 5
+  },
+  "review_allocation": {
+    "correction_minutes": 15,
+    "anki_minutes": 5
+  },
+  "assessment_original": true,
+  "coverage_note_fr": "Situation et données originales dérivées des compétences du parcours; aucun contenu de CF récupéré ni ouvert.",
+  "external_clarifications": []
+}

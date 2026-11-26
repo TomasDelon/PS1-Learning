@@ -1,0 +1,2022 @@
+{
+  "schema_version": "2.0.0",
+  "kind": "authored_adaptive_variant_bank",
+  "provenance": "Original authored adaptations of the specified lesson corrections, no exam sources.",
+  "fragments": [
+    {
+      "path": "variants_probability.json",
+      "sha256": "8a1fdbbdb09fc0dbef0a709fc6d53923c407261e93bf459b73ae85d4df8cef0c",
+      "count": 28
+    },
+    {
+      "path": "variants_inference.json",
+      "sha256": "414d4a7af94527c63f79b4e22d7775736ec804d2bfa867ca96d801ac04196b89",
+      "count": 13
+    },
+    {
+      "path": "variants_regression.json",
+      "sha256": "d108fedd8ce9a8d7af6d3a66cb6de53e6cede1b836de9569cbbc4909c2de1bd4",
+      "count": 13
+    }
+  ],
+  "variants": [
+    {
+      "id": "L01-V90",
+      "lesson_id": "L01",
+      "family": "adaptive_l01_90",
+      "for_exercise_ids": [
+        "L01-E02"
+      ],
+      "source_exercise_ids": [
+        "L01-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01"
+      ],
+      "block_ids": [
+        "L01-B03",
+        "L01-B04"
+      ],
+      "error_tags": [
+        "population",
+        "formal_language"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Cinq lignes donnent (groupe, durée) : (A,4), (A,NA), (B,9), (A,6), (NA,8).\nOn veut décrire les durées connues du groupe A. Écrire le filtre, l'effectif\nconservé et la moyenne. La dernière ligne peut-elle être classée dans A ?\nFormuler exactement la population décrite.",
+      "correction_md": "Il faut simultanément un groupe connu égal à A et une durée renseignée.\nLes lignes 1 et 4 sont conservées : effectif 2, moyenne $(4+6)/2=5$.\nLa ligne 2 n'a pas de durée; le groupe de la ligne 5 est inconnu, on ne peut\nl'attribuer à A. Cette moyenne décrit les deux observations identifiées comme\nA avec durée connue. Sans hypothèse sur collecte et données manquantes,\nelle ne décrit pas nécessairement tous les membres de A.",
+      "rubric_fr": [
+        "Énoncer la conjonction groupe connu égal à A et durée connue.",
+        "Conserver les lignes 1 et 4, puis obtenir effectif 2 et moyenne 5.",
+        "Refuser l'attribution du groupe inconnu et limiter la portée de la moyenne."
+      ],
+      "transfer": "Décider séparément du traitement d'une durée absente et d'une appartenance inconnue.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L01-E02. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L01-V91",
+      "lesson_id": "L01",
+      "family": "adaptive_l01_91",
+      "for_exercise_ids": [
+        "L01-E02"
+      ],
+      "source_exercise_ids": [
+        "L01-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01"
+      ],
+      "block_ids": [
+        "L01-B03",
+        "L01-B04"
+      ],
+      "error_tags": [
+        "population",
+        "formal_language"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Un tableau recense toutes les commandes, mais la durée n'est renseignée que\npour celles livrées avant la fermeture. La moyenne des durées renseignées vaut\n18 minutes. Écrire le filtre et la conclusion admissible pour ces livraisons.\nPeut-on annoncer 18 minutes pour toutes les commandes ou remplacer les durées\nabsentes par zéro ? Ne pas inventer d'effectif.",
+      "correction_md": "On conserve les commandes livrées avant la fermeture et dont la durée\nest renseignée. Les 18 minutes décrivent leurs durées observées. La sélection\ndépend de l'achèvement à la fermeture et peut donc dépendre de la durée.\nLa moyenne n'est pas automatiquement celle de toutes les commandes.\nUne durée finale indisponible n'est pas une durée nulle. La moyenne seule\nne permet pas de retrouver l'effectif conservé.",
+      "rubric_fr": [
+        "Écrire les deux conditions de conservation sans inventer l'effectif.",
+        "Limiter la moyenne aux livraisons terminées avec durée connue.",
+        "Identifier la sélection liée à l'achèvement et refuser le remplacement par zéro."
+      ],
+      "transfer": "Reconnaître qu'un filtre lié à l'achèvement change la cible décrite.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L01-E02. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L01-V92",
+      "lesson_id": "L01",
+      "family": "adaptive_l01_92",
+      "for_exercise_ids": [
+        "L01-E01"
+      ],
+      "source_exercise_ids": [
+        "L01-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01"
+      ],
+      "block_ids": [
+        "L01-B02",
+        "L01-B04",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "missing_values",
+        "object_type",
+        "recycling"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Avec x=c(4,NA,9,0), prévoir le type, la longueur et chaque valeur de\nselection=(x>3). Pourquoi sum(selection) ne compte-t-il pas simplement les succès ?\nConstruire un masque qui conserve seulement les valeurs connues strictement\nsupérieures à 3. Expliquer le rôle du NA et vérifier en R.",
+      "correction_md": "selection est un vecteur logique de longueur 4 : TRUE,NA,TRUE,FALSE.\nLe deuxième test est inconnu, pas faux. Sans exclusion explicite de NA,\nsum(selection) est manquant. Le masque !is.na(x) & (x>3) vaut\nTRUE,FALSE,TRUE,FALSE : une conjonction avec FALSE est fausse même si\nl'autre proposition est inconnue. On conserve 4 et 9.\n\n```{r}\nx <- c(4,NA,9,0)\nselection <- x>3\nmasque <- !is.na(x) & (x>3)\nstopifnot(typeof(selection)==\"logical\",length(selection)==4,\n          identical(selection,c(TRUE,NA,TRUE,FALSE)),\n          is.na(sum(selection)),sum(masque)==2,\n          identical(x[masque],c(4,9)))\nselection\nx[masque]\n```\n\nSupprimer explicitement les valeurs inconnues pour cette cible n'affirme\npas que les valeurs manquantes valent zéro.",
+      "rubric_fr": [
+        "Donner un vecteur logique de longueur 4 avec TRUE,NA,TRUE,FALSE.",
+        "Identifier un test inconnu et la propagation de NA dans la somme.",
+        "Construire le masque NA-sûr et conserver exactement 4 et 9.",
+        "Distinguer exclusion explicite et imputation par zéro."
+      ],
+      "transfer": "Décider dans une logique à valeur inconnue, puis construire une conjonction qui sécurise une sélection.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L01-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L01-V93",
+      "lesson_id": "L01",
+      "family": "adaptive_l01_93",
+      "for_exercise_ids": [
+        "L01-E01"
+      ],
+      "source_exercise_ids": [
+        "L01-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01"
+      ],
+      "block_ids": [
+        "L01-B02",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "recycling",
+        "object_type",
+        "missing_values"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Quatre mesures x=c(2,4,6,8) appartiennent aux groupes A,A,B,B.\nL'offset vaut 1 pour A et 10 pour B. Un code calcule x+c(1,10).\nPrévoir le résultat R et le résultat voulu. Pourquoi un calcul sans message\nd'erreur peut-il rester incorrect ? Donner un contrôle de longueur et\nune correction dont la correspondance aux groupes est explicite.",
+      "correction_md": "R recycle le vecteur de longueur 2 : il ajoute 1,10,1,10 et produit\n3,14,7,18. La correspondance souhaitée est 1,1,10,10, donnant 3,5,16,18.\nLa longueur 2 divise 4, donc un recyclage régulier peut être silencieux;\ncela ne vérifie pas la signification des positions.\n\n```{r}\nx <- c(2,4,6,8)\ncourt <- c(1,10)\nautomatique <- x+court\noffset <- c(1,1,10,10)\nstopifnot(typeof(x)==\"double\",length(court)!=length(x),\n          length(offset)==length(x),\n          identical(automatique,c(3,14,7,18)),\n          identical(x+offset,c(3,5,16,18)))\nx+offset\n```\n\nLe contrôle de longueur est nécessaire pour cette écriture positionnelle,\nmais les étiquettes de groupe doivent aussi justifier l'ordre du vecteur.",
+      "rubric_fr": [
+        "Décrire le recyclage 1,10,1,10 et obtenir 3,14,7,18.",
+        "Construire l'alignement A,A,B,B et trouver 3,5,16,18.",
+        "Contrôler la longueur et expliquer que l'absence de message ne prouve pas la correspondance."
+      ],
+      "transfer": "Vérifier la signification des positions lorsque le recyclage silencieux fournit un résultat numériquement défini.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L01-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L01-V94",
+      "lesson_id": "L01",
+      "family": "adaptive_l01_94",
+      "for_exercise_ids": [
+        "L01-E04"
+      ],
+      "source_exercise_ids": [
+        "L01-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01"
+      ],
+      "block_ids": [
+        "L01-B03",
+        "L01-B04",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "reproducibility",
+        "pipeline",
+        "empty_filter"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Le fragment fourni crée un CSV de contrôle. Une variable d déjà présente\ndans la console contient d'autres mesures; elle ne doit pas influencer le résultat.\nÀ partir du chemin de fichier, relire les données et calculer la moyenne des\ndurées connues en vélo. Écrire une version avec étapes nommées, puis la même\nmoyenne avec le pipe. Contrôler l'effectif positif et l'égalité des résultats.\n\n```{r}\nchemin <- tempfile(fileext=\".csv\")\nwriteLines(c(\"mode,duree\",\"velo,8\",\"bus,12\",\"velo,NA\",\"velo,10\"),chemin)\n```",
+      "correction_md": "Le chemin doit être un argument d'entrée; un objet d de la console\nne remplace pas la lecture. Le filtre conserve les durées 8 et 10,\nd'où une moyenne de 9 sur deux observations.\n\n```{r}\nchemin <- tempfile(fileext=\".csv\")\nwriteLines(c(\"mode,duree\",\"velo,8\",\"bus,12\",\"velo,NA\",\"velo,10\"),chemin)\nd <- \"ancien objet sans rapport\"\nimporte <- read.csv(chemin)\ngarder <- !is.na(importe$mode) & importe$mode==\"velo\" & !is.na(importe$duree)\nvaleurs <- importe$duree[garder]\nstopifnot(length(valeurs)>0)\netapes <- mean(valeurs)\npipeline <- valeurs |> mean()\nstopifnot(etapes==9,pipeline==9,isTRUE(all.equal(etapes,pipeline)))\nunlink(chemin)\n```\n\nLe même fichier et les mêmes valeurs résumées rendent les deux écritures\néquivalentes sur ce contrôle. L'égalité d'un exemple ne prouve pas\nl'exactitude de toutes les analyses ni la représentativité des mesures.",
+      "rubric_fr": [
+        "Relire le fichier à partir du chemin sans utiliser l'objet de console.",
+        "Filtrer les deux conditions, contrôler un effectif positif et retrouver 9.",
+        "Appliquer le même résumé aux mêmes valeurs dans les deux écritures.",
+        "Limiter la conclusion de l'égalité numérique au contrôle effectué."
+      ],
+      "transfer": "Isoler les entrées d'un pipeline d'un objet de console contradictoire, tout en conservant le même calcul.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L01-E04. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L02-V90",
+      "lesson_id": "L02",
+      "family": "adaptive_l02_90",
+      "for_exercise_ids": [
+        "L02-E03"
+      ],
+      "source_exercise_ids": [
+        "L02-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L02"
+      ],
+      "block_ids": [
+        "L02-B07",
+        "L02-B08",
+        "L01-B04"
+      ],
+      "error_tags": [
+        "matrix_orientation",
+        "threshold",
+        "generalization"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Sur six validations, y vaut c(1,0,1,0,1,0) et score vaut\nc(.9,.7,.4,.3,.6,.2). Une prédiction vaut 1 si score dépasse strictement le seuil.\nComparer les seuils 0,5 et 0,75 avec des matrices ayant observations en lignes\net prédictions en colonnes. Calculer les exactitudes. Un faux négatif coûte 3,\nun faux positif coûte 1 : choisir selon ce coût sur ces données.",
+      "correction_md": "Au seuil 0,5, les prédictions sont $(1,1,0,0,1,0)$; au seuil 0,75,\n$(1,0,0,0,0,0)$. Les matrices, lignes et colonnes ordonnées 0,1, sont\n$\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ et\n$\\begin{pmatrix}3&0\\\\2&1\\end{pmatrix}$. Les deux exactitudes valent $4/6$.\nLes coûts valent $1+3=4$ et $2(3)=6$ : choisir 0,5 selon le coût donné,\nsur ces validations, sans garantie de performance future.\n\n```{r}\ny <- c(1,0,1,0,1,0)\nscore <- c(.9,.7,.4,.3,.6,.2)\np50 <- as.integer(score>.5); p75 <- as.integer(score>.75)\ncm <- function(p) table(observation=factor(y,levels=0:1),\n                        prediction=factor(p,levels=0:1))\ncout <- function(p) sum(p==1 & y==0)+3*sum(p==0 & y==1)\ncm(p50); cm(p75)\nstopifnot(all(unname(cm(p50))==matrix(c(2,1,1,2),2)),\n          all(unname(cm(p75))==matrix(c(3,2,0,1),2)),\n          mean(p50==y)==4/6, mean(p75==y)==4/6,\n          cout(p50)==4, cout(p75)==6)\n```",
+      "rubric_fr": [
+        "Nommer les axes et retrouver les deux matrices.",
+        "Trouver deux exactitudes de 4/6 et distinguer les deux erreurs.",
+        "Calculer les coûts 4 et 6, choisir selon ce coût et limiter la conclusion."
+      ],
+      "transfer": "Départager des seuils d'exactitude identique lorsque les erreurs ont des coûts différents.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L02-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L02-V91",
+      "lesson_id": "L02",
+      "family": "adaptive_l02_91",
+      "for_exercise_ids": [
+        "L02-E03"
+      ],
+      "source_exercise_ids": [
+        "L02-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L02"
+      ],
+      "block_ids": [
+        "L02-B07",
+        "L02-B08",
+        "L01-B04"
+      ],
+      "error_tags": [
+        "matrix_orientation",
+        "agreement_vs_accuracy",
+        "generalization"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "On observe y=c(0,0,0,0,1,1). A prédit toujours 0, B prédit\nc(0,0,0,1,1,1). Construire la table A contre B en conservant les modalités 0 et 1.\nCalculer le désaccord et l'exactitude de chaque méthode. Leur accord d'une moitié\nsignifie-t-il que chacune est correcte une moitié du temps ?",
+      "correction_md": "La table, A en lignes et B en colonnes, est\n$\\begin{pmatrix}3&3\\\\0&0\\end{pmatrix}$. Accord et désaccord valent $1/2$.\nLes exactitudes valent $4/6$ pour A et $5/6$ pour B.\nL'accord compare deux prédictions; l'exactitude les compare à y.\n\n```{r}\ny <- c(0,0,0,0,1,1); a <- rep(0L,6); b <- c(0L,0L,0L,1L,1L,1L)\nt <- table(A=factor(a,levels=0:1),B=factor(b,levels=0:1))\nstopifnot(all(unname(t)==matrix(c(3,0,3,0),2)),\n          mean(a!=b)==.5, mean(a==y)==4/6, mean(b==y)==5/6)\nt\n```",
+      "rubric_fr": [
+        "Conserver les deux modalités et nommer les axes de la table 2 par 2.",
+        "Retrouver désaccord 1/2 et exactitudes 4/6 et 5/6.",
+        "Distinguer accord entre prédictions et comparaison à l'observation."
+      ],
+      "transfer": "Gérer une modalité jamais prédite et décider ce que mesure l'accord entre méthodes.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L02-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L03-V90",
+      "lesson_id": "L03",
+      "family": "adaptive_l03_90",
+      "for_exercise_ids": [
+        "L03-E03"
+      ],
+      "source_exercise_ids": [
+        "L03-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L03"
+      ],
+      "block_ids": [
+        "L03-B06",
+        "L03-B12",
+        "L03-B13"
+      ],
+      "error_tags": [
+        "inverse",
+        "support",
+        "object_type"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Une répartition vaut 0 pour $t<1$, $(t-1)^2/4$ pour $1\\le t\\le3$,\npuis 1 pour $t>3$. Construire sa variable à partir de $U\\sim\\mathcal U(0,1)$.\nVérifier les trois domaines, justifier la racine retenue et trouver la médiane.",
+      "correction_md": "Pour $u\\in(0,1)$, résoudre $u=(x-1)^2/4$ dans $[1,3]$ donne\n$x=1+2\\sqrt u$. La branche négative sort du support. Posons $X=1+2\\sqrt U$.\nPour $1\\le t\\le3$,\n$\\mathbb P(X\\le t)=\\mathbb P(U\\le(t-1)^2/4)=(t-1)^2/4$.\nLa probabilité vaut 0 pour $t<1$, puis 1 pour $t>3$.\nLa médiane est le nombre $1+2\\sqrt{1/2}=1+\\sqrt2$.",
+      "rubric_fr": [
+        "Choisir la racine en utilisant le support.",
+        "Vérifier la répartition sur les trois domaines.",
+        "Trouver 1+racine(2) et distinguer le nombre médian de la variable."
+      ],
+      "transfer": "Inverser sur un support borné décalé impose un choix de branche.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L03-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L03-V91",
+      "lesson_id": "L03",
+      "family": "adaptive_l03_91",
+      "for_exercise_ids": [
+        "L03-E03"
+      ],
+      "source_exercise_ids": [
+        "L03-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L03"
+      ],
+      "block_ids": [
+        "L03-B07",
+        "L03-B12",
+        "L03-B13"
+      ],
+      "error_tags": [
+        "inverse",
+        "support",
+        "object_type"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Une variable doit prendre 0 avec probabilité 0,7 et 2 avec probabilité 0,3.\nLa construire à partir d'une uniforme sur $(0,1)$ et donner son quantile\nd'ordre 0,5. Pourquoi résoudre $F(x)=0,5$ ne convient-il pas ?",
+      "correction_md": "F vaut 0 avant 0, 0,7 sur $[0,2)$, puis 1. Pour $0<u<1$,\nle quantile généralisé vaut 0 si $u\\le0,7$, sinon 2.\nPoser X=0 si $U\\le0,7$, X=2 sinon donne exactement les masses demandées.\nLe quantile d'ordre 0,5 est $\\inf\\{x:F(x)\\ge0,5\\}=0$.\nF ne vaut jamais 0,5 : le saut impose une inégalité. Le choix au seul\npoint $U=0,7$ ne change pas la loi car U n'y place aucune masse.",
+      "rubric_fr": [
+        "Écrire les deux branches et retrouver les masses 0,7 et 0,3.",
+        "Utiliser le quantile généralisé pour obtenir 0.",
+        "Expliquer pourquoi l'égalité F(x)=0,5 n'a pas de solution."
+      ],
+      "transfer": "Passer d'une répartition continue à une loi à atomes exige un quantile généralisé.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L03-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L03-V92",
+      "lesson_id": "L03",
+      "family": "adaptive_l03_92",
+      "for_exercise_ids": [
+        "L03-E01"
+      ],
+      "source_exercise_ids": [
+        "L03-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L03"
+      ],
+      "block_ids": [
+        "L03-B01",
+        "L03-B02",
+        "L03-B03",
+        "L03-B04"
+      ],
+      "error_tags": [
+        "object_type",
+        "density_mass"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Avec $U\\sim\\mathcal U(0,1)$, poser $X=\\mathbf1_{\\{U\\le1/2\\}}$ et\n$Y=\\mathbf1_{\\{U>1/2\\}}$. Donner leurs lois et dire si les variables sont égales.\nPeut-on conclure $\\mathbb P(X=1)=0$ parce que U a une densité ?",
+      "correction_md": "X et Y ont chacune la loi de Bernoulli de paramètre $1/2$.\nMais $X+Y=1$ pour toute réalisation : elles ne sont jamais égales.\nPour $u=0,2$, on obtient $x=1,y=0$.\nL'indicatrice est une transformation discrète :\n$\\mathbb P(X=1)=\\mathbb P(U\\le1/2)=1/2$.\nL'absence de masse ponctuelle de U ne s'étend pas à toute fonction de U.",
+      "rubric_fr": [
+        "Donner les deux lois de Bernoulli de paramètre 1/2.",
+        "Distinguer égalité en loi et égalité de variables par X+Y=1.",
+        "Calculer la masse 1/2 et distinguer U de sa transformation discrète."
+      ],
+      "transfer": "Une transformation discontinue crée des atomes malgré une variable d'entrée à densité.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L03-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L03-V93",
+      "lesson_id": "L03",
+      "family": "adaptive_l03_93",
+      "for_exercise_ids": [
+        "L03-E04"
+      ],
+      "source_exercise_ids": [
+        "L03-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L03"
+      ],
+      "block_ids": [
+        "L03-B14",
+        "L03-B15",
+        "L03-B10",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "parameterization",
+        "simulation_vs_proof"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Un contrôle utilise les entrées déterministes u=c(0,.5,.75) et\nx=-log1p(-u)/2. Écrire une CDF exponentielle recevant le taux, nulle pour t<0.\nComparer la fréquence de x inférieur ou égal à log(2)/2 à sa probabilité\nthéorique au taux 2. Leur différence réfute-t-elle l'inversion ?",
+      "correction_md": "Les sorties sont $0,\\log(2)/2,\\log(4)/2$ : deux sur trois ne dépassent\npas la médiane, donc la fréquence vaut $2/3$. La probabilité théorique\nvaut $1-e^{-\\log2}=1/2$. Ces entrées fixes testent le code; ce ne sont pas\ntrois uniformes indépendantes. Leur fréquence ne démontre ni ne réfute\nune identité de loi.\n\n```{r}\nu <- c(0,.5,.75); x <- -log1p(-u)/2\nF_exp <- function(t,taux) ifelse(t<0,0,1-exp(-taux*t))\nfreq <- mean(x<=log(2)/2); theorie <- F_exp(log(2)/2,2)\nstopifnot(F_exp(-1,2)==0, isTRUE(all.equal(freq,2/3)),\n          isTRUE(all.equal(theorie,.5)),\n          isTRUE(all.equal(x,c(0,log(2)/2,log(4)/2))))\nc(frequence_grille=freq,probabilite=theorie)\n```",
+      "rubric_fr": [
+        "Passer le taux en argument et traiter les seuils négatifs.",
+        "Retrouver la fréquence 2/3 et la probabilité 1/2 pour le même événement.",
+        "Identifier la grille déterministe et distinguer contrôle de code et preuve."
+      ],
+      "transfer": "Distinguer un jeu déterministe de test d'une simulation aléatoire et contrôler une branche de support.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L03-E04. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L04-V90",
+      "lesson_id": "L04",
+      "family": "adaptive_l04_90",
+      "for_exercise_ids": [
+        "L04-E01",
+        "L04-E02"
+      ],
+      "source_exercise_ids": [
+        "L04-E01",
+        "L04-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L04-B01",
+        "L04-B03",
+        "L04-B10",
+        "L04-B07"
+      ],
+      "error_tags": [
+        "coefficient_square",
+        "units",
+        "proof_circular",
+        "integrability"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "X est de carré intégrable, de moyenne m et de variance $s^2$, avec $s>0$.\nPour $Z=(m-X)/s$, établir à partir du centrage l'espérance 0 et la variance 1.\nDonner écart-type et unité. Que devient la construction si X est constante\npresque sûrement ?",
+      "correction_md": "L'inégalité $Z^2\\le2m^2/s^2+2X^2/s^2$ assure le carré intégrable.\nLa linéarité donne $\\mathbb E[Z]=(m-\\mathbb E[X])/s=0$.\nPar définition,\n$\\mathbb V(Z)=\\mathbb E[Z^2]=\\mathbb E[(X-m)^2]/s^2=1$.\nSon écart-type est la racine positive 1. Le rapport entre grandeurs de même\nunité est sans unité. Si X est constante presque sûrement, $s=0$ et la\ndivision proposée n'est pas définie.",
+      "rubric_fr": [
+        "Vérifier le carré intégrable et la condition s strictement positif.",
+        "Obtenir l'espérance et la variance par le centrage, sans raisonnement circulaire.",
+        "Donner l'écart-type positif 1 et l'absence d'unité.",
+        "Refuser la division par un écart-type nul."
+      ],
+      "transfer": "Reconstruire une standardisation à coefficient négatif et décider si elle est définie dans le cas dégénéré.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L04-E01, L04-E02. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L04-V91",
+      "lesson_id": "L04",
+      "family": "adaptive_l04_91",
+      "for_exercise_ids": [
+        "L04-E01"
+      ],
+      "source_exercise_ids": [
+        "L04-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L04-B01",
+        "L04-B03"
+      ],
+      "error_tags": [
+        "coefficient_square",
+        "units"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Un capteur traduit une distance T en mètres par $Y=20-2T$ en volts.\nLe coefficient est donc exprimé en volts par mètre.\nL'écart-type de Y vaut 3 volts. Retrouver l'écart-type et la variance de T\navec leurs unités. Le décalage de 20 volts intervient-il ?",
+      "correction_md": "Inverser la calibration donne $T=(20-Y)/2$, coefficient $-1/2$\nmètre par volt. Alors $\\sigma_T=|{-1/2}|\\,3=1,5$ mètre et\n$\\mathbb V(T)=9/4=2,25$ mètres carrés.\nLa translation disparaît au centrage. Multiplier 3 par 2 appliquerait la\ncalibration dans le mauvais sens; le signe du coefficient n'est pas celui\nd'un écart-type.",
+      "rubric_fr": [
+        "Inverser la calibration avant de changer l'échelle.",
+        "Trouver 1,5 mètre et 2,25 mètres carrés.",
+        "Expliquer la valeur absolue et l'absence d'effet de la translation."
+      ],
+      "transfer": "Choisir le sens inverse d'une calibration et distinguer variance et incertitude annoncée comme écart-type.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L04-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L04-V92",
+      "lesson_id": "L04",
+      "family": "adaptive_l04_92",
+      "for_exercise_ids": [
+        "L04-E05"
+      ],
+      "source_exercise_ids": [
+        "L04-E05"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L04-B08",
+        "L04-B09",
+        "L04-B11",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "sample_denominator",
+        "simulation_vs_proof"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Une loi prend x=c(0,2,4) avec probabilités p=c(.5,.25,.25).\nCalculer sa moyenne et sa variance, puis var(x).\nMultiplier var(x) par 2/3 retrouve-t-il la variance demandée ?\nDistinguer probabilités et dénominateur.",
+      "correction_md": "La moyenne vaut $3/2$, le second moment 5, donc la variance\n$5-9/4=11/4=2,75$. R traite x comme trois observations non pondérées,\nde moyenne 2 et de variance corrigée $8/(3-1)=4$.\nMultiplier 4 par 2/3 donne $8/3$, variance d'une autre loi, équiprobable.\nModifier le dénominateur ne corrige pas des probabilités inégales.\n\n```{r}\nx <- c(0,2,4); p <- c(.5,.25,.25)\nm <- sum(p*x); v <- sum(p*(x-m)^2)\nstopifnot(sum(p)==1,m==1.5,v==11/4,var(x)==4,\n          isTRUE(all.equal(2/3*var(x),8/3)))\nc(moyenne_loi=m,variance_loi=v,variance_R=var(x))\n```",
+      "rubric_fr": [
+        "Pondérer correctement pour obtenir moyenne 3/2 et variance 11/4.",
+        "Retrouver var(x)=4 avec la convention n-1.",
+        "Expliquer pourquoi changer seulement le dénominateur ne suffit pas."
+      ],
+      "transfer": "Des probabilités non uniformes imposent des poids, indépendamment de la correction du dénominateur.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L04-E05. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L04-V93",
+      "lesson_id": "L04",
+      "family": "adaptive_l04_93",
+      "for_exercise_ids": [
+        "L04-E05"
+      ],
+      "source_exercise_ids": [
+        "L04-E05"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L04-B08",
+        "L04-B01",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "sample_denominator",
+        "simulation_vs_proof"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "On duplique chaque ligne de x=c(0,2,4) par xx=rep(x,each=2), sans nouvelle\nmesure. Comparer les variances des lois empiriques équiprobables puis var(x)\net var(xx). Une variation de var prouve-t-elle l'arrivée d'observations\nindépendantes supplémentaires ?",
+      "correction_md": "Les fréquences relatives de 0,2,4 restent chacune 1/3; la loi empirique\net sa variance $8/3$ ne changent pas.\nLa somme des carrés centrés passe de 8 à 16 :\nvar(x) vaut $8/2=4$, var(xx) vaut $16/5=3,2$.\nLa convention R dépend du nombre de lignes; une copie ne crée pas une\nnouvelle observation indépendante.\n\n```{r}\nx <- c(0,2,4); xx <- rep(x,each=2)\nvp <- function(z) mean((z-mean(z))^2)\nstopifnot(isTRUE(all.equal(vp(x),8/3)),isTRUE(all.equal(vp(xx),8/3)),\n          var(x)==4,isTRUE(all.equal(var(xx),16/5)))\nc(variance_R_initiale=var(x),variance_R_dupliquee=var(xx))\n```",
+      "rubric_fr": [
+        "Conserver la loi empirique et sa variance 8/3.",
+        "Calculer les dénominateurs et retrouver 4 puis 16/5.",
+        "Distinguer duplication informatique et collecte indépendante."
+      ],
+      "transfer": "Une duplication conserve les fréquences mais modifie la convention corrigée, sans information nouvelle.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L04-E05. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L04-V94",
+      "lesson_id": "L04",
+      "family": "adaptive_l04_94",
+      "for_exercise_ids": [
+        "L04-E06"
+      ],
+      "source_exercise_ids": [
+        "L04-E06"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L04-B12",
+        "L04-B13",
+        "L04-B05"
+      ],
+      "error_tags": [
+        "independence",
+        "covariance",
+        "object_type"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Six sauvegardes échouent toutes si une alimentation commune tombe en panne,\net réussissent toutes sinon. La panne a probabilité 0,1.\nNommer une indicatrice et le nombre N d'échecs; calculer espérance et variance.\nPourquoi une variance binomiale serait-elle inadéquate ?",
+      "correction_md": "Pour A=« panne commune », poser $I=\\mathbf1_A$. Chaque indicatrice\nd'échec est I, donc $N=6I$.\nLa linéarité donne $\\mathbb E[N]=6(0,1)=0,6$;\nla variance affine donne $\\mathbb V(N)=36(0,1)(0,9)=3,24$.\nLes indicatrices identiques ne sont pas indépendantes.\nLa variance binomiale $6(0,1)(0,9)=0,54$ omettrait les covariances.\nN prend seulement 0 ou 6; son espérance 0,6 n'est pas une réalisation.",
+      "rubric_fr": [
+        "Nommer l'événement et écrire N=6I.",
+        "Trouver l'espérance 0,6 sans indépendance.",
+        "Calculer la variance 3,24 et refuser le modèle binomial.",
+        "Distinguer réalisations entières et espérance."
+      ],
+      "transfer": "Reconnaître une cause commune qui crée une dépendance parfaite entre tous les échecs.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L04-E06. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L04-V95",
+      "lesson_id": "L04",
+      "family": "adaptive_l04_95",
+      "for_exercise_ids": [
+        "L04-E04"
+      ],
+      "source_exercise_ids": [
+        "L04-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L04-B04",
+        "L04-B06",
+        "L04-B14",
+        "L04-B15"
+      ],
+      "error_tags": [
+        "zero_cov_independence",
+        "independence",
+        "formal_language"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "X est uniforme sur {-2,-1,1,2}. Indépendamment de X, S vaut -1 ou 1\navec probabilités 1/2. Poser Y=SX.\nVérifier le carré intégrable et calculer E[X], E[Y], E[XY], puis la covariance.\nX et Y sont-elles indépendantes ? Utiliser les événements |X|=1 et |Y|=2.",
+      "correction_md": "X et Y sont bornées en valeur absolue par 2, donc de carré intégrable.\nLa symétrie donne $\\mathbb E[X]=0$ et $\\mathbb E[S]=0$.\nL'indépendance de S et X donne\n$\\mathbb E[Y]=\\mathbb E[S]\\mathbb E[X]=0$ et\n$\\mathbb E[XY]=\\mathbb E[SX^2]=\\mathbb E[S]\\mathbb E[X^2]=0$.\nLa covariance est donc nulle.\nMais $|Y|=|X|$ : les événements A={|X|=1} et B={|Y|=2} sont incompatibles,\nalors que $\\mathbb P(A)=\\mathbb P(B)=1/2$.\nAinsi $\\mathbb P(A\\cap B)=0\\ne1/4=\\mathbb P(A)\\mathbb P(B)$.\nX et Y sont dépendantes. L'indépendance utilisée était celle de S et X,\npas celle de X et Y.",
+      "rubric_fr": [
+        "Vérifier le carré intégrable par la borne 2.",
+        "Calculer les trois espérances en nommant l'indépendance réellement utilisée.",
+        "Obtenir une covariance nulle.",
+        "Produire les événements de probabilités 1/2,1/2 et intersection nulle pour réfuter l'indépendance."
+      ],
+      "transfer": "Une randomisation du signe ne supprime pas la dépendance des amplitudes, même si la réponse n'est plus une fonction déterministe de X.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L04-E04. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L05-V90",
+      "lesson_id": "L05",
+      "family": "adaptive_l05_90",
+      "for_exercise_ids": [
+        "L05-E01"
+      ],
+      "source_exercise_ids": [
+        "L05-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L05"
+      ],
+      "block_ids": [
+        "L05-B02",
+        "L05-B03"
+      ],
+      "error_tags": [
+        "law_choice",
+        "support"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Des essais indépendants réussissent avec probabilité 1/2. On s'arrête au\npremier succès, mais après trois essais au maximum.\nSi G est le rang du premier succès sans cette limite, $C=\\min(G,3)$.\nDonner support et masses de C. Suit-elle la même loi géométrique que G ?",
+      "correction_md": "G est géométrique sur les entiers positifs; C est portée par $\\{1,2,3\\}$.\n$\\mathbb P(C=1)=1/2$, $\\mathbb P(C=2)=1/4$.\nL'événement $C=3$ est $G\\ge3$, c'est-à-dire deux échecs initiaux,\nde probabilité $1/4$. Il comprend un succès au troisième essai et\nl'absence de succès avant la fin. C n'est pas géométrique, car elle\nn'a aucune masse au-delà de 3.",
+      "rubric_fr": [
+        "Donner le support 1,2,3 et les masses 1/2,1/4,1/4.",
+        "Identifier C=3 à G au moins 3, pas seulement G=3.",
+        "Distinguer la durée limitée du rang géométrique illimité."
+      ],
+      "transfer": "L'arrêt imposé fusionne plusieurs événements dans la dernière valeur observée.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L05-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L05-V91",
+      "lesson_id": "L05",
+      "family": "adaptive_l05_91",
+      "for_exercise_ids": [
+        "L05-E02"
+      ],
+      "source_exercise_ids": [
+        "L05-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L05"
+      ],
+      "block_ids": [
+        "L05-B05",
+        "L05-B10",
+        "L04-B03",
+        "L04-B05"
+      ],
+      "error_tags": [
+        "independence",
+        "parameterization",
+        "tail"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "On sait $X\\sim\\mathcal N(0,1)$ et on pose Y=X. Donner la loi de X+Y et\n$\\mathbb P(X+Y>2)$. Dans un autre modèle, $N\\sim\\mathcal P(1)$ et deux\ncompteurs affichent chacun le même N. Leur somme 2N suit-elle $\\mathcal P(2)$ ?\nUtiliser le support et calculer $\\mathbb P(2N\\ge3)$.",
+      "correction_md": "X+Y=2X suit $\\mathcal N(0,4)$, donc la probabilité demandée est\n$1-\\Phi(1)$. Additionner seulement les deux variances omettrait la covariance.\n2N ne prend que des entiers pairs, alors qu'une $\\mathcal P(2)$ donne une\nmasse positive à 1; ces lois diffèrent.\n$\\{2N\\ge3\\}=\\{N\\ge2\\}$ donne la probabilité $1-e^{-1}(1+1)=1-2/e$.\nLes propriétés de sommes indépendantes ne s'appliquent pas à deux\naffichages de la même variable.",
+      "rubric_fr": [
+        "Identifier N(0,4) et la queue 1-Phi(1).",
+        "Refuser Poisson(2) par le support pair.",
+        "Traduire l'inégalité entière et trouver 1-2/e.",
+        "Nommer l'indépendance manquante dans les deux cas."
+      ],
+      "transfer": "Des marges usuelles ne déterminent pas la loi d'une somme lorsque les variables sont identiques.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L05-E02. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L05-V92",
+      "lesson_id": "L05",
+      "family": "adaptive_l05_92",
+      "for_exercise_ids": [
+        "L05-E03"
+      ],
+      "source_exercise_ids": [
+        "L05-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L05"
+      ],
+      "block_ids": [
+        "L05-B15",
+        "L03-B14",
+        "L01-B05"
+      ],
+      "error_tags": [
+        "parameterization",
+        "off_by_one"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "G est le rang du premier succès, de probabilité 1/4 par essai indépendant.\nCalculer $\\mathbb P(G\\ge4)$ par formule et avec pgeom.\nPour $X\\sim\\mathcal N(1,9)$, calculer aussi $\\mathbb P(X\\le-2)$ avec pnorm.\nExpliquer les seuils et les arguments nommés.",
+      "correction_md": "Il faut trois échecs initiaux, donc $\\mathbb P(G\\ge4)=(3/4)^3=27/64$.\nR compte K=G-1, le nombre d'échecs; $G\\ge4$ signifie $K>2$.\nPour la normale, l'écart-type est 3 et le seuil standardisé vaut -1.\n\n```{r}\npg <- pgeom(2,prob=.25,lower.tail=FALSE)\npn <- pnorm(-2,mean=1,sd=3)\nstopifnot(isTRUE(all.equal(pg,27/64)),\n          isTRUE(all.equal(pn,pnorm(-1))))\nc(queue_geometrique=pg,queue_normale=pn)\n```\n\nLes valeurs sont 0,421875 et environ 0,1586553. La queue normale est\ninférieure parce que l'événement porte sur « inférieur ou égal », pas\nparce que le seuil est négatif.",
+      "rubric_fr": [
+        "Traduire G au moins 4 en nombre d'échecs strictement supérieur à 2.",
+        "Retrouver 27/64 par les deux méthodes.",
+        "Utiliser sd=3 et la queue inférieure normale."
+      ],
+      "transfer": "Traduire une inégalité inclusive du rang en queue strictement supérieure dans la convention des échecs.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L05-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L05-V93",
+      "lesson_id": "L05",
+      "family": "adaptive_l05_93",
+      "for_exercise_ids": [
+        "L05-E03"
+      ],
+      "source_exercise_ids": [
+        "L05-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L05"
+      ],
+      "block_ids": [
+        "L05-B15",
+        "L03-B12",
+        "L03-B14"
+      ],
+      "error_tags": [
+        "parameterization",
+        "off_by_one"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Pour un rang géométrique G de paramètre 1/2, chercher le plus petit entier g\ntel que $\\mathbb P(G\\le g)\\ge0,9$. Utiliser qgeom et vérifier l'entier précédent.\nPourquoi la sortie directe de qgeom n'est-elle pas le rang demandé ?",
+      "correction_md": "La CDF du rang vaut $1-2^{-g}$ pour $g\\ge1$.\nElle vaut $7/8=0,875$ en 3, puis $15/16=0,9375$ en 4; le quantile de rang est 4.\nqgeom renvoie le nombre d'échecs, auquel il faut ajouter 1.\n\n```{r}\nk <- qgeom(.9,prob=.5); g <- k+1\nF_rang <- function(j) pgeom(j-1,prob=.5)\nstopifnot(k==3,g==4,F_rang(g-1)==7/8,F_rang(g)==15/16,\n          F_rang(g-1)<.9,F_rang(g)>=.9)\ng\n```\n\nUn quantile discret utilise une inégalité et un minimum; sa probabilité\ncumulée n'est pas nécessairement exactement 0,9.",
+      "rubric_fr": [
+        "Ajouter 1 au quantile du nombre d'échecs et trouver le rang 4.",
+        "Vérifier 7/8 avant et 15/16 au rang retenu.",
+        "Formuler la propriété minimale du quantile discret."
+      ],
+      "transfer": "Inverser une probabilité en seuil entier exige une vérification de minimalité.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L05-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L06-V90",
+      "lesson_id": "L06",
+      "family": "adaptive_l06_90",
+      "for_exercise_ids": [
+        "L06-E04"
+      ],
+      "source_exercise_ids": [
+        "L06-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06"
+      ],
+      "block_ids": [
+        "L06-B07",
+        "L06-B03",
+        "L04-B08",
+        "L03-B14"
+      ],
+      "error_tags": [
+        "replicate_vs_repeat",
+        "sqrt_n",
+        "simulation_vs_proof"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Le code x=rexp(20,rate=2); mauvais=replicate(200,mean(x)) est proposé pour\nobserver la loi d'une moyenne de 20 exponentielles. Expliquer et corriger le défaut.\nDonner l'écart-type théorique d'une moyenne et la variance de sa standardisation.\nPasser de 200 à 800 répétitions divise-t-il par deux la dispersion d'une moyenne ?",
+      "correction_md": "x est tiré une seule fois : les 200 valeurs sont identiques. Il faut\nplacer rexp dans l'expression répétée.\nUne exponentielle de taux 2 a moyenne et écart-type 1/2.\nLa moyenne de taille 20 a écart-type $1/(2\\sqrt{20})$;\n$\\sqrt{20}(\\overline X-1/2)/(1/2)$ a variance 1.\nB répétitions décrivent mieux cette distribution mais ne changent ni n=20\nni la dispersion d'une moyenne individuelle.\n\n```{r}\nset.seed(960)\nx <- rexp(20,rate=2)\nmauvais <- replicate(200,mean(x))\nbon <- replicate(200,mean(rexp(20,rate=2)))\nz <- sqrt(20)*(bon-.5)/.5\nstopifnot(all(mauvais==mauvais[1]),var(mauvais)==0,\n          length(bon)==200,all(is.finite(z)))\nc(sd_theorique=1/(2*sqrt(20)),sd_observe=sd(bon),variance_z_observee=var(z))\n```\n\nLes sorties empiriques fluctuent; elles ne constituent pas une preuve du TCL.",
+      "rubric_fr": [
+        "Déplacer les nouveaux tirages dans replicate.",
+        "Donner l'écart-type 1/(2 racine(20)) et la variance standardisée 1.",
+        "Distinguer B répétitions et n observations par moyenne.",
+        "Limiter le contrôle empirique à son rôle de simulation."
+      ],
+      "transfer": "Détecter une répétition de calcul sans nouvelle expérience et distinguer deux tailles de simulation.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L06-E04. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L06-V91",
+      "lesson_id": "L06",
+      "family": "adaptive_l06_91",
+      "for_exercise_ids": [
+        "L06-E04"
+      ],
+      "source_exercise_ids": [
+        "L06-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06"
+      ],
+      "block_ids": [
+        "L06-B08",
+        "L06-B07",
+        "L06-B03",
+        "L03-B14"
+      ],
+      "error_tags": [
+        "replicate_vs_repeat",
+        "sqrt_n",
+        "simulation_vs_proof"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Pour x=c(1,3,2,6), calculer les moyennes cumulées.\nPourquoi ne sont-elles pas quatre répétitions indépendantes d'une moyenne\nde taille 4 ? Écrire ensuite trois répétitions avec quatre nouvelles\nexponentielles de taux 2 chacune et donner leur écart-type théorique.",
+      "correction_md": "Les moyennes cumulées valent 1,2,2,3. Elles portent sur des tailles\n1,2,3,4 et partagent les premières observations. Ce ne sont donc pas des\nrépétitions indépendantes du même estimateur.\nTrois expériences de taille 4 nécessitent trois nouveaux échantillons.\nL'écart-type théorique de chaque moyenne vaut $(1/2)/\\sqrt4=1/4$.\n\n```{r}\nx <- c(1,3,2,6); cumul <- cumsum(x)/seq_along(x)\nset.seed(961)\nrepetitions <- replicate(3,mean(rexp(4,rate=2)))\nstopifnot(identical(cumul,c(1,2,2,3)),length(repetitions)==3,\n          all(is.finite(repetitions)))\ncumul\nrepetitions\n```\n\nTrois sorties ne suffisent pas à estimer finement la dispersion.\nLa valeur 1/4 vient du calcul théorique, pas d'un ajustement aux trois résultats.",
+      "rubric_fr": [
+        "Retrouver les moyennes cumulées 1,2,2,3.",
+        "Nommer chevauchement et tailles différentes.",
+        "Créer quatre nouveaux tirages par répétition.",
+        "Distinguer l'écart-type théorique 1/4 de celui calculé sur trois sorties."
+      ],
+      "transfer": "Une trajectoire de préfixes chevauchants n'est pas une série d'expériences indépendantes de même taille.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L06-E04. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L06-V92",
+      "lesson_id": "L06",
+      "family": "adaptive_l06_92",
+      "for_exercise_ids": [
+        "L06-E01"
+      ],
+      "source_exercise_ids": [
+        "L06-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06"
+      ],
+      "block_ids": [
+        "L06-B03",
+        "L06-B10",
+        "L06-B13"
+      ],
+      "error_tags": [
+        "convergence",
+        "object_type"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Les $X_i$ sont i.i.d. de Bernoulli de paramètre inconnu $p\\in(0,1)$.\nComparer $Z_n=\\sqrt n(\\overline X_n-p)/\\sqrt{p(1-p)}$ et\n$W_n=2\\sqrt n(\\overline X_n-1/2)$. Lequel est calculable sans connaître p ?\nPour le vrai p=0,7, donner centre et variance de W_n. Peut-on lui appliquer\ndirectement la conclusion normale centrée réduite du TCL ?",
+      "correction_md": "Z_n dépend de p; W_n se calcule avec les seules données.\nPour p=0,7, $\\mathbb E[W_n]=2\\sqrt n(0,7-0,5)=0,4\\sqrt n$,\net $\\mathbb V(W_n)=4n[p(1-p)/n]=0,84$.\nW_n n'est pas centré à la vraie moyenne; son centre s'éloigne de zéro.\nLa conclusion standard du TCL concerne Z_n, de variance 1, pas W_n.\nLes expressions coïncident seulement sous p=1/2. Cette condition sur le\nmodèle ne se déduit pas de la calculabilité.",
+      "rubric_fr": [
+        "Distinguer expression dépendant de p et expression calculable.",
+        "Trouver le centre 0,4 racine(n) et la variance 0,84.",
+        "Expliquer le mauvais centrage et nommer p=1/2 comme condition de coïncidence."
+      ],
+      "transfer": "Une valeur de référence calculable ne remplace pas automatiquement le vrai paramètre de centrage.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L06-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L06-V93",
+      "lesson_id": "L06",
+      "family": "adaptive_l06_93",
+      "for_exercise_ids": [
+        "L06-E02"
+      ],
+      "source_exercise_ids": [
+        "L06-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06"
+      ],
+      "block_ids": [
+        "L06-B03",
+        "L06-B05",
+        "L06-B06"
+      ],
+      "error_tags": [
+        "hypotheses",
+        "bound_vs_equality"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Y vaut 0 ou 4 avec probabilités 1/2 et $X_i=Y$ pour tout i.\nCalculer moyenne et variance de $\\overline X_n$, puis\n$\\mathbb P(|\\overline X_n-2|\\ge1)$.\nPourquoi une preuve de LGN par division de la variance par n échoue-t-elle ?",
+      "correction_md": "Y a moyenne 2 et variance 4. Comme $\\overline X_n=Y$ pour tout n,\nces moments restent 2 et 4.\nDans les deux issues, $|Y-2|=2$; la probabilité demandée vaut donc 1\npour tout n. Il n'y a pas convergence en probabilité vers 2.\nLes X_i sont identiques et non indépendantes; la formule de variance 4/n\nne s'applique pas. Chebyshev reste valide avec variance 4, mais sa borne\nne tend pas vers zéro.",
+      "rubric_fr": [
+        "Identifier la moyenne à Y et retrouver les moments 2 et 4.",
+        "Calculer la probabilité d'écart égale à 1 pour tout n.",
+        "Nommer l'indépendance manquante et refuser la division par n.",
+        "Distinguer validité d'une inégalité et utilité d'une borne pour une limite."
+      ],
+      "transfer": "Un mécanisme de copie satisfait les moments marginaux mais détruit l'hypothèse qui réduit la variance.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L06-E02. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L06-V94",
+      "lesson_id": "L06",
+      "family": "adaptive_l06_94",
+      "for_exercise_ids": [
+        "L06-E03"
+      ],
+      "source_exercise_ids": [
+        "L06-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06"
+      ],
+      "block_ids": [
+        "L06-B10",
+        "L06-B11",
+        "L06-B12"
+      ],
+      "error_tags": [
+        "sqrt_n",
+        "exact_vs_approx"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "S est la somme de 64 exponentielles i.i.d. de taux 2.\nDonner centre, variance et écart-type de S, puis approcher $\\mathbb P(S>40)$.\nRéécrire le même événement avec la moyenne. Sous quel modèle normal\nde mêmes moments le calcul serait-il exact ?",
+      "correction_md": "Chaque variable a moyenne 1/2 et variance 1/4. S a moyenne 32,\nvariance 16 et écart-type 4 par indépendance.\nL'événement est exactement\n$\\{(S-32)/4>2\\}=\\{\\overline X_{64}>40/64=0,625\\}$.\nLe TCL donne $\\mathbb P(S>40)\\approx1-\\Phi(2)\\simeq0,02275$.\nLa moyenne a écart-type $1/16$ et conduit au même seuil.\nSi la loi commune était $\\mathcal N(1/2,1/4)$ avec indépendance,\nS serait exactement $\\mathcal N(32,16)$ et la formule serait exacte.",
+      "rubric_fr": [
+        "Donner 32,16,4 pour la somme.",
+        "Retrouver la moyenne seuil 0,625 et le seuil standardisé 2.",
+        "Identifier le remplacement de loi approximatif et le modèle où il est exact."
+      ],
+      "transfer": "Choisir la normalisation d'une somme plutôt que celle d'une moyenne et vérifier les événements équivalents.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L06-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L07-V90",
+      "lesson_id": "L07",
+      "family": "adaptive_l07_90",
+      "for_exercise_ids": [
+        "L07-E03"
+      ],
+      "source_exercise_ids": [
+        "L07-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L07"
+      ],
+      "block_ids": [
+        "L07-B04",
+        "L06-B07",
+        "L03-B15",
+        "L04-B08"
+      ],
+      "error_tags": [
+        "budget",
+        "one_run_conclusion",
+        "replicate_vs_repeat"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Pour estimer I=1/2, A moyenne n uniformes sur (0,1).\nB moyenne n contributions $(U_i+V_i)/2$, avec 2n uniformes indépendantes.\nÀ budget total de 1200 uniformes, choisir les tailles et comparer les\nvariances exactes. Écrire une comparaison sur répétitions.\nLa plus faible variance d'une contribution B suffit-elle à préférer B ?",
+      "correction_md": "La variance par contribution est 1/12 pour A et\n$(1/4)(1/12+1/12)=1/24$ pour B.\nLe même coût impose $n_A=1200$ et $n_B=600$.\nLes deux variances d'estimation valent\n$1/(12\\cdot1200)=1/(24\\cdot600)=1/14400$;\nles deux écarts-types valent 1/120.\nLe gain par contribution est exactement compensé par le double coût.\n\n```{r}\nmc_a <- function(n) mean(runif(n))\nmc_b <- function(n) mean((runif(n)+runif(n))/2)\nset.seed(970)\na <- replicate(200,mc_a(1200))\nb <- replicate(200,mc_b(600))\nva <- 1/(12*1200); vb <- 1/(24*600)\nstopifnot(isTRUE(all.equal(va,vb)),isTRUE(all.equal(sqrt(va),1/120)),\n          length(a)==200,length(b)==200,\n          all(is.finite(a)),all(is.finite(b)))\nc(moyenne_A=mean(a),moyenne_B=mean(b),sd_A=sd(a),sd_B=sd(b),\n  sd_theorique=1/120)\n```\n\nLes écarts-types observés fluctuent; une seule erreur plus petite ne\nclasse pas les méthodes. La comparaison exacte donne ici égalité à coût égal.",
+      "rubric_fr": [
+        "Compter un tirage pour A et deux pour B.",
+        "Choisir les tailles 1200 et 600.",
+        "Trouver les deux variances 1/14400.",
+        "Créer de nouvelles expériences et éviter une conclusion fondée sur une seule réalisation."
+      ],
+      "transfer": "Réévaluer le gain de variance lorsque le coût de chaque contribution change.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L07-E03. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L07-V91",
+      "lesson_id": "L07",
+      "family": "adaptive_l07_91",
+      "for_exercise_ids": [
+        "L07-E01"
+      ],
+      "source_exercise_ids": [
+        "L07-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L07"
+      ],
+      "block_ids": [
+        "L07-B01",
+        "L07-B03",
+        "L06-B06"
+      ],
+      "error_tags": [
+        "integral_expectation",
+        "density",
+        "interval_length"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "On veut $I=\\int_0^1x\\,dx$. Les variables V_i sont i.i.d. de densité\n$q(x)=\\frac23(1+x)\\mathbf1_{(0,1)}(x)$.\nUn programme moyenne seulement les V_i.\nVérifier q, calculer la cible effective de ce programme, puis proposer une\ncontribution dont la moyenne converge vers I. Pourquoi le facteur « longueur\nde l'intervalle » ne suffit-il plus ? Justifier les hypothèses de convergence.",
+      "correction_md": "q est non négative et\n$\\int_0^1q(x)\\,dx=\\frac23(1+\\frac12)=1$.\nLa moyenne naïve converge vers\n$\\mathbb E[V]=\\frac23(\\frac12+\\frac13)=5/9$, pas vers $I=1/2$.\nPrendre $H(V)=V/q(V)=3V/[2(1+V)]$ donne\n$\\mathbb E[H(V)]=\\int_0^1 [x/q(x)]q(x)\\,dx=I=1/2$.\nPour $0<V<1$, $0<H(V)<3/4$; les contributions i.i.d. sont donc\nde variance finie et la LGN s'applique.\nLa longueur de l'intervalle vaut 1. Ce facteur ne change pas la cible\nnaïve 5/9; la pondération dépend ici de la densité non constante.",
+      "rubric_fr": [
+        "Normaliser la densité et calculer la cible naïve 5/9.",
+        "Construire le poids x/q(x) et retrouver l'intégrale 1/2 par transfert.",
+        "Vérifier la borne et les hypothèses i.i.d. de la LGN.",
+        "Expliquer pourquoi la seule longueur ne corrige pas une densité non uniforme."
+      ],
+      "transfer": "Remplacer le facteur constant de l'uniforme par une pondération fonctionnelle lorsque la loi de simulation change.",
+      "provenance_fr": "Exercice original dérivé des corrigés pédagogiques effectivement relus de L07-E01. Aucun sujet d'épreuve utilisé.",
+      "time_scope_fr": "Quatre minutes pour tentative courte et comparaison ciblée; le reste d'un éventuel créneau F01 sert à l'explicitation et au rappel."
+    },
+    {
+      "id": "L08-V90",
+      "lesson_id": "L08",
+      "family": "selection_changes_estimator_bias",
+      "for_exercise_ids": [
+        "L08-E01"
+      ],
+      "source_exercise_ids": [
+        "L08-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04"
+      ],
+      "block_ids": [
+        "L08-B01",
+        "L08-B03",
+        "L08-B04",
+        "L04-B09"
+      ],
+      "error_tags": [
+        "object_confusion",
+        "bias_vs_error",
+        "selection_bias"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Deux mesures indépendantes suivent $\\mathcal N(m,1)$, où $m\\in\\mathbb R$ est fixe et inconnu. On propose $T=\\max(X_1,X_2)$ pour estimer $m$. Les réalisations sont $(2,5)$.\n\nIdentifier le paramètre, l'estimateur, l'estimation et l'erreur observée. Chaque mesure étant sans biais, le maximum l'est-il aussi ? Utiliser\n$\\max(x,y)=(x+y+|x-y|)/2$ pour décider, sans calculer une intégrale normale. Une erreur observée positive suffit-elle, à elle seule, à prouver un biais positif ?",
+      "correction_md": "Le paramètre est $m$; l'estimateur est la variable $T=\\max(X_1,X_2)$; son estimation vaut $5$. L'erreur observée est $5-m$, inconnue tant que $m$ l'est.\n\nLes variables sont intégrables et $|X_1-X_2|\\le |X_1|+|X_2|$ est intégrable. Par linéarité,\n$$\n\\mathbb E_m[T]=m+\\frac12\\mathbb E_m[|X_1-X_2|].\n$$\nComme $X_1-X_2$ est non dégénérée, $\\mathbb P(|X_1-X_2|>0)>0$, donc $\\mathbb E_m[|X_1-X_2|]>0$. Le biais de $T$ est positif pour tout $m$. Choisir systématiquement la plus grande de deux mesures modifie la procédure, même si chaque mesure est sans biais.\n\nUne erreur positive sur une réalisation ne prouve aucun biais. Ici, la conclusion vient du calcul d'espérance sur la loi d'échantillonnage, non du couple observé.",
+      "rubric_fr": [
+        "Distinguer le paramètre fixe, la fonction aléatoire, la valeur 5 et l'erreur inconnue 5-m.",
+        "Vérifier l'intégrabilité puis calculer l'espérance du maximum avec l'identité fournie.",
+        "Justifier la positivité stricte du biais par la non-dégénérescence.",
+        "Séparer un biais de procédure et une erreur sur une observation."
+      ],
+      "transfer": "La sélection des observations devient une partie de l'estimateur; l'absence de biais des composantes ne se transmet pas à un maximum.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L08-V91",
+      "lesson_id": "L08",
+      "family": "pointwise_risk_not_uniform_dominance",
+      "for_exercise_ids": [
+        "L08-E03"
+      ],
+      "source_exercise_ids": [
+        "L08-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04",
+        "L05",
+        "L06"
+      ],
+      "block_ids": [
+        "L08-B04",
+        "L08-B06",
+        "L08-B07"
+      ],
+      "error_tags": [
+        "criterion_confusion",
+        "simulation_vs_proof",
+        "bias_vs_error"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Pour $n=12$ observations i.i.d. de Bernoulli$(p)$, on compare $T=\\overline X$ et $U=(12\\overline X+1)/14$. Une simulation au paramètre $p=1/2$ trouve une EQM plus faible pour $U$ et conclut : « U est meilleur pour tout p ».\n\nOn donne\n$$\n\\operatorname{EQM}_p(T)=\\frac{p(1-p)}{12},\\qquad\n\\operatorname{EQM}_p(U)=\\frac{12p(1-p)+(1-2p)^2}{14^2}.\n$$\nComparer les risques en $p=1/2$ et en $p=0$. Décider si l'affirmation universelle est justifiée. Expliquer pourquoi augmenter le nombre de répétitions au seul paramètre $1/2$ ne résout pas le problème.",
+      "correction_md": "En $p=1/2$,\n$\\operatorname{EQM}(T)=1/48\\simeq0{,}02083$ et\n$\\operatorname{EQM}(U)=3/196\\simeq0{,}01531$ : $U$ a le risque le plus faible à ce paramètre.\n\nEn $p=0$, toutes les observations valent 0 presque sûrement. Ainsi $T=0$ et son risque est nul, tandis que $U=1/14$ et son risque vaut $1/196\\simeq0{,}00510$. Ici, $T$ est meilleur.\n\nLe contre-exemple en $p=0$ réfute une domination uniforme de $T$ par $U$. Davantage de répétitions à $p=1/2$ réduit l'erreur Monte-Carlo pour ce seul paramètre; cela ne teste pas tous les autres paramètres. La comparaison doit annoncer sa cible, sa taille d'échantillon et son critère. Une variance nulle peut coexister avec une EQM positive lorsque la procédure est biaisée.",
+      "rubric_fr": [
+        "Retrouver les deux risques en p=1/2 et leur ordre.",
+        "Traiter le modèle de bord p=0 sans approximation et retrouver 0 contre 1/196.",
+        "Réfuter la domination universelle par un contre-exemple admissible.",
+        "Distinguer précision Monte-Carlo et portée de la comparaison sur le modèle."
+      ],
+      "transfer": "Passer d'une comparaison à un paramètre à une affirmation sur toute la famille impose de vérifier le domaine, y compris un cas de bord.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L08-V92",
+      "lesson_id": "L08",
+      "family": "shared_noise_bessel_assumption",
+      "for_exercise_ids": [
+        "L08-E02"
+      ],
+      "source_exercise_ids": [
+        "L08-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L04",
+        "L06"
+      ],
+      "block_ids": [
+        "L08-B08",
+        "L08-B05",
+        "L04-B05",
+        "L04-B06"
+      ],
+      "error_tags": [
+        "proof_gap",
+        "independence",
+        "bessel",
+        "formal_language"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Pour n≥2, on observe $X_i=m+Z+\\varepsilon_i$. Le paramètre m est fixe; Z est centré de variance 1; les $\\varepsilon_i$ sont i.i.d., centrées, de variance 3 et indépendantes de Z. Le même Z intervient dans toutes les observations.\n\nCalculer $\\mathbb E[\\overline X_n]$ et $\\mathbb V(\\overline X_n)$. Puis, sans supposer l'indépendance des $X_i$, utiliser\n$$\nS_n^2=\\frac{\\sum_iX_i^2-n\\overline X_n^2}{n-1}\n$$\npour calculer $\\mathbb E[S_n^2]$. Le diviseur n-1 rend-il ici $S_n^2$ sans biais pour la variance marginale de $X_i$ ? Identifier exactement l'hypothèse du raisonnement de Bessel qui manque.",
+      "correction_md": "Les moments d'ordre deux existent. La linéarité donne $\\mathbb E[\\overline X_n]=m$, sans demander l'indépendance des $X_i$. En revanche,\n$$\n\\overline X_n=m+Z+\\overline\\varepsilon_n,\\qquad\n\\mathbb V(\\overline X_n)=1+\\frac3n,\n$$\ncar Z est indépendant des erreurs et celles-ci sont indépendantes entre elles. Chaque $X_i$ a variance $1+3=4$, mais pour i≠j, $\\operatorname{Cov}(X_i,X_j)=1$ : on ne peut pas écrire $\\mathbb V(\\overline X_n)=4/n$.\n\nPour l'identité fournie,\n$$\n\\mathbb E\\!\\left[\\sum_iX_i^2\\right]=n(m^2+4),\\qquad\n\\mathbb E[n\\overline X_n^2]=n\\left(m^2+1+\\frac3n\\right).\n$$\nDonc $\\mathbb E[S_n^2]=(4n-n-3)/(n-1)=3$. La variance marginale vaut 4 : le biais de $S_n^2$ pour cette cible vaut -1.\n\nLe bruit commun disparaît dans $X_i-\\overline X_n$. Le calcul de dispersion entre observations mesure donc ici la composante de variance 3; le facteur n-1 ne corrige pas automatiquement la dépendance. Dans la preuve usuelle de Bessel, le calcul $\\mathbb V(\\overline X_n)=\\sigma^2/n$ utilise l'indépendance, alors que la linéarité de l'espérance n'en a pas besoin.",
+      "rubric_fr": [
+        "Utiliser la linéarité pour la moyenne sans inventer l'indépendance des observations.",
+        "Conserver le bruit commun et obtenir Var(moyenne)=1+3/n, avec covariance 1 entre observations distinctes.",
+        "Développer les deux seconds moments et dériver E(S²)=3 à partir de l'identité fournie.",
+        "Distinguer la variance marginale 4 de la variance estimée 3, et localiser l'hypothèse manquante dans la preuve."
+      ],
+      "transfer": "L'identité algébrique de variance empirique reste vraie, mais une dépendance commune change son espérance; il faut reconstruire la preuve et sa cible.",
+      "provenance_fr": "Variante originale de réparation de preuve, directement reliée à L08-E02 et approuvée comme besoin par la revue indépendante. Quatre minutes remplacent un créneau de révision existant."
+    },
+    {
+      "id": "L10-V90",
+      "lesson_id": "L10",
+      "family": "marginal_versus_joint_coverage",
+      "for_exercise_ids": [
+        "L10-E01"
+      ],
+      "source_exercise_ids": [
+        "L10-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L02"
+      ],
+      "block_ids": [
+        "L10-B01",
+        "L02-B01"
+      ],
+      "error_tags": [
+        "coverage_posterior",
+        "simultaneous_coverage"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Vingt équipes produisent chacune un intervalle de confiance exact à 95 % pour sa propre moyenne fixe. Les vingt échantillons, donc les événements de couverture, sont indépendants. Une responsable affirme : « La probabilité que les vingt intervalles couvrent simultanément leurs moyennes vaut 95 % ».\n\nCalculer la couverture simultanée avant observation. Pour garantir au moins 95 % simultanément sans supposer l'indépendance, quel risque maximal peut-on allouer à chaque intervalle ? Utiliser la majoration de la probabilité d'une union par la somme des probabilités. Préciser si le calcul attribue après observation une probabilité aux vingt moyennes.",
+      "correction_md": "Pour des événements de couverture indépendants, la probabilité que tous surviennent est\n$0{,}95^{20}\\simeq0{,}3585$, soit environ 35,8 %, et non 95 %.\n\nSans indépendance, si chaque intervalle a un risque de non-couverture au plus $0{,}05/20=0{,}0025$, alors\n$$\n\\mathbb P(\\text{au moins un échec})\\le\\sum_{j=1}^{20}\\mathbb P(\\text{échec }j)\n\\le20\\times0{,}0025=0{,}05.\n$$\nDes intervalles de couverture individuelle au moins 99,75 % garantissent donc une couverture simultanée au moins 95 %. La direction de la garantie et la famille des vingt cibles doivent être fixées avant analyse.\n\nCes probabilités portent sur la procédure avant observation. Dans l'interprétation fréquentiste utilisée ici, les moyennes restent fixes; ce calcul ne leur attribue pas de probabilité a posteriori.",
+      "rubric_fr": [
+        "Multiplier les couvertures uniquement sous l'indépendance annoncée.",
+        "Distinguer couverture individuelle et couverture simultanée.",
+        "Allouer 0,0025 de risque à chaque intervalle et justifier la garantie par l'union.",
+        "Faire porter la couverture sur les intervalles aléatoires, pas sur des paramètres devenus aléatoires."
+      ],
+      "transfer": "Changer la cible de garantie, d'un seul intervalle à une famille entière, impose une nouvelle allocation du risque.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L10-V91",
+      "lesson_id": "L10",
+      "family": "bootstrap_intact_independent_groups",
+      "for_exercise_ids": [
+        "L10-E01"
+      ],
+      "source_exercise_ids": [
+        "L10-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06"
+      ],
+      "block_ids": [
+        "L10-B12",
+        "L10-B13",
+        "L06-B01"
+      ],
+      "error_tags": [
+        "resampling_unit",
+        "dependence",
+        "bootstrap_coverage"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "On tire 12 établissements indépendants de même population, puis on mesure cinq élèves dans chacun. Les cinq mesures d'un même établissement peuvent dépendre fortement; les établissements sont i.i.d. et leurs moyennes ont une variance finie strictement positive. La cible est la moyenne des moyennes d'établissement, avec un poids identique pour chacun.\n\nUn programme tire avec remise 60 lignes individuelles pour construire un intervalle bootstrap de cette moyenne. Définir une unité de tirage compatible avec le plan et décrire une réplication correcte. Augmenter B de 1 000 à 100 000 transforme-t-il les 12 établissements en 100 000 unités d'information ? Quelle garantie peut-on annoncer pour l'intervalle percentile ?",
+      "correction_md": "L'unité indépendante est l'établissement. Une réplication tire avec remise 12 identifiants d'établissement parmi les 12 observés, conserve ensemble les cinq élèves de chaque établissement sélectionné et recalcule la moyenne des 12 moyennes d'établissement. Un établissement sélectionné deux fois apparaît deux fois avec ses cinq mesures.\n\nLe tirage individuel de 60 lignes efface la dépendance interne et simule un autre plan. Les tailles sont ici toutes égales, mais le poids identique des établissements reste la définition de la cible.\n\nB règle la précision numérique de l'approximation bootstrap conditionnelle aux données. Il n'augmente pas le nombre de 12 unités indépendantes observées. Le percentile est une méthode de couverture approximative, sous les conditions appropriées au bootstrap; avec seulement 12 groupes, aucune couverture exacte à 95 % n'est garantie.",
+      "rubric_fr": [
+        "Identifier l'établissement comme unité indépendante et conserver les cinq mesures ensemble.",
+        "Recalculer la statistique complète avec le poids d'établissement annoncé.",
+        "Distinguer nombre de réplications et nombre d'unités observées.",
+        "Qualifier la couverture percentile d'approximative et reconnaître la limite des 12 groupes."
+      ],
+      "transfer": "Le passage des lignes individuelles à des groupes corrélés change l'unité à rééchantillonner et la cible à pondérer.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L10-V92",
+      "lesson_id": "L10",
+      "family": "audit_seed_and_bootstrap_statistic",
+      "for_exercise_ids": [
+        "L10-E03"
+      ],
+      "source_exercise_ids": [
+        "L10-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01",
+        "L03",
+        "L06"
+      ],
+      "block_ids": [
+        "L10-B12",
+        "L10-B13",
+        "L10-B14",
+        "L03-B14",
+        "L06-B07"
+      ],
+      "error_tags": [
+        "seed_inside_loop",
+        "wrong_bootstrap_statistic",
+        "bootstrap_coverage"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Les valeurs ci-dessous sont six observations i.i.d. d'une variable de variance finie. La cible est la moyenne de population. Auditer ce code, puis écrire une version correcte de l'intervalle percentile de la moyenne.\n\n```{r L10-V92-auditer, eval=FALSE}\nx <- c(5, 7, 9, 10, 14, 15)\nmstar <- replicate(500, {\n  set.seed(5)\n  mean(sample(x, size=length(x), replace=TRUE))\n})\nIC <- quantile(x, c(.025, .975))\n```\n\nNommer les deux objets mal contrôlés et expliquer ce qu'une correction du code ne démontre pas sur la couverture.",
+      "correction_md": "La graine est remise au même état à chaque réplication : le même rééchantillon est alors obtenu et toutes les moyennes bootstrap sont identiques. La graine se fixe une seule fois avant les répétitions.\n\nLa dernière ligne prend les quantiles des observations, non ceux de la statistique moyenne rééchantillonnée. Elle vise la dispersion des valeurs, pas l'incertitude de la moyenne.\n\n```{r L10-V92-correction}\nx <- c(5, 7, 9, 10, 14, 15)\nset.seed(5)\nmstar <- replicate(2000,\n                   mean(sample(x, size=length(x), replace=TRUE)))\nIC <- quantile(mstar, c(.025, .975))\nIC\nstopifnot(length(unique(mstar)) > 1, length(IC) == 2,\n          IC[1] <= IC[2])\n```\n\nCette correction rend l'algorithme cohérent avec l'intervalle percentile de la moyenne. Elle ne prouve pas une couverture exacte à 95 %, surtout à n=6. Tester une couverture demande de produire de nouveaux échantillons de population dans une boucle extérieure; les seules réplications bootstrap conditionnent sur les six observations.",
+      "rubric_fr": [
+        "Déplacer set.seed avant la boucle de rééchantillonnage.",
+        "Recalculer la moyenne sur chaque tirage de n observations avec remise.",
+        "Appliquer les quantiles aux moyennes bootstrap et non aux observations.",
+        "Distinguer correction logicielle, variation conditionnelle bootstrap et couverture d'échantillonnage."
+      ],
+      "transfer": "Deux programmes qui s'exécutent peuvent viser des objets différents; la correction exige de suivre l'état aléatoire et la statistique, pas seulement la syntaxe.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L11-V90",
+      "lesson_id": "L11",
+      "family": "data_exclusion_changes_test_procedure",
+      "for_exercise_ids": [
+        "L11-E01"
+      ],
+      "source_exercise_ids": [
+        "L11-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L06",
+        "L10"
+      ],
+      "block_ids": [
+        "L11-B01",
+        "L11-B03",
+        "L11-B04",
+        "L11-B05"
+      ],
+      "error_tags": [
+        "pvalue_posterior",
+        "data_dependent_selection",
+        "nonrejection_proof"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Un test bilatéral au seuil de 5 %, annoncé avant l'étude, compare une moyenne à zéro et donne p=0,12. Après avoir vu le résultat, une analyste supprime les deux observations qui vont le plus contre le signe souhaité; le même logiciel donne ensuite p=0,018. Elle écrit : « La moyenne est positive avec probabilité 98,2 % ».\n\nIdentifier deux erreurs distinctes. Quel résultat correspond à la procédure initialement annoncée ? Comment présenter honnêtement l'analyse après exclusion si aucune raison indépendante du résultat ne justifie ces suppressions ?",
+      "correction_md": "Une p-valeur est une probabilité d'observer, sous l'hypothèse nulle et la procédure spécifiée, un résultat au moins aussi extrême. Ce n'est pas la probabilité que la moyenne soit négative, ni le complément d'une probabilité que l'alternative soit vraie.\n\nDe plus, supprimer des observations parce qu'elles contrarient le résultat souhaité modifie la procédure en fonction des données. La loi nulle utilisée automatiquement pour un échantillon fixé ne calibre pas nécessairement cette procédure de sélection. Le nombre 0,018 ne rétablit donc pas à lui seul une garantie de niveau 5 %.\n\nLe test annoncé donne p=0,12 : au seuil 5 %, on ne rejette pas la moyenne nulle, sans la prouver. Les exclusions et leur motivation doivent être déclarées; le calcul réduit peut être présenté comme analyse exploratoire ou de sensibilité, sans le substituer à une confirmation préspécifiée. Une exclusion justifiée par un critère de qualité indépendant du signe du résultat poserait une autre question.",
+      "rubric_fr": [
+        "Interpréter la p-valeur sous H0 sans la convertir en probabilité de l'hypothèse.",
+        "Identifier que la sélection des observations change la procédure et sa calibration.",
+        "Conserver p=0,12 comme résultat du test annoncé et formuler un non-rejet correct.",
+        "Déclarer la portée exploratoire de l'exclusion motivée par le résultat."
+      ],
+      "transfer": "La décision porte sur une sélection faite après observation : vérifier le modèle annoncé ne suffit plus à justifier la procédure effectivement exécutée.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L11-V91",
+      "lesson_id": "L11",
+      "family": "choose_sample_size_for_power",
+      "for_exercise_ids": [
+        "L11-E02"
+      ],
+      "source_exercise_ids": [
+        "L11-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L05",
+        "L06"
+      ],
+      "block_ids": [
+        "L11-B01",
+        "L11-B03",
+        "L11-B06",
+        "L11-B07"
+      ],
+      "error_tags": [
+        "power_vs_level",
+        "alternative_distribution",
+        "integer_sample_size"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "On prépare des observations i.i.d. $X_i\\sim\\mathcal N(m,9)$, variance connue. Le test annoncé est $H_0:m\\le0$ contre $H_1:m>0$, de niveau 5 %. Il rejettera si\n$\\overline X_n>1{,}645\\times3/\\sqrt n$.\n\nChoisir le plus petit entier n assurant au moins 80 % de puissance au paramètre m=1, avec les quantiles fournis $z_{0,95}\\simeq1{,}645$ et $z_{0,80}\\simeq0{,}842$. Justifier pourquoi la frontière m=0 calibre le H0 composite. Ce choix garantit-il 80 % de puissance pour tout m>0 ?",
+      "correction_md": "Sous m=1, la moyenne est normale de moyenne 1 et d'écart-type $3/\\sqrt n$. La puissance vaut\n$$\n\\pi_n(1)=1-\\Phi\\!\\left(1{,}645-\\frac{\\sqrt n}{3}\\right).\n$$\nL'inégalité $\\pi_n(1)\\ge0{,}80$ équivaut, avec les quantiles fournis, à\n$1{,}645-\\sqrt n/3\\le-0{,}842$, donc\n$n\\ge[3(1{,}645+0{,}842)]^2\\simeq55{,}67$.\nOn arrondit vers le haut : n=56. Les quantiles exacts donnent aussi 56.\n\nPour cette région de rejet à droite, la probabilité de rejet augmente avec m. Son maximum sous m≤0 est donc atteint en m=0, ce qui calibre le niveau.\n\nLa garantie de puissance concerne l'alternative m=1 choisie pour la planification. Pour des moyennes positives arbitrairement proches de 0, la puissance est proche de 5 %, non de 80 %. Une taille ne donne pas la même puissance pour toutes les distances au H0.",
+      "rubric_fr": [
+        "Calculer la puissance sous m=1 et non sous la loi nulle.",
+        "Inverser correctement l'inégalité et choisir n=56 par arrondi supérieur.",
+        "Justifier la frontière m=0 du H0 composite par monotonie.",
+        "Limiter la garantie de puissance à l'alternative de planification."
+      ],
+      "transfer": "La formule de puissance sert maintenant à choisir un plan avant observation; une garantie ponctuelle ne devient pas uniforme sur toutes les alternatives.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L11-V92",
+      "lesson_id": "L11",
+      "family": "rare_binomial_zero_successes",
+      "for_exercise_ids": [
+        "L11-E03"
+      ],
+      "source_exercise_ids": [
+        "L11-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L03",
+        "L05"
+      ],
+      "block_ids": [
+        "L11-B08",
+        "L11-B09",
+        "L11-B05"
+      ],
+      "error_tags": [
+        "null_standard_error",
+        "normal_approximation",
+        "boundary_estimate",
+        "sidedness"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Vingt-cinq essais sont indépendants, de même probabilité de succès p. Avant observation, on choisit $H_0:p\\ge0{,}04$ contre $H_1:p<0{,}04$, au seuil 5 %. Aucun succès n'est observé.\n\nUne personne remplace p par l'estimation 0 dans l'erreur-type normale et conclut à une preuve de p=0. Choisir une procédure appropriée, écrire sa p-valeur exacte puis la calculer avec R. Expliquer pourquoi un grand nombre de simulations ne réparerait pas le modèle normal choisi ici.",
+      "correction_md": "Le modèle du nombre de succès est binomial. La statistique vaut 0, valeur minimale; au paramètre de frontière $p_0=0{,}04$,\n$$\np_{\\mathrm{val}}=\\mathbb P_{p_0}(K\\le0)=(1-0{,}04)^{25}\n\\simeq0{,}3604.\n$$\nLa probabilité de 0 succès décroît avec p; la frontière 0,04 est donc la plus défavorable sous le H0 composite.\n\n```{r L11-V92-correction}\nres <- binom.test(0, 25, p=.04, alternative=\"less\")\nres$p.value\nstopifnot(abs(res$p.value - .96^25) < 1e-12)\n```\n\nAu seuil 5 %, on ne rejette pas H0. Zéro succès ne prouve pas p=0. Ici $np_0=1$, ce qui rend douteuse l'approximation normale habituelle; remplacer p0 par l'estimation nulle produit en plus une erreur-type dégénérée. Une simulation plus longue peut mieux calculer une probabilité sous un modèle choisi, mais ne transforme pas une approximation inadéquate en résultat exact.",
+      "rubric_fr": [
+        "Choisir le modèle binomial exact pour ce faible comptage.",
+        "Employer la queue gauche et calculer .96^25 à la frontière du H0.",
+        "Refuser l'erreur-type dégénérée obtenue par le plug-in de l'estimation nulle.",
+        "Formuler le non-rejet sans affirmer que p vaut zéro."
+      ],
+      "transfer": "Une estimation au bord et un faible nombre attendu de succès imposent de revoir la méthode de référence, même si l'effectif total paraît utilisable.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L12-V90",
+      "lesson_id": "L12",
+      "family": "pair_alignment_by_identifier",
+      "for_exercise_ids": [
+        "L12-E03"
+      ],
+      "source_exercise_ids": [
+        "L12-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L01",
+        "L04",
+        "L10",
+        "L11"
+      ],
+      "block_ids": [
+        "L12-B01",
+        "L12-B02",
+        "L12-B08",
+        "L01-B02"
+      ],
+      "error_tags": [
+        "paired_order",
+        "unit_of_analysis",
+        "software_authority"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Quatre unités indépendantes ont été mesurées avant et après. Les différences correctement appariées sont supposées normales i.i.d. de variance populationnelle strictement positive; le test bilatéral de différence moyenne nulle a été annoncé à 5 %.\n\n```{r L12-V90-donnees}\nid_avant <- c(1, 2, 3, 4)\navant <- c(10, 12, 13, 15)\nid_apres <- c(3, 1, 4, 2)\napres <- c(12, 8, 14, 10)\n```\n\nLe code `t.test(avant, apres, paired=TRUE)` est-il conforme au plan ? Aligner les mesures par identifiant, puis comparer la moyenne et la variance des différences avant et après cet alignement. Effectuer le test correct et expliquer pourquoi l'option paired ne vérifie pas à elle seule la qualité de l'appariement.",
+      "correction_md": "paired=TRUE apparie par position, pas par identifiant. Les positions correctes du tableau après sont $(2,4,1,3)$. Trier chaque colonne par ses valeurs n'est pas une règle générale d'appariement.\n\n```{r L12-V90-correction}\nid_avant <- c(1, 2, 3, 4)\navant <- c(10, 12, 13, 15)\nid_apres <- c(3, 1, 4, 2)\napres <- c(12, 8, 14, 10)\nordre <- c(2, 4, 1, 3)\nstopifnot(all(id_avant == id_apres[ordre]))\napres_aligne <- apres[ordre]\nd_faux <- avant-apres\nd <- avant-apres_aligne\nc(moyenne_fausse=mean(d_faux), variance_fausse=var(d_faux),\n  moyenne_correcte=mean(d), variance_correcte=var(d))\ntest <- t.test(avant, apres_aligne, paired=TRUE,\n               alternative=\"two.sided\", mu=0, conf.level=.95)\ntest\nstopifnot(abs(mean(d)-1.5)<1e-12, abs(var(d)-1/3)<1e-12)\n```\n\nLes mauvaises différences sont $(-2,4,-1,5)$; les bonnes sont $(2,2,1,1)$. Leur moyenne est la même, 1,5, puisque la permutation conserve chaque moyenne marginale. Les variances corrigées sont en revanche $37/3$ et $1/3$.\n\nLe test correct utilise $t=1{,}5/\\sqrt{(1/3)/4}=3\\sqrt3\\simeq5{,}196$ avec 3 degrés de liberté, et rejette la moyenne nulle à 5 %. La commande n'a pas identifié les unités à notre place : l'alignement est une vérification du plan et des données, antérieure à l'inférence.",
+      "rubric_fr": [
+        "Repérer l'appariement par position et retrouver l'ordre 2,4,1,3.",
+        "Conserver les identifiants comme clé au lieu de trier les valeurs.",
+        "Montrer que la moyenne reste 1,5 tandis que la variance passe de 37/3 à 1/3.",
+        "Utiliser la loi t à 3 degrés de liberté sous les hypothèses sur les différences."
+      ],
+      "transfer": "Une permutation conserve les moyennes marginales mais détruit la covariance utile au test apparié; la validité demande de vérifier les identifiants.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L13-V90",
+      "lesson_id": "L13",
+      "family": "fixed_model_vs_saturated_fit",
+      "for_exercise_ids": [
+        "L13-E01"
+      ],
+      "source_exercise_ids": [
+        "L13-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L02",
+        "L05",
+        "L11"
+      ],
+      "block_ids": [
+        "L13-B01",
+        "L13-B02",
+        "L13-B03",
+        "L13-B07"
+      ],
+      "error_tags": [
+        "fitted_parameters",
+        "degrees_freedom",
+        "nonrejection_proof"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Un modèle, fixé avant observation, donne probabilité 1/3 à chacune de trois catégories exhaustives. Sur 60 unités i.i.d., les effectifs sont (22,16,22).\n\nVérifier les attendus, calculer la statistique d'adéquation et ses degrés de liberté. On donne $\\mathbb P(\\chi^2_2\\ge q)=e^{-q/2}$ pour q≥0. Conclure à 5 %.\n\nUne autre personne remplace ensuite les trois probabilités par les fréquences observées, obtient Q=0 et annonce une preuve du modèle initial. Quelle hypothèse a-t-elle changée et combien de degrés de liberté restent après cet ajustement saturé ?",
+      "correction_md": "Sous le modèle fixé, les trois attendus valent 20, leur somme 60, et le repère d'effectifs est satisfait. La statistique vaut\n$$\nq=\\frac{2^2+(-4)^2+2^2}{20}=1{,}2.\n$$\nAucun paramètre n'a été estimé pour ce modèle : la référence asymptotique utilise $3-1=2$ degrés de liberté. La p-valeur approchée vaut $e^{-0{,}6}\\simeq0{,}5488$; on ne rejette pas l'adéquation à 5 %, sans prouver l'égalité des probabilités.\n\nRemplacer les probabilités par $(22,16,22)/60$ abandonne le modèle uniforme initial. On ajuste alors les deux probabilités libres d'un modèle multinomial saturé : $3-1-2=0$ degré de liberté reste pour une comparaison d'adéquation de cette partition. Q=0 est une conséquence mécanique de l'ajustement, pas une validation indépendante et encore moins une preuve du modèle uniforme.",
+      "rubric_fr": [
+        "Conserver les trois catégories et calculer les attendus 20,20,20.",
+        "Retrouver Q=1,2, deux degrés de liberté et une queue droite de valeur approximative 0,5488.",
+        "Distinguer le modèle fixé avant observation du modèle saturé ajusté aux fréquences.",
+        "Ne pas interpréter l'ajustement parfait ou le non-rejet comme une preuve du modèle initial."
+      ],
+      "transfer": "Le choix de ce qui est fixé ou estimé change l'hypothèse testée et les contraintes, même sur la même table d'effectifs.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L13-V91",
+      "lesson_id": "L13",
+      "family": "raw_mle_requires_appropriate_calibration",
+      "for_exercise_ids": [
+        "L13-E03"
+      ],
+      "source_exercise_ids": [
+        "L13-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L03",
+        "L06",
+        "L09",
+        "L11"
+      ],
+      "block_ids": [
+        "L13-B03",
+        "L13-B07",
+        "L13-B08",
+        "L03-B14",
+        "L06-B07"
+      ],
+      "error_tags": [
+        "fitted_parameters",
+        "degrees_freedom",
+        "calibration",
+        "raw_vs_grouped_mle"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "On observe 100 comptages i.i.d. supposés suivre une loi de Poisson de paramètre inconnu strictement positif. La partition est fixée à 0,1,2,≥3. Un analyste estime lambda par la moyenne des 100 valeurs brutes, puis construit les probabilités des quatre classes et utilise automatiquement un khi-deux à 4-1-1=2 degrés de liberté. L'estimation observée est positive et tous les attendus observés dépassent 5.\n\nLe seul comptage des paramètres justifie-t-il ici la calibration annoncée dans L13-B03 ? Proposer deux voies cohérentes : une estimation adaptée aux classes, ou une simulation paramétrique reproduisant la procédure actuelle. Dans la seconde voie, préciser ce qui doit être recalculé à chaque réplication et si la garantie est exacte à taille finie.",
+      "correction_md": "Le résultat à k-1-r degrés de liberté cité dans le cours suppose notamment l'ajustement régulier par maximum de vraisemblance sur les effectifs regroupés. La moyenne des valeurs brutes n'est pas en général le maximisateur de cette vraisemblance regroupée. Connaître r=1 ne suffit donc pas à invoquer automatiquement ce résultat.\n\nPremière voie : ajuster le paramètre par la vraisemblance des quatre classes fixées, conserver la probabilité de queue et vérifier les conditions régulières et les attendus; le résultat de L13-B03 utilise alors deux degrés de liberté.\n\nSeconde voie : pour une calibration paramétrique de la procédure actuelle, simuler 100 comptages sous une Poisson de paramètre ajusté aux données. À chaque réplication, réestimer lambda par la moyenne brute, recompter les quatre classes, recalculer leurs probabilités et les attendus à ce nouveau lambda, puis la statistique Q. Comparer Q observé à cette distribution simulée. Garder le lambda initial dans toutes les statistiques simulées ne reproduirait pas la procédure d'ajustement.\n\nCette simulation utilise un paramètre remplacé par son estimation; sa calibration est elle aussi approchée, non une garantie exacte universelle à n=100. Elle demande une justification du modèle, des unités i.i.d. et du protocole reproduit. Si une réplication donne un ajustement ou une statistique non calculable, définir son traitement et en rapporter la fréquence; ne pas supprimer silencieusement ces échecs.",
+      "rubric_fr": [
+        "Distinguer estimation sur valeurs brutes et estimation sur effectifs regroupés.",
+        "Relier k-1-r aux conditions du théorème, pas au seul nombre de paramètres.",
+        "Réestimer, regrouper et recalculer attendus et statistique à chaque simulation paramétrique.",
+        "Conserver la queue et qualifier la calibration paramétrique d'approximative."
+      ],
+      "transfer": "Changer l'information utilisée pour l'estimation impose de rejustifier la loi de référence ou de reproduire toute la procédure dans la calibration.",
+      "provenance_fr": "Variante pédagogique originale dérivée des méthodes et exercices indiqués. La durée remplace un créneau de révision existant et comprend une comparaison ciblée au corrigé."
+    },
+    {
+      "id": "L13-V92",
+      "lesson_id": "L13",
+      "family": "contingency_duplicate_units",
+      "for_exercise_ids": [
+        "L13-E02"
+      ],
+      "source_exercise_ids": [
+        "L13-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L02",
+        "L05",
+        "L11"
+      ],
+      "block_ids": [
+        "L13-B04",
+        "L13-B05",
+        "L13-B06",
+        "L13-B07"
+      ],
+      "error_tags": [
+        "expected_counts",
+        "degrees_freedom",
+        "tail",
+        "nonrejection_proof",
+        "independent_units"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Quarante demandes i.i.d. sont classées par canal et présence d'un incident. Les quatre probabilités de cellule sont supposées positives.\n\n| Canal | Incident | Aucun incident |\n|:--|--:|--:|\n| A | 12 | 8 |\n| B | 6 | 14 |\n\nLe test d'indépendance est annoncé au seuil 5 %. Calculer les marges, les attendus, la statistique de Pearson et les degrés de liberté. On fournit le quantile $\\chi^2_{1;0,95}\\simeq3{,}841$.\n\nUne erreur d'export duplique ensuite exactement chaque ligne individuelle : les quatre effectifs doublent. Reconstituer les nouveaux attendus et montrer comment la statistique change. Cette augmentation permet-elle de conclure à une association qui n'était pas significative auparavant ? Quelle table doit être analysée ?",
+      "correction_md": "Pour les 40 unités distinctes, les marges des lignes sont (20,20), celles des colonnes (18,22). Chaque ligne attendue est\n$(20\\times18/40,\\ 20\\times22/40)=(9,11)$.\nLes totaux sont conservés et les quatre attendus dépassent 5. La statistique vaut\n$$\nQ=2\\left(\\frac{3^2}{9}+\\frac{3^2}{11}\\right)=\\frac{40}{11}\\simeq3{,}636.\n$$\nLe test utilise $(2-1)(2-1)=1$ degré de liberté et une queue droite. Comme 3,636<3,841, on ne rejette pas l'indépendance à 5 %, sans la prouver.\n\nAprès duplication, les marges deviennent (40,40) et (36,44), pour un total affiché de 80. Les attendus deviennent (18,22) sur chaque ligne. Pour chaque cellule, le nouveau terme vaut\n$(2O-2E)^2/(2E)=2(O-E)^2/E$.\nAinsi $Q_{\\mathrm{dup}}=80/11\\simeq7{,}273$, supérieur au quantile si l'on appliquait naïvement la même référence.\n\nMais les copies ne sont pas 80 unités indépendantes. La loi de référence usuelle pour 80 observations i.i.d. ne correspond pas à cet export, et aucune information nouvelle n'a été créée. Il faut revenir aux 40 identifiants distincts et à la première table. L'augmentation artificielle de Q ne justifie pas une nouvelle conclusion d'association.",
+      "rubric_fr": [
+        "Retrouver les marges 20,20 et 18,22, puis les quatre attendus 9,11,9,11.",
+        "Calculer Q=40/11 avec un degré de liberté et conclure correctement au seuil annoncé.",
+        "Recalculer les marges et attendus doublés, puis justifier algébriquement Qdup=2Q.",
+        "Identifier la dépendance des copies et conserver l'analyse des 40 unités distinctes sans preuve abusive d'indépendance."
+      ],
+      "transfer": "Dupliquer les enregistrements conserve les proportions mais change artificiellement la statistique; reconstruire marges et attendus ne remplace pas la vérification des unités indépendantes.",
+      "provenance_fr": "Variante pédagogique originale d'indépendance en tableau, distincte des tests d'adéquation. Quatre minutes remplacent un créneau de révision existant."
+    },
+    {
+      "id": "L14-V90",
+      "lesson_id": "L14",
+      "family": "empirical_total_variance",
+      "for_exercise_ids": [
+        "L14-E04"
+      ],
+      "source_exercise_ids": [
+        "L14-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L14"
+      ],
+      "error_tags": [
+        "r_parameterization",
+        "weights",
+        "denominator",
+        "simulation_vs_proof"
+      ],
+      "block_ids": [
+        "L14-B09",
+        "L14-B10"
+      ],
+      "minutes": 6,
+      "has_r": true,
+      "prompt_md": "On dispose des six observations `g <- c(\"A\",\"A\",\"A\",\"A\",\"B\",\"B\")` et\n`y <- c(0,2,4,6,10,14)`. On choisit une ligne uniformément au hasard.\nDécomposer la variance empirique de `y`, avec le diviseur 6, en variance\nintragroupe et variance des moyennes de groupe. Vérifier l’identité en R.\nPourquoi donner un poids $1/2$ à chaque groupe répondrait-il à une autre\nquestion ?",
+      "correction_md": "Les poids sont $w_A=4/6=2/3$ et $w_B=2/6=1/3$. Les moyennes sont 3 et 12,\nles variances empiriques internes, calculées avec le diviseur du groupe,\nvalent 5 et 4. La moyenne globale est 6.\n$$V_{\\rm intra}=\\frac23(5)+\\frac13(4)=\\frac{14}3,\\qquad\nV_{\\rm inter}=\\frac23(3-6)^2+\\frac13(12-6)^2=18.$$\nDonc $V_{\\rm totale}=68/3$. Il s’agit de la loi empirique d’une ligne tirée\nuniformément, pas des variances corrigées renvoyées directement par `var`.\n\n```{r L14-V90}\ng <- c(\"A\",\"A\",\"A\",\"A\",\"B\",\"B\")\ny <- c(0,2,4,6,10,14)\nw <- prop.table(table(g))\nm <- tapply(y,g,mean)\nv <- tapply(y,g,function(z) mean((z-mean(z))^2))\nintra <- sum(as.numeric(w)*v[names(w)])\ninter <- sum(as.numeric(w)*(m[names(w)]-mean(y))^2)\ntotal <- mean((y-mean(y))^2)\nstopifnot(isTRUE(all.equal(unname(c(intra,inter,total)),c(14/3,18,68/3))))\nstopifnot(isTRUE(all.equal(unname(intra+inter),total)))\nprint(c(intra=intra,inter=inter,total=total))\n```\n\nDes poids $1/2,1/2$ décriraient une expérience qui tire d’abord un groupe\nuniformément, puis une ligne dans ce groupe. Cette loi artificiellement\néquilibrée n’est pas celle des six lignes équiprobables.",
+      "rubric_fr": [
+        "Choisir les poids 4/6 et 2/6 à partir de l’unité tirée.",
+        "Utiliser les variances internes non corrigées pour cette identité empirique.",
+        "Retrouver 14/3, 18 et 68/3.",
+        "Expliquer le changement de cible induit par des poids égaux."
+      ],
+      "transfer": "Choisir la pondération à partir de la cible, avec des groupes de tailles différentes.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L14-E04; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L14-V91",
+      "lesson_id": "L14",
+      "family": "empirical_total_variance",
+      "for_exercise_ids": [
+        "L14-E04"
+      ],
+      "source_exercise_ids": [
+        "L14-E04"
+      ],
+      "prerequisite_lesson_ids": [
+        "L14"
+      ],
+      "error_tags": [
+        "r_parameterization",
+        "weights",
+        "denominator",
+        "simulation_vs_proof"
+      ],
+      "block_ids": [
+        "L14-B09",
+        "L14-B10"
+      ],
+      "minutes": 5,
+      "has_r": true,
+      "prompt_md": "Dans une population, les groupes A et B sont équiprobables. L’échantillon\nobservé contient seulement `g <- c(\"A\",\"A\",\"A\")` et `y <- c(1,2,3)`.\nCalculer la décomposition intra/inter de la variance de la loi empirique.\nPeut-on en déduire la variance de la population en donnant à B une moyenne\net une variance nulles ? Justifier et vérifier la partie calculable en R.",
+      "correction_md": "Pour la loi empirique, A a poids 1, la moyenne vaut 2, la variance interne\nvaut $2/3$ et la variance intergroupe vaut 0. On ne crée pas une catégorie\nobservée fictive en B.\n\n```{r L14-V91}\ng <- c(\"A\",\"A\",\"A\"); y <- c(1,2,3)\nw <- prop.table(table(g))\nm <- tapply(y,g,mean)\nv <- tapply(y,g,function(z) mean((z-mean(z))^2))\nintra <- sum(as.numeric(w)*v[names(w)])\ninter <- sum(as.numeric(w)*(m[names(w)]-mean(y))^2)\ntotal <- mean((y-mean(y))^2)\nstopifnot(isTRUE(all.equal(unname(c(intra,inter,total)),c(2/3,0,2/3))))\nprint(c(intra=intra,inter=inter,total=total))\n```\n\nDans la population, le poids de B vaut $1/2$, mais ses moments conditionnels\nne sont pas renseignés. Même les moments de A ne sont qu’estimés à partir\nde trois observations. Une absence d’observation n’est pas une réponse de\nvaleur nulle. La décomposition de population reste une identité, mais ces\ndonnées ne suffisent pas à calculer ses termes exacts.",
+      "rubric_fr": [
+        "Séparer les poids empiriques et les probabilités de population.",
+        "Calculer 2/3 pour la variance empirique totale et 0 pour la part intergroupe.",
+        "Nommer les moments conditionnels non identifiés.",
+        "Refuser de remplacer une information absente par zéro."
+      ],
+      "transfer": "Reconnaître qu’une catégorie absente laisse la cible de population non identifiée.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L14-E04; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L14-V92",
+      "lesson_id": "L14",
+      "family": "joint_triangle_conditioning",
+      "for_exercise_ids": [
+        "L14-E02"
+      ],
+      "source_exercise_ids": [
+        "L14-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L14"
+      ],
+      "error_tags": [
+        "support",
+        "normalization",
+        "conditioning_direction",
+        "formal_language"
+      ],
+      "block_ids": [
+        "L14-B01",
+        "L14-B02",
+        "L14-B03",
+        "L14-B04",
+        "L14-B05",
+        "L14-B06"
+      ],
+      "minutes": 6,
+      "has_r": false,
+      "prompt_md": "Un couple a pour densité $f(x,y)=c(x+y)\\mathbf1_{\\{0<x<1,\\ 0<y<1\\}}$.\nDéterminer c, les deux densités marginales et celle de $Y\\mid X=x$.\nCalculer $\\mathbb E[Y\\mid X=x]$ et retrouver $\\mathbb E[Y]$ par intégration\ncontre la loi de X. Un support rectangulaire suffit-il à rendre X et Y\nindépendantes ? Pour conclure, on pourra comparer les probabilités de\n$\\{X<1/2,\\ Y<1/2\\}$ et le produit des deux probabilités marginales.",
+      "correction_md": "L’intégrale de $x+y$ sur le carré unité vaut $1/2+1/2=1$, donc $c=1$.\nLes marginales sont $f_X(x)=x+1/2$ sur $(0,1)$ et $f_Y(y)=y+1/2$\nsur $(0,1)$, nulles ailleurs.\nPour $0<x<1$,\n$$f_{Y\\mid X=x}(y)=\\frac{x+y}{x+1/2}\\mathbf1_{\\{0<y<1\\}},\\qquad\n\\mathbb E[Y\\mid X=x]=\\frac{x/2+1/3}{x+1/2}.$$\nLa densité conditionnelle s’intègre à 1; son dénominateur est une densité\nmarginale positive et non une probabilité ponctuelle.\nL’espérance totale donne\n$$\\mathbb E[Y]=\\int_0^1\\frac{x/2+1/3}{x+1/2}(x+1/2)\\,dx\n=\\frac14+\\frac13=\\frac7{12}.$$\n\nLa probabilité du petit carré est $1/8$, alors que\n$\\mathbb P(X<1/2)=\\mathbb P(Y<1/2)=3/8$, de produit $9/64$.\nLe couple est dépendant. La forme rectangulaire du support est compatible\navec l’indépendance, mais ne démontre pas la factorisation de la densité.",
+      "rubric_fr": [
+        "Normaliser la densité jointe sur son support.",
+        "Calculer les deux marginales et normaliser la densité conditionnelle.",
+        "Calculer la moyenne conditionnelle puis retrouver 7/12 par espérance totale.",
+        "Réfuter l’indépendance par deux événements, malgré le support rectangulaire."
+      ],
+      "transfer": "Ne pas déduire l’indépendance de la forme du support; vérifier la loi jointe et les probabilités.",
+      "provenance_fr": "Exercice original créé pour combler une lacune de rubrique de L14-E02, confirmée par la revue indépendante."
+    },
+    {
+      "id": "L15-V90",
+      "lesson_id": "L15",
+      "family": "regression_t_f_interval",
+      "for_exercise_ids": [
+        "L15-E03"
+      ],
+      "source_exercise_ids": [
+        "L15-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L15"
+      ],
+      "error_tags": [
+        "degrees_freedom",
+        "null_law",
+        "pvalue",
+        "formal_language"
+      ],
+      "block_ids": [
+        "L15-B01",
+        "L15-B07",
+        "L15-B08"
+      ],
+      "minutes": 4,
+      "has_r": true,
+      "prompt_md": "Dans le modèle de régression simple à plan fixe non constant, avec intercept\net erreurs indépendantes de loi $\\mathcal N(0,\\sigma^2)$, $\\sigma>0$, on a\n$n=10$, $\\widehat b_1=-2$ et une erreur standard de 1.\nL’alternative $H_1:b_1>0$ a été choisie avant l’observation; on teste $H_0:b_1=0$\nau seuil 10 %. Un camarade calcule $F=t^2=4$ et conclut au rejet avec la\np-valeur de Fisher. Examiner cette conclusion, puis vérifier en R.",
+      "correction_md": "La statistique signée vaut $t=-2$ et a sous $H_0$ une loi de Student à 8\ndegrés de liberté. Pour l’alternative positive, la p-valeur est\n$\\mathbb P(T_8\\ge -2)$, proche de $0{,}960$; on ne rejette pas au seuil 10 %.\nLa p-valeur de $F=4$ à $(1,8)$ degrés de liberté correspond au test\nbilatéral $b_1\\ne0$, pas au test directionnel choisi.\n\n```{r L15-V90}\nt_obs <- -2; ddl <- 8\np_direction <- pt(t_obs,df=ddl,lower.tail=FALSE)\np_bilateral <- 2*pt(-abs(t_obs),df=ddl)\np_F <- pf(t_obs^2,df1=1,df2=ddl,lower.tail=FALSE)\nstopifnot(p_direction>.9,p_bilateral<.1)\nstopifnot(isTRUE(all.equal(p_F,p_bilateral)))\nprint(c(p_direction=p_direction,p_bilateral=p_bilateral,p_F=p_F))\n```\n\nLe carré efface le signe. On ne choisit pas après observation une alternative\nqui rendrait le résultat significatif.",
+      "rubric_fr": [
+        "Conserver le signe négatif de la statistique.",
+        "Choisir la queue droite pour l’alternative positive.",
+        "Relier F=t² au test bilatéral uniquement dans ce modèle.",
+        "Conclure sans changer l’alternative après observation."
+      ],
+      "transfer": "Distinguer test directionnel et identité F=t², même quand les décisions diffèrent.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L15-E03; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L15-V91",
+      "lesson_id": "L15",
+      "family": "regression_scope",
+      "for_exercise_ids": [
+        "L15-E01"
+      ],
+      "source_exercise_ids": [
+        "L15-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L15"
+      ],
+      "error_tags": [
+        "error_vs_residual",
+        "r2_scope",
+        "hypotheses",
+        "causality"
+      ],
+      "block_ids": [
+        "L15-B01",
+        "L15-B02",
+        "L15-B06",
+        "L15-B10"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Une régression avec intercept donne $R^2=0{,}95$, des résidus de somme nulle\net un Q-Q plot presque aligné. Dans l’ordre chronologique, les résidus\nalternent régulièrement de signe. Un rapport conclut : « Les erreurs\nindépendantes sont vérifiées, 95 % des prochaines observations seront bien\nprédites et augmenter X améliorera Y. »\nRéécrire le résultat, nommer deux contrôles encore nécessaires et expliquer\npourquoi la somme nulle n’est pas un test du modèle.",
+      "correction_md": "La somme nulle est une identité de l’ajustement MCO avec intercept.\nElle concerne les résidus calculés avec des coefficients estimés; elle ne\nvérifie pas que les erreurs vraies sont indépendantes ou centrées dans la\npopulation. Les résidus ajustés sont en général dépendants.\n\nLe $R^2$ décrit ici 95 % de variabilité empirique expliquée sur l’échantillon\nd’ajustement. Il ne fournit ni un taux de bonnes prédictions individuelles\nni une garantie sur de nouvelles observations.\nLe Q-Q plot soutient au mieux une plausibilité de forme marginale normale.\nL’alternance chronologique invite à examiner une dépendance sérielle,\npar exemple avec un graphique des résidus dans le temps; il faut aussi\nexaminer la forme de la moyenne et la variance selon les valeurs ajustées.\n\n« Sur ces données, le modèle explique 95 % de la dispersion autour de la\nmoyenne. Les diagnostics temporels et de dispersion restent à examiner.\nLa pente décrit une association avec la moyenne de Y; aucune amélioration\ncausale ni performance future n’est établie par ces seuls résultats. »",
+      "rubric_fr": [
+        "Séparer identité algébrique des résidus et hypothèse sur les erreurs.",
+        "Limiter R² à l’échantillon et à la variabilité expliquée.",
+        "Identifier le problème temporel et un autre diagnostic pertinent.",
+        "Rédiger une conclusion sans garantie prédictive ni causalité ajoutée."
+      ],
+      "transfer": "Choisir des diagnostics devant un indice temporel concret, au-delà d’un Q-Q plot rassurant.",
+      "provenance_fr": "Exercice original créé pour combler une lacune de rubrique de L15-E01, confirmée par la revue indépendante."
+    },
+    {
+      "id": "L15-V92",
+      "lesson_id": "L15",
+      "family": "ols_derivation",
+      "for_exercise_ids": [
+        "L15-E02"
+      ],
+      "source_exercise_ids": [
+        "L15-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L15"
+      ],
+      "error_tags": [
+        "proof_circular",
+        "unique_minimum",
+        "units",
+        "mean_vs_individual"
+      ],
+      "block_ids": [
+        "L15-B03",
+        "L15-B04",
+        "L15-B05",
+        "L15-B06",
+        "L15-B07"
+      ],
+      "minutes": 6,
+      "has_r": false,
+      "prompt_md": "Pour les trois observations $(x_i,y_i)=(0,0),(1,1),(2,4)$ et les poids\n$w_i=1,2,1$, on minimise\n$$Q(u,v)=\\sum_{i=1}^3 w_i(y_i-u-vx_i)^2.$$\nÉtablir les deux équations normales, trouver le minimum et montrer son\nunicité par une somme de carrés. Calculer la somme résiduelle pondérée\nminimale. Les moyennes non pondérées donnent-elles ici la même constante ?\nAucune normalité n’est supposée.",
+      "correction_md": "Les équations normales sont\n$\\sum w_i(y_i-u-vx_i)=0$ et\n$\\sum w_ix_i(y_i-u-vx_i)=0$.\nIci $\\sum w_i=4$, $\\sum w_ix_i=4$, $\\sum w_iy_i=6$,\n$\\sum w_ix_i^2=6$ et $\\sum w_ix_iy_i=10$.\nOn résout donc $4u+4v=6$ et $4u+6v=10$, d’où\n$\\widehat v=2$ et $\\widehat u=-1/2$.\n\nLes résidus sont $1/2,-1/2,1/2$, donc la somme résiduelle pondérée vaut 1.\nPour $a=u-\\widehat u$ et $b=v-\\widehat v$, les équations normales annulent\nles termes croisés :\n$$Q(u,v)-Q(\\widehat u,\\widehat v)=\\sum_i w_i(a+bx_i)^2\n=4(a+b)^2+2b^2.$$\nCette quantité est strictement positive dès que $(a,b)\\ne(0,0)$, ce qui\nprouve l’unicité globale.\n\nLes moyennes pondérées valent $\\bar x_w=1$ et $\\bar y_w=3/2$.\nLes moyennes non pondérées conduiraient à une constante $-1/3$ et à un\nautre problème de minimisation. La preuve du minimum utilise des carrés\net des poids positifs, sans loi normale. Une inférence statistique sur\nles coefficients exigerait des hypothèses supplémentaires.",
+      "rubric_fr": [
+        "Dériver les deux équations en conservant les poids.",
+        "Résoudre le système et retrouver pente 2, constante -1/2 et RSS pondérée 1.",
+        "Annuler les termes croisés puis prouver une positivité stricte.",
+        "Distinguer minimum algébrique, pondération de la cible et hypothèses d’inférence."
+      ],
+      "transfer": "Adapter la démonstration MCO à une pondération positive au lieu de recopier des moyennes ordinaires.",
+      "provenance_fr": "Exercice original créé pour combler une lacune de rubrique de L15-E02, confirmée par la revue indépendante."
+    },
+    {
+      "id": "L15-V93",
+      "lesson_id": "L15",
+      "family": "ols_derivation",
+      "for_exercise_ids": [
+        "L15-E02"
+      ],
+      "source_exercise_ids": [
+        "L15-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L15"
+      ],
+      "error_tags": [
+        "proof_circular",
+        "unique_minimum",
+        "units",
+        "mean_vs_individual"
+      ],
+      "block_ids": [
+        "L15-B03",
+        "L15-B04",
+        "L15-B05",
+        "L15-B06",
+        "L15-B07"
+      ],
+      "minutes": 6,
+      "has_r": false,
+      "prompt_md": "Les trois observations sont $(x_i,y_i)=(4,1),(4,2),(4,6)$.\nPour une droite avec intercept, dériver les deux équations normales.\nExiste-t-il un minimum de $Q(u,v)=\\sum_i(y_i-u-vx_i)^2$ ?\nEst-il unique ? Justifier par un carré complété, puis dire ce qui est\nidentifiable pour $x=4$ et pour une prédiction à $x=5$.",
+      "correction_md": "Les équations sont $3u+12v=9$ et $12u+48v=36$; la seconde est quatre\nfois la première. Les deux coefficients ne sont pas identifiables séparément.\nPuisque la moyenne de Y vaut 3,\n$$Q(u,v)=\\sum_i(y_i-3)^2+3(u+4v-3)^2\n=14+3(u+4v-3)^2.$$\nLe minimum existe et vaut 14. Il est atteint pour chaque couple\n$u=3-4v$, avec v arbitraire. Il n’est donc pas unique.\n\nToutes ces droites ajustent la même valeur 3 au point observé $x=4$.\nPour $x=5$, elles donnent $u+5v=3+v$, valeur arbitraire sans contrainte\nsupplémentaire. Ici $S_{xx}=0$; on ne divise pas par cette quantité.\nL’absence d’unicité des coefficients ne signifie pas l’absence d’un\nminimum ni l’absence d’une valeur ajustée déterminée sur le plan observé.",
+      "rubric_fr": [
+        "Repérer la dépendance des deux équations normales.",
+        "Compléter le carré et obtenir le minimum 14.",
+        "Décrire exactement tous les minimisateurs.",
+        "Séparer valeur ajustée identifiable et extrapolation non identifiée."
+      ],
+      "transfer": "Distinguer existence du minimum, unicité des coefficients et identification d’une prédiction hors du plan observé.",
+      "provenance_fr": "Exercice original créé pour combler une lacune de rubrique de L15-E02, confirmée par la revue indépendante."
+    },
+    {
+      "id": "L16-V90",
+      "lesson_id": "L16",
+      "family": "multiple_explained_variance",
+      "for_exercise_ids": [
+        "L16-E03"
+      ],
+      "source_exercise_ids": [
+        "L16-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L16"
+      ],
+      "error_tags": [
+        "hypotheses",
+        "cross_term",
+        "r2_scope"
+      ],
+      "block_ids": [
+        "L16-B02",
+        "L04-B06",
+        "L04-B16",
+        "L14-B03"
+      ],
+      "minutes": 6,
+      "has_r": false,
+      "prompt_md": "Deux variables centrées $X_1,X_2$ ont chacune variance 1 et covariance\n$0{,}8$. On pose $Y=X_1-X_2+\\varepsilon$, où $\\varepsilon$ est centrée,\nindépendante du couple, de variance $0{,}6$. Calculer $\\mathbb V(Y)$, la part\nde variance expliquée par les deux prédicteurs ensemble et\n$\\rho_{X_1,Y}^2+\\rho_{X_2,Y}^2$. Cette somme représente-t-elle la part\nexpliquée ? Interpréter l’écart sans conclusion causale.",
+      "correction_md": "La variance du signal est\n$\\mathbb V(X_1-X_2)=1+1-2(0{,}8)=0{,}4$.\nL’indépendance de l’erreur donne $\\mathbb V(Y)=0{,}4+0{,}6=1$.\nLa moyenne conditionnelle est $X_1-X_2$; la proportion expliquée vaut donc\n$0{,}4/1=0{,}4$.\n\nOn a $\\operatorname{Cov}(X_1,Y)=1-0{,}8=0{,}2$ et\n$\\operatorname{Cov}(X_2,Y)=0{,}8-1=-0{,}2$. Les trois variances étant égales\nà 1, les corrélations valent $0{,}2$ et $-0{,}2$, et leur somme de carrés\nvaut $0{,}08$. Elle n’est pas égale à $0{,}4$.\n\nLe terme croisé dans la variance du signal vaut $-1{,}6$. Une forte\nassociation entre les prédicteurs peut masquer, dans leurs associations\nmarginales avec Y, l’information de leur combinaison. La somme des carrés\ndes corrélations marginales n’est pas une formule générale de variance\nexpliquée; aucun effet causal n’est établi.",
+      "rubric_fr": [
+        "Conserver le terme croisé négatif dans la variance du signal.",
+        "Utiliser l’indépendance et le centrage de l’erreur pour la moyenne conditionnelle.",
+        "Trouver 1, 0,4 et 0,08 pour les trois objets demandés.",
+        "Expliquer pourquoi des corrélations marginales faibles peuvent cacher une combinaison informative."
+      ],
+      "transfer": "Identifier un cas de compensation entre prédicteurs corrélés au lieu d’additionner les corrélations marginales.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L16-E03; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L16-V91",
+      "lesson_id": "L16",
+      "family": "multiple_explained_variance",
+      "for_exercise_ids": [
+        "L16-E03"
+      ],
+      "source_exercise_ids": [
+        "L16-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L16"
+      ],
+      "error_tags": [
+        "hypotheses",
+        "cross_term",
+        "r2_scope"
+      ],
+      "block_ids": [
+        "L16-B02",
+        "L04-B11",
+        "L04-B16",
+        "L14-B03"
+      ],
+      "minutes": 6,
+      "has_r": false,
+      "prompt_md": "$X_1$ est uniforme sur $\\{-1,0,1\\}$ et $X_2=X_1^2$. On donne\n$\\mathbb V(X_1)=2/3$, $\\mathbb V(X_2)=2/9$ et\n$\\operatorname{Cov}(X_1,X_2)=0$. On pose\n$Y=X_1+3X_2+\\varepsilon$, avec $\\varepsilon$ centrée, indépendante du couple,\nde variance $4/3$. La somme des carrés des corrélations marginales\nreprésente-t-elle cette fois la part expliquée ? Vérifier aussi que les\ndeux prédicteurs ne sont pas indépendants.",
+      "correction_md": "La variance du signal vaut $2/3+9(2/9)=8/3$ et\n$\\mathbb V(Y)=8/3+4/3=4$. La part expliquée est donc $2/3$.\n\nLes covariances avec Y valent toutes deux $2/3$. Ainsi\n$$\\rho_{X_1,Y}^2=\\frac{(2/3)^2}{(2/3)4}=\\frac16,\\qquad\n\\rho_{X_2,Y}^2=\\frac{(2/3)^2}{(2/9)4}=\\frac12.$$\nLa somme vaut bien $2/3$. La covariance nulle des prédicteurs suffit à\nfaire disparaître le terme croisé dans ce modèle; leur indépendance\nn’était pas nécessaire à ce calcul.\n\nPourtant $\\mathbb P(X_1=0,X_2=0)=1/3$, tandis que\n$\\mathbb P(X_1=0)\\mathbb P(X_2=0)=1/9$. Ils sont donc dépendants. La conclusion\nporte sur la variance expliquée par cette moyenne conditionnelle, pas sur\nun lien causal.",
+      "rubric_fr": [
+        "Calculer les variances 8/3 et 4.",
+        "Retrouver les carrés de corrélation 1/6 et 1/2.",
+        "Employer la covariance nulle sans imposer une indépendance inutile.",
+        "Exhiber deux événements qui réfutent l’indépendance."
+      ],
+      "transfer": "Reconnaître la suffisance de la non-corrélation malgré une dépendance fonctionnelle.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L16-E03; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L16-V92",
+      "lesson_id": "L16",
+      "family": "partial_association_causal_scope",
+      "for_exercise_ids": [
+        "L16-E01"
+      ],
+      "source_exercise_ids": [
+        "L16-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L16",
+        "L17"
+      ],
+      "error_tags": [
+        "partial_effect",
+        "units",
+        "causality",
+        "formal_language"
+      ],
+      "block_ids": [
+        "L16-B01",
+        "L16-B05",
+        "L17-B05"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "Le temps moyen de réponse, en millisecondes, est modélisé par\n$$\\mathbb E[Y\\mid X=x,Z=z]=10+2x-3z+4xz,$$\noù $X$ est un score et $Z\\in\\{0,1\\}$ un groupe. Une phrase affirme :\n« Un point de X ajoute deux millisecondes, à groupe fixé. »\nCorriger cette phrase, expliquer le coefficient 2 et préciser la limite\ncausale de cette interprétation.",
+      "correction_md": "À groupe fixé, la différence de moyenne associée à un point de X vaut\n$2+4z$ millisecondes, donc 2 dans le groupe $Z=0$ et 6 dans le groupe $Z=1$.\nLe coefficient 2 est la pente pour la catégorie de référence $Z=0$.\nLe terme d’interaction signifie que la pente dépend du groupe.\n\nUne formulation correcte est : « Selon ce modèle, à groupe fixé, un point\nsupplémentaire du score est associé à une différence de temps moyen de\n2 ms dans le groupe de référence et de 6 ms dans l’autre groupe. »\nCe sont des différences conditionnelles modélisées; une intervention\ncausale sur le score ne découle pas de la seule équation.",
+      "rubric_fr": [
+        "Calculer la différence de moyenne 2+4z.",
+        "Interpréter le coefficient principal dans la catégorie de référence.",
+        "Donner les unités et nommer l’interaction.",
+        "Employer une formulation d’association conditionnelle, sans causalité ajoutée."
+      ],
+      "transfer": "Adapter une phrase standard lorsqu’une interaction rend le coefficient principal conditionnel.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L16-E01; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L16-V93",
+      "lesson_id": "L16",
+      "family": "covariance_system_omission",
+      "for_exercise_ids": [
+        "L16-E02"
+      ],
+      "source_exercise_ids": [
+        "L16-E02"
+      ],
+      "prerequisite_lesson_ids": [
+        "L16"
+      ],
+      "error_tags": [
+        "covariance_expansion",
+        "full_rank",
+        "omitted_variable",
+        "formal_language"
+      ],
+      "block_ids": [
+        "L16-B03",
+        "L04-B16"
+      ],
+      "minutes": 4,
+      "has_r": false,
+      "prompt_md": "On vous propose la matrice de covariance\n$K=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$ et le vecteur\n$c=(1,0)^\\top$ pour résoudre les équations normales de population $K\\beta=c$.\nLa matrice est inversible. Cela suffit-il à rendre le problème\nprobabilistiquement cohérent ? Calculer la solution algébrique et rechercher\nune contradiction à l’aide d’une variance ou de Cauchy-Schwarz.",
+      "correction_md": "Le déterminant vaut $-3$ et la solution algébrique est\n$\\beta=(-1/3,2/3)^\\top$. Mais une matrice de covariance doit être\npositive semi-définie.\n\nIci, si K était celle de $(X_1,X_2)$, on aurait\n$\\mathbb V(X_1-X_2)=1+1-2(2)=-2$, ce qui est impossible.\nOn peut aussi constater\n$|\\operatorname{Cov}(X_1,X_2)|=2>\\sqrt1\\sqrt1=1$.\nLes données proposées ne décrivent donc aucun tel couple aléatoire.\nL’inversibilité rend le système linéaire soluble; elle ne rend pas une\nmatrice arbitraire admissible comme covariance.",
+      "rubric_fr": [
+        "Résoudre correctement le système inversible.",
+        "Contrôler l’admissibilité d’une matrice de covariance.",
+        "Produire une variance négative ou une violation explicite de Cauchy-Schwarz.",
+        "Séparer existence algébrique et existence probabiliste."
+      ],
+      "transfer": "Vérifier l’admissibilité des moments avant d’interpréter une solution des équations normales.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L16-E02; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L17-V90",
+      "lesson_id": "L17",
+      "family": "factor_reference",
+      "for_exercise_ids": [
+        "L17-E01"
+      ],
+      "source_exercise_ids": [
+        "L17-E01"
+      ],
+      "prerequisite_lesson_ids": [
+        "L17"
+      ],
+      "error_tags": [
+        "reference_level",
+        "coefficient_interpretation",
+        "causality"
+      ],
+      "block_ids": [
+        "L17-B01",
+        "L17-B05"
+      ],
+      "minutes": 5,
+      "has_r": false,
+      "prompt_md": "Avec A comme groupe de référence, le modèle ajusté est\n$$\\widehat m(x,g)=10+2x+3\\mathbf1_{\\{g=B\\}}-x\\mathbf1_{\\{g=B\\}}.$$\nDonner la différence B moins A pour $x=0$ puis pour $x=5$. Réécrire\nexactement le même modèle avec B comme référence. Le coefficient de groupe\nest-il une différence constante pour tout x ?",
+      "correction_md": "Les moyennes ajustées sont $10+2x$ pour A et $13+x$ pour B. Le contraste\nB moins A vaut $3-x$, soit 3 en $x=0$ et $-2$ en $x=5$.\n\nAvec B comme référence, le même modèle s’écrit\n$$\\widehat m(x,g)=13+x-3\\mathbf1_{\\{g=A\\}}+x\\mathbf1_{\\{g=A\\}}.$$\nLes valeurs ajustées restent identiques pour chaque paire $(x,g)$.\nLe coefficient de groupe $-3$ décrit A moins B en $x=0$; l’interaction\nfait varier le contraste avec x. Ni le changement de référence ni cette\nassociation conditionnelle ne démontrent un effet causal.",
+      "rubric_fr": [
+        "Écrire les deux fonctions affines par groupe.",
+        "Calculer les contrastes 3 et -2.",
+        "Changer simultanément intercept, pente, coefficient de groupe et interaction.",
+        "Interpréter le coefficient de groupe au point x=0, sans généraliser à tout x."
+      ],
+      "transfer": "Changer de référence dans un modèle avec interaction, où le contraste n’est pas constant.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L17-E01; aucun sujet réservé utilisé."
+    },
+    {
+      "id": "L17-V91",
+      "lesson_id": "L17",
+      "family": "bootstrap_unit_selection",
+      "for_exercise_ids": [
+        "L17-E03"
+      ],
+      "source_exercise_ids": [
+        "L17-E03"
+      ],
+      "prerequisite_lesson_ids": [
+        "L17"
+      ],
+      "error_tags": [
+        "bootstrap_unit",
+        "pairing",
+        "interval_product",
+        "full_rank"
+      ],
+      "block_ids": [
+        "L17-B04",
+        "L10-B12",
+        "L10-B13"
+      ],
+      "minutes": 6,
+      "has_r": false,
+      "prompt_md": "Trois participants indépendants ont respectivement 3, 1 et 2 mesures.\nLeurs moyennes individuelles valent 0, 12 et 6. La cible est le temps\nmoyen d’un participant tiré uniformément parmi les participants, puis\nmoyenné sur ses propres mesures. Calculer l’estimation correspondante\net la moyenne de toutes les lignes.\n\nPour un bootstrap par participants, un tirage donne A, A, C. Quelle\nstatistique faut-il recalculer ? Pourquoi empiler les lignes des grappes\ntirées puis prendre une seule moyenne changerait-il les poids ?\nCes trois participants suffisent-ils à justifier un intervalle fiable ?",
+      "correction_md": "Pour une pondération égale des participants, l’estimation est\n$(0+12+6)/3=6$. La moyenne des six lignes est\n$(3(0)+1(12)+2(6))/6=4$, car elle pondère davantage les participants ayant\nplus de mesures.\n\nDans le tirage A, A, C, il faut conserver les deux occurrences de A et\ncalculer $(0+0+6)/3=2$. Empiler les lignes, avec les occurrences répétées,\nproduirait huit lignes et une moyenne $(3(0)+3(0)+2(6))/8=1{,}5$.\n\nLe tirage par grappes préserve les dépendances internes, mais il ne décide\npas à lui seul de la pondération de la statistique. L’unité indépendante\net l’estimande doivent toutes deux guider l’algorithme. Dédupliquer A\nmodifierait encore le tirage. Ce petit exemple vérifie une logique de\ncalcul; trois participants ne fournissent pas une justification générale\nde précision ou de bonne couverture d’un intervalle bootstrap.",
+      "rubric_fr": [
+        "Distinguer moyenne des participants et moyenne des lignes.",
+        "Conserver la multiplicité d’un participant tiré plusieurs fois.",
+        "Retrouver 6 et 4, puis 2 et 1,5.",
+        "Relier les poids à la cible et limiter les conclusions du très petit exemple."
+      ],
+      "transfer": "Choisir à la fois l’unité de rééchantillonnage et la pondération de l’estimande.",
+      "provenance_fr": "Exercice original dérivé de la compétence travaillée en L17-E03; aucun sujet réservé utilisé."
+    }
+  ]
+}

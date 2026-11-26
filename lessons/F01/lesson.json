@@ -1,0 +1,397 @@
+{
+  "schema_version": "2.0.0",
+  "lesson_id": "F01",
+  "minutes": 90,
+  "source_refs": [
+    {
+      "source_id": "st09",
+      "locator": "PDF p.7, « Consignes pour l’écrit réflexif »",
+      "use_fr": "Reprendre l’exigence de vocabulaire exact et de conception corrigée, sans rédiger l’écrit personnel demandé en soutien."
+    },
+    {
+      "source_id": "st10_sondages",
+      "locator": "PDF p.1, questions : aléatoire, choisi, inconnu mais non aléatoire; interprétation de tests de proportion",
+      "use_fr": "Distinguer paramètre, hasard d’échantillonnage et décision; aucune reprise des articles comme autorité mathématique."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-017, PS1-064 à PS1-075, PS1-114 à PS1-121, PS1-128, PS1-132, PS1-139 à PS1-160, PS1-170, PS1-181 à PS1-190, PS1-197 à PS1-264",
+      "use_fr": "Banque de réparations originales des concepts et méthodes déjà travaillés."
+    },
+    {
+      "source_id": "ctd10",
+      "locator": "E1 Q1-Q4, lignes 35-149",
+      "use_fr": "Omission et interprétation conditionnelle."
+    },
+    {
+      "source_id": "tp04",
+      "locator": "Parties II-IV, lignes 154-391",
+      "use_fr": "Échantillon commun, médiation et bootstrap."
+    }
+  ],
+  "blocks": [],
+  "exercises": [
+    {
+      "id": "F01-E01",
+      "title_fr": "Classer les erreurs et affecter le temps",
+      "prompt_md": "Utiliser uniquement les tentatives que vous avez réellement produites et choisi de revoir. Cette séance ne fournit ni ne demande d’ouvrir un sujet réservé. Pendant 25 minutes : 5 minutes pour repérer les réponses incomplètes ou contradictoires; 10 minutes pour examiner deux ou trois erreurs à forte confiance; 10 minutes pour choisir quatre créneaux de réparation parmi les sept propositions.\n\nClasser chaque erreur : concept, hypothèse, méthode, calcul, R, rédaction, gestion du temps. Écrire la première ligne où le raisonnement devient invalide et une action observable qui montrerait la réparation. Si aucune tentative n’est disponible, conserver la mention « non évalué » et choisir quatre problèmes originaux parmi E02-E08 comme diagnostic de réparation (E02-E05 par défaut), sans inventer un résultat.\n\n| Réponse réellement disponible | Première étape invalide | Type d’erreur | Bloc de référence | Tâche choisie, sans réponse consultée |\n|:--|:--|:--|:--|:--|\n| | | | | |\n| | | | | |\n| | | | | |",
+      "correction_md": "La correction de ce protocole porte sur la qualité de la décision, pas sur un diagnostic prérempli. Une entrée utile ressemble à : « J’ai remplacé $\\mathbb P(A\\mid B)$ par $\\mathbb P(B\\mid A)$ sans justifier; erreur de direction du conditionnement; reconstruire un arbre puis répondre à E02. » Elle localise l’erreur et définit une action nouvelle.\n\nPrioriser une confusion conceptuelle répétée ou une hypothèse oubliée à forte confiance avant une faute d’arrondi isolée. Un problème déjà corrigé et recopié ne constitue pas le test de réparation. Si la tâche choisie a déjà été vue avec sa solution, la remplacer dans le même créneau par une variante encore non tentée, ou indiquer honnêtement que le rappel est assisté. Ne pas rédiger à la place de l’étudiant son bilan personnel de soutien.",
+      "minutes": 25,
+      "kind": "writing",
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "rubric_fr": [
+        "S’appuyer sur une trace existante ou marquer non évalué",
+        "Localiser l’étape invalide",
+        "Différencier cause conceptuelle et symptôme de calcul",
+        "Affecter exactement quatre créneaux parmi sept propositions sans ajouter du temps"
+      ],
+      "error_tags": [
+        "error_triage",
+        "unsupported_mastery",
+        "time_budget"
+      ],
+      "has_r": false,
+      "family": "repair_triage"
+    },
+    {
+      "id": "F01-E02",
+      "title_fr": "Proposition 1 : raisonner avec un signal imparfait",
+      "prompt_md": "Une surveillance automatique détecte un incident réel avec probabilité 0,9. Elle émet aussi une alerte avec probabilité 0,06 lorsqu’il n’y a pas d’incident. La probabilité d’un incident est 0,03. Définir les événements, calculer la probabilité d’une alerte et celle d’un incident sachant une alerte. Sur 100 situations de mêmes probabilités marginales, quel nombre moyen d’alertes attend-on ? Où l’indépendance serait-elle nécessaire ?\n\nUtiliser 6 minutes de tentative, 3 de correction et 1 de rappel. Si cette famille est déjà maîtrisée sur une trace indépendante, remplacer ce créneau par une variante ciblée de L02-L04, de durée compatible.",
+      "correction_md": "Poser $D=\\{$incident$\\}$ et $A=\\{$alerte$\\}$. Les probabilités données sont $\\mathbb P(D)=0{,}03$, $\\mathbb P(A\\mid D)=0{,}9$ et $\\mathbb P(A\\mid D^c)=0{,}06$. Donc\n$$\\mathbb P(A)=0{,}9(0{,}03)+0{,}06(0{,}97)=0{,}0852,$$\n$$\\mathbb P(D\\mid A)=\\frac{0{,}027}{0{,}0852}=\\frac{45}{142}\\simeq0{,}3169.$$\nLe nombre d’alertes $N=\\sum_{i=1}^{100}\\mathbf1_{A_i}$ a espérance $100(0{,}0852)=8{,}52$. Cette linéarité ne nécessite pas l’indépendance des situations. L’indépendance serait nécessaire pour conclure directement à une loi binomiale du nombre d’alertes ou additionner leurs variances sans covariances. Un nombre moyen non entier n’est pas une prédiction certaine d’un comptage.",
+      "minutes": 10,
+      "kind": "math",
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.expected_count"
+      ],
+      "topic_ids": [
+        "conditional_prob",
+        "total_prob",
+        "bayes",
+        "expect_linear"
+      ],
+      "rubric_fr": [
+        "Nommer les événements et le sens de chaque condition",
+        "Pondérer les deux causes de l’alerte",
+        "Inverser par Bayes avec le bon dénominateur",
+        "Séparer linéarité et indépendance"
+      ],
+      "error_tags": [
+        "conditioning_direction",
+        "base_rate",
+        "independence"
+      ],
+      "has_r": false,
+      "family": "repair_bayes_count",
+      "budget_role": "select_four_of_seven",
+      "default_selected": true
+    },
+    {
+      "id": "F01-E03",
+      "title_fr": "Proposition 2 : densité, support et changement d’échelle",
+      "prompt_md": "Une durée $X$ a pour densité $f(x)=cx\\,\\mathbf1_{(0,2)}(x)$. Déterminer $c$, $\\mathbb E[X]$, $\\mathbb V(X)$ et $\\mathbb P(X>1)$. Pour $T=3X-1$, déterminer support, espérance et variance; donner aussi sa densité en vérifiant le facteur de changement de variable.\n\nRépartir les 10 minutes en 6 de tentative, 3 de correction, 1 de rappel. Variante possible : L03 ou L04 selon l’erreur observée.",
+      "correction_md": "La normalisation impose $c\\int_0^2x\\,dx=2c=1$, donc $c=1/2$. Ainsi $\\mathbb E[X]=(1/2)\\int_0^2x^2dx=4/3$, $\\mathbb E[X^2]=(1/2)\\int_0^2x^3dx=2$ et $\\mathbb V(X)=2-16/9=2/9$. La probabilité $\\mathbb P(X>1)=\\int_1^2x/2\\,dx=3/4$.\n\nLe support de $T$ est $(-1,5)$, son espérance vaut 3 et sa variance $9(2/9)=2$. Pour $-1<t<5$,\n$$f_T(t)=\\frac13f_X\\left(\\frac{t+1}{3}\\right)=\\frac{t+1}{18}.$$\nElle est nulle ailleurs et son intégrale vaut 1. Le facteur $1/3$ est nécessaire; les valeurs de la densité ne sont pas des probabilités ponctuelles.",
+      "minutes": 10,
+      "kind": "math",
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.transformed_moments"
+      ],
+      "topic_ids": [
+        "density",
+        "transform_density",
+        "expectation",
+        "variance",
+        "variance_affine"
+      ],
+      "rubric_fr": [
+        "Normaliser sur le support exact",
+        "Calculer le second moment avant la variance",
+        "Transformer le support et le facteur jacobien",
+        "Ne pas confondre densité et masse"
+      ],
+      "error_tags": [
+        "normalization",
+        "support",
+        "density_vs_probability",
+        "transformation"
+      ],
+      "has_r": false,
+      "family": "repair_density_transform",
+      "budget_role": "select_four_of_seven",
+      "default_selected": true
+    },
+    {
+      "id": "F01-E04",
+      "title_fr": "Proposition 3 : choisir une loi de simulation",
+      "prompt_md": "On veut calculer $I=\\int_0^2e^{-x}\\,dx$. Proposer un estimateur Monte-Carlo fondé sur des uniformes sur $(0,2)$, puis un autre fondé sur des exponentielles de taux 1. Pour chacun, préciser la variable dont on prend la moyenne et l’erreur standard estimée. Programmer les deux avec 5000 tirages, `set.seed(3304)`, puis comparer à la valeur exacte. Une différence entre deux simulations invalide-t-elle une méthode ?\n\n6 minutes de tentative, 3 de correction, 1 de rappel. Une variante de L07 peut remplacer ce créneau.",
+      "correction_md": "Avec $U\\sim\\mathcal U(0,2)$, $I=\\mathbb E[2e^{-U}]$. Avec $V\\sim\\mathcal E(1)$, $I=\\mathbb P(V\\le2)=\\mathbb E[\\mathbf1_{\\{V\\le2\\}}]$. Les moyennes portent donc sur des variables différentes qui ont la même espérance. L’erreur standard estimée est l’écart-type corrigé de cette variable divisé par $\\sqrt n$.\n\n```{r F01-E04}\nset.seed(3304)\nn <- 5000\nz1 <- 2*exp(-runif(n,0,2))\nz2 <- as.numeric(rexp(n,rate=1)<=2)\nI <- 1-exp(-2)\nprint(data.frame(methode=c(\"uniforme\",\"exponentielle\"),\n                 estimation=c(mean(z1),mean(z2)),\n                 erreur_standard=c(sd(z1),sd(z2))/sqrt(n),\n                 valeur_exacte=I))\n```\n\nLes écarts réalisés sont aléatoires. Pour comparer la précision théorique, $\\mathbb V(2e^{-U})=2e^{-2}(1-e^{-2})$ et $\\mathbb V(\\mathbf1_{\\{V\\le2\\}})=e^{-2}(1-e^{-2})$. Le second estimateur a ici une variance deux fois plus faible pour le même nombre de tirages. Un bon changement de loi requiert de réécrire la cible, pas de conserver automatiquement la même fonction.",
+      "minutes": 10,
+      "kind": "R",
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.provided_model_execute"
+      ],
+      "topic_ids": [
+        "mc_integral",
+        "mc_precision",
+        "r_seed"
+      ],
+      "rubric_fr": [
+        "Réécrire la même intégrale sous les deux lois",
+        "Conserver le facteur 2 sous uniforme",
+        "Calculer la dispersion de la variable moyennée",
+        "Distinguer erreur aléatoire et erreur de formule"
+      ],
+      "error_tags": [
+        "monte_carlo_weight",
+        "r_parameterization",
+        "simulation_vs_proof"
+      ],
+      "has_r": true,
+      "family": "repair_monte_carlo_measure",
+      "budget_role": "select_four_of_seven",
+      "default_selected": true
+    },
+    {
+      "id": "F01-E05",
+      "title_fr": "Proposition 4 : paramètre, EMV et intervalle",
+      "prompt_md": "Dix temps d’attente i.i.d. suivent une exponentielle de moyenne inconnue $\\theta>0$. Leur somme observée vaut 20 minutes. Écrire la densité et la log-vraisemblance en fonction de $\\theta$, obtenir l’EMV et vérifier le maximum. Utiliser le pivot $2S/\\theta\\sim\\chi^2_{20}$, où $S$ est la somme aléatoire, pour construire un IC à 95 % de $\\theta$. Interpréter le statut aléatoire avant observation et le résultat après observation.\n\n6 minutes de tentative, 3 de correction, 1 de rappel. Une variante L08-L10 peut remplacer ce créneau.",
+      "correction_md": "Le taux vaut $1/\\theta$, donc $f(x;\\theta)=\\theta^{-1}e^{-x/\\theta}\\mathbf1_{x>0}$. Pour des observations positives, $\\ell(\\theta)=-10\\ln\\theta-20/\\theta$. La dérivée $-10/\\theta+20/\\theta^2$ change de signe en 2, de positive à négative. La log-vraisemblance tend vers $-\\infty$ aux deux bords; le maximum est unique et $\\widehat\\theta=2$ minutes.\n\nÀ partir de $q_{.025}\\le2S/\\theta\\le q_{.975}$, isoler le paramètre positif donne\n$$I(S)=\\left[\\frac{2S}{q_{.975}};\\frac{2S}{q_{.025}}\\right].$$\nIci les bornes sont $40/\\chi^2_{20,.975}$ et $40/\\chi^2_{20,.025}$.\n\n```{r F01-E05}\n40/qchisq(c(.975,.025),df=20)\n```\n\nAvant observation, l’estimateur $S/10$ et les bornes sont aléatoires, le paramètre est fixe. Après observation, l’estimation vaut 2 et l’intervalle est une réalisation de la procédure exacte à 95 % sous le modèle exponentiel i.i.d. Être EMV n’implique pas en général être sans biais; ici c’est la moyenne empirique et sa propriété se démontre par linéarité.",
+      "minutes": 10,
+      "kind": "math",
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.exponential_mean_interval",
+        "comp.ps1.confidence_interval_interpret"
+      ],
+      "topic_ids": [
+        "mle",
+        "likelihood",
+        "ci_definition"
+      ],
+      "rubric_fr": [
+        "Paramétrer par la moyenne et non par le taux",
+        "Vérifier le maximum global",
+        "Inverser correctement les quantiles du pivot",
+        "Distinguer paramètre fixe et bornes aléatoires"
+      ],
+      "error_tags": [
+        "parameterization",
+        "optimum",
+        "pivot_inversion",
+        "coverage"
+      ],
+      "has_r": true,
+      "family": "repair_exponential_inference",
+      "budget_role": "select_four_of_seven",
+      "default_selected": true
+    },
+    {
+      "id": "F01-E06",
+      "title_fr": "Proposition 5 : choisir un test sans son nom dans la question",
+      "prompt_md": "Deux équipes indépendantes exécutent la même tâche dans des environnements différents. Dans A : $n_A=18$, moyenne 12 minutes et écart-type corrigé 3. Dans B : $n_B=24$, moyenne 14 et écart-type corrigé 5. Des distributions normales sont plausibles; l’égalité des variances n’est pas établie. On veut tester, au seuil 5 %, si la moyenne de A est inférieure à celle de B. Choisir une méthode, formuler les hypothèses, calculer sa statistique et conclure avec les limites du résultat. Que faudrait-il revoir si les deux valeurs provenaient des mêmes personnes ?\n\n6 minutes de tentative, 3 de correction, 1 de rappel. Une variante L11-L13 peut remplacer ce créneau.",
+      "correction_md": "On teste $H_0:\\mu_A=\\mu_B$ contre $H_1:\\mu_A<\\mu_B$ avec le test de Welch pour deux échantillons indépendants. Il ne faut pas imposer une variance commune sans justification. La statistique est\n$$t=\\frac{12-14}{\\sqrt{3^2/18+5^2/24}}.$$\nL’approximation de Welch-Satterthwaite utilise\n$$\\nu=\\frac{(3^2/18+5^2/24)^2}{(3^2/18)^2/17+(5^2/24)^2/23}.$$\n\n```{r F01-E06}\nvA <- 3^2/18; vB <- 5^2/24\nt <- (12-14)/sqrt(vA+vB)\nnu <- (vA+vB)^2/(vA^2/17+vB^2/23)\np <- pt(t,df=nu)\nprint(c(difference=12-14,t=t,ddl=nu,p=p))\nstopifnot(p>.05)\n```\n\nLa p-valeur unilatérale dépasse 5 %; on ne rejette pas l’égalité à ce seuil. Cela ne prouve pas que les moyennes sont égales ni que l’écart est négligeable. Le résultat repose sur indépendance, modèle de distribution et approximation des degrés de liberté. Avec les mêmes personnes dans les deux conditions, les données sont appariées; ce test indépendant n’est plus le choix adapté. Il faut étudier la dépendance et une méthode correspondant au plan, sans appliquer aveuglément le cadre présent.",
+      "minutes": 10,
+      "kind": "math",
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.test_select",
+        "comp.ps1.test_interpret"
+      ],
+      "topic_ids": [
+        "choose_test",
+        "hypotheses",
+        "one_two_sided",
+        "pvalue"
+      ],
+      "rubric_fr": [
+        "Identifier indépendance et paramètre de différence",
+        "Orienter l’alternative avant le calcul",
+        "Ne pas supposer des variances égales",
+        "Utiliser la queue gauche et les degrés adaptés",
+        "Interpréter non-rejet et plan apparié"
+      ],
+      "error_tags": [
+        "test_selection",
+        "alternative",
+        "pvalue",
+        "dependence"
+      ],
+      "has_r": true,
+      "family": "repair_test_discrimination",
+      "budget_role": "select_four_of_seven",
+      "default_selected": false
+    },
+    {
+      "id": "F01-E07",
+      "title_fr": "Proposition 6 : test global et coefficient individuel",
+      "prompt_md": "Une régression avec intercept et deux prédicteurs numériques est ajustée sur 30 observations indépendantes, avec rang plein et erreurs normales homoscédastiques. RSS vaut 81 et TSS 135. Pour le coefficient d’intérêt, on observe $\\widehat b_1=-0{,}4$ et une erreur standard de 0,3. Tester séparément la nullité de ce coefficient et la nullité simultanée des deux pentes au seuil 5 %. Calculer $R^2$. Un test global significatif impose-t-il que chaque coefficient soit significatif ? Rédiger une réponse statistique cohérente.\n\n6 minutes de tentative, 3 de correction, 1 de rappel. Choisir L15-V01 ou L16-V01 si les unités ou le rang sont la difficulté prioritaire.",
+      "correction_md": "Les degrés résiduels sont $30-3=27$. Le coefficient individuel donne $t=-0{,}4/0{,}3=-4/3$ et une p-valeur bilatérale $2\\mathbb P(t_{27}\\ge4/3)$. Le test global donne\n$$F=\\frac{(135-81)/2}{81/27}=9,\\qquad R^2=1-81/135=0{,}4.$$\n\n```{r F01-E07}\nt <- -.4/.3\np_individuel <- 2*pt(-abs(t),df=27)\np_global <- pf(9,df1=2,df2=27,lower.tail=FALSE)\nprint(c(t=t,p_individuel=p_individuel,F=9,p_global=p_global,R2=.4))\nstopifnot(p_individuel>.05,p_global<.05)\n```\n\nOn ne rejette pas la nullité du premier coefficient au seuil 5 %, mais on rejette la nullité simultanée des deux pentes. Ces résultats répondent à des questions différentes et ne sont pas contradictoires. Le test global indique qu’au moins un coefficient contribue dans le modèle; il ne dit pas que tous sont non nuls. Les 40 % décrivent une variabilité empirique expliquée, pas 40 % de causalité ou de prédictions individuelles correctes.",
+      "minutes": 10,
+      "kind": "math",
+      "block_ids": [
+        "L15-B06",
+        "L16-B07"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_coefficient_test",
+        "comp.ps1.regression_r2"
+      ],
+      "topic_ids": [
+        "reg_multi_t",
+        "reg_multi_f",
+        "reg_multi_df"
+      ],
+      "rubric_fr": [
+        "Calculer 27 degrés de liberté résiduels",
+        "Utiliser les bonnes queues et hypothèses nulles",
+        "Accepter des conclusions individuelles et globale différentes",
+        "Interpréter R² sur la réponse observée"
+      ],
+      "error_tags": [
+        "degrees_freedom",
+        "global_vs_individual",
+        "pvalue",
+        "r2_scope"
+      ],
+      "has_r": true,
+      "family": "repair_global_individual_test",
+      "budget_role": "select_four_of_seven",
+      "default_selected": false
+    },
+    {
+      "id": "F01-E08",
+      "title_fr": "Proposition 7 : réparer un bootstrap incohérent",
+      "prompt_md": "Un code ajuste `M ~ X` sur les 80 lignes d’un tableau, puis `Y ~ M + X` sur seulement 70 lignes complètes. Il ajuste `Y ~ X` sur les 80 lignes et s’étonne de ne pas retrouver $\\widehat d=\\widehat a\\widehat b+\\widehat c$. Pour le bootstrap, il mélange ensuite les trois colonnes séparément. Identifier les deux causes de l’échec et écrire un pseudocode R correct pour une réplication, en précisant une condition d’identification et la limite causale de l’identité.\n\n6 minutes de tentative, 3 de correction, 1 de rappel. Si la difficulté est déjà corrigée sur une trace indépendante, choisir L17-V02 ou L17-V03 à la place.",
+      "correction_md": "L’identité empirique exige les mêmes lignes, le même codage, le même intercept et le modèle sans interaction. Les modèles sur 80 et 70 observations ne satisfont pas ces conditions. Il faut sélectionner d’abord les lignes complètes pour toutes les variables et ajuster ensuite les trois modèles sur ce tableau commun.\n\nLe bootstrap doit préserver chaque triplet. Schéma d’une réplication, pour des lignes i.i.d. et un prédicteur binaire dont les deux catégories sont présentes :\n\n```r\ncommun <- tab[complete.cases(tab[,c(\"X\",\"M\",\"Y\")]), ]\nidx <- sample(seq_len(nrow(commun)), nrow(commun), replace=TRUE)\ntirage <- commun[idx,,drop=FALSE]\n# Vérifier les deux catégories et le rang avant d'extraire les coefficients.\nm_M <- lm(M ~ X, data=tirage)\nm_Y <- lm(Y ~ M + X, data=tirage)\nproduit <- coef(m_M)[\"X\"]*coef(m_Y)[\"M\"]\n```\n\nCe pseudocode suppose `X` numérique 0/1; avec un facteur, le nom du coefficient doit être adapté au contraste fixé. Un ajustement non identifiable doit être signalé comme échec et non remplacé par zéro. Les trois modèles cohérents donnent une identité de projection, pas une preuve de médiation causale.",
+      "minutes": 10,
+      "kind": "concept",
+      "block_ids": [
+        "L17-B03",
+        "L17-B04"
+      ],
+      "competency_ids": [
+        "comp.ps1.mediation_estimate",
+        "comp.ps1.bootstrap_interval"
+      ],
+      "topic_ids": [
+        "bootstrap",
+        "reg_fullrank"
+      ],
+      "rubric_fr": [
+        "Repérer le changement d’échantillon",
+        "Conserver les triplets au tirage",
+        "Contrôler codage et rang",
+        "Distinguer identité algébrique et causalité"
+      ],
+      "error_tags": [
+        "sample_mismatch",
+        "bootstrap_unit",
+        "mediation_paths",
+        "causality"
+      ],
+      "has_r": false,
+      "family": "repair_mediation_alignment",
+      "budget_role": "select_four_of_seven",
+      "default_selected": false
+    },
+    {
+      "id": "F01-E09",
+      "title_fr": "Rappel mixte différé",
+      "prompt_md": "Fermer le cours et les corrections. Prévoir dix minutes, deux par question, puis cinq minutes de comparaison.\n\n1. Si les indicatrices $I_1,\\ldots,I_n$ ne sont pas indépendantes mais ont toutes espérance $p$, peut-on calculer l’espérance de leur somme ? Et sa variance à partir de $p$ seul ?\n2. Pour $X\\sim\\mathcal U(0,3)$, calculer $\\mathbb P(2X>4)$ et nommer l’étape de transformation.\n3. Dans un pivot $C/\\theta\\sim\\chi^2_\\nu$, avec $C,\\theta>0$, lequel du petit ou du grand quantile devient le dénominateur de la borne supérieure de l’IC ?\n4. Un test bilatéral de coefficient donne $t=-2{,}1$ et 18 degrés de liberté. Écrire la p-valeur avec `pt`, sans décider d’abord selon le signe du coefficient.\n5. Une corrélation nulle interdit-elle à $X$ de prédire très bien $Y$ ? Donner une structure de contre-exemple et préciser le résumé qui serait plus pertinent.",
+      "correction_md": "(1) $\\mathbb E[\\sum I_i]=np$ par linéarité. La variance demande les covariances; $np(1-p)$ seul n’est pas garanti. (2) $\\{2X>4\\}=\\{X>2\\}$, donc probabilité $(3-2)/3=1/3$. (3) Le petit quantile se retrouve au dénominateur de la borne supérieure, car l’inversion d’une quantité positive renverse l’ordre. (4) `2*pt(-abs(-2.1), df=18)`. Le test bilatéral utilise l’éloignement de zéro dans les deux sens. (5) Prendre $Y=X^2$ avec $X$ symétrique, non dégénéré, par exemple uniforme sur $(-1,1)$. La covariance est nulle mais $Y$ est déterminée par $X$; la variance de l’espérance conditionnelle relativement à la variance de $Y$ vaut 1.\n\nPour chaque réponse, distinguer rappel seul, reconstruction sans aide et réponse après lecture. Une hésitation utile indique ce qu’il faut encore pratiquer, sans imposer une séance supplémentaire au budget.",
+      "minutes": 15,
+      "kind": "transfer",
+      "block_ids": [
+        "L14-B08",
+        "L15-B09"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "expect_linear",
+        "cov_bilinear",
+        "ci_definition",
+        "reg_coef_t",
+        "best_predictor"
+      ],
+      "rubric_fr": [
+        "Choisir des méthodes différentes sans indication de famille",
+        "Rappeler les hypothèses nécessaires",
+        "Expliquer l’inversion et les deux queues",
+        "Produire un contre-exemple structurel"
+      ],
+      "error_tags": [
+        "independence",
+        "pivot_inversion",
+        "alternative",
+        "nonlinear_model"
+      ],
+      "has_r": false,
+      "family": "delayed_mixed_retrieval"
+    },
+    {
+      "id": "F01-E10",
+      "title_fr": "Réviser l’A4 et fixer la suite",
+      "prompt_md": "Pendant 10 minutes, modifier au maximum trois éléments de la feuille A4 à partir des erreurs réellement observées. Pour chacun : écrire l’ancienne ambiguïté, la formulation corrigée avec hypothèse et une question de contrôle. Consacrer au plus deux minutes aux cartes ciblées dans ces dix minutes. Si une difficulté persiste après la variante, la nommer explicitement; ne pas déclarer qu’elle est réparée parce que le corrigé paraît clair.\n\n| Ambiguïté ou manque observé | Nouvelle formulation précise | Vérification encore nécessaire |\n|:--|:--|:--|\n| | | |\n| | | |\n| | | |",
+      "correction_md": "Une modification utile ajoute une condition qui change la décision : « variance nulle du test : $p_0(1-p_0)/n$ », « ddl de régression : compter les colonnes », ou « bootstrap : une unité indépendante entière ». Remplacer une ligne fausse ou ambiguë est préférable à ajouter un paragraphe qui ne sera pas retrouvé.\n\nLa suite est décrite par une tâche observable et son contexte, pas par une étiquette de maîtrise automatique. Exemple de formulation de procédure : « À vérifier ultérieurement sur un jeu à catégories rares, sans aide, en contrôlant l’identification. » Cette phrase n’est pas un diagnostic réel prérempli. Si les 120 minutes sont écoulées, arrêter et consigner la difficulté persistante plutôt que prolonger silencieusement le programme.",
+      "minutes": 10,
+      "kind": "writing",
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "rubric_fr": [
+        "Fonder les modifications sur les tentatives réelles",
+        "Ajouter des conditions et non des réponses de problèmes",
+        "Définir la vérification manquante",
+        "Respecter le budget total"
+      ],
+      "error_tags": [
+        "selection",
+        "unsupported_mastery",
+        "time_budget"
+      ],
+      "has_r": false,
+      "family": "a4_targeted_repair"
+    }
+  ],
+  "variants": [],
+  "time_budget": {
+    "error_analysis": 25,
+    "targeted_slots_including_correction_and_anki": 40,
+    "mixed_retrieval_including_correction": 15,
+    "A4_including_anki": 10
+  },
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Contenu relu lors de l’auteur; exécution R native, knit et RStudio Visual doivent être consignés séparément."
+    ]
+  },
+  "learner_state": "not_created",
+  "pedagogical_status": "authored_not_mastery_evidence",
+  "slot_policy": "Quatre créneaux de dix minutes choisis parmi sept propositions, ou remplacés par une variante compatible; jamais en supplément.",
+  "no_exam_content": true,
+  "adaptive_replacement_slots": {
+    "slot_minutes": 10,
+    "slot_count": 4,
+    "proposal_exercise_ids": [
+      "F01-E02",
+      "F01-E03",
+      "F01-E04",
+      "F01-E05",
+      "F01-E06",
+      "F01-E07",
+      "F01-E08"
+    ],
+    "default_exercise_ids": [
+      "F01-E02",
+      "F01-E03",
+      "F01-E04",
+      "F01-E05"
+    ]
+  },
+  "replacement_timing_fr": "Durée annoncée de tentative, au plus7min; une minute de rappel; le reste du créneau de10min en correction, au moins2min. Les propositions par défaut conservent6+3+1."
+}

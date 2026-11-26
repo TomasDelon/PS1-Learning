@@ -1,0 +1,217 @@
+---
+title: "L08 · Estimateurs, biais, variance et EQM"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L08"
+  document_role: work
+  content_status: complete_derived
+  minutes: 35
+  exercise_ids: ["L08-E01", "L08-E02", "L08-E03"]
+  block_ids: ["L08-B01", "L08-B02", "L08-B03", "L08-B04", "L08-B05", "L08-B06", "L08-B07", "L08-B08", "L08-B09", "L08-B10", "L08-B11"]
+  learner_state: not_created
+---
+
+**Durée totale : 35 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Une bonne estimation isolée peut être un coup de chance. On juge une procédure sur ce qu'elle produirait si le même protocole d'échantillonnage était répété.
+
+**Prérequis :** L04-B08 (variance); L06 (LGN, TCL et moyenne i.i.d.); L06-B07 (replicate).
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+**Répartition :** 5 min de cours; 4 min de vérification conceptuelle; 13 min de raisonnement; 7 min de R; 4 min de correction et 2 min de rappel/Anki.
+
+## 1/6 · Comprendre
+
+### Modèle et paramètre {#L08-B01}
+
+> **DEF [L08-B01] · Modèle et paramètre**
+>
+> Un modèle statistique paramétrique est une famille $(\mathbb P_\theta)_{\theta\in\Theta}$ de lois possibles des données, indexée par un paramètre $\theta$ dans l'ensemble $\Theta$. En inférence fréquentiste, le vrai paramètre est fixe et inconnu; l'échantillon $\mathbf X=(X_1,\ldots,X_n)$ est aléatoire.
+
+### Statistique {#L08-B02}
+
+> **DEF [L08-B02] · Statistique**
+>
+> Une statistique $T(\mathbf X)$ est une fonction mesurable de l'échantillon, calculable sans connaître le paramètre inconnu. Sa réalisation sur les observations $\mathbf x=(x_1,\ldots,x_n)$ est le nombre $T(\mathbf x)$.
+
+### Estimateur et estimation {#L08-B03}
+
+> **DEF [L08-B03] · Estimateur et estimation**
+>
+> Pour estimer un paramètre $\theta$, on choisit une statistique $\widehat\theta=T(\mathbf X)$ : c'est l'estimateur, aléatoire avant l'observation. L'estimation $T(\mathbf x)$ est sa valeur observée. L'erreur $\widehat\theta-\theta$ est aléatoire; l'erreur observée $T(\mathbf x)-\theta$ est généralement inconnue, car $\theta$ l'est.
+
+### Biais {#L08-B04}
+
+> **DEF [L08-B04] · Biais**
+>
+> Si $\widehat\theta$ est intégrable sous $\mathbb P_\theta$, son biais est $b_\theta=\mathbb E_\theta[\widehat\theta]-\theta$. Il est sans biais si $b_\theta=0$ pour tout $\theta\in\Theta$. Le biais décrit un décalage moyen sur des échantillons répétés, pas l'erreur d'une observation particulière.
+
+### Variance d'un estimateur {#L08-B05}
+
+> **DEF [L08-B05] · Variance d'un estimateur**
+>
+> Si $\widehat\theta$ est de carré intégrable, sa variance est $\mathbb V_\theta(\widehat\theta)=\mathbb E_\theta[(\widehat\theta-\mathbb E_\theta[\widehat\theta])^2]$. Elle mesure sa dispersion autour de sa propre moyenne lorsque l'on répète l'échantillonnage sous le même paramètre.
+
+### Erreur quadratique moyenne {#L08-B06}
+
+> **DEF [L08-B06] · Erreur quadratique moyenne**
+>
+> Pour un estimateur $\widehat\theta$ de carré intégrable d'un paramètre réel fixe $\theta$, l'erreur quadratique moyenne est $\operatorname{EQM}_\theta(\widehat\theta)=\mathbb E_\theta[(\widehat\theta-\theta)^2]$. Elle mesure l'écart quadratique moyen à la cible.
+
+### Décomposition biais-variance {#L08-B07}
+
+> **THM [L08-B07] · Décomposition biais-variance**
+>
+> Si $\theta\in\mathbb R$ est fixe et $\widehat\theta$ est de carré intégrable, alors
+> $$
+> \operatorname{EQM}_\theta(\widehat\theta)
+> =\mathbb E_\theta[(\widehat\theta-\theta)^2]
+> =\mathbb V_\theta(\widehat\theta)+(\mathbb E_\theta[\widehat\theta]-\theta)^2.
+> $$
+> Ainsi, un estimateur légèrement biaisé peut avoir une EQM plus faible qu'un estimateur sans biais. Pour comparer deux procédures, il faut annoncer le critère et la valeur du paramètre considérés.
+
+### Correction de Bessel {#L08-B08}
+
+> **THM [L08-B08] · Correction de Bessel**
+>
+> Soient $X_1,\ldots,X_n$ i.i.d., de moyenne $m$ et variance $\sigma^2<\infty$, avec $n\ge2$. On pose $\overline X_n=n^{-1}\sum_iX_i$ et $V_n=n^{-1}\sum_i(X_i-\overline X_n)^2$. Alors $\mathbb E[V_n]=(n-1)\sigma^2/n$. La variance corrigée $S_n^2=nV_n/(n-1)$ est donc sans biais pour $\sigma^2$. Le résultat ne suppose pas une loi normale.
+
+### Consistance {#L08-B09}
+
+> **DEF [L08-B09] · Consistance**
+>
+> Une suite $(\widehat\theta_n)$ est consistante pour $\theta$ si, pour tout $\theta\in\Theta$ et tout $\varepsilon>0$, $\mathbb P_\theta(|\widehat\theta_n-\theta|>\varepsilon)\to0$ quand $n\to\infty$. Un biais nul à chaque taille ne suffit pas à garantir cette propriété.
+
+### Critère de consistance par l'EQM {#L08-B10}
+
+> **THM [L08-B10] · Critère de consistance par l'EQM**
+>
+> Si $\operatorname{EQM}_\theta(\widehat\theta_n)\to0$ pour chaque $\theta$, alors $(\widehat\theta_n)$ est consistante. En effet, pour $\varepsilon>0$, l'inégalité de Markov appliquée à $(\widehat\theta_n-\theta)^2$ donne
+> $$
+> \mathbb P_\theta(|\widehat\theta_n-\theta|>\varepsilon)
+> \le \operatorname{EQM}_\theta(\widehat\theta_n)/\varepsilon^2.
+> $$
+
+### Normalité asymptotique {#L08-B11}
+
+> **DEF [L08-B11] · Normalité asymptotique**
+>
+> Un estimateur est asymptotiquement normal au taux $\sqrt n$ si, pour une variance limite $v_\theta>0$,
+> $\sqrt n(\widehat\theta_n-\theta)\xrightarrow{\mathcal L}\mathcal N(0,v_\theta)$. Il s'agit d'une limite en loi, pas d'une égalité de lois à taille finie. Pour la moyenne i.i.d. de variance finie strictement positive, c'est le TCL de L06.
+
+## 2/6 · Expliquer
+
+### Ce qui change d'un échantillon à l'autre {#L08-E01}
+
+**L08-E01 · 4 min.**
+
+Une machine produit des mesures i.i.d. de moyenne inconnue $m$ et de variance finie. On observe $x=(4,7,10)$.
+
+1. Classer $m$, $\overline X_3$, $\overline x_3$ et $\overline X_3-m$ : paramètre, estimateur, estimation ou erreur. Calculer seulement l'estimation.
+2. Une moyenne observée diffère de $m$. Cela réfute-t-il le caractère sans biais de la moyenne ? Justifier en une phrase.
+3. On compare deux estimateurs dont les couples (biais, variance) sont $(0,4)$ et $(1,2)$ à un paramètre fixé. Choisir le meilleur selon l'EQM, puis expliquer pourquoi le critère doit être annoncé.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Reconstruire deux résultats {#L08-E02}
+
+**L08-E02 · 13 min.**
+
+Soient $X_1,\ldots,X_n$ i.i.d. de moyenne $m$ et variance $\sigma^2<\infty$, $n\ge2$.
+
+1. Pour un estimateur $\widehat\theta$ de carré intégrable, démontrer la décomposition biais-variance en ajoutant et retranchant $\mathbb E_\theta[\widehat\theta]$.
+2. Montrer $\mathbb E[\overline X_n]=m$ et $\mathbb V(\overline X_n)=\sigma^2/n$, en indiquant où intervient l'indépendance. En déduire la consistance de la moyenne.
+3. À partir de $V_n=n^{-1}\sum_iX_i^2-\overline X_n^2$, calculer $\mathbb E[V_n]$ et justifier le diviseur $n-1$ de $S_n^2$.
+
+Terminer par une phrase qui distingue la variance des observations et la variance de leur moyenne.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Un petit biais peut-il être utile ? {#L08-E03}
+
+**L08-E03 · 7 min.**
+
+On considère $X_i\sim\operatorname{Bernoulli}(p)$ i.i.d. et deux estimateurs
+$T=\overline X_n$ et $U=(n\overline X_n+1)/(n+2)$. Fixer, pour cette expérience, $p=0{,}2$, $n=12$ et $B=5000$ répétitions.
+
+1. Avant d'exécuter : vers quelle valeur $U$ attire-t-il la moyenne ? Quel critère faut-il comparer ?
+2. Simuler les $B$ valeurs de $T$ avec `replicate`, puis en déduire celles de $U$. Estimer leurs biais et leurs EQM. Comparer avec les formules théoriques obtenues par transformation affine.
+3. Sur un seul échantillon simulé, comparer `mean((x-mean(x))^2)` à `var(x)`. Expliquer pourquoi aucune de ces deux réalisations n'a à être égale à $p(1-p)$.
+
+Syntaxe déjà disponible : L03-B14 (simulation), L04-B08 (variance), L06-B07 (répétition). La graine fixe la reproduction numérique, pas la validité du modèle.
+
+```{r L08-E03}
+set.seed(2808)
+p <- 0.2
+n <- 12
+B <- 5000
+# Votre simulation, vos comparaisons, puis une conclusion écrite.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**4 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `L08_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| L08-E01 | | |
+| L08-E02 | | |
+| L08-E03 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+**2 minutes.** À rappeler : L08-B03 et B04. À reconstruire : L08-B07 et B08. L08-B11 reste une référence reliée au TCL; aucune formule d'EMV inverse-gamma n'est à apprendre ici.
+
+Blocs sélectionnés pour les cartes initiales : L08-B03, L08-B04, L08-B07. Leur contenu exact est celui des encadrés; les calculs d'exercice ne sont pas des cartes supplémentaires.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### L08-V01 · 4 min {#L08-V01}
+
+On dispose d'une suite i.i.d. $X_i\sim\mathcal N(m,1)$. Comparer $T_n=X_1$ et $U_n=\overline X_n$ : biais, variance, consistance. Le sans-biais suffit-il ?
+
+#### L08-V02 · 4 min {#L08-V02}
+
+Deux estimateurs d'une durée en secondes ont, au même paramètre, (biais, variance) égaux à $(0,9)$ et $(2,4)$. Convertir les estimations et la cible en millisecondes. Le classement par EQM peut-il changer ? Justifier sans simulation.
+
+## Références et provenance
+
+- `ctd04` (source non redistribuée), Exercice 1 Q1-Q3; Exercice 2 Q4-Q7 : Bessel, critères de comparaison et répétitions Monte-Carlo.
+- `st04_05` (source non redistribuée), PDF pp.6,9-13 : Objets aléatoires et qualité d'une procédure.
+- `st04_estimateur` (source non redistribuée), PDF pp.3-11 : Modèle et distinction estimation/estimateur.
+
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.

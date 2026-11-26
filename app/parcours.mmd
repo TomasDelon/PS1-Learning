@@ -1,0 +1,68 @@
+flowchart TD
+  %% Authored activities; no learner progress encoded.
+  D00["D00 · Diagnostic de départ · 60 min"]
+  L01["L01 · R : environnement, données et vérification · 30 min"]
+  L02["L02 · Événements, conditionnement et prédiction · 30 min"]
+  L03["L03 · Variables aléatoires, lois, densités et transformations · 35 min"]
+  L04["L04 · Espérance, variance et covariance · 45 min"]
+  L05["L05 · Lois usuelles, sommes et fonctions génératrices · 25 min"]
+  L06["L06 · Échantillon, loi des grands nombres et TCL · 45 min"]
+  L07["L07 · Monte-Carlo et échantillonnage préférentiel · 30 min"]
+  L08["L08 · Estimateurs, biais, variance et EQM · 35 min"]
+  L09["L09 · Méthode des moments et maximum de vraisemblance · 25 min"]
+  L10["L10 · Pivots, intervalles de confiance et bootstrap · 55 min"]
+  L11["L11 · Tests : hypothèses, p-valeur et proportions · 45 min"]
+  L12["L12 · Tests de moyennes et diagnostics · 45 min"]
+  L13["L13 · Effectifs, adéquation et indépendance · 40 min"]
+  X01["X01 · Synthèse: probabilités, estimation et tests · 60 min"]
+  L14["L14 · Couples, espérance conditionnelle et variance totale · 45 min"]
+  L15["L15 · Régression simple : estimation, qualité et inférence · 60 min"]
+  L16["L16 · Régression multiple, confusion et variance expliquée · 55 min"]
+  L17["L17 · Médiation, variables qualitatives et bootstrap appliqué · 45 min"]
+  X02["X02 · Synthèse: couples, régression et interprétation · 60 min"]
+  A4["A4 · Finaliser et tester la feuille A4 · 60 min"]
+  S01["S01 · Simulation chronométrée réservée · 180 min"]
+  F01["F01 · Réparer les erreurs prioritaires · 90 min"]
+  D00 --> L01
+  L01 --> L02
+  L02 --> L03
+  L03 --> L04
+  L03 --> L05
+  L04 --> L05
+  L04 --> L06
+  L05 --> L06
+  L03 --> L07
+  L06 --> L07
+  L06 --> L08
+  L05 --> L09
+  L08 --> L09
+  L05 --> L10
+  L06 --> L10
+  L08 --> L10
+  L09 --> L10
+  L10 --> L11
+  L11 --> L12
+  L02 --> L13
+  L05 --> L13
+  L11 --> L13
+  L07 --> X01
+  L09 --> X01
+  L12 --> X01
+  L13 --> X01
+  L04 --> L14
+  L05 --> L14
+  L09 --> L15
+  L12 --> L15
+  L14 --> L15
+  L15 --> L16
+  L10 --> L17
+  L12 --> L17
+  L16 --> L17
+  L14 --> X02
+  L15 --> X02
+  L16 --> X02
+  L17 --> X02
+  X01 --> A4
+  X02 --> A4
+  A4 --> S01
+  S01 --> F01

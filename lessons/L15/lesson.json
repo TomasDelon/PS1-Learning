@@ -1,0 +1,669 @@
+{
+  "schema_version": "2.0.0",
+  "lesson_id": "L15",
+  "minutes": 60,
+  "source_refs": [
+    {
+      "source_id": "ctd08",
+      "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+      "use_fr": "Formules MCO, qualité, inférence et sorties R."
+    },
+    {
+      "source_id": "tp04",
+      "locator": "Partie I Q1-Q7, lignes 86-149",
+      "use_fr": "Relier graphiques, coefficient, incertitude et portée de l’association."
+    },
+    {
+      "source_id": "st09",
+      "locator": "PDF p.4, « Le quartet d’Anscombe »",
+      "use_fr": "Les résumés numériques ne remplacent pas le nuage de points."
+    },
+    {
+      "source_id": "cm08",
+      "locator": "PDF pp.1-10, revue intégrale; particulièrement pp.6-10",
+      "use_fr": "Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+      "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L15-B01",
+      "type": "DEF",
+      "title_fr": "Modèle simple et hypothèses d’inférence",
+      "body_md": "Dans $Y=b_0+b_1X+\\varepsilon$, $Y$ est la réponse, $X$ le prédicteur, $b_0,b_1$ des paramètres et $\\varepsilon$ une erreur aléatoire. Pour l’inférence exacte du cours, conditionnellement à $n>2$ valeurs $x_i$ fixées non toutes égales,\n$$Y_i=b_0+b_1x_i+\\varepsilon_i,\\qquad \\varepsilon_i\\ \\text{indépendantes de loi }\\mathcal N(0,\\sigma^2),\\quad\\sigma>0.$$\nLa moyenne est affine, les erreurs sont centrées, indépendantes, homoscédastiques (variance constante) et normales. Les calculs MCO existent sans normalité; les lois exactes des tests utilisent ces hypothèses.",
+      "source_block_ids": [
+        "PS1-213",
+        "PS1-214"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Quelles hypothèses permettent l’inférence exacte dans le modèle linéaire simple ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter.",
+      "canonical_body_sha256": "bc4c5da1bf8b3c990642914982911cead20cd6cb28e65cc8a44b1f7768ef871c",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L15-B02",
+      "type": "DEF",
+      "title_fr": "Erreur aléatoire et résidu observé",
+      "body_md": "L’erreur du modèle est $\\varepsilon_i=Y_i-(b_0+b_1x_i)$; les vrais coefficients sont inconnus. Après ajustement par les moindres carrés ordinaires (MCO), $\\widehat y_i=\\widehat b_0+\\widehat b_1x_i$ et le résidu observé est $e_i=y_i-\\widehat y_i$. Les résidus partagent les coefficients estimés : ils ne doivent pas être traités en général comme des réalisations indépendantes des erreurs vraies. Avec intercept, leur somme est nulle par construction.",
+      "source_block_ids": [
+        "PS1-226",
+        "PS1-227",
+        "PS1-235"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment distinguer erreur du modèle, valeur ajustée et résidu ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter.",
+      "canonical_body_sha256": "a66890df02bba34df3e4eb21aa53a3ac26708c4dc944a3a6fc614c867851f54e",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L15-B03",
+      "type": "THM",
+      "title_fr": "Moyenne, pente et changement d’unité",
+      "body_md": "Dans le modèle $Y=b_0+b_1X+\\varepsilon$, avec $b_0,b_1\\in\\mathbb R$,\nsi $X,\\varepsilon$ sont de carré intégrable, $\\mathbb V(X)>0$ et $\\mathbb E[\\varepsilon\\mid X]=0$, alors\n$$\\mathbb E[Y\\mid X]=b_0+b_1X,\\quad b_1=\\frac{\\operatorname{Cov}(X,Y)}{\\mathbb V(X)},\\quad b_0=\\mathbb E[Y]-b_1\\mathbb E[X].$$\nLa pente exprime une variation de moyenne, en unités de $Y$ par unité de $X$. Pour $X'=aX+c$ et $Y'=dY+e$, avec $a,d\\ne0$, la pente devient $db_1/a$. Si les deux variables ont des variances strictement positives, les centrer et les réduire donne comme pente leur corrélation $\\rho=\\operatorname{Cov}(X,Y)/(\\sigma_X\\sigma_Y)$.",
+      "source_block_ids": [
+        "PS1-215",
+        "PS1-216",
+        "PS1-217",
+        "PS1-218"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Que mesure la pente théorique et comment change-t-elle avec les unités ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter.",
+      "canonical_body_sha256": "65a134589ba185576da283821c9658ecf53e07f4c1d06168a492f9dd0f36b4a7",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L15-B04",
+      "type": "DEF",
+      "title_fr": "Critère des moindres carrés",
+      "body_md": "Pour des données $(x_i,y_i)_{i=1}^n$, le critère est\n$$Q(u,v)=\\sum_{i=1}^n(y_i-u-vx_i)^2.$$\nUn ajustement MCO est un couple minimisant $Q$ sur $\\mathbb R^2$. La notation $\\operatorname*{argmin}Q$ désigne l’ensemble des minimisateurs. Quand $n\\ge2$ et $S_{xx}=\\sum_i(x_i-\\bar x)^2>0$, cet ensemble possède un seul élément, noté $(\\widehat b_0,\\widehat b_1)$.",
+      "source_block_ids": [
+        "PS1-220",
+        "PS1-223"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Critère des moindres carrés",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B05",
+      "type": "THM",
+      "title_fr": "Coefficients MCO et orthogonalité",
+      "body_md": "Sous $S_{xx}>0$, poser $S_{xy}=\\sum_i(x_i-\\bar x)(y_i-\\bar y)$. L’unique minimum de $Q$ est donné par\n$$\\widehat b_1=S_{xy}/S_{xx},\\qquad\\widehat b_0=\\bar y-\\widehat b_1\\bar x.$$\nLes résidus satisfont $\\sum_i e_i=0$ et $\\sum_i x_i e_i=0$. Le rapport `cov(x,y)/var(x)` est identique, car les deux dénominateurs $n-1$ se simplifient.",
+      "source_block_ids": [
+        "PS1-224",
+        "PS1-235"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Coefficients MCO et orthogonalité",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B06",
+      "type": "DEF",
+      "title_fr": "Sommes de carrés et coefficient de détermination",
+      "body_md": "Pour un ajustement MCO avec intercept, sur les observations utilisées,\n$e_i=y_i-\\widehat y_i$ est le résidu et $\\bar y=n^{-1}\\sum_i y_i$. Ainsi\n$$\\mathrm{RSS}=\\sum_i e_i^2,\\qquad \\mathrm{TSS}=\\sum_i(y_i-\\bar y)^2.$$\nSi $\\mathrm{TSS}>0$, le coefficient de détermination d’un ajustement MCO avec intercept est $R^2=1-\\mathrm{RSS}/\\mathrm{TSS}$. Il mesure la proportion de dispersion observée expliquée par cet ajustement. Ce n’est ni une probabilité de prédiction correcte ni une preuve de causalité.",
+      "source_block_ids": [
+        "PS1-228",
+        "PS1-229",
+        "PS1-230"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Que mesure R² et sur quelles sommes de carrés repose-t-il ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter.",
+      "canonical_body_sha256": "2e835342a35a3baea047d159b4d39ae169687f3bfb92aa5f4a54226a667793c5",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L15-B07",
+      "type": "THM",
+      "title_fr": "Décomposition et corrélation au carré",
+      "body_md": "Avec intercept et $S_{xx}>0$, l’orthogonalité des résidus donne\n$$\\mathrm{TSS}=\\sum_i(\\widehat y_i-\\bar y)^2+\\mathrm{RSS}.$$\nAinsi $0\\le R^2\\le1$. Si $\\mathrm{TSS}>0$, en régression simple $R^2=r_{xy}^2$, où $r_{xy}=S_{xy}/\\sqrt{S_{xx}\\mathrm{TSS}}$. Au niveau théorique, sous le modèle à erreur centrée et indépendante de $X$, la part $\\mathbb V(\\mathbb E[Y\\mid X])/\\mathbb V(Y)$ est $\\rho^2$ lorsque les variances sont positives.",
+      "source_block_ids": [
+        "PS1-231",
+        "PS1-232",
+        "PS1-233",
+        "PS1-234"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Décomposition et corrélation au carré",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B08",
+      "type": "THM",
+      "title_fr": "Incertitude des MCO et lois admises",
+      "body_md": "Dans le modèle gaussien de L15-B01, avec $n>2$, les estimateurs sont sans biais conditionnellement aux $x_i$. Poser $s^2=\\mathrm{RSS}/(n-2)$ et $\\mathrm{SE}(\\widehat b_1)=s/\\sqrt{S_{xx}}$. Alors\n$$\\mathbb V(\\widehat b_1\\mid\\mathbf x)=\\sigma^2/S_{xx},\\qquad\n\\frac{\\widehat b_1-b_1}{\\mathrm{SE}(\\widehat b_1)}\\sim t_{n-2}.$$\nSous $H_0:b_1=0$ seulement, $F=(n-2)R^2/(1-R^2)\\sim F_{1,n-2}$ et $F=t^2$. La loi $F_{r,s}$ est celle de $(U/r)/(V/s)$, pour $U\\sim\\chi_r^2$ et $V\\sim\\chi_s^2$ indépendantes. Ces lois sont admises; les formules algébriques restent à comprendre.",
+      "source_block_ids": [
+        "PS1-225",
+        "PS1-236",
+        "PS1-237",
+        "PS1-240",
+        "PS1-241",
+        "PS1-242"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "cm08",
+          "locator": "PDF pp.1-10, revue intégrale; particulièrement pp.6-10",
+          "use_fr": "Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Incertitude des MCO et lois admises",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B09",
+      "type": "MTH",
+      "title_fr": "Tester une pente et construire son intervalle",
+      "body_md": "Dans le modèle $Y_i=b_0+b_1x_i+\\varepsilon_i$, supposer $n>2$, les $x_i$ fixés non tous égaux et les erreurs indépendantes de loi $\\mathcal N(0,\\sigma^2)$ avec $\\sigma>0$. Poser $S_{xx}=\\sum_i(x_i-\\bar x)^2$, $s^2=\\sum_i(y_i-\\widehat y_i)^2/(n-2)$ et $\\mathrm{SE}(\\widehat b_1)=s/\\sqrt{S_{xx}}$.\nFixer $H_0:b_1=b_{1,0}$, l’alternative et $0<\\alpha<1$ avant de lire la sortie. Calculer $t_{\\rm obs}=(\\widehat b_1-b_{1,0})/\\mathrm{SE}(\\widehat b_1)$, avec $\\nu=n-2$. Si $T_\\nu$ suit Student à $\\nu$ degrés de liberté et $t_{\\nu,p}$ est son quantile d’ordre $p$, une alternative bilatérale donne $p=2\\mathbb P(T_\\nu\\ge|t_{\\rm obs}|)$ et un IC de niveau $1-\\alpha$ est\n$$\\widehat b_1\\pm t_{\\nu,1-\\alpha/2}\\mathrm{SE}(\\widehat b_1).$$\nRapporter estimation, unités, IC, $t$, degrés de liberté et $p$. Si $p>\\alpha$, ne pas rejeter $H_0$ ne démontre pas sa vérité. La couverture concerne la procédure aléatoire.",
+      "source_block_ids": [
+        "PS1-238",
+        "PS1-239"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie I Q1-Q7, lignes 86-149",
+          "use_fr": "Relier graphiques, coefficient, incertitude et portée de l’association."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263",
+          "use_fr": "Distinction erreur/résidu, formules, conditions et diagnostics."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment tester une pente et interpréter son intervalle de confiance ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter.",
+      "canonical_body_sha256": "216d3babc8ed1c00bc08ea368e1d056c2e0232e2266e4693a19d9242cf62a45e",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L15-B10",
+      "type": "MTH",
+      "title_fr": "Diagnostiquer et prévoir",
+      "body_md": "Avant de conclure, examiner le nuage de points, puis les résidus contre les valeurs ajustées (courbure et dispersion), un Q-Q plot (forme de la loi) et le plan de collecte (indépendance). Un graphique ne prouve aucune de ces hypothèses. À $x_0$, $\\widehat b_0+\\widehat b_1x_0$ estime une moyenne conditionnelle. L’intervalle de prédiction d’un nouvel individu ajoute la variabilité de sa nouvelle erreur; il est plus large que l’IC de cette moyenne. Ces prévisions supposent un nouveau cas compatible avec le modèle; extrapoler hors des $x_i$ observés demande une justification.",
+      "source_block_ids": [
+        "PS1-219",
+        "PS1-226",
+        "PS1-243"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        },
+        {
+          "source_id": "tp04",
+          "locator": "Partie I Q1-Q7, lignes 86-149",
+          "use_fr": "Relier graphiques, coefficient, incertitude et portée de l’association."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Diagnostiquer et prévoir",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B11",
+      "type": "SYX",
+      "title_fr": "Ajuster, lire et prévoir avec lm",
+      "body_md": "`mod <- lm(y ~ x, data = tab)` ajuste une réponse `y` sur `x`, avec intercept. `coef(mod)` renvoie les coefficients; `coef(summary(mod))` donne les colonnes `Estimate`, `Std. Error`, `t value` et `Pr(>|t|)`. `summary(mod)$r.squared`, `fitted(mod)` et `residuals(mod)` donnent $R^2$, valeurs ajustées et résidus. `confint(mod, \"x\", level = .95)` donne l’IC de pente. `predict(mod, newdata = data.frame(x = 4), interval = \"confidence\")` donne l’IC de moyenne; `interval = \"prediction\"` donne l’intervalle pour une nouvelle observation. Le nom `x` doit correspondre au modèle. Exemple distinct : `coef(lm(y ~ x, data = data.frame(x=1:4, y=c(2,3,5,5))))`.",
+      "source_block_ids": [
+        "PS1-261",
+        "PS1-263"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd08",
+          "locator": "Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570",
+          "use_fr": "Formules MCO, qualité, inférence et sorties R."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Ajuster, lire et prévoir avec lm",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B12",
+      "type": "THM",
+      "title_fr": "Gauss-Markov : portée du résultat admis",
+      "body_md": "Pour un plan fixe de rang plein, des erreurs centrées, de variance commune $\\sigma^2$ et non corrélées entre observations, les MCO ont variance minimale parmi les estimateurs linéaires sans biais de chaque combinaison des coefficients. C’est le théorème de Gauss-Markov (BLUE). Il ne suppose pas la normalité et ne compare pas les MCO à tous les estimateurs biaisés. Dans le modèle gaussien normal de rang plein, les MCO des coefficients sont aussi de variance minimale parmi tous les estimateurs sans biais; la preuve n’est pas requise ici.",
+      "source_block_ids": [
+        "PS1-250"
+      ],
+      "source_refs": [
+        {
+          "source_id": "cm08",
+          "locator": "PDF pp.1-10, revue intégrale; particulièrement pp.6-10",
+          "use_fr": "Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Gauss-Markov : portée du résultat admis",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L15-B13",
+      "type": "MTH",
+      "title_fr": "Reconnaître un intervalle de corrélation",
+      "body_md": "Pour $n>3$ couples i.i.d. de loi normale bivariée non dégénérée et $|r|<1$, `cor.test(x,y, method = \"pearson\")` teste $\\rho=0$ par $t=r\\sqrt{(n-2)/(1-r^2)}$ à $n-2$ degrés de liberté. L’intervalle de corrélation utilise l’approximation de Fisher : transformer $r$ par $z=\\operatorname{atanh}(r)$, former $z\\pm z_{1-\\alpha/2}/\\sqrt{n-3}$, puis appliquer $\\tanh$. Cette couverture est approchée. La cible $\\rho$, sans unité, diffère de la pente $b_1$; standardiser empiriquement ne transforme pas automatiquement un IC de pente en IC de corrélation.",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "cm08",
+          "locator": "PDF pp.1-10, revue intégrale; particulièrement pp.6-10",
+          "use_fr": "Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Reconnaître un intervalle de corrélation",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L15-E01",
+      "title_fr": "Ce qu’un ajustement permet de dire",
+      "prompt_md": "Réécrire les trois affirmations suivantes en précisant leur limite : « les résidus sont les erreurs indépendantes du modèle »; « $R^2=0{,}8$ signifie 80 % de bonnes prédictions individuelles »; « un Q-Q plot aligné valide toutes les hypothèses ». Dans une phrase supplémentaire, distinguer l’association d’une augmentation de $X$ avec la moyenne de $Y$ et un effet causal.",
+      "correction_md": "Les résidus observés sont des écarts aux coefficients estimés; ils sont liés entre eux par l’ajustement et ne sont pas les erreurs vraies indépendantes. Un $R^2$ de 0,8 signifie que 80 % de la dispersion empirique de la réponse autour de sa moyenne est expliquée par cet ajustement avec intercept. Le Q-Q plot peut rendre une normalité plausible; il ne vérifie ni l’indépendance des observations, ni la forme affine, ni la variance constante.\n\nUne pente décrit une différence de moyenne conditionnelle associée à une différence du prédicteur. Dire que modifier $X$ provoquerait cette différence est une affirmation causale qui exige des hypothèses ou un plan d’étude supplémentaires.",
+      "minutes": 5,
+      "kind": "concept",
+      "block_ids": [
+        "L15-B01",
+        "L15-B02",
+        "L15-B06",
+        "L15-B10"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_interpret"
+      ],
+      "topic_ids": [
+        "reg_errors",
+        "reg_residuals",
+        "reg_r2"
+      ],
+      "rubric_fr": [
+        "Distinguer erreur aléatoire et résidu observé",
+        "Interpréter R² sur l’échantillon",
+        "Nommer au moins deux hypothèses non contrôlées par le Q-Q plot",
+        "Séparer association et intervention"
+      ],
+      "error_tags": [
+        "error_vs_residual",
+        "r2_scope",
+        "hypotheses",
+        "causality"
+      ],
+      "has_r": false,
+      "family": "regression_scope"
+    },
+    {
+      "id": "L15-E02",
+      "title_fr": "Retrouver les MCO et leur minimum",
+      "prompt_md": "Dériver $Q(u,v)$ par rapport à $u$ et $v$, puis retrouver les deux coefficients MCO. Justifier qu’il s’agit d’un minimum unique lorsque $S_{xx}>0$, par un carré complété ou par une forme quadratique positive.\n\nOn étudie ensuite le temps moyen de traitement $y$ (ms) en fonction du volume $x$ (Mo). Un échantillon de six observations a $\\bar x=2$, $\\bar y=8$, $S_{xx}=10$, $S_{xy}=15$ et $\\mathrm{TSS}=30$. Calculer les coefficients, RSS et $R^2$. Donner la moyenne ajustée pour $x_0=3$ Mo et interpréter la pente en français.",
+      "correction_md": "Les équations du gradient sont $\\sum_i(y_i-u-vx_i)=0$ et $\\sum_i x_i(y_i-u-vx_i)=0$. La première donne $u=\\bar y-v\\bar x$; substituer dans la seconde donne $vS_{xx}=S_{xy}$. D’où $\\widehat b_1=S_{xy}/S_{xx}$ et $\\widehat b_0=\\bar y-\\widehat b_1\\bar x$.\n\nPour des variations $a=u-\\widehat b_0$ et $b=v-\\widehat b_1$, l’orthogonalité annule les termes croisés :\n$$Q(u,v)-Q(\\widehat b_0,\\widehat b_1)=\\sum_i(a+bx_i)^2=n(a+b\\bar x)^2+b^2S_{xx}.$$\nCette quantité est positive sauf si $a=b=0$, car $S_{xx}>0$. Le point est donc l’unique minimum.\n\nIci $\\widehat b_1=1{,}5$ ms/Mo, $\\widehat b_0=5$ ms, la somme expliquée vaut $\\widehat b_1^2S_{xx}=22{,}5$, RSS vaut $30-22{,}5=7{,}5$ et $R^2=0{,}75$. La moyenne ajustée pour 3 Mo est $9{,}5$ ms. Selon le modèle ajusté, un volume supérieur de 1 Mo est associé à un temps moyen supérieur de 1,5 ms; cela ne prédit pas exactement le temps d’une observation individuelle.",
+      "minutes": 10,
+      "kind": "proof",
+      "block_ids": [
+        "L15-B03",
+        "L15-B04",
+        "L15-B05",
+        "L15-B06",
+        "L15-B07"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_slope",
+        "comp.ps1.regression_r2",
+        "comp.ps1.regression_interpret"
+      ],
+      "topic_ids": [
+        "reg_ols_formulas",
+        "reg_orthogonality",
+        "reg_rss",
+        "reg_tss"
+      ],
+      "rubric_fr": [
+        "Résoudre les deux équations normales",
+        "Prouver l’unicité sans supposer le résultat",
+        "Calculer RSS par orthogonalité",
+        "Conserver les unités et la cible moyenne"
+      ],
+      "error_tags": [
+        "proof_circular",
+        "unique_minimum",
+        "units",
+        "mean_vs_individual"
+      ],
+      "has_r": false,
+      "family": "ols_derivation"
+    },
+    {
+      "id": "L15-E03",
+      "title_fr": "Inférence sur une pente et lien t-F",
+      "prompt_md": "Sous les hypothèses gaussiennes de L15-B01, reprendre les six observations résumées à l’exercice précédent. Tester $H_0:b_1=0$ contre $H_1:b_1\\ne0$ au seuil 5 %, et construire un IC à 95 %. On fournit $t_{4,0{,}975}\\simeq2{,}776$. Déduire la statistique $F$, puis justifier algébriquement $F=t^2$ dans une régression simple avec intercept. La p-valeur représente-t-elle la probabilité que $H_0$ soit vraie ?",
+      "correction_md": "Ici $\\nu=6-2=4$, $s^2=7{,}5/4=1{,}875$ et $\\mathrm{SE}(\\widehat b_1)=\\sqrt{1{,}875/10}=\\sqrt{3}/4\\simeq0{,}4330$. La statistique observée vaut $t=1{,}5/(\\sqrt3/4)=2\\sqrt3\\simeq3{,}464$.\n\nComme $|t|>2{,}776$, on rejette $H_0$ au seuil 5 %. L’IC est $1{,}5\\pm2{,}776(0{,}4330)$, environ $[0{,}298;2{,}702]$ ms/Mo. Il décrit l’incertitude sur la pente, pas les valeurs possibles des temps individuels.\n\nComme $\\mathrm{TSS}-\\mathrm{RSS}=\\widehat b_1^2S_{xx}$,\n$$F=\\frac{\\mathrm{TSS}-\\mathrm{RSS}}{\\mathrm{RSS}/(n-2)}=\\frac{\\widehat b_1^2S_{xx}}{s^2}=t^2=12.$$\nSous $H_0$, $F\\sim F_{1,4}$; sa queue droite et les deux queues de $t_4$ donnent la même p-valeur. Celle-ci est une probabilité de résultats au moins aussi extrêmes sous $H_0$, pas $\\mathbb P(H_0\\mid\\text{données})$.\n\n```{r L15-E03}\nt_obs <- 2*sqrt(3)\np_t <- 2*pt(-abs(t_obs), df = 4)\np_f <- pf(t_obs^2, df1 = 1, df2 = 4, lower.tail = FALSE)\nci <- 1.5 + c(-1,1)*qt(.975, df = 4)*sqrt(1.875/10)\nstopifnot(abs(p_t-p_f) < 1e-12)\nlist(t = t_obs, df = 4, p = p_t, IC = ci, F = t_obs^2)\n```",
+      "minutes": 9,
+      "kind": "math",
+      "block_ids": [
+        "L15-B08",
+        "L15-B09"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_coefficient_test"
+      ],
+      "topic_ids": [
+        "reg_coef_se",
+        "reg_coef_t",
+        "reg_t_f_equiv",
+        "reg_coef_ci"
+      ],
+      "rubric_fr": [
+        "Employer n-2 et la variance résiduelle corrigée",
+        "Formuler nullité et alternative",
+        "Justifier F=t² avec les sommes de carrés",
+        "Interpréter la p-valeur conditionnellement"
+      ],
+      "error_tags": [
+        "degrees_freedom",
+        "null_law",
+        "pvalue",
+        "formal_language"
+      ],
+      "has_r": true,
+      "family": "regression_t_f_interval"
+    },
+    {
+      "id": "L15-E04",
+      "title_fr": "Une analyse complète de mesures simulées",
+      "prompt_md": "Les données d’entraînement suivantes représentent un volume `volume` (Mo) et un temps `temps` (ms). Le mécanisme de simulation est explicite; ses paramètres ne sont pas les estimations empiriques à calculer.\n\n```{r L15-donnees}\nset.seed(1515)\nmesures <- data.frame(volume = runif(80, 5, 25))\nmesures$temps <- 12 + .8*mesures$volume + rnorm(80, sd = 4)\n```\n\n1. Tracer le nuage, ajuster le temps sur le volume et superposer la droite. Retrouver la pente par covariance/variance, puis RSS et $R^2$ sans les extraire du résumé. Vérifier les concordances.\n2. Reconstruire la statistique $t$ de pente et son IC à 95 %; comparer avec `summary` et `confint`. Rédiger deux phrases avec estimation, unité, IC, degrés de liberté et p-valeur.\n3. Prévoir la moyenne à 15 Mo; calculer un IC de moyenne et un intervalle de prédiction. Expliquer leur différence avant de comparer leurs largeurs.\n4. Tracer résidus contre valeurs ajustées et Q-Q plot (`qqnorm`, `qqline`, L06-B08). Nommer une limite que ces deux graphiques ne peuvent pas contrôler. Éviter de faire de la proximité visuelle une preuve.\n\n```{r L15-E04}\n# Votre analyse.\n```",
+      "correction_md": "Tous les calculs doivent porter sur le même tableau et la même réponse. Les contrôles suivants confrontent une formule manuelle à une autre voie de calcul.\n\n```{r L15-donnees-corrige}\nset.seed(1515)\nmesures <- data.frame(volume = runif(80, 5, 25))\nmesures$temps <- 12 + .8*mesures$volume + rnorm(80, sd = 4)\n```\n\n```{r L15-E04}\nmod <- lm(temps ~ volume, data = mesures)\nx <- mesures$volume; y <- mesures$temps\nb1 <- cov(x,y)/var(x)\nb0 <- mean(y)-b1*mean(x)\ne <- y-(b0+b1*x)\nRSS <- sum(e^2); TSS <- sum((y-mean(y))^2)\nR2 <- 1-RSS/TSS\nnu <- length(y)-2\nSxx <- sum((x-mean(x))^2)\ns <- sqrt(RSS/nu); se <- s/sqrt(Sxx)\nt_obs <- b1/se\np <- 2*pt(-abs(t_obs), df = nu)\nIC <- b1 + c(-1,1)*qt(.975, df = nu)*se\nstopifnot(abs(b1-coef(mod)[\"volume\"]) < 1e-10,\n          abs(R2-summary(mod)$r.squared) < 1e-10,\n          max(abs(IC-confint(mod,\"volume\"))) < 1e-10,\n          abs(sum(e)) < 1e-8, abs(sum(x*e)) < 1e-8)\nplot(x,y, xlab = \"Volume (Mo)\", ylab = \"Temps (ms)\", pch = 19)\nabline(mod, col = \"steelblue\", lwd = 2)\nlegend(\"topleft\", legend = sprintf(\"R² = %.3f\", R2), bty = \"n\")\ncat(sprintf(\"Un Mo supplémentaire est associé à %.3f ms de plus en moyenne (IC 95 %% [%.3f ; %.3f]).\\n\", b1, IC[1], IC[2]))\ncat(sprintf(\"Sous le modèle gaussien, le test bilatéral de pente nulle donne t = %.3f, ddl = %d et p = %.4g.\\n\", t_obs, nu, p))\nIC_moy <- predict(mod, data.frame(volume=15), interval=\"confidence\")\nIP_ind <- predict(mod, data.frame(volume=15), interval=\"prediction\")\nprint(IC_moy); print(IP_ind)\nstopifnot((IP_ind[1,3]-IP_ind[1,2]) > (IC_moy[1,3]-IC_moy[1,2]))\nplot(fitted(mod), residuals(mod), xlab=\"Temps ajusté (ms)\",\n     ylab=\"Résidu (ms)\", pch=19)\nabline(h=0, lty=2)\nqqnorm(residuals(mod), pch=19); qqline(residuals(mod), col=\"steelblue\")\n```\n\nL’intervalle de prédiction est plus large car il inclut une nouvelle erreur individuelle. Sous les hypothèses du modèle, les demi-largeurs sont respectivement $t_{\\nu,.975}s\\sqrt{1/n+(x_0-\\bar x)^2/S_{xx}}$ et $t_{\\nu,.975}s\\sqrt{1+1/n+(x_0-\\bar x)^2/S_{xx}}$. Cette formule de prédiction est un complément pédagogique explicite à la prédiction ponctuelle du CTD.\n\nLa simulation a été construite avec erreurs gaussiennes indépendantes, mais dans une étude réelle l’indépendance se discute à partir de la collecte. Une courbure, un éventail ou des points extrêmes demanderaient une remise en question du modèle. L’absence de motif net dans 80 résidus n’établit pas que le modèle est vrai. Le fait que l’intercept corresponde à un volume nul ne justifie pas une interprétation physique hors de la plage 5 à 25 Mo.",
+      "minutes": 18,
+      "kind": "R",
+      "block_ids": [
+        "L15-B05",
+        "L15-B06",
+        "L15-B08",
+        "L15-B09",
+        "L15-B10",
+        "L15-B11"
+      ],
+      "competency_ids": [
+        "comp.ps1.regression_fit",
+        "comp.ps1.regression_slope",
+        "comp.ps1.regression_r2",
+        "comp.ps1.regression_coefficient_interval",
+        "comp.ps1.regression_diagnostics",
+        "comp.ps1.regression_interpret"
+      ],
+      "topic_ids": [
+        "r_lm",
+        "r_model_output",
+        "reg_fit",
+        "reg_diagnostics"
+      ],
+      "rubric_fr": [
+        "Ajuster dans le bon sens et conserver les mêmes lignes",
+        "Comparer deux calculs de la pente et de R²",
+        "Reporter estimation et incertitude en unités originales",
+        "Distinguer moyenne et observation future",
+        "Relier les diagnostics aux hypothèses qu’ils examinent",
+        "Recalculer la covariance empirique et la pente à partir des observations appariées.",
+        "Reconstruire RSS et TSS à partir des résidus et des réponses centrées, puis R².",
+        "Utiliser s²=RSS/(n-2) et SE(pente)=s/racine(Sxx) dans le test et l'intervalle.",
+        "Distinguer Estimate, Std. Error, t value et Pr(>|t|) en comparant les calculs au résumé."
+      ],
+      "error_tags": [
+        "formula_direction",
+        "units",
+        "mean_vs_individual",
+        "hypotheses"
+      ],
+      "has_r": true,
+      "family": "simple_regression_complete_analysis"
+    }
+  ],
+  "variants": [
+    {
+      "id": "L15-V01",
+      "family": "regression_log_scale",
+      "for_exercise_ids": [
+        "L15-E03",
+        "L15-E04"
+      ],
+      "prompt_md": "Une étude donne $\\log_{10}(Y)=a+0{,}6\\log_{10}(X)+\\varepsilon$, avec $X,Y>0$. L’IC à 95 % de la pente sur l’échelle logarithmique est $[0{,}3;0{,}9]$. À quel facteur de la médiane conditionnelle de $Y$ correspond un doublement de $X$, si l’erreur est normale centrée ? Transformer aussi les bornes de l’IC pour ce facteur. Peut-on dire directement que $10^{a+0{,}6\\log_{10}(x)}$ est la moyenne arithmétique de $Y\\mid X=x$ ?",
+      "correction_md": "Le doublement ajoute $\\log_{10}2$ au prédicteur transformé. Le facteur de médiane conditionnelle est $10^{0{,}6\\log_{10}2}=2^{0{,}6}\\simeq1{,}516$. L’IC du facteur est $[2^{0{,}3};2^{0{,}9}]\\simeq[1{,}231;1{,}866]$, car la transformation est croissante. Pour une erreur normale d’écart-type $\\sigma$ sur l’échelle log10, la moyenne arithmétique vaut $10^{a+b\\log_{10}x}\\exp((\\ln10)^2\\sigma^2/2)$ : elle n’est pas simplement l’exponentielle de la moyenne logarithmique. Sous homoscédasticité, ce facteur supplémentaire est le même aux deux valeurs de $X$ et s’annule dans leur rapport. Sans modèle d’erreur précis, ne pas l’inventer.",
+      "block_ids": [
+        "L15-B03",
+        "L15-B09",
+        "L15-B10"
+      ],
+      "minutes": 7,
+      "transfer": "Choisir l’échelle pertinente et distinguer moyenne logarithmique, médiane et moyenne arithmétique; ce n’est pas un changement de nombres.",
+      "rubric_fr": [
+        "Transformer le doublement en différence de logarithmes",
+        "Employer une transformation monotone pour l’IC",
+        "Identifier la cible médiane plutôt que moyenne brute"
+      ],
+      "error_tags": [
+        "units",
+        "transformation",
+        "mean_vs_individual"
+      ],
+      "has_r": false,
+      "provenance": "pedagogical_adaptation"
+    },
+    {
+      "id": "L15-V02",
+      "family": "same_summaries_different_shape",
+      "for_exercise_ids": [
+        "L15-E01",
+        "L15-E04"
+      ],
+      "prompt_md": "Le tableau R `anscombe` contient quatre paires de mesures. Comparer les pentes et $R^2$ des quatre régressions, puis afficher les quatre nuages. Donner une raison propre à chaque nuage pour laquelle les mêmes résumés ne suffisent pas à choisir une analyse. Quel graphique faut-il examiner avant une p-valeur ?",
+      "correction_md": "```{r L15-V02}\nresumes <- t(vapply(1:4, function(j) {\n  x <- anscombe[[paste0(\"x\",j)]]\n  y <- anscombe[[paste0(\"y\",j)]]\n  m <- lm(y~x)\n  c(pente=unname(coef(m)[2]), R2=summary(m)$r.squared)\n}, numeric(2)))\nprint(resumes)\nancien <- par(mfrow=c(2,2))\nfor (j in 1:4) {\n  x <- anscombe[[paste0(\"x\",j)]]; y <- anscombe[[paste0(\"y\",j)]]\n  plot(x,y, main=paste(\"Nuage\",j), pch=19, xlab=\"x\", ylab=\"y\")\n  abline(lm(y~x), col=\"steelblue\")\n}\npar(ancien)\n```\n\nLes résumés sont presque identiques (arrondis des données). Le premier nuage est compatible avec une tendance affine bruitée; le second montre une courbure; le troisième comporte une observation atypique; le quatrième tire sa pente d’un seul point ayant une abscisse différente. Il faut examiner le nuage puis les diagnostics et le plan d’observation. Une même p-valeur ne rend pas ces situations équivalentes.",
+      "block_ids": [
+        "L15-B06",
+        "L15-B10",
+        "L15-B11"
+      ],
+      "minutes": 7,
+      "transfer": "Passer de sorties numériques à une décision de modèle fondée sur la géométrie des données; repérer courbure et influence.",
+      "rubric_fr": [
+        "Comparer les valeurs sans conclure à la même structure",
+        "Identifier courbure, atypie et levier",
+        "Discuter la sensibilité du modèle"
+      ],
+      "error_tags": [
+        "diagnostics",
+        "r2_scope",
+        "influential_points"
+      ],
+      "has_r": true,
+      "provenance": "pedagogical_adaptation"
+    }
+  ],
+  "time_budget": {
+    "course": 6,
+    "concept": 5,
+    "math": 19,
+    "R": 18,
+    "self_correction": 5,
+    "anki_or_retrieval": 2,
+    "adaptive_retrieval": 5
+  },
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Contenu relu lors de l’auteur; exécution R native, knit et RStudio Visual doivent être consignés séparément."
+    ]
+  },
+  "learner_state": "not_created",
+  "pedagogical_status": "authored_not_mastery_evidence",
+  "proof_register_ids": [
+    "P34",
+    "P36",
+    "P37",
+    "P38",
+    "P39",
+    "P40",
+    "ADD-13"
+  ],
+  "optional_exclusions": [
+    "P41: preuve complète des variances et de l’optimalité hors noyau; énoncé admis conservé"
+  ],
+  "source_corrections": [
+    "Erreur et résidu séparés",
+    "Loi F centrale uniquement sous H0",
+    "Indépendance générale b0hat/b1hat non affirmée",
+    "IC Fisher identifié comme approximation",
+    "cor() non présenté comme sans biais universellement"
+  ],
+  "time_breakdown": {
+    "cours": 6,
+    "concept_checks": 5,
+    "maths": 19,
+    "R": 18,
+    "self_correction_review": 12
+  },
+  "review_allocation": {
+    "correction_minutes": 5,
+    "anki_minutes": 2,
+    "replaceable_retrieval_minutes": 5
+  }
+}

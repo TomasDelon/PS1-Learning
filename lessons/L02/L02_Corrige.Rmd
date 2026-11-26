@@ -1,0 +1,174 @@
+---
+title: "L02 · Événements, conditionnement et prédiction · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L02
+  document_role: correction
+  content_status: authored_complete
+  minutes: 30
+  exercise_ids: ["L02-E01", "L02-E02", "L02-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L02-E01 · Lire les marges (4 min) {#L02-E01}
+
+<!-- ps1:solution id=L02-E01 -->
+
+Les marges valent $|F|=10$, $|E|=11$ et $|\Omega|=22$.
+Ainsi $\mathbb P(E\mid F)=8/10=0{,}8$,
+$\mathbb P(F\mid E)=8/11$ et
+$\mathbb P(E\cup F)=(11+10-8)/22=13/22$.
+La règle prédit 1 pour A et 0 pour B, car $3/12=0{,}25$.
+La colonne « non A » est déterminée par la colonne A, puisque les profils
+A et B forment une partition. Elle n'ajoute aucune information.
+
+**Critères observables :**
+
+- Nommer les événements et les marges 10, 11 et 22.
+- Utiliser le bon dénominateur pour chaque conditionnement.
+- Soustraire l’intersection dans la réunion.
+- Justifier les prédictions et la redondance binaire.
+
+### L02-E02 · Retrouver l’origine d’un signal (7 min) {#L02-E02}
+
+<!-- ps1:solution id=L02-E02 -->
+
+Notons $F=$ « canal A » et $E=$ « alerte ». Comme $F,F^c$ forment une
+partition de probabilités positives, les probabilités totales donnent
+$$\mathbb P(E)=0{,}2(0{,}3)+0{,}05(0{,}7)=0{,}095.$$
+Ce nombre étant positif, Bayes donne
+$$\mathbb P(F\mid E)=\frac{0{,}2(0{,}3)}{0{,}095}
+=\frac{12}{19}\simeq0{,}632.$$
+Les événements ne sont pas indépendants :
+$\mathbb P(E\mid F)=0{,}2\ne0{,}095=\mathbb P(E)$.
+Le canal A est surreprésenté parmi les alertes dans ce modèle. Ces
+probabilités seules ne démontrent aucun lien causal.
+
+**Critères observables :**
+
+- Définir les événements et la partition.
+- Pondérer les probabilités conditionnelles par 0,3 et 0,7.
+- Vérifier que le dénominateur de Bayes est positif.
+- Réfuter l’indépendance par une égalité précise et limiter la conclusion.
+
+### L02-E03 · Comparer deux prédicteurs (9 min) {#L02-E03}
+
+<!-- ps1:solution id=L02-E03 -->
+
+```{r L02-E03}
+profil <- c("A","A","A","A","A","A","B","B","B","B","B","B")
+y <- c(1,1,0,0,1,0,1,0,0,0,0,1)
+score <- c(.90,.70,.40,.60,.65,.20,.55,.10,.30,.15,.60,.45)
+pred_profil <- profil == "A"
+pred_50 <- score > .50
+pred_75 <- score > .75
+table(observation=factor(y, levels=0:1),
+      prediction=factor(as.integer(pred_profil), levels=0:1))
+table(observation=factor(y, levels=0:1),
+      prediction=factor(as.integer(pred_50), levels=0:1))
+accord <- table(profil=factor(as.integer(pred_profil), levels=0:1),
+                modele=factor(as.integer(pred_50), levels=0:1))
+accord
+desaccord <- mean(pred_profil != pred_50)
+desaccord
+stopifnot(isTRUE(all.equal(desaccord, 1/3)),
+          all(unname(accord) == matrix(c(4,2,2,4), nrow=2)))
+acc <- c(profil=mean(y == pred_profil),
+         seuil_050=mean(y == pred_50),
+         seuil_075=mean(y == pred_75))
+barplot(acc, ylim=c(0,1), ylab="Proportion correcte sur 12 validations",
+        xlab="Règle")
+stopifnot(isTRUE(all.equal(unname(acc), c(7,9,8)/12)))
+acc
+```
+Les matrices (lignes 0,1; colonnes 0,1) sont respectivement
+$\begin{pmatrix}4&3\\2&3\end{pmatrix}$,
+$\begin{pmatrix}5&2\\1&4\end{pmatrix}$ et
+$\begin{pmatrix}7&0\\4&1\end{pmatrix}$.
+Les proportions correctes valent $7/12$, $9/12$ et $8/12$.
+En montant le seuil, les faux positifs passent de 2 à 0, mais les faux négatifs
+de 1 à 4. Le modèle au seuil 0,5 obtient le meilleur score **sur ces 12 lignes**.
+Le choix d'un seuil dépend aussi du coût des deux erreurs; une petite
+validation et une comparaison de plusieurs seuils ne garantissent pas la
+performance future.
+La table croisant les **prédictions** du profil (lignes) et du modèle au seuil
+0,5 (colonnes) est $\begin{pmatrix}4&2\\2&4\end{pmatrix}$.
+Le désaccord vaut $(2+2)/12=1/3$; l'accord vaut 2/3.
+Ces quantités comparent les méthodes entre elles, sans utiliser la réponse
+observée y. Deux prédictions peuvent être d'accord et toutes deux fausses :
+l'accord n'est donc pas l'exactitude.
+
+**Critères observables :**
+
+- Nommer observation et prédiction sur les axes.
+- Retrouver les trois proportions 7/12, 9/12 et 8/12.
+- Comparer faux positifs et faux négatifs.
+- Interpréter le graphique et limiter la conclusion aux données de validation.
+- Construire la table prédiction contre prédiction, trouver un désaccord de 1/3 et distinguer accord et exactitude.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L02-V01 (4 min) {#L02-V01}
+
+**Énoncé :** Un service observe 1 % de messages frauduleux. Une règle signale 90 % des fraudes et 5 % des messages non frauduleux. Sur 10 000 messages fictifs respectant ces proportions, construire les quatre effectifs puis décider si une alerte signifie « fraude presque certaine ».
+
+**Correction :**
+
+Les 100 fraudes donnent 90 alertes; les 9 900 autres messages en donnent 495. Parmi 585 alertes, 90 sont des fraudes : $90/585=2/13\simeq15{,}4\%$. La sensibilité de 90 % ne répond pas à la question de la probabilité de fraude sachant une alerte. Le faible taux de base est décisif.
+
+**Critères observables :**
+
+- Construire les quatre cases 90,10,495,9405.
+- Conditionner sur les 585 alertes.
+- Expliquer le rôle du taux de base.
+
+### L02-V02 (4 min) {#L02-V02}
+
+**Énoncé :** Deux boîtes contiennent respectivement RR et RV. On choisit une boîte avec probabilité 1/2, puis une pièce au hasard dans cette boîte. La pièce observée est rouge. Calculer la probabilité d'avoir choisi RR. Un autre protocole choisit directement une pièce parmi les trois pièces rouges. Comparer les réponses et justifier les issues équiprobables du premier protocole.
+
+**Correction :**
+
+Dans le premier protocole, les quatre positions de pièces sont équiprobables : deux positions rouges dans RR, une rouge et une verte dans RV. Conditionnellement au rouge, deux des trois positions proviennent de RR, donc $2/3$. Choisir uniformément parmi les trois rouges donne aussi $2/3$, mais pour une autre expérience. Choisir uniformément parmi les deux boîtes contenant du rouge donnerait $1/2$ : les boîtes restantes ne sont pas équiprobables après observation.
+
+**Critères observables :**
+
+- Modéliser les positions de pièces avant le conditionnement.
+- Identifier trois issues rouges et deux favorables.
+- Distinguer le choix d’une pièce du choix d’une boîte.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Mise en œuvre de quelques principes Q2-Q5 : Dénominateurs conditionnels et prédiction par seuil.
+- `tp01` (source non redistribuée), Exercice 1 Q1-Q6; Exercice 2 Q1-Q7; Exercice 3 Q1-Q3,Q6-Q7 : Fréquences, prédictions, matrice de confusion et portée descriptive.
+- `st01` (source non redistribuée), PDF pp.6-10, boîtes de Bertrand : Modélisation des issues avant conditionnement.
+- `st_poly_formalisme` (source non redistribuée), PDF pp.9-19, ``2.1-3.3 : Événements, probabilités, indépendance, probabilités totales et Bayes.
+- `blocks_v2` (source non redistribuée), PS1-006, PS1-007, PS1-008, PS1-010, PS1-011, PS1-014, PS1-012, PS1-013, PS1-017, PS1-016, PS1-019, PS1-020, PS1-018, PS1-039, PS1-038 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

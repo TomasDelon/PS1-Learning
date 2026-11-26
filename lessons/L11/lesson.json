@@ -1,0 +1,604 @@
+{
+  "lesson_id": "L11",
+  "minutes": 45,
+  "source_refs": [
+    {
+      "source_id": "ctd05",
+      "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+      "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+    },
+    {
+      "source_id": "st06_risque",
+      "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+      "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+    },
+    {
+      "source_id": "st06_tests",
+      "locator": "PDF pp.2-3",
+      "use_fr": "Identifier la loi utilisée pour chaque risque."
+    },
+    {
+      "source_id": "st10_sondages",
+      "locator": "PDF p.1 Temps3 Q1-Q3",
+      "use_fr": "Test binomial et limites du regroupement d'échantillons."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L11-B01",
+      "type": "DEF",
+      "title_fr": "Hypothèses et direction",
+      "source_block_ids": [
+        "PS1-164",
+        "PS1-165"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment formuler les hypothèses et la direction d'un test ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "35b2d2b45672a7d3761692bb6197dae17171025f6f5f9d861bca8fa5b5dbc013",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B02",
+      "type": "DEF",
+      "title_fr": "Statistique et loi sous l'hypothèse nulle",
+      "source_block_ids": [
+        "PS1-167",
+        "PS1-169"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Statistique et loi sous l'hypothèse nulle : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "2a351c946a61201a181ce27d2fa3d3ae04b57ecdf5e5e93d1c35607b23c3a28b",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B03",
+      "type": "DEF",
+      "title_fr": "Niveau et erreur de première espèce",
+      "source_block_ids": [
+        "PS1-166"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Que contrôle le niveau d'un test ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "843f6d298f89d7c4d304d414c331f47d6821352bd5d3ea35f5fdff42bd7c50fa",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B04",
+      "type": "DEF",
+      "title_fr": "p-valeur",
+      "source_block_ids": [
+        "PS1-170"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment définir et interpréter une p-valeur ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "72242a1f0322156cf82d1417f2c1597307719156b49387869782876217ef8964",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B05",
+      "type": "MTH",
+      "title_fr": "Décision et conclusion",
+      "source_block_ids": [
+        "PS1-171"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Décision et conclusion : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "e06a6e8ba0e7ef7eac4bac94452e31f739c4cc3a8a6c42e8eeefe318c32459f8",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B06",
+      "type": "DEF",
+      "title_fr": "Erreur de deuxième espèce",
+      "source_block_ids": [
+        "PS1-172"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Erreur de deuxième espèce : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "7d37cb254a698564fdefc73881965ce67db53a1b50ef5e2da77aac5dd9af1ea3",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B07",
+      "type": "DEF",
+      "title_fr": "Puissance",
+      "source_block_ids": [
+        "PS1-173"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Que mesure la puissance d'un test et de quoi dépend-elle ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "66d775d52c8798d3c6142cc19c85d3692c04a2ad9edc9dac3ecfa3dc702c4868",
+      "external_refs": [],
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L11-B08",
+      "type": "MTH",
+      "title_fr": "Test d'une proportion",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Test d'une proportion : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "054cc0423874caee320ab905f283c87b74ebb680191fc64fd72245bb4d042323",
+      "external_refs": []
+    },
+    {
+      "id": "L11-B09",
+      "type": "SYX",
+      "title_fr": "Tests de proportion dans R",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Tests de proportion dans R : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "f751b20dca664aea77cde01abba30dccf9a18520acbe9ea9a521b2c750b50d10",
+      "external_refs": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/binom.test.html",
+          "title": "Documentation officielle R : binom.test",
+          "locator": "Usage, Arguments, Details, Value",
+          "use_fr": "Syntaxe et garantie de couverture de l'intervalle de Clopper-Pearson.",
+          "block_ids": [
+            "L11-B09"
+          ],
+          "provenance": "EXTERNAL",
+          "read_date": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "id": "L11-B10",
+      "type": "MTH",
+      "title_fr": "Dualité d'un test et d'un intervalle",
+      "source_block_ids": [
+        "PS1-155",
+        "PS1-171"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q7-Q9; Problème Q6-Q7",
+          "use_fr": "Hypothèses, queues, p-valeur et relation avec les IC."
+        },
+        {
+          "source_id": "st06_risque",
+          "locator": "PDF pp.1-8, tableau p.2 et calculs pp.5-8",
+          "use_fr": "Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié."
+        },
+        {
+          "source_id": "st06_tests",
+          "locator": "PDF pp.2-3",
+          "use_fr": "Identifier la loi utilisée pour chaque risque."
+        },
+        {
+          "source_id": "st10_sondages",
+          "locator": "PDF p.1 Temps3 Q1-Q3",
+          "use_fr": "Test binomial et limites du regroupement d'échantillons."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Dualité d'un test et d'un intervalle : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "d50b57ee2c509355e86a139e02264b499963e98473ddd5582bc612f7f6f1196c",
+      "external_refs": []
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L11-E01",
+      "minutes": 5,
+      "kind": "writing",
+      "family": "test_interpretation_repair",
+      "topic_ids": [
+        "pvalue",
+        "test_decision",
+        "one_two_sided"
+      ],
+      "competency_ids": [
+        "comp.ps1.test_interpret",
+        "comp.ps1.test_select"
+      ],
+      "block_ids": [
+        "L11-B01",
+        "L11-B04",
+        "L11-B05"
+      ],
+      "rubric_fr": [
+        "Énoncer une probabilité sous H0 sans l'inverser.",
+        "Ne pas transformer non-rejet en preuve.",
+        "Relier la direction à une question formulée avant analyse."
+      ],
+      "error_tags": [
+        "pvalue_posterior",
+        "nonrejection_proof",
+        "sidedness"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L11-E02",
+      "minutes": 14,
+      "kind": "math",
+      "family": "normal_test_power",
+      "topic_ids": [
+        "test_statistic",
+        "rejection_region",
+        "risk_first",
+        "risk_second",
+        "power",
+        "pvalue"
+      ],
+      "competency_ids": [
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.test_statistic_compute",
+        "comp.ps1.test_uncertainty"
+      ],
+      "block_ids": [
+        "L11-B02",
+        "L11-B03",
+        "L11-B04",
+        "L11-B06",
+        "L11-B07"
+      ],
+      "rubric_fr": [
+        "Distinguer la loi nulle de la loi sous l'alternative.",
+        "Construire la région de rejet à partir du niveau.",
+        "Justifier le cas le plus défavorable du H0 composite.",
+        "Exprimer une conclusion contextualisée sans probabilité inversée."
+      ],
+      "error_tags": [
+        "null_law",
+        "sidedness",
+        "power_law",
+        "formal_language"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L11-E03",
+      "minutes": 13,
+      "kind": "R",
+      "family": "proportion_exact_approx",
+      "topic_ids": [
+        "hypotheses",
+        "one_two_sided",
+        "pvalue",
+        "test_statistic"
+      ],
+      "competency_ids": [
+        "comp.ps1.proportion_test",
+        "comp.ps1.test_equivalence",
+        "comp.ps1.test_interpret"
+      ],
+      "block_ids": [
+        "L11-B08",
+        "L11-B09",
+        "L11-B05"
+      ],
+      "rubric_fr": [
+        "Fixer l'alternative dans les deux commandes.",
+        "Utiliser p0 dans l'erreur-type du test.",
+        "Comparer des procédures avec les mêmes options.",
+        "Séparer effet estimé, décision et prédiction individuelle."
+      ],
+      "error_tags": [
+        "sidedness",
+        "null_variance",
+        "method_equivalence",
+        "effect_size"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L11-V01",
+      "family": "exponential_test_direction",
+      "for_exercise_ids": [
+        "L11-E02"
+      ],
+      "error_tags": [
+        "sidedness",
+        "parameterization",
+        "null_law"
+      ],
+      "prompt_md": "Des attentes sont i.i.d. exponentielles de taux $\\lambda$. On veut détecter une attente moyenne supérieure à 8 minutes. Formuler $H_0,H_1$ en termes de $m$, puis de $\\lambda$. Pour une somme observée $s$, quelle queue de la loi Gamma sous la frontière sert au test ?",
+      "correction_md": "On teste $H_0:m\\le8$ contre $m>8$, donc $H_0:\\lambda\\ge1/8$ contre $\\lambda<1/8$. Une attente moyenne élevée produit une grande somme $S$. Sous la frontière, $S\\sim\\operatorname{Gamma}(n,\\text{taux }1/8)$; la p-valeur est $P_{1/8}(S\\ge s)$, queue droite. Pour les taux plus grands sous H0, la somme se déplace vers les petites valeurs, donc cette queue est plus faible.",
+      "rubric_fr": [
+        "Inverser le sens en passant de moyenne à taux.",
+        "Choisir la queue par la statistique observée.",
+        "Justifier la frontière du H0 composite."
+      ],
+      "block_ids": [
+        "L11-B01",
+        "L11-B04"
+      ],
+      "minutes": 4,
+      "transfer": "Transfert de paramétrisation : le sens de l'alternative change avec l'inverse du paramètre.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L11-V02",
+      "family": "proportion_dependence",
+      "for_exercise_ids": [
+        "L11-E03"
+      ],
+      "error_tags": [
+        "independence",
+        "sampling_target"
+      ],
+      "prompt_md": "Deux sondages portent chacun sur 1000 comptes, mais 600 comptes apparaissent dans les deux. Une équipe additionne succès et effectifs, puis applique un test binomial de taille 2000. Quel point invalide ce raisonnement ? Quelles informations faudrait-il pour une analyse défendable ?",
+      "correction_md": "Les 2000 lignes ne représentent pas 2000 unités indépendantes : les comptes répétés induisent une dépendance, éventuellement avec des réponses différentes dans le temps. Il faut les identifiants, les dates, la cible et le plan d'échantillonnage. Si la cible est une réponse unique au même instant, on peut constituer un échantillon d'unités uniques avec une règle justifiée; sinon il faut un modèle tenant compte des répétitions. Additionner les effectifs ne suffit pas à créer de l'information indépendante.",
+      "rubric_fr": [
+        "Identifier les unités répétées.",
+        "Ne pas proposer un nouvel effectif sans décrire le plan.",
+        "Relier méthode et cible de l'inférence."
+      ],
+      "block_ids": [
+        "L11-B08"
+      ],
+      "minutes": 4,
+      "transfer": "Transfert négatif : reconnaître qu'un modèle binomial cesse de s'appliquer quand les unités se répètent.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "cours": 6,
+    "concept_checks": 5,
+    "maths": 14,
+    "R": 13,
+    "self_correction_review": 7
+  },
+  "review_allocation": {
+    "correction_minutes": 5,
+    "anki_minutes": 2
+  },
+  "external_clarifications": [
+    {
+      "url": "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/binom.test.html",
+      "title": "Documentation officielle R : binom.test",
+      "locator": "Usage, Arguments, Details, Value",
+      "use_fr": "Syntaxe et garantie de couverture de l'intervalle de Clopper-Pearson.",
+      "block_ids": [
+        "L11-B09"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "curriculum_id": "PS1-20H-v2",
+  "curriculum_version": "2.0.0",
+  "is_demo": true,
+  "updated_at": "2026-11-26T12:00:00.000Z",
+  "lessons": {
+    "D00": {
+      "status": "worked",
+      "minutes_spent": 15,
+      "updated_at": "2026-11-26T12:00:00.000Z"
+    },
+    "L01": {
+      "status": "worked",
+      "minutes_spent": 15,
+      "updated_at": "2026-11-26T12:00:00.000Z"
+    },
+    "L02": {
+      "status": "worked",
+      "minutes_spent": 15,
+      "updated_at": "2026-11-26T12:00:00.000Z"
+    },
+    "L04": {
+      "status": "review_due",
+      "minutes_spent": 20,
+      "updated_at": "2026-11-26T12:00:00.000Z"
+    }
+  },
+  "competencies": {
+    "comp.ps1.association_explain": {
+      "status": "demonstrated",
+      "evidence": [
+        {
+          "id": "DEMO-1",
+          "date": "2026-11-25T10:00:00.000Z",
+          "exercise_ref": "EXEMPLE SYNTHÉTIQUE A",
+          "independent": true,
+          "correct": true,
+          "changed_context": false,
+          "delayed_mixed": false,
+          "note": "Donnée de démonstration, aucune réponse réelle."
+        },
+        {
+          "id": "DEMO-2",
+          "date": "2026-11-26T12:00:00.000Z",
+          "exercise_ref": "EXEMPLE SYNTHÉTIQUE B",
+          "independent": true,
+          "correct": true,
+          "changed_context": true,
+          "delayed_mixed": true,
+          "note": "Donnée de démonstration, aucune réponse réelle."
+        }
+      ]
+    }
+  }
+}

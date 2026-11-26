@@ -1,0 +1,232 @@
+---
+title: "L10 · Pivots, intervalles de confiance et bootstrap"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L10"
+  document_role: work
+  content_status: complete_derived
+  minutes: 55
+  exercise_ids: ["L10-E01", "L10-E02", "L10-E03"]
+  block_ids: ["L10-B01", "L10-B02", "L10-B03", "L10-B04", "L10-B05", "L10-B06", "L10-B07", "L10-B08", "L10-B09", "L10-B10", "L10-B11", "L10-B12", "L10-B13", "L10-B14"]
+  learner_state: not_created
+---
+
+**Durée totale : 55 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Une procédure de confiance doit réussir sur des répétitions, pas seulement produire un intervalle plausible sur un échantillon. Lire d'abord B01-B03; consulter ensuite le bloc de loi utile au moment du calcul. Les formules de référence B06 et B08-B11 ne sont pas un second travail à ajouter au budget.
+
+**Prérequis :** L05 (lois normale, gamma, khi-deux); L06 (TCL); L08-B08 (variance corrigée); L09-E03 (taux exponentiel).
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+**Répartition :** 6 min de cours; 5 min de vérification conceptuelle; 17 min de raisonnement; 15 min de R; 5 min de correction, 2 min de rappel/Anki et 5 min de révision adaptative.
+
+## 1/6 · Comprendre
+
+### Intervalle de confiance fréquentiste {#L10-B01}
+
+> **DEF [L10-B01] · Intervalle de confiance fréquentiste**
+>
+> Dans un modèle $(\mathbb P_\theta)_{\theta\in\Theta}$, un intervalle aléatoire $I(\mathbf X)=[L(\mathbf X),U(\mathbf X)]$ de niveau $1-\alpha$, avec $0<\alpha<1$, vérifie
+> $$
+> \forall\theta\in\Theta,\quad
+> \mathbb P_\theta\{\theta\in I(\mathbf X)\}\ge1-\alpha.
+> $$
+> La couverture est la probabilité que la procédure contienne le paramètre fixe. Après observation, $I(\mathbf x)$ est fixé : il contient ou ne contient pas $\theta$. Le niveau ne devient pas une probabilité a posteriori de $\theta$ dans cet intervalle observé.
+
+### Pivot {#L10-B02}
+
+> **DEF [L10-B02] · Pivot**
+>
+> Une quantité $Q(\mathbf X,\theta)$ est un pivot si sa loi est connue et ne dépend d'aucun paramètre inconnu du modèle. Le pivot peut dépendre de $\theta$ dans sa formule; sa loi n'en dépend pas. On note $q_p$ un quantile d'ordre $p\in]0,1[$ de cette loi.
+
+### Inverser un pivot {#L10-B03}
+
+> **MTH [L10-B03] · Inverser un pivot**
+>
+> Pour $0<\alpha<1$, soit $Q(\mathbf X,\theta)$ un pivot dont la loi est connue et ne dépend d’aucun paramètre inconnu. Lorsqu’on peut choisir $a<b$ tels que $\mathbb P_\theta(a\le Q(\mathbf X,\theta)\le b)=1-\alpha$, résoudre ces inégalités pour le paramètre. Si la solution est un intervalle $I(\mathbf X)$, l'équivalence des événements donne sa couverture exacte. Une division par un nombre positif garde le sens de l'inégalité; prendre des inverses positifs renverse l'ordre. Vérifier les bornes et leurs unités.
+
+### Moyenne normale, variance connue {#L10-B04}
+
+> **THM [L10-B04] · Moyenne normale, variance connue**
+>
+> Si $X_i$ sont i.i.d. de loi $\mathcal N(m,\sigma^2)$, avec $n\ge1$ et $\sigma>0$ connu, alors $Z=\sqrt n(\overline X_n-m)/\sigma\sim\mathcal N(0,1)$. La stabilité de la loi normale et les moments de la moyenne justifient ce résultat. Avec $z_p$ le quantile normal, l'intervalle $\overline X_n\pm z_{1-\alpha/2}\sigma/\sqrt n$ a couverture exactement $1-\alpha$.
+
+### Loi de Student {#L10-B05}
+
+> **DEF [L10-B05] · Loi de Student**
+>
+> Pour $\nu\in\mathbb N^*$, soient $Z\sim\mathcal N(0,1)$ et $V\sim\chi^2_\nu$ indépendantes. La loi de $Z/\sqrt{V/\nu}$ est la loi de Student à $\nu$ degrés de liberté, notée $t_\nu$. On note $t_{\nu,p}$ son quantile d'ordre $p$.
+
+### Moyenne normale, variance inconnue {#L10-B06}
+
+> **THM [L10-B06] · Moyenne normale, variance inconnue**
+>
+> Si $X_i$ sont i.i.d. de loi $\mathcal N(m,\sigma^2)$, avec $\sigma>0$ inconnu et $n\ge2$, poser $S_n^2=(n-1)^{-1}\sum_i(X_i-\overline X_n)^2$. Alors $\sqrt n(\overline X_n-m)/S_n\sim t_{n-1}$ et l'intervalle $\overline X_n\pm t_{n-1,1-\alpha/2}S_n/\sqrt n$ est exact. Ce résultat utilise le théorème de Fisher pour l'échantillon normal, admis ici; remplacer $\sigma$ par $S_n$ sans changer de quantile ne donne pas le même intervalle exact.
+
+### Pivot exponentiel {#L10-B07}
+
+> **THM [L10-B07] · Pivot exponentiel**
+>
+> Si $X_i$ sont i.i.d. exponentielles de taux $\lambda>0$, de moyenne $m=1/\lambda$, et $S=\sum_iX_i$, alors $S\sim\operatorname{Gamma}(n,\text{taux }\lambda)$ et $2\lambda S=2S/m\sim\chi^2_{2n}$. Cette loi ne dépend ni de $\lambda$ ni de $m$; elle permet un intervalle exact. Le taux est l'inverse de la moyenne, pas un autre nom pour elle.
+
+### Variance normale {#L10-B08}
+
+> **THM [L10-B08] · Variance normale**
+>
+> Pour $n\ge2$ observations i.i.d. de loi $\mathcal N(m,\sigma^2)$, $\sigma>0$, la variance corrigée vérifie $(n-1)S_n^2/\sigma^2\sim\chi^2_{n-1}$. Le théorème de Fisher est admis ici. Avec $q_p$ le quantile de cette loi, un IC exact de $\sigma^2$ est $[(n-1)S_n^2/q_{1-\alpha/2},\ (n-1)S_n^2/q_{\alpha/2}]$.
+
+### Intervalle asymptotique d'une moyenne {#L10-B09}
+
+> **MTH [L10-B09] · Intervalle asymptotique d'une moyenne**
+>
+> Si $Y_1,\ldots,Y_n$ sont i.i.d. de moyenne $I$ et variance finie strictement positive, le TCL et la consistance de la variance permettent, pour $n$ grand, l'intervalle $\overline y_n\pm z_{1-\alpha/2}s_Y/\sqrt n$. Sa couverture tend vers $1-\alpha$; elle n'est pas nécessairement exacte pour le $n$ observé. En Monte-Carlo, cet intervalle mesure l'erreur de simulation sous le modèle choisi, pas l'erreur du modèle.
+
+### Intervalle approché pour une moyenne de Poisson {#L10-B10}
+
+> **MTH [L10-B10] · Intervalle approché pour une moyenne de Poisson**
+>
+> Si $X_i$ sont i.i.d. de loi $\mathcal P(\lambda)$, $\lambda>0$, alors $\mathbb E[\overline X_n]=\lambda$ et $\mathbb V(\overline X_n)=\lambda/n$. Pour une approximation normale pertinente, notamment lorsque le comptage total n'est pas faible, remplacer $\lambda$ dans l'erreur-type par $\overline x_n$ donne $\overline x_n\pm z_{1-\alpha/2}\sqrt{\overline x_n/n}$. C'est un intervalle asymptotique; à proximité de zéro, préférer une méthode exacte adaptée aux comptages.
+
+### Intervalle approché pour une proportion {#L10-B11}
+
+> **MTH [L10-B11] · Intervalle approché pour une proportion**
+>
+> Si $X_i$ sont i.i.d. de loi $\operatorname{Bernoulli}(p)$, avec $0<p<1$, l'estimation $\widehat p_{\rm obs}=\overline x_n$ conduit à l'intervalle de Wald $\widehat p_{\rm obs}\pm z_{1-\alpha/2}\sqrt{\widehat p_{\rm obs}(1-\widehat p_{\rm obs})/n}$. Il est seulement asymptotique et devient peu fiable près de $0$ ou $1$, ou avec peu de succès ou d'échecs. L11 donne une méthode binomiale exacte dont la couverture est au moins le niveau visé.
+
+### Échantillon bootstrap {#L10-B12}
+
+> **DEF [L10-B12] · Échantillon bootstrap**
+>
+> À partir d'observations i.i.d. $x_1,\ldots,x_n$, un échantillon bootstrap non paramétrique contient $n$ tirages avec remise dans ces observations. Conditionnellement aux données, les tirages suivent leur loi empirique. L'unité rééchantillonnée doit correspondre à l'unité indépendante : pour des couples mesurés sur un même individu, on tire les individus en conservant chaque couple.
+
+### Intervalle bootstrap percentile {#L10-B13}
+
+> **MTH [L10-B13] · Intervalle bootstrap percentile**
+>
+> Pour une statistique $T$ et $B$ échantillons bootstrap, calculer $T_1^*,\ldots,T_B^*$, puis leurs quantiles empiriques d'ordres $\alpha/2$ et $1-\alpha/2$. L'intervalle percentile obtenu est une approximation, sous des conditions de représentativité et de régularité de la statistique. Augmenter $B$ réduit l'erreur Monte-Carlo des quantiles, mais ne corrige ni un échantillon biaisé ni une mauvaise unité de tirage.
+
+## 2/6 · Expliquer
+
+### Où se trouve l'aléatoire ? {#L10-E01}
+
+**L10-E01 · 5 min.**
+
+1. Après une expérience, un IC à 95 % vaut $[3{,}1;4{,}7]$. Reformuler correctement : « Le paramètre a maintenant 95 % de chances d'être dans cet intervalle. »
+2. Une équipe conserve le même échantillon et produit 5000 échantillons bootstrap. S'agit-il de 5000 nouvelles expériences indépendantes dans la population ?
+3. On dispose de 20 machines indépendantes, chacune mesurée avant et après un réglage. Pour étudier une moyenne de différences, faut-il tirer séparément les 40 mesures ou tirer 20 lignes contenant chacune une paire ? Justifier.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Deux inversions, deux formes de bornes {#L10-E02}
+
+**L10-E02 · 17 min.**
+
+1. Des observations sont i.i.d. de loi $\mathcal N(m,4)$; $\sigma=2$ est connu. Pour $n=25$ et $\overline x=7{,}4$, construire l'IC central à 90 % de $m$. Partir d'un événement portant sur un pivot et justifier chaque transformation. La valeur $z_{0,95}$ peut rester symbolique avant le calcul R.
+2. Pour des attentes i.i.d. exponentielles de moyenne inconnue $m>0$, on observe $n=12$ et $s=\sum_i x_i=48$ minutes. À partir de $2S/m\sim\chi^2_{24}$, construire l'IC central à 95 % de $m$, puis celui du taux $\lambda=1/m$. Indiquer quel quantile se trouve dans chaque borne.
+
+Conclure en français pour les deux procédures, en précisant exactitude, hypothèses et unités.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Quantiles empiriques dans R {#L10-B14}
+
+> **SYX [L10-B14] · Quantiles empiriques dans R**
+>
+> `quantile(v, probs = c(0.1, 0.9), names = FALSE)` renvoie deux quantiles empiriques du vecteur numérique `v`. L'argument `probs` indique les probabilités cumulées; ce ne sont pas des valeurs de `v`. Par exemple, `quantile(c(1, 3, 5, 7, 9), probs = 0.5)` donne la médiane. Pour un bootstrap, appliquer `quantile` au vecteur des estimations rééchantillonnées, pas directement aux observations. `sample` et `replicate` ont déjà été introduits en L03-B14 et L06-B07.
+
+### Calculer puis éprouver une procédure {#L10-E03}
+
+**L10-E03 · 15 min.**
+
+1. Calculer dans R les deux intervalles de L10-E02 avec `qnorm` et `qchisq`.
+2. Pour les 12 attentes ci-dessous, produire $B=3000$ moyennes bootstrap, tracer leur histogramme, puis calculer un intervalle percentile à 95 %. Comparer sa construction avec l'intervalle exponentiel exact, sans déclarer les deux garanties identiques.
+3. Sur $2000$ nouveaux échantillons normaux indépendants de taille $25$, de vraie moyenne $m=7$ et d'écart-type connu $2$, estimer la couverture de l'IC normal à 90 %. L'écart observé à $0{,}90$ doit-il être exactement nul ?
+
+Réutiliser L03-B14 (d/p/q/r, sample), L03-B15 (hist), L06-B07 (replicate). Chaque réplication de couverture doit recréer un échantillon.
+
+```{r L10-E03}
+set.seed(2810)
+x <- c(1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8)
+# Intervalles, bootstrap, puis simulation de couverture.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**5 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `L10_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| L10-E01 | | |
+| L10-E02 | | |
+| L10-E03 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+**2 minutes.** À rappeler : L10-B01, B02 et B12. À reconstruire : l'inversion B03. Les lois pivots et formules précises vont sur la référence A4. Une seule variante remplace un prochain rappel selon l'erreur observée.
+
+Blocs sélectionnés pour les cartes initiales : L10-B01, L10-B02, L10-B03, L10-B12. Leur contenu exact est celui des encadrés; les calculs d'exercice ne sont pas des cartes supplémentaires.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### L10-V01 · 4 min {#L10-V01}
+
+Neuf observations normales i.i.d. donnent $\overline x=12$ et $s=3$ (écart-type corrigé). La variance de population est inconnue. Construire l'IC central à 90 % de la moyenne. Pourquoi le quantile normal ne donne-t-il pas ici l'IC exact ?
+
+#### L10-V02 · 5 min {#L10-V02}
+
+Une série de 200 fenêtres indépendantes donne 340 arrivées au total; les comptages suivent un modèle de Poisson de même moyenne $\lambda$. Une autre enquête Bernoulli i.i.d. relève 240 réponses positives sur 400 personnes. Écrire les deux erreurs-types estimées, puis les IC normaux approchés à 95 %. Expliquer pourquoi les formules diffèrent.
+
+#### L10-V03 · 4 min {#L10-V03}
+
+Un échantillon normal i.i.d. de taille 16 a une variance corrigée observée $s^2=9$. Construire un IC central à 95 % pour la variance, puis pour l'écart-type. L'unité est le millimètre pour les observations.
+
+## Références et provenance
+
+- `ctd05` (source non redistribuée), Exercice 1 Q3-Q7; Problème Q2-Q5 : Pivots, couverture, inversion et bootstrap.
+- `tp02` (source non redistribuée), Partie 3 Q1-Q3 : Couverture approchée d'un calcul Monte-Carlo.
+- `tp03` (source non redistribuée), Q5 et Q11 : Intervalle de comptage et intervalle exact de moyenne exponentielle.
+- `st04_05` (source non redistribuée), PDF pp.14-15 : Fluctuation, confiance et inversion positive.
+- `st10_sondages` (source non redistribuée), PDF p.1 Temps1; pp.8-9 : Critique d'une interprétation a posteriori et modèle de sondage.
+
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.
+
+
+## Révision adaptative · 5 min
+
+<!-- ps1:adaptive-review-slot minutes=5 -->
+
+Traiter une variante ciblée, encore non tentée, d’une leçon antérieure si elle a été préparée. À défaut, fermer les notes, rappeler une méthode antérieure et vérifier ses hypothèses. Ces cinq minutes sont distinctes de la correction et des cartes de cette leçon. Une variante trop longue est reportée à un créneau de F01.

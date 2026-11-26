@@ -1,0 +1,195 @@
+---
+title: "F01 · Réparer les erreurs prioritaires · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: F01
+  document_role: correction
+  content_status: complete_authored
+  minutes: 90
+  exercise_ids: ["F01-E01", "F01-E02", "F01-E03", "F01-E04", "F01-E05", "F01-E06", "F01-E07", "F01-E08", "F01-E09", "F01-E10"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Classer les erreurs et affecter le temps {#F01-E01}
+
+<!-- ps1:solution id=F01-E01 -->
+
+La correction de ce protocole porte sur la qualité de la décision, pas sur un diagnostic prérempli. Une entrée utile ressemble à : « J’ai remplacé $\mathbb P(A\mid B)$ par $\mathbb P(B\mid A)$ sans justifier; erreur de direction du conditionnement; reconstruire un arbre puis répondre à E02. » Elle localise l’erreur et définit une action nouvelle.
+
+Prioriser une confusion conceptuelle répétée ou une hypothèse oubliée à forte confiance avant une faute d’arrondi isolée. Un problème déjà corrigé et recopié ne constitue pas le test de réparation. Si la tâche choisie a déjà été vue avec sa solution, la remplacer dans le même créneau par une variante encore non tentée, ou indiquer honnêtement que le rappel est assisté. Ne pas rédiger à la place de l’étudiant son bilan personnel de soutien.
+
+**Critères indépendants :** S’appuyer sur une trace existante ou marquer non évalué; Localiser l’étape invalide; Différencier cause conceptuelle et symptôme de calcul; Affecter exactement quatre créneaux parmi sept propositions sans ajouter du temps.
+
+### Proposition 1 : raisonner avec un signal imparfait {#F01-E02}
+
+<!-- ps1:solution id=F01-E02 -->
+
+Poser $D=\{$incident$\}$ et $A=\{$alerte$\}$. Les probabilités données sont $\mathbb P(D)=0{,}03$, $\mathbb P(A\mid D)=0{,}9$ et $\mathbb P(A\mid D^c)=0{,}06$. Donc
+$$\mathbb P(A)=0{,}9(0{,}03)+0{,}06(0{,}97)=0{,}0852,$$
+$$\mathbb P(D\mid A)=\frac{0{,}027}{0{,}0852}=\frac{45}{142}\simeq0{,}3169.$$
+Le nombre d’alertes $N=\sum_{i=1}^{100}\mathbf1_{A_i}$ a espérance $100(0{,}0852)=8{,}52$. Cette linéarité ne nécessite pas l’indépendance des situations. L’indépendance serait nécessaire pour conclure directement à une loi binomiale du nombre d’alertes ou additionner leurs variances sans covariances. Un nombre moyen non entier n’est pas une prédiction certaine d’un comptage.
+
+**Critères indépendants :** Nommer les événements et le sens de chaque condition; Pondérer les deux causes de l’alerte; Inverser par Bayes avec le bon dénominateur; Séparer linéarité et indépendance.
+
+### Proposition 2 : densité, support et changement d’échelle {#F01-E03}
+
+<!-- ps1:solution id=F01-E03 -->
+
+La normalisation impose $c\int_0^2x\,dx=2c=1$, donc $c=1/2$. Ainsi $\mathbb E[X]=(1/2)\int_0^2x^2dx=4/3$, $\mathbb E[X^2]=(1/2)\int_0^2x^3dx=2$ et $\mathbb V(X)=2-16/9=2/9$. La probabilité $\mathbb P(X>1)=\int_1^2x/2\,dx=3/4$.
+
+Le support de $T$ est $(-1,5)$, son espérance vaut 3 et sa variance $9(2/9)=2$. Pour $-1<t<5$,
+$$f_T(t)=\frac13f_X\left(\frac{t+1}{3}\right)=\frac{t+1}{18}.$$
+Elle est nulle ailleurs et son intégrale vaut 1. Le facteur $1/3$ est nécessaire; les valeurs de la densité ne sont pas des probabilités ponctuelles.
+
+**Critères indépendants :** Normaliser sur le support exact; Calculer le second moment avant la variance; Transformer le support et le facteur jacobien; Ne pas confondre densité et masse.
+
+### Proposition 3 : choisir une loi de simulation {#F01-E04}
+
+<!-- ps1:solution id=F01-E04 -->
+
+Avec $U\sim\mathcal U(0,2)$, $I=\mathbb E[2e^{-U}]$. Avec $V\sim\mathcal E(1)$, $I=\mathbb P(V\le2)=\mathbb E[\mathbf1_{\{V\le2\}}]$. Les moyennes portent donc sur des variables différentes qui ont la même espérance. L’erreur standard estimée est l’écart-type corrigé de cette variable divisé par $\sqrt n$.
+
+```{r F01-E04}
+set.seed(3304)
+n <- 5000
+z1 <- 2*exp(-runif(n,0,2))
+z2 <- as.numeric(rexp(n,rate=1)<=2)
+I <- 1-exp(-2)
+print(data.frame(methode=c("uniforme","exponentielle"),
+                 estimation=c(mean(z1),mean(z2)),
+                 erreur_standard=c(sd(z1),sd(z2))/sqrt(n),
+                 valeur_exacte=I))
+```
+
+Les écarts réalisés sont aléatoires. Pour comparer la précision théorique, $\mathbb V(2e^{-U})=2e^{-2}(1-e^{-2})$ et $\mathbb V(\mathbf1_{\{V\le2\}})=e^{-2}(1-e^{-2})$. Le second estimateur a ici une variance deux fois plus faible pour le même nombre de tirages. Un bon changement de loi requiert de réécrire la cible, pas de conserver automatiquement la même fonction.
+
+**Critères indépendants :** Réécrire la même intégrale sous les deux lois; Conserver le facteur 2 sous uniforme; Calculer la dispersion de la variable moyennée; Distinguer erreur aléatoire et erreur de formule.
+
+### Proposition 4 : paramètre, EMV et intervalle {#F01-E05}
+
+<!-- ps1:solution id=F01-E05 -->
+
+Le taux vaut $1/\theta$, donc $f(x;\theta)=\theta^{-1}e^{-x/\theta}\mathbf1_{x>0}$. Pour des observations positives, $\ell(\theta)=-10\ln\theta-20/\theta$. La dérivée $-10/\theta+20/\theta^2$ change de signe en 2, de positive à négative. La log-vraisemblance tend vers $-\infty$ aux deux bords; le maximum est unique et $\widehat\theta=2$ minutes.
+
+À partir de $q_{.025}\le2S/\theta\le q_{.975}$, isoler le paramètre positif donne
+$$I(S)=\left[\frac{2S}{q_{.975}};\frac{2S}{q_{.025}}\right].$$
+Ici les bornes sont $40/\chi^2_{20,.975}$ et $40/\chi^2_{20,.025}$.
+
+```{r F01-E05}
+40/qchisq(c(.975,.025),df=20)
+```
+
+Avant observation, l’estimateur $S/10$ et les bornes sont aléatoires, le paramètre est fixe. Après observation, l’estimation vaut 2 et l’intervalle est une réalisation de la procédure exacte à 95 % sous le modèle exponentiel i.i.d. Être EMV n’implique pas en général être sans biais; ici c’est la moyenne empirique et sa propriété se démontre par linéarité.
+
+**Critères indépendants :** Paramétrer par la moyenne et non par le taux; Vérifier le maximum global; Inverser correctement les quantiles du pivot; Distinguer paramètre fixe et bornes aléatoires.
+
+### Proposition 5 : choisir un test sans son nom dans la question {#F01-E06}
+
+<!-- ps1:solution id=F01-E06 -->
+
+On teste $H_0:\mu_A=\mu_B$ contre $H_1:\mu_A<\mu_B$ avec le test de Welch pour deux échantillons indépendants. Il ne faut pas imposer une variance commune sans justification. La statistique est
+$$t=\frac{12-14}{\sqrt{3^2/18+5^2/24}}.$$
+L’approximation de Welch-Satterthwaite utilise
+$$\nu=\frac{(3^2/18+5^2/24)^2}{(3^2/18)^2/17+(5^2/24)^2/23}.$$
+
+```{r F01-E06}
+vA <- 3^2/18; vB <- 5^2/24
+t <- (12-14)/sqrt(vA+vB)
+nu <- (vA+vB)^2/(vA^2/17+vB^2/23)
+p <- pt(t,df=nu)
+print(c(difference=12-14,t=t,ddl=nu,p=p))
+stopifnot(p>.05)
+```
+
+La p-valeur unilatérale dépasse 5 %; on ne rejette pas l’égalité à ce seuil. Cela ne prouve pas que les moyennes sont égales ni que l’écart est négligeable. Le résultat repose sur indépendance, modèle de distribution et approximation des degrés de liberté. Avec les mêmes personnes dans les deux conditions, les données sont appariées; ce test indépendant n’est plus le choix adapté. Il faut étudier la dépendance et une méthode correspondant au plan, sans appliquer aveuglément le cadre présent.
+
+**Critères indépendants :** Identifier indépendance et paramètre de différence; Orienter l’alternative avant le calcul; Ne pas supposer des variances égales; Utiliser la queue gauche et les degrés adaptés; Interpréter non-rejet et plan apparié.
+
+### Proposition 6 : test global et coefficient individuel {#F01-E07}
+
+<!-- ps1:solution id=F01-E07 -->
+
+Les degrés résiduels sont $30-3=27$. Le coefficient individuel donne $t=-0{,}4/0{,}3=-4/3$ et une p-valeur bilatérale $2\mathbb P(t_{27}\ge4/3)$. Le test global donne
+$$F=\frac{(135-81)/2}{81/27}=9,\qquad R^2=1-81/135=0{,}4.$$
+
+```{r F01-E07}
+t <- -.4/.3
+p_individuel <- 2*pt(-abs(t),df=27)
+p_global <- pf(9,df1=2,df2=27,lower.tail=FALSE)
+print(c(t=t,p_individuel=p_individuel,F=9,p_global=p_global,R2=.4))
+stopifnot(p_individuel>.05,p_global<.05)
+```
+
+On ne rejette pas la nullité du premier coefficient au seuil 5 %, mais on rejette la nullité simultanée des deux pentes. Ces résultats répondent à des questions différentes et ne sont pas contradictoires. Le test global indique qu’au moins un coefficient contribue dans le modèle; il ne dit pas que tous sont non nuls. Les 40 % décrivent une variabilité empirique expliquée, pas 40 % de causalité ou de prédictions individuelles correctes.
+
+**Critères indépendants :** Calculer 27 degrés de liberté résiduels; Utiliser les bonnes queues et hypothèses nulles; Accepter des conclusions individuelles et globale différentes; Interpréter R² sur la réponse observée.
+
+### Proposition 7 : réparer un bootstrap incohérent {#F01-E08}
+
+<!-- ps1:solution id=F01-E08 -->
+
+L’identité empirique exige les mêmes lignes, le même codage, le même intercept et le modèle sans interaction. Les modèles sur 80 et 70 observations ne satisfont pas ces conditions. Il faut sélectionner d’abord les lignes complètes pour toutes les variables et ajuster ensuite les trois modèles sur ce tableau commun.
+
+Le bootstrap doit préserver chaque triplet. Schéma d’une réplication, pour des lignes i.i.d. et un prédicteur binaire dont les deux catégories sont présentes :
+
+```r
+commun <- tab[complete.cases(tab[,c("X","M","Y")]), ]
+idx <- sample(seq_len(nrow(commun)), nrow(commun), replace=TRUE)
+tirage <- commun[idx,,drop=FALSE]
+# Vérifier les deux catégories et le rang avant d'extraire les coefficients.
+m_M <- lm(M ~ X, data=tirage)
+m_Y <- lm(Y ~ M + X, data=tirage)
+produit <- coef(m_M)["X"]*coef(m_Y)["M"]
+```
+
+Ce pseudocode suppose `X` numérique 0/1; avec un facteur, le nom du coefficient doit être adapté au contraste fixé. Un ajustement non identifiable doit être signalé comme échec et non remplacé par zéro. Les trois modèles cohérents donnent une identité de projection, pas une preuve de médiation causale.
+
+**Critères indépendants :** Repérer le changement d’échantillon; Conserver les triplets au tirage; Contrôler codage et rang; Distinguer identité algébrique et causalité.
+
+### Rappel mixte différé {#F01-E09}
+
+<!-- ps1:solution id=F01-E09 -->
+
+(1) $\mathbb E[\sum I_i]=np$ par linéarité. La variance demande les covariances; $np(1-p)$ seul n’est pas garanti. (2) $\{2X>4\}=\{X>2\}$, donc probabilité $(3-2)/3=1/3$. (3) Le petit quantile se retrouve au dénominateur de la borne supérieure, car l’inversion d’une quantité positive renverse l’ordre. (4) `2*pt(-abs(-2.1), df=18)`. Le test bilatéral utilise l’éloignement de zéro dans les deux sens. (5) Prendre $Y=X^2$ avec $X$ symétrique, non dégénéré, par exemple uniforme sur $(-1,1)$. La covariance est nulle mais $Y$ est déterminée par $X$; la variance de l’espérance conditionnelle relativement à la variance de $Y$ vaut 1.
+
+Pour chaque réponse, distinguer rappel seul, reconstruction sans aide et réponse après lecture. Une hésitation utile indique ce qu’il faut encore pratiquer, sans imposer une séance supplémentaire au budget.
+
+**Critères indépendants :** Choisir des méthodes différentes sans indication de famille; Rappeler les hypothèses nécessaires; Expliquer l’inversion et les deux queues; Produire un contre-exemple structurel.
+
+### Réviser l’A4 et fixer la suite {#F01-E10}
+
+<!-- ps1:solution id=F01-E10 -->
+
+Une modification utile ajoute une condition qui change la décision : « variance nulle du test : $p_0(1-p_0)/n$ », « ddl de régression : compter les colonnes », ou « bootstrap : une unité indépendante entière ». Remplacer une ligne fausse ou ambiguë est préférable à ajouter un paragraphe qui ne sera pas retrouvé.
+
+La suite est décrite par une tâche observable et son contexte, pas par une étiquette de maîtrise automatique. Exemple de formulation de procédure : « À vérifier ultérieurement sur un jeu à catégories rares, sans aide, en contrôlant l’identification. » Cette phrase n’est pas un diagnostic réel prérempli. Si les 120 minutes sont écoulées, arrêter et consigner la difficulté persistante plutôt que prolonger silencieusement le programme.
+
+**Critères indépendants :** Fonder les modifications sur les tentatives réelles; Ajouter des conditions et non des réponses de problèmes; Définir la vérification manquante; Respecter le budget total.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `st09` : PDF p.7, « Consignes pour l’écrit réflexif ». Reprendre l’exigence de vocabulaire exact et de conception corrigée, sans rédiger l’écrit personnel demandé en soutien.
+- `st10_sondages` : PDF p.1, questions : aléatoire, choisi, inconnu mais non aléatoire; interprétation de tests de proportion. Distinguer paramètre, hasard d’échantillonnage et décision; aucune reprise des articles comme autorité mathématique.
+- `blocks_v2` : PS1-017, PS1-064 à PS1-075, PS1-114 à PS1-121, PS1-128, PS1-132, PS1-139 à PS1-160, PS1-170, PS1-181 à PS1-190, PS1-197 à PS1-264. Banque de réparations originales des concepts et méthodes déjà travaillés.
+- `ctd10` : E1 Q1-Q4, lignes 35-149. Omission et interprétation conditionnelle.
+- `tp04` : Parties II-IV, lignes 154-391. Échantillon commun, médiation et bootstrap.

@@ -1,0 +1,412 @@
+{
+  "lesson_id": "L09",
+  "minutes": 25,
+  "source_refs": [
+    {
+      "source_id": "ctd04",
+      "locator": "Exercice 2 Q1-Q3",
+      "use_fr": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+    },
+    {
+      "source_id": "ctd05",
+      "locator": "Exercice 1 Q1",
+      "use_fr": "Maximisation normale par identité des carrés."
+    },
+    {
+      "source_id": "st04_05",
+      "locator": "PDF pp.5-8",
+      "use_fr": "Deux méthodes et support dépendant du paramètre."
+    },
+    {
+      "source_id": "st04_attente",
+      "locator": "PDF pp.1-2",
+      "use_fr": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L09-B01",
+      "type": "DEF",
+      "title_fr": "Argmax",
+      "source_block_ids": [
+        "PS1-141"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 2 Q1-Q3",
+          "use_fr": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q1",
+          "use_fr": "Maximisation normale par identité des carrés."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "use_fr": "Deux méthodes et support dépendant du paramètre."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF pp.1-2",
+          "use_fr": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Argmax : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "71f323470cc0a6d799931ec05172f10c7d5d5d8e197e694fee3f915562d0071c",
+      "external_refs": []
+    },
+    {
+      "id": "L09-B02",
+      "type": "MTH",
+      "title_fr": "Méthode des moments",
+      "source_block_ids": [
+        "PS1-136",
+        "PS1-138"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 2 Q1-Q3",
+          "use_fr": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q1",
+          "use_fr": "Maximisation normale par identité des carrés."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "use_fr": "Deux méthodes et support dépendant du paramètre."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF pp.1-2",
+          "use_fr": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Comment construire un estimateur par la méthode des moments ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "57c1d002af228346ff74c1b8ab85a6c42bf77f257041a050c57ecb20378dd1f2",
+      "external_refs": []
+    },
+    {
+      "id": "L09-B03",
+      "type": "DEF",
+      "title_fr": "Vraisemblance i.i.d.",
+      "source_block_ids": [
+        "PS1-139"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 2 Q1-Q3",
+          "use_fr": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q1",
+          "use_fr": "Maximisation normale par identité des carrés."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "use_fr": "Deux méthodes et support dépendant du paramètre."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF pp.1-2",
+          "use_fr": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Qu'est-ce que la vraisemblance d'un échantillon i.i.d. ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "7be896cac9857cf3bedfc446ee70acbe7d618a6017fce7ea19b8503ac104c0d1",
+      "external_refs": []
+    },
+    {
+      "id": "L09-B04",
+      "type": "MTH",
+      "title_fr": "Log-vraisemblance",
+      "source_block_ids": [
+        "PS1-140"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 2 Q1-Q3",
+          "use_fr": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q1",
+          "use_fr": "Maximisation normale par identité des carrés."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "use_fr": "Deux méthodes et support dépendant du paramètre."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF pp.1-2",
+          "use_fr": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Log-vraisemblance : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "e929294e4aada95e81f1336eacf56fc65fab6c3584f879a063ce1c4daea54735",
+      "external_refs": []
+    },
+    {
+      "id": "L09-B05",
+      "type": "MTH",
+      "title_fr": "Maximum de vraisemblance",
+      "source_block_ids": [
+        "PS1-142",
+        "PS1-143",
+        "PS1-146"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 2 Q1-Q3",
+          "use_fr": "Moments, vraisemblance exponentielle et distinction avec le sans-biais."
+        },
+        {
+          "source_id": "ctd05",
+          "locator": "Exercice 1 Q1",
+          "use_fr": "Maximisation normale par identité des carrés."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.5-8",
+          "use_fr": "Deux méthodes et support dépendant du paramètre."
+        },
+        {
+          "source_id": "st04_attente",
+          "locator": "PDF pp.1-2",
+          "use_fr": "Progression modèle, estimation puis comparaison; nouveaux contexte et données."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Quelles vérifications permettent de conclure à un maximum de vraisemblance ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "72f23c15db92bcbd631a60795a82ee1ba3697cd5fcad15837521d62898d81594",
+      "external_refs": []
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L09-E01",
+      "minutes": 3,
+      "kind": "concept",
+      "family": "likelihood_roles_domain",
+      "topic_ids": [
+        "likelihood",
+        "argmax",
+        "score_eq"
+      ],
+      "competency_ids": [],
+      "block_ids": [
+        "L09-B01",
+        "L09-B03",
+        "L09-B05"
+      ],
+      "rubric_fr": [
+        "Indiquer exactement ce qui est fixé et ce qui varie.",
+        "Identifier le manque dans l'argument du point critique."
+      ],
+      "error_tags": [
+        "object_confusion",
+        "maximum_unjustified"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L09-E02",
+      "minutes": 10,
+      "kind": "math",
+      "family": "support_parameter_mle",
+      "topic_ids": [
+        "method_moments",
+        "likelihood",
+        "loglikelihood",
+        "mle",
+        "argmax"
+      ],
+      "competency_ids": [],
+      "block_ids": [
+        "L09-B02",
+        "L09-B03",
+        "L09-B05"
+      ],
+      "rubric_fr": [
+        "Obtenir 2 moyenne pour les moments et max pour l'EMV.",
+        "Conserver a >= max(x) dans la vraisemblance.",
+        "Justifier le maximum par décroissance sur le domaine compatible.",
+        "Ne pas confondre maximum et absence de biais."
+      ],
+      "error_tags": [
+        "support",
+        "boundary",
+        "maximum_unjustified",
+        "formal_language"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L09-E03",
+      "minutes": 3,
+      "kind": "R",
+      "family": "rate_mean_parameterization",
+      "topic_ids": [
+        "mle",
+        "loglikelihood",
+        "score_eq"
+      ],
+      "competency_ids": [],
+      "block_ids": [
+        "L09-B03",
+        "L09-B05"
+      ],
+      "rubric_fr": [
+        "Justifier la concavité globale.",
+        "Distinguer taux et moyenne, avec leurs unités."
+      ],
+      "error_tags": [
+        "parameterization",
+        "maximum_unjustified"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L09-V01",
+      "family": "mle_constraint",
+      "for_exercise_ids": [
+        "L09-E03"
+      ],
+      "error_tags": [
+        "domain",
+        "boundary"
+      ],
+      "prompt_md": "Le même modèle exponentiel est maintenant limité à $0<\\lambda\\le1$. Pour $n=6$ et $\\sum_i x_i=4$, trouver l'EMV sous cette contrainte. Une valeur critique hors du domaine est-elle admissible ?",
+      "correction_md": "Le maximum sans contrainte serait $6/4=1{,}5$, hors du domaine. Sur $]0,1]$, $\\ell'(\\lambda)=6/\\lambda-4>0$. La log-vraisemblance y est croissante, donc l'EMV contraint est $1$. Il faut réoptimiser sur le domaine autorisé, pas conserver une solution inadmissible.",
+      "rubric_fr": [
+        "Écarter le candidat hors domaine.",
+        "Justifier le maximum de bord par monotonie."
+      ],
+      "block_ids": [
+        "L09-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Nouvelle décision : une contrainte du modèle déplace le maximum à une frontière.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L09-V02",
+      "family": "mle_quadratic_no_derivative",
+      "for_exercise_ids": [
+        "L09-E02"
+      ],
+      "error_tags": [
+        "maximum_unjustified",
+        "proof_gap"
+      ],
+      "prompt_md": "Pour un échantillon normal i.i.d. de moyenne $m\\in\\mathbb R$ et variance connue $\\sigma^2>0$, la log-vraisemblance vaut $C-\\sum_i(x_i-m)^2/(2\\sigma^2)$, où $C$ ne dépend pas de $m$. Trouver le maximum sans dériver.",
+      "correction_md": "L'identité $\\sum_i(x_i-m)^2=\\sum_i(x_i-\\overline x)^2+n(m-\\overline x)^2$ découle de $\\sum_i(x_i-\\overline x)=0$. Le premier terme ne dépend pas de $m$; le second est positif et nul seulement pour $m=\\overline x$. La log-vraisemblance est donc uniquement maximale en $\\overline x$.",
+      "rubric_fr": [
+        "Écrire l'identité des carrés.",
+        "Utiliser la positivité pour établir un maximum global unique."
+      ],
+      "block_ids": [
+        "L09-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Transfert de méthode : remplacer l'équation du score par une identité et un argument de positivité.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L09-V03",
+      "family": "poisson_loglikelihood_construction",
+      "for_exercise_ids": [
+        "L09-E01",
+        "L09-E03"
+      ],
+      "error_tags": [
+        "fixed_data",
+        "log_transform",
+        "maximum_unjustified"
+      ],
+      "prompt_md": "Des comptages i.i.d. suivent une loi de Poisson de paramètre $\\lambda>0$; on observe $(0,2,1,3)$. Sans partir d'une log-vraisemblance fournie, écrire la vraisemblance puis sa transformée logarithmique, en séparant les termes constants en $\\lambda$. Expliquer pourquoi les deux fonctions ont les mêmes maximisateurs sur ce domaine. Trouver l'EMV et justifier qu'il s'agit d'un maximum global.",
+      "correction_md": "Pour les observations fixées $y=(0,2,1,3)$, $n=4$ et $\\sum_i y_i=6$,\n$$\nL(\\lambda;y)=\\prod_{i=1}^4\\frac{e^{-\\lambda}\\lambda^{y_i}}{y_i!}\n=\\frac{e^{-4\\lambda}\\lambda^6}{0!\\,2!\\,1!\\,3!},\\qquad \\lambda>0.\n$$\nCette vraisemblance est strictement positive sur le domaine. Le logarithme est strictement croissant sur $(0,\\infty)$, donc il conserve l'ordre des valeurs et les maximisateurs :\n$$\n\\ell(\\lambda;y)=-4\\lambda+6\\log\\lambda-\\log(0!\\,2!\\,1!\\,3!).\n$$\nLe dernier terme ne dépend pas de $\\lambda$. On trouve $\\ell'(\\lambda)=-4+6/\\lambda$ et $\\ell''(\\lambda)=-6/\\lambda^2<0$ : l'unique point critique $\\widehat\\lambda=6/4=1{,}5$ est le maximum global sur $(0,\\infty)$, par stricte concavité. Le modèle estime une moyenne de 1,5 événement par fenêtre; cette valeur n'est pas un comptage futur certain.",
+      "rubric_fr": [
+        "Passer du produit positif aux sommes logarithmiques et identifier la constante indépendante du paramètre.",
+        "Justifier la conservation des maximisateurs par la stricte croissance du logarithme.",
+        "Obtenir 1,5 et prouver le maximum global sur le domaine annoncé."
+      ],
+      "block_ids": [
+        "L09-B01",
+        "L09-B03",
+        "L09-B04",
+        "L09-B05"
+      ],
+      "minutes": 3,
+      "has_r": false,
+      "topic_ids": [
+        "log_tools",
+        "loglikelihood",
+        "likelihood",
+        "mle"
+      ],
+      "competency_ids": [],
+      "transfer": "Construire soi-même les deux objectifs dans un modèle de comptage; la monotonie justifie la transformation avant le calcul.",
+      "budget_rule_fr": "Remplace trois minutes d'un créneau de révision existant; aucun temps ajouté aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "cours": 4,
+    "concept_checks": 3,
+    "maths": 10,
+    "R": 3,
+    "self_correction_review": 5
+  },
+  "review_allocation": {
+    "correction_minutes": 3,
+    "anki_minutes": 2
+  },
+  "coverage_note_fr": "Le catalogue hérité ne contient pas de compétence primaire pour L09; competency_ids reste vide et les sujets effectivement exercés sont déclarés.",
+  "external_clarifications": []
+}

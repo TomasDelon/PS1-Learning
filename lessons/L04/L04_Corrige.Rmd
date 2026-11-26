@@ -1,0 +1,226 @@
+---
+title: "L04 · Espérance, variance et covariance · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L04
+  document_role: correction
+  content_status: authored_complete
+  minutes: 45
+  exercise_ids: ["L04-E01", "L04-E02", "L04-E03", "L04-E04", "L04-E05", "L04-E06"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L04-E01 · Changement d’échelle (3 min) {#L04-E01}
+
+<!-- ps1:solution id=L04-E01 -->
+
+Comme $X$ est de carré intégrable, L04-B03 donne
+$\mathbb V(W)=9\mathbb V(X)$ et $\sigma_W=3\sigma_X$.
+Le coefficient négatif inverse le sens des écarts, mais la racine positive
+de $(-3)^2$ vaut 3. La translation ne modifie pas la dispersion.
+La variance de $X$ est en secondes au carré et son écart-type en secondes.
+
+**Critères observables :**
+
+- Mettre le coefficient au carré pour la variance.
+- Employer la valeur absolue pour l’écart-type.
+- Donner les unités et le rôle de la translation.
+
+### L04-E02 · Revenir à la définition (5 min) {#L04-E02}
+
+<!-- ps1:solution id=L04-E02 -->
+
+Posons $W=aX+b$. L'inégalité $(aX+b)^2\le2a^2X^2+2b^2$ montre que
+$W$ est de carré intégrable. Par linéarité,
+$\mathbb E[W]=a\mathbb E[X]+b$. Ainsi
+$$\begin{aligned}
+\mathbb V(W)&=\mathbb E[(W-\mathbb E[W])^2]\\
+&=\mathbb E[(aX+b-a\mathbb E[X]-b)^2]\\
+&=a^2\mathbb E[(X-\mathbb E[X])^2]=a^2\mathbb V(X).
+\end{aligned}$$
+En prenant la racine carrée positive,
+$\sigma_W=\sqrt{a^2}\sigma_X=|a|\sigma_X$.
+Aucune hypothèse d'indépendance n'intervient.
+
+**Critères observables :**
+
+- Vérifier l’existence de la variance de la transformation.
+- Commencer par la définition, sans raisonnement circulaire.
+- Faire disparaître b au centrage et sortir a au carré.
+- Prendre la racine positive.
+
+### L04-E03 · Tenir compte de la dépendance (5 min) {#L04-E03}
+
+<!-- ps1:solution id=L04-E03 -->
+
+Par linéarité, sans indépendance,
+$\mathbb E[U]=2(1)-(-2)+7=11$. L04-B05 donne
+$$\mathbb V(U)=2^2(4)+(-1)^2(9)+2(2)(-1)(1)=16+9-4=21.$$
+Donc $\sigma_U=\sqrt{21}$. Le terme croisé est conservé avec son signe.
+L'indépendance est incompatible avec la covariance donnée, car elle imposerait
+une covariance nulle pour ces variables de carré intégrable.
+
+Les deux variances étant strictement positives, $\rho(X,Y)=1/(\sqrt4\sqrt9)=1/6$. Cette quantité est sans unité. Son signe positif indique une association linéaire positive dans ce modèle, sans établir de causalité. La valeur non nulle est également incompatible avec l’indépendance. La borne est vérifiée : $|1|\le\sqrt4\sqrt9=6$.
+
+**Critères observables :**
+
+- Justifier l’espérance par linéarité sans indépendance.
+- Garder le signe négatif du terme croisé.
+- Trouver 11, 21 et racine de 21.
+- Relier l’incompatibilité à l’implication démontrée.
+
+
+- Vérifier les deux variances positives et calculer la corrélation 1/6.
+- Préciser que la corrélation est sans unité et ne démontre aucun lien causal.
+- Vérifier $|\operatorname{Cov}(X,Y)|\le\sigma_X\sigma_Y$.
+
+### L04-E04 · Tester une réciproque (5 min) {#L04-E04}
+
+<!-- ps1:solution id=L04-E04 -->
+
+Les variables sont bornées, donc de carré intégrable. Par transfert,
+$\mathbb E[X]=0$, $\mathbb E[Y]=2/3$ et
+$\mathbb E[XY]=\mathbb E[X^3]=0$. L04-B15 donne une covariance nulle.
+Pourtant
+$$\mathbb P(X=0,Y=0)=1/3\ne(1/3)(1/3)
+=\mathbb P(X=0)\mathbb P(Y=0).$$
+Elles ne sont donc pas indépendantes. L'argument « $Y$ est une fonction
+de $X$ » doit être complété ici par une violation formelle de l'indépendance.
+
+**Critères observables :**
+
+- Calculer les trois espérances nécessaires.
+- Vérifier le carré intégrable.
+- Donner deux événements et une inégalité de probabilités.
+- Conclure que la réciproque est fausse.
+
+### L04-E05 · Deux objets à distinguer (8 min) {#L04-E05}
+
+<!-- ps1:solution id=L04-E05 -->
+
+La loi de $Z$ pondère quatre valeurs par $1/4$; `var` utilise $n-1=3$.
+Comme les valeurs ne sont pas toutes égales, les résultats diffèrent.
+```{r L04-E05}
+x <- c(-2, 0, 1, 5)
+n <- length(x)
+m <- mean(x)
+variance_z <- mean((x-m)^2)
+variance_r <- var(x)
+c(variance_z=variance_z, variance_r=variance_r)
+stopifnot(isTRUE(all.equal(variance_r, n/(n-1)*variance_z)))
+a <- -2
+b <- 7
+stopifnot(isTRUE(all.equal(var(a*x+b), a^2*var(x))))
+var(a*x+b)-a^2*var(x)
+```
+On obtient $\mathbb V(Z)=6{,}5$ et `var(x)` $=26/3$.
+L'aide de `var` précise le dénominateur $n-1$.
+Le contrôle détecte une éventuelle erreur sur cet exemple; il ne démontre
+pas une identité pour toutes les variables. La démonstration est celle de E02.
+
+**Critères observables :**
+
+- Distinguer loi équiprobable et convention empirique.
+- Retrouver 6,5 et 26/3.
+- Utiliser un coefficient négatif et une comparaison numérique tolérante.
+- Distinguer vérification et preuve.
+
+### L04-E06 · Compter des réussites (4 min) {#L04-E06}
+
+<!-- ps1:solution id=L04-E06 -->
+
+Pour $i=1,2,3$, soit $E_i=$ « la sauvegarde $i$ réussit » et
+$I_i=\mathbf1_{E_i}$. Alors $N=I_1+I_2+I_3$ et, par linéarité,
+$\mathbb E[N]=0{,}8+0{,}7+0{,}9=2{,}4$.
+La variance comprend les variances des indicatrices et les termes
+$2\sum_{i<j}\operatorname{Cov}(I_i,I_j)$.
+La dépendance n'étant pas précisée, ces termes ne sont pas déterminés.
+Le nombre moyen 2,4 n'est pas une réalisation possible entière de $N$.
+
+**Critères observables :**
+
+- Nommer les événements et les indicatrices.
+- Sommer les probabilités sans hypothèse d’indépendance.
+- Identifier les covariances manquantes pour la variance.
+- Distinguer espérance non entière et réalisation entière.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L04-V01 (4 min) {#L04-V01}
+
+**Énoncé :** Un seul capteur choisit exactement une des catégories A, B, C, de probabilités 0,2, 0,5 et 0,3. Poser $I_A=\mathbf1_A$ et $I_B=\mathbf1_B$. Calculer l'espérance et la variance de $I_A+I_B$ sans invoquer l'indépendance.
+
+**Correction :**
+
+Les événements sont incompatibles, donc $I_AI_B=0$.
+$\mathbb E[I_A+I_B]=0{,}7$ et
+$\operatorname{Cov}(I_A,I_B)=0-0{,}2(0{,}5)=-0{,}1$.
+La variance vaut $0{,}2(0{,}8)+0{,}5(0{,}5)-0{,}2=0{,}21$.
+On peut aussi voir $I_A+I_B=\mathbf1_{A\cup B}$, de variance
+$0{,}7(0{,}3)$. Les indicatrices ne sont pas indépendantes.
+
+**Critères observables :**
+
+- Utiliser l’incompatibilité pour le produit.
+- Conserver la covariance négative.
+- Trouver la même variance par les deux représentations.
+
+### L04-V02 (5 min) {#L04-V02}
+
+**Énoncé :** Une amplitude $U$ est uniforme sur (-1,1); l'énergie est $Y=U^2$. Peut-on utiliser la formule de variance affine ? Calculer $\mathbb E[Y]$ et $\mathbb V(Y)$ par transfert, puis déterminer si $\operatorname{Cov}(U,Y)=0$ permet de conclure à l'indépendance.
+
+**Correction :**
+
+Le carré n'est pas affine. Comme $U$ est bornée, tous les moments requis existent.
+$\mathbb E[Y]=\frac12\int_{-1}^1u^2\,du=1/3$ et
+$\mathbb E[Y^2]=\frac12\int_{-1}^1u^4\,du=1/5$,
+donc $\mathbb V(Y)=1/5-1/9=4/45$.
+Les intégrales impaires donnent $\operatorname{Cov}(U,Y)=0$.
+Pourtant $\{|U|\le1/2\}=\{Y\le1/4\}$ a probabilité 1/2; l'intersection a
+probabilité 1/2, et non 1/4. L'indépendance est donc fausse.
+
+**Critères observables :**
+
+- Refuser l’application d’une formule affine à un carré.
+- Vérifier les moments par intégration.
+- Calculer 4/45 et réfuter l’indépendance par des événements.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd02` (source non redistribuée), Exercice 2 Q1-Q3 : Espérance, transfert, variance et contrôle numérique.
+- `tp01` (source non redistribuée), Exercice 3 Q4-Q5, première occurrence de Question 5 : Espérance d’un comptage par somme de probabilités.
+- `st02_03` (source non redistribuée), PDF pp.5-12 : Anticiper les effets de translation et d’échelle, interpréter les unités.
+- `st02_prime` (source non redistribuée), PDF p.1, Temps 2-4 : Choisir les outils avant le calcul.
+- `st09` (source non redistribuée), PDF p.3 : Covariance nulle et dépendance.
+- `st_poly_discretes` (source non redistribuée), PDF pp.5-11 : Espérance, moments, variance; la preuve emploie la linéarité de l’espérance.
+- `st_poly_continues` (source non redistribuée), PDF pp.5-10 : Intégrabilité, moments et transformations.
+- `blocks_v2` (source non redistribuée), PS1-080, PS1-081, PS1-082, PS1-084, PS1-079, PS1-088, PS1-085, PS1-086, PS1-087, PS1-089, PS1-090, PS1-091, PS1-092, PS1-093, PS1-104, PS1-110 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

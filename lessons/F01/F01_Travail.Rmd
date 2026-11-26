@@ -1,0 +1,199 @@
+---
+title: "F01 · Réparer les erreurs prioritaires"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: F01
+  document_role: work
+  content_status: complete_authored
+  minutes: 90
+  exercise_ids: ["F01-E01", "F01-E02", "F01-E03", "F01-E04", "F01-E05", "F01-E06", "F01-E07", "F01-E08", "F01-E09", "F01-E10"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**90 min fermes :** analyse 25, quatre créneaux de réparation de 10 minutes chacun, rappel mixte 15, A4 10. Pour les problèmes proposés par défaut, prévoir 6 minutes de tentative, 3 de correction et 1 de rappel ou d’Anki dans chaque créneau. Ce partage inclut tout le travail; aucune revue n’est ajoutée au budget.
+
+Cette séance ne présume aucun résultat de S01. Elle n’ouvre aucun sujet réservé et ne crée aucun enregistrement de progrès. Les problèmes ci-dessous sont originaux. Une première erreur peut guider une tâche; la compréhension du corrigé ne suffit pas à établir que la difficulté est surmontée.
+
+## 1/6 · Analyser les traces, 25 min
+
+### Classer les erreurs et affecter le temps {#F01-E01}
+
+**Budget : 25 min.**
+
+Utiliser uniquement les tentatives que vous avez réellement produites et choisi de revoir. Cette séance ne fournit ni ne demande d’ouvrir un sujet réservé. Pendant 25 minutes : 5 minutes pour repérer les réponses incomplètes ou contradictoires; 10 minutes pour examiner deux ou trois erreurs à forte confiance; 10 minutes pour choisir quatre créneaux de réparation parmi les sept propositions.
+
+Classer chaque erreur : concept, hypothèse, méthode, calcul, R, rédaction, gestion du temps. Écrire la première ligne où le raisonnement devient invalide et une action observable qui montrerait la réparation. Si aucune tentative n’est disponible, conserver la mention « non évalué » et choisir quatre problèmes originaux parmi E02-E08 comme diagnostic de réparation (E02-E05 par défaut), sans inventer un résultat.
+
+| Réponse réellement disponible | Première étape invalide | Type d’erreur | Bloc de référence | Tâche choisie, sans réponse consultée |
+|:--|:--|:--|:--|:--|
+| | | | | |
+| | | | | |
+| | | | | |
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 2/6 · Choisir la réparation
+
+Choisir quatre problèmes parmi les sept propositions E02-E08; E02-E05 servent de sélection par défaut en l’absence de traces. Les trois propositions non choisies sont facultatives et hors séance. Un créneau peut être remplacé par une variante ciblée encore non tentée de sept minutes au plus. Réserver une minute de rappel et le reste à la correction : sept minutes de tentative donnent deux minutes de correction; six en donnent trois. Une variante plus courte conserve sa durée annoncée et augmente le temps de correction. Chaque remplacement garde au moins deux minutes de correction et une de rappel, sans dépasser dix minutes. Ne pas faire en plus le problème remplacé. Une erreur à forte confiance mérite une tâche qui force une nouvelle décision, pas seulement un changement de chiffres.
+
+| Erreur prioritaire | Référence précise | Variante ou créneau utile |
+|:--|:--|:--|
+| Confusion entre deux conditionnements | L14-B04-B05 | L14-V01 ou E02 |
+| Covariance nulle assimilée à indépendance | L14-B08 et L04-B06 | L14-V02 |
+| Mauvaise unité ou mauvaise cible de prédiction | L15-B03, L15-B10 | L15-V01 |
+| Résumés numériques pris comme preuve du modèle | L15-B10 | L15-V02 |
+| Inversion appliquée malgré une colinéarité | L16-B02-B03 | L16-V01 |
+| Classement agrégé confondu avec comparaison à population égale | L16-B05 | L16-V02 |
+| Mauvais contraste de catégorie | L17-B01-B05 | L17-V01 |
+| Identité de médiation utilisée avec interaction | L17-B03 | L17-V02 |
+| Bootstrap de lignes dépendantes | L17-B04 | L17-V03 |
+
+## 3/6 · Choisir quatre propositions, 40 min
+
+### Proposition 1 : raisonner avec un signal imparfait {#F01-E02}
+
+**Budget : 10 min.**
+
+Une surveillance automatique détecte un incident réel avec probabilité 0,9. Elle émet aussi une alerte avec probabilité 0,06 lorsqu’il n’y a pas d’incident. La probabilité d’un incident est 0,03. Définir les événements, calculer la probabilité d’une alerte et celle d’un incident sachant une alerte. Sur 100 situations de mêmes probabilités marginales, quel nombre moyen d’alertes attend-on ? Où l’indépendance serait-elle nécessaire ?
+
+Utiliser 6 minutes de tentative, 3 de correction et 1 de rappel. Si cette famille est déjà maîtrisée sur une trace indépendante, remplacer ce créneau par une variante ciblée de L02-L04, de durée compatible.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Proposition 2 : densité, support et changement d’échelle {#F01-E03}
+
+**Budget : 10 min.**
+
+Une durée $X$ a pour densité $f(x)=cx\,\mathbf1_{(0,2)}(x)$. Déterminer $c$, $\mathbb E[X]$, $\mathbb V(X)$ et $\mathbb P(X>1)$. Pour $T=3X-1$, déterminer support, espérance et variance; donner aussi sa densité en vérifiant le facteur de changement de variable.
+
+Répartir les 10 minutes en 6 de tentative, 3 de correction, 1 de rappel. Variante possible : L03 ou L04 selon l’erreur observée.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Proposition 3 : choisir une loi de simulation {#F01-E04}
+
+**Budget : 10 min.**
+
+On veut calculer $I=\int_0^2e^{-x}\,dx$. Proposer un estimateur Monte-Carlo fondé sur des uniformes sur $(0,2)$, puis un autre fondé sur des exponentielles de taux 1. Pour chacun, préciser la variable dont on prend la moyenne et l’erreur standard estimée. Programmer les deux avec 5000 tirages, `set.seed(3304)`, puis comparer à la valeur exacte. Une différence entre deux simulations invalide-t-elle une méthode ?
+
+6 minutes de tentative, 3 de correction, 1 de rappel. Une variante de L07 peut remplacer ce créneau.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Proposition 4 : paramètre, EMV et intervalle {#F01-E05}
+
+**Budget : 10 min.**
+
+Dix temps d’attente i.i.d. suivent une exponentielle de moyenne inconnue $\theta>0$. Leur somme observée vaut 20 minutes. Écrire la densité et la log-vraisemblance en fonction de $\theta$, obtenir l’EMV et vérifier le maximum. Utiliser le pivot $2S/\theta\sim\chi^2_{20}$, où $S$ est la somme aléatoire, pour construire un IC à 95 % de $\theta$. Interpréter le statut aléatoire avant observation et le résultat après observation.
+
+6 minutes de tentative, 3 de correction, 1 de rappel. Une variante L08-L10 peut remplacer ce créneau.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Proposition 5 : choisir un test sans son nom dans la question {#F01-E06}
+
+**Budget : 10 min.**
+
+Deux équipes indépendantes exécutent la même tâche dans des environnements différents. Dans A : $n_A=18$, moyenne 12 minutes et écart-type corrigé 3. Dans B : $n_B=24$, moyenne 14 et écart-type corrigé 5. Des distributions normales sont plausibles; l’égalité des variances n’est pas établie. On veut tester, au seuil 5 %, si la moyenne de A est inférieure à celle de B. Choisir une méthode, formuler les hypothèses, calculer sa statistique et conclure avec les limites du résultat. Que faudrait-il revoir si les deux valeurs provenaient des mêmes personnes ?
+
+6 minutes de tentative, 3 de correction, 1 de rappel. Une variante L11-L13 peut remplacer ce créneau.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Proposition 6 : test global et coefficient individuel {#F01-E07}
+
+**Budget : 10 min.**
+
+Une régression avec intercept et deux prédicteurs numériques est ajustée sur 30 observations indépendantes, avec rang plein et erreurs normales homoscédastiques. RSS vaut 81 et TSS 135. Pour le coefficient d’intérêt, on observe $\widehat b_1=-0{,}4$ et une erreur standard de 0,3. Tester séparément la nullité de ce coefficient et la nullité simultanée des deux pentes au seuil 5 %. Calculer $R^2$. Un test global significatif impose-t-il que chaque coefficient soit significatif ? Rédiger une réponse statistique cohérente.
+
+6 minutes de tentative, 3 de correction, 1 de rappel. Choisir L15-V01 ou L16-V01 si les unités ou le rang sont la difficulté prioritaire.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Proposition 7 : réparer un bootstrap incohérent {#F01-E08}
+
+**Budget : 10 min.**
+
+Un code ajuste `M ~ X` sur les 80 lignes d’un tableau, puis `Y ~ M + X` sur seulement 70 lignes complètes. Il ajuste `Y ~ X` sur les 80 lignes et s’étonne de ne pas retrouver $\widehat d=\widehat a\widehat b+\widehat c$. Pour le bootstrap, il mélange ensuite les trois colonnes séparément. Identifier les deux causes de l’échec et écrire un pseudocode R correct pour une réplication, en précisant une condition d’identification et la limite causale de l’identité.
+
+6 minutes de tentative, 3 de correction, 1 de rappel. Si la difficulté est déjà corrigée sur une trace indépendante, choisir L17-V02 ou L17-V03 à la place.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Rappel sans choix de famille, 15 min
+
+### Rappel mixte différé {#F01-E09}
+
+**Budget : 15 min.**
+
+Fermer le cours et les corrections. Prévoir dix minutes, deux par question, puis cinq minutes de comparaison.
+
+1. Si les indicatrices $I_1,\ldots,I_n$ ne sont pas indépendantes mais ont toutes espérance $p$, peut-on calculer l’espérance de leur somme ? Et sa variance à partir de $p$ seul ?
+2. Pour $X\sim\mathcal U(0,3)$, calculer $\mathbb P(2X>4)$ et nommer l’étape de transformation.
+3. Dans un pivot $C/\theta\sim\chi^2_\nu$, avec $C,\theta>0$, lequel du petit ou du grand quantile devient le dénominateur de la borne supérieure de l’IC ?
+4. Un test bilatéral de coefficient donne $t=-2{,}1$ et 18 degrés de liberté. Écrire la p-valeur avec `pt`, sans décider d’abord selon le signe du coefficient.
+5. Une corrélation nulle interdit-elle à $X$ de prédire très bien $Y$ ? Donner une structure de contre-exemple et préciser le résumé qui serait plus pertinent.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Mettre à jour la référence, 10 min
+
+### Réviser l’A4 et fixer la suite {#F01-E10}
+
+**Budget : 10 min.**
+
+Pendant 10 minutes, modifier au maximum trois éléments de la feuille A4 à partir des erreurs réellement observées. Pour chacun : écrire l’ancienne ambiguïté, la formulation corrigée avec hypothèse et une question de contrôle. Consacrer au plus deux minutes aux cartes ciblées dans ces dix minutes. Si une difficulté persiste après la variante, la nommer explicitement; ne pas déclarer qu’elle est réparée parce que le corrigé paraît clair.
+
+| Ambiguïté ou manque observé | Nouvelle formulation précise | Vérification encore nécessaire |
+|:--|:--|:--|
+| | | |
+| | | |
+| | | |
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 6/6 · Fermer la séance
+
+Conserver les premières tentatives et les corrections distinctes. Signaler ce qui reste incertain. Aucun fichier ne déduit automatiquement une maîtrise, un score personnel ou une réussite à partir de la fin des 90 minutes.
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `st09` : PDF p.7, « Consignes pour l’écrit réflexif ». Reprendre l’exigence de vocabulaire exact et de conception corrigée, sans rédiger l’écrit personnel demandé en soutien.
+- `st10_sondages` : PDF p.1, questions : aléatoire, choisi, inconnu mais non aléatoire; interprétation de tests de proportion. Distinguer paramètre, hasard d’échantillonnage et décision; aucune reprise des articles comme autorité mathématique.
+- `blocks_v2` : PS1-017, PS1-064 à PS1-075, PS1-114 à PS1-121, PS1-128, PS1-132, PS1-139 à PS1-160, PS1-170, PS1-181 à PS1-190, PS1-197 à PS1-264. Banque de réparations originales des concepts et méthodes déjà travaillés.
+- `ctd10` : E1 Q1-Q4, lignes 35-149. Omission et interprétation conditionnelle.
+- `tp04` : Parties II-IV, lignes 154-391. Échantillon commun, médiation et bootstrap.

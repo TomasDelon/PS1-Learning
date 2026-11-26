@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0.0",
+  "topic_owner_changes": [
+    {
+      "topic_id": "log_tools",
+      "old": "L05",
+      "new": "L03"
+    },
+    {
+      "topic_id": "calculus_tools",
+      "old": "L09",
+      "new": "L03"
+    },
+    {
+      "topic_id": "standard_normal",
+      "old": "L06",
+      "new": "L05"
+    },
+    {
+      "topic_id": "choose_test",
+      "old": "L13",
+      "new": "L11"
+    },
+    {
+      "topic_id": "r_for",
+      "old": "L01",
+      "new": "L06"
+    },
+    {
+      "topic_id": "r_while",
+      "old": "L01",
+      "new": "L07"
+    },
+    {
+      "topic_id": "r_functions",
+      "old": "L01",
+      "new": "L03"
+    },
+    {
+      "topic_id": "r_scope",
+      "old": "L01",
+      "new": "L03"
+    },
+    {
+      "topic_id": "r_matrix",
+      "old": "L01",
+      "new": "L13"
+    },
+    {
+      "topic_id": "matrix_tools",
+      "old": "L01",
+      "new": "L13"
+    },
+    {
+      "topic_id": "joint_law",
+      "old": "L14",
+      "new": "L04"
+    },
+    {
+      "topic_id": "parameter",
+      "old": "L08",
+      "new": "L06"
+    },
+    {
+      "topic_id": "statistic",
+      "old": "L08",
+      "new": "L06"
+    },
+    {
+      "topic_id": "sample_var",
+      "old": "L06",
+      "new": "L08"
+    }
+  ],
+  "relation_overrides": [
+    {
+      "from_topic_id": "chi_fit",
+      "to_topic_id": "choose_test",
+      "original_type": "topic_prerequisite",
+      "curriculum_type": "encompassing_reference",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_override_not_official_fact"
+    },
+    {
+      "from_topic_id": "chi_independent",
+      "to_topic_id": "choose_test",
+      "original_type": "topic_prerequisite",
+      "curriculum_type": "encompassing_reference",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_override_not_official_fact"
+    },
+    {
+      "from_topic_id": "student_test_one",
+      "to_topic_id": "choose_test",
+      "original_type": "topic_prerequisite",
+      "curriculum_type": "encompassing_reference",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_override_not_official_fact"
+    },
+    {
+      "from_topic_id": "student_test_two",
+      "to_topic_id": "choose_test",
+      "original_type": "topic_prerequisite",
+      "curriculum_type": "encompassing_reference",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_override_not_official_fact"
+    },
+    {
+      "from_topic_id": "welch_test",
+      "to_topic_id": "choose_test",
+      "original_type": "topic_prerequisite",
+      "curriculum_type": "encompassing_reference",
+      "rationale_fr": "Le choix général du test commence en L11; le catalogue des familles s’enrichit en L12/L13. Connaître toutes les familles n’est pas un préalable à un premier choix justifié.",
+      "status": "editorial_override_not_official_fact"
+    }
+  ],
+  "baseline_topic_edge_count": 451,
+  "baseline_unchanged": true,
+  "competency_readiness_changes": [
+    {
+      "competency_id": "comp.ps1.rmd_reproducible",
+      "first_practice_lesson_id": "L01",
+      "exit_ready_lesson_id": "L03"
+    },
+    {
+      "competency_id": "comp.ps1.r_filter",
+      "first_practice_lesson_id": "L01",
+      "exit_ready_lesson_id": "L02"
+    },
+    {
+      "competency_id": "comp.ps1.r_documentation",
+      "first_practice_lesson_id": "L01",
+      "exit_ready_lesson_id": "L03"
+    },
+    {
+      "competency_id": "comp.ps1.r_pipeline",
+      "first_practice_lesson_id": "L01",
+      "exit_ready_lesson_id": "L03"
+    },
+    {
+      "competency_id": "comp.ps1.r_code_explain",
+      "first_practice_lesson_id": "L01",
+      "exit_ready_lesson_id": "L03"
+    },
+    {
+      "competency_id": "comp.ps1.association_explain",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L04"
+    },
+    {
+      "competency_id": "comp.ps1.causal_distinction",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L16"
+    },
+    {
+      "competency_id": "comp.ps1.classification_accuracy",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L04"
+    },
+    {
+      "competency_id": "comp.ps1.conditional_direction",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L06"
+    },
+    {
+      "competency_id": "comp.ps1.conditional_predict",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L06"
+    },
+    {
+      "competency_id": "comp.ps1.conditional_probability",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L06"
+    },
+    {
+      "competency_id": "comp.ps1.empirical_probability",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L06"
+    },
+    {
+      "competency_id": "comp.ps1.probabilistic_model_interpret",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L08"
+    },
+    {
+      "competency_id": "comp.ps1.provided_model_execute",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L03"
+    },
+    {
+      "competency_id": "comp.ps1.r_vectorized_summary",
+      "first_practice_lesson_id": "L02",
+      "exit_ready_lesson_id": "L03"
+    },
+    {
+      "competency_id": "comp.ps1.r_random_sample",
+      "first_practice_lesson_id": "L03",
+      "exit_ready_lesson_id": "L06"
+    },
+    {
+      "competency_id": "comp.ps1.sample_moments",
+      "first_practice_lesson_id": "L04",
+      "exit_ready_lesson_id": "L08"
+    },
+    {
+      "competency_id": "comp.ps1.variance_linear_combination",
+      "first_practice_lesson_id": "L04",
+      "exit_ready_lesson_id": "L06"
+    },
+    {
+      "competency_id": "comp.ps1.normal_tail_probability",
+      "first_practice_lesson_id": "L05",
+      "exit_ready_lesson_id": "L11"
+    },
+    {
+      "competency_id": "comp.ps1.model_observation_compare",
+      "first_practice_lesson_id": "L05",
+      "exit_ready_lesson_id": "L08"
+    },
+    {
+      "competency_id": "comp.ps1.mc_precision",
+      "first_practice_lesson_id": "L07",
+      "exit_ready_lesson_id": "L08"
+    },
+    {
+      "competency_id": "comp.ps1.variance_reduction_compare",
+      "first_practice_lesson_id": "L07",
+      "exit_ready_lesson_id": "L08"
+    },
+    {
+      "competency_id": "comp.ps1.proportion_test",
+      "first_practice_lesson_id": "L11",
+      "exit_ready_lesson_id": "L13"
+    },
+    {
+      "competency_id": "comp.ps1.joint_model_probability",
+      "first_practice_lesson_id": "L13",
+      "exit_ready_lesson_id": "L14"
+    },
+    {
+      "competency_id": "comp.ps1.regression_coefficient_test",
+      "first_practice_lesson_id": "L15",
+      "exit_ready_lesson_id": "L16"
+    }
+  ],
+  "same_lesson_note": "Same-lesson topic dependencies remain authoring constraints; this graph does not certify their detailed presentation order."
+}

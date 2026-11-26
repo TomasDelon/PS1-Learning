@@ -1,0 +1,200 @@
+---
+title: "L16 · Régression multiple, confusion et variance expliquée"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L16
+  document_role: work
+  content_status: complete_authored
+  minutes: 55
+  exercise_ids: ["L16-E01", "L16-E02", "L16-E03", "L16-E04"]
+  block_ids: ["L16-B01", "L16-B02", "L16-B03", "L16-B04", "L16-B05", "L16-B06", "L16-B07", "L16-B08", "L16-B09"]
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**55 min :** mise en place 6, concepts 5, mathématiques 18, R 19, correction et rappel 7. Les blocs de référence s’utilisent pendant les tâches; leurs consultations sont comprises dans ce budget.
+
+**Prérequis :** L15 pour MCO, $R^2$, tests et `lm`; L04 pour covariance et combinaisons linéaires; L14 pour moyenne conditionnelle et variance totale. La matrice ci-dessous n’est qu’une écriture compacte de deux équations.
+
+## 1/6 · Comprendre
+
+Une pente simple mélange ce qui varie avec le prédicteur étudié et avec les autres caractéristiques qui l’accompagnent. Une pente partielle compare les moyennes à ces autres caractéristiques fixées. Le changement de pente peut être expliqué algébriquement; son interprétation causale exige davantage que l’algèbre.
+
+### Modèle multiple et coefficient partiel {#L16-B01}
+
+> **DEF [L16-B01] · Modèle multiple et coefficient partiel**
+>
+> Pour $d\ge2$ prédicteurs de carré intégrable, le modèle écrit $Y=b_0+\sum_{j=1}^d b_jX_j+\varepsilon$. Sous $\mathbb E[\varepsilon\mid X_1,\ldots,X_d]=0$, sa moyenne conditionnelle est $b_0+\sum_jb_jX_j$. Le coefficient $b_j$ est la variation de cette moyenne pour une unité de $X_j$ supplémentaire, les autres prédicteurs étant fixés. Ce sens partiel ne signifie pas qu’une intervention sur $X_j$ aurait cet effet.
+
+### Rang plein et degrés de liberté {#L16-B02}
+
+> **DEF [L16-B02] · Rang plein et degrés de liberté**
+>
+> La matrice de conception $A$ a pour ligne $(1,x_{i1},\ldots,x_{id})$ et taille $n\times(d+1)$. Elle a rang plein si ses colonnes sont linéairement indépendantes : aucune colonne n’est une combinaison exacte des autres. Alors les MCO sont uniques. Pour $n>d+1$, les degrés de liberté résiduels valent $\nu=n-d-1$. Ici $d$ compte les colonnes explicatives, par exemple deux indicatrices pour un facteur à trois catégories.
+
+## 2/6 · Expliquer
+
+### Évaluer une hypothèse de confusion {#L16-B05}
+
+> **MTH [L16-B05] · Évaluer une hypothèse de confusion**
+>
+> Nommer la variable d’intérêt, la réponse et la variable omise candidate. Examiner les associations et comparer les coefficients sur les mêmes lignes et les mêmes unités. Discuter ensuite un mécanisme causal et l’ordre temporel : une cause commune peut confondre une association; un médiateur ou une variable sélectionnée ne se traite pas automatiquement comme une cause commune. Deux corrélations significatives ou un changement de coefficient ne prouvent pas le rôle causal proposé. Énoncer les limites de l’étude observationnelle.
+
+### Effet partiel et affirmation causale {#L16-E01}
+
+**Budget : 5 min.**
+
+Une analyse observationnelle indique : « À volume de travail fixé, une unité de score de cache supplémentaire est associée à 3 ms de temps moyen en moins. » Identifier réponse, prédicteur, variable maintenue fixe et unité du coefficient. Un collègue reformule : « Installer ce cache fera gagner 3 ms à chaque requête. » Expliquer deux sauts injustifiés. Deux tests de corrélation significatifs suffiraient-ils à établir un facteur de confusion ?
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Système des covariances à deux prédicteurs {#L16-B03}
+
+> **THM [L16-B03] · Système des covariances à deux prédicteurs**
+>
+> Supposer $X_1,X_2,Y$ de carré intégrable, $Y=b_0+b_1X_1+b_2X_2+\varepsilon$, $\mathbb E[\varepsilon]=0$ et $\operatorname{Cov}(X_j,\varepsilon)=0$. Poser
+> $$K=\begin{pmatrix}\mathbb V(X_1)&\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_1,X_2)&\mathbb V(X_2)\end{pmatrix},\quad c=\begin{pmatrix}\operatorname{Cov}(X_1,Y)\\\operatorname{Cov}(X_2,Y)\end{pmatrix}.$$
+> Si $K$ est inversible, $K\binom{b_1}{b_2}=c$, donc $\binom{b_1}{b_2}=K^{-1}c$ et $b_0=\mathbb E[Y]-b_1\mathbb E[X_1]-b_2\mathbb E[X_2]$. Le produit matriciel regroupe deux équations de covariance, à résoudre simultanément.
+
+### Décalage de pente par omission {#L16-B04}
+
+> **THM [L16-B04] · Décalage de pente par omission**
+>
+> Dans $Y=b_0+b_1X_1+b_2X_2+\varepsilon$, supposer $X_1,X_2,\varepsilon$ de carré intégrable, $\mathbb E[\varepsilon\mid X_1,X_2]=0$ et $\mathbb V(X_1)>0$ et définir $a_1=\operatorname{Cov}(X_1,Y)/\mathbb V(X_1)$ comme la pente de la meilleure approximation affine de $Y$ par $X_1$ seul. Alors
+> $$a_1-b_1=b_2\frac{\operatorname{Cov}(X_1,X_2)}{\mathbb V(X_1)}
+> =b_2\rho_X\frac{\sigma_{X_2}}{\sigma_{X_1}}.$$
+> La dernière expression suppose aussi $\mathbb V(X_2)>0$, avec $\rho_X=\operatorname{Cov}(X_1,X_2)/(\sigma_{X_1}\sigma_{X_2})$. Ce décalage s’annule si $b_2=0$ ou la covariance est nulle. Il ne s’agit pas, à lui seul, du biais d’échantillonnage $\mathbb E[\widehat a_1]-a_1$. Le résidu de projection du modèle réduit est décorrélé de $X_1$, mais pas nécessairement indépendant.
+
+### Variance expliquée en régression multiple {#L16-B06}
+
+> **THM [L16-B06] · Variance expliquée en régression multiple**
+>
+> Si $\mathbb E[\varepsilon\mid\mathbf X]=0$, $\mathbb V(\varepsilon)=\sigma^2$ et les variables sont de carré intégrable, alors
+> $$\mathbb V(Y)=\mathbf b^\top K\mathbf b+\sigma^2,\quad\mathbf b=(b_1,b_2)^\top.$$
+> Pour $\mathbb V(Y)>0$, la part expliquée est $\mathbf b^\top K\mathbf b/\mathbb V(Y)$. Si les deux prédicteurs sont décorrélés et de variances positives, elle vaut $\rho(X_1,Y)^2+\rho(X_2,Y)^2$. Cette somme simple est généralement fausse s’ils sont corrélés. Empiriquement, ajouter des prédicteurs à des MCO avec intercept sur les mêmes lignes ne diminue pas $R^2$; cela ne garantit pas une meilleure prévision hors échantillon.
+
+### Distinguer test individuel et test global {#L16-B07}
+
+> **MTH [L16-B07] · Distinguer test individuel et test global**
+>
+> Dans le modèle $\mathbf Y=A\mathbf b+\boldsymbol\varepsilon$, $A$ est la matrice fixe $n\times(d+1)$ comprenant une colonne d’intercept et $d\ge1$ colonnes explicatives. Supposer $A$ de rang plein, $n>d+1$ et des erreurs i.i.d. $\mathcal N(0,\sigma^2)$, $\sigma>0$. Poser $\mathrm{RSS}=\sum_i(y_i-\widehat y_i)^2$, $\mathrm{TSS}=\sum_i(y_i-\bar y)^2$ et $s^2=\mathrm{RSS}/(n-d-1)$; les erreurs-types des coefficients MCO sont les racines carrées des éléments diagonaux de $s^2(A^\top A)^{-1}$.
+> Pour $j=1,\ldots,d$, le test individuel de $H_0:b_j=b_{j,0}$ emploie $t=(\widehat b_j-b_{j,0})/\mathrm{SE}(\widehat b_j)$ de loi $t_{n-d-1}$ sous $H_0$. L’IC utilise le même nombre de degrés de liberté. Le test global porte sur $H_0:b_1=\cdots=b_d=0$ et
+> $$F=\frac{(\mathrm{TSS}-\mathrm{RSS})/d}{\mathrm{RSS}/(n-d-1)}\overset{H_0}{\sim}F_{d,n-d-1}.$$
+> Rejeter globalement signifie qu’au moins un coefficient est non nul dans le modèle, sans dire lequel. En général, ce $F$ n’est pas le carré d’un test $t$ individuel.
+
+### Covariances, coefficient réduit et inversion de signe {#L16-E02}
+
+**Budget : 10 min.**
+
+Dans le modèle $Y=b_0+b_1X_1+b_2X_2+\varepsilon$, l’erreur est centrée et indépendante du couple des prédicteurs. On donne
+$$K=\begin{pmatrix}4&3\\3&9\end{pmatrix},\quad c=\binom{2}{15},\quad \mathbb E[X_1]=10,\quad\mathbb E[X_2]=5,\quad\mathbb E[Y]=30.$$
+Développer les deux covariances pour obtenir le système, vérifier son inversibilité, puis calculer $b_1,b_2,b_0$. Déterminer la pente $a_1$ de la projection affine de $Y$ sur $X_1$ seul. Dériver, sans la citer comme résultat de départ, la formule de $a_1-b_1$. Interpréter l’inversion de signe.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Quand additionner deux corrélations au carré ? {#L16-E03}
+
+**Budget : 8 min.**
+
+Démontrer que, pour deux prédicteurs décorrélés de variances positives et une erreur centrée indépendante, la part de variance de $Y$ expliquée par le couple est $\rho_1^2+\rho_2^2$, où $\rho_j=\operatorname{Cor}(X_j,Y)$ et $\mathbb V(Y)>0$.
+
+Reprendre ensuite le système de l’exercice précédent, avec $\mathbb V(\varepsilon)=12$. Calculer la variance du signal $b_1X_1+b_2X_2$, celle de $Y$ et sa part expliquée. Calculer $\rho_1^2+\rho_2^2$ dans ce second cas et expliquer l’écart.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Résoudre un système avec cov et solve {#L16-B08}
+
+> **SYX [L16-B08] · Résoudre un système avec cov et solve**
+>
+> `X <- cbind(x1, x2)` construit deux colonnes appariées. `cov(X)` renvoie leur matrice de covariance; `cov(X, y)` renvoie le vecteur des covariances avec la réponse. `solve(K, c)` résout $Kb=c$ sans former explicitement $K^{-1}$. Pour un produit matriciel utiliser `%*%`, pas `*` (produit terme à terme). Exemple distinct : `solve(matrix(c(2,1,1,3),2), c(1,2))`. Une matrice singulière signale qu’on ne peut pas identifier une solution unique.
+
+### Comparer les modèles sur les mêmes observations {#L16-B09}
+
+> **SYX [L16-B09] · Comparer les modèles sur les mêmes observations**
+>
+> Pour un tableau `tab`, `ok <- complete.cases(tab[, c("y","x1","x2")])` choisit les lignes complètes pour l’ensemble des variables utiles. Ajuster ensuite `lm(y ~ x1, data = tab[ok, ])` et `lm(y ~ x1+x2, data = tab[ok, ])`. `nobs(mod)` donne l’effectif réellement utilisé et `df.residual(mod)` les degrés de liberté. `model.matrix(mod)` construit $A$; `qr(A)$rank` donne son rang numérique. Réutiliser la même sélection pour les graphiques et les covariances.
+
+### Comparaison reproductible sur un échantillon commun {#L16-E04}
+
+**Budget : 19 min.**
+
+Les données suivantes sont synthétiques. `cache` et `charge` sont deux indices centrés; `temps` est en millisecondes. Deux valeurs de charge manquent volontairement.
+
+```{r L16-donnees}
+set.seed(1616)
+brut <- data.frame(charge = rnorm(120))
+brut$cache <- .6*brut$charge + .8*rnorm(120)
+brut$temps <- 50 - 3*brut$cache + 10*brut$charge + rnorm(120, sd=3)
+brut$charge[c(3,17)] <- NA
+```
+
+Choisir un échantillon commun, puis comparer `temps` expliqué par `cache` seul et par les deux indices. Vérifier le rang plein. Retrouver les deux pentes multiples par le système des covariances. Calculer le décalage entre pente simple et partielle de deux façons : différence des estimations et formule empirique d’omission. Attention : les indices ont des variances théoriques égales à 1, mais leurs variances empiriques ne sont pas exactement 1.
+
+Reconstruire la p-valeur individuelle de `cache` et celle du test global du modèle multiple, avec leurs degrés de liberté. Comparer les $R^2$ et rédiger trois phrases : association marginale, association partielle, portée de la comparaison.
+
+```{r L16-E04}
+# Vos modèles, contrôles et conclusions.
+```
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**7 min au total pour les sections 5 et 6.** Enregistrer ce Rmd et ses images locales. Préserver la première tentative avant d’ouvrir `L16_Corrige.Rmd`. Pour chaque réponse, identifier une erreur de concept, d’hypothèse, de méthode, de calcul, de rédaction ou de R. Corriger en gardant la première version lisible.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur précise et bloc utile |
+|:--|:--|:--|
+| L16-E01 | | |
+| L16-E02 | | |
+| L16-E03 | | |
+| L16-E04 | | |
+
+## 6/6 · Retenir puis rappeler
+
+Mémoire : effet partiel, condition de rang plein, signe du décalage d’omission et différence entre tests individuel/global. Reconstruction : le système des covariances et la formule d’omission. A4 : les degrés de liberté et la syntaxe matricielle. Les deux variantes exigent une décision nouvelle, non une substitution de paramètres.
+
+Dans les minutes restantes, retrouver une hypothèse et une interprétation sans regarder. Une carte réussie ne remplace pas une application. Choisir au plus une variante pertinente pour un prochain créneau déjà prévu (X02 ou F01), puis noter ici la question encore incertaine :
+
+## Réserve de rappels et de transfert
+
+Ces adaptations pédagogiques remplacent un créneau de rappel ou de réparation déjà budgété. Ne pas les ajouter à la durée de cette leçon. Choisir la variante selon l’erreur observée; garder le corrigé fermé pendant la tentative.
+
+### L16-V01 · 6 min {#L16-V01}
+
+Dans un autre laboratoire, le second prédicteur est défini exactement par $X_2=2X_1+5$. Un modèle avec intercept utilise $Y=b_0+b_1X_1+b_2X_2+\varepsilon$. Peut-on identifier séparément les trois coefficients ? Réécrire la moyenne conditionnelle et proposer une reparamétrisation identifiable. Est-il justifié de conclure que le coefficient absent de la sortie `lm` est nul ?
+
+### L16-V02 · 7 min {#L16-V02}
+
+Deux procédures A et B réparent des incidents informatiques. Pour les incidents simples, A réussit 9 fois sur 10 et B 72 fois sur 90. Pour les incidents complexes, A réussit 63 fois sur 90 et B 6 fois sur 10. Comparer chaque strate puis les résultats agrégés. Expliquer l’inversion avec les poids. Que donnerait une population cible comprenant autant d’incidents simples que complexes ? Cela établit-il une supériorité causale ?
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `ctd09` : E2 Q1-Q9, lignes 273-489. Système des covariances, intercept, tests individuels et globaux, part expliquée.
+- `ctd10` : E1 Q1-Q4 lignes 35-149; E2 Q1-Q5 lignes 154-274; E3 Q1-Q2 lignes 285-350. Omission, confusion, comparaison de modèles et prédicteurs décorrélés.
+- `tp04` : Partie II Q1-Q3, lignes 154-239. Formule non standardisée de l’omission et interprétation partielle.
+- `st10_simpson` : PDF p.1, tableau stratifié et question finale. Changer les pondérations peut inverser un classement agrégé.
+- `blocks_v2` : PS1-244 à PS1-264; PS1-005; PS1-030. Rang plein, covariance matricielle, degrés de liberté et limites de R².

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PS1 · Mon parcours</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/mermaid.min.js" defer></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div><span class="eyebrow">PROBABILITÉS & STATISTIQUE</span><h1>PS1 <span>Mon parcours</span></h1></div>
+  <div class="budget"><strong>20 h</strong><span>budget total de préparation</span></div>
+</header>
+<main>
+  <section class="summary" aria-label="Avancement">
+    <div class="metric"><div><span>Parcours travaillé</span><strong id="lesson-count">0 / 23</strong></div><progress id="lesson-progress" value="0" max="23"></progress><small>Une étape parcourue ne valide pas ses compétences.</small></div>
+    <div class="metric"><div><span>Compétences TP / blanc démontrées</span><strong id="skill-count">0 / 84</strong></div><progress id="skill-progress" value="0" max="84"></progress><small>Catalogue TP / examen blanc. La théorie des CTD a aussi ses critères de sortie.</small></div>
+    <div class="metric time"><span>Temps déclaré</span><strong id="time-count">0 min</strong><small>Sur les 1 200 minutes prévues.</small></div>
+  </section>
+  <div id="state-notice" class="notice" role="status">Chargement du parcours…</div>
+  <section class="study-navigation" aria-label="Repères de travail">
+    <div><span>Étape ouverte</span><strong id="current-step">D00</strong></div>
+    <div><span>Suite proposée</span><button id="next-step" class="quiet" type="button">D00</button></div>
+    <div><span>À reprendre</span><strong id="review-count">Aucun signalement</strong></div>
+    <div><span>Budget restant déclaré</span><strong id="remaining-time">1 200 min</strong></div>
+  </section>
+  <nav id="module-overview" class="module-overview" aria-label="Les six blocs du parcours"></nav>
+  <nav class="toolbar" aria-label="Vue du parcours">
+    <label>Module <select id="module-filter"><option value="all">Tout le parcours</option></select></label>
+    <label>Relations <select id="edge-filter"><option value="prerequisite">Prérequis pédagogiques</option><option value="sequence">Ordre de travail</option><option value="encompassing">Catégorie et familles comprises</option></select></label>
+    <label class="focus-control"><input type="checkbox" id="focus-prerequisites"> Prérequis de l’étape choisie</label>
+    <label class="zoom">Zoom <input id="zoom" type="range" min="60" max="150" step="10" value="100"></label>
+  </nav>
+  <div class="workspace">
+    <section class="graph-panel" aria-labelledby="graph-heading">
+      <div class="panel-heading"><h2 id="graph-heading">Carte des dépendances</h2><button id="download-mermaid" class="quiet">Source Mermaid</button></div>
+      <div class="legend" aria-label="Légende"><span class="dot unassessed">Non évaluée</span><span class="dot in_progress">En cours</span><span class="dot worked">Parcourue</span><span class="dot review_due">À revoir</span></div>
+      <div id="graph" class="graph" aria-label="Graphe Mermaid interactif"></div>
+      <p id="relation-help" class="graph-help">Une flèche de prérequis indique ce qui aide à travailler l’étape suivante. La carte décrit le parcours, pas un diagnostic automatique.</p>
+      <div class="step-navigation"><label for="lesson-select">Accès direct</label><select id="lesson-select"></select></div>
+    </section>
+    <aside id="details" class="details" aria-live="polite"></aside>
+  </div>
+  <section class="storage-panel" aria-label="Suivi local">
+    <div><h2>Votre suivi reste local</h2><p>Aucune donnée d’apprentissage n’est créée au chargement. Une action « Enregistrer » sauvegarde dans ce navigateur. Exportez le JSON pour conserver une copie ou la transmettre à ChatGPT.</p></div>
+    <div class="actions"><button id="export-state">Exporter le suivi</button><label class="button">Importer un suivi<input type="file" id="import-state" accept=".json,application/json" hidden></label><button id="demo" class="quiet">Voir une démonstration</button><button id="reset" class="quiet danger">Effacer le suivi local</button></div>
+  </section>
+  <p id="message" role="alert" class="message"></p>
+  <footer>Version locale · RStudio reste l’espace de travail pour les exercices · Aucune note ni maîtrise n’est déduite automatiquement</footer>
+</main>
+<noscript>Activez JavaScript pour afficher le graphe. Le fichier data/curriculum.json reste lisible sans l’application.</noscript>
+</body>
+</html>

@@ -1,0 +1,167 @@
+---
+title: "X01 · Synthèse: probabilités, estimation et tests · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "X01"
+  document_role: correction
+  content_status: complete_derived
+  minutes: 60
+  exercise_ids: ["X01-E01", "X01-E02", "X01-E03", "X01-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+**Corrigé pédagogique dérivé.** À ouvrir après sauvegarde de la première tentative. Chaque critère porte sur un raisonnement observable; aucune lecture de ce corrigé ne valide automatiquement une compétence.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+### Acheminement des demandes {#X01-E01}
+
+<!-- ps1:solution id=X01-E01 -->
+
+Notons $A$ l'événement « routée vers A » et $F$ l'événement « incident ». Les services forment une partition :
+$$
+P(F)=P(A)P(F\mid A)+P(A^c)P(F\mid A^c)
+=0{,}2\times0{,}10+0{,}8\times0{,}025=0{,}04.
+$$
+Comme $P(F)>0$,
+$P(A\mid F)=P(A\cap F)/P(F)=0{,}02/0{,}04=0{,}50$.
+Le nombre $0{,}10=P(F\mid A)$ conditionne dans l'autre sens.
+
+Si $N=\sum_{i=1}^{200}\mathbf 1_{F_i}$, la linéarité donne $\mathbb E[N]=\sum_iP(F_i)=200\times0{,}04=8$. L'indépendance n'est pas requise pour cette espérance; elle serait nécessaire pour affirmer ici que $N$ est binomial ou sommer directement les variances.
+
+**Critères observables :**
+
+- Définir les événements et appliquer une partition.
+- Inverser correctement le conditionnement.
+- Justifier l'espérance par linéarité sans supposer inutilement l'indépendance.
+
+### Comptages par fenêtre {#X01-E02}
+
+<!-- ps1:solution id=X01-E02 -->
+
+La méthode des moments utilise $\mathbb E_\lambda[X_i]=\lambda$ et donne $\widehat\lambda=\overline X_{25}$, dont la réalisation est $40/25=1{,}6$.
+La vraisemblance donne la même solution : $\ell(\lambda)=-n\lambda+s\log\lambda+C$; pour $s>0$, sa dérivée s'annule en $s/n$ et sa dérivée seconde vaut $-s/\lambda^2<0$.
+
+La moyenne est sans biais et, par indépendance, sa variance vaut $\lambda/25$.
+Le TCL, avec estimation de la variance par $\widehat\lambda$, donne l'intervalle approché
+$$
+\widehat\lambda_{\rm obs}\pm z_{0,975}\sqrt{\widehat\lambda_{\rm obs}/25}.
+$$
+
+```{r X01-E02}
+n_fenetres <- 25
+somme_observee <- 40
+lambda_hat <- somme_observee / n_fenetres
+IC <- lambda_hat + c(-1, 1) * qnorm(0.975) * sqrt(lambda_hat/n_fenetres)
+c(estimation = lambda_hat)
+IC
+```
+
+On obtient environ $[1{,}1042;2{,}0958]$ demandes par fenêtre. La garantie est asymptotique; 25 fenêtres ne justifient pas de l'annoncer exacte. Le total attendu estimé de 40 rend l'approximation plausible, sans la démontrer pour cet échantillon. La couverture concerne la moyenne fixe $\lambda$, pas une probabilité a posteriori et pas la prochaine valeur entière $X_{26}$; un intervalle de prédiction répondrait à une autre question.
+
+**Critères observables :**
+
+- Distinguer estimation 1.6 et estimateur moyenne.
+- Justifier la variance par le modèle et l'indépendance.
+- Qualifier l'intervalle d'approché.
+- Distinguer paramètre moyen et observation future.
+
+### Une modification du système {#X01-E03}
+
+<!-- ps1:solution id=X01-E03 -->
+
+Définissons $D_i=A_i-B_i$ et $\delta=\mathbb E[D_i]$, gain moyen en secondes.
+On teste $H_0:\delta\le0$ contre $\delta>0$. Les postes sont les unités indépendantes; les deux mesures d'un poste sont appariées. Un test de Student à droite sur les différences est exact si les $D_i$ sont normales i.i.d. de variance strictement positive. Un Q-Q plot aide à discuter la forme, sans prouver ce modèle.
+
+```{r X01-E03}
+avant <- c(9.8, 10.2, 8.6, 11.0, 9.4, 10.7, 8.9, 10.5, 9.7, 11.2, 10.0, 9.3)
+apres <- c(9.3, 10.0, 7.8, 11.1, 9.0, 10.1, 8.6, 9.8, 9.6, 10.7, 9.4, 8.9)
+d <- avant - apres
+test <- t.test(d, mu = 0, alternative = "greater")
+intervalle <- t.test(d, mu = 0, alternative = "two.sided", conf.level = 0.95)$conf.int
+c(gain_moyen = mean(d), t = unname(test$statistic), p = test$p.value)
+intervalle
+qqnorm(d, main = "Différences par poste")
+qqline(d)
+```
+
+Le gain moyen est $0{,}4167$ seconde, la statistique environ $5{,}5775$ et la p-valeur unilatérale environ $0{,}0000829$. L'IC bilatéral à 95 % est environ $[0{,}2522;0{,}5811]$ seconde. On rejette l'absence de gain positif sous le modèle. En revanche, l'intervalle contient des valeurs inférieures à $0{,}5$ et l'estimation vaut moins de $0{,}5$ : les données n'établissent pas que l'objectif pratique est atteint.
+
+Le test est unilatéral; l'intervalle affiché est bilatéral et répond à la demande distincte d'incertitude dans les deux directions. Une expérience avant/après sans contrôle peut aussi confondre l'intervention avec l'ordre des essais ou un changement de charge. La conclusion causale et la généralisation à d'autres postes demandent un protocole adapté.
+
+**Critères observables :**
+
+- Choisir l'appariement et définir avant-après.
+- Formuler une alternative avant de lire le signe de l'estimation.
+- Distinguer test à droite et intervalle bilatéral.
+- Ne pas confondre gain positif et gain supérieur à la cible pratique.
+
+### Types de demandes et dispositifs {#X01-E04}
+
+<!-- ps1:solution id=X01-E04 -->
+
+On teste l'indépendance des deux variables qualitatives, avec des paires de catégories issues de demandes indépendantes. Les lignes totalisent $40$ et les colonnes $24,30,26$; chaque ligne attendue est $(12,15,13)$, avec attendus tous supérieurs à $5$. Les degrés de liberté valent $(2-1)(3-1)=2$.
+
+```{r X01-E04}
+O <- matrix(c(14, 18, 8, 10, 12, 18), nrow = 2, byrow = TRUE)
+E <- outer(rowSums(O), colSums(O)) / sum(O)
+Q <- sum((O-E)^2/E)
+c(Q = Q, ddl = 2, p = pchisq(Q, df = 2, lower.tail = FALSE))
+chisq.test(O, correct = FALSE)
+```
+
+On obtient $q\simeq5{,}7128$ et $p\simeq0{,}0575$. Au niveau de $5\,\%$, on ne rejette pas l'indépendance. On ne conclut ni à une indépendance prouvée ni à une causalité.
+
+Dans l'autre analyse, le cadre régulier annoncé implique $6-1-2=3$ degrés de liberté. La valeur $5$ conviendrait à six probabilités fixées sans ajustement. Il faut vérifier que les deux paramètres sont identifiables, estimés sur les mêmes catégories par la procédure requise, puis recalculer la p-valeur avec la calibration justifiée.
+
+**Critères observables :**
+
+- Choisir indépendance pour une table croisée.
+- Vérifier les attendus et les deux degrés de liberté.
+- Interpréter un résultat proche du seuil sans certitude abusive.
+- Retrancher les deux paramètres dans le cadre régulier effectivement annoncé.
+
+## Auto-correction
+
+Pour chaque exercice, comparer objets, hypothèses, méthode, calcul et conclusion. Nommer la première erreur qui explique les suivantes, puis refaire le passage concerné sans regarder. Garder distincts le travail autonome, les aides reçues et la correction.
+
+## Variantes, corrections à consulter après un nouvel essai
+
+### X01-V01 {#X01-V01}
+
+L'intervalle $[0,0]$ ne reflète pas l'incertitude : zéro observation ne prouve pas $\lambda=0$, et le plug-in normal est inadapté à cette frontière. L'équation donne $\lambda=-\log(0{,}05)/n\simeq2{,}996/n$. Cette borne supérieure issue de l'inversion d'un test de comptage quantifie les taux qui rendent zéro événement encore compatible au niveau fixé; il s'agit d'une borne unilatérale, pas d'un IC central obtenu par la formule normale.
+
+**Critères :**
+
+- Détecter une approximation dégénérée.
+- Résoudre l'équation en gardant lambda positif.
+- Distinguer borne unilatérale et intervalle bilatéral.
+
+### X01-V02 {#X01-V02}
+
+L'intervalle du gain est positif mais reste sous l'objectif de 0,5 seconde; il appuie un gain plus petit que la cible pratique, sous les hypothèses de sa construction. Pour p=0,08, on ne rejette pas l'indépendance au seuil de 5 %, mais ce non-rejet ne prouve pas l'indépendance. Ni p ni 1-p ne sont une probabilité a posteriori de H0.
+
+**Critères :**
+
+- Comparer l'incertitude à la cible pratique.
+- Ne pas convertir une p-valeur en probabilité d'hypothèse.
+
+## Références et limites
+
+- `ctd04` (source non redistribuée), Exercice 1 Q1-Q3; Exercice 2 Q1-Q3 : Compétences de construction et d'analyse d'un estimateur.
+- `ctd05` (source non redistribuée), Exercice 1 Q3-Q9 : Pivots, tests et conclusions.
+- `ctd06` (source non redistribuée), Exercices 1,3 et 4 : Plans de comparaison, diagnostics et indépendance.
+- `ctd07` (source non redistribuée), Exercice 2 Q1 : Mélange et probabilités totales.
+- `tp03` (source non redistribuée), Q5-Q7 : Intervalles de comptages, appariement et table croisée.
+
+
+Les raisonnements de ce fichier sont des corrections originales dérivées. Une simulation illustre un résultat dans un modèle; elle n'en remplace pas la preuve. Les formules annoncées approchées conservent cette qualification dans les conclusions.

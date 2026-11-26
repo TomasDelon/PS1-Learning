@@ -1,0 +1,151 @@
+---
+title: "L17 · Médiation, variables qualitatives et bootstrap appliqué · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L17
+  document_role: correction
+  content_status: complete_authored
+  minutes: 45
+  exercise_ids: ["L17-E01", "L17-E02", "L17-E03", "L17-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Changer la référence {#L17-E01}
+
+<!-- ps1:solution id=L17-E01 -->
+
+Les moyennes sont 20 pour « classique », 23 pour « visuel » et 18 pour « mixte ». Avec « mixte » comme référence, l’intercept vaut 18, le coefficient « classique » vaut 2 et le coefficient « visuel » vaut 5. Les valeurs ajustées sont identiques. Le signe compare des moyennes dans le modèle et dépend de la référence; il ne définit pas une qualité intrinsèque ni une causalité.
+
+**Critères indépendants :** Relier chaque coefficient à la référence; Recalculer les contrastes sans changer les moyennes; Éviter un jugement causal ou intrinsèque sur les groupes.
+
+### Pourquoi le total peut cacher deux signes opposés {#L17-E02}
+
+<!-- ps1:solution id=L17-E02 -->
+
+L’espérance totale conditionnelle et les deux hypothèses sur les erreurs donnent
+$$\begin{aligned}
+\mathbb E[Y\mid X]&=\mathbb E[\mathbb E[Y\mid X,M]\mid X]\\
+&=30+1{,}5\mathbb E[M\mid X]-2X\\
+&=30+1{,}5(10+4X)-2X=45+4X.
+\end{aligned}$$
+La composante directe conditionnelle est $c=-2$ points; la composante indirecte vaut $ab=4\times1{,}5=6$ points; le total est $d=4$ points. La durée moyenne diffère de 4 minutes entre les modes. Sa composante modélisée positive compense et dépasse la composante directe négative. Cette décomposition décrit les équations retenues; une interprétation causale demande de justifier le mécanisme, l’ordre temporel et l’absence de confusion pertinente.
+
+Pour comprendre l’identité empirique, écrire $\widehat a=\operatorname{Cov}_n(X,M)/\mathbb V_n(X)$. Dans les MCO multiples, l’orthogonalité des résidus à $X$ donne $\operatorname{Cov}_n(X,Y)=\widehat b\operatorname{Cov}_n(X,M)+\widehat c\mathbb V_n(X)$. Diviser par $\mathbb V_n(X)>0$ donne $\widehat d=\widehat a\widehat b+\widehat c$, sur les mêmes observations.
+
+**Critères indépendants :** Utiliser les espérances conditionnelles avec leurs hypothèses; Identifier a,b,c,d sans changer le codage; Vérifier les unités du produit; Interpréter la compensation sans causalité automatique.
+
+### Choisir ce qui est rééchantillonné {#L17-E03}
+
+<!-- ps1:solution id=L17-E03 -->
+
+La procédure B conserve les relations entre les variables et la dépendance entre les deux estimations. A détruit les appariements, donc la loi jointe utile à la médiation. C ne fournit pas en général un IC à 95 % pour le produit : les estimateurs sont dépendants et la loi du produit n’est pas obtenue en multipliant deux couples de quantiles.
+
+Avec quatre mesures par participant, on ne peut pas traiter toutes les lignes comme i.i.d. Il faut un schéma adapté à l’unité indépendante, par exemple rééchantillonner les participants avec toutes leurs mesures sous les hypothèses d’un bootstrap par groupes. Une seule catégorie peut rendre le coefficient de groupe non identifiable. Compter et signaler ces échecs, puis reconsidérer le schéma si leur fréquence est importante; ne pas transformer une absence d’identification en produit nul.
+
+**Critères indépendants :** Préserver l’appariement des colonnes; Réajuster les deux modèles dans chaque réplication; Distinguer ligne observée et unité indépendante; Traiter explicitement l’absence de catégorie.
+
+### Ajuster les chemins et quantifier leur incertitude {#L17-E04}
+
+<!-- ps1:solution id=L17-E04 -->
+
+Les deux lignes d’un même coefficient doivent représenter le même contraste « guide moins classique ». Aucune suppression séparée de valeurs manquantes n’est nécessaire dans ce jeu complet; dans un autre jeu, on choisirait d’abord les lignes complètes communes.
+
+```{r L17-donnees-corrige}
+set.seed(1717)
+x <- rbinom(120, size=1, prob=.5)
+d <- data.frame(groupe=factor(ifelse(x==1,"guide","classique"),
+                              levels=c("classique","guide")))
+d$duree <- 20 + 5*x + rnorm(120, sd=3)
+d$score <- 40 + .7*d$duree - 2*x + rnorm(120, sd=3)
+contrasts(d$groupe) <- contr.treatment(levels(d$groupe))
+```
+
+```{r L17-E04}
+modele_M <- lm(duree ~ groupe, data=d)
+modele_Y <- lm(score ~ duree + groupe, data=d)
+modele_T <- lm(score ~ groupe, data=d)
+a <- unname(coef(modele_M)["groupeguide"])
+b <- unname(coef(modele_Y)["duree"])
+c_direct <- unname(coef(modele_Y)["groupeguide"])
+d_total <- unname(coef(modele_T)["groupeguide"])
+stopifnot(abs(d_total-a*b-c_direct) < 1e-10,
+          nobs(modele_M)==nobs(modele_Y), nobs(modele_Y)==nobs(modele_T))
+IC_direct <- confint(modele_Y,"groupeguide",level=.95)
+ligne <- coef(summary(modele_Y))["groupeguide",]
+produit <- function(tab) {
+  if (length(unique(tab$groupe)) < 2) return(NA_real_)
+  m <- lm(duree ~ groupe, data=tab)
+  y <- lm(score ~ duree + groupe, data=tab)
+  if (m$rank < 2 || y$rank < 3) return(NA_real_)
+  val <- unname(coef(m)["groupeguide"]*coef(y)["duree"])
+  if (!is.finite(val)) return(NA_real_)
+  val
+}
+set.seed(1718)
+B <- 399
+boot <- replicate(B, {
+  index <- sample(seq_len(nrow(d)), size=nrow(d), replace=TRUE)
+  produit(d[index,,drop=FALSE])
+})
+echecs <- sum(!is.finite(boot))
+cat("Réplications :", B, "; échecs :", echecs, "\n")
+if (echecs/B > .05) stop("Trop d'échecs : revoir l'identifiabilité et le schéma.")
+IC_indirect <- quantile(boot[is.finite(boot)], c(.025,.975))
+print(c(a=a,b=b,direct=c_direct,indirect=a*b,total=d_total))
+print(IC_direct); print(IC_indirect)
+cat(sprintf("Contraste guide moins classique : composante directe %.3f et composante indirecte %.3f, pour un total %.3f points.\n", c_direct,a*b,d_total))
+cat(sprintf("Test direct : t = %.3f, ddl = %d, p = %.4g; IC 95 %% [%.3f ; %.3f].\n", ligne["t value"],df.residual(modele_Y),ligne["Pr(>|t|)"],IC_direct[1],IC_direct[2]))
+hist(boot[is.finite(boot)], breaks=20, col="grey80",
+     xlab="Produit bootstrap des coefficients", main="Composante indirecte")
+abline(v=IC_indirect,col="steelblue",lty=2)
+```
+
+L’identité des estimations est algébrique, donc la simulation n’est pas son fondement. L’IC de $c$ est celui d’un coefficient dans le modèle multiple; il ne concerne pas le coefficient total. L’IC percentile est une approximation sous le schéma i.i.d. choisi et sa précision Monte-Carlo reste limitée avec 399 réplications. Le filtrage d’échecs est compté et visible; une fréquence notable rendrait la simple analyse des réplications restantes discutable. Les composantes donnent une description statistique cohérente de données synthétiques, sans constituer une preuve de médiation causale dans une population réelle.
+
+**Critères indépendants :** Contrôler codage et lignes communes; Extraire les bons coefficients nommés; Vérifier la décomposition; Rééchantillonner des lignes complètes et réajuster; Rapporter graine, B, méthode et échecs; Interpréter incertitude et limites.
+
+## Corrections des variantes
+
+### L17-V01 {#L17-V01}
+
+Le total vaut $d=-2(0{,}6)+1{,}7=0{,}5$. En remplaçant $X$ par $1-X'$, les intercepts changent, $a'=-a=2$, $b'=b=0{,}6$, $c'=-c=-1{,}7$ et $d'=-d=-0{,}5$. On retrouve $a'b'+c'=1{,}2-1{,}7=-0{,}5$. Les valeurs ajustées par observation sont inchangées : seul le sens du contraste est inversé. Il faut préciser « distance moins salle » pour le nouveau codage.
+
+**Critères :** Inverser a,c,d mais pas b; Modifier les intercepts dans l’argument; Vérifier l’identité et nommer le nouveau contraste.
+
+### L17-V02 {#L17-V02}
+
+Pour $X=0$, la moyenne vaut $\alpha+0{,}5(10)=\alpha+5$. Pour $X=1$, elle vaut $\alpha+0{,}5(14)-1+0{,}2(14)=\alpha+8{,}8$. Le total est 3,8, alors que $4(0{,}5)-1=1$. L’interaction $XM$ rend l’association de $M$ avec $Y$ dépendante de $X$. En général, avec $\mathbb E[M\mid X]=m_0+aX$ et $Y$ de moyenne $\alpha+bM+cX+hXM$, le contraste total vaut $ab+c+h(m_0+a)$. L’identité simple $d=ab+c$ n’est plus applicable.
+
+**Critères :** Calculer séparément les deux moyennes; Repérer le terme d’interaction; Refuser l’application mécanique de d=ab+c.
+
+### L17-V03 {#L17-V03}
+
+Les quatre lignes d’une personne partagent potentiellement un effet individuel; le bootstrap de lignes ignore cette dépendance. Sous l’hypothèse de participants indépendants, tirer avec remise 25 identifiants, reprendre toutes les lignes de chaque personne tirée (en conservant les répétitions), puis réajuster les deux modèles et leur produit. Le modèle d’analyse doit lui aussi traiter la dépendance pour une inférence appropriée; changer le bootstrap seul ne valide pas les erreurs standards ordinaires. Avec une catégorie portée par seulement deux participants, certains tirages peuvent perdre toute cette catégorie ou être très instables. Compter les échecs et signaler l’insuffisance d’information, sans fabriquer un intervalle fiable.
+
+**Critères :** Distinguer n lignes et n unités indépendantes; Conserver toutes les mesures d’une personne tirée; Réajuster les deux modèles dans chaque réplication; Signaler instabilité et catégories absentes.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `tp04` : Partie III Q1-Q3, lignes 242-306; Partie IV Q1-Q4, lignes 310-391. Facteur, association totale/directe/indirecte, inférence et bootstrap du produit.
+- `syllabus_ps1` : Descriptions FRANÇAIS, Contenu : « bootstrap » et « Régression à 1 et 2 variables, facteur de confusion, facteur de médiation ». Le bootstrap et la médiation appartiennent au programme explicite.
+- `blocks_v2` : PS1-197, PS1-207, PS1-244, PS1-245, PS1-257, PS1-261 à PS1-263. Conditionnement, espérance totale, coefficients partiels et sorties R; la médiation est dérivée du TP04 et n’usurpe pas un ancien ID.

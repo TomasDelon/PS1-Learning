@@ -1,0 +1,556 @@
+{
+  "lesson_id": "L08",
+  "minutes": 35,
+  "source_refs": [
+    {
+      "source_id": "ctd04",
+      "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+      "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+    },
+    {
+      "source_id": "st04_05",
+      "locator": "PDF pp.6,9-13",
+      "use_fr": "Objets aléatoires et qualité d'une procédure."
+    },
+    {
+      "source_id": "st04_estimateur",
+      "locator": "PDF pp.3-11",
+      "use_fr": "Modèle et distinction estimation/estimateur."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L08-B01",
+      "type": "DEF",
+      "title_fr": "Modèle et paramètre",
+      "source_block_ids": [
+        "PS1-123",
+        "PS1-124"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Modèle et paramètre : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "5152d27988075afacfc8bf10094d910b5b212cd45e54c5c649b2df9bfcc51e5e",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B02",
+      "type": "DEF",
+      "title_fr": "Statistique",
+      "source_block_ids": [
+        "PS1-125"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Statistique : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "2d05a98982c2d7fda13c562fb1280a818712b6eb50fe644ece4c961f77703672",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B03",
+      "type": "DEF",
+      "title_fr": "Estimateur et estimation",
+      "source_block_ids": [
+        "PS1-126",
+        "PS1-127"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Quels objets interviennent dans une estimation ponctuelle, avant et après observation ?",
+      "reason_fr": "La distinction empêche de confondre une procédure et sa réalisation.",
+      "canonical_body_sha256": "476132c9dee87cf7b54be8eeb4ef98a1488c886c4a73a53c66da0281f12f270d",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B04",
+      "type": "DEF",
+      "title_fr": "Biais",
+      "source_block_ids": [
+        "PS1-128",
+        "PS1-129"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Que mesure le biais d'un estimateur et quand est-il nul ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "0a0c289c0ff5cca4414a4e31ab06a0543bfbd21eb7ed261a2ac7909a5de19b9f",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B05",
+      "type": "DEF",
+      "title_fr": "Variance d'un estimateur",
+      "source_block_ids": [
+        "PS1-130"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Variance d'un estimateur : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "a396afb2d74e7386117218b85a7e4ed85e48c5649f20c647513e50be4220c442",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B06",
+      "type": "DEF",
+      "title_fr": "Erreur quadratique moyenne",
+      "source_block_ids": [
+        "PS1-131"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Erreur quadratique moyenne : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "e4f238c205a65421d4c586b45a57613feb60c0bf40b4f7a5934f6fdbcca2ef53",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B07",
+      "type": "THM",
+      "title_fr": "Décomposition biais-variance",
+      "source_block_ids": [
+        "PS1-132",
+        "PS1-147"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": true,
+      "cue_fr": "Comment décomposer le risque quadratique d'un estimateur ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "7ef3da150c6a269743597072f03c4fc44e547b6fb85ccfd77596207c0ccbfc24",
+      "external_refs": [],
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L08-B08",
+      "type": "THM",
+      "title_fr": "Correction de Bessel",
+      "source_block_ids": [
+        "PS1-137"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Correction de Bessel : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "45ba871a4de4fe453afb30de33c41a9a0556076d812814998672c3570979c890",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B09",
+      "type": "DEF",
+      "title_fr": "Consistance",
+      "source_block_ids": [
+        "PS1-133"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Consistance : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "11b32f4fd5c34ada15935cc7153f07574e143b70e9bcc8692dc24d8966145694",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B10",
+      "type": "THM",
+      "title_fr": "Critère de consistance par l'EQM",
+      "source_block_ids": [
+        "PS1-134"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Critère de consistance par l'EQM : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "dd00055d1921fd5ae0ce9384750e43159cbe0d6ca824985c10eb5a4ad5faa30a",
+      "external_refs": []
+    },
+    {
+      "id": "L08-B11",
+      "type": "DEF",
+      "title_fr": "Normalité asymptotique",
+      "source_block_ids": [
+        "PS1-135"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd04",
+          "locator": "Exercice 1 Q1-Q3; Exercice 2 Q4-Q7",
+          "use_fr": "Bessel, critères de comparaison et répétitions Monte-Carlo."
+        },
+        {
+          "source_id": "st04_05",
+          "locator": "PDF pp.6,9-13",
+          "use_fr": "Objets aléatoires et qualité d'une procédure."
+        },
+        {
+          "source_id": "st04_estimateur",
+          "locator": "PDF pp.3-11",
+          "use_fr": "Modèle et distinction estimation/estimateur."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Normalité asymptotique : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "2daef9e04c16f0e3992682ba174e085ad118890cff6477a658af35ae5b48b9f5",
+      "external_refs": []
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L08-E01",
+      "minutes": 4,
+      "kind": "concept",
+      "family": "estimator_object_risk",
+      "topic_ids": [
+        "parametric_model",
+        "estimator",
+        "bias",
+        "mse"
+      ],
+      "competency_ids": [
+        "comp.ps1.variance_reduction_compare"
+      ],
+      "block_ids": [
+        "L08-B03",
+        "L08-B07"
+      ],
+      "rubric_fr": [
+        "Distinguer les objets aléatoires des valeurs observées.",
+        "Interpréter sans biais comme une propriété d'espérance.",
+        "Comparer 4 et 3 selon un critère explicitement nommé."
+      ],
+      "error_tags": [
+        "object_confusion",
+        "bias_realization",
+        "criterion"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L08-E02",
+      "minutes": 13,
+      "kind": "proof",
+      "family": "bias_variance_bessel",
+      "topic_ids": [
+        "bias_variance",
+        "sample_var",
+        "consistency",
+        "mse_consistency"
+      ],
+      "competency_ids": [
+        "comp.ps1.sample_moments",
+        "comp.ps1.variance_linear_combination"
+      ],
+      "block_ids": [
+        "L08-B07",
+        "L08-B08",
+        "L08-B10"
+      ],
+      "rubric_fr": [
+        "Annuler le terme croisé par centrage.",
+        "Utiliser l'indépendance dans le calcul de variance, pas dans la linéarité de l'espérance.",
+        "Obtenir le facteur (n-1)/n et expliquer sa correction.",
+        "Conclure la consistance à partir d'une EQM qui tend vers zéro."
+      ],
+      "error_tags": [
+        "proof_gap",
+        "independence",
+        "bessel",
+        "formal_language"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L08-E03",
+      "minutes": 7,
+      "kind": "R",
+      "family": "estimator_simulation_compare",
+      "topic_ids": [
+        "estimator_comparison",
+        "estimator_variance",
+        "mse"
+      ],
+      "competency_ids": [
+        "comp.ps1.variance_reduction_compare",
+        "comp.ps1.sample_moments"
+      ],
+      "block_ids": [
+        "L08-B03",
+        "L08-B07",
+        "L08-B08"
+      ],
+      "rubric_fr": [
+        "Comparer les deux procédures sur les mêmes répétitions.",
+        "Calculer l'EQM autour du vrai p, pas autour de la moyenne simulée.",
+        "Séparer erreur Monte-Carlo et qualité de l'estimateur.",
+        "Limiter la conclusion au paramètre et à la taille étudiés.",
+        "Calculer b_p(T)=0 et b_p(U)=(1-2p)/(n+2), puis comparer au biais simulé."
+      ],
+      "error_tags": [
+        "mse_center",
+        "simulation_proof",
+        "overgeneralization"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L08-V01",
+      "family": "unbiased_not_consistent",
+      "for_exercise_ids": [
+        "L08-E02"
+      ],
+      "error_tags": [
+        "consistency",
+        "bias_realization"
+      ],
+      "prompt_md": "On dispose d'une suite i.i.d. $X_i\\sim\\mathcal N(m,1)$. Comparer $T_n=X_1$ et $U_n=\\overline X_n$ : biais, variance, consistance. Le sans-biais suffit-il ?",
+      "correction_md": "Les deux estimateurs sont sans biais. $\\mathbb V(T_n)=1$ tandis que $\\mathbb V(U_n)=1/n$. Pour tout $\\varepsilon>0$, $\\mathbb P(|T_n-m|>\\varepsilon)=2[1-\\Phi(\\varepsilon)]>0$, indépendamment de $n$; $T_n$ n'est pas consistant. L'EQM de $U_n$ tend vers zéro, donc $U_n$ est consistant.",
+      "rubric_fr": [
+        "Donner un vrai argument de non-convergence pour X1.",
+        "Distinguer absence de biais et concentration."
+      ],
+      "block_ids": [
+        "L08-B04",
+        "L08-B09",
+        "L08-B10"
+      ],
+      "minutes": 4,
+      "transfer": "Nouvelle décision : une procédure peut ignorer les données supplémentaires et rester sans biais sans devenir précise.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L08-V02",
+      "family": "risk_affine_units",
+      "for_exercise_ids": [
+        "L08-E01",
+        "L08-E03"
+      ],
+      "error_tags": [
+        "criterion",
+        "variance_scaling"
+      ],
+      "prompt_md": "Deux estimateurs d'une durée en secondes ont, au même paramètre, (biais, variance) égaux à $(0,9)$ et $(2,4)$. Convertir les estimations et la cible en millisecondes. Le classement par EQM peut-il changer ? Justifier sans simulation.",
+      "correction_md": "Les EQM valent $9$ et $2^2+4=8$ secondes carrées. La conversion multiplie les biais par $1000$, les variances et les EQM par $1000^2$. Le second reste meilleur selon l'EQM. On doit transformer la cible et les estimateurs ensemble; une simple conversion d'unité ne modifie pas le classement.",
+      "rubric_fr": [
+        "Transformer le biais linéairement et la variance quadratiquement.",
+        "Conserver la même cible et le même critère."
+      ],
+      "block_ids": [
+        "L08-B07"
+      ],
+      "minutes": 4,
+      "transfer": "Transfert de représentation : décider comment la perte quadratique change avec l'unité.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "cours": 5,
+    "concept_checks": 4,
+    "maths": 13,
+    "R": 7,
+    "self_correction_review": 6
+  },
+  "review_allocation": {
+    "correction_minutes": 4,
+    "anki_minutes": 2
+  },
+  "coverage_note_fr": "Les compétences de qualité d'estimateur sont exercées; aucune maîtrise n'est déduite de la simulation.",
+  "external_clarifications": []
+}

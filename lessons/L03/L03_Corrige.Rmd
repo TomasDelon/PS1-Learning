@@ -1,0 +1,220 @@
+---
+title: "L03 · Variables aléatoires, lois, densités et transformations · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L03
+  document_role: correction
+  content_status: authored_complete
+  minutes: 35
+  exercise_ids: ["L03-E01", "L03-E02", "L03-E03", "L03-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L03-E01 · Identifier les objets (4 min) {#L03-E01}
+
+<!-- ps1:solution id=L03-E01 -->
+
+Pour $0\le t\le1$,
+$\mathbb P(V\le t)=\mathbb P(U\ge1-t)=t$; hors de cet intervalle, la CDF
+vaut 0 puis 1. Ainsi $V\sim\mathcal U(0,1)$ comme $U$.
+Mais pour $u=0{,}2$, la réalisation correspondante de $V$ est $v=0{,}8$ :
+les fonctions ne sont pas égales. Une valeur de densité est une hauteur;
+pour une variable à densité, la probabilité d'un point est 0.
+
+**Critères observables :**
+
+- Distinguer égalité en loi et égalité de fonctions.
+- Calculer la réalisation 0,8.
+- Justifier une probabilité ponctuelle nulle par l’existence d’une densité.
+
+### L03-E02 · Construire une loi transformée (6 min) {#L03-E02}
+
+<!-- ps1:solution id=L03-E02 -->
+
+Comme $u^{1/3}\ge u$ sur $[0,1]$, les valeurs sont déplacées vers la
+droite. Le support reste $[0,1]$. Pour $0\le y\le1$,
+$$F_Y(y)=\mathbb P(U^{1/3}\le y)=\mathbb P(U\le y^3)=y^3.$$
+La CDF est 0 pour $y<0$ et 1 pour $y>1$. Elle est l'intégrale de
+$f_Y(y)=3y^2\mathbf1_{(0,1)}(y)$, dont l'intégrale vaut $[y^3]_0^1=1$.
+La densité augmente vers la droite, conformément à la prévision.
+Enfin $\mathbb P(Y>1/2)=1-F_Y(1/2)=7/8$.
+
+**Critères observables :**
+
+- Préciser le support avant de dériver.
+- Écrire l’équivalence d’événements et la CDF sur toute la droite.
+- Vérifier la densité et son intégrale.
+- Calculer 7/8 en nommant la queue cherchée.
+
+### L03-E03 · Inverser une répartition (4 min) {#L03-E03}
+
+<!-- ps1:solution id=L03-E03 -->
+
+Résoudre $u=1-e^{-2x}$ donne $X=-\log(1-U)/2$, positif presque sûrement.
+Pour $t\ge0$,
+$$\mathbb P(X\le t)=\mathbb P(U\le1-e^{-2t})=1-e^{-2t}.$$
+Pour $t<0$, cette probabilité est nulle. C'est la CDF de $\mathcal E(2)$.
+La médiane unique vérifie $1-e^{-2m}=1/2$, d'où $m=\log(2)/2$.
+La quantité $m$ est un nombre, tandis que $X$ est une variable aléatoire.
+
+**Critères observables :**
+
+- Résoudre l’inversion avec le bon signe et le taux 2.
+- Traiter les deux domaines du seuil t.
+- Justifier la médiane et distinguer variable et nombre.
+
+### L03-E04 · Contrôler une simulation (10 min) {#L03-E04}
+
+<!-- ps1:solution id=L03-E04 -->
+
+```{r L03-E04}
+set.seed(314)
+n <- 4000
+u <- runif(n)
+x <- -log1p(-u)/2
+F_theorique <- function(t, taux) {
+  ifelse(t < 0, 0, 1 - exp(-taux*t))
+}
+c(frequence=mean(x <= .5), probabilite=F_theorique(.5, 2),
+  mediane_observee=median(x), mediane_theorique=log(2)/2)
+hist(x, probability=TRUE, breaks=35, col="grey90",
+     xlab="Durée", main="4 000 tirages : histogramme et densité")
+curve(dexp(x, rate=2), from=0, to=max(x), add=TRUE, col="blue", lwd=2)
+plot(ecdf(x), xlab="Durée", ylab="Probabilité cumulée",
+     main="CDF empirique et théorique")
+curve(F_theorique(x, 2), from=0, to=max(x), add=TRUE, col="blue", lwd=2)
+stopifnot(length(x)==n, all(is.finite(x)), all(x >= 0))
+```
+`log1p(-u)` calcule $\log(1-u)$ avec une bonne précision numérique.
+La probabilité théorique vaut $1-e^{-1}\simeq0{,}6321$ et la médiane vaut
+environ $0{,}3466$. Les valeurs observées fluctuent.
+Un décalage marqué peut révéler un mauvais taux, une inversion incorrecte
+ou un histogramme non normalisé. L'accord graphique soutient le contrôle
+du code; la justification de la loi reste celle de E03.
+
+**Critères observables :**
+
+- Réutiliser l’inversion démontrée et fixer la graine une seule fois.
+- Passer le taux en argument d’une fonction.
+- Comparer des probabilités et des médianes de mêmes objets.
+- Lire les axes et expliquer la limite d’un contrôle graphique.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L03-V01 (4 min) {#L03-V01}
+
+**Énoncé :** Pour $U\sim\mathcal U(0,1)$, poser $Y=2-U^2$. Trouver son support et sa CDF, puis une densité. Expliquer pourquoi la densité augmente alors que la transformation est décroissante.
+
+**Correction :**
+
+Le support est $[1,2]$. Pour $1\le y\le2$,
+$F_Y(y)=\mathbb P(U^2\ge2-y)=1-\sqrt{2-y}$; elle vaut 0 avant 1 et 1 après 2.
+La densité est $1/(2\sqrt{2-y})$ sur $(1,2)$, nulle ailleurs. Elle est intégrable
+bien qu'elle diverge près de 2. Les petites valeurs de U sont comprimées près
+de 2; une transformation décroissante ne produit donc pas nécessairement une
+densité décroissante.
+
+**Critères observables :**
+
+- Inverser le sens de l’inégalité.
+- Donner la CDF par morceaux et le support.
+- Distinguer monotonie de la transformation et forme de la densité.
+
+### L03-V02 (4 min) {#L03-V02}
+
+**Énoncé :** Un coût vaut exactement 0 avec probabilité 1/4; sinon il est uniforme sur (1,3). Construire sa CDF. Peut-on obtenir sa loi complète en dérivant cette CDF ? Donner sa médiane généralisée.
+
+**Correction :**
+
+La CDF vaut 0 pour $t<0$, $1/4$ pour $0\le t<1$,
+$1/4+3(t-1)/8$ pour $1\le t<3$, puis 1. Elle saute de $1/4$ en 0 :
+la loi entière n'a pas de densité. La dérivée $3/8$ sur $(1,3)$ n'intègre
+que $3/4$ et perdrait l'atome. Résoudre $1/4+3(m-1)/8=1/2$ donne
+$q_{1/2}=5/3$.
+
+**Critères observables :**
+
+- Conserver le saut en 0 et les plateaux.
+- Expliquer la masse perdue par une dérivation seule.
+- Calculer 5/3 par la définition du quantile.
+
+### L03-V03 (4 min) {#L03-V03}
+
+**Énoncé :** On fournit un modèle sous forme de fonction :
+```{r L03-V03-fourni, eval=FALSE}
+score_fourni <- function(signal, seuil=4) {
+  1/(1+exp(-(signal-seuil)))
+}
+signaux <- c(1,3,5,7)
+```
+Sans expliquer un éventuel entraînement, prédire l'ordre des scores et leur
+position par rapport à 0,5. Exécuter la fonction, puis calculer la proportion
+de scores strictement supérieurs à 0,5 avec un filtre et un pipe.
+Ces sorties démontrent-elles que les scores sont des probabilités calibrées ?
+Cette reprise remplace un créneau de révision de 4 minutes.
+
+**Correction :**
+
+```{r L03-V03}
+score_fourni <- function(signal, seuil=4) {
+  1/(1+exp(-(signal-seuil)))
+}
+signaux <- c(1,3,5,7)
+scores <- score_fourni(signaux)
+frequence <- (scores>.5) |> mean()
+scores
+frequence
+stopifnot(isTRUE(all.equal(frequence,.5)))
+```
+Les scores sont croissants; ceux des signaux 5 et 7 dépassent 0,5.
+La proportion est 1/2. Le modèle applique une règle paramétrée.
+Ces sorties ne démontrent pas une calibration : il faudrait comparer les
+scores à des résultats observés sur des données de validation adaptées.
+
+**Critères observables :**
+
+- Nommer les entrées et le paramètre seuil.
+- Prévoir l’ordre des sorties avant exécution.
+- Exécuter la fonction sans objet caché puis appliquer le filtre et le pipe.
+- Distinguer score numérique et validation du modèle.
+
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd02` (source non redistribuée), Exercice 1 Q1-Q6; Exercice 4 Q1-Q2; Exercice 5 Q1-Q2 (consultation) : CDF, transformation, inversion et distinction entre masse et densité.
+- `st01` (source non redistribuée), PDF pp.11-13 : Même loi et variables différentes; majuscules et minuscules.
+- `st02_03` (source non redistribuée), PDF pp.3-4,7-9 : Probabilité ponctuelle, support et transformation par la CDF.
+- `st02_prime` (source non redistribuée), PDF p.1, Temps 2-4 : Anticipation qualitative puis choix autonome des outils.
+- `st_poly_discretes` (source non redistribuée), PDF pp.1-4 : Variable et loi discrète, avec correction des raccourcis du texte ancien.
+- `st_poly_continues` (source non redistribuée), PDF pp.1-5,8-10 : Densité, répartition, transformation et loi exponentielle.
+- `tp01` (source non redistribuée), Exercice 3, code du modèle fourni et Q1-Q3 : Passerelle originale L03-V03 : exécution et interprétation d’une fonction donnée, sans apprentissage de son optimisation.
+- `blocks_v2` (source non redistribuée), PS1-041, PS1-042, PS1-009, PS1-043, PS1-044, PS1-045, PS1-046, PS1-047, PS1-052, PS1-053, PS1-265, PS1-048, PS1-049, PS1-050, PS1-051, PS1-054, PS1-056, PS1-063, PS1-070, PS1-076, PS1-077, PS1-059, PS1-078, PS1-111, PS1-112, PS1-036, PS1-037, PS1-106, PS1-108 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

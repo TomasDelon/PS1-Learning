@@ -1,0 +1,506 @@
+{
+  "schema_version": "2.0.0",
+  "lesson_id": "L14",
+  "minutes": 45,
+  "source_refs": [
+    {
+      "source_id": "ctd07",
+      "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+      "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+    },
+    {
+      "source_id": "st07_08",
+      "locator": "PDF pp.1-2, « Couple continu » et « Couple discret »",
+      "use_fr": "Utiliser un support conjoint explicite et distinguer les deux espérances conditionnelles."
+    },
+    {
+      "source_id": "st09",
+      "locator": "PDF p.3, « Lien entre covariance et indépendance »",
+      "use_fr": "Contre-exemple à la réciproque de l’indépendance."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+      "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L14-B01",
+      "type": "MTH",
+      "title_fr": "Intégrer sur un domaine",
+      "body_md": "Pour $D=\\{(x,y):a<x<b,\\ u(x)<y<v(x)\\}$ et $h\\geq0$ mesurable, Tonelli donne\n$$\\iint_D h=\\int_a^b\\left(\\int_{u(x)}^{v(x)}h(x,y)\\,dy\\right)dx.$$\nPour un $h$ signé, l’échange est justifié si $\\iint_D|h|<\\infty$ (Fubini). Dessiner le domaine puis fixer la variable extérieure avant de choisir les bornes. Exemple : sur $0<x<2$, $0<y<x$, la coupe verticale est $0<y<x$, pas $0<y<2$.",
+      "source_block_ids": [
+        "PS1-057",
+        "PS1-058"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Intégrer sur un domaine",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L14-B02",
+      "type": "DEF",
+      "title_fr": "Loi jointe et densité associée",
+      "body_md": "La loi jointe de deux variables réelles $X,Y$ est $\\mathbb P_{X,Y}(D)=\\mathbb P((X,Y)\\in D)$, pour tout borélien $D\\subseteq\\mathbb R^2$. Une densité sur $\\mathbb R^2$ est une fonction mesurable $f\\geq0$ d’intégrale 1. Elle est une densité de $(X,Y)$ si $\\mathbb P((X,Y)\\in D)=\\iint_D f$. Les densités sont définies à égalité presque partout près, pour la mesure de Lebesgue. Dans le cas discret, la masse jointe est $p(x,y)=\\mathbb P(X=x,Y=y)$ et sa somme vaut 1.",
+      "source_block_ids": [
+        "PS1-191",
+        "PS1-192",
+        "PS1-193"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi jointe et densité associée",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L14-B03",
+      "type": "THM",
+      "title_fr": "Marginaliser et reconnaître l’indépendance",
+      "body_md": "Pour un couple de densité $f$, des densités marginales sont $f_X(x)=\\int_{\\mathbb R}f(x,y)\\,dy$ et $f_Y(y)=\\int_{\\mathbb R}f(x,y)\\,dx$, presque partout. Les variables sont indépendantes si et seulement si $f(x,y)=f_X(x)f_Y(y)$ presque partout. Pour une loi discrète, remplacer les intégrales par des sommes, et la factorisation vaut pour toutes les paires de valeurs.",
+      "source_block_ids": [
+        "PS1-195",
+        "PS1-196",
+        "PS1-200"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment obtenir une marginale et caractériser l’indépendance à partir de la loi jointe ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter."
+    },
+    {
+      "id": "L14-B04",
+      "type": "DEF",
+      "title_fr": "Loi conditionnelle",
+      "body_md": "Pour un couple $(X,Y)$ de masse jointe $p$, pour $p_X(x)>0$, $p_{Y\\mid X=x}(y)=p(x,y)/p_X(x)$. Pour un couple $(X,Y)$ de densité jointe $f$, pour $\\mathbb P_X$-presque tout $x$ tel que $f_X(x)>0$, une densité conditionnelle est\n$$f_{Y\\mid X=x}(y)=\\frac{f(x,y)}{f_X(x)}.$$\nOn renormalise la coupe correspondant à l’information fixée. L’intégrale en $y$ doit valoir 1. Si $f_X(x)=0$, ce quotient ne définit rien; on ne divise pas par la probabilité de l’événement $\\{X=x\\}$, qui vaut 0 dans le cas continu.",
+      "source_block_ids": [
+        "PS1-197",
+        "PS1-198",
+        "PS1-199"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment définir une loi conditionnelle discrète ou à densité et contrôler sa normalisation ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter.",
+      "canonical_body_sha256": "90b6b19b636b481f9f5703a470c45a6542b60e518bab2bfff35fc02c2221568d"
+    },
+    {
+      "id": "L14-B05",
+      "type": "DEF",
+      "title_fr": "Moyenne conditionnelle : nombre puis variable",
+      "body_md": "Si $Y$ est intégrable, $m(x)=\\mathbb E[Y\\mid X=x]$ est la moyenne calculée sous la loi conditionnelle : $\\sum_y y\\,p_{Y\\mid X=x}(y)$ ou $\\int y f_{Y\\mid X=x}(y)\\,dy$. Pour un $x$ fixé admissible, c’est un nombre. La variable aléatoire $m(X)$ est notée $\\mathbb E[Y\\mid X]$; elle est déterminée presque sûrement. Elle varie avec l’information $X$.",
+      "source_block_ids": [
+        "PS1-205",
+        "PS1-206"
+      ],
+      "source_refs": [
+        {
+          "source_id": "st07_08",
+          "locator": "PDF pp.1-2, « Couple continu » et « Couple discret »",
+          "use_fr": "Utiliser un support conjoint explicite et distinguer les deux espérances conditionnelles."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Quelle différence y a-t-il entre E(Y | X = x) et E(Y | X) ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter."
+    },
+    {
+      "id": "L14-B06",
+      "type": "THM",
+      "title_fr": "Espérance totale",
+      "body_md": "Pour toute variable $Y$ intégrable et toute variable réelle $X$,\n$$\\mathbb E[Y]=\\mathbb E[\\mathbb E[Y\\mid X]].$$\nOn moyenne les moyennes conditionnelles selon la loi de $X$, et non en donnant arbitrairement le même poids aux groupes.",
+      "source_block_ids": [
+        "PS1-207"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment retrouver l’espérance à partir des moyennes conditionnelles ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter."
+    },
+    {
+      "id": "L14-B07",
+      "type": "DEF",
+      "title_fr": "Variance conditionnelle",
+      "body_md": "Si $\\mathbb E[Y^2]<\\infty$ et $m(X)=\\mathbb E[Y\\mid X]$, la variance conditionnelle est la variable\n$$\\mathbb V(Y\\mid X)=\\mathbb E[(Y-m(X))^2\\mid X]\n=\\mathbb E[Y^2\\mid X]-m(X)^2.$$\nSa valeur peut dépendre de $X$. Elle ne doit pas être confondue avec le nombre $\\mathbb V(m(X))$.",
+      "source_block_ids": [
+        "PS1-208"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Quelle quantité représente la variance conditionnelle et quel type d’objet est-elle ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter."
+    },
+    {
+      "id": "L14-B08",
+      "type": "THM",
+      "title_fr": "Variance totale et meilleure prédiction",
+      "body_md": "Si $Y$ est de carré intégrable et $m(X)=\\mathbb E[Y\\mid X]$, alors\n$$\\mathbb V(Y)=\\mathbb E[\\mathbb V(Y\\mid X)]+\\mathbb V(m(X)).$$\nLe premier terme est la dispersion résiduelle moyenne; le second est la dispersion des moyennes conditionnelles. Pour toute prédiction $g(X)$ de carré intégrable,\n$$\\mathbb E[(Y-g(X))^2]=\\mathbb E[(Y-m(X))^2]+\\mathbb E[(m(X)-g(X))^2].$$\nAinsi $m(X)$ minimise l’erreur quadratique, à égalité presque sûrement près. « Expliquée » ne signifie pas « causée ».",
+      "source_block_ids": [
+        "PS1-209",
+        "PS1-210",
+        "PS1-212"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Quelle décomposition donne la variance totale, et quelle prédiction minimise l’erreur quadratique ?",
+      "reason_fr": "Décision ou distinction utile à retrouver sans consulter."
+    },
+    {
+      "id": "L14-B09",
+      "type": "MTH",
+      "title_fr": "Calculer intra et intergroupes",
+      "body_md": "Pour un groupe $G\\in\\{g_1,\\ldots,g_k\\}$ de probabilités $p_j>0$, poser $m_j=\\mathbb E[Y\\mid G=g_j]$, $v_j=\\mathbb V(Y\\mid G=g_j)$ et $m=\\sum_jp_jm_j$. La variance intra est $\\sum_jp_jv_j$; la variance inter est $\\sum_jp_j(m_j-m)^2$. Leur somme vaut $\\mathbb V(Y)$. Si celle-ci est positive, la part expliquée par $G$ est le rapport inter/total.",
+      "source_block_ids": [
+        "PS1-211"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "Blocs PS1-057, PS1-058, PS1-191 à PS1-212",
+          "use_fr": "Formulations des objets, hypothèses et décomposition quadratique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Calculer intra et intergroupes",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    },
+    {
+      "id": "L14-B10",
+      "type": "SYX",
+      "title_fr": "Appliquer une fonction dans chaque groupe avec tapply",
+      "body_md": "Pour des vecteurs appariés `z` et `g` sans valeurs manquantes, `tapply(z, g, mean)` renvoie les moyennes par niveau de `g`. `tapply(z, g, function(a) mean((a-mean(a))^2))` renvoie les variances empiriques à dénominateur $n_g$. Exemple distinct : `tapply(c(2,4,7,9), c(\"A\",\"A\",\"B\",\"B\"), mean)`. Les poids des groupes proviennent de `prop.table(table(g))`. Aligner les noms avant une combinaison; ne pas mélanger des dénominateurs $n_g$ et $n_g-1$ dans une identité empirique exacte.",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 1 Q1-Q4, lignes 40-133; Exercice 2 Q0-Q11, lignes 141-360",
+          "use_fr": "Marginaliser, conditionner, mélange, variance totale, simulation et comparaison."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Appliquer une fonction dans chaque groupe avec tapply",
+      "reason_fr": "À consulter ou reconstruire pendant une application; pas de carte initiale."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L14-E01",
+      "title_fr": "Distinguer les objets",
+      "prompt_md": "Une durée $Y$ est observée dans un groupe aléatoire $G$. Dire si $\\mathbb E[Y\\mid G=1]$, $\\mathbb E[Y\\mid G]$ et $\\mathbb V(\\mathbb E[Y\\mid G])$ sont des nombres ou des variables aléatoires. Puis prendre $U\\sim\\mathcal U(-1,1)$ et $V=|U|$ : calculer $\\operatorname{Cov}(U,V)$ et décider si $U,V$ sont indépendantes. Justifier la seconde réponse par un événement, pas par une formule de corrélation.",
+      "correction_md": "Pour un groupe 1 de probabilité positive, $\\mathbb E[Y\\mid G=1]$ est un nombre; $\\mathbb E[Y\\mid G]$ est une variable, et sa variance est un nombre. Ces objets supposent respectivement l’intégrabilité puis le carré intégrable.\n\nPar symétrie, $\\mathbb E[U]=0$ et $\\mathbb E[U|U|]=0$, donc la covariance vaut 0. Pourtant $\\{V<1/2\\}=\\{|U|<1/2\\}$ a probabilité $1/2$. L’intersection a probabilité $1/2$, alors que le produit des probabilités vaut $1/4$. Les variables ne sont pas indépendantes. Une covariance nulle exclut ici une liaison linéaire, pas une dépendance.",
+      "minutes": 5,
+      "kind": "concept",
+      "block_ids": [
+        "L14-B05",
+        "L14-B07"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "cond_exp_value",
+        "cond_exp_var",
+        "uncorrelated"
+      ],
+      "rubric_fr": [
+        "Distinguer nombre et variable",
+        "Utiliser la symétrie pour la covariance",
+        "Produire une inégalité de probabilités qui réfute l’indépendance"
+      ],
+      "error_tags": [
+        "object_type",
+        "independence",
+        "formal_language"
+      ],
+      "has_r": false,
+      "family": "conditional_objects_counterexample"
+    },
+    {
+      "id": "L14-E02",
+      "title_fr": "Une zone triangulaire de fonctionnement",
+      "prompt_md": "On mesure deux fractions de temps $(X,Y)$ dont la densité est $f(x,y)=2\\,\\mathbf 1_{\\{0<x<y<1\\}}$. Dessiner le support. Vérifier la normalisation, calculer $f_X$, $f_Y$, puis les densités de $Y\\mid X=x$ et $X\\mid Y=y$ sur leurs domaines admissibles. Calculer les deux moyennes conditionnelles et retrouver $\\mathbb E[Y]$ par l’espérance totale. Conclure sur l’indépendance.",
+      "correction_md": "Le support est le triangle au-dessus de la diagonale dans le carré unité. Sa description verticale est $0<x<1$, $x<y<1$. Ainsi $\\int_0^1\\int_x^1 2\\,dy\\,dx=1$.\n\nPour $0<x<1$, $f_X(x)=2(1-x)$; pour $0<y<1$, $f_Y(y)=2y$; les densités sont nulles ailleurs. Pour les valeurs intérieures admissibles,\n$$f_{Y\\mid X=x}(y)=\\frac{1}{1-x}\\mathbf1_{\\{x<y<1\\}},\\qquad\nf_{X\\mid Y=y}(x)=\\frac1y\\mathbf1_{\\{0<x<y\\}}.$$\nCe sont des lois uniformes, d’où $\\mathbb E[Y\\mid X=x]=(1+x)/2$ et $\\mathbb E[X\\mid Y=y]=y/2$. Comme $\\mathbb E[X]=\\int_0^1 2x(1-x)\\,dx=1/3$, l’espérance totale donne $\\mathbb E[Y]=(1+1/3)/2=2/3$.\n\nLes marginales sont strictement positives à l’intérieur du carré, tandis que la densité jointe est nulle sur le triangle $y<x$. La factorisation échoue sur une région d’aire positive : les variables ne sont pas indépendantes. Ne pas écrire une probabilité $\\mathbb P(X=x)$ au dénominateur.",
+      "minutes": 10,
+      "kind": "math",
+      "block_ids": [
+        "L14-B01",
+        "L14-B02",
+        "L14-B03",
+        "L14-B04",
+        "L14-B05",
+        "L14-B06"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "joint_density",
+        "marginals",
+        "conditional_density",
+        "law_total_expectation",
+        "indep_factorization"
+      ],
+      "rubric_fr": [
+        "Fixer les bornes à partir du support",
+        "Normaliser chaque loi conditionnelle",
+        "Retrouver 2/3 par la loi de X",
+        "Réfuter la factorisation sur une région de mesure positive",
+        "Vérifier que la densité jointe est positive et que son intégrale sur 0<x<y<1 vaut 1.",
+        "Calculer les deux marginales 2(1-x) et 2y sur leurs supports, nulles ailleurs.",
+        "Intégrer les lois conditionnelles et obtenir (1+x)/2 et y/2 sur les domaines admissibles."
+      ],
+      "error_tags": [
+        "support",
+        "normalization",
+        "conditioning_direction",
+        "formal_language"
+      ],
+      "has_r": false,
+      "family": "joint_triangle_conditioning"
+    },
+    {
+      "id": "L14-E03",
+      "title_fr": "Reconstruire la décomposition",
+      "prompt_md": "Poser $m(X)=\\mathbb E[Y\\mid X]$ et supposer $Y$ de carré intégrable. À partir de $\\mathbb V(Y\\mid X)=\\mathbb E[Y^2\\mid X]-m(X)^2$, démontrer la formule de variance totale en trois lignes.\n\nApplication : $G\\sim\\mathrm{Bernoulli}(1/3)$, $Y\\mid G=0\\sim\\mathcal N(10,4)$ et $Y\\mid G=1\\sim\\mathcal N(16,1)$, où le deuxième paramètre est la variance. Calculer moyenne, variance intra, variance inter, variance totale et part expliquée. Les variances des groupes doivent-elles être égales ?",
+      "correction_md": "L’espérance totale appliquée à $Y^2$ et à $Y$ donne\n$$\\begin{aligned}\n\\mathbb E[\\mathbb V(Y\\mid X)]&=\\mathbb E[Y^2]-\\mathbb E[m(X)^2],\\\\\n\\mathbb V(m(X))&=\\mathbb E[m(X)^2]-\\mathbb E[Y]^2.\n\\end{aligned}$$\nLeur somme est $\\mathbb E[Y^2]-\\mathbb E[Y]^2=\\mathbb V(Y)$. Les termes sont finis car $Y$ est de carré intégrable; l’espérance conditionnelle l’est également.\n\nDans l’application, $m=12$, la variance intra est $(2/3)4+(1/3)1=3$ et la variance inter est $(2/3)(10-12)^2+(1/3)(16-12)^2=8$. La variance totale vaut 11 et la part expliquée $8/11\\simeq72{,}7\\%$. L’homoscédasticité n’est pas requise pour la formule de variance totale. La dispersion résiduelle au sein des groupes compte pour 3 unités au carré, pas pour une moyenne non pondérée des deux variances.",
+      "minutes": 7,
+      "kind": "proof",
+      "block_ids": [
+        "L14-B06",
+        "L14-B07",
+        "L14-B08",
+        "L14-B09"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "law_total_variance",
+        "within_between",
+        "explained_var"
+      ],
+      "rubric_fr": [
+        "Utiliser deux fois l’espérance totale sans circularité",
+        "Pondérer par les probabilités des groupes",
+        "Distinguer variance conditionnelle et sa moyenne",
+        "Interpréter 8/11 sans causalité"
+      ],
+      "error_tags": [
+        "hypotheses",
+        "proof_circular",
+        "weights",
+        "formal_language"
+      ],
+      "has_r": false,
+      "family": "total_variance_heteroscedastic"
+    },
+    {
+      "id": "L14-E04",
+      "title_fr": "Simuler puis contrôler une identité empirique",
+      "prompt_md": "Simuler 6000 observations du modèle de l’exercice précédent, avec `set.seed(1414)`. Avant l’exécution, indiquer les cibles de la moyenne et de la variance. Calculer les moyennes et variances par groupe, puis la décomposition empirique exacte intra/inter avec des dénominateurs $n_g$ et $n$. Vérifier numériquement l’égalité avec la variance empirique à dénominateur $n$; comparer ensuite aux valeurs théoriques. Faire un boxplot par groupe et commenter ce qu’il révèle.\n\nSyntaxe déjà disponible : `rbinom`, `rnorm` et `set.seed` (L03-B14), `mean` et filtrage (L01-B04), `var` (L04-B08). Pour `rnorm`, `sd` désigne l’écart-type.\n\n```{r L14-E04}\n# Votre simulation, vos contrôles et votre graphique.\n```",
+      "correction_md": "Le modèle peut se simuler en tirant d’abord $G$, puis un bruit normal dont l’écart-type dépend du groupe. Les cibles probabilistes sont 12 et 11. Voici une réalisation et un contrôle algébrique indépendant de ces cibles :\n\n```{r L14-E04}\nset.seed(1414)\nn <- 6000\ng <- rbinom(n, size = 1, prob = 1/3)\ny <- rnorm(n, mean = 10 + 6*g, sd = ifelse(g == 0, 2, 1))\np <- prop.table(table(g))\nm <- tapply(y, g, mean)\nv <- tapply(y, g, function(z) mean((z-mean(z))^2))\nm <- m[names(p)]; v <- v[names(p)]\nintra <- sum(p*v)\ninter <- sum(p*(m-mean(y))^2)\ntotal <- mean((y-mean(y))^2)\nstopifnot(abs(total-intra-inter) < 1e-10)\ndata.frame(quantite = c(\"moyenne\", \"intra\", \"inter\", \"total\", \"part expliquee\"),\n           theorique = c(12, 3, 8, 11, 8/11),\n           observee = c(mean(y), intra, inter, total, inter/total))\nboxplot(y ~ factor(g), names = c(\"G = 0\", \"G = 1\"),\n        xlab = \"Groupe\", ylab = \"Réponse simulée\", col = c(\"grey85\",\"steelblue2\"))\n```\n\nL’égalité empirique vaut, à l’arrondi machine près, pour cet échantillon parce que les mêmes données et les mêmes dénominateurs sont utilisés. La proximité des composantes avec 3 et 8 est une observation de simulation, pas une identité. Les centres et les dispersions diffèrent entre groupes; un boxplot ne prouve pas une loi normale. `var(y)` utiliserait $n-1$ et doit être multiplié par $(n-1)/n$ pour retrouver `total`.",
+      "minutes": 11,
+      "kind": "R",
+      "block_ids": [
+        "L14-B09",
+        "L14-B10"
+      ],
+      "competency_ids": [
+        "comp.ps1.provided_model_execute"
+      ],
+      "topic_ids": [
+        "cond_variance",
+        "within_between",
+        "explained_var"
+      ],
+      "rubric_fr": [
+        "Traduire chaque loi conditionnelle en moyenne et sd",
+        "Conserver l’appariement groupe-réponse",
+        "Employer les mêmes poids et dénominateurs",
+        "Distinguer identité empirique et approximation de Monte-Carlo"
+      ],
+      "error_tags": [
+        "r_parameterization",
+        "weights",
+        "denominator",
+        "simulation_vs_proof"
+      ],
+      "has_r": true,
+      "family": "empirical_total_variance"
+    }
+  ],
+  "variants": [
+    {
+      "id": "L14-V01",
+      "family": "conditional_finite_table",
+      "for_exercise_ids": [
+        "L14-E02",
+        "L14-E03"
+      ],
+      "prompt_md": "Un serveur est en mode $G=0$ ou $G=1$. Le tableau donne la loi jointe de $(G,N)$, où $N$ est le nombre d’erreurs :\n\n| | $N=0$ | $N=2$ |\n|:--|--:|--:|\n| $G=0$ | $3/8$ | $1/8$ |\n| $G=1$ | $1/8$ | $3/8$ |\n\nDéterminer les lois de $N\\mid G=g$, puis $\\mathbb E[N\\mid G]$ et les composantes intra/inter. Est-ce $N$ indépendant de $G$ ? Justifier en choisissant une paire de valeurs.",
+      "correction_md": "Chaque groupe a probabilité $1/2$. $\\mathbb P(N=2\\mid G=0)=1/4$ et $\\mathbb P(N=2\\mid G=1)=3/4$. Ainsi $m(G)=1/2+G$, $\\mathbb E[N]=1$, et $\\mathbb V(N\\mid G)=4(1/4)(3/4)=3/4$. La variance inter vaut $\\mathbb V(G)=1/4$, le total vaut 1. La loi marginale de $N$ attribue probabilité $1/2$ à 0 et 2. Or $\\mathbb P(G=0,N=0)=3/8\\ne(1/2)(1/2)$, donc il n’y a pas indépendance.",
+      "block_ids": [
+        "L14-B03",
+        "L14-B04",
+        "L14-B05",
+        "L14-B08"
+      ],
+      "minutes": 6,
+      "transfer": "Passage d’une région continue à un tableau fini; choisir sommes et poids conditionnels sans reprendre les bornes d’intégration.",
+      "rubric_fr": [
+        "Normaliser chaque ligne",
+        "Construire une variable m(G)",
+        "Pondérer les variances",
+        "Tester une factorisation"
+      ],
+      "error_tags": [
+        "conditioning_direction",
+        "weights",
+        "independence"
+      ],
+      "has_r": false,
+      "provenance": "pedagogical_adaptation"
+    },
+    {
+      "id": "L14-V02",
+      "family": "nonlinear_prediction_zero_correlation",
+      "for_exercise_ids": [
+        "L14-E01",
+        "L14-E03"
+      ],
+      "prompt_md": "Une entrée $X\\sim\\mathcal U(-1,1)$ produit une réponse $Y=X^2+\\varepsilon$, avec $\\varepsilon$ indépendante de $X$, centrée et de variance $1/45$. Calculer $\\operatorname{Cov}(X,Y)$ et la part de variance de $Y$ expliquée par $X$. On rappelle $\\mathbb E[X^2]=1/3$ et $\\mathbb E[X^4]=1/5$. Le carré de la corrélation est-il toujours cette part expliquée ?",
+      "correction_md": "La symétrie donne $\\mathbb E[X^3]=\\mathbb E[X]=0$; l’indépendance donne $\\operatorname{Cov}(X,\\varepsilon)=0$. La covariance et la corrélation valent 0. Pourtant $m(X)=X^2$ et $\\mathbb V(X^2)=1/5-1/9=4/45$. La variance totale vaut $5/45$, donc la part expliquée vaut $4/5$. L’égalité avec $\\rho^2$ exige une moyenne conditionnelle affine pour ce cadre de régression; une prédiction non linéaire peut être excellente avec une corrélation linéaire nulle.",
+      "block_ids": [
+        "L14-B05",
+        "L14-B08"
+      ],
+      "minutes": 6,
+      "transfer": "Décider que le résumé linéaire ne mesure pas la qualité d’une prédiction non linéaire; le changement est conceptuel, pas seulement numérique.",
+      "rubric_fr": [
+        "Exploiter symétrie et indépendance séparément",
+        "Calculer V(X²) avec le quatrième moment",
+        "Distinguer corrélation et variance expliquée"
+      ],
+      "error_tags": [
+        "independence",
+        "nonlinear_model",
+        "r2_scope"
+      ],
+      "has_r": false,
+      "provenance": "pedagogical_adaptation"
+    }
+  ],
+  "time_budget": {
+    "course": 6,
+    "concept": 5,
+    "math": 17,
+    "R": 11,
+    "self_correction": 4,
+    "anki_or_retrieval": 2
+  },
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Contenu relu lors de l’auteur; exécution R native, knit et RStudio Visual doivent être consignés séparément."
+    ]
+  },
+  "learner_state": "not_created",
+  "pedagogical_status": "authored_not_mastery_evidence",
+  "coverage_note_fr": "Les tâches de conditionnement et de variance totale sont rattachées à des topics; aucune compétence nouvelle n’est inventée dans le catalogue historique.",
+  "proof_register_ids": [
+    "P31",
+    "P32",
+    "P33",
+    "P34"
+  ],
+  "optional_exclusions": [
+    "P35: normale bivariée facultative hors noyau"
+  ]
+}

@@ -1,0 +1,606 @@
+{
+  "generator_version": "1.0.0",
+  "schema_version": "1.0.0",
+  "namespace": "tomas.ps1.parcours",
+  "deck_name": "PS1::Parcours 20 h",
+  "build_epoch": 1795716000,
+  "notes": [
+    {
+      "id": "L01-B04",
+      "guid": "e079c74fecc85f755bf7",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L02-B03",
+      "guid": "b9b0ca5f4870ebbda1ce",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L02-B04",
+      "guid": "3e8e22167e13f5254165",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L02-B05",
+      "guid": "7e972009d07a036e99b3",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L03-B01",
+      "guid": "6eb3ad4ef7ecb1e0b54d",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L03-B02",
+      "guid": "329244831f588d8c727a",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L03-B04",
+      "guid": "ddb095b268e7a76d97e3",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L03-B06",
+      "guid": "7cedd4b79b6eeb77740f",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L03-B13",
+      "guid": "6da0131e86ffc66b2aed",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B09",
+      "guid": "cab173198ce73f5dd32d",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B10",
+      "guid": "3575191e7069eef89d19",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B13",
+      "guid": "0073410338b98ca4d554",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B01",
+      "guid": "0b7bec0fcedcb583a298",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B03",
+      "guid": "0a4cb651a8d9905635c0",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B05",
+      "guid": "9ece048c9e0447d6d08d",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B06",
+      "guid": "8b64d0b38aeb13b51c4f",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B16",
+      "guid": "794ed7dc6ce0feff3626",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L04-B08",
+      "guid": "cee809d77041b6e60af1",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L05-B02",
+      "guid": "a4f073e43df4c6d7057b",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L05-B03",
+      "guid": "2a45249c64f9dc43f1a3",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L05-B05",
+      "guid": "b8f5979df40bfb56cc3e",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L05-B10",
+      "guid": "09b20db70aeb7cfc2837",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L06-B01",
+      "guid": "e9b3b8a7bb65843e219e",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L06-B02",
+      "guid": "8fb6bd09fe018f2301ca",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L06-B03",
+      "guid": "b5362728a99aa34bb093",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L06-B05",
+      "guid": "8a3354ef1d16621dcb06",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L06-B06",
+      "guid": "e9a17576d84b040ccdc8",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L06-B10",
+      "guid": "682b06507043ae277d23",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L07-B01",
+      "guid": "d166430b3ebc08e363fd",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L07-B02",
+      "guid": "4020a19ed541267ac0a9",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L07-B03",
+      "guid": "22c5186bb11759de82e6",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L08-B03",
+      "guid": "0179b440c576cc332ee4",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L08-B04",
+      "guid": "89b07a325247b2883ebd",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L08-B07",
+      "guid": "f09b1e29fec61abde3b4",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L09-B02",
+      "guid": "9466eb41b859de694466",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L09-B03",
+      "guid": "77d06204f40a667f8131",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L09-B05",
+      "guid": "239f94027afc57b42a6c",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L10-B01",
+      "guid": "b8b3c40da4dfc217f360",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L10-B02",
+      "guid": "11c0fecb69ac699912d3",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L10-B03",
+      "guid": "bf794d778b89fb3ac1d0",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L10-B12",
+      "guid": "6115042a0afe86cd0aa4",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L11-B01",
+      "guid": "825c65af20b1736a1db9",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L11-B03",
+      "guid": "1ac41e8fc1099ea58516",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L11-B04",
+      "guid": "eecf2f8256fcd4083795",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L11-B07",
+      "guid": "13f4b4c0556621b7a8dc",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L12-B01",
+      "guid": "3d47f36fbeb5cae8f6dc",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L12-B07",
+      "guid": "7caec89a6ad080534901",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L12-B08",
+      "guid": "3078d04243b90b076455",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L13-B01",
+      "guid": "3ec5afab6991a5956ffb",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L13-B03",
+      "guid": "e523d23d67f8f2e28f84",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L13-B07",
+      "guid": "440299f1f2bd086ea1cd",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L13-B08",
+      "guid": "b2306d5e0723a3c7237b",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L14-B03",
+      "guid": "10f56cdcc7573f18b2f6",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L14-B04",
+      "guid": "fe0a464073e511d94f9c",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L14-B05",
+      "guid": "399a20a0bdc4f8e84fe4",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L14-B06",
+      "guid": "a3118eb3759a032be460",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L14-B07",
+      "guid": "06bf2e8c309d1637d9ed",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L14-B08",
+      "guid": "b075f61103725ba3dda6",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L15-B01",
+      "guid": "601650aacf4bac4d8b15",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L15-B02",
+      "guid": "6420643b153b0375c939",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L15-B03",
+      "guid": "54e1a18bdd4ccab23a2b",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L15-B06",
+      "guid": "811b4820df92431d8d9e",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L15-B09",
+      "guid": "f6c96ade3c9d8fb285ac",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L16-B01",
+      "guid": "d7f55f5ce6e850375678",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L16-B02",
+      "guid": "5814ce8cd47e23b43606",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L16-B05",
+      "guid": "9e84d146a017440f13c2",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L16-B04",
+      "guid": "18d958d2920a4ffe1706",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L16-B07",
+      "guid": "0555b3d10757ca8dce69",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L17-B01",
+      "guid": "94a67314d7de2ec965ec",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L17-B02",
+      "guid": "654e94b66f5d7f1d6542",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    },
+    {
+      "id": "L17-B04",
+      "guid": "239a37ad56760acc9d72",
+      "model_id": 1926112601,
+      "ordinals": [
+        0
+      ]
+    }
+  ],
+  "card_count": 71,
+  "css_sha256": "98b36a7d159758993b2da04a1dde53a9dea8a79b2ba20e6bde54be29feae59ac",
+  "apkg_sha256": "e38b9e0cba81c3ec559c49b98bbb262a80dd2825cdbb582210ca5e81ff64e170",
+  "client_validation": "PENDING",
+  "deletion_policy": "No deletion; removed source notes are reported for manual retirement.",
+  "content_lock_sha256": "22c0388cd4be5209e47f318fecee29871f01cbce6e45bd184ad0f355a4cf83f9",
+  "render_lock_sha256": "9a5917148567e6f48ef1250f70b37b139977c0109bcd300c8e3c3613beed40a9",
+  "ps1_adapter_version": "2.0.0",
+  "lesson_subdecks": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05",
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17"
+  ],
+  "source_fidelity_scope": "Exact reviewed derived Rmd blocks; not verbatim original lecture claims.",
+  "review_status": "Candidate, independent semantic and visual audit recorded separately."
+}

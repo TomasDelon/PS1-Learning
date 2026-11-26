@@ -1,0 +1,142 @@
+---
+title: "L16 · Régression multiple, confusion et variance expliquée · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L16
+  document_role: correction
+  content_status: complete_authored
+  minutes: 55
+  exercise_ids: ["L16-E01", "L16-E02", "L16-E03", "L16-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Effet partiel et affirmation causale {#L16-E01}
+
+<!-- ps1:solution id=L16-E01 -->
+
+La réponse est le temps, le prédicteur est le score de cache et le volume de travail reste fixé. Le coefficient vaut -3 ms par unité de score. Le modèle porte sur une moyenne conditionnelle, pas sur le temps de chaque requête. Une association observationnelle n’établit pas l’effet d’une intervention : d’autres caractéristiques peuvent différer entre les systèmes comparés. Deux corrélations significatives suggèrent une structure à examiner mais ne déterminent ni l’ordre causal ni le rôle de la troisième variable.
+
+**Critères indépendants :** Nommer les trois rôles; Préserver unité et sens du coefficient; Distinguer moyenne individuelle et moyenne conditionnelle; Ne pas assimiler significativité à identification causale.
+
+### Covariances, coefficient réduit et inversion de signe {#L16-E02}
+
+<!-- ps1:solution id=L16-E02 -->
+
+La bilinéarité et $\operatorname{Cov}(X_j,\varepsilon)=0$ donnent
+$$\operatorname{Cov}(X_1,Y)=4b_1+3b_2=2,\qquad
+\operatorname{Cov}(X_2,Y)=3b_1+9b_2=15.$$
+Le déterminant $36-9=27$ est strictement positif. Résoudre donne $b_1=-1$ et $b_2=2$. L’espérance du modèle donne $b_0=30-(-1)10-2(5)=30$.
+
+La projection simple a pour pente $a_1=\operatorname{Cov}(X_1,Y)/\mathbb V(X_1)=2/4=1/2$. Plus généralement,
+$$a_1=\frac{b_1\mathbb V(X_1)+b_2\operatorname{Cov}(X_1,X_2)}{\mathbb V(X_1)}
+=b_1+b_2\frac{\operatorname{Cov}(X_1,X_2)}{\mathbb V(X_1)}.$$
+Le décalage vaut $2\times3/4=1{,}5$. Le coefficient marginal est positif alors que le coefficient à $X_2$ fixé est négatif : une partie de l’association de $X_1$ avec $Y$ provient ici de son association avec $X_2$. Cette décomposition utilise le modèle annoncé, pas une preuve externe de causalité.
+
+**Critères indépendants :** Développer les covariances avec le terme d’erreur; Vérifier le déterminant; Résoudre coefficients et intercept; Distinguer coefficient réduit et coefficient partiel; Dériver le décalage et en interpréter le signe.
+
+### Quand additionner deux corrélations au carré ? {#L16-E03}
+
+<!-- ps1:solution id=L16-E03 -->
+
+Si $\operatorname{Cov}(X_1,X_2)=0$, les équations de covariance donnent $\operatorname{Cov}(X_j,Y)=b_j\mathbb V(X_j)$. De plus,
+$$\mathbb V(\mathbb E[Y\mid X_1,X_2])=b_1^2\mathbb V(X_1)+b_2^2\mathbb V(X_2).$$
+Diviser par $\mathbb V(Y)$ transforme chaque terme en $\operatorname{Cov}(X_j,Y)^2/(\mathbb V(X_j)\mathbb V(Y))=\rho_j^2$. Aucune indépendance entre les prédicteurs n’est requise, seulement leur covariance nulle.
+
+Dans le second cas, la covariance vaut 3, donc il faut garder le terme croisé. La variance du signal est $(-1)^2(4)+2^2(9)+2(-1)(2)(3)=28$. La variance de $Y$ vaut $28+12=40$, sa part expliquée est $28/40=0{,}7$. Or $\rho_1^2=2^2/(4\times40)=0{,}025$ et $\rho_2^2=15^2/(9\times40)=0{,}625$, soit une somme de 0,65. La différence provient de la dépendance des prédicteurs; il n’y a pas deux contributions marginales disjointes à additionner.
+
+**Critères indépendants :** Utiliser exactement la covariance nulle pour supprimer le terme croisé; Relier chaque carré de corrélation aux variances; Conserver le terme croisé dans le cas corrélé; Distinguer part marginale et part conjointe.
+
+### Comparaison reproductible sur un échantillon commun {#L16-E04}
+
+<!-- ps1:solution id=L16-E04 -->
+
+La sélection des lignes est faite avant les deux ajustements. Cette décision empêche de confondre un changement de modèle avec un changement d’échantillon.
+
+```{r L16-donnees-corrige}
+set.seed(1616)
+brut <- data.frame(charge = rnorm(120))
+brut$cache <- .6*brut$charge + .8*rnorm(120)
+brut$temps <- 50 - 3*brut$cache + 10*brut$charge + rnorm(120, sd=3)
+brut$charge[c(3,17)] <- NA
+```
+
+```{r L16-E04}
+d <- brut[complete.cases(brut[,c("temps","cache","charge")]), ]
+m0 <- lm(temps ~ cache, data=d)
+m1 <- lm(temps ~ cache + charge, data=d)
+A <- model.matrix(m1)
+stopifnot(nobs(m0)==nobs(m1), qr(A)$rank==ncol(A))
+X <- as.matrix(d[,c("cache","charge")])
+b_cov <- as.vector(solve(cov(X), cov(X,d$temps)))
+stopifnot(max(abs(b_cov-coef(m1)[c("cache","charge")])) < 1e-9)
+delta <- unname(coef(m0)["cache"]-coef(m1)["cache"])
+delta_formule <- unname(coef(m1)["charge"]*cov(d$cache,d$charge)/var(d$cache))
+stopifnot(abs(delta-delta_formule) < 1e-9)
+nu <- nrow(d)-3
+sortie <- coef(summary(m1))
+t_cache <- sortie["cache","Estimate"]/sortie["cache","Std. Error"]
+p_cache <- 2*pt(-abs(t_cache), df=nu)
+RSS <- sum(residuals(m1)^2); TSS <- sum((d$temps-mean(d$temps))^2)
+F_global <- ((TSS-RSS)/2)/(RSS/nu)
+p_global <- pf(F_global, df1=2, df2=nu, lower.tail=FALSE)
+stopifnot(abs(p_cache-sortie["cache","Pr(>|t|)"]) < 1e-12,
+          abs(F_global-unname(summary(m1)$fstatistic[1])) < 1e-9,
+          summary(m1)$r.squared >= summary(m0)$r.squared)
+print(list(coefficients_simple=coef(m0), coefficients_partiels=coef(m1),
+           decalage=delta, formule=delta_formule,
+           t_cache=t_cache, ddl=nu, p_cache=p_cache,
+           F=F_global, ddl_F=c(2,nu), p_global=p_global,
+           R2=c(simple=summary(m0)$r.squared, multiple=summary(m1)$r.squared)))
+cat(sprintf("Sans ajustement pour la charge, une unité de cache est associée à %.3f ms de différence moyenne.\n", coef(m0)["cache"]))
+cat(sprintf("À charge fixée, l’association estimée est %.3f ms par unité (IC 95 %% [%.3f ; %.3f]).\n", coef(m1)["cache"], confint(m1,"cache")[1], confint(m1,"cache")[2]))
+plot(d$cache,d$temps, xlab="Indice de cache", ylab="Temps (ms)", pch=19)
+abline(m0, col="steelblue")
+```
+
+La différence empirique vérifie exactement la formule avec covariance/variance sur les mêmes observations; remplacer leur rapport par la seule corrélation ne serait pas exact sauf égalité des écarts-types empiriques. Le test individuel conserve `charge` dans le modèle. Le test global porte simultanément sur les deux pentes. L’augmentation de $R^2$ est attendue algébriquement; elle ne prouve ni une meilleure prédiction future ni l’absence de variables omises. Les paramètres du mécanisme synthétique rendent le signe théorique compréhensible, mais cette connaissance n’existe pas automatiquement pour une étude réelle.
+
+**Critères indépendants :** Utiliser un seul masque de données complètes; Contrôler rang et effectif; Vérifier les coefficients par une voie matricielle; Garder cov/var dans l’identité empirique; Distinguer test individuel et global; Expliquer le changement en français sans causalité automatique.
+
+## Corrections des variantes
+
+### L16-V01 {#L16-V01}
+
+La moyenne se réécrit $(b_0+5b_2)+(b_1+2b_2)X_1$. Seules ces deux combinaisons sont identifiables si $X_1$ n’est pas constant. Pour tout $t$, remplacer $(b_0,b_1,b_2)$ par $(b_0-5t,b_1-2t,b_2+t)$ laisse les prédictions inchangées. La matrice de conception n’a pas rang plein; $K$ est singulière. Ajuster le modèle à un seul prédicteur $X_1$ identifie les deux combinaisons. Une valeur `NA` issue d’une colinéarité n’est pas une preuve de coefficient nul.
+
+**Critères :** Exhiber les deux combinaisons identifiables; Relier la dépendance affine au rang; Interpréter correctement un coefficient non estimable.
+
+### L16-V02 {#L16-V02}
+
+A obtient 90 % contre 80 % dans la strate simple, puis 70 % contre 60 % dans la strate complexe. Agrégés, les taux sont 72/100=72 % pour A et 78/100=78 % pour B. La procédure A reçoit surtout les cas complexes, B surtout les cas simples. Les moyennes agrégées utilisent donc des poids différents.
+
+Avec les mêmes poids $1/2,1/2$, les taux standardisés valent 80 % pour A et 70 % pour B. Il faut choisir une population cible et connaître le mécanisme d’affectation. Ces calculs illustrent une confusion possible par la difficulté; ils ne prouvent pas qu’un changement de procédure cause l’écart, car d’autres différences entre incidents peuvent subsister.
+
+**Critères :** Calculer les taux avec les bons dénominateurs; Expliquer l’inversion par les poids; Standardiser vers une population définie; Conserver une limite causale.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `ctd09` : E2 Q1-Q9, lignes 273-489. Système des covariances, intercept, tests individuels et globaux, part expliquée.
+- `ctd10` : E1 Q1-Q4 lignes 35-149; E2 Q1-Q5 lignes 154-274; E3 Q1-Q2 lignes 285-350. Omission, confusion, comparaison de modèles et prédicteurs décorrélés.
+- `tp04` : Partie II Q1-Q3, lignes 154-239. Formule non standardisée de l’omission et interprétation partielle.
+- `st10_simpson` : PDF p.1, tableau stratifié et question finale. Changer les pondérations peut inverser un classement agrégé.
+- `blocks_v2` : PS1-244 à PS1-264; PS1-005; PS1-030. Rang plein, covariance matricielle, degrés de liberté et limites de R².

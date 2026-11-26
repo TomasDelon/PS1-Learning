@@ -1,0 +1,177 @@
+---
+title: "X01 · Synthèse: probabilités, estimation et tests"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "X01"
+  document_role: work
+  content_status: complete_derived
+  minutes: 60
+  exercise_ids: ["X01-E01", "X01-E02", "X01-E03", "X01-E04"]
+  block_ids: ["X01-B01"]
+  learner_state: not_created
+---
+
+**Durée totale : 60 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Évaluation mixte originale : une plateforme de services, quatre situations distinctes. Les titres ne donnent pas les méthodes. Aucune question n'est tirée d'un contrôle final. Prévoir 40 minutes de tentative, 15 minutes de correction et 5 minutes de tri/rappel, dans les 60 minutes du parcours.
+
+**Prérequis :** L01 à L13, en particulier les choix de modèle, d'intervalle et de test. Aide R autorisée pour la syntaxe; noter toute aide théorique utilisée.
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+## 1/6 · Préparer la tentative
+
+Fixer un minuteur de 40 minutes. Pour chaque situation : nommer la cible, choisir la méthode, justifier ses hypothèses, calculer, puis conclure. En cas de blocage, écrire le point manquant et continuer; noter l'aide effectivement reçue.
+
+## 2/6 · Situation 1
+
+### Acheminement des demandes {#X01-E01}
+
+**X01-E01 · 7 min.**
+
+Une plateforme envoie $20\,\%$ de ses demandes vers le service A, le reste vers B.
+La probabilité d'un incident est $0{,}10$ dans A et $0{,}025$ dans B.
+Ces probabilités décrivent le modèle actuel, pas des fréquences estimées.
+
+1. Nommer deux événements et calculer la probabilité d'un incident.
+2. Une demande a connu un incident. Calculer la probabilité qu'elle ait été envoyée vers A. Expliquer pourquoi $0{,}10$ ne répond pas à cette question.
+3. Pour 200 demandes qui suivent toutes ce modèle, donner le nombre moyen d'incidents. L'indépendance est-elle nécessaire à ce seul calcul d'espérance ?
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Situation 2
+
+### Comptages par fenêtre {#X01-E02}
+
+**X01-E02 · 10 min.**
+
+On observe le nombre de nouvelles demandes dans 25 fenêtres de durée identique.
+Les comptages $X_i$ sont modélisés par des variables indépendantes de même loi
+$P_\lambda(X_i=k)=e^{-\lambda}\lambda^k/k!$, pour $k\in\mathbb N$ et $\lambda>0$.
+Leur somme observée est $40$.
+
+1. Proposer une estimation de $\lambda$ par une méthode que vous justifiez; donner aussi l'estimateur aléatoire correspondant.
+2. Déterminer le biais et la variance de cet estimateur dans le modèle.
+3. Construire et calculer un intervalle approché à 95 % pour $\lambda$, puis commenter son exactitude et son interprétation. Cet intervalle décrit-il le comptage de la prochaine fenêtre ?
+
+```{r X01-E02}
+n_fenetres <- 25
+somme_observee <- 40
+# Calcul numérique après la justification mathématique.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Situations 3 et 4
+
+### Une modification du système {#X01-E03}
+
+**X01-E03 · 12 min.**
+
+Douze postes indépendants sont mesurés avant et après une modification.
+Les colonnes ci-dessous correspondent aux mêmes postes, dans le même ordre.
+Avant l'expérience, l'équipe a décidé de rechercher une réduction du temps moyen au seuil $5\,\%$. Un gain d'au moins $0{,}5$ seconde a été fixé comme objectif pratique.
+
+1. Définir la cible, le sens de la différence et les hypothèses. Choisir une procédure et préciser les conditions nécessaires.
+2. Calculer effet estimé et p-valeur. Donner aussi un intervalle bilatéral à 95 % du gain moyen, en indiquant la différence de direction avec le test choisi.
+3. Conclure sur le signal statistique et sur l'objectif pratique. Nommer une limite de généralisation.
+
+```{r X01-E03}
+avant <- c(9.8, 10.2, 8.6, 11.0, 9.4, 10.7, 8.9, 10.5, 9.7, 11.2, 10.0, 9.3)
+apres <- c(9.3, 10.0, 7.8, 11.1, 9.0, 10.1, 8.6, 9.8, 9.6, 10.7, 9.4, 8.9)
+# Analyse et conclusion.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+### Types de demandes et dispositifs {#X01-E04}
+
+**X01-E04 · 11 min.**
+
+Quatre-vingts demandes indépendantes sont classées selon le dispositif utilisé et le type de besoin :
+
+| Dispositif | Information | Réparation | Configuration |
+|:--|--:|--:|--:|
+| A | 14 | 18 | 8 |
+| B | 10 | 12 | 18 |
+
+1. Choisir une analyse pour rechercher une association, expliquer les attendus et déterminer les degrés de liberté.
+2. Calculer la statistique et la p-valeur, puis conclure au seuil $5\,\%$.
+3. Dans une autre analyse d'adéquation à six catégories fixes, deux paramètres sont ajustés par maximum de vraisemblance sur les effectifs regroupés; on suppose les conditions régulières satisfaites. Une sortie automatique utilise cinq degrés de liberté. Quel contrôle faut-il effectuer ?
+
+```{r X01-E04}
+O <- matrix(c(14, 18, 8, 10, 12, 18), nrow = 2, byrow = TRUE)
+# Analyse justifiée et contrôle séparé du modèle ajusté.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**15 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `X01_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| X01-E01 | | |
+| X01-E02 | | |
+| X01-E03 | | |
+| X01-E04 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+### Relire une décision statistique {#X01-B01}
+
+> **MTH [X01-B01] · Relire une décision statistique**
+>
+> Après une tentative indépendante, vérifier cinq éléments : la cible et les unités; le plan d'observation; les hypothèses de la méthode; le calcul avec sa loi de référence; la conclusion avec son incertitude et sa portée. Nommer l'erreur la plus précoce dans la chaîne. Une formule correcte appliquée au mauvais plan doit être reprise à partir du choix de méthode. Une correction comprise n'est pas encore une réussite autonome.
+
+**5 minutes.** Choisir une erreur de méthode prioritaire et un bloc déjà rencontré pour le rappel. Ne pas créer une carte par calcul numérique. La synthèse ne donne aucune validation automatique de compétence.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### X01-V01 · 5 min {#X01-V01}
+
+On observe maintenant zéro événement dans $n$ fenêtres Poisson indépendantes. L'intervalle normal obtenu en remplaçant la variance par la moyenne observée se réduit à $[0,0]$. Est-ce une garantie valable ? À partir de $P_\lambda(\sum_iX_i=0)=e^{-n\lambda}$, trouver la borne supérieure obtenue en résolvant $e^{-n\lambda}=0{,}05$.
+
+#### X01-V02 · 4 min {#X01-V02}
+
+Relire : « Le gain vaut 0,2 seconde avec un IC à 95 % de [0,1;0,3], donc notre objectif de 0,5 seconde est atteint. De plus, p=0,08 pour l'indépendance prouve que les deux variables sont indépendantes avec 92 % de probabilité. » Corriger les deux conclusions sans refaire les calculs.
+
+## Références et provenance
+
+- `ctd04` (source non redistribuée), Exercice 1 Q1-Q3; Exercice 2 Q1-Q3 : Compétences de construction et d'analyse d'un estimateur.
+- `ctd05` (source non redistribuée), Exercice 1 Q3-Q9 : Pivots, tests et conclusions.
+- `ctd06` (source non redistribuée), Exercices 1,3 et 4 : Plans de comparaison, diagnostics et indépendance.
+- `ctd07` (source non redistribuée), Exercice 2 Q1 : Mélange et probabilités totales.
+- `tp03` (source non redistribuée), Q5-Q7 : Intervalles de comptages, appariement et table croisée.
+
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.

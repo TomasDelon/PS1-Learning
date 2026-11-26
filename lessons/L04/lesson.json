@@ -1,0 +1,682 @@
+{
+  "lesson_id": "L04",
+  "minutes": 45,
+  "source_refs": [
+    {
+      "source_id": "ctd02",
+      "locator": "Exercice 2 Q1-Q3",
+      "use_fr": "Espérance, transfert, variance et contrôle numérique."
+    },
+    {
+      "source_id": "tp01",
+      "locator": "Exercice 3 Q4-Q5, première occurrence de Question 5",
+      "use_fr": "Espérance d’un comptage par somme de probabilités."
+    },
+    {
+      "source_id": "st02_03",
+      "locator": "PDF pp.5-12",
+      "use_fr": "Anticiper les effets de translation et d’échelle, interpréter les unités."
+    },
+    {
+      "source_id": "st02_prime",
+      "locator": "PDF p.1, Temps 2-4",
+      "use_fr": "Choisir les outils avant le calcul."
+    },
+    {
+      "source_id": "st09",
+      "locator": "PDF p.3",
+      "use_fr": "Covariance nulle et dépendance."
+    },
+    {
+      "source_id": "st_poly_discretes",
+      "locator": "PDF pp.5-11",
+      "use_fr": "Espérance, moments, variance; la preuve emploie la linéarité de l’espérance."
+    },
+    {
+      "source_id": "st_poly_continues",
+      "locator": "PDF pp.5-10",
+      "use_fr": "Intégrabilité, moments et transformations."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-080, PS1-081, PS1-082, PS1-084, PS1-079, PS1-088, PS1-085, PS1-086, PS1-087, PS1-089, PS1-090, PS1-091, PS1-092, PS1-093, PS1-104, PS1-110",
+      "use_fr": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-202 et PS1-203, lignes 1336-1344, octets relus dans PS1_Cours_DEF_THM_MTH_v2.md",
+      "use_fr": "Borne de covariance et définition de la corrélation avec variances strictement positives."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L04-B09",
+      "type": "DEF",
+      "title_fr": "Espérance et intégrabilité",
+      "source_block_ids": [
+        "PS1-080"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-080 · Espérance et intégrabilité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Espérance et intégrabilité",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B10",
+      "type": "THM",
+      "title_fr": "Linéarité de l’espérance",
+      "source_block_ids": [
+        "PS1-081"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-081 · Linéarité de l'espérance",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Linéarité de l’espérance",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B11",
+      "type": "THM",
+      "title_fr": "Transfert et moments",
+      "source_block_ids": [
+        "PS1-082",
+        "PS1-084"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-082 · Théorème de transfert",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-084 · Moments d'ordre k",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Transfert et moments",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B12",
+      "type": "DEF",
+      "title_fr": "Indicatrice",
+      "source_block_ids": [
+        "PS1-079"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-079 · Indicatrice d'un événement",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": false,
+      "cue_fr": "Indicatrice",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B13",
+      "type": "THM",
+      "title_fr": "Espérance d’un comptage",
+      "source_block_ids": [
+        "PS1-079",
+        "PS1-080",
+        "PS1-081"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-079 · Indicatrice d'un événement",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-080 · Espérance et intégrabilité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-081 · Linéarité de l'espérance",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Espérance d’un comptage",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B14",
+      "type": "DEF",
+      "title_fr": "Loi conjointe et indépendance de variables",
+      "source_block_ids": [
+        "PS1-088"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-088 · Indépendance de variables aléatoires",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi conjointe et indépendance de variables",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B01",
+      "type": "DEF",
+      "title_fr": "Variance et écart-type",
+      "source_block_ids": [
+        "PS1-085"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-085 · Variance et écart-type",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Variance et écart-type",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B02",
+      "type": "THM",
+      "title_fr": "Identité de König-Huygens",
+      "source_block_ids": [
+        "PS1-086"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-086 · Identité de König-Huygens",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Identité de König-Huygens",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B03",
+      "type": "THM",
+      "title_fr": "Variance et écart-type après changement d’échelle",
+      "source_block_ids": [
+        "PS1-087"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-087 · Variance d'une transformation affine",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Variance et écart-type après changement d’échelle",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B04",
+      "type": "DEF",
+      "title_fr": "Covariance",
+      "source_block_ids": [
+        "PS1-089"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-089 · Covariance",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": false,
+      "cue_fr": "Covariance",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B15",
+      "type": "THM",
+      "title_fr": "Expression développée de la covariance",
+      "source_block_ids": [
+        "PS1-089",
+        "PS1-081"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-089 · Covariance",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-081 · Linéarité de l'espérance",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Expression développée de la covariance",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B05",
+      "type": "THM",
+      "title_fr": "Variance d’une combinaison linéaire",
+      "source_block_ids": [
+        "PS1-090",
+        "PS1-091"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-090 · Symétrie et bilinéarité de la covariance",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-091 · Variance d'une somme",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Variance d’une combinaison linéaire",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B06",
+      "type": "THM",
+      "title_fr": "Indépendance et covariance",
+      "source_block_ids": [
+        "PS1-092",
+        "PS1-093"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-092 · Indépendance implique covariance nulle",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-093 · Espérance du produit de variables indépendantes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Indépendance et covariance",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B07",
+      "type": "MTH",
+      "title_fr": "Construire une phrase mathématique justifiée",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd02",
+          "locator": "Exercice 2 Q1-Q3",
+          "use_fr": "Espérance, transfert, variance et contrôle numérique."
+        }
+      ],
+      "provenance": "original_method",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Construire une phrase mathématique justifiée",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L04-B08",
+      "type": "SYX",
+      "title_fr": "var, sd et cov",
+      "source_block_ids": [
+        "PS1-104",
+        "PS1-110"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-104 · Variance empirique et corrigée",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-110 · Statistiques descriptives avec R",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": true,
+      "cue_fr": "Quelles quantités les fonctions var, sd et cov calculent-elles sur des données ?",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L04-B16",
+      "type": "DEF",
+      "title_fr": "Corrélation et borne de Cauchy-Schwarz",
+      "source_block_ids": [
+        "PS1-202",
+        "PS1-203"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-202 et PS1-203, lignes 1336-1344, octets relus dans PS1_Cours_DEF_THM_MTH_v2.md",
+          "use_fr": "Borne de covariance et définition de la corrélation avec variances strictement positives."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Comment définir la corrélation, et quelles sont ses conditions d’existence et ses bornes ?",
+      "reason_fr": "Définition fondamentale, borne et conditions utiles en PS1 et pour les cours ultérieurs.",
+      "canonical_body_sha256": "48c4dada2bc2e339748ba6646899673ab5b4499ddd35f203598216610186cc4d"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L04-E01",
+      "family": "variance_affine_units",
+      "minutes": 3,
+      "kind": "concept",
+      "rubric_fr": [
+        "Mettre le coefficient au carré pour la variance.",
+        "Employer la valeur absolue pour l’écart-type.",
+        "Donner les unités et le rôle de la translation."
+      ],
+      "block_ids": [
+        "L04-B01",
+        "L04-B03"
+      ],
+      "competency_ids": [
+        "comp.ps1.transformed_moments"
+      ],
+      "topic_ids": [
+        "variance_affine"
+      ],
+      "error_tags": [
+        "coefficient_square",
+        "units"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L04-E02",
+      "family": "variance_affine_proof",
+      "minutes": 5,
+      "kind": "proof",
+      "rubric_fr": [
+        "Vérifier l’existence de la variance de la transformation.",
+        "Commencer par la définition, sans raisonnement circulaire.",
+        "Faire disparaître b au centrage et sortir a au carré.",
+        "Prendre la racine positive."
+      ],
+      "block_ids": [
+        "L04-B01",
+        "L04-B03",
+        "L04-B10",
+        "L04-B07"
+      ],
+      "competency_ids": [
+        "comp.ps1.transformed_moments"
+      ],
+      "topic_ids": [
+        "expect_linear",
+        "variance_affine"
+      ],
+      "error_tags": [
+        "proof_circular",
+        "integrability"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L04-E03",
+      "family": "affine_covariance_expand",
+      "minutes": 5,
+      "kind": "math",
+      "rubric_fr": [
+        "Justifier l’espérance par linéarité sans indépendance.",
+        "Garder le signe négatif du terme croisé.",
+        "Trouver 11, 21 et racine de 21.",
+        "Relier l’incompatibilité à l’implication démontrée.",
+        "Vérifier les deux variances positives et calculer la corrélation 1/6.",
+        "Préciser que la corrélation est sans unité et ne démontre aucun lien causal.",
+        "Vérifier la borne de Cauchy-Schwarz pour la covariance donnée."
+      ],
+      "block_ids": [
+        "L04-B05",
+        "L04-B06",
+        "L04-B10",
+        "L04-B16"
+      ],
+      "competency_ids": [
+        "comp.ps1.expectation_linear_combination",
+        "comp.ps1.covariance_expand",
+        "comp.ps1.variance_linear_combination"
+      ],
+      "topic_ids": [
+        "cov_bilinear",
+        "var_sum",
+        "correlation",
+        "cov_cauchy"
+      ],
+      "error_tags": [
+        "cross_term",
+        "independence",
+        "correlation_scope"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L04-E04",
+      "family": "zero_cov_dependent",
+      "minutes": 5,
+      "kind": "proof",
+      "rubric_fr": [
+        "Calculer les trois espérances nécessaires.",
+        "Vérifier le carré intégrable.",
+        "Donner deux événements et une inégalité de probabilités.",
+        "Conclure que la réciproque est fausse."
+      ],
+      "block_ids": [
+        "L04-B11",
+        "L04-B14",
+        "L04-B15",
+        "L04-B06"
+      ],
+      "competency_ids": [
+        "comp.ps1.covariance_expand",
+        "comp.ps1.association_explain"
+      ],
+      "topic_ids": [
+        "indep_cov",
+        "joint_law",
+        "transfer"
+      ],
+      "error_tags": [
+        "converse",
+        "formal_language"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L04-E05",
+      "family": "sample_vs_law_variance",
+      "minutes": 8,
+      "kind": "R",
+      "rubric_fr": [
+        "Distinguer loi équiprobable et convention empirique.",
+        "Retrouver 6,5 et 26/3.",
+        "Utiliser un coefficient négatif et une comparaison numérique tolérante.",
+        "Distinguer vérification et preuve."
+      ],
+      "block_ids": [
+        "L04-B08",
+        "L01-B05"
+      ],
+      "competency_ids": [
+        "comp.ps1.sample_moments",
+        "comp.ps1.transformed_moments",
+        "comp.ps1.r_documentation"
+      ],
+      "topic_ids": [
+        "variance",
+        "variance_affine"
+      ],
+      "error_tags": [
+        "sample_denominator",
+        "simulation_vs_proof"
+      ],
+      "has_r": true
+    },
+    {
+      "id": "L04-E06",
+      "family": "indicator_expected_count",
+      "minutes": 4,
+      "kind": "math",
+      "rubric_fr": [
+        "Nommer les événements et les indicatrices.",
+        "Sommer les probabilités sans hypothèse d’indépendance.",
+        "Identifier les covariances manquantes pour la variance.",
+        "Distinguer espérance non entière et réalisation entière."
+      ],
+      "block_ids": [
+        "L04-B12",
+        "L04-B13",
+        "L04-B05"
+      ],
+      "competency_ids": [
+        "comp.ps1.expected_count",
+        "comp.ps1.expectation_linear_combination"
+      ],
+      "topic_ids": [
+        "indicator_event",
+        "expectation",
+        "expect_linear"
+      ],
+      "error_tags": [
+        "independence",
+        "object_type"
+      ],
+      "has_r": false
+    }
+  ],
+  "variants": [
+    {
+      "id": "L04-V01",
+      "family": "count_partition_dependence",
+      "for_exercise_ids": [
+        "L04-E03",
+        "L04-E06"
+      ],
+      "error_tags": [
+        "independence",
+        "cross_term"
+      ],
+      "prompt_md": "Un seul capteur choisit exactement une des catégories A, B, C, de probabilités 0,2, 0,5 et 0,3. Poser $I_A=\\mathbf1_A$ et $I_B=\\mathbf1_B$. Calculer l'espérance et la variance de $I_A+I_B$ sans invoquer l'indépendance.",
+      "correction_md": "Les événements sont incompatibles, donc $I_AI_B=0$.\n$\\mathbb E[I_A+I_B]=0{,}7$ et\n$\\operatorname{Cov}(I_A,I_B)=0-0{,}2(0{,}5)=-0{,}1$.\nLa variance vaut $0{,}2(0{,}8)+0{,}5(0{,}5)-0{,}2=0{,}21$.\nOn peut aussi voir $I_A+I_B=\\mathbf1_{A\\cup B}$, de variance\n$0{,}7(0{,}3)$. Les indicatrices ne sont pas indépendantes.",
+      "rubric_fr": [
+        "Utiliser l’incompatibilité pour le produit.",
+        "Conserver la covariance négative.",
+        "Trouver la même variance par les deux représentations."
+      ],
+      "block_ids": [
+        "L04-B12",
+        "L04-B13",
+        "L04-B15",
+        "L04-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Reconnaître une indicatrice cachée et tirer une covariance d’une partition, au lieu d’utiliser une covariance fournie.",
+      "has_r": false
+    },
+    {
+      "id": "L04-V02",
+      "family": "nonlinear_moment_transfer",
+      "for_exercise_ids": [
+        "L04-E02",
+        "L04-E04"
+      ],
+      "error_tags": [
+        "method_choice",
+        "converse"
+      ],
+      "prompt_md": "Une amplitude $U$ est uniforme sur (-1,1); l'énergie est $Y=U^2$. Peut-on utiliser la formule de variance affine ? Calculer $\\mathbb E[Y]$ et $\\mathbb V(Y)$ par transfert, puis déterminer si $\\operatorname{Cov}(U,Y)=0$ permet de conclure à l'indépendance.",
+      "correction_md": "Le carré n'est pas affine. Comme $U$ est bornée, tous les moments requis existent.\n$\\mathbb E[Y]=\\frac12\\int_{-1}^1u^2\\,du=1/3$ et\n$\\mathbb E[Y^2]=\\frac12\\int_{-1}^1u^4\\,du=1/5$,\ndonc $\\mathbb V(Y)=1/5-1/9=4/45$.\nLes intégrales impaires donnent $\\operatorname{Cov}(U,Y)=0$.\nPourtant $\\{|U|\\le1/2\\}=\\{Y\\le1/4\\}$ a probabilité 1/2; l'intersection a\nprobabilité 1/2, et non 1/4. L'indépendance est donc fausse.",
+      "rubric_fr": [
+        "Refuser l’application d’une formule affine à un carré.",
+        "Vérifier les moments par intégration.",
+        "Calculer 4/45 et réfuter l’indépendance par des événements."
+      ],
+      "block_ids": [
+        "L04-B11",
+        "L04-B02",
+        "L04-B06",
+        "L04-B14"
+      ],
+      "minutes": 5,
+      "transfer": "Choisir le transfert pour une transformation non linéaire et utiliser des intervalles plutôt que des masses ponctuelles.",
+      "has_r": false
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé."
+    ]
+  },
+  "time_breakdown": {
+    "cours": 6,
+    "concept_checks": 5,
+    "maths": 17,
+    "R": 8,
+    "self_correction_review": 9
+  },
+  "review_allocation": {
+    "correction_minutes": 2,
+    "anki_minutes": 2,
+    "replaceable_retrieval_minutes": 5
+  }
+}

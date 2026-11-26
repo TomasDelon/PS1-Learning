@@ -1,0 +1,97 @@
+---
+title: "S01 · Simulation chronométrée réservée"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: S01
+  document_role: work
+  content_status: complete_authored
+  minutes: 180
+  exercise_ids: ["S01-E01"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**Durée réservée : 180 minutes.** Protocole uniquement. Aucun contenu d’examen n’est embarqué, récupéré ou ouvert par ce document.
+
+## 1/6 · Décider du départ
+
+Cette étape reste disponible sans déclencher la simulation. Le choix d’ouvrir une épreuve appartient à l’étudiant.
+
+## 2/6 · Préparer le cadre
+
+Utiliser uniquement les ressources autorisées par les consignes réellement choisies. Le format Rmd est un support de réponse, pas une autorisation supplémentaire de consulter des documents.
+
+## 3/6 · Suivre le protocole
+
+### Protocole de tentative réservée {#S01-E01}
+
+**Budget : 180 min.**
+
+Cette activité réserve 180 minutes pour une tentative que vous déciderez explicitement de commencer. Aucun sujet, donnée d’examen, question, réponse ou lien vers une épreuve réservée n’est fourni ici. Ne pas commencer une épreuve à la seule ouverture de ce fichier.
+
+**Avant le départ, décision personnelle :** choisir l’épreuve et vérifier ses consignes sans ouvrir de correction. Préparer l’environnement, l’A4 manuscrite autorisée et le fichier de réponse. Cette préparation matérielle ne doit pas transformer le document présent en aperçu du sujet. Le compteur effectif commence à l’ouverture volontaire de l’épreuve choisie.
+
+**0 à 10 minutes :** lire ses consignes, vérifier les fichiers nécessaires et répartir le temps. Consigner l’heure de départ et la durée prévue. Garder toute correction, assistance et solution fermée selon les conditions de la simulation.
+
+**10 à 160 minutes :** produire la première tentative. Enregistrer régulièrement. Distinguer une question non traitée d’une question traitée partiellement. Si une difficulté bloque, laisser une trace du raisonnement et poursuivre selon le temps disponible. Toute aide ou incident effectivement survenu est consigné, sans le masquer.
+
+**160 à 175 minutes :** relire les objets, hypothèses, unités, degrés de liberté, code et conclusions. Si une compilation est permise dans l’environnement choisi, vérifier que le document s’exécute depuis une session propre. Garder le fichier original et la trace des questions non achevées.
+
+**175 à 180 minutes :** arrêter les nouvelles résolutions, sauvegarder la version remise et conserver une copie immuable de la première tentative. Ne pas consulter la correction avant l’arrêt du chronomètre et la sauvegarde.
+
+| Élément à renseigner lors d’une tentative réelle | Valeur |
+|:--|:--|
+| Décision explicite de commencer et date | |
+| Heure de départ | |
+| Heure d’arrêt | |
+| Ressources effectivement utilisées | |
+| Incidents ou aide reçue | |
+| Fichier de réponse enregistré | |
+| Emplacement de la copie conservée | |
+
+Si ce Rmd contient vos réponses et des images locales dans `images/`, la commande suivante, lancée depuis la racine du dossier, conserve ce Rmd et ses images liées dans un nouveau dossier. Elle ne copie pas automatiquement d’autres fichiers de code ou de données; les conserver séparément si l’épreuve en utilise.
+
+```sh
+python3 tools/snapshot_attempt.py lessons/S01/S01_Travail.Rmd evidence/S01-premier-essai
+```
+
+Choisir un nouveau nom de dossier si celui-ci existe déjà. Cette commande n’est pas exécutée par la préparation du parcours. Si vous répondez dans un autre Rmd, utiliser le chemin de ce fichier réel; toutes les images référencées doivent rester locales et à l’intérieur de son dossier.
+
+**Espace de travail libre, uniquement lors de la tentative volontaire :**
+
+
+
+**Après l’arrêt seulement :** ouvrir le document de bilan de procédure `S01_Corrige.Rmd`. Il ne contient aucun corrigé d’épreuve. La correction du contenu, lorsqu’elle sera explicitement choisie, relève du créneau F01 et de ses 90 minutes, sans consultation anticipée ici.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Sauvegarder la tentative
+
+Les réponses ne sont pas préremplies. Ajouter ici, si nécessaire pendant une vraie tentative, les références aux fichiers de réponse et les images locales à conserver. Ne pas confondre une trace de travail avec une validation de contenu.
+
+## 5/6 · Fermer sans correction anticipée
+
+À l’arrêt, préserver l’état obtenu. Le fichier compagnon sert uniquement à vérifier la procédure.
+
+## 6/6 · Préparer F01
+
+Lors du créneau de réparation, utiliser les traces réellement disponibles pour choisir les difficultés à revoir. Les temps de correction et de rappel restent ceux de F01; aucune correction n’est ajoutée aux 180 minutes scellées.
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `syllabus_ps1` : Evaluation FRANÇAIS, première session : examen individuel de 3h sur machine et résumé manuscrit A4 autorisé. Justifie une durée de simulation de 180 minutes et le contrôle des ressources autorisées, sans accéder à un sujet.

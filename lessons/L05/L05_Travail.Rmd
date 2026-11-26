@@ -1,0 +1,312 @@
+---
+title: "L05 · Lois usuelles, sommes et fonctions génératrices"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L05
+  document_role: work
+  content_status: authored_complete
+  minutes: 25
+  exercise_ids: ["L05-E01", "L05-E02", "L05-E03"]
+  block_ids: ["L05-B01", "L05-B02", "L05-B03", "L05-B04", "L05-B05", "L05-B06", "L05-B10", "L05-B15", "L05-B07", "L05-B08", "L05-B09", "L05-B11", "L05-B12", "L05-B13", "L05-B14"]
+  learner_state: not_created
+---
+**25 min :** repères 4, compréhension 3, mathématiques 8, R 5, correction et rappel 5.
+Commencer par le mécanisme : succès parmi un nombre fixé d'essais, premier succès,
+comptage sur une durée ou mesure continue. Le support et les paramètres éliminent
+souvent une loi avant tout calcul.
+
+Le cœur de cette séance utilise Bernoulli, binomiale, géométrique, Poisson et
+normale. Gamma, khi-deux, convolution et FGM restent disponibles en consultation
+à la fin; leur approfondissement est **hors du cœur de 25 min** ou remplace un
+créneau de révision décidé ultérieurement.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+### Loi de Bernoulli {#L05-B01}
+
+> **DEF [L05-B01] · Loi de Bernoulli**
+>
+> Pour $p\in[0,1]$, $B\sim\operatorname{Bernoulli}(p)$ prend la valeur
+> 1 avec probabilité $p$ et 0 avec probabilité $1-p$. Elle représente un seul
+> essai binaire. Aux bornes $p=0$ et $p=1$, une des deux valeurs a masse nulle.
+
+### Loi binomiale {#L05-B02}
+
+> **DEF [L05-B02] · Loi binomiale**
+>
+> Pour $n\ge1$ entier et $p\in[0,1]$, $K\sim\mathcal B(n,p)$ est portée
+> par $\{0,\ldots,n\}$ et
+> $$\mathbb P(K=k)=\binom nk p^k(1-p)^{n-k},\quad k=0,\ldots,n,$$
+> avec les conventions aux bornes. Elle est la loi du nombre de succès de
+> $n$ essais de Bernoulli indépendants, de même probabilité $p$.
+
+### Loi géométrique, convention du rang {#L05-B03}
+
+> **DEF [L05-B03] · Loi géométrique, convention du rang**
+>
+> Pour $p\in(0,1]$, $G\sim\operatorname{Geom}(p)$ désigne ici le
+> rang du premier succès dans une suite d'essais de Bernoulli indépendants
+> de probabilité $p$ :
+> $$\mathbb P(G=k)=(1-p)^{k-1}p,\quad k=1,2,\ldots.$$
+> Le nombre d'échecs avant le premier succès est $G-1$ et commence à 0.
+> Pour $p=1$, $G=1$ presque sûrement; la formule en $k=1$ utilise la convention $0^0=1$.
+
+### Loi de Poisson {#L05-B04}
+
+> **DEF [L05-B04] · Loi de Poisson**
+>
+> Pour $\lambda>0$, $N\sim\mathcal P(\lambda)$ a pour masses
+> $$\mathbb P(N=k)=e^{-\lambda}\frac{\lambda^k}{k!},
+> \quad k=0,1,\ldots.$$
+> C'est un modèle de comptage sur une durée ou une zone fixée.
+> Le seul fait d'observer un entier positif ne justifie pas ce modèle.
+> Le paramètre $\lambda$ est un nombre moyen sur cette durée ou cette zone.
+
+### Loi normale et paramètres {#L05-B05}
+
+> **DEF [L05-B05] · Loi normale et paramètres**
+>
+> Pour $m\in\mathbb R$ et $\sigma>0$, $X\sim\mathcal N(m,\sigma^2)$
+> admet sur $\mathbb R$ la densité
+> $$f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}
+> \exp\!\left(-\frac{(x-m)^2}{2\sigma^2}\right).$$
+> Le deuxième paramètre dans cette notation est la **variance**.
+> $\mathcal N(0,1)$ est la loi normale centrée réduite.
+> Si $\sigma=0$, la variable constante $m$ est un cas dégénéré, sans cette densité.
+
+### Moments des lois du cœur {#L05-B06}
+
+> **THM [L05-B06] · Moments des lois du cœur**
+>
+> Pour les paramètres admissibles des lois ci-dessus :
+>
+> | Loi de $X$ | $\mathbb E[X]$ | $\mathbb V(X)$ |
+> |:--|:--|:--|
+> | Bernoulli$(p)$ | $p$ | $p(1-p)$ |
+> | $\mathcal B(n,p)$ | $np$ | $np(1-p)$ |
+> | Geom$(p)$, rang | $1/p$ | $(1-p)/p^2$ |
+> | $\mathcal P(\lambda)$ | $\lambda$ | $\lambda$ |
+> | $\mathcal N(m,\sigma^2)$ | $m$ | $\sigma^2$ |
+> | $\mathcal E(\lambda)$ | $1/\lambda$ | $1/\lambda^2$ |
+> | $\mathcal U(a,b)$ | $(a+b)/2$ | $(b-a)^2/12$ |
+>
+> Ces moments sont finis. Pour l'exponentielle, $\lambda$ est le taux.
+
+### Sommes indépendantes {#L05-B10}
+
+> **THM [L05-B10] · Sommes indépendantes**
+>
+> Pour $\lambda_1,\lambda_2\ge0$, si $N_1,N_2$ sont indépendantes de lois $\mathcal P(\lambda_1)$ et
+> $\mathcal P(\lambda_2)$, leur somme suit $\mathcal P(\lambda_1+\lambda_2)$.
+> Pour $k\ge1$, $a_1,\ldots,a_k,c\in\mathbb R$ et $X_1,\ldots,X_k$
+> indépendantes de lois $\mathcal N(m_i,\sigma_i^2)$, la somme finie
+> $\sum_i a_iX_i+c$ est normale de moyenne $\sum_i a_im_i+c$ et de variance
+> $\sum_i a_i^2\sigma_i^2$ lorsque cette variance est positive; sinon elle est
+> constante. Sans indépendance, les seules lois marginales ne suffisent pas
+> à déterminer la loi de la somme.
+
+## 2/6 · Expliquer les objets
+
+### L05-E01 · Choisir le mécanisme (3 min) {#L05-E01}
+
+Choisir une loi et préciser son support dans chaque cas :
+(a) nombre de transmissions réussies parmi 12 essais indépendants de probabilité 0,8;
+(b) rang de la première transmission réussie avec ces mêmes hypothèses;
+(c) nombre de requêtes sur une minute, lorsqu'un modèle de Poisson de moyenne 4
+est explicitement posé. Peut-on remplacer les trois lois par « une loi normale » ?
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### L05-E02 · Additionner sans perdre les paramètres (8 min) {#L05-E02}
+
+Deux erreurs indépendantes vérifient $X\sim\mathcal N(3,4)$ et
+$Y\sim\mathcal N(-1,9)$. Déterminer la loi de $W=2X+Y$, puis écrire
+$\mathbb P(W>10)$ avec la CDF $\Phi$ de $\mathcal N(0,1)$.
+Indépendamment de ce modèle, deux compteurs indépendants ont les lois
+$\mathcal P(1{,}2)$ et $\mathcal P(0{,}8)$. Déterminer la loi de leur somme
+et écrire la probabilité qu'elle soit au moins égale à 3 sous forme exacte.
+Nommer l'hypothèse utilisée pour chaque loi de somme.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### Vérifier les conventions d’une fonction de loi {#L05-B15}
+
+> **SYX [L05-B15] · Vérifier les conventions d’une fonction de loi**
+>
+> Les préfixes `d/p/q/r` ont été introduits dans L03-B14.
+> `pnorm(t, mean=m, sd=sigma)` attend l'écart-type, pas la variance.
+> `pexp(t, rate=lambda)` emploie le taux de la loi exponentielle.
+> Pour toute fonction R, vérifier les arguments dans son aide avant utilisation.
+> `pgeom(k-1, prob=p)` donne $\mathbb P(G\le k)$ pour la convention du rang
+> $G$ de L05-B03. `ppois(k,lambda)` donne $\mathbb P(N\le k)$;
+> ainsi $\mathbb P(N\ge k)=1-\mathbb P(N\le k-1)$.
+> Nommer les arguments évite les confusions de paramétrage.
+
+### L05-E03 · Traduire les queues en R (5 min) {#L05-E03}
+
+Calculer en R les deux probabilités de E02 avec arguments nommés.
+Pour le rang $G$ de E01, calculer $\mathbb P(G\le2)$ par la formule
+mathématique puis par `pgeom`. Vérifier les accords, et écrire une phrase
+expliquant pourquoi `sd=25` et `pgeom(2, prob=.8)` ne répondent pas aux
+questions posées.
+
+```{r L05-E03}
+# Réutiliser L03-B14 et consulter L05-B15.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `L05_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| L05-E01 | | |
+| L05-E02 | | |
+| L05-E03 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Retenir les mécanismes, supports et conventions. Les formules longues de masse et les paramètres Gamma restent en référence. Reconstruire une queue en français avant de choisir p, d, q ou r.
+
+Les variantes L05-V01, L05-V02 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+## Consultation facultative · hors du cœur de séance
+
+Ces blocs sont disponibles au premier besoin. Leur présence ne rend pas leur
+lecture intégrale obligatoire pendant le budget annoncé.
+
+### Fonction gamma {#L05-B07}
+
+> **DEF [L05-B07] · Fonction gamma**
+>
+> Pour $a>0$, $\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt$.
+> Cette intégrale converge. Pour tout entier $n\ge1$, $\Gamma(n)=(n-1)!$.
+
+### Loi gamma, forme et taux {#L05-B08}
+
+> **DEF [L05-B08] · Loi gamma, forme et taux**
+>
+> Pour $a,\lambda>0$, $\operatorname{Gamma}(a,\lambda)$ a pour densité
+> $$f(x)=\frac{\lambda^a}{\Gamma(a)}x^{a-1}e^{-\lambda x}
+> \mathbf1_{(0,\infty)}(x).$$
+> $a$ est la forme, $\lambda$ le taux, et $1/\lambda$ l'échelle.
+> La loi exponentielle $\mathcal E(\lambda)$ est le cas $a=1$.
+
+### Loi du khi-deux {#L05-B09}
+
+> **DEF [L05-B09] · Loi du khi-deux**
+>
+> Pour $\nu>0$, la loi $\chi^2_\nu$ est
+> $\operatorname{Gamma}(\nu/2,1/2)$, paramétrée par forme et taux.
+> Pour $\nu$ entier positif, elle est aussi la loi de
+> $\sum_{i=1}^{\nu}Z_i^2$ pour des $Z_i$ indépendantes de loi $\mathcal N(0,1)$.
+
+### Sommes d’exponentielles et moments gamma {#L05-B11}
+
+> **THM [L05-B11] · Sommes d’exponentielles et moments gamma**
+>
+> Si $X_1,\ldots,X_n$ sont indépendantes de loi $\mathcal E(\lambda)$,
+> avec $\lambda>0$, alors $\sum_iX_i\sim\operatorname{Gamma}(n,\lambda)$.
+> Sa moyenne divisée par $n$ suit $\operatorname{Gamma}(n,n\lambda)$.
+> Pour $G\sim\operatorname{Gamma}(a,\lambda)$,
+> $\mathbb E[G]=a/\lambda$ et $\mathbb V(G)=a/\lambda^2$.
+> Ainsi, pour $Q\sim\chi^2_\nu$, $\mathbb E[Q]=\nu$ et $\mathbb V(Q)=2\nu$.
+
+### Fonction génératrice des moments {#L05-B12}
+
+> **DEF [L05-B12] · Fonction génératrice des moments**
+>
+> La FGM de $X$ est $M_X(t)=\mathbb E[e^{tX}]$ pour les réels $t$ où
+> cette espérance est finie. Elle peut ne pas être finie au voisinage de 0.
+> Pour $X\sim\mathcal E(\lambda)$,
+> $$M_X(t)=\frac{\lambda}{\lambda-t},\quad t<\lambda,$$
+> en intégrant $\lambda e^{-(\lambda-t)x}$ sur $(0,\infty)$.
+
+### Dérivées et produit des FGM {#L05-B13}
+
+> **THM [L05-B13] · Dérivées et produit des FGM**
+>
+> Si $M_X$ est finie sur un intervalle ouvert contenant 0,
+> $M_X^{(k)}(0)=\mathbb E[X^k]$ pour tout entier $k\ge1$.
+> Si $X,Y$ sont indépendantes et leurs FGM finies au point $t$,
+> $M_{X+Y}(t)=M_X(t)M_Y(t)$.
+> Pour l'exponentielle, $M'_X(0)=1/\lambda$ et $M''_X(0)=2/\lambda^2$;
+> König-Huygens redonne donc $\mathbb V(X)=1/\lambda^2$.
+> Le produit des FGM utilise l'indépendance, non la seule linéarité.
+
+### Convolution {#L05-B14}
+
+> **THM [L05-B14] · Convolution**
+>
+> Si $X,Y$ sont indépendantes et admettent les densités $f_X,f_Y$,
+> alors $S=X+Y$ admet, presque partout, la densité
+> $$f_S(s)=\int_{\mathbb R}f_X(t)f_Y(s-t)\,dt.$$
+> Il faut imposer simultanément les supports de $t$ et de $s-t$.
+> Par exemple, pour deux exponentielles de même taux $\lambda$,
+> l'intégrale va de 0 à $s$ si $s>0$, et donne
+> $\lambda^2s e^{-\lambda s}$; elle est nulle pour $s<0$.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### L05-V01 (4 min, en remplacement) {#L05-V01}
+
+Un tiroir contient 10 câbles, dont 3 défectueux. On en prélève 4 sans remise. Un collègue propose une loi binomiale de paramètres 4 et 0,3 pour le nombre de défauts. Décider si cette loi est exacte; expliquer quel argument cesse de s'appliquer. Calculer néanmoins l'espérance sans introduire une nouvelle loi.
+
+**Nouvelle tentative sans correction :**
+
+
+### L05-V02 (4 min, en remplacement) {#L05-V02}
+
+Un bruit $X\sim\mathcal N(0,4)$ est partagé par deux capteurs. Le premier renvoie $X$ et le second $Y=-X$. Leurs lois marginales sont normales. Quelle est la loi de $X+Y$ ? Pourquoi la formule des normales indépendantes donnerait-elle une réponse incorrecte ?
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Exercice 4 Q5 : Reconnaître un modèle de Poisson et distinguer modèle et données.
+- `ctd02` (source non redistribuée), Exercice 2 Q4-Q8; Exercice 3 Q1-Q5 : Sommes indépendantes, normale, gamma et FGM.
+- `st_poly_discretes` (source non redistribuée), PDF pp.8-11, ``3.1-3.5 : Lois discrètes usuelles et moments.
+- `st_poly_continues` (source non redistribuée), PDF pp.8-13 : Uniforme, exponentielle et normale; convention de variance auditée.
+- `blocks_v2` (source non redistribuée), PS1-064, PS1-065, PS1-066, PS1-067, PS1-068, PS1-072, PS1-100, PS1-101, PS1-069, PS1-096, PS1-111, PS1-074, PS1-073, PS1-075, PS1-097, PS1-098, PS1-099, PS1-093, PS1-095 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

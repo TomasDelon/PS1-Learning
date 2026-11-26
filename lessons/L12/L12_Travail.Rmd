@@ -1,0 +1,221 @@
+---
+title: "L12 · Tests de moyennes et diagnostics"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L12"
+  document_role: work
+  content_status: complete_derived
+  minutes: 45
+  exercise_ids: ["L12-E01", "L12-E02", "L12-E03"]
+  block_ids: ["L12-B01", "L12-B02", "L12-B03", "L12-B04", "L12-B05", "L12-B06", "L12-B07", "L12-B08", "L12-B09"]
+  learner_state: not_created
+---
+
+**Durée totale : 45 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Le choix du test commence par la manière dont les données ont été obtenues. Une même formule de différence de moyennes n'implique pas la même erreur-type pour des paires et pour deux groupes indépendants.
+
+**Prérequis :** L10-B05 et B06 (Student); L11 (hypothèses, p-valeur et décision); L04-B08 (covariance); L06-B08 (Q-Q plot).
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+**Répartition :** 5 min de cours; 5 min de vérification conceptuelle; 12 min de raisonnement; 12 min de R; 4 min de correction, 2 min de rappel/Anki et 5 min de révision adaptative.
+
+## 1/6 · Comprendre
+
+### Identifier le plan avant le test {#L12-B01}
+
+> **MTH [L12-B01] · Identifier le plan avant le test**
+>
+> Identifier l'unité indépendante, la variable quantitative, la cible et le sens de la différence. Deux groupes composés d'unités distinctes peuvent former des échantillons indépendants. Deux mesures sur la même unité sont appariées : former une différence par paire et travailler sur les différences. L'indépendance entre paires ne signifie pas indépendance à l'intérieur d'une paire. Le plan ne se déduit pas du résultat d'un test de normalité.
+
+### Test apparié par les différences {#L12-B02}
+
+> **THM [L12-B02] · Test apparié par les différences**
+>
+> Soient $n\ge2$ paires indépendantes $(A_i,B_i)$ et $D_i=A_i-B_i$ i.i.d. de loi $\mathcal N(\delta,\sigma_D^2)$, avec $\sigma_D>0$. Pour tester $H_0:\delta=\delta_0$, la statistique $T=\sqrt n(\overline D-\delta_0)/S_D$ suit $t_{n-1}$ sous $H_0$. Le test est un test de moyenne à un échantillon sur les différences. La normalité requise porte sur les différences. On a $\mathbb V(D_i)=\mathbb V(A_i)+\mathbb V(B_i)-2\operatorname{Cov}(A_i,B_i)$.
+
+### Variance poolée {#L12-B03}
+
+> **DEF [L12-B03] · Variance poolée**
+>
+> Pour deux échantillons indépendants de tailles $n_1,n_2\ge2$ et de variances corrigées observées $s_1^2,s_2^2$, la variance poolée est
+> $$
+> s_p^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}.
+> $$
+> Elle combine deux estimations d'une même variance populationnelle seulement lorsque l'hypothèse de variance commune est justifiée.
+
+### Deux échantillons normaux, variance commune {#L12-B04}
+
+> **THM [L12-B04] · Deux échantillons normaux, variance commune**
+>
+> Si les deux échantillons sont indépendants, normaux, de moyennes $m_1,m_2$ et de même variance $\sigma^2>0$, alors, sous $H_0:m_1-m_2=\delta_0$,
+> $$
+> T=\frac{\overline X_1-\overline X_2-\delta_0}
+> {S_p\sqrt{1/n_1+1/n_2}}\sim t_{n_1+n_2-2}.
+> $$
+> Cette loi est exacte sous ces hypothèses. L'égalité des variances ne résulte pas de la seule proximité de deux variances observées.
+
+### Student à degrés de liberté réels {#L12-B05}
+
+> **DEF [L12-B05] · Student à degrés de liberté réels**
+>
+> Pour $\nu>0$ réel, soit $V\sim\operatorname{Gamma}(\nu/2,\text{taux }1/2)$, indépendamment de $Z\sim\mathcal N(0,1)$. La loi de $Z/\sqrt{V/\nu}$ est notée $t_\nu$. Cette définition prolonge L10-B05 et permet les degrés de liberté non entiers de Welch.
+
+### Welch sans variance commune {#L12-B06}
+
+> **MTH [L12-B06] · Welch sans variance commune**
+>
+> Pour deux échantillons indépendants normaux, de tailles $n_1,n_2\ge2$ et de variances populationnelles strictement positives, estimer la différence $m_1-m_2$ par $\widehat\delta=\overline x_1-\overline x_2$. Poser $a=s_1^2/n_1$, $b=s_2^2/n_2$ et
+> $$
+> t=\frac{\widehat\delta-\delta_0}{\sqrt{a+b}},\qquad
+> \nu=\frac{(a+b)^2}{a^2/(n_1-1)+b^2/(n_2-1)}.
+> $$
+> Sous $H_0:m_1-m_2=\delta_0$, utiliser approximativement $t_\nu$. Un IC approché de la différence est $\widehat\delta\pm t_{\nu,1-\alpha/2}\sqrt{a+b}$. Welch ne suppose pas une variance commune et ne traite pas l'appariement. L'approximation peut aussi se justifier à grands effectifs sous des conditions de moments et de régularité; ce n'est pas une garantie universelle pour petits échantillons asymétriques.
+
+### Lire des diagnostics sans les surinterpréter {#L12-B07}
+
+> **MTH [L12-B07] · Lire des diagnostics sans les surinterpréter**
+>
+> Comparer les distributions par groupe et inspecter les observations atypiques. Un Q-Q plot examine l'écart de forme à une normale. Shapiro-Wilk teste une hypothèse de normalité; son non-rejet ne la prouve pas, surtout avec peu d'observations. Pour des paires, diagnostiquer les différences. L'indépendance et la représentativité se discutent à partir du protocole. Levene examine l'égalité des variances entre groupes, sans la certifier; un prétest ne remplace pas le choix raisonné du modèle.
+
+## 2/6 · Expliquer
+
+### Une méthode pour chaque plan ? {#L12-E01}
+
+**L12-E01 · 5 min.**
+
+Pour chaque protocole, nommer l'unité indépendante et choisir une stratégie de comparaison, ou expliquer ce qui manque.
+
+1. Huit machines indépendantes exécutent le même benchmark avant et après une modification.
+2. Dix machines d'une génération et huit autres machines d'une autre génération sont tirées indépendamment; rien ne justifie une variance commune.
+3. Deux cents mesures avant et deux cents mesures après proviennent toutes d'une seule machine, à intervalles très rapprochés.
+
+Une p-valeur de Shapiro égale à $0{,}72$ suffirait-elle à valider l'une de ces stratégies ?
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Deux erreurs-types différentes {#L12-E02}
+
+**L12-E02 · 12 min.**
+
+Pour les huit machines du premier protocole, les gains « avant moins après » en secondes sont
+$(0{,}8,\ 0{,}4,\ 0{,}6,\ 0{,}2,\ 1{,}0,\ 0{,}5,\ 0{,}7,\ 0{,}6)$.
+On suppose les différences normales i.i.d.; avant observation, on a choisi un test bilatéral de $H_0:\delta=0$ au seuil $5\,\%$.
+
+1. Calculer $\overline d$, $s_d^2$ et $t_{\rm obs}$. Donner la loi nulle et écrire la p-valeur. Écrire aussi un IC central à 95 % du gain moyen.
+2. On suppose deux groupes indépendants, chacun issu d’une loi normale, sans supposer les variances égales. On dispose seulement de $n_1=10$, $\overline x_1=7$, $s_1=1$ et $n_2=8$, $\overline x_2=6{,}2$, $s_2=2$. Sans hypothèse de variance commune, écrire l'erreur-type, la statistique et les degrés de liberté approximatifs de Welch.
+3. Dans le premier protocole, un gain moyen d'au moins 1 seconde a été fixé comme objectif pratique. Que faudrait-il examiner en plus de la p-valeur contre zéro ?
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Configurer t.test {#L12-B08}
+
+> **SYX [L12-B08] · Configurer t.test**
+>
+> `t.test(x, mu = m0, alternative = "two.sided")` compare une moyenne à `m0`. `t.test(x, y, paired = TRUE, mu = d0)` teste la moyenne de `x-y` avec appariement par position; les vecteurs doivent correspondre aux mêmes unités dans le même ordre.
+>
+> `t.test(x, y, paired = FALSE, var.equal = FALSE)` utilise Welch pour deux groupes indépendants. `var.equal = TRUE` choisit la variance commune, si elle est justifiée. `alternative = "greater"` vise une moyenne supérieure à `mu`, ou une différence moyenne `x-y` supérieure à `mu`; `"less"` vise l’inverse. Avec `mu = 0`, la différence visée par `"greater"` est positive. L'objet renvoyé contient `$estimate`, `$statistic`, `$parameter`, `$p.value` et `$conf.int`; `conf.level` fixe le niveau de l'intervalle.
+
+### Diagnostic Shapiro dans R {#L12-B09}
+
+> **SYX [L12-B09] · Diagnostic Shapiro dans R**
+>
+> `shapiro.test(x)` renvoie un test de normalité, notamment sa composante `$p.value`. L'entrée est le vecteur à diagnostiquer : pour des paires, utiliser les différences. Lire aussi le Q-Q plot avec `qqnorm(x)` et `qqline(x)`, déjà introduits en L06-B08. Une grande p-valeur ne vérifie ni la normalité ni l'indépendance.
+
+### Vérifier la commande et écrire le résultat {#L12-E03}
+
+**L12-E03 · 12 min.**
+
+1. Avec les mesures avant/après ci-dessous, retrouver le résultat apparié de L12-E02 par `t.test`; vérifier par un test à un échantillon sur les différences.
+2. Comparer les distributions avant/après par boîtes à moustaches, puis examiner le Q-Q plot et le test de Shapiro des différences. Écrire ce que ces diagnostics permettent et ne permettent pas d'affirmer.
+3. Évaluer avec `pt` et `qt` le test de Welch et l'IC bilatéral pour les résumés des groupes indépendants de L12-E02. On ne peut pas transmettre des moyennes comme si elles étaient les observations brutes de `t.test`.
+4. Rédiger une conclusion en trois phrases : plan et hypothèses; effet et incertitude; décision et portée pratique.
+
+```{r L12-E03}
+avant <- c(9.5, 10.2, 8.8, 11.1, 9.9, 10.6, 8.7, 9.6)
+apres <- c(8.7, 9.8, 8.2, 10.9, 8.9, 10.1, 8.0, 9.0)
+# Tests, diagnostics et comparaison avec les calculs.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**4 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `L12_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| L12-E01 | | |
+| L12-E02 | | |
+| L12-E03 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+**2 minutes.** À rappeler : L12-B01 et la distinction portée par B08. L12-B06 reste une référence de calcul. Retenir le rôle des diagnostics B07; ne pas mémoriser une règle automatique « Shapiro puis choix du test ».
+
+Blocs sélectionnés pour les cartes initiales : L12-B01, L12-B07, L12-B08. Leur contenu exact est celui des encadrés; les calculs d'exercice ne sont pas des cartes supplémentaires.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### L12-V01 · 5 min {#L12-V01}
+
+Pour 20 paires indépendantes, chaque mesure A et B a variance 4, et leur covariance dans une paire vaut 3. Comparer la variance de $A-B$ avec celle obtenue en supposant à tort l'indépendance de A et B. Calculer les deux erreurs-types de la moyenne des différences.
+
+#### L12-V02 · 4 min {#L12-V02}
+
+Deux échantillons indépendants ont tailles 12 et 20 et variances corrigées 1 et 9. Les tests de Shapiro ne rejettent pas la normalité. Une personne choisit automatiquement `var.equal = TRUE`. Ce choix est-il justifié ? Proposer une analyse et expliquer ce qu'elle suppose.
+
+#### L12-V03 · 4 min {#L12-V03}
+
+Deux échantillons de machines sont indépendants, avec des durées normales. Une calibration externe justifie une variance populationnelle commune, inconnue. Les résumés sont $n_1=10$, $\overline x_1=14$, $s_1^2=4$, puis $n_2=12$, $\overline x_2=11$, $s_2^2=9$, en secondes et secondes carrées. Les variances $s_j^2$ sont corrigées.
+
+Avant observation, on a choisi $H_0:m_1=m_2$ contre $H_1:m_1\ne m_2$, au seuil $5\,\%$. Calculer la variance commune estimée, l'erreur-type de la différence et la statistique de test. Justifier les degrés de liberté. Avec $t_{20;0,975}\simeq2{,}086$, conclure et donner un IC à 95 % pour $m_1-m_2$. Pourquoi les deux variances observées différentes ne réfutent-elles pas à elles seules le modèle ?
+
+Cette reprise remplace quatre minutes du créneau de révision choisi.
+
+## Références et provenance
+
+- `ctd06` (source non redistribuée), Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4 : Tests de moyennes, variance commune, Welch et diagnostics.
+- `tp03` (source non redistribuée), Q6 et Q12 : Distinguer deux mesures du même match de saisons composées d'unités différentes.
+- `ctd07` (source non redistribuée), Exercice 2 Q4-Q7 et Q11 : Interprétation des différences entre groupes et de leur variabilité.
+- Clarification externe consultée le 26/11/2026 : [Documentation officielle R : t.test](https://stat.ethz.ch/R-manual/R-patched/library/stats/html/t.test.html), Arguments, Details, Value. Appariement, défaut Welch, variance commune et composantes du résultat.
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.
+
+
+## Révision adaptative · 5 min
+
+<!-- ps1:adaptive-review-slot minutes=5 -->
+
+Traiter une variante ciblée, encore non tentée, d’une leçon antérieure si elle a été préparée. À défaut, fermer les notes, rappeler une méthode antérieure et vérifier ses hypothèses. Ces cinq minutes sont distinctes de la correction et des cartes de cette leçon. Une variante trop longue est reportée à un créneau de F01.

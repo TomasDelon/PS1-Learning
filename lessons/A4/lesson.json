@@ -1,0 +1,125 @@
+{
+  "schema_version": "2.0.0",
+  "lesson_id": "A4",
+  "minutes": 60,
+  "source_refs": [
+    {
+      "source_id": "syllabus_ps1",
+      "locator": "Evaluation FRANÇAIS : examen individuel de 3h sur machine; documents autorisés : résumé manuscrit au format A4",
+      "use_fr": "Le support ci-dessous prépare une feuille manuscrite, pas un substitut numérique autorisé à l’épreuve."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-063 à PS1-075; PS1-096, PS1-097; PS1-114 à PS1-121; PS1-128, PS1-132, PS1-139 à PS1-160; PS1-170, PS1-181 à PS1-190; PS1-197 à PS1-264",
+      "use_fr": "Base relue des lois, limites, estimation, intervalles, tests, couples et régression. Les condensations ci-dessous sont des adaptations avec hypothèses conservées."
+    },
+    {
+      "source_id": "tp04",
+      "locator": "Partie IV Q1-Q4, lignes 310-391",
+      "use_fr": "Référence compacte de médiation et de bootstrap; les conditions sont détaillées dans L17."
+    },
+    {
+      "source_id": "ctd08",
+      "locator": "E4 Q1-Q6, lignes 426-570",
+      "use_fr": "Tests t/F et intervalle de pente."
+    },
+    {
+      "source_id": "ctd09",
+      "locator": "E2 Q5-Q9, lignes 393-489",
+      "use_fr": "Degrés de liberté multiples, test global et variance expliquée."
+    }
+  ],
+  "blocks": [],
+  "exercises": [
+    {
+      "id": "A4-E01",
+      "title_fr": "Sélectionner les références utiles",
+      "prompt_md": "Pendant 10 minutes, choisir au plus huit zones dans la banque. Pour chaque zone retenue, inscrire son emplacement, la difficulté concrète qu’elle aide à résoudre et ce qui doit rester mémorisé plutôt que recopié. Supprimer les doublons. Ne pas utiliser une difficulté supposée comme diagnostic personnel : se fonder sur une tentative réellement disponible ou noter « non évalué ».\n\n| Zone | Emplacement prévu | Utilité observée ou non évaluée | Mémoire / reconstruction / consultation |\n|:--|:--|:--|:--|\n| | | | |\n| | | | |\n| | | | |",
+      "correction_md": "Une sélection défendable suit des besoins concrets. Exemple de plan, à adapter sans prétendre décrire vos difficultés : lois et paramétrages en haut; moments et conditionnement à côté; intervalles et tests regroupés; régression et syntaxe sur la partie restante. Une erreur de `rate` justifie une mention explicite; une définition comprise et rappelée facilement peut occuper moins de place.\n\nLe sens d’une p-valeur, la différence paramètre/estimateur, la moyenne conditionnelle et la portée causale doivent rester récupérables. Les quantiles, degrés de liberté et options R se prêtent à une référence courte. Une formule longue sans hypothèse ne remplit pas son rôle. Il n’existe pas de nombre de lignes universel qui fasse une bonne feuille.",
+      "minutes": 10,
+      "kind": "writing",
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "rubric_fr": [
+        "Relier chaque sélection à un usage précis",
+        "Garder paramètres et conditions",
+        "Distinguer mémoire et consultation",
+        "Ne pas inventer un état de maîtrise"
+      ],
+      "error_tags": [
+        "selection",
+        "hypotheses",
+        "unsupported_mastery"
+      ],
+      "has_r": false,
+      "family": "a4_selection"
+    },
+    {
+      "id": "A4-E02",
+      "title_fr": "Écrire puis contrôler le résumé manuscrit",
+      "prompt_md": "Pendant 40 minutes, écrire la feuille sélectionnée. Réserver les cinq dernières minutes de ce créneau au contrôle suivant : chaque symbole est défini; toute loi est paramétrée; les résultats exacts et approximatifs sont séparés; chaque test indique sa question et ses degrés de liberté; les formules de régression distinguent nombre de colonnes, individus et unités.\n\nSi une zone ne tient pas, retirer un exemple redondant avant de retirer une hypothèse. Noter un repère de source ou de leçon pour toute formule que vous n’êtes pas en mesure de justifier. Un exemple de problème et son corrigé ne sont pas une référence générale.",
+      "correction_md": "Le contrôle mathématique porte sur les clauses qui changent le résultat :\n\n- `sd` reçoit $\\sigma$, non $\\sigma^2$; Gamma est ici forme-taux.\n- La variance d’une somme contient un terme de covariance, sauf justification de son annulation.\n- TCL, Wald, chi-deux asymptotique et percentile ne doivent pas être étiquetés « exacts ».\n- Le dénominateur d’un test de proportion sous $H_0$ utilise $p_0$; celui de l’IC de Wald utilise $\\widehat p$.\n- Un intervalle inversé d’un pivot doit conserver l’ordre des bornes, notamment pour une variance ou une attente exponentielle.\n- Les degrés de liberté de régression sont $n-\\operatorname{rang}(A)$, et $n-d-1$ dans le cadre de rang plein avec intercept.\n- L’intervalle de moyenne et l’intervalle d’observation future ont des cibles différentes.\n- $d=ab+c$ exige le système linéaire compatible, sans interaction, avec codage et observations communs pour son identité empirique.\n\nUne feuille est utilisable si vous pouvez la lire, choisir la bonne formule et dire pourquoi elle s’applique. Elle n’a pas besoin de reproduire toute la banque. Les consignes de l’épreuve, notamment le caractère manuscrit et le format, restent prioritaires.",
+      "minutes": 40,
+      "kind": "writing",
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "rubric_fr": [
+        "Rendre les notations autonomes et lisibles",
+        "Conserver hypothèses et cibles",
+        "Étiqueter approximations et lois exactes",
+        "Contrôler unités et paramétrages"
+      ],
+      "error_tags": [
+        "notation",
+        "r_parameterization",
+        "exact_vs_asymptotic",
+        "degrees_freedom"
+      ],
+      "has_r": false,
+      "family": "a4_construction"
+    },
+    {
+      "id": "A4-E03",
+      "title_fr": "Tester dix recherches en dix minutes",
+      "prompt_md": "Sans revenir au cours, trouver sur votre feuille de quoi répondre à chaque question. Noter le temps et la zone consultée; une réponse de mémoire est distinguée d’une recherche. Corriger seulement après les dix essais.\n\n1. Quelle moyenne correspond à une exponentielle de taux 4 ? Quel argument reçoit un écart-type normal ?\n2. Quel appel donne $\\mathbb P(K\\ge4)$ pour $K\\sim\\mathrm{Poisson}(2)$ ?\n3. Quelle variable standardise le TCL pour une moyenne ?\n4. Quels degrés de liberté pour l’IC d’une moyenne de 14 observations i.i.d. normales, variance inconnue ?\n5. Que signifie le niveau 95 % d’une procédure d’intervalle ?\n6. Dans le test $H_0:p=p_0$, quel $p$ intervient dans la variance nulle de $\\widehat p$ ?\n7. Combien de degrés de liberté pour une adéquation à cinq probabilités fixées ?\n8. Avec 80 observations, deux prédicteurs numériques et un facteur à trois catégories, quel ddl résiduel sous rang plein et intercept ?\n9. Quelle option `predict` concerne un individu nouveau ?\n10. Si trois mesures proviennent de chaque participant, quelle unité indépendante faut-il examiner avant un bootstrap ?",
+      "correction_md": "Les réponses de contrôle sont : (1) moyenne $1/4$, et `sd` reçoit l’écart-type; (2) `ppois(3, lambda=2, lower.tail=FALSE)`; (3) $\\sqrt n(\\bar X_n-m)/\\sigma$ sous les hypothèses i.i.d. et variance finie strictement positive; (4) 13; (5) une couverture de 95 % de la procédure sur des échantillons répétés sous le modèle, pas une probabilité a posteriori du paramètre fixe; (6) $p_0$, donc $p_0(1-p_0)/n$; (7) 4 pour le calibrage asymptotique, avec conditions d’approximation; (8) quatre colonnes explicatives, donc $80-4-1=75$; (9) `interval=\"prediction\"`; (10) le participant, si les participants sont indépendants, en conservant ses mesures et en adaptant aussi le modèle.\n\nSi une recherche dépasse une minute, la corriger dans le créneau A4 de F01. Ne pas allonger cette séance. Une bonne recherche exige de retrouver la condition autant que la formule.",
+      "minutes": 10,
+      "kind": "concept",
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [],
+      "rubric_fr": [
+        "Trouver le bon emplacement rapidement",
+        "Associer formule et hypothèse",
+        "Compter les colonnes du facteur",
+        "Distinguer paramètre, variance nulle et unité indépendante"
+      ],
+      "error_tags": [
+        "retrieval",
+        "hypotheses",
+        "degrees_freedom",
+        "bootstrap_unit"
+      ],
+      "has_r": false,
+      "family": "a4_lookup_trial"
+    }
+  ],
+  "variants": [],
+  "time_budget": {
+    "selection": 10,
+    "handwriting_and_check": 40,
+    "lookup_trial": 10
+  },
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Contenu relu lors de l’auteur; exécution R native, knit et RStudio Visual doivent être consignés séparément."
+    ]
+  },
+  "learner_state": "not_created",
+  "pedagogical_status": "authored_not_mastery_evidence",
+  "artifact_role": "selection_and_handwriting_support",
+  "physical_sheet_required_by_syllabus": true
+}

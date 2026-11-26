@@ -1,0 +1,154 @@
+---
+title: "L10 · Pivots, intervalles de confiance et bootstrap · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L10"
+  document_role: correction
+  content_status: complete_derived
+  minutes: 55
+  exercise_ids: ["L10-E01", "L10-E02", "L10-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+**Corrigé pédagogique dérivé.** À ouvrir après sauvegarde de la première tentative. Chaque critère porte sur un raisonnement observable; aucune lecture de ce corrigé ne valide automatiquement une compétence.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+### Où se trouve l'aléatoire ? {#L10-E01}
+
+<!-- ps1:solution id=L10-E01 -->
+
+1. La procédure utilisée produit des intervalles qui contiennent le paramètre fixe dans 95 % des répétitions sous les hypothèses du modèle (ou au moins 95 % selon la garantie). L'intervalle observé est désormais fixé; cette affirmation ne donne pas une probabilité a posteriori du paramètre.
+2. Non. Les tirages bootstrap sont simulés à partir de la loi empirique conditionnellement aux mêmes données. Ils explorent l'incertitude estimée par cette approximation; ils ne créent pas de nouvelles informations indépendantes sur la population.
+3. Il faut tirer les 20 machines, donc les lignes appariées, avec remise. Tirer les deux colonnes séparément détruirait la dépendance avant/après qui intervient dans la variance de la différence.
+
+**Critères observables :**
+
+- Faire porter la couverture sur une procédure aléatoire.
+- Distinguer simulation conditionnelle et nouvel échantillonnage de population.
+- Préserver l'unité indépendante et l'appariement.
+
+### Deux inversions, deux formes de bornes {#L10-E02}
+
+<!-- ps1:solution id=L10-E02 -->
+
+1. Par L10-B04, $Z=\sqrt{25}(\overline X-m)/2\sim\mathcal N(0,1)$. Ainsi
+$$
+\{|Z|\le z_{0,95}\}
+=\{\overline X-z_{0,95}\,2/5\le m
+\le\overline X+z_{0,95}\,2/5\}.
+$$
+La procédure a couverture exacte $90\,\%$ sous l'échantillonnage normal i.i.d. de variance connue. L'intervalle observé est environ $[6{,}7421;8{,}0579]$.
+
+2. Posons $q_a=\chi^2_{24,0,025}$ et $q_b=\chi^2_{24,0,975}$, tous deux strictement positifs. Comme $m,S>0$ presque sûrement,
+$$
+q_a\le2S/m\le q_b
+\iff 2S/q_b\le m\le2S/q_a.
+$$
+Donc $I_m=[96/q_b,96/q_a]\simeq[2{,}4388;7{,}7412]$ minutes. Le grand quantile est au dénominateur de la petite borne.
+
+Comme l'inverse est décroissant sur les réels positifs,
+$I_\lambda=[q_a/96,q_b/96]\simeq[0{,}1292;0{,}4100]$ par minute. Les deux procédures ont couverture exacte $95\,\%$ sous le modèle exponentiel i.i.d.; les intervalles observés ne sont pas des lois a posteriori.
+
+**Critères observables :**
+
+- Nommer le pivot et sa loi sous les hypothèses.
+- Maintenir l'équivalence des événements.
+- Renverser l'ordre des quantiles lors de l'inversion positive.
+- Distinguer moyenne en minutes et taux par minute.
+
+### Calculer puis éprouver une procédure {#L10-E03}
+
+<!-- ps1:solution id=L10-E03 -->
+
+```{r L10-E03}
+set.seed(2810)
+x <- c(1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8)
+IC_normal <- 7.4 + c(-1, 1) * qnorm(0.95) * 2 / sqrt(25)
+IC_m_exp <- 2 * sum(x) / qchisq(c(0.975, 0.025), df = 2 * length(x))
+IC_taux <- qchisq(c(0.025, 0.975), df = 2 * length(x)) / (2 * sum(x))
+IC_normal
+IC_m_exp
+IC_taux
+
+B <- 3000
+m_boot <- replicate(B, mean(sample(x, size = length(x), replace = TRUE)))
+hist(m_boot, probability = TRUE, breaks = 25,
+     main = "Moyennes bootstrap", xlab = "Attente moyenne (minutes)")
+quantile(m_boot, probs = c(0.025, 0.975), names = FALSE)
+
+vraie_moyenne <- 7
+couvert <- replicate(2000, {
+  y <- rnorm(25, mean = vraie_moyenne, sd = 2)
+  borne <- mean(y) + c(-1, 1) * qnorm(0.95) * 2 / sqrt(25)
+  borne[1] <= vraie_moyenne && vraie_moyenne <= borne[2]
+})
+c(couverture_empirique = mean(couvert),
+  erreur_type_MC_theorique = sqrt(0.9 * 0.1 / 2000))
+```
+
+L'histogramme représente des estimations, pas la distribution des attentes individuelles. L'intervalle exponentiel exploite une loi pivot exacte; l'intervalle percentile exploite une approximation de la loi de l'estimateur par rééchantillonnage. Douze observations constituent un support empirique limité : augmenter $B$ ne remplace pas de nouvelles observations.
+
+La couverture simulée fluctue autour de $0{,}90$, avec erreur-type Monte-Carlo d'environ $0{,}0067$. Cette simulation illustre la couverture; la démonstration de L10-E02 établit la garantie exacte dans le modèle.
+
+**Critères observables :**
+
+- Tirer avec remise exactement n unités.
+- Appliquer les quantiles aux moyennes bootstrap.
+- Régénérer un échantillon à chaque simulation de couverture.
+- Nommer les garanties exacte et approximative sans les confondre.
+
+## Auto-correction
+
+Pour chaque exercice, comparer objets, hypothèses, méthode, calcul et conclusion. Nommer la première erreur qui explique les suivantes, puis refaire le passage concerné sans regarder. Garder distincts le travail autonome, les aides reçues et la correction.
+
+## Variantes, corrections à consulter après un nouvel essai
+
+### L10-V01 {#L10-V01}
+
+Le pivot est $\sqrt9(\overline X-m)/S\sim t_8$. L'IC est $12\pm t_{8,0,95}\times3/\sqrt9$, soit environ $[10{,}1405;13{,}8595]$. L'écart-type est estimé sur le même échantillon; la loi du rapport est Student et non normale. L'exactitude suppose des observations normales i.i.d.
+
+**Critères :**
+
+- Choisir Student avec 8 degrés de liberté.
+- Identifier s comme une valeur observée d'une statistique.
+
+### L10-V02 {#L10-V02}
+
+Pour les arrivées, $\widehat\lambda=340/200=1{,}7$ et l'erreur-type est $\sqrt{1{,}7/200}$ : l'IC vaut environ $[1{,}5193;1{,}8807]$. Pour les réponses, $\widehat p=0{,}6$ et l'erreur-type est $\sqrt{0{,}6(1-0{,}6)/400}$ : l'IC vaut environ $[0{,}5520;0{,}6480]$. La variance d'une Poisson est $\lambda$, celle d'une Bernoulli est $p(1-p)$. Les deux garanties sont asymptotiques, sous indépendance et modèle commun.
+
+**Critères :**
+
+- Identifier la quantité aléatoire observée et son modèle.
+- Employer la variance correspondant au modèle.
+- Qualifier les intervalles d'approchés.
+
+### L10-V03 {#L10-V03}
+
+Avec $Q=15S^2/\sigma^2\sim\chi^2_{15}$, l'IC de $\sigma^2$ est $[135/q_{0,975},135/q_{0,025}]$, en mm carrés. Comme la racine carrée est croissante sur les réels positifs, l'IC de $\sigma$ s'obtient en prenant la racine de chaque borne, sans inverser leur ordre; il s'exprime en mm.
+
+**Critères :**
+
+- Inverser correctement le pivot.
+- Distinguer transformations inverse et racine.
+- Donner les bonnes unités.
+
+## Références et limites
+
+- `ctd05` (source non redistribuée), Exercice 1 Q3-Q7; Problème Q2-Q5 : Pivots, couverture, inversion et bootstrap.
+- `tp02` (source non redistribuée), Partie 3 Q1-Q3 : Couverture approchée d'un calcul Monte-Carlo.
+- `tp03` (source non redistribuée), Q5 et Q11 : Intervalle de comptage et intervalle exact de moyenne exponentielle.
+- `st04_05` (source non redistribuée), PDF pp.14-15 : Fluctuation, confiance et inversion positive.
+- `st10_sondages` (source non redistribuée), PDF p.1 Temps1; pp.8-9 : Critique d'une interprétation a posteriori et modèle de sondage.
+
+
+Les raisonnements de ce fichier sont des corrections originales dérivées. Une simulation illustre un résultat dans un modèle; elle n'en remplace pas la preuve. Les formules annoncées approchées conservent cette qualification dans les conclusions.

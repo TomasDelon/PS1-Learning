@@ -1,0 +1,214 @@
+---
+title: "L07 · Monte-Carlo et échantillonnage préférentiel"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L07
+  document_role: work
+  content_status: authored_complete
+  minutes: 30
+  exercise_ids: ["L07-E01", "L07-E02", "L07-E03"]
+  block_ids: ["L07-B01", "L07-B02", "L07-B03", "L07-B04", "L07-B05"]
+  learner_state: not_created
+---
+**30 min :** cours 4, compréhension 3, mathématiques 9, R 8, correction et rappel 6.
+Changer la loi de tirage peut produire des valeurs plus utiles pour l'intégrale.
+Il faut alors compenser ce changement par un poids. La cible doit rester la
+même et la comparaison doit employer un budget comparable.
+
+Les définitions de fonction, `runif`, `replicate` et les résumés numériques
+sont dans L03-B14/B15, L06-B07 et L04-B08. On les réutilise ici.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+### Écrire une intégrale comme une espérance {#L07-B01}
+
+> **MTH [L07-B01] · Écrire une intégrale comme une espérance**
+>
+> Pour $a<b$ et une fonction mesurable $h$ intégrable sur $(a,b)$,
+> si $U\sim\mathcal U(a,b)$, alors
+> $$I=\int_a^b h(x)\,dx=(b-a)\mathbb E[h(U)].$$
+> Avec des $U_i$ i.i.d., utiliser
+> $\widehat I_n=(b-a)n^{-1}\sum_i h(U_i)$.
+> La LGN donne la convergence en probabilité.
+> Pour une aire $D$ dans un rectangle $R$ d'aire finie positive, un tirage
+> uniforme dans $R$ vérifie
+> $\operatorname{aire}(D)=\operatorname{aire}(R)\mathbb P(U\in D)$;
+> on peut moyenner des indicatrices.
+
+### Précision d’une moyenne Monte-Carlo {#L07-B02}
+
+> **THM [L07-B02] · Précision d’une moyenne Monte-Carlo**
+>
+> Si $Y_i$ sont i.i.d. de moyenne $I$ et variance $\tau^2<\infty$,
+> $\widehat I_n=n^{-1}\sum_iY_i$ est sans biais,
+> $\mathbb E[\widehat I_n]=I$, et
+> $$\mathbb V(\widehat I_n)=\tau^2/n,\qquad
+> \sigma_{\widehat I_n}=\tau/\sqrt n.$$
+> L'erreur observée $\widehat i_n-I$ n'est pas égale à cet écart-type.
+> Pour diviser l'écart-type par deux, multiplier n par quatre, à loi de tirage
+> inchangée. Le mot « sans biais » désigne ici l'égalité des espérances.
+
+### Échantillonnage préférentiel {#L07-B03}
+
+> **MTH [L07-B03] · Échantillonnage préférentiel**
+>
+> Soit $I=\int_{\mathbb R}h(x)\,dx$, avec $\int|h(x)|\,dx<\infty$.
+> Choisir une densité $q$ strictement positive presque partout où $h\ne0$,
+> puis tirer $V_i$ i.i.d. de densité $q$ et poser $Y_i=h(V_i)/q(V_i)$
+> (l'arbitraire sur $\{q=0\}$ ne compte pas).
+> Alors $\mathbb E[Y_i]=I$ et la LGN s'applique.
+> Pour une variance finie, il faut en plus
+> $$\int_{\{q>0\}}\frac{h(x)^2}{q(x)}\,dx<\infty.$$
+> La variance vaut cette intégrale moins $I^2$. Une densité instrumentale
+> mal choisie peut accroître la variance ou la rendre infinie.
+
+### Comparer des méthodes à budget identique {#L07-B04}
+
+> **MTH [L07-B04] · Comparer des méthodes à budget identique**
+>
+> Définir l'unité de coût : nombre de tirages uniformes, évaluations de
+> fonction ou temps mesuré. Fixer le même budget pour les méthodes.
+> Comparer les variances théoriques lorsque possible, puis répéter les expériences
+> pour examiner la dispersion des erreurs. Une seule estimation très proche de
+> la cible peut être chanceuse; elle ne classe pas les méthodes.
+> Si les coûts par tirage diffèrent, comparer la variance pour un même coût total.
+
+## 2/6 · Expliquer les objets
+
+### L07-E01 · Repérer un facteur oublié (3 min) {#L07-E01}
+
+Pour approcher $\int_2^5e^{-x}\,dx$, un programme simule
+$U_i\sim\mathcal U(2,5)$ puis renvoie la moyenne des $e^{-U_i}$.
+Quelle quantité approche-t-il ? Corriger l'estimateur et justifier par la densité
+uniforme, sans dire seulement « il manque un facteur ».
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### L07-E02 · Concevoir des poids (9 min) {#L07-E02}
+
+On cherche
+$I=\int_0^1x(1+x)\,dx$. La méthode A moyenne $H=U(1+U)$,
+avec $U\sim\mathcal U(0,1)$.
+La méthode B tire une variable $V$ de densité
+$q(v)=2v$ sur $(0,1)$, nulle ailleurs, puis utilise le poids approprié.
+
+1. Calculer I et la variance de H.
+2. Vérifier q, construire V à partir d'une uniforme et déterminer le poids Y.
+3. Calculer $\mathbb E[Y]$ et $\mathbb V(Y)$; conclure pour n tirages.
+4. Vérifier le support et expliquer pourquoi les méthodes ont ici le même coût
+en tirages uniformes.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### L07-E03 · Comparer sur des répétitions (8 min) {#L07-E03}
+
+Implémenter les deux méthodes de E02 sous forme de fonctions recevant n.
+Avec graine 707, réaliser 500 répétitions de chaque méthode avec n=300.
+Comparer les moyennes et les écarts-types des estimations aux valeurs théoriques.
+Tracer les erreurs des deux méthodes sur des axes comparables.
+Rédiger une conclusion qui n'utilise pas uniquement la meilleure erreur observée.
+
+```{r L07-E03}
+set.seed(707)
+B <- 500
+n <- 300
+# Fonctions, répétitions et comparaison.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `L07_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| L07-E01 | | |
+| L07-E02 | | |
+| L07-E03 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Retenir cible, loi de tirage, support et poids comme quatre objets distincts. Reconstruire la variance à partir du second moment. La précision d’une réalisation n’est pas le classement d’une méthode.
+
+Les variantes L07-V01, L07-V02 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+## Consultation facultative · hors du cœur de séance
+
+Ces blocs sont disponibles au premier besoin. Leur présence ne rend pas leur
+lecture intégrale obligatoire pendant le budget annoncé.
+
+### Boucle while avec arrêt contrôlé {#L07-B05}
+
+> **SYX [L07-B05] · Boucle while avec arrêt contrôlé**
+>
+> En consultation, lorsque le nombre d'étapes n'est pas fixé :
+> `while (condition) { ... }` répète un bloc tant que la condition logique unique
+> est vraie. La boucle doit modifier l'état testé. Prévoir un nombre maximal
+> d'itérations et distinguer « cible atteinte » de « arrêt par limite ».
+> Une boucle arrêtée parce qu'une estimation paraît proche d'une cible connue
+> ne valide pas une précision statistique.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### L07-V01 (4 min, en remplacement) {#L07-V01}
+
+Pour calculer $\int_0^1(1+x)\,dx$, on propose de tirer V uniformément sur (1/2,1) et de moyenner $(1+V)/2$. Déterminer la cible réelle de cette moyenne. Peut-on corriger le défaut uniquement en augmentant n ?
+
+**Nouvelle tentative sans correction :**
+
+
+### L07-V02 (5 min, en remplacement) {#L07-V02}
+
+Pour $I=\int_0^1(x-1/2)\,dx$, on garde la densité instrumentale q(x)=2x.
+Le poids est $Y=(V-1/2)/(2V)$. Vérifier que son espérance existe, puis décider
+si l'erreur-type usuelle en $1/\sqrt n$ est justifiée par une variance finie.
+Quel théorème de convergence reste utilisable ?
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd03` (source non redistribuée), Exercice 1 Q4-Q6; Exercice 2 Q1-Q5 : Simulation de moyennes, aire par indicatrices et précision.
+- `tp02` (source non redistribuée), Partie 1 Q1-Q3; Partie 2 Q1-Q4 : Intégrale comme espérance, inversion instrumentale et comparaison de variances.
+- `blocks_v2` (source non redistribuée), PS1-119, PS1-120, PS1-121, PS1-105, PS1-122, PS1-035 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

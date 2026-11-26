@@ -1,0 +1,676 @@
+{
+  "lesson_id": "L03",
+  "minutes": 35,
+  "source_refs": [
+    {
+      "source_id": "ctd02",
+      "locator": "Exercice 1 Q1-Q6; Exercice 4 Q1-Q2; Exercice 5 Q1-Q2 (consultation)",
+      "use_fr": "CDF, transformation, inversion et distinction entre masse et densité."
+    },
+    {
+      "source_id": "st01",
+      "locator": "PDF pp.11-13",
+      "use_fr": "Même loi et variables différentes; majuscules et minuscules."
+    },
+    {
+      "source_id": "st02_03",
+      "locator": "PDF pp.3-4,7-9",
+      "use_fr": "Probabilité ponctuelle, support et transformation par la CDF."
+    },
+    {
+      "source_id": "st02_prime",
+      "locator": "PDF p.1, Temps 2-4",
+      "use_fr": "Anticipation qualitative puis choix autonome des outils."
+    },
+    {
+      "source_id": "st_poly_discretes",
+      "locator": "PDF pp.1-4",
+      "use_fr": "Variable et loi discrète, avec correction des raccourcis du texte ancien."
+    },
+    {
+      "source_id": "st_poly_continues",
+      "locator": "PDF pp.1-5,8-10",
+      "use_fr": "Densité, répartition, transformation et loi exponentielle."
+    },
+    {
+      "source_id": "tp01",
+      "locator": "Exercice 3, code du modèle fourni et Q1-Q3",
+      "use_fr": "Passerelle originale L03-V03 : exécution et interprétation d’une fonction donnée, sans apprentissage de son optimisation."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-041, PS1-042, PS1-009, PS1-043, PS1-044, PS1-045, PS1-046, PS1-047, PS1-052, PS1-053, PS1-265, PS1-048, PS1-049, PS1-050, PS1-051, PS1-054, PS1-056, PS1-063, PS1-070, PS1-076, PS1-077, PS1-059, PS1-078, PS1-111, PS1-112, PS1-036, PS1-037, PS1-106, PS1-108",
+      "use_fr": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L03-B01",
+      "type": "DEF",
+      "title_fr": "Variable aléatoire et réalisation",
+      "source_block_ids": [
+        "PS1-041",
+        "PS1-042"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-041 · Variable aléatoire réelle",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-042 · Événement associé à une variable aléatoire",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Variable aléatoire et réalisation",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L03-B02",
+      "type": "DEF",
+      "title_fr": "Loi d’une variable et égalité en loi",
+      "source_block_ids": [
+        "PS1-009",
+        "PS1-043",
+        "PS1-044"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-009 · Tribu borélienne",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-043 · Loi de probabilité d'une variable",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-044 · Égalité en loi de deux variables aléatoires",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Loi d’une variable et égalité en loi",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L03-B03",
+      "type": "DEF",
+      "title_fr": "Loi discrète",
+      "source_block_ids": [
+        "PS1-045"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-045 · Loi discrète",
+          "use_fr": "Définition et clarification pédagogique."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Définir une loi discrète.",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B16",
+      "type": "DEF",
+      "title_fr": "Fonction de masse",
+      "source_block_ids": [
+        "PS1-046"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-046 · Fonction de masse de probabilité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Fonction de masse",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B17",
+      "type": "DEF",
+      "title_fr": "Support d’une loi",
+      "source_block_ids": [
+        "PS1-047"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-047 · Support d'une loi",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Support d’une loi",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B04",
+      "type": "DEF",
+      "title_fr": "Densité de probabilité",
+      "source_block_ids": [
+        "PS1-052"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-052 · Densité de probabilité et normalisation",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Densité de probabilité",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L03-B05",
+      "type": "DEF",
+      "title_fr": "Densité d’une variable",
+      "source_block_ids": [
+        "PS1-053",
+        "PS1-265"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-053 · Densité d’une variable aléatoire",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-265 · Ensembles négligeables et presque partout",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": false,
+      "cue_fr": "Densité d’une variable",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B06",
+      "type": "DEF",
+      "title_fr": "Fonction de répartition",
+      "source_block_ids": [
+        "PS1-048"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-048 · Fonction de répartition \\(F_X\\)",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Fonction de répartition",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L03-B07",
+      "type": "THM",
+      "title_fr": "Lire une répartition et ses sauts",
+      "source_block_ids": [
+        "PS1-049",
+        "PS1-050",
+        "PS1-051"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-049 · Propriétés de la répartition",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-050 · Calculer une probabilité à partir de \\(F_X\\)",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-051 · Sauts d'une répartition",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Lire une répartition et ses sauts",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B08",
+      "type": "THM",
+      "title_fr": "Passer de la densité à la répartition",
+      "source_block_ids": [
+        "PS1-054",
+        "PS1-056"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-054 · Relation entre densité et répartition",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-056 · Probabilités par intégration",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Passer de la densité à la répartition",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B09",
+      "type": "DEF",
+      "title_fr": "Loi uniforme sur un intervalle",
+      "source_block_ids": [
+        "PS1-063"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-063 · Loi uniforme continue",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi uniforme sur un intervalle",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B10",
+      "type": "DEF",
+      "title_fr": "Loi exponentielle, paramétrée par le taux",
+      "source_block_ids": [
+        "PS1-070"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-070 · Loi exponentielle",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi exponentielle, paramétrée par le taux",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B11",
+      "type": "MTH",
+      "title_fr": "Transformer une variable par sa répartition",
+      "source_block_ids": [
+        "PS1-076",
+        "PS1-077"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-076 · Loi de g(X) par répartition",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-077 · Changement de variable pour une densité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Transformer une variable par sa répartition",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B12",
+      "type": "DEF",
+      "title_fr": "Quantile généralisé",
+      "source_block_ids": [
+        "PS1-059"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-059 · Quantile généralisé et médiane",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Quantile généralisé",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B13",
+      "type": "THM",
+      "title_fr": "Simuler par inversion",
+      "source_block_ids": [
+        "PS1-078"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-078 · Simulation par fonction quantile",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Simuler par inversion",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L03-B14",
+      "type": "SYX",
+      "title_fr": "Fonctions de lois et tirages reproductibles",
+      "source_block_ids": [
+        "PS1-111",
+        "PS1-112"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-111 · Fonctions de lois d/p/q/r",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-112 · Graine et simulation reproductible",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Fonctions de lois et tirages reproductibles",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L03-B15",
+      "type": "SYX",
+      "title_fr": "Fonctions R et contrôles graphiques d’une loi",
+      "source_block_ids": [
+        "PS1-036",
+        "PS1-037",
+        "PS1-106",
+        "PS1-108"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-036 · Fonctions, arguments et valeur de retour",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-037 · Portée locale et globale",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-106 · Fonction de répartition empirique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-108 · Histogramme de densité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Fonctions R et contrôles graphiques d’une loi",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L03-E01",
+      "family": "rv_law_realization",
+      "minutes": 4,
+      "kind": "concept",
+      "rubric_fr": [
+        "Distinguer égalité en loi et égalité de fonctions.",
+        "Calculer la réalisation 0,8.",
+        "Justifier une probabilité ponctuelle nulle par l’existence d’une densité."
+      ],
+      "block_ids": [
+        "L03-B01",
+        "L03-B02",
+        "L03-B04",
+        "L03-B05"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "rv",
+        "distribution",
+        "density"
+      ],
+      "error_tags": [
+        "object_type",
+        "density_mass"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L03-E02",
+      "family": "transform_cdf_support",
+      "minutes": 6,
+      "kind": "math",
+      "rubric_fr": [
+        "Préciser le support avant de dériver.",
+        "Écrire l’équivalence d’événements et la CDF sur toute la droite.",
+        "Vérifier la densité et son intégrale.",
+        "Calculer 7/8 en nommant la queue cherchée."
+      ],
+      "block_ids": [
+        "L03-B06",
+        "L03-B08",
+        "L03-B09",
+        "L03-B11"
+      ],
+      "competency_ids": [],
+      "topic_ids": [
+        "rv_support",
+        "transform_cdf",
+        "transform_density",
+        "integral_tools"
+      ],
+      "error_tags": [
+        "support",
+        "bounds",
+        "normalization"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L03-E03",
+      "family": "inverse_exponential",
+      "minutes": 4,
+      "kind": "math",
+      "rubric_fr": [
+        "Résoudre l’inversion avec le bon signe et le taux 2.",
+        "Traiter les deux domaines du seuil t.",
+        "Justifier la médiane et distinguer variable et nombre."
+      ],
+      "block_ids": [
+        "L03-B10",
+        "L03-B12",
+        "L03-B13"
+      ],
+      "competency_ids": [
+        "comp.ps1.inverse_transform"
+      ],
+      "topic_ids": [
+        "inverse_transform",
+        "exponential_law",
+        "quantile",
+        "log_tools"
+      ],
+      "error_tags": [
+        "inverse",
+        "support",
+        "object_type"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L03-E04",
+      "family": "simulation_cdf_histogram",
+      "minutes": 10,
+      "kind": "R",
+      "rubric_fr": [
+        "Réutiliser l’inversion démontrée et fixer la graine une seule fois.",
+        "Passer le taux en argument d’une fonction.",
+        "Comparer des probabilités et des médianes de mêmes objets.",
+        "Lire les axes et expliquer la limite d’un contrôle graphique."
+      ],
+      "block_ids": [
+        "L03-B14",
+        "L03-B15",
+        "L01-B04"
+      ],
+      "competency_ids": [
+        "comp.ps1.r_functions",
+        "comp.ps1.r_random_sample",
+        "comp.ps1.simulation_diagnostic"
+      ],
+      "topic_ids": [
+        "r_functions",
+        "r_seed",
+        "empirical_cdf",
+        "histogram"
+      ],
+      "error_tags": [
+        "parameterization",
+        "simulation_vs_proof"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L03-V01",
+      "family": "decreasing_transform",
+      "for_exercise_ids": [
+        "L03-E02"
+      ],
+      "error_tags": [
+        "inequality_direction",
+        "support"
+      ],
+      "prompt_md": "Pour $U\\sim\\mathcal U(0,1)$, poser $Y=2-U^2$. Trouver son support et sa CDF, puis une densité. Expliquer pourquoi la densité augmente alors que la transformation est décroissante.",
+      "correction_md": "Le support est $[1,2]$. Pour $1\\le y\\le2$,\n$F_Y(y)=\\mathbb P(U^2\\ge2-y)=1-\\sqrt{2-y}$; elle vaut 0 avant 1 et 1 après 2.\nLa densité est $1/(2\\sqrt{2-y})$ sur $(1,2)$, nulle ailleurs. Elle est intégrable\nbien qu'elle diverge près de 2. Les petites valeurs de U sont comprimées près\nde 2; une transformation décroissante ne produit donc pas nécessairement une\ndensité décroissante.",
+      "rubric_fr": [
+        "Inverser le sens de l’inégalité.",
+        "Donner la CDF par morceaux et le support.",
+        "Distinguer monotonie de la transformation et forme de la densité."
+      ],
+      "block_ids": [
+        "L03-B08",
+        "L03-B11"
+      ],
+      "minutes": 4,
+      "transfer": "Décider du sens de l’inégalité pour une transformation décroissante et accepter une densité non bornée.",
+      "has_r": false
+    },
+    {
+      "id": "L03-V02",
+      "family": "cdf_atom_mixture",
+      "for_exercise_ids": [
+        "L03-E01",
+        "L03-E02"
+      ],
+      "error_tags": [
+        "density_mass",
+        "atoms"
+      ],
+      "prompt_md": "Un coût vaut exactement 0 avec probabilité 1/4; sinon il est uniforme sur (1,3). Construire sa CDF. Peut-on obtenir sa loi complète en dérivant cette CDF ? Donner sa médiane généralisée.",
+      "correction_md": "La CDF vaut 0 pour $t<0$, $1/4$ pour $0\\le t<1$,\n$1/4+3(t-1)/8$ pour $1\\le t<3$, puis 1. Elle saute de $1/4$ en 0 :\nla loi entière n'a pas de densité. La dérivée $3/8$ sur $(1,3)$ n'intègre\nque $3/4$ et perdrait l'atome. Résoudre $1/4+3(m-1)/8=1/2$ donne\n$q_{1/2}=5/3$.",
+      "rubric_fr": [
+        "Conserver le saut en 0 et les plateaux.",
+        "Expliquer la masse perdue par une dérivation seule.",
+        "Calculer 5/3 par la définition du quantile."
+      ],
+      "block_ids": [
+        "L03-B06",
+        "L03-B07",
+        "L03-B12"
+      ],
+      "minutes": 4,
+      "transfer": "Décider que la méthode par densité seule ne suffit plus, au lieu de dériver systématiquement.",
+      "has_r": false
+    },
+    {
+      "id": "L03-V03",
+      "family": "provided_function_pipeline",
+      "for_exercise_ids": [
+        "L03-E04"
+      ],
+      "error_tags": [
+        "function_scope",
+        "pipeline",
+        "generalization"
+      ],
+      "prompt_md": "On fournit un modèle sous forme de fonction :\n```{r L03-V03-fourni, eval=FALSE}\nscore_fourni <- function(signal, seuil=4) {\n  1/(1+exp(-(signal-seuil)))\n}\nsignaux <- c(1,3,5,7)\n```\nSans expliquer un éventuel entraînement, prédire l'ordre des scores et leur\nposition par rapport à 0,5. Exécuter la fonction, puis calculer la proportion\nde scores strictement supérieurs à 0,5 avec un filtre et un pipe.\nCes sorties démontrent-elles que les scores sont des probabilités calibrées ?\nCette reprise remplace un créneau de révision de 4 minutes.",
+      "correction_md": "```{r L03-V03}\nscore_fourni <- function(signal, seuil=4) {\n  1/(1+exp(-(signal-seuil)))\n}\nsignaux <- c(1,3,5,7)\nscores <- score_fourni(signaux)\nfrequence <- (scores>.5) |> mean()\nscores\nfrequence\nstopifnot(isTRUE(all.equal(frequence,.5)))\n```\nLes scores sont croissants; ceux des signaux 5 et 7 dépassent 0,5.\nLa proportion est 1/2. Le modèle applique une règle paramétrée.\nCes sorties ne démontrent pas une calibration : il faudrait comparer les\nscores à des résultats observés sur des données de validation adaptées.",
+      "rubric_fr": [
+        "Nommer les entrées et le paramètre seuil.",
+        "Prévoir l’ordre des sorties avant exécution.",
+        "Exécuter la fonction sans objet caché puis appliquer le filtre et le pipe.",
+        "Distinguer score numérique et validation du modèle."
+      ],
+      "block_ids": [
+        "L03-B15",
+        "L01-B04",
+        "L02-B07"
+      ],
+      "minutes": 4,
+      "transfer": "Passer d’une simulation dont la loi est connue à un modèle fourni dont la calibration doit être évaluée.",
+      "has_r": true
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé.",
+      "La passerelle facultative couvre provided_model_execute et r_pipeline après introduction de function; elle ne constitue pas une activité supplémentaire au budget."
+    ]
+  }
+}

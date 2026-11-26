@@ -1,0 +1,410 @@
+{
+  "lesson_id": "L02",
+  "minutes": 30,
+  "source_refs": [
+    {
+      "source_id": "ctd01",
+      "locator": "Mise en œuvre de quelques principes Q2-Q5",
+      "use_fr": "Dénominateurs conditionnels et prédiction par seuil."
+    },
+    {
+      "source_id": "tp01",
+      "locator": "Exercice 1 Q1-Q6; Exercice 2 Q1-Q7; Exercice 3 Q1-Q3,Q6-Q7",
+      "use_fr": "Fréquences, prédictions, matrice de confusion et portée descriptive."
+    },
+    {
+      "source_id": "st01",
+      "locator": "PDF pp.6-10, boîtes de Bertrand",
+      "use_fr": "Modélisation des issues avant conditionnement."
+    },
+    {
+      "source_id": "st_poly_formalisme",
+      "locator": "PDF pp.9-19, ``2.1-3.3",
+      "use_fr": "Événements, probabilités, indépendance, probabilités totales et Bayes."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-006, PS1-007, PS1-008, PS1-010, PS1-011, PS1-014, PS1-012, PS1-013, PS1-017, PS1-016, PS1-019, PS1-020, PS1-018, PS1-039, PS1-038",
+      "use_fr": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L02-B01",
+      "type": "DEF",
+      "title_fr": "Modèle probabiliste et événements",
+      "source_block_ids": [
+        "PS1-006",
+        "PS1-007",
+        "PS1-008",
+        "PS1-010",
+        "PS1-011",
+        "PS1-014"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-006 · Expérience, univers et événement",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-007 · Réunion, intersection, complémentaire",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-008 · Tribu d’événements",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-010 · Mesure de probabilité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-011 · Modèle probabiliste",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-014 · Équiprobabilité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Modèle probabiliste et événements",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L02-B02",
+      "type": "THM",
+      "title_fr": "Complément et réunion",
+      "source_block_ids": [
+        "PS1-012",
+        "PS1-013"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-012 · Propriétés fondamentales des probabilités",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-013 · Formule de la réunion de deux événements",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Complément et réunion",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L02-B03",
+      "type": "DEF",
+      "title_fr": "Probabilité conditionnelle",
+      "source_block_ids": [
+        "PS1-017"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-017 · Probabilité conditionnelle",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Définir une probabilité conditionnelle et préciser sa condition d’existence.",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L02-B04",
+      "type": "THM",
+      "title_fr": "Probabilités totales",
+      "source_block_ids": [
+        "PS1-016",
+        "PS1-019"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-016 · Partition de l’univers",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-019 · Formule des probabilités totales",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Probabilités totales",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L02-B05",
+      "type": "THM",
+      "title_fr": "Formule de Bayes",
+      "source_block_ids": [
+        "PS1-020"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-020 · Formule de Bayes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Formule de Bayes",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document.",
+      "canonical_body_sha256": "da32981198ab3052a94057992112c345779342d8d2fd1da376b117d0e3f28d06",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L02-B06",
+      "type": "DEF",
+      "title_fr": "Indépendance de deux événements",
+      "source_block_ids": [
+        "PS1-018"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-018 · Indépendance d’événements",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": false,
+      "cue_fr": "Indépendance de deux événements",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L02-B07",
+      "type": "MTH",
+      "title_fr": "Passer d’un score à une prédiction",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd01",
+          "locator": "Mise en œuvre de quelques principes Q2-Q5",
+          "use_fr": "Dénominateurs conditionnels et prédiction par seuil."
+        }
+      ],
+      "provenance": "original_method",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Passer d’un score à une prédiction",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L02-B08",
+      "type": "SYX",
+      "title_fr": "Tables, catégories et graphiques",
+      "source_block_ids": [
+        "PS1-039",
+        "PS1-038"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-039 · Fréquences et tableaux avec table",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-038 · Graphiques descriptifs R",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Tables, catégories et graphiques",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L02-E01",
+      "family": "conditional_table_direction",
+      "minutes": 4,
+      "kind": "concept",
+      "rubric_fr": [
+        "Nommer les événements et les marges 10, 11 et 22.",
+        "Utiliser le bon dénominateur pour chaque conditionnement.",
+        "Soustraire l’intersection dans la réunion.",
+        "Justifier les prédictions et la redondance binaire."
+      ],
+      "block_ids": [
+        "L02-B01",
+        "L02-B02",
+        "L02-B03",
+        "L02-B07"
+      ],
+      "competency_ids": [
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_probability",
+        "comp.ps1.binary_feature_redundancy",
+        "comp.ps1.conditional_predict"
+      ],
+      "topic_ids": [
+        "conditional_prob",
+        "set_ops",
+        "contingency_table"
+      ],
+      "error_tags": [
+        "denominator",
+        "conditional_direction"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L02-E02",
+      "family": "bayes_signal_origin",
+      "minutes": 7,
+      "kind": "math",
+      "rubric_fr": [
+        "Définir les événements et la partition.",
+        "Pondérer les probabilités conditionnelles par 0,3 et 0,7.",
+        "Vérifier que le dénominateur de Bayes est positif.",
+        "Réfuter l’indépendance par une égalité précise et limiter la conclusion."
+      ],
+      "block_ids": [
+        "L02-B03",
+        "L02-B04",
+        "L02-B05",
+        "L02-B06"
+      ],
+      "competency_ids": [
+        "comp.ps1.probability_compare",
+        "comp.ps1.probabilistic_model_interpret",
+        "comp.ps1.causal_distinction"
+      ],
+      "topic_ids": [
+        "bayes",
+        "total_prob",
+        "prob_measure"
+      ],
+      "error_tags": [
+        "conditional_direction",
+        "hypotheses",
+        "causality"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L02-E03",
+      "family": "confusion_validation_threshold",
+      "minutes": 9,
+      "kind": "R",
+      "rubric_fr": [
+        "Nommer observation et prédiction sur les axes.",
+        "Retrouver les trois proportions 7/12, 9/12 et 8/12.",
+        "Comparer faux positifs et faux négatifs.",
+        "Interpréter le graphique et limiter la conclusion aux données de validation.",
+        "Construire la table prédiction contre prédiction, trouver un désaccord de 1/3 et distinguer accord et exactitude."
+      ],
+      "block_ids": [
+        "L02-B07",
+        "L02-B08",
+        "L01-B04"
+      ],
+      "competency_ids": [
+        "comp.ps1.confusion_matrix",
+        "comp.ps1.classification_accuracy",
+        "comp.ps1.classification_threshold",
+        "comp.ps1.prediction_compare",
+        "comp.ps1.provided_model_execute",
+        "comp.ps1.r_plot"
+      ],
+      "topic_ids": [
+        "r_table",
+        "r_graph",
+        "contingency_table"
+      ],
+      "error_tags": [
+        "matrix_orientation",
+        "threshold",
+        "generalization",
+        "agreement_vs_accuracy"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L02-V01",
+      "family": "rare_alarm_bayes",
+      "for_exercise_ids": [
+        "L02-E02"
+      ],
+      "error_tags": [
+        "conditional_direction",
+        "base_rate"
+      ],
+      "prompt_md": "Un service observe 1 % de messages frauduleux. Une règle signale 90 % des fraudes et 5 % des messages non frauduleux. Sur 10 000 messages fictifs respectant ces proportions, construire les quatre effectifs puis décider si une alerte signifie « fraude presque certaine ».",
+      "correction_md": "Les 100 fraudes donnent 90 alertes; les 9 900 autres messages en donnent 495. Parmi 585 alertes, 90 sont des fraudes : $90/585=2/13\\simeq15{,}4\\%$. La sensibilité de 90 % ne répond pas à la question de la probabilité de fraude sachant une alerte. Le faible taux de base est décisif.",
+      "rubric_fr": [
+        "Construire les quatre cases 90,10,495,9405.",
+        "Conditionner sur les 585 alertes.",
+        "Expliquer le rôle du taux de base."
+      ],
+      "block_ids": [
+        "L02-B03",
+        "L02-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Passer de probabilités à des effectifs et décider si une excellente sensibilité suffit à interpréter une alerte.",
+      "has_r": false
+    },
+    {
+      "id": "L02-V02",
+      "family": "selection_mechanism_boxes",
+      "for_exercise_ids": [
+        "L02-E01",
+        "L02-E02"
+      ],
+      "error_tags": [
+        "sample_space",
+        "equiprobability"
+      ],
+      "prompt_md": "Deux boîtes contiennent respectivement RR et RV. On choisit une boîte avec probabilité 1/2, puis une pièce au hasard dans cette boîte. La pièce observée est rouge. Calculer la probabilité d'avoir choisi RR. Un autre protocole choisit directement une pièce parmi les trois pièces rouges. Comparer les réponses et justifier les issues équiprobables du premier protocole.",
+      "correction_md": "Dans le premier protocole, les quatre positions de pièces sont équiprobables : deux positions rouges dans RR, une rouge et une verte dans RV. Conditionnellement au rouge, deux des trois positions proviennent de RR, donc $2/3$. Choisir uniformément parmi les trois rouges donne aussi $2/3$, mais pour une autre expérience. Choisir uniformément parmi les deux boîtes contenant du rouge donnerait $1/2$ : les boîtes restantes ne sont pas équiprobables après observation.",
+      "rubric_fr": [
+        "Modéliser les positions de pièces avant le conditionnement.",
+        "Identifier trois issues rouges et deux favorables.",
+        "Distinguer le choix d’une pièce du choix d’une boîte."
+      ],
+      "block_ids": [
+        "L02-B01",
+        "L02-B03"
+      ],
+      "minutes": 4,
+      "transfer": "Choisir l’univers et le mécanisme de sélection, au lieu de lire un tableau déjà donné.",
+      "has_r": false
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé."
+    ]
+  }
+}

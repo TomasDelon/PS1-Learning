@@ -1,0 +1,147 @@
+---
+title: "L05 · Lois usuelles, sommes et fonctions génératrices · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L05
+  document_role: correction
+  content_status: authored_complete
+  minutes: 25
+  exercise_ids: ["L05-E01", "L05-E02", "L05-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L05-E01 · Choisir le mécanisme (3 min) {#L05-E01}
+
+<!-- ps1:solution id=L05-E01 -->
+
+(a) $K\sim\mathcal B(12,0{,}8)$, porté par $\{0,\ldots,12\}$.
+(b) $G\sim\operatorname{Geom}(0{,}8)$, porté par $\{1,2,\ldots\}$.
+(c) $N\sim\mathcal P(4)$, porté par $\{0,1,\ldots\}$.
+Ces lois sont discrètes et leurs mécanismes diffèrent. Une normale est à densité
+sur $\mathbb R$; elle ne donne pas une loi exacte de ces comptages.
+Une éventuelle approximation devrait être justifiée séparément.
+
+**Critères observables :**
+
+- Nommer les trois mécanismes et leurs paramètres.
+- Donner les trois supports distincts.
+- Distinguer loi exacte et approximation possible.
+
+### L05-E02 · Additionner sans perdre les paramètres (8 min) {#L05-E02}
+
+<!-- ps1:solution id=L05-E02 -->
+
+La stabilité des normales indépendantes donne
+$W\sim\mathcal N(2(3)-1,\,2^2(4)+9)=\mathcal N(5,25)$.
+Son écart-type est 5, donc
+$\mathbb P(W>10)=1-\Phi((10-5)/5)=1-\Phi(1)$.
+La somme des compteurs suit $\mathcal P(2)$ par indépendance; ainsi
+$$\mathbb P(N\ge3)=1-\sum_{k=0}^2e^{-2}\frac{2^k}{k!}=1-5e^{-2}.$$
+Les espérances s'additionneraient sans indépendance, mais les lois de sommes
+citées et les variances sans covariance utilisent ici l'indépendance.
+
+**Critères observables :**
+
+- Identifier 25 comme variance et 5 comme écart-type.
+- Standardiser le seuil dans la bonne direction.
+- Additionner les paramètres de Poisson et inclure les masses 0,1,2 dans le complément.
+- Nommer l’usage de l’indépendance.
+
+### L05-E03 · Traduire les queues en R (5 min) {#L05-E03}
+
+<!-- ps1:solution id=L05-E03 -->
+
+```{r L05-E03}
+p_normale <- pnorm(10, mean=5, sd=5, lower.tail=FALSE)
+p_poisson <- ppois(2, lambda=2, lower.tail=FALSE)
+p_rang <- pgeom(1, prob=.8)
+c(normale=p_normale, poisson=p_poisson, rang=p_rang)
+stopifnot(isTRUE(all.equal(p_normale, pnorm(1, lower.tail=FALSE))),
+          isTRUE(all.equal(p_poisson, 1-5*exp(-2))),
+          isTRUE(all.equal(p_rang, 1-(1-.8)^2)))
+```
+Les résultats sont environ 0,1586553, 0,3233236 et 0,96.
+`sd=25` confondrait variance et écart-type.
+R compte avec `geom` les échecs avant le succès : `pgeom(2,.8)` est donc
+$\mathbb P(G\le3)$ dans notre convention, pas $\mathbb P(G\le2)$.
+
+**Critères observables :**
+
+- Nommer mean/sd, lambda et prob.
+- Calculer les bons compléments.
+- Décaler le rang géométrique d’une unité.
+- Comparer aux expressions mathématiques avant d’interpréter.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L05-V01 (4 min) {#L05-V01}
+
+**Énoncé :** Un tiroir contient 10 câbles, dont 3 défectueux. On en prélève 4 sans remise. Un collègue propose une loi binomiale de paramètres 4 et 0,3 pour le nombre de défauts. Décider si cette loi est exacte; expliquer quel argument cesse de s'appliquer. Calculer néanmoins l'espérance sans introduire une nouvelle loi.
+
+**Correction :**
+
+Les essais ne sont pas indépendants : après un câble défectueux,
+la proportion de défauts restants est $2/9$, après un bon câble $3/9$.
+La loi binomiale n'est donc pas exacte. Chaque position a marginalement
+probabilité $3/10$ d'être défectueuse par symétrie, donc la linéarité donne
+$\mathbb E[N]=4(3/10)=1{,}2$. Aucune indépendance n'est nécessaire à ce dernier calcul.
+
+**Critères observables :**
+
+- Identifier la dépendance due à l’absence de remise.
+- Ne pas conclure binomial à partir des seules marges.
+- Utiliser des indicatrices pour l’espérance.
+
+### L05-V02 (4 min) {#L05-V02}
+
+**Énoncé :** Un bruit $X\sim\mathcal N(0,4)$ est partagé par deux capteurs. Le premier renvoie $X$ et le second $Y=-X$. Leurs lois marginales sont normales. Quelle est la loi de $X+Y$ ? Pourquoi la formule des normales indépendantes donnerait-elle une réponse incorrecte ?
+
+**Correction :**
+
+La somme vaut identiquement 0 : sa loi est une masse en 0.
+Les variables sont parfaitement dépendantes et $\operatorname{Cov}(X,Y)=-4$,
+donc $\mathbb V(X+Y)=4+4-8=0$. Additionner seulement les variances donnerait 8,
+en omettant le terme croisé. Deux lois marginales normales ne justifient pas l'indépendance.
+
+**Critères observables :**
+
+- Reconnaître une somme constante avant de calculer.
+- Identifier la covariance manquante.
+- Refuser la stabilité sous des hypothèses absentes.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Exercice 4 Q5 : Reconnaître un modèle de Poisson et distinguer modèle et données.
+- `ctd02` (source non redistribuée), Exercice 2 Q4-Q8; Exercice 3 Q1-Q5 : Sommes indépendantes, normale, gamma et FGM.
+- `st_poly_discretes` (source non redistribuée), PDF pp.8-11, ``3.1-3.5 : Lois discrètes usuelles et moments.
+- `st_poly_continues` (source non redistribuée), PDF pp.8-13 : Uniforme, exponentielle et normale; convention de variance auditée.
+- `blocks_v2` (source non redistribuée), PS1-064, PS1-065, PS1-066, PS1-067, PS1-068, PS1-072, PS1-100, PS1-101, PS1-069, PS1-096, PS1-111, PS1-074, PS1-073, PS1-075, PS1-097, PS1-098, PS1-099, PS1-093, PS1-095 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

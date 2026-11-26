@@ -1,0 +1,114 @@
+---
+title: "X02 · Synthèse: couples, régression et interprétation"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: X02
+  document_role: work
+  content_status: complete_authored
+  minutes: 60
+  exercise_ids: ["X02-E01", "X02-E02", "X02-E03", "X02-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**60 min :** 40 min de tentative, 15 min d’auto-correction, 5 min de sélection des priorités. Les quatre exercices ci-dessous constituent une synthèse originale, sans reprise d’un sujet d’examen. Conserver le corrigé fermé pendant les 40 premières minutes. Toute consultation d’aide doit être notée pour distinguer résolution autonome et résolution assistée.
+
+**Contexte commun.** Dans un banc d’essai synthétique, $G\sim\mathrm{Bernoulli}(0{,}4)$ indique un mode de préparation; $M$ est une durée en minutes et $Y$ un score de résultat. Les variables $G,Z,E$ sont indépendantes, $Z\sim\mathcal N(0,1)$ et $E\sim\mathcal N(0,4)$. Le modèle est
+$$M=20+3G+Z,\qquad Y=15+2M-G+E.$$
+Ces équations définissent une population fictive. Elles ne constituent pas des résultats empiriques sur une technologie réelle. On note $\Phi$ la fonction de répartition de $\mathcal N(0,1)$.
+
+## 1/6 · Préparer la tentative
+
+Nommer les objets aléatoires et les paramètres. Prévoir, sans encore calculer, si une comparaison marginale des modes et une comparaison à durée fixée peuvent avoir des signes différents. Les données R ci-dessous sont communes aux exercices 3 et 4.
+
+```{r X02-donnees}
+set.seed(2202)
+essai <- data.frame(groupe=rbinom(160, size=1, prob=.4))
+essai$duree <- 20 + 3*essai$groupe + rnorm(160)
+essai$score <- 15 + 2*essai$duree - essai$groupe + rnorm(160, sd=2)
+```
+
+## 2/6 · Calculer la loi
+
+### Loi jointe et conditionnement {#X02-E01}
+
+**Budget : 8 min.**
+
+Donner la loi de $M\mid G=g$, puis la densité marginale de $M$ comme mélange. Calculer $\mathbb P(G=1,M>24)$ en fonction de $\Phi$. Les deux marginales permettent-elles de multiplier leurs probabilités pour ce calcul ? Expliquer pourquoi la loi de $(G,M)$ n’est pas représentée par une densité ordinaire sur $\mathbb R^2$ par rapport à l’aire.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Relier les modèles
+
+### Du groupe à la régression {#X02-E02}
+
+**Budget : 8 min.**
+
+Calculer $\mathbb E[Y\mid G]$, $\mathbb V(Y\mid G)$ et $\mathbb V(Y)$ par la variance totale. Déterminer la part de variance expliquée par $G$ seul, puis par $(G,M)$. Identifier les coefficients théoriques total, direct conditionnel et indirect. Retrouver la différence entre pente totale et pente partielle avec une covariance.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et interpréter
+
+### Deux modèles, deux interprétations et une unité modifiée {#X02-E03}
+
+**Budget : 14 min.**
+
+Avec `essai`, ajuster le score sur le groupe seul, puis sur le groupe et la durée. Comparer les coefficients de groupe et les $R^2$. Vérifier manuellement la pente simple par les deux moyennes de groupe. Donner l’IC à 95 % de la composante de groupe ajustée et ses degrés de liberté. Tracer le Q-Q plot des résidus du modèle multiple et un graphique résidus/valeurs ajustées.
+
+Créer ensuite une durée en heures et réajuster le même modèle. Prédire avant exécution ce qui doit changer parmi le coefficient de durée, son erreur standard, sa statistique $t$, les valeurs ajustées et $R^2$. Vérifier et rédiger une conclusion en unités explicites.
+
+```{r X02-E03}
+# Vos ajustements et contrôles d’unité.
+```
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Inférence d’un produit et conclusion complète {#X02-E04}
+
+**Budget : 10 min.**
+
+Estimer les composantes de médiation sur `essai`. Utiliser 299 réplications avec `set.seed(2203)` pour un IC percentile à 95 % de l’indirect. Préciser et justifier l’unité rééchantillonnée; traiter les modèles non identifiables. Conclure en quatre phrases qui contiennent les unités, la compensation des signes, la méthode d’incertitude et la limite de l’interprétation. Que faudrait-il revoir si chaque appareil fournissait plusieurs lignes dépendantes ?
+
+```{r X02-E04}
+# Votre statistique, votre bootstrap et votre conclusion.
+```
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Corriger, 15 min
+
+Sauvegarder et conserver la première tentative. Ouvrir `X02_Corrige.Rmd`. Réserver environ trois minutes par exercice, puis trois minutes aux erreurs transversales. Une réponse numérique correcte sans hypothèse ni interprétation n’est pas une solution complète. Vérifier les rubriques et identifier si l’erreur vient du modèle, du calcul, des unités, de la rédaction ou de R.
+
+## 6/6 · Sélectionner, 5 min
+
+Choisir au plus deux erreurs prioritaires pour F01. Pour chacune, noter le bloc précis, le type de variante nécessaire et ce qu’une nouvelle tentative devra montrer sans le corrigé. Affecter au plus deux minutes aux cartes déjà sélectionnées, comprises dans ces cinq minutes. Ne pas déclarer une maîtrise à partir de cette seule synthèse.
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `ctd07` : E2 Q1-Q11, lignes 141-360. Mélange, conditionnement et variance totale.
+- `ctd08` : E1-E4, lignes 54-570. Pente, MCO, qualité, inférence et prédiction.
+- `ctd10` : E1 Q1-Q4, lignes 35-149. Omission d’un prédicteur et interprétation du décalage.
+- `tp04` : Parties III-IV, lignes 242-391. Contraste de groupe, médiation et bootstrap.
+- `syllabus_ps1` : Descriptions FRANÇAIS, Objectifs et Contenu. Relier modélisation, calcul, simulation et critique du modèle.

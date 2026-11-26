@@ -1,0 +1,353 @@
+---
+title: "L03 · Variables aléatoires, lois, densités et transformations"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L03
+  document_role: work
+  content_status: authored_complete
+  minutes: 35
+  exercise_ids: ["L03-E01", "L03-E02", "L03-E03", "L03-E04"]
+  block_ids: ["L03-B01", "L03-B02", "L03-B03", "L03-B16", "L03-B17", "L03-B04", "L03-B05", "L03-B06", "L03-B07", "L03-B08", "L03-B09", "L03-B10", "L03-B11", "L03-B12", "L03-B13", "L03-B14", "L03-B15"]
+  learner_state: not_created
+---
+**35 min :** repères 5, compréhension 4, mathématiques 10, R 10, correction et rappel 6.
+Une variable aléatoire est une fonction des issues; une observation est un nombre.
+La loi décrit la répartition des valeurs. Pour une loi à densité, une probabilité
+est une aire, pas la hauteur du graphe. Le parcours essentiel suit les blocs dans
+l'ordre; le vocabulaire mesurable sert à rendre les énoncés exacts, sans exercice
+de théorie de la mesure.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+## 1/6 · Comprendre les repères
+
+### Variable aléatoire et réalisation {#L03-B01}
+
+> **DEF [L03-B01] · Variable aléatoire et réalisation**
+>
+> Sur $(\Omega,\mathcal F,\mathbb P)$, une variable aléatoire réelle est
+> une fonction $X:\Omega\to\mathbb R$ telle que
+> $\{\omega:X(\omega)\le t\}\in\mathcal F$ pour tout réel $t$.
+> Après une issue $\omega$ observée, $x=X(\omega)$ est une réalisation.
+> $\{X\le t\}$ désigne un événement, $X$ une fonction et $x$ un nombre.
+
+### Loi d’une variable et égalité en loi {#L03-B02}
+
+> **DEF [L03-B02] · Loi d’une variable et égalité en loi**
+>
+> Les boréliens $\mathcal B(\mathbb R)$ forment la plus petite tribu
+> contenant les intervalles ouverts. La loi de $X$ est la probabilité
+> $\mathbb P_X(A)=\mathbb P(X\in A)$ sur ces ensembles.
+> $X\overset{\mathcal L}=Y$ signifie que ces probabilités sont identiques pour
+> tout borélien $A$. Cette égalité de lois n'impose pas $X(\omega)=Y(\omega)$
+> pour les issues d'un même univers.
+
+### Loi discrète {#L03-B03}
+
+> **DEF [L03-B03] · Loi discrète**
+>
+> Une loi est discrète s'il existe un ensemble fini ou dénombrable
+> $D\subseteq\mathbb R$ tel que $\mathbb P(X\in D)=1$.
+> La nature de l'univers seul ne classe pas la loi : une variable définie sur
+> un univers non dénombrable peut prendre seulement deux valeurs.
+
+### Fonction de masse {#L03-B16}
+
+> **DEF [L03-B16] · Fonction de masse**
+>
+> Pour une variable X de loi discrète,
+> sa fonction de masse est $p_X(x)=\mathbb P(X=x)$.
+> Les masses positives somment à 1 et, pour tout borélien A,
+> $\mathbb P(X\in A)=\sum_{x\in A}p_X(x)$.
+
+### Support d’une loi {#L03-B17}
+
+> **DEF [L03-B17] · Support d’une loi**
+>
+> Le support topologique de la loi de X
+> est l'ensemble des réels x tels que
+> $\mathbb P(|X-x|<\varepsilon)>0$ pour tout $\varepsilon>0$.
+> Pour une loi discrète, il contient les points de masse positive et leurs
+> points d'accumulation. Pour les lois à densité utilisées ici, il est la
+> fermeture des intervalles où la densité est strictement positive.
+
+### Densité de probabilité {#L03-B04}
+
+> **DEF [L03-B04] · Densité de probabilité**
+>
+> Une densité de probabilité sur $\mathbb R$ est une fonction mesurable
+> $f:\mathbb R\to[0,+\infty)$ telle que
+> $\int_{\mathbb R}f(x)\,dx=1$.
+> Mesurable signifie ici que $\{x:f(x)\le t\}$ est borélien pour tout réel $t$.
+> Une densité peut dépasser 1; ce sont ses intégrales sur les ensembles qui
+> servent de probabilités.
+
+### Densité d’une variable {#L03-B05}
+
+> **DEF [L03-B05] · Densité d’une variable**
+>
+> Une variable $X$ admet la densité $f_X$ si $f_X$ est une densité et si
+> $$\forall A\in\mathcal B(\mathbb R),\qquad
+> \mathbb P(X\in A)=\int_A f_X(x)\,dx.$$
+> Modifier $f_X$ sur un ensemble de longueur nulle ne change pas la loi.
+> « Presque partout » signifie « sauf sur un tel ensemble ».
+> En particulier, $\mathbb P(X=a)=0$ pour tout réel $a$.
+
+### Fonction de répartition {#L03-B06}
+
+> **DEF [L03-B06] · Fonction de répartition**
+>
+> La fonction de répartition de $X$ est
+> $$F_X(t)=\mathbb P(X\le t),\qquad t\in\mathbb R.$$
+> Elle existe pour toute variable aléatoire réelle, qu'elle soit discrète,
+> à densité, mixte ou d'un autre type. Elle caractérise sa loi.
+
+### Lire une répartition et ses sauts {#L03-B07}
+
+> **THM [L03-B07] · Lire une répartition et ses sauts**
+>
+> Toute fonction de répartition est croissante, continue à droite et de
+> limites 0 en $-\infty$, 1 en $+\infty$. Ces propriétés la caractérisent.
+> Pour $a<b$,
+> $\mathbb P(a<X\le b)=F_X(b)-F_X(a)$.
+> Avec $F_X(a^-)=\lim_{t\uparrow a}F_X(t)$,
+> $\mathbb P(X=a)=F_X(a)-F_X(a^-)$.
+> La présence d'un saut interdit une densité pour la loi entière.
+
+### Passer de la densité à la répartition {#L03-B08}
+
+> **THM [L03-B08] · Passer de la densité à la répartition**
+>
+> Si $X$ admet une densité $f_X$, alors
+> $$F_X(t)=\int_{-\infty}^{t} f_X(x)\,dx,\qquad
+> F_X'=f_X\ \text{presque partout}.$$
+> Pour $a<b$, la probabilité d'un intervalle est l'intégrale de $f_X$ entre
+> $a$ et $b$; inclure ou exclure les bornes ne change rien.
+> Une CDF continue n'admet pas nécessairement une densité.
+
+### Loi uniforme sur un intervalle {#L03-B09}
+
+> **DEF [L03-B09] · Loi uniforme sur un intervalle**
+>
+> Pour $a<b$, $U\sim\mathcal U(a,b)$ signifie que $U$ admet la densité
+> $f_U(u)=1/(b-a)$ sur $(a,b)$, nulle ailleurs.
+> Le support est $[a,b]$. Des intervalles de même longueur inclus dans $[a,b]$
+> ont la même probabilité. La répartition vaut 0 avant $a$, $(t-a)/(b-a)$
+> entre $a$ et $b$, et 1 après $b$.
+
+### Loi exponentielle, paramétrée par le taux {#L03-B10}
+
+> **DEF [L03-B10] · Loi exponentielle, paramétrée par le taux**
+>
+> Pour $\lambda>0$, $X\sim\mathcal E(\lambda)$ signifie que $X$ admet
+> la densité $\lambda e^{-\lambda x}$ sur $(0,+\infty)$, nulle ailleurs.
+> Le support est $[0,+\infty)$. Sa répartition vaut 0 pour $x<0$ et
+> $1-e^{-\lambda x}$ pour $x\ge0$. Le paramètre $\lambda$ est un taux, avec
+> une unité inverse de celle de $X$.
+
+### Transformer une variable par sa répartition {#L03-B11}
+
+> **MTH [L03-B11] · Transformer une variable par sa répartition**
+>
+> Pour $Y=g(X)$ avec $g$ mesurable, déterminer d'abord les valeurs
+> possibles, puis écrire $F_Y(y)=\mathbb P(g(X)\le y)$.
+> Résoudre l'inégalité en tenant compte du sens de variation et du support,
+> puis traiter aussi les valeurs hors du support. Dériver seulement si la CDF
+> obtenue est l'intégrale d'une densité.
+> Exemple : si $U\sim\mathcal U(0,1)$, $3+2U$ a pour CDF $(y-3)/2$ sur
+> $[3,5]$, complétée par 0 et 1; sa densité vaut $1/2$ sur $(3,5)$.
+
+### Quantile généralisé {#L03-B12}
+
+> **DEF [L03-B12] · Quantile généralisé**
+>
+> Pour une fonction de répartition $F$ et $p\in(0,1)$, le quantile
+> généralisé est $q_p=\inf\{x\in\mathbb R:F(x)\ge p\}$.
+> Une médiane est un réel $m$ tel que
+> $\mathbb P(X\le m)\ge1/2$ et $\mathbb P(X\ge m)\ge1/2$.
+> $q_{1/2}$ en est une. L'inverse ordinaire de $F$ n'existe pas toujours.
+
+### Simuler par inversion {#L03-B13}
+
+> **THM [L03-B13] · Simuler par inversion**
+>
+> Si $F$ est une fonction de répartition, si
+> $Q(u)=\inf\{x:F(x)\ge u\}$ et si $U\sim\mathcal U(0,1)$, alors $Q(U)$
+> a pour répartition $F$. Dans le cas continu strictement croissant sur son
+> support, on résout simplement $u=F(x)$.
+> Pour vérifier une formule candidate, calculer sa répartition; un histogramme
+> compatible ne remplace pas cette justification.
+
+## 2/6 · Expliquer les objets
+
+### L03-E01 · Identifier les objets (4 min) {#L03-E01}
+
+Soit $U\sim\mathcal U(0,1)$ et $V=1-U$. $U$ et $V$ ont-ils la même
+loi ? Sont-ils la même variable ? Illustrer avec la réalisation $u=0{,}2$.
+Une densité qui vaut 2 en un point attribue-t-elle une probabilité 2 à ce point ?
+Répondre en nommant chaque objet.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 3/6 · Résoudre et rédiger
+
+### L03-E02 · Construire une loi transformée (6 min) {#L03-E02}
+
+Soit $U\sim\mathcal U(0,1)$ et $Y=U^{1/3}$. Avant tout calcul,
+indiquer de quel côté de l'intervalle les valeurs de $Y$ seront davantage
+concentrées. Déterminer le support, la CDF sur toute la droite puis une densité.
+Calculer $\mathbb P(Y>1/2)$ et vérifier la normalisation de la densité.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+### L03-E03 · Inverser une répartition (4 min) {#L03-E03}
+
+Soit $U\sim\mathcal U(0,1)$. Construire à partir de $U$ une variable
+de loi $\mathcal E(2)$, puis déterminer sa médiane.
+Vérifier la loi obtenue par une égalité d'événements et traiter $t<0$.
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 4/6 · Programmer et interpréter
+
+### Fonctions de lois et tirages reproductibles {#L03-B14}
+
+> **SYX [L03-B14] · Fonctions de lois et tirages reproductibles**
+>
+> Pour une loi disponible dans R, les préfixes `d/p/q/r` donnent
+> masse ou densité, répartition, quantile et tirages. Exemples :
+> `pexp(t, rate=lambda)`, `qexp(p, rate=lambda)`,
+> `rexp(n, rate=lambda)` et `runif(n, min=a, max=b)`.
+> `set.seed(123)` fixe l'état du générateur pour reproduire le calcul dans
+> le même environnement logiciel. Ne pas remettre la même graine à chaque tirage.
+> `sample(valeurs, size=n, replace=TRUE, prob=poids)` effectue des tirages
+> avec remise; les poids non négatifs doivent avoir une somme positive.
+> `replace=FALSE` change l'expérience et n'assure pas des tirages indépendants.
+
+### Fonctions R et contrôles graphiques d’une loi {#L03-B15}
+
+> **SYX [L03-B15] · Fonctions R et contrôles graphiques d’une loi**
+>
+> `f <- function(x, a) {a*x^2}` crée une fonction dont les arguments
+> sont les entrées; la dernière expression est renvoyée. Transmettre les
+> paramètres par arguments évite de dépendre d'un objet extérieur.
+> `ifelse(test, oui, non)` choisit composante par composante.
+> `hist(x, probability=TRUE)` construit un histogramme dont les aires somment
+> à 1; `curve(f(x), from=a, to=b, add=TRUE)` ajoute une courbe.
+> `ecdf(x)` renvoie la fonction $t\mapsto n^{-1}\sum_i\mathbf1_{\{x_i\le t\}}$.
+> Comparer une CDF empirique et une CDF théorique contrôle des probabilités,
+> sans prouver l'égalité des lois.
+
+### L03-E04 · Contrôler une simulation (10 min) {#L03-E04}
+
+Utiliser E03 pour simuler 4 000 réalisations à partir de `runif`, avec
+graine 314. Définir une fonction R pour la CDF théorique. Comparer la fréquence
+de $X\le0{,}5$ à la probabilité théorique et la médiane observée à celle de E03.
+Superposer densité et histogramme, puis tracer la CDF empirique et la CDF
+théorique. Expliquer ce que les graphes permettent de contrôler.
+
+```{r L03-E04}
+set.seed(314)
+n <- 4000
+# Simulation, fonction, probabilités et graphiques.
+```
+
+**Votre réponse et justification :**
+
+
+**Confiance avant correction :** … / 100. **Aide utilisée :** aucune / précisée ci-dessous.
+
+## 5/6 · Comparer après la première tentative
+
+Enregistrer ce fichier avec ses éventuelles images. Conserver la première tentative
+avec le mécanisme de capture prévu avant d’ouvrir `L03_Corrige.Rmd` dans un
+second onglet. Annoter ensuite l’erreur exacte et la propriété qui la corrige.
+La copie du corrigé ne constitue pas une nouvelle preuve de compréhension.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur ou doute précis |
+|:--|:--|:--|
+| L03-E01 | | |
+| L03-E02 | | |
+| L03-E03 | | |
+| L03-E04 | | |
+
+## 6/6 · Retenir et préparer une reprise
+
+Mémoriser les objets et leurs différences. Reconstruire la CDF d’une transformation en partant de l’événement. Les fonctions de lois R restent une référence; une carte ne remplace pas le contrôle du support.
+
+Les variantes L03-V01, L03-V02, L03-V03 sont réservées à une reprise ciblée.
+Une variante remplace tout ou partie d’un créneau existant de correction ou de
+rappel; elle n’augmente pas le budget. Sa réponse reste dans le corrigé.
+Le résultat personnel et la sélection d’une reprise restent à décider après une
+tentative réelle. Aucun état d’apprentissage n’est créé par ce document.
+
+## Reprises différées · énoncés seuls
+
+Ces variantes ne sont pas à faire à la suite de la séance. Une variante choisie
+remplace un créneau existant de correction ou de rappel, sans ajouter de minutes.
+Lire ici son énoncé et conserver une nouvelle tentative avant de consulter
+la correction correspondante dans le second document.
+
+### L03-V01 (4 min, en remplacement) {#L03-V01}
+
+Pour $U\sim\mathcal U(0,1)$, poser $Y=2-U^2$. Trouver son support et sa CDF, puis une densité. Expliquer pourquoi la densité augmente alors que la transformation est décroissante.
+
+**Nouvelle tentative sans correction :**
+
+
+### L03-V02 (4 min, en remplacement) {#L03-V02}
+
+Un coût vaut exactement 0 avec probabilité 1/4; sinon il est uniforme sur (1,3). Construire sa CDF. Peut-on obtenir sa loi complète en dérivant cette CDF ? Donner sa médiane généralisée.
+
+**Nouvelle tentative sans correction :**
+
+
+### L03-V03 (4 min, en remplacement) {#L03-V03}
+
+On fournit un modèle sous forme de fonction :
+```{r L03-V03-fourni, eval=FALSE}
+score_fourni <- function(signal, seuil=4) {
+  1/(1+exp(-(signal-seuil)))
+}
+signaux <- c(1,3,5,7)
+```
+Sans expliquer un éventuel entraînement, prédire l'ordre des scores et leur
+position par rapport à 0,5. Exécuter la fonction, puis calculer la proportion
+de scores strictement supérieurs à 0,5 avec un filtre et un pipe.
+Ces sorties démontrent-elles que les scores sont des probabilités calibrées ?
+Cette reprise remplace un créneau de révision de 4 minutes.
+
+**Nouvelle tentative sans correction :**
+
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd02` (source non redistribuée), Exercice 1 Q1-Q6; Exercice 4 Q1-Q2; Exercice 5 Q1-Q2 (consultation) : CDF, transformation, inversion et distinction entre masse et densité.
+- `st01` (source non redistribuée), PDF pp.11-13 : Même loi et variables différentes; majuscules et minuscules.
+- `st02_03` (source non redistribuée), PDF pp.3-4,7-9 : Probabilité ponctuelle, support et transformation par la CDF.
+- `st02_prime` (source non redistribuée), PDF p.1, Temps 2-4 : Anticipation qualitative puis choix autonome des outils.
+- `st_poly_discretes` (source non redistribuée), PDF pp.1-4 : Variable et loi discrète, avec correction des raccourcis du texte ancien.
+- `st_poly_continues` (source non redistribuée), PDF pp.1-5,8-10 : Densité, répartition, transformation et loi exponentielle.
+- `tp01` (source non redistribuée), Exercice 3, code du modèle fourni et Q1-Q3 : Passerelle originale L03-V03 : exécution et interprétation d’une fonction donnée, sans apprentissage de son optimisation.
+- `blocks_v2` (source non redistribuée), PS1-041, PS1-042, PS1-009, PS1-043, PS1-044, PS1-045, PS1-046, PS1-047, PS1-052, PS1-053, PS1-265, PS1-048, PS1-049, PS1-050, PS1-051, PS1-054, PS1-056, PS1-063, PS1-070, PS1-076, PS1-077, PS1-059, PS1-078, PS1-111, PS1-112, PS1-036, PS1-037, PS1-106, PS1-108 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

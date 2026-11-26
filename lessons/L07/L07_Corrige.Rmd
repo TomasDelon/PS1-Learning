@@ -1,0 +1,182 @@
+---
+title: "L07 · Monte-Carlo et échantillonnage préférentiel · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L07
+  document_role: correction
+  content_status: authored_complete
+  minutes: 30
+  exercise_ids: ["L07-E01", "L07-E02", "L07-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L07-E01 · Repérer un facteur oublié (3 min) {#L07-E01}
+
+<!-- ps1:solution id=L07-E01 -->
+
+La densité uniforme est $1/3$ sur $(2,5)$, donc
+$\mathbb E[e^{-U}]=\frac13\int_2^5e^{-x}\,dx$.
+La moyenne proposée approche le tiers de l'intégrale. Il faut utiliser
+$3n^{-1}\sum_ie^{-U_i}$. Les variables transformées sont bornées, donc
+intégrables; la LGN justifie cette convergence.
+
+**Critères observables :**
+
+- Écrire la densité 1/3 avec le bon intervalle.
+- Identifier la cible effective du programme.
+- Justifier le facteur 3 et l’application de la LGN.
+
+### L07-E02 · Concevoir des poids (9 min) {#L07-E02}
+
+<!-- ps1:solution id=L07-E02 -->
+
+L'intégrale vaut $I=1/2+1/3=5/6$.
+Pour $H=U+U^2$,
+$\mathbb E[H^2]=1/3+1/2+1/5=31/30$; ainsi
+$$\mathbb V(H)=31/30-25/36=61/180.$$
+La fonction q est positive sur $(0,1)$ et $\int_0^1 2v\,dv=1$.
+Sa CDF y vaut $v^2$, donc $V=\sqrt U$ a cette densité.
+Le support instrumental couvre l'intégrande non nul et
+$$Y=\frac{V(1+V)}{2V}=\frac{1+V}{2}\quad\text{presque sûrement}.$$
+La forme simplifiée évite une division par zéro inutile au bord.
+Sous q, $\mathbb E[V]=2/3$, $\mathbb E[V^2]=1/2$; donc
+$\mathbb E[Y]=5/6$ et
+$$\mathbb E[Y^2]=\tfrac14(1+4/3+1/2)=17/24,\qquad
+\mathbb V(Y)=17/24-25/36=1/72.$$
+Les deux variables sont bornées. Les variances des moyennes sont
+$61/(180n)$ et $1/(72n)$. B est moins dispersée; son rapport de variances
+à A vaut $5/122$, soit une division par 24,4.
+Chaque terme exige une uniforme; ce budget est identique, même si les
+opérations arithmétiques ne sont pas exactement les mêmes.
+
+**Critères observables :**
+
+- Calculer la cible avant de simuler.
+- Normaliser q et obtenir V par inversion.
+- Justifier le poids et la couverture du support.
+- Vérifier les seconds moments et les deux variances.
+- Comparer les variances de moyennes au même n.
+
+### L07-E03 · Comparer sur des répétitions (8 min) {#L07-E03}
+
+<!-- ps1:solution id=L07-E03 -->
+
+```{r L07-E03}
+mc_a <- function(n) {
+  u <- runif(n)
+  mean(u*(1+u))
+}
+mc_b <- function(n) {
+  u <- runif(n)
+  mean((1+sqrt(u))/2)
+}
+set.seed(707)
+B <- 500
+n <- 300
+a <- replicate(B, mc_a(n))
+b <- replicate(B, mc_b(n))
+c(moyenne_A=mean(a), moyenne_B=mean(b), cible=5/6,
+  sd_A=sd(a), theorie_A=sqrt(61/(180*n)),
+  sd_B=sd(b), theorie_B=sqrt(1/(72*n)))
+limites <- range(c(a-5/6,b-5/6))
+plot(seq_along(a), a-5/6, ylim=limites, pch=16, cex=.4,
+     xlab="Répétition", ylab="Estimation moins 5/6",
+     main="Même budget : 300 uniformes par estimation", col="grey55")
+points(seq_along(b), b-5/6, pch=16, cex=.4, col="blue")
+abline(h=0)
+legend("topright", legend=c("Méthode A","Méthode B"),
+       col=c("grey55","blue"), pch=16)
+stopifnot(length(a)==B, length(b)==B, all(is.finite(a)), all(is.finite(b)))
+```
+Les centres doivent être compatibles avec $5/6$; les écarts-types théoriques
+sont environ 0,03361 et 0,006804. Les sorties empiriques fluctuent.
+La dispersion de B est plus petite sur les répétitions, en accord avec la
+comparaison exacte des variances. Cela ne signifie pas que B est plus proche
+de I lors de chaque paire de réalisations. Chaque estimation a consommé
+300 uniformes; les 500 répétitions évaluent le comportement des méthodes.
+
+**Critères observables :**
+
+- Passer n comme argument, sans dépendance cachée.
+- Créer de nouveaux tirages à chaque répétition.
+- Comparer les dispersions au même coût et à la théorie.
+- Écrire une conclusion sur la variance plutôt que sur une seule réalisation.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L07-V01 (4 min) {#L07-V01}
+
+**Énoncé :** Pour calculer $\int_0^1(1+x)\,dx$, on propose de tirer V uniformément sur (1/2,1) et de moyenner $(1+V)/2$. Déterminer la cible réelle de cette moyenne. Peut-on corriger le défaut uniquement en augmentant n ?
+
+**Correction :**
+
+La densité instrumentale vaut 2 sur $(1/2,1)$ et 0 ailleurs.
+La moyenne proposée a pour espérance
+$\int_{1/2}^1(1+x)\,dx=7/8$, tandis que la cible vaut $3/2$.
+La contribution de $(0,1/2)$ est perdue. Augmenter n concentre l'estimation
+autour de 7/8; il ne corrige pas le support manquant.
+
+**Critères observables :**
+
+- Identifier le support non couvert.
+- Calculer 7/8 et le comparer à 3/2.
+- Distinguer réduction de variance et correction de cible.
+
+### L07-V02 (5 min) {#L07-V02}
+
+**Énoncé :** Pour $I=\int_0^1(x-1/2)\,dx$, on garde la densité instrumentale q(x)=2x.
+Le poids est $Y=(V-1/2)/(2V)$. Vérifier que son espérance existe, puis décider
+si l'erreur-type usuelle en $1/\sqrt n$ est justifiée par une variance finie.
+Quel théorème de convergence reste utilisable ?
+
+**Correction :**
+
+Le support est couvert et
+$\mathbb E|Y|=\int_0^1|x-1/2|\,dx=1/4<\infty$; ainsi $\mathbb E[Y]=I=0$.
+Mais
+$\mathbb E[Y^2]=\int_0^1(x-1/2)^2/(2x)\,dx=\infty$ :
+pour $0<x<1/4$, l'intégrande est au moins $1/(32x)$.
+La variance finie et le TCL standard ne sont donc pas disponibles.
+La LGN pour variables i.i.d. intégrables s'applique toujours.
+Un changement d'intégrande peut dégrader radicalement une densité instrumentale.
+
+**Critères observables :**
+
+- Vérifier l’intégrabilité absolue du poids.
+- Montrer la divergence du second moment près de 0.
+- Distinguer hypothèses de LGN et de TCL.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd03` (source non redistribuée), Exercice 1 Q4-Q6; Exercice 2 Q1-Q5 : Simulation de moyennes, aire par indicatrices et précision.
+- `tp02` (source non redistribuée), Partie 1 Q1-Q3; Partie 2 Q1-Q4 : Intégrale comme espérance, inversion instrumentale et comparaison de variances.
+- `blocks_v2` (source non redistribuée), PS1-119, PS1-120, PS1-121, PS1-105, PS1-122, PS1-035 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

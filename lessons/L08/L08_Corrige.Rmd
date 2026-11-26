@@ -1,0 +1,142 @@
+---
+title: "L08 · Estimateurs, biais, variance et EQM · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L08"
+  document_role: correction
+  content_status: complete_derived
+  minutes: 35
+  exercise_ids: ["L08-E01", "L08-E02", "L08-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+**Corrigé pédagogique dérivé.** À ouvrir après sauvegarde de la première tentative. Chaque critère porte sur un raisonnement observable; aucune lecture de ce corrigé ne valide automatiquement une compétence.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+### Ce qui change d'un échantillon à l'autre {#L08-E01}
+
+<!-- ps1:solution id=L08-E01 -->
+
+1. $m$ est le paramètre fixe inconnu; $\overline X_3$ est l'estimateur; $\overline x_3=7$ est l'estimation; $\overline X_3-m$ est l'erreur aléatoire.
+2. Non. Le sans-biais affirme $\mathbb E_m[\overline X_3]=m$ sur des répétitions; il n'affirme pas $\overline x_3=m$ sur chaque échantillon.
+3. Les EQM sont $4$ et $1^2+2=3$. Le second est meilleur selon l'EQM à ce paramètre, malgré son biais non nul. Cela ne prouve pas sa supériorité pour tout paramètre ni pour toute fonction de perte.
+
+**Critères observables :**
+
+- Distinguer les objets aléatoires des valeurs observées.
+- Interpréter sans biais comme une propriété d'espérance.
+- Comparer 4 et 3 selon un critère explicitement nommé.
+
+### Reconstruire deux résultats {#L08-E02}
+
+<!-- ps1:solution id=L08-E02 -->
+
+Posons $a=\mathbb E_\theta[\widehat\theta]$ et $b=a-\theta$. Alors
+$$
+\mathbb E_\theta[(\widehat\theta-\theta)^2]
+=\mathbb E_\theta[(\widehat\theta-a)^2]
++2b\,\mathbb E_\theta[\widehat\theta-a]+b^2
+=\mathbb V_\theta(\widehat\theta)+b^2.
+$$
+Le terme croisé est nul par centrage, et l'intégrabilité des carrés permet tous les calculs.
+
+Par linéarité, $\mathbb E[\overline X_n]=m$. L'indépendance annule les covariances :
+$$
+\mathbb V(\overline X_n)=\frac1{n^2}\sum_i\mathbb V(X_i)=\frac{\sigma^2}{n}.
+$$
+Son EQM vaut $\sigma^2/n\to0$; L08-B10 prouve sa consistance.
+
+Puisque $\mathbb E[X_i^2]=\sigma^2+m^2$ et $\mathbb E[\overline X_n^2]=\sigma^2/n+m^2$,
+$$
+\mathbb E[V_n]=(\sigma^2+m^2)-(\sigma^2/n+m^2)
+=\frac{n-1}{n}\sigma^2.
+$$
+Ainsi $\mathbb E[nV_n/(n-1)]=\sigma^2$. La variance des observations est $\sigma^2$, tandis que celle de leur moyenne est $\sigma^2/n$; elles ont des rôles différents.
+
+**Critères observables :**
+
+- Annuler le terme croisé par centrage.
+- Utiliser l'indépendance dans le calcul de variance, pas dans la linéarité de l'espérance.
+- Obtenir le facteur (n-1)/n et expliquer sa correction.
+- Conclure la consistance à partir d'une EQM qui tend vers zéro.
+
+### Un petit biais peut-il être utile ? {#L08-E03}
+
+<!-- ps1:solution id=L08-E03 -->
+
+$U$ attire $T$ vers $1/2$. Ses biais et variance sont
+$b_p(U)=(1-2p)/(n+2)$ et $\mathbb V_p(U)=np(1-p)/(n+2)^2$.
+Pour $T$, le biais est nul et la variance vaut $p(1-p)/n$.
+
+```{r L08-E03}
+set.seed(2808)
+p <- 0.2
+n <- 12
+B <- 5000
+t_sim <- replicate(B, mean(rbinom(n, size = 1, prob = p)))
+u_sim <- (n * t_sim + 1) / (n + 2)
+c(biais_T = mean(t_sim - p), biais_U = mean(u_sim - p),
+  EQM_T = mean((t_sim - p)^2), EQM_U = mean((u_sim - p)^2))
+c(EQM_T_theorique = p * (1-p) / n,
+  EQM_U_theorique = n * p * (1-p)/(n+2)^2 + ((1-2*p)/(n+2))^2)
+x <- rbinom(n, size = 1, prob = p)
+c(variance_diviseur_n = mean((x - mean(x))^2),
+  variance_corrigee = var(x),
+  variance_population = p * (1-p))
+```
+
+Les EQM théoriques valent environ $0{,}01333$ et $0{,}01163$. À $p=0{,}2$ et $n=12$, $U$ a donc la plus faible EQM. Ce classement n'est pas universel : près de $p=0$, son biais peut dominer. Les résultats simulés fluctuent autour des valeurs théoriques. `var(x)` corrige un biais moyen, pas l'erreur de cet échantillon.
+
+**Critères observables :**
+
+- Comparer les deux procédures sur les mêmes répétitions.
+- Calculer l'EQM autour du vrai p, pas autour de la moyenne simulée.
+- Séparer erreur Monte-Carlo et qualité de l'estimateur.
+- Limiter la conclusion au paramètre et à la taille étudiés.
+
+**Vérifications précises des étapes demandées :**
+
+- Calculer b_p(T)=0 et b_p(U)=(1-2p)/(n+2), puis comparer au biais simulé.
+
+## Auto-correction
+
+Pour chaque exercice, comparer objets, hypothèses, méthode, calcul et conclusion. Nommer la première erreur qui explique les suivantes, puis refaire le passage concerné sans regarder. Garder distincts le travail autonome, les aides reçues et la correction.
+
+## Variantes, corrections à consulter après un nouvel essai
+
+### L08-V01 {#L08-V01}
+
+Les deux estimateurs sont sans biais. $\mathbb V(T_n)=1$ tandis que $\mathbb V(U_n)=1/n$. Pour tout $\varepsilon>0$, $\mathbb P(|T_n-m|>\varepsilon)=2[1-\Phi(\varepsilon)]>0$, indépendamment de $n$; $T_n$ n'est pas consistant. L'EQM de $U_n$ tend vers zéro, donc $U_n$ est consistant.
+
+**Critères :**
+
+- Donner un vrai argument de non-convergence pour X1.
+- Distinguer absence de biais et concentration.
+
+### L08-V02 {#L08-V02}
+
+Les EQM valent $9$ et $2^2+4=8$ secondes carrées. La conversion multiplie les biais par $1000$, les variances et les EQM par $1000^2$. Le second reste meilleur selon l'EQM. On doit transformer la cible et les estimateurs ensemble; une simple conversion d'unité ne modifie pas le classement.
+
+**Critères :**
+
+- Transformer le biais linéairement et la variance quadratiquement.
+- Conserver la même cible et le même critère.
+
+## Références et limites
+
+- `ctd04` (source non redistribuée), Exercice 1 Q1-Q3; Exercice 2 Q4-Q7 : Bessel, critères de comparaison et répétitions Monte-Carlo.
+- `st04_05` (source non redistribuée), PDF pp.6,9-13 : Objets aléatoires et qualité d'une procédure.
+- `st04_estimateur` (source non redistribuée), PDF pp.3-11 : Modèle et distinction estimation/estimateur.
+
+
+Les raisonnements de ce fichier sont des corrections originales dérivées. Une simulation illustre un résultat dans un modèle; elle n'en remplace pas la preuve. Les formules annoncées approchées conservent cette qualification dans les conclusions.

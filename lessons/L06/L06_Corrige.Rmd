@@ -1,0 +1,186 @@
+---
+title: "L06 · Échantillon, loi des grands nombres et TCL · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L06
+  document_role: correction
+  content_status: authored_complete
+  minutes: 45
+  exercise_ids: ["L06-E01", "L06-E02", "L06-E03", "L06-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L06-E01 · Comparer les objets (5 min) {#L06-E01}
+
+<!-- ps1:solution id=L06-E01 -->
+
+L04-B03 et L06-B03 donnent
+$\mathbb V(Z_n)=(n/\sigma^2)(\sigma^2/n)=1$.
+La LGN concerne la probabilité de grands écarts, pas une diminution monotone
+de l'erreur observée. Le TCL donne une limite en loi normale, pas une convergence
+vers le nombre 0. Lorsque $m$ est inconnu, $Z_n$ n'est pas calculable à partir
+des seules données, même si c'est une variable utile dans les démonstrations.
+
+**Critères observables :**
+
+- Retrouver une variance égale à 1.
+- Distinguer probabilité et trajectoire observée.
+- Identifier une convergence en loi et non vers un nombre.
+- Expliquer la dépendance de Z au paramètre inconnu.
+
+### L06-E02 · Construire une garantie finie (7 min) {#L06-E02}
+
+<!-- ps1:solution id=L06-E02 -->
+
+Les moments de l'exponentielle donnent $m=2$ et $\sigma^2=4<\infty$.
+Par indépendance, $\mathbb V(\overline X_n)=4/n$; la moyenne est intégrable
+et centrée sur 2. Pour tout $\varepsilon>0$,
+$$\mathbb P(|\overline X_n-2|\ge\varepsilon)
+\le\frac4{n\varepsilon^2}\to0.$$
+C'est la convergence en probabilité vers 2.
+Avec $\varepsilon=0{,}5$, la borne est $16/n$. Il suffit donc de prendre
+$n\ge320$. La borne de Chebyshev peut être large : 320 est le plus petit
+entier garanti par cette majoration, pas nécessairement le plus petit pour
+la probabilité réelle.
+
+**Critères observables :**
+
+- Vérifier indépendance, loi commune et variance finie.
+- Démontrer la borne qui tend vers zéro.
+- Résoudre 16/n ≤ 0,05 et trouver 320.
+- Distinguer taille suffisante via une borne et minimum réel.
+
+### L06-E03 · Standardiser une moyenne (6 min) {#L06-E03}
+
+<!-- ps1:solution id=L06-E03 -->
+
+L'exponentielle de taux 2 a pour moyenne $1/2$ et variance $1/4$.
+La moyenne a variance $1/400$ et écart-type $1/20=0{,}05$.
+Le seuil standardisé est $(0{,}6-0{,}5)/0{,}05=2$.
+Le TCL conduit donc à
+$$\mathbb P(\overline X_{100}>0{,}6)\approx1-\Phi(2)
+\simeq0{,}02275.$$
+L'égalité de l'événement après standardisation est exacte; remplacer la loi
+standardisée par une normale est l'approximation. Avec une loi commune
+normale de ces paramètres, la moyenne est exactement normale et le résultat
+$1-\Phi(2)$ est exact.
+
+**Critères observables :**
+
+- Donner 0,5, 0,0025 et 0,05 pour les bons objets.
+- Standardiser avec racine de n.
+- Séparer transformation exacte et approximation de loi.
+- Identifier le cas normal exact.
+
+### L06-E04 · Observer moyenne et fluctuations (11 min) {#L06-E04}
+
+<!-- ps1:solution id=L06-E04 -->
+
+```{r L06-E04}
+set.seed(606)
+x <- rexp(2000, rate=2)
+k <- seq_along(x)
+plot(k, cumsum(x)/k, type="l", xlab="Nombre de tirages",
+     ylab="Moyenne cumulée", main="Une trajectoire, taux 2")
+abline(h=.5, col="blue", lwd=2)
+B <- 1000
+m25 <- replicate(B, mean(rexp(25, rate=2)))
+m100 <- replicate(B, mean(rexp(100, rate=2)))
+z100 <- sqrt(100)*(m100-.5)/.5
+c(sd25=sd(m25), sd100=sd(m100), variance_z=var(z100),
+  frequence_queue=mean(m100>.6), approximation=pnorm(2, lower.tail=FALSE))
+qqnorm(z100, main="Moyennes de taille 100 standardisées",
+       xlab="Quantiles N(0,1)", ylab="Quantiles observés")
+abline(0,1,col="blue",lwd=2)
+stopifnot(length(m25)==B, length(m100)==B, all(is.finite(z100)))
+```
+Les écarts-types théoriques des moyennes sont 0,1 et 0,05 : quadrupler n
+divise l'écart-type par deux. La variance de la version standardisée reste
+1. Les répétitions B servent à observer la distribution de l'estimateur;
+augmenter B n'améliore pas la précision d'une moyenne individuelle de taille n.
+La trajectoire n'est pas monotone. Le QQ-graphe peut être proche de
+l'identité sans être exactement droit; la fréquence de queue fluctue autour
+de la probabilité réelle, elle-même seulement approchée par le TCL.
+
+**Critères observables :**
+
+- Distinguer une trajectoire cumulative et des expériences répétées.
+- Créer de nouveaux tirages dans replicate.
+- Standardiser avec les paramètres théoriques corrects.
+- Comparer une réduction par deux de l’écart-type et une variance standardisée constante.
+- Limiter les conclusions de la simulation.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L06-V01 (4 min) {#L06-V01}
+
+**Énoncé :** On tire une seule variable $Z$ de Bernoulli(1/2), puis on définit $X_i=Z$ pour tous les indices. Toutes les variables ont la même loi. La moyenne converge-t-elle en probabilité vers 1/2 ? Calculer sa variance et une probabilité d'écart.
+
+**Correction :**
+
+La moyenne vaut toujours $Z$, donc sa variance vaut 1/4, quel que soit n.
+Pour $\varepsilon=1/4$, $\mathbb P(|\overline X_n-1/2|>\varepsilon)=1$.
+Elle ne converge pas en probabilité vers 1/2. Les variables ont même loi
+mais ne sont pas indépendantes; les covariances ne disparaissent pas.
+
+**Critères observables :**
+
+- Calculer la moyenne exactement avant d’appliquer une limite.
+- Exhiber une probabilité qui ne tend pas vers zéro.
+- Nommer l’hypothèse manquante.
+
+### L06-V02 (4 min) {#L06-V02}
+
+**Énoncé :** Un nombre de pannes suit exactement $\mathcal B(100,0{,}01)$. Peut-on justifier une approximation normale par la seule phrase « n=100 est grand » ? Calculer la probabilité exacte d'aucune panne et expliquer une limite de la loi normale pour cette question.
+
+**Correction :**
+
+La probabilité exacte est $(0{,}99)^{100}\simeq0{,}366$.
+Le nombre moyen de pannes vaut $np=1$, alors que $n(1-p)=99$ :
+la loi est très asymétrique et possède une forte masse en 0.
+Une normale n'a aucune masse ponctuelle. Une approximation nécessiterait
+de traiter une plage avec correction de continuité et de contrôler son erreur;
+n=100 seul n'est pas une justification.
+
+**Critères observables :**
+
+- Utiliser la masse binomiale en 0.
+- Examiner np et n(1-p), pas n seulement.
+- Distinguer point discret et probabilité d’intervalle continue.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd03` (source non redistribuée), Exercice 1 Q0-Q3,Q5-Q6; Exercice 2 Q6; Exercice 3 Q1-Q3 : Moyenne, Chebyshev, LGN, TCL, normalité exacte et simulations.
+- `tp02` (source non redistribuée), Partie 1 Q1-Q3 : Convergence, précision et moyenne cumulative.
+- `st06_risque` (source non redistribuée), PDF pp.9-11, annexe : Variables parentes et observations, loi de la moyenne normale; raccourcis corrigés.
+- `st_poly_continues` (source non redistribuée), PDF pp.17-18 : TCL standardisé et approximation finie, traités distinctement.
+- `blocks_v2` (source non redistribuée), PS1-102, PS1-103, PS1-105, PS1-113, PS1-094, PS1-114, PS1-115, PS1-116, PS1-117, PS1-096, PS1-118, PS1-123, PS1-125, PS1-112, PS1-034, PS1-109 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+

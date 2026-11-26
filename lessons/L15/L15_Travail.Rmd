@@ -1,0 +1,240 @@
+---
+title: "L15 · Régression simple : estimation, qualité et inférence"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L15
+  document_role: work
+  content_status: complete_authored
+  minutes: 60
+  exercise_ids: ["L15-E01", "L15-E02", "L15-E03", "L15-E04"]
+  block_ids: ["L15-B01", "L15-B02", "L15-B03", "L15-B04", "L15-B05", "L15-B06", "L15-B07", "L15-B08", "L15-B09", "L15-B10", "L15-B11", "L15-B12", "L15-B13"]
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**60 min :** mise en place 6, concepts 5, mathématiques 19, R 18, correction 5, Anki 2, révision adaptative 5. Lire B01-B03 pour commencer. Les autres blocs se consultent pendant les tâches correspondantes; B12-B13 servent de référence de reconnaissance, sans preuve supplémentaire dans ce budget.
+
+**Prérequis :** variance/covariance L04, intervalles et tests L09-L12, espérance conditionnelle L14. R : `var`, `cov` L04-B08; `qt`, `pt` L03-B14; Q-Q plot L06-B08.
+
+## 1/6 · Comprendre
+
+Une droite ajustée résume des moyennes. Un point peut être loin de cette droite même si la pente est précisément estimée. Il faut donc séparer trois questions : quelle tendance moyenne, quelle incertitude sur ses coefficients et quelle dispersion des observations autour de cette tendance ?
+
+### Modèle simple et hypothèses d’inférence {#L15-B01}
+
+> **DEF [L15-B01] · Modèle simple et hypothèses d’inférence**
+>
+> Dans $Y=b_0+b_1X+\varepsilon$, $Y$ est la réponse, $X$ le prédicteur, $b_0,b_1$ des paramètres et $\varepsilon$ une erreur aléatoire. Pour l’inférence exacte du cours, conditionnellement à $n>2$ valeurs $x_i$ fixées non toutes égales,
+> $$Y_i=b_0+b_1x_i+\varepsilon_i,\qquad \varepsilon_i\ \text{indépendantes de loi }\mathcal N(0,\sigma^2),\quad\sigma>0.$$
+> La moyenne est affine, les erreurs sont centrées, indépendantes, homoscédastiques (variance constante) et normales. Les calculs MCO existent sans normalité; les lois exactes des tests utilisent ces hypothèses.
+
+### Erreur aléatoire et résidu observé {#L15-B02}
+
+> **DEF [L15-B02] · Erreur aléatoire et résidu observé**
+>
+> L’erreur du modèle est $\varepsilon_i=Y_i-(b_0+b_1x_i)$; les vrais coefficients sont inconnus. Après ajustement par les moindres carrés ordinaires (MCO), $\widehat y_i=\widehat b_0+\widehat b_1x_i$ et le résidu observé est $e_i=y_i-\widehat y_i$. Les résidus partagent les coefficients estimés : ils ne doivent pas être traités en général comme des réalisations indépendantes des erreurs vraies. Avec intercept, leur somme est nulle par construction.
+
+### Moyenne, pente et changement d’unité {#L15-B03}
+
+> **THM [L15-B03] · Moyenne, pente et changement d’unité**
+>
+> Dans le modèle $Y=b_0+b_1X+\varepsilon$, avec $b_0,b_1\in\mathbb R$,
+> si $X,\varepsilon$ sont de carré intégrable, $\mathbb V(X)>0$ et $\mathbb E[\varepsilon\mid X]=0$, alors
+> $$\mathbb E[Y\mid X]=b_0+b_1X,\quad b_1=\frac{\operatorname{Cov}(X,Y)}{\mathbb V(X)},\quad b_0=\mathbb E[Y]-b_1\mathbb E[X].$$
+> La pente exprime une variation de moyenne, en unités de $Y$ par unité de $X$. Pour $X'=aX+c$ et $Y'=dY+e$, avec $a,d\ne0$, la pente devient $db_1/a$. Si les deux variables ont des variances strictement positives, les centrer et les réduire donne comme pente leur corrélation $\rho=\operatorname{Cov}(X,Y)/(\sigma_X\sigma_Y)$.
+
+## 2/6 · Expliquer
+
+### Ce qu’un ajustement permet de dire {#L15-E01}
+
+**Budget : 5 min.**
+
+Réécrire les trois affirmations suivantes en précisant leur limite : « les résidus sont les erreurs indépendantes du modèle »; « $R^2=0{,}8$ signifie 80 % de bonnes prédictions individuelles »; « un Q-Q plot aligné valide toutes les hypothèses ». Dans une phrase supplémentaire, distinguer l’association d’une augmentation de $X$ avec la moyenne de $Y$ et un effet causal.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Critère des moindres carrés {#L15-B04}
+
+> **DEF [L15-B04] · Critère des moindres carrés**
+>
+> Pour des données $(x_i,y_i)_{i=1}^n$, le critère est
+> $$Q(u,v)=\sum_{i=1}^n(y_i-u-vx_i)^2.$$
+> Un ajustement MCO est un couple minimisant $Q$ sur $\mathbb R^2$. La notation $\operatorname*{argmin}Q$ désigne l’ensemble des minimisateurs. Quand $n\ge2$ et $S_{xx}=\sum_i(x_i-\bar x)^2>0$, cet ensemble possède un seul élément, noté $(\widehat b_0,\widehat b_1)$.
+
+### Coefficients MCO et orthogonalité {#L15-B05}
+
+> **THM [L15-B05] · Coefficients MCO et orthogonalité**
+>
+> Sous $S_{xx}>0$, poser $S_{xy}=\sum_i(x_i-\bar x)(y_i-\bar y)$. L’unique minimum de $Q$ est donné par
+> $$\widehat b_1=S_{xy}/S_{xx},\qquad\widehat b_0=\bar y-\widehat b_1\bar x.$$
+> Les résidus satisfont $\sum_i e_i=0$ et $\sum_i x_i e_i=0$. Le rapport `cov(x,y)/var(x)` est identique, car les deux dénominateurs $n-1$ se simplifient.
+
+### Sommes de carrés et coefficient de détermination {#L15-B06}
+
+> **DEF [L15-B06] · Sommes de carrés et coefficient de détermination**
+>
+> Pour un ajustement MCO avec intercept, sur les observations utilisées,
+> $e_i=y_i-\widehat y_i$ est le résidu et $\bar y=n^{-1}\sum_i y_i$. Ainsi
+> $$\mathrm{RSS}=\sum_i e_i^2,\qquad \mathrm{TSS}=\sum_i(y_i-\bar y)^2.$$
+> Si $\mathrm{TSS}>0$, le coefficient de détermination d’un ajustement MCO avec intercept est $R^2=1-\mathrm{RSS}/\mathrm{TSS}$. Il mesure la proportion de dispersion observée expliquée par cet ajustement. Ce n’est ni une probabilité de prédiction correcte ni une preuve de causalité.
+
+### Décomposition et corrélation au carré {#L15-B07}
+
+> **THM [L15-B07] · Décomposition et corrélation au carré**
+>
+> Avec intercept et $S_{xx}>0$, l’orthogonalité des résidus donne
+> $$\mathrm{TSS}=\sum_i(\widehat y_i-\bar y)^2+\mathrm{RSS}.$$
+> Ainsi $0\le R^2\le1$. Si $\mathrm{TSS}>0$, en régression simple $R^2=r_{xy}^2$, où $r_{xy}=S_{xy}/\sqrt{S_{xx}\mathrm{TSS}}$. Au niveau théorique, sous le modèle à erreur centrée et indépendante de $X$, la part $\mathbb V(\mathbb E[Y\mid X])/\mathbb V(Y)$ est $\rho^2$ lorsque les variances sont positives.
+
+### Incertitude des MCO et lois admises {#L15-B08}
+
+> **THM [L15-B08] · Incertitude des MCO et lois admises**
+>
+> Dans le modèle gaussien de L15-B01, avec $n>2$, les estimateurs sont sans biais conditionnellement aux $x_i$. Poser $s^2=\mathrm{RSS}/(n-2)$ et $\mathrm{SE}(\widehat b_1)=s/\sqrt{S_{xx}}$. Alors
+> $$\mathbb V(\widehat b_1\mid\mathbf x)=\sigma^2/S_{xx},\qquad
+> \frac{\widehat b_1-b_1}{\mathrm{SE}(\widehat b_1)}\sim t_{n-2}.$$
+> Sous $H_0:b_1=0$ seulement, $F=(n-2)R^2/(1-R^2)\sim F_{1,n-2}$ et $F=t^2$. La loi $F_{r,s}$ est celle de $(U/r)/(V/s)$, pour $U\sim\chi_r^2$ et $V\sim\chi_s^2$ indépendantes. Ces lois sont admises; les formules algébriques restent à comprendre.
+
+### Tester une pente et construire son intervalle {#L15-B09}
+
+> **MTH [L15-B09] · Tester une pente et construire son intervalle**
+>
+> Dans le modèle $Y_i=b_0+b_1x_i+\varepsilon_i$, supposer $n>2$, les $x_i$ fixés non tous égaux et les erreurs indépendantes de loi $\mathcal N(0,\sigma^2)$ avec $\sigma>0$. Poser $S_{xx}=\sum_i(x_i-\bar x)^2$, $s^2=\sum_i(y_i-\widehat y_i)^2/(n-2)$ et $\mathrm{SE}(\widehat b_1)=s/\sqrt{S_{xx}}$.
+> Fixer $H_0:b_1=b_{1,0}$, l’alternative et $0<\alpha<1$ avant de lire la sortie. Calculer $t_{\rm obs}=(\widehat b_1-b_{1,0})/\mathrm{SE}(\widehat b_1)$, avec $\nu=n-2$. Si $T_\nu$ suit Student à $\nu$ degrés de liberté et $t_{\nu,p}$ est son quantile d’ordre $p$, une alternative bilatérale donne $p=2\mathbb P(T_\nu\ge|t_{\rm obs}|)$ et un IC de niveau $1-\alpha$ est
+> $$\widehat b_1\pm t_{\nu,1-\alpha/2}\mathrm{SE}(\widehat b_1).$$
+> Rapporter estimation, unités, IC, $t$, degrés de liberté et $p$. Si $p>\alpha$, ne pas rejeter $H_0$ ne démontre pas sa vérité. La couverture concerne la procédure aléatoire.
+
+### Retrouver les MCO et leur minimum {#L15-E02}
+
+**Budget : 10 min.**
+
+Dériver $Q(u,v)$ par rapport à $u$ et $v$, puis retrouver les deux coefficients MCO. Justifier qu’il s’agit d’un minimum unique lorsque $S_{xx}>0$, par un carré complété ou par une forme quadratique positive.
+
+On étudie ensuite le temps moyen de traitement $y$ (ms) en fonction du volume $x$ (Mo). Un échantillon de six observations a $\bar x=2$, $\bar y=8$, $S_{xx}=10$, $S_{xy}=15$ et $\mathrm{TSS}=30$. Calculer les coefficients, RSS et $R^2$. Donner la moyenne ajustée pour $x_0=3$ Mo et interpréter la pente en français.
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+### Inférence sur une pente et lien t-F {#L15-E03}
+
+**Budget : 9 min.**
+
+Sous les hypothèses gaussiennes de L15-B01, reprendre les six observations résumées à l’exercice précédent. Tester $H_0:b_1=0$ contre $H_1:b_1\ne0$ au seuil 5 %, et construire un IC à 95 %. On fournit $t_{4,0{,}975}\simeq2{,}776$. Déduire la statistique $F$, puis justifier algébriquement $F=t^2$ dans une régression simple avec intercept. La p-valeur représente-t-elle la probabilité que $H_0$ soit vraie ?
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Diagnostiquer et prévoir {#L15-B10}
+
+> **MTH [L15-B10] · Diagnostiquer et prévoir**
+>
+> Avant de conclure, examiner le nuage de points, puis les résidus contre les valeurs ajustées (courbure et dispersion), un Q-Q plot (forme de la loi) et le plan de collecte (indépendance). Un graphique ne prouve aucune de ces hypothèses. À $x_0$, $\widehat b_0+\widehat b_1x_0$ estime une moyenne conditionnelle. L’intervalle de prédiction d’un nouvel individu ajoute la variabilité de sa nouvelle erreur; il est plus large que l’IC de cette moyenne. Ces prévisions supposent un nouveau cas compatible avec le modèle; extrapoler hors des $x_i$ observés demande une justification.
+
+### Ajuster, lire et prévoir avec lm {#L15-B11}
+
+> **SYX [L15-B11] · Ajuster, lire et prévoir avec lm**
+>
+> `mod <- lm(y ~ x, data = tab)` ajuste une réponse `y` sur `x`, avec intercept. `coef(mod)` renvoie les coefficients; `coef(summary(mod))` donne les colonnes `Estimate`, `Std. Error`, `t value` et `Pr(>|t|)`. `summary(mod)$r.squared`, `fitted(mod)` et `residuals(mod)` donnent $R^2$, valeurs ajustées et résidus. `confint(mod, "x", level = .95)` donne l’IC de pente. `predict(mod, newdata = data.frame(x = 4), interval = "confidence")` donne l’IC de moyenne; `interval = "prediction"` donne l’intervalle pour une nouvelle observation. Le nom `x` doit correspondre au modèle. Exemple distinct : `coef(lm(y ~ x, data = data.frame(x=1:4, y=c(2,3,5,5))))`.
+
+### Une analyse complète de mesures simulées {#L15-E04}
+
+**Budget : 18 min.**
+
+Les données d’entraînement suivantes représentent un volume `volume` (Mo) et un temps `temps` (ms). Le mécanisme de simulation est explicite; ses paramètres ne sont pas les estimations empiriques à calculer.
+
+```{r L15-donnees}
+set.seed(1515)
+mesures <- data.frame(volume = runif(80, 5, 25))
+mesures$temps <- 12 + .8*mesures$volume + rnorm(80, sd = 4)
+```
+
+1. Tracer le nuage, ajuster le temps sur le volume et superposer la droite. Retrouver la pente par covariance/variance, puis RSS et $R^2$ sans les extraire du résumé. Vérifier les concordances.
+2. Reconstruire la statistique $t$ de pente et son IC à 95 %; comparer avec `summary` et `confint`. Rédiger deux phrases avec estimation, unité, IC, degrés de liberté et p-valeur.
+3. Prévoir la moyenne à 15 Mo; calculer un IC de moyenne et un intervalle de prédiction. Expliquer leur différence avant de comparer leurs largeurs.
+4. Tracer résidus contre valeurs ajustées et Q-Q plot (`qqnorm`, `qqline`, L06-B08). Nommer une limite que ces deux graphiques ne peuvent pas contrôler. Éviter de faire de la proximité visuelle une preuve.
+
+```{r L15-E04}
+# Votre analyse.
+```
+
+**Réponse et justification :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**7 min au total pour les sections 5 et 6.** Enregistrer ce Rmd et ses images locales. Préserver la première tentative avant d’ouvrir `L15_Corrige.Rmd`. Pour chaque réponse, identifier une erreur de concept, d’hypothèse, de méthode, de calcul, de rédaction ou de R. Corriger en gardant la première version lisible.
+
+| Exercice | Sans aide / avec aide / à reprendre | Erreur précise et bloc utile |
+|:--|:--|:--|
+| L15-E01 | | |
+| L15-E02 | | |
+| L15-E03 | | |
+| L15-E04 | | |
+
+## 6/6 · Retenir puis rappeler
+
+Mémoire : erreur/résidu, sens de la pente, portée de $R^2$, construction du test. Reconstruction : équations normales, $F=t^2$. A4 : erreurs standards, quantiles et arguments de `predict`. Conserver au plus une carte de distinction et une correction d’erreur utile dans les minutes prévues.
+
+Dans les minutes restantes, retrouver une hypothèse et une interprétation sans regarder. Une carte réussie ne remplace pas une application. Choisir au plus une variante pertinente pour un prochain créneau déjà prévu (X02 ou F01), puis noter ici la question encore incertaine :
+
+## Compléments de référence, hors lecture initiale
+
+### Gauss-Markov : portée du résultat admis {#L15-B12}
+
+> **THM [L15-B12] · Gauss-Markov : portée du résultat admis**
+>
+> Pour un plan fixe de rang plein, des erreurs centrées, de variance commune $\sigma^2$ et non corrélées entre observations, les MCO ont variance minimale parmi les estimateurs linéaires sans biais de chaque combinaison des coefficients. C’est le théorème de Gauss-Markov (BLUE). Il ne suppose pas la normalité et ne compare pas les MCO à tous les estimateurs biaisés. Dans le modèle gaussien normal de rang plein, les MCO des coefficients sont aussi de variance minimale parmi tous les estimateurs sans biais; la preuve n’est pas requise ici.
+
+### Reconnaître un intervalle de corrélation {#L15-B13}
+
+> **MTH [L15-B13] · Reconnaître un intervalle de corrélation**
+>
+> Pour $n>3$ couples i.i.d. de loi normale bivariée non dégénérée et $|r|<1$, `cor.test(x,y, method = "pearson")` teste $\rho=0$ par $t=r\sqrt{(n-2)/(1-r^2)}$ à $n-2$ degrés de liberté. L’intervalle de corrélation utilise l’approximation de Fisher : transformer $r$ par $z=\operatorname{atanh}(r)$, former $z\pm z_{1-\alpha/2}/\sqrt{n-3}$, puis appliquer $\tanh$. Cette couverture est approchée. La cible $\rho$, sans unité, diffère de la pente $b_1$; standardiser empiriquement ne transforme pas automatiquement un IC de pente en IC de corrélation.
+
+## Réserve de rappels et de transfert
+
+Ces adaptations pédagogiques remplacent un créneau de rappel ou de réparation déjà budgété. Ne pas les ajouter à la durée de cette leçon. Choisir la variante selon l’erreur observée; garder le corrigé fermé pendant la tentative.
+
+### L15-V01 · 7 min {#L15-V01}
+
+Une étude donne $\log_{10}(Y)=a+0{,}6\log_{10}(X)+\varepsilon$, avec $X,Y>0$. L’IC à 95 % de la pente sur l’échelle logarithmique est $[0{,}3;0{,}9]$. À quel facteur de la médiane conditionnelle de $Y$ correspond un doublement de $X$, si l’erreur est normale centrée ? Transformer aussi les bornes de l’IC pour ce facteur. Peut-on dire directement que $10^{a+0{,}6\log_{10}(x)}$ est la moyenne arithmétique de $Y\mid X=x$ ?
+
+### L15-V02 · 7 min {#L15-V02}
+
+Le tableau R `anscombe` contient quatre paires de mesures. Comparer les pentes et $R^2$ des quatre régressions, puis afficher les quatre nuages. Donner une raison propre à chaque nuage pour laquelle les mêmes résumés ne suffisent pas à choisir une analyse. Quel graphique faut-il examiner avant une p-valeur ?
+
+## Références effectivement consultées
+
+Tous les exercices et toutes les corrections ci-dessus sont des adaptations pédagogiques originales, pas des corrigés officiels.
+
+- `ctd08` : Introduction lignes 19-38; E1 Q1-Q6 lignes 54-149; E2 Q1-Q2 lignes 152-215; E3 Q1-Q7 lignes 218-423; E4 Q1-Q6 lignes 426-570. Formules MCO, qualité, inférence et sorties R.
+- `tp04` : Partie I Q1-Q7, lignes 86-149. Relier graphiques, coefficient, incertitude et portée de l’association.
+- `st09` : PDF p.4, « Le quartet d’Anscombe ». Les résumés numériques ne remplacent pas le nuage de points.
+- `cm08` : PDF pp.1-10, revue intégrale; particulièrement pp.6-10. Hypothèses des lois admises, Gauss-Markov et complément sur la corrélation; corrections explicites dans authoring/regression_source_audit.md.
+- `blocks_v2` : PS1-213 à PS1-243; PS1-250; PS1-261; PS1-263. Distinction erreur/résidu, formules, conditions et diagnostics.
+
+
+## Révision adaptative · 5 min
+
+<!-- ps1:adaptive-review-slot minutes=5 -->
+
+Traiter une variante ciblée, encore non tentée, d’une leçon antérieure si elle a été préparée. À défaut, fermer les notes, rappeler une méthode antérieure et vérifier ses hypothèses. Ces cinq minutes sont distinctes de la correction et des cartes de cette leçon. Une variante trop longue est reportée à un créneau de F01.

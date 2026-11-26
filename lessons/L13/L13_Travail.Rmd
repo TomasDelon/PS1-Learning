@@ -1,0 +1,203 @@
+---
+title: "L13 · Effectifs, adéquation et indépendance"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L13"
+  document_role: work
+  content_status: complete_derived
+  minutes: 40
+  exercise_ids: ["L13-E01", "L13-E02", "L13-E03"]
+  block_ids: ["L13-B01", "L13-B02", "L13-B03", "L13-B04", "L13-B05", "L13-B06", "L13-B07", "L13-B08"]
+  learner_state: not_created
+---
+
+**Durée totale : 40 minutes**, correction et rappel inclus.
+
+**Contenu pédagogique dérivé.** Les exercices, données synthétiques et corrigés de ces deux fichiers ont été créés pour ce parcours; ce ne sont pas des corrigés officiels.
+
+Le khi-deux compare des effectifs à ceux d'un modèle. Avant de lire une p-valeur, il faut savoir quelles catégories sont possibles, quelles probabilités ont été fixées et quelles quantités ont été estimées.
+
+**Prérequis :** L02-B08 (tableaux); L03-B14 (d/p/q/r); L05 (Poisson, khi-deux); L09 (vraisemblance); L11 (tests).
+
+**Travail dans RStudio :** garder ce document et son Corrigé dans deux onglets ordinaires. Utiliser le bouton Visual de l'éditeur et exécuter les blocs R dans le document. Le rendu HTML est une exportation facultative.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+**Répartition :** 5 min de cours; 4 min de vérification conceptuelle; 13 min de raisonnement; 12 min de R; 4 min de correction et 2 min de rappel/Anki.
+
+## 1/6 · Comprendre
+
+### Effectifs observés et attendus {#L13-B01}
+
+> **DEF [L13-B01] · Effectifs observés et attendus**
+>
+> Pour $k\ge2$ catégories disjointes qui couvrent toutes les possibilités, $O_i$ est le nombre d'observations dans la catégorie $i$ et $\sum_iO_i=n$. Sous un modèle donnant des probabilités $p_i>0$ avec $\sum_ip_i=1$, l'effectif attendu vaut $E_i=np_i$. Un effectif nul reste une catégorie si sa probabilité est positive. Pour une loi de comptage non bornée, la dernière catégorie doit inclure toute la queue.
+
+### Adéquation à des probabilités fixées {#L13-B02}
+
+> **THM [L13-B02] · Adéquation à des probabilités fixées**
+>
+> Pour $n$ observations i.i.d. réparties dans $k$ catégories fixes, supposons sous $H_0$ des probabilités fixées $p_i>0$, de somme $1$. Lorsque $n\to\infty$,
+> $$
+> Q_n=\sum_{i=1}^k\frac{(O_i-np_i)^2}{np_i}
+> \xrightarrow{\mathcal L}\chi^2_{k-1}.
+> $$
+> Les $k$ écarts ont une contrainte de somme nulle. La p-valeur approchée est la queue droite de cette loi. La garantie est asymptotique.
+
+### Adéquation après estimation de paramètres {#L13-B03}
+
+> **MTH [L13-B03] · Adéquation après estimation de paramètres**
+>
+> Pour un test d’adéquation de Pearson à $k$ catégories, si les probabilités sont $p_i(\theta)$ et que $r$ paramètres identifiables sont ajustés sur les mêmes effectifs regroupés par maximum de vraisemblance, sous les conditions usuelles de régularité du modèle (notamment différentiabilité et rang identifiable), la loi limite est un khi-deux à $k-1-r$ degrés de liberté quand l’effectif tend vers l’infini. Ce résultat demande des catégories fixes, des probabilités positives, un paramètre intérieur, des contraintes indépendantes et $k-1-r>0$; le nombre de paramètres seul ne garantit pas le théorème.
+>
+> Si l'estimation est obtenue autrement, notamment à partir des données brutes avant regroupement, ne pas soustraire mécaniquement $r$ en supposant la calibration établie. Justifier le résultat adapté ou calibrer par une simulation paramétrique qui réestime les paramètres à chaque répétition. `chisq.test` ne déduit pas du vecteur de probabilités combien de paramètres ont été ajustés.
+
+### Tableau de contingence et marges {#L13-B04}
+
+> **DEF [L13-B04] · Tableau de contingence et marges**
+>
+> Pour deux variables qualitatives de $r\ge2$ et $c\ge2$ modalités, $O_{ij}$ compte les observations dans la paire de catégories $(i,j)$. Les marges sont $O_{i\cdot}=\sum_jO_{ij}$ et $O_{\cdot j}=\sum_iO_{ij}$. Le total est $n=\sum_{i,j}O_{ij}$. Les points dans les indices indiquent une sommation sur l'indice correspondant.
+
+### Attendus sous indépendance {#L13-B05}
+
+> **MTH [L13-B05] · Attendus sous indépendance**
+>
+> Sous l'indépendance des deux variables, la probabilité d'une cellule est le produit des probabilités marginales. En estimant ces dernières par $O_{i\cdot}/n$ et $O_{\cdot j}/n$, on obtient $E_{ij}=O_{i\cdot}O_{\cdot j}/n$. Vérifier que ces attendus conservent les totaux de lignes, de colonnes et le total général.
+
+### Khi-deux d'indépendance {#L13-B06}
+
+> **THM [L13-B06] · Khi-deux d'indépendance**
+>
+> Pour $n$ couples catégoriels i.i.d. de probabilités de cellules positives, sous $H_0$ d'indépendance,
+> $$
+> Q_n=\sum_{i=1}^r\sum_{j=1}^c\frac{(O_{ij}-E_{ij})^2}{E_{ij}}
+> \xrightarrow{\mathcal L}\chi^2_{(r-1)(c-1)}.
+> $$
+> Les degrés de liberté valent $(rc-1)-[(r-1)+(c-1)]$, nombre de probabilités libres du modèle général moins celui du modèle indépendant. Un rejet décrit une association, pas une causalité.
+
+### Vérifier l'approximation et regrouper {#L13-B07}
+
+> **MTH [L13-B07] · Vérifier l'approximation et regrouper**
+>
+> Vérifier l'indépendance des observations, la partition complète et les effectifs attendus. La règle pratique $E_i\ge5$ (ou $E_{ij}\ge5$) est un repère, pas une condition universelle nécessaire et suffisante. Si des classes sont trop rares, les regrouper de manière justifiée sans perdre d'observations ni de probabilité, puis recalculer attendus et degrés de liberté. Le regroupement ne doit pas être choisi pour rendre un résultat significatif. Pour un petit tableau $2\times2$, un test exact de Fisher peut éviter une approximation douteuse.
+
+## 2/6 · Expliquer
+
+### Des classes peuvent-elles disparaître ? {#L13-E01}
+
+**L13-E01 · 4 min.**
+
+1. Une variable de comptage a été observée aux valeurs $0,1,3,4$; aucun $2$ n'est apparu. Peut-on supprimer la catégorie $2$ du modèle parce que `table(x)` ne l'affiche pas ?
+2. Un modèle de Poisson donne les probabilités des classes $0,1,2,3$; leur somme vaut $0{,}86$. Une personne les renormalise pour tester les comptages bruts. Quel événement a-t-elle implicitement ajouté ?
+3. Expliquer pourquoi un modèle fixé à l'avance et un modèle ajusté sur les mêmes observations ne conduisent pas automatiquement au même nombre de degrés de liberté.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 3/6 · Résoudre et justifier
+
+### Association entre deux catégories {#L13-E02}
+
+**L13-E02 · 13 min.**
+
+On classe 120 demandes indépendantes selon le canal d'entrée et le type de besoin. Chaque demande est comptée une seule fois.
+
+| Canal | Information | Réparation | Configuration |
+|:--|--:|--:|--:|
+| A | 18 | 12 | 30 |
+| B | 12 | 24 | 24 |
+
+Au niveau $5\,\%$, peut-on mettre en évidence une association entre canal et type ?
+
+1. Formuler $H_0,H_1$; calculer les marges et les six attendus.
+2. Calculer la statistique de Pearson. Justifier les degrés de liberté et vérifier les attendus.
+3. Écrire la p-valeur comme une probabilité. Conclure sans prouver l'indépendance et sans attribuer de causalité au canal.
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 4/6 · Programmer et vérifier
+
+### Tableaux et chisq.test {#L13-B08}
+
+> **SYX [L13-B08] · Tableaux et chisq.test**
+>
+> `O <- matrix(c(8, 12, 10, 14), nrow = 2, byrow = TRUE)` remplit une matrice ligne par ligne. `rowSums(O)`, `colSums(O)` et `sum(O)` donnent ses marges et son total. `outer(rowSums(O), colSums(O)) / sum(O)` construit les attendus d'indépendance.
+>
+> `chisq.test(O, correct = FALSE)` teste l'indépendance lorsqu'on lui fournit un tableau; les composantes `$expected`, `$statistic`, `$parameter` et `$p.value` permettent le contrôle. `chisq.test(effectifs, p = probabilites)` teste l'adéquation à des probabilités fournies et utilise par défaut $k-1$ degrés de liberté, où $k$ est le nombre de catégories : ce résultat suppose qu'elles n'ont pas été ajustées sur ces mêmes données. Les deux entrées ne posent donc pas la même question.
+
+### Contrôler une sortie automatique {#L13-E03}
+
+**L13-E03 · 12 min.**
+
+1. Vérifier le calcul de L13-E02 avec une matrice et `chisq.test`. Comparer les attendus et les degrés de liberté avant la p-valeur.
+2. Une autre étude compte des événements sur 120 fenêtres indépendantes, avec classes fixes $0,1,2,\ge3$ et effectifs $(24,36,28,32)$. Le modèle est Poisson. Son paramètre a été ajusté **par maximum de vraisemblance sur ces quatre effectifs regroupés**, sous les conditions régulières de L13-B03; l'estimation fournie est $\widehat\lambda=1{,}7144833204$.
+Construire les quatre probabilités avec `dpois` et `ppois`, vérifier leur somme et les attendus. Calculer la statistique et une p-valeur avec les degrés de liberté justifiés.
+3. Exécuter `chisq.test(effectifs, p = probabilites)`. Quel degré de liberté son résultat suppose-t-il ? Expliquer pourquoi sa p-valeur brute n'est pas celle à rapporter ici.
+
+Les fonctions de lois restent celles de L03-B14. La valeur de $\widehat\lambda$ est une donnée de l'exercice; la résolution numérique de son maximum n'est pas à refaire dans ces 12 minutes.
+
+```{r L13-E03}
+O <- matrix(c(18, 12, 30, 12, 24, 24), nrow = 2, byrow = TRUE)
+effectifs <- c(24, 36, 28, 32)
+lambda_hat <- 1.7144833204
+# Contrôles des modèles, statistiques, degrés de liberté et p-valeurs.
+```
+
+**Votre rédaction / calculs :**
+
+**Confiance avant correction :** … %.
+
+## 5/6 · Comparer après la tentative
+
+**4 minutes.** Enregistrer ce fichier et ses images, puis conserver une copie de la première tentative avec l'outil d'instantané du parcours. Ouvrir ensuite `L13_Corrige.Rmd`. Comparer les critères, sans effacer la tentative initiale.
+
+| Exercice | Sans aide / avec aide / à reprendre | Première erreur à réparer |
+|:--|:--|:--|
+| L13-E01 | | |
+| L13-E02 | | |
+| L13-E03 | | |
+
+Une réponse recopiée ou comprise après lecture ne constitue pas une réussite indépendante.
+
+## 6/6 · Retenir et préparer le rappel
+
+**2 minutes.** À rappeler : L13-B01, B03 et B07. Les attendus et degrés de liberté doivent pouvoir être reconstruits. L13-B08 est un rappel de syntaxe utile; ne pas mémoriser seulement l'appel à chisq.test.
+
+Blocs sélectionnés pour les cartes initiales : L13-B01, L13-B03, L13-B07, L13-B08. Leur contenu exact est celui des encadrés; les calculs d'exercice ne sont pas des cartes supplémentaires.
+
+**À retrouver sans regarder :**
+
+**Point encore incertain :**
+
+### Variantes pour un rappel différé
+
+Ces variantes sont disponibles en réserve. Une variante choisie selon l'erreur remplace un créneau de révision déjà prévu, elle ne s'ajoute ni à la durée de la leçon ni aux 20 heures. Essayer sans la correction et indiquer l'aide utilisée.
+
+#### L13-V01 · 4 min {#L13-V01}
+
+Un tableau $2\times2$ contient les lignes $(1,7)$ et $(6,2)$. Calculer les attendus d'indépendance. La règle pratique « tous les attendus au moins 5 » est-elle vérifiée ? Quelle autre méthode de référence peut être envisagée sans supprimer une modalité ?
+
+#### L13-V02 · 4 min {#L13-V02}
+
+Un test d'adéquation utilise six classes et un paramètre estimé par maximum de vraisemblance sur les effectifs regroupés. On fusionne les deux dernières classes pour satisfaire le repère d'effectifs. Quels éléments faut-il recalculer ? Donner les degrés de liberté avant et après, si les conditions régulières restent valides.
+
+## Références et provenance
+
+- `ctd06` (source non redistribuée), Exercice 4 Q1-Q6 : Indépendance, marges, attendus et statistique.
+- `tp03` (source non redistribuée), Q3-Q4, Q7 et Q13 : Comptages Poisson, regroupements et comparaison au modèle ajusté.
+- `tp03` (source non redistribuée), Q8-Q10 : Portée des modèles de comptages et de l'indépendance.
+- Clarification externe consultée le 26/11/2026 : [NIST/SEMATECH : Chi-Square Goodness-of-Fit Test](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm), Definition: estimation from observed bin counts; Critical Region. Précision externe explicitée : estimation sur catégories et degrés de liberté.
+- Clarification externe consultée le 26/11/2026 : [Documentation officielle R : chisq.test](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/chisq.test.html), Arguments, Details, Value. Différence entre adéquation et table de contingence; correction et sorties.
+
+Les définitions et méthodes s'appuient aussi sur la base PS1 `PS1_Cours_DEF_THM_MTH_v2.md`, dont les identifiants de blocs sont conservés dans `lesson.json`. Les adaptations, preuves et limites de portée sont recensées dans l'audit d'auteur. Les références sont consultées sans modification de leurs originaux.

@@ -1,0 +1,535 @@
+{
+  "lesson_id": "L05",
+  "minutes": 25,
+  "source_refs": [
+    {
+      "source_id": "ctd01",
+      "locator": "Exercice 4 Q5",
+      "use_fr": "Reconnaître un modèle de Poisson et distinguer modèle et données."
+    },
+    {
+      "source_id": "ctd02",
+      "locator": "Exercice 2 Q4-Q8; Exercice 3 Q1-Q5",
+      "use_fr": "Sommes indépendantes, normale, gamma et FGM."
+    },
+    {
+      "source_id": "st_poly_discretes",
+      "locator": "PDF pp.8-11, ``3.1-3.5",
+      "use_fr": "Lois discrètes usuelles et moments."
+    },
+    {
+      "source_id": "st_poly_continues",
+      "locator": "PDF pp.8-13",
+      "use_fr": "Uniforme, exponentielle et normale; convention de variance auditée."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-064, PS1-065, PS1-066, PS1-067, PS1-068, PS1-072, PS1-100, PS1-101, PS1-069, PS1-096, PS1-111, PS1-074, PS1-073, PS1-075, PS1-097, PS1-098, PS1-099, PS1-093, PS1-095",
+      "use_fr": "Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L05-B01",
+      "type": "DEF",
+      "title_fr": "Loi de Bernoulli",
+      "source_block_ids": [
+        "PS1-064"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-064 · Loi de Bernoulli",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi de Bernoulli",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B02",
+      "type": "DEF",
+      "title_fr": "Loi binomiale",
+      "source_block_ids": [
+        "PS1-065",
+        "PS1-066"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-065 · Loi binomiale",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-066 · Somme de Bernoulli indépendantes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Loi binomiale",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L05-B03",
+      "type": "DEF",
+      "title_fr": "Loi géométrique, convention du rang",
+      "source_block_ids": [
+        "PS1-067"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-067 · Loi géométrique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Loi géométrique, convention du rang",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document.",
+      "canonical_body_sha256": "407d0c1aa79d5e3c122db7cdfeb31f3d84fd4ff421d7ca184c30697e026bbc40"
+    },
+    {
+      "id": "L05-B04",
+      "type": "DEF",
+      "title_fr": "Loi de Poisson",
+      "source_block_ids": [
+        "PS1-068"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-068 · Loi de Poisson",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": false,
+      "cue_fr": "Loi de Poisson",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B05",
+      "type": "DEF",
+      "title_fr": "Loi normale et paramètres",
+      "source_block_ids": [
+        "PS1-072"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-072 · Loi normale \\(\\mathcal N(m,\\sigma^2)\\)",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "memory",
+      "anki_selected": true,
+      "cue_fr": "Loi normale et paramètres",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document."
+    },
+    {
+      "id": "L05-B06",
+      "type": "THM",
+      "title_fr": "Moments des lois du cœur",
+      "source_block_ids": [
+        "PS1-100",
+        "PS1-101"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-100 · Moments des lois usuelles discrètes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-101 · Moments des lois usuelles à densité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Moments des lois du cœur",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B10",
+      "type": "THM",
+      "title_fr": "Sommes indépendantes",
+      "source_block_ids": [
+        "PS1-069",
+        "PS1-096"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-069 · Somme de Poisson indépendantes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-096 · Stabilité de la somme de normales indépendantes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Quelles lois obtient-on pour une somme de Poisson et une combinaison normale indépendantes ?",
+      "reason_fr": "Rappel utile pour choisir et justifier une méthode sans document.",
+      "canonical_body_sha256": "7ba200fc41fa17214d5674718a12214041501388ade593a6c5ce006dcc7fc483",
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L05-B15",
+      "type": "SYX",
+      "title_fr": "Vérifier les conventions d’une fonction de loi",
+      "source_block_ids": [
+        "PS1-111",
+        "PS1-067",
+        "PS1-074"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-111 · Fonctions de lois d/p/q/r",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-067 · Loi géométrique",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-074 · Loi gamma (forme, taux)",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Vérifier les conventions d’une fonction de loi",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B07",
+      "type": "DEF",
+      "title_fr": "Fonction gamma",
+      "source_block_ids": [
+        "PS1-073"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-073 · Fonction gamma",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Fonction gamma",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B08",
+      "type": "DEF",
+      "title_fr": "Loi gamma, forme et taux",
+      "source_block_ids": [
+        "PS1-074"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-074 · Loi gamma (forme, taux)",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi gamma, forme et taux",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B09",
+      "type": "DEF",
+      "title_fr": "Loi du khi-deux",
+      "source_block_ids": [
+        "PS1-075"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-075 · Loi du khi-deux",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Loi du khi-deux",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B11",
+      "type": "THM",
+      "title_fr": "Sommes d’exponentielles et moments gamma",
+      "source_block_ids": [
+        "PS1-097",
+        "PS1-101"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-097 · Somme d'exponentielles et loi gamma",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-101 · Moments des lois usuelles à densité",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Sommes d’exponentielles et moments gamma",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B12",
+      "type": "DEF",
+      "title_fr": "Fonction génératrice des moments",
+      "source_block_ids": [
+        "PS1-098"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-098 · Fonction génératrice des moments",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Fonction génératrice des moments",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B13",
+      "type": "THM",
+      "title_fr": "Dérivées et produit des FGM",
+      "source_block_ids": [
+        "PS1-099",
+        "PS1-093"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-099 · Dérivées de la FGM",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        },
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-093 · Espérance du produit de variables indépendantes",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Dérivées et produit des FGM",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    },
+    {
+      "id": "L05-B14",
+      "type": "THM",
+      "title_fr": "Convolution",
+      "source_block_ids": [
+        "PS1-095"
+      ],
+      "source_refs": [
+        {
+          "source_id": "blocks_v2",
+          "locator": "PS1-095 · Convolution pour une somme indépendante",
+          "use_fr": "Énoncé reformulé, hypothèses conservées ou précisées."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Convolution",
+      "reason_fr": "Consultation ou reconstruction préférable à une carte supplémentaire."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L05-E01",
+      "family": "usual_law_discrimination",
+      "minutes": 3,
+      "kind": "concept",
+      "rubric_fr": [
+        "Nommer les trois mécanismes et leurs paramètres.",
+        "Donner les trois supports distincts.",
+        "Distinguer loi exacte et approximation possible."
+      ],
+      "block_ids": [
+        "L05-B02",
+        "L05-B03",
+        "L05-B04",
+        "L05-B05"
+      ],
+      "competency_ids": [
+        "comp.ps1.poisson_model"
+      ],
+      "topic_ids": [
+        "binomial_law",
+        "geometric_law",
+        "poisson_law"
+      ],
+      "error_tags": [
+        "law_choice",
+        "support"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L05-E02",
+      "family": "independent_sums_tails",
+      "minutes": 8,
+      "kind": "math",
+      "rubric_fr": [
+        "Identifier 25 comme variance et 5 comme écart-type.",
+        "Standardiser le seuil dans la bonne direction.",
+        "Additionner les paramètres de Poisson et inclure les masses 0,1,2 dans le complément.",
+        "Nommer l’usage de l’indépendance."
+      ],
+      "block_ids": [
+        "L05-B05",
+        "L05-B06",
+        "L05-B10",
+        "L04-B10"
+      ],
+      "competency_ids": [
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.poisson_model"
+      ],
+      "topic_ids": [
+        "normal_sum",
+        "standard_normal",
+        "poisson_sum"
+      ],
+      "error_tags": [
+        "parameterization",
+        "tail",
+        "independence"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L05-E03",
+      "family": "r_law_parameterization",
+      "minutes": 5,
+      "kind": "R",
+      "rubric_fr": [
+        "Nommer mean/sd, lambda et prob.",
+        "Calculer les bons compléments.",
+        "Décaler le rang géométrique d’une unité.",
+        "Comparer aux expressions mathématiques avant d’interpréter."
+      ],
+      "block_ids": [
+        "L05-B15",
+        "L03-B14",
+        "L01-B05"
+      ],
+      "competency_ids": [
+        "comp.ps1.normal_tail_probability",
+        "comp.ps1.model_observation_compare",
+        "comp.ps1.r_code_explain"
+      ],
+      "topic_ids": [
+        "r_law_funcs",
+        "normal_law",
+        "geometric_law"
+      ],
+      "error_tags": [
+        "parameterization",
+        "off_by_one"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L05-V01",
+      "family": "without_replacement_not_binomial",
+      "for_exercise_ids": [
+        "L05-E01"
+      ],
+      "error_tags": [
+        "independence",
+        "law_choice"
+      ],
+      "prompt_md": "Un tiroir contient 10 câbles, dont 3 défectueux. On en prélève 4 sans remise. Un collègue propose une loi binomiale de paramètres 4 et 0,3 pour le nombre de défauts. Décider si cette loi est exacte; expliquer quel argument cesse de s'appliquer. Calculer néanmoins l'espérance sans introduire une nouvelle loi.",
+      "correction_md": "Les essais ne sont pas indépendants : après un câble défectueux,\nla proportion de défauts restants est $2/9$, après un bon câble $3/9$.\nLa loi binomiale n'est donc pas exacte. Chaque position a marginalement\nprobabilité $3/10$ d'être défectueuse par symétrie, donc la linéarité donne\n$\\mathbb E[N]=4(3/10)=1{,}2$. Aucune indépendance n'est nécessaire à ce dernier calcul.",
+      "rubric_fr": [
+        "Identifier la dépendance due à l’absence de remise.",
+        "Ne pas conclure binomial à partir des seules marges.",
+        "Utiliser des indicatrices pour l’espérance."
+      ],
+      "block_ids": [
+        "L05-B02",
+        "L04-B13"
+      ],
+      "minutes": 4,
+      "transfer": "Décider qu’une famille familière ne s’applique plus tout en conservant une méthode valide pour l’espérance.",
+      "has_r": false
+    },
+    {
+      "id": "L05-V02",
+      "family": "normal_shared_noise",
+      "for_exercise_ids": [
+        "L05-E02"
+      ],
+      "error_tags": [
+        "independence",
+        "degenerate_law"
+      ],
+      "prompt_md": "Un bruit $X\\sim\\mathcal N(0,4)$ est partagé par deux capteurs. Le premier renvoie $X$ et le second $Y=-X$. Leurs lois marginales sont normales. Quelle est la loi de $X+Y$ ? Pourquoi la formule des normales indépendantes donnerait-elle une réponse incorrecte ?",
+      "correction_md": "La somme vaut identiquement 0 : sa loi est une masse en 0.\nLes variables sont parfaitement dépendantes et $\\operatorname{Cov}(X,Y)=-4$,\ndonc $\\mathbb V(X+Y)=4+4-8=0$. Additionner seulement les variances donnerait 8,\nen omettant le terme croisé. Deux lois marginales normales ne justifient pas l'indépendance.",
+      "rubric_fr": [
+        "Reconnaître une somme constante avant de calculer.",
+        "Identifier la covariance manquante.",
+        "Refuser la stabilité sous des hypothèses absentes."
+      ],
+      "block_ids": [
+        "L05-B10",
+        "L04-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Reconnaître un mécanisme de bruit partagé et un cas dégénéré, au lieu d’appliquer une règle de somme automatiquement.",
+      "has_r": false
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé."
+    ]
+  }
+}

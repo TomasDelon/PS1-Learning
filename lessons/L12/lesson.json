@@ -1,0 +1,553 @@
+{
+  "lesson_id": "L12",
+  "minutes": 45,
+  "source_refs": [
+    {
+      "source_id": "ctd06",
+      "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+      "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+    },
+    {
+      "source_id": "tp03",
+      "locator": "Q6 et Q12",
+      "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+    },
+    {
+      "source_id": "ctd07",
+      "locator": "Exercice 2 Q4-Q7 et Q11",
+      "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+    }
+  ],
+  "blocks": [
+    {
+      "id": "L12-B01",
+      "type": "MTH",
+      "title_fr": "Identifier le plan avant le test",
+      "source_block_ids": [
+        "PS1-190"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Comment le plan d'observation détermine-t-il une comparaison de moyennes ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "ebdb2870dc59af1f5adbf2b170939e6b51f7739565d05d4f381295c3f6696190",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B02",
+      "type": "THM",
+      "title_fr": "Test apparié par les différences",
+      "source_block_ids": [
+        "PS1-152",
+        "PS1-174"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reconstruct",
+      "anki_selected": false,
+      "cue_fr": "Test apparié par les différences : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "b26667f26cc1df95ffa661d521f5fd3ac1702251254245187b21febcc7f69df1",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B03",
+      "type": "DEF",
+      "title_fr": "Variance poolée",
+      "source_block_ids": [
+        "PS1-175"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Variance poolée : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "3cfd2243629c77fb50e5104ba79388b51db60fd3778b8465a8705aa6e3d58f87",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B04",
+      "type": "THM",
+      "title_fr": "Deux échantillons normaux, variance commune",
+      "source_block_ids": [
+        "PS1-176"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Deux échantillons normaux, variance commune : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "8676f71b4dac629147f6834ec479e0a7beed199dbf95ecda4c8a92b53533300a",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B05",
+      "type": "DEF",
+      "title_fr": "Student à degrés de liberté réels",
+      "source_block_ids": [
+        "PS1-151",
+        "PS1-177"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Student à degrés de liberté réels : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "387fb31b4024a92ba7addb9042f22e1774ae54ba155c0e6cd189920235058df1",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B06",
+      "type": "MTH",
+      "title_fr": "Welch sans variance commune",
+      "source_block_ids": [
+        "PS1-177"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Welch sans variance commune : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "22082c2549c364c4aa90283858eaec76bfe9b4e79ee9208d06f93d6b35735d98",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B07",
+      "type": "MTH",
+      "title_fr": "Lire des diagnostics sans les surinterpréter",
+      "source_block_ids": [
+        "PS1-178",
+        "PS1-179",
+        "PS1-189"
+      ],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "apply",
+      "anki_selected": true,
+      "cue_fr": "Que peut-on conclure de diagnostics de normalité ou de variance ?",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "ebb1f1d8d423ba99d49437eed03f9e029e9479cf9b647da5515c99b34d8d650b",
+      "external_refs": []
+    },
+    {
+      "id": "L12-B08",
+      "type": "SYX",
+      "title_fr": "Configurer t.test",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": true,
+      "cue_fr": "Quels arguments de t.test traduisent le plan, la variance et la direction ?",
+      "reason_fr": "Petite syntaxe décisionnelle utile; la formule et les hypothèses restent indispensables.",
+      "canonical_body_sha256": "3255aac34e6f1c01c11cefe8dfac5ed2c995235c5ba0a63f4ee7c0202e2217ac",
+      "external_refs": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/t.test.html",
+          "title": "Documentation officielle R : t.test",
+          "locator": "Arguments, Details, Value",
+          "use_fr": "Appariement, défaut Welch, variance commune et composantes du résultat.",
+          "block_ids": [
+            "L12-B08"
+          ],
+          "provenance": "EXTERNAL",
+          "read_date": "2026-11-26"
+        }
+      ],
+      "revision_note": "Standalone/correctness refinement from independent QA; original sources unchanged."
+    },
+    {
+      "id": "L12-B09",
+      "type": "SYX",
+      "title_fr": "Diagnostic Shapiro dans R",
+      "source_block_ids": [],
+      "source_refs": [
+        {
+          "source_id": "ctd06",
+          "locator": "Exercice 1 Q1-Q4; Exercice 2 Q1-Q2; Exercice 3 Q1-Q4",
+          "use_fr": "Tests de moyennes, variance commune, Welch et diagnostics."
+        },
+        {
+          "source_id": "tp03",
+          "locator": "Q6 et Q12",
+          "use_fr": "Distinguer deux mesures du même match de saisons composées d'unités différentes."
+        },
+        {
+          "source_id": "ctd07",
+          "locator": "Exercice 2 Q4-Q7 et Q11",
+          "use_fr": "Interprétation des différences entre groupes et de leur variabilité."
+        }
+      ],
+      "provenance": "pedagogical_adaptation",
+      "retention": "reference",
+      "anki_selected": false,
+      "cue_fr": "Diagnostic Shapiro dans R : conditions et sens.",
+      "reason_fr": "Consultation ciblée ou reconstruction dans une application.",
+      "canonical_body_sha256": "9702f8f5d3ffdca2badd2f18b6a373f4a1e4a21bc053fd042413a0962ae19697",
+      "external_refs": []
+    }
+  ],
+  "exercises": [
+    {
+      "id": "L12-E01",
+      "minutes": 5,
+      "kind": "concept",
+      "family": "mean_test_design",
+      "topic_ids": [
+        "student_test_one",
+        "student_test_two",
+        "welch_test",
+        "shapiro_test"
+      ],
+      "competency_ids": [
+        "comp.ps1.two_mean_test",
+        "comp.ps1.normality_assess"
+      ],
+      "block_ids": [
+        "L12-B01",
+        "L12-B07"
+      ],
+      "rubric_fr": [
+        "Repérer appariement et unité indépendante.",
+        "Ne pas traiter des mesures répétées comme des unités distinctes.",
+        "Ne pas valider un plan par Shapiro."
+      ],
+      "error_tags": [
+        "pairing",
+        "independence",
+        "diagnostic_proof"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L12-E02",
+      "minutes": 12,
+      "kind": "math",
+      "family": "paired_welch_comparison",
+      "topic_ids": [
+        "student_test_one",
+        "welch_test"
+      ],
+      "competency_ids": [
+        "comp.ps1.two_mean_test",
+        "comp.ps1.practical_significance"
+      ],
+      "block_ids": [
+        "L12-B02",
+        "L12-B06"
+      ],
+      "rubric_fr": [
+        "Calculer la variance des différences avec le diviseur 7.",
+        "Utiliser Student à 7 degrés de liberté pour le plan apparié.",
+        "Employer les deux termes de variance dans Welch.",
+        "Distinguer effet non nul et objectif pratique."
+      ],
+      "error_tags": [
+        "pairing",
+        "degrees_freedom",
+        "variance_pooling",
+        "effect_size"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "L12-E03",
+      "minutes": 12,
+      "kind": "R",
+      "family": "mean_test_validation",
+      "topic_ids": [
+        "student_test_one",
+        "welch_test",
+        "shapiro_test",
+        "boxplot"
+      ],
+      "competency_ids": [
+        "comp.ps1.two_mean_test",
+        "comp.ps1.normality_assess",
+        "comp.ps1.practical_significance",
+        "comp.ps1.distribution_compare"
+      ],
+      "block_ids": [
+        "L12-B07",
+        "L12-B08",
+        "L12-B09"
+      ],
+      "rubric_fr": [
+        "Respecter l'ordre des paires et le sens avant-après.",
+        "Vérifier la même analyse sur les différences.",
+        "Ne pas inventer des observations à partir de résumés.",
+        "Rapporter l'incertitude et la taille d'effet."
+      ],
+      "error_tags": [
+        "pairing",
+        "summary_as_data",
+        "diagnostic_proof",
+        "formal_language"
+      ],
+      "has_r": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "L12-V01",
+      "family": "paired_covariance_transfer",
+      "for_exercise_ids": [
+        "L12-E02"
+      ],
+      "error_tags": [
+        "pairing",
+        "covariance"
+      ],
+      "prompt_md": "Pour 20 paires indépendantes, chaque mesure A et B a variance 4, et leur covariance dans une paire vaut 3. Comparer la variance de $A-B$ avec celle obtenue en supposant à tort l'indépendance de A et B. Calculer les deux erreurs-types de la moyenne des différences.",
+      "correction_md": "La variance correcte est $4+4-2\\times3=2$; l'hypothèse d'indépendance donnerait $8$. Les erreurs-types seraient respectivement $\\sqrt{2/20}\\simeq0{,}3162$ et $\\sqrt{8/20}\\simeq0{,}6325$. L'appariement peut donc réduire fortement l'incertitude. Si la covariance était négative, l'effet irait dans l'autre sens; supprimer la covariance n'est pas une simplification neutre.",
+      "rubric_fr": [
+        "Inclure le terme de covariance.",
+        "Diviser la variance des différences par le nombre de paires.",
+        "Interpréter le changement d'incertitude."
+      ],
+      "block_ids": [
+        "L12-B01",
+        "L12-B02"
+      ],
+      "minutes": 5,
+      "transfer": "Transfert conceptuel : expliquer le rôle du plan par une décomposition de variance.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L12-V02",
+      "family": "welch_not_pretest",
+      "for_exercise_ids": [
+        "L12-E01",
+        "L12-E03"
+      ],
+      "error_tags": [
+        "variance_pooling",
+        "diagnostic_proof"
+      ],
+      "prompt_md": "Deux échantillons indépendants ont tailles 12 et 20 et variances corrigées 1 et 9. Les tests de Shapiro ne rejettent pas la normalité. Une personne choisit automatiquement `var.equal = TRUE`. Ce choix est-il justifié ? Proposer une analyse et expliquer ce qu'elle suppose.",
+      "correction_md": "Le non-rejet de normalité ne dit rien sur l'égalité des variances; les deux hypothèses sont distinctes. Sans justification de variance commune, Welch conserve les deux estimations de variance. Il demande des unités indépendantes, des populations et une cible comparables, ainsi que normalité ou approximation adéquate. On regarde aussi les graphiques et les valeurs atypiques; un prétest ne certifie pas le modèle.",
+      "rubric_fr": [
+        "Distinguer normalité et homogénéité de variance.",
+        "Justifier le plan indépendant.",
+        "Énoncer les limites de l'approximation choisie."
+      ],
+      "block_ids": [
+        "L12-B03",
+        "L12-B06",
+        "L12-B07"
+      ],
+      "minutes": 4,
+      "transfer": "Discrimination : refuser une option logicielle motivée par un diagnostic portant sur une autre hypothèse.",
+      "has_r": false,
+      "budget_rule_fr": "Remplace un créneau de rappel déjà prévu. Aucun temps ne s'ajoute aux 1200 minutes."
+    },
+    {
+      "id": "L12-V03",
+      "family": "pooled_student_summary",
+      "for_exercise_ids": [
+        "L12-E01",
+        "L12-E02"
+      ],
+      "error_tags": [
+        "common_variance",
+        "degrees_freedom",
+        "standard_error",
+        "formal_conclusion"
+      ],
+      "prompt_md": "Deux échantillons de machines sont indépendants, avec des durées normales. Une calibration externe justifie une variance populationnelle commune, inconnue. Les résumés sont $n_1=10$, $\\overline x_1=14$, $s_1^2=4$, puis $n_2=12$, $\\overline x_2=11$, $s_2^2=9$, en secondes et secondes carrées. Les variances $s_j^2$ sont corrigées.\n\nAvant observation, on a choisi $H_0:m_1=m_2$ contre $H_1:m_1\\ne m_2$, au seuil $5\\,\\%$. Calculer la variance commune estimée, l'erreur-type de la différence et la statistique de test. Justifier les degrés de liberté. Avec $t_{20;0,975}\\simeq2{,}086$, conclure et donner un IC à 95 % pour $m_1-m_2$. Pourquoi les deux variances observées différentes ne réfutent-elles pas à elles seules le modèle ?",
+      "correction_md": "La variance commune estimée pondère les deux variances par leurs degrés de liberté :\n$$\ns_p^2=\\frac{9\\times4+11\\times9}{10+12-2}=6{,}75.\n$$\nLa différence estimée vaut $14-11=3$ secondes et son erreur-type est\n$\\sqrt{6{,}75(1/10+1/12)}=\\sqrt{1{,}2375}\\simeq1{,}1124$ seconde.\nSous $H_0$ et les hypothèses données, $T$ suit exactement $t_{20}$ :\n$t_{\\rm obs}=3/1{,}1124\\simeq2{,}6968>2{,}086$.\nOn rejette donc l'égalité des moyennes au seuil de 5 %.\nL'IC est $3\\pm2{,}086\\times1{,}1124$, soit environ $[0{,}679;5{,}321]$ secondes.\nLes données soutiennent une durée moyenne plus élevée pour le premier groupe, dans le modèle annoncé. Elles ne prouvent pas un effet causal du type de machine. Les variances empiriques fluctuent : leur différence n'est pas une contradiction logique de l'hypothèse de variance populationnelle commune.\n\n```{r L12-V03-verification}\nn1 <- 10\nn2 <- 12\nsp2 <- ((n1-1)*4 + (n2-1)*9)/(n1+n2-2)\nse <- sqrt(sp2*(1/n1+1/n2))\nddl <- n1+n2-2\nt_obs <- (14-11)/se\np_val <- 2*pt(abs(t_obs), df=ddl, lower.tail=FALSE)\nic <- (14-11) + c(-1,1)*qt(.975, df=ddl)*se\nc(variance_commune=sp2, erreur_type=se, statistique=t_obs, ddl=ddl, p=p_val)\nic\nstopifnot(abs(sp2-6.75) < 1e-12, ddl == 20, p_val < .05,\n          min(ic) > 0, max(ic) > 3)\n```\n",
+      "rubric_fr": [
+        "Pondérer les variances corrigées par n1-1 et n2-1, puis diviser par n1+n2-2.",
+        "Utiliser l'erreur-type commune et Student à 20 degrés de liberté sous les hypothèses annoncées.",
+        "Construire l'intervalle pour la différence des moyennes et conclure au seuil annoncé.",
+        "Distinguer variance populationnelle commune et variances empiriques fluctuantes."
+      ],
+      "block_ids": [
+        "L12-B03",
+        "L12-B04",
+        "L12-B05"
+      ],
+      "minutes": 4,
+      "transfer": "Discrimination de modèle : une justification externe rend la variance commune pertinente; seules les statistiques résumées sont disponibles.",
+      "has_r": true,
+      "topic_ids": [
+        "pooled_variance",
+        "student_test_two"
+      ],
+      "competency_ids": [
+        "comp.ps1.two_mean_test"
+      ],
+      "budget_policy": "Remplace quatre minutes d'un créneau de révision existant; ne s'ajoute pas au cœur de L12 ni aux 1200 minutes."
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Content and mathematical author review completed; native R, knit and RStudio Visual tracked separately by release verification.",
+      "Numerical reference values independently cross-checked with SciPy; this does not constitute R execution.",
+      "No learner attempt, progress or mastery record was created."
+    ]
+  },
+  "derived_pedagogy": true,
+  "source_snapshot_commit": "bc4b4d142e8da5f82191fec80ace43b97c976dcd",
+  "knowledge_source": "PS1_Cours_DEF_THM_MTH_v2.md (référence non redistribuée)",
+  "time_breakdown": {
+    "cours": 5,
+    "concept_checks": 5,
+    "maths": 12,
+    "R": 12,
+    "self_correction_review": 11
+  },
+  "review_allocation": {
+    "correction_minutes": 4,
+    "anki_minutes": 2,
+    "replaceable_retrieval_minutes": 5
+  },
+  "coverage_note_fr": "La preuve du théorème de Fisher reste admise. Levene est une référence de consultation, pas un exercice supplémentaire.",
+  "external_clarifications": [
+    {
+      "url": "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/t.test.html",
+      "title": "Documentation officielle R : t.test",
+      "locator": "Arguments, Details, Value",
+      "use_fr": "Appariement, défaut Welch, variance commune et composantes du résultat.",
+      "block_ids": [
+        "L12-B08"
+      ]
+    }
+  ]
+}

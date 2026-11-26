@@ -1,0 +1,49 @@
+---
+title: "S01 · Simulation chronométrée réservée · Corrigé pédagogique"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: S01
+  document_role: correction
+  content_status: complete_authored
+  minutes: 180
+  exercise_ids: ["S01-E01"]
+  block_ids: []
+  learner_state: not_created
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+**À ouvrir après sauvegarde de la première tentative.** Les critères servent à examiner votre raisonnement, pas à attribuer automatiquement une maîtrise.
+
+
+
+### Protocole de tentative réservée {#S01-E01}
+
+<!-- ps1:solution id=S01-E01 -->
+
+Ce document vérifie uniquement le déroulement d’une tentative. Il ne contient ni réponse attendue, ni indication sur les questions d’une épreuve, ni barème disciplinaire.
+
+Contrôler après l’arrêt : la décision de commencer a été explicite; les 180 minutes ont été suivies ou l’écart réel est noté; les ressources utilisées sont décrites; le fichier de réponse et ses images sont enregistrés; une copie de la première tentative existe avant toute consultation de solution. Vérifier que les fichiers supplémentaires nécessaires ont aussi été conservés, car l’outil de snapshot porte sur le Rmd et ses images locales.
+
+Si une de ces conditions manque, le constater sans reconstruire rétrospectivement une fausse tentative « sans aide ». Une compilation réussie ne démontre pas une réponse correcte. Un travail terminé ne démontre pas une maîtrise. Une épreuve incomplète reste une trace utile pour sélectionner les réparations de F01, sans changer automatiquement aucun état de progression.
+
+Le contenu réservé reste fermé dans ce protocole. Toute analyse future d’une épreuve et de sa correction doit correspondre à une décision explicite de l’étudiant, distincte de la création de cette activité.
+
+**Critères indépendants :** Départ volontaire et temps réellement consignés; Absence de consultation anticipée de correction; Première tentative conservée avant correction; Ressources et incidents rapportés honnêtement; Aucune inférence automatique de maîtrise.
+
+## Comparaison et rappel
+
+Nommer l’objet, les hypothèses réellement utilisées, la propriété qui justifie le calcul et la conclusion. Conserver ce qui a été trouvé seul, puis les modifications après lecture. Une réponse reconstruite à partir du corrigé n’est pas une tentative indépendante. Les minutes de correction, de cartes et de rappel restent comprises dans le budget annoncé.
+
+## Références
+
+- `syllabus_ps1` : Evaluation FRANÇAIS, première session : examen individuel de 3h sur machine et résumé manuscrit A4 autorisé. Justifie une durée de simulation de 180 minutes et le contrôle des ressources autorisées, sans accéder à un sujet.

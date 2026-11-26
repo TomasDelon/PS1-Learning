@@ -1,0 +1,132 @@
+---
+title: "L11 · Tests : hypothèses, p-valeur et proportions · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: "L11"
+  document_role: correction
+  content_status: complete_derived
+  minutes: 45
+  exercise_ids: ["L11-E01", "L11-E02", "L11-E03"]
+  block_ids: []
+  learner_state: not_created
+---
+
+**Corrigé pédagogique dérivé.** À ouvrir après sauvegarde de la première tentative. Chaque critère porte sur un raisonnement observable; aucune lecture de ce corrigé ne valide automatiquement une compétence.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
+```
+
+### Réparer une conclusion {#L11-E01}
+
+<!-- ps1:solution id=L11-E01 -->
+
+1. Sous $H_0$ et le modèle, la probabilité d'une statistique au moins aussi extrême que celle observée est $0{,}04$. Cette probabilité conditionnelle ne donne pas une probabilité de vérité de $H_0$.
+2. Les données n'apportent pas suffisamment d'éléments pour rejeter l'égalité au seuil de $5\,\%$. Le non-rejet peut aussi résulter d'un manque de puissance; il ne démontre pas l'égalité.
+3. La direction doit traduire la question fixée avant la lecture du résultat. La choisir après observation modifie la procédure et compromet le contrôle de niveau annoncé.
+
+**Critères observables :**
+
+- Énoncer une probabilité sous H0 sans l'inverser.
+- Ne pas transformer non-rejet en preuve.
+- Relier la direction à une question formulée avant analyse.
+
+### Un test que l'on peut reconstruire {#L11-E02}
+
+<!-- ps1:solution id=L11-E02 -->
+
+Sous $m=20$, $Z=\sqrt{16}(\overline X-20)/4=\overline X-20$ suit $\mathcal N(0,1)$. On rejette si $Z\ge z_{0,95}$, soit si $\overline X\ge20+z_{0,95}\simeq21{,}6449$.
+
+La valeur observée est $z_{\rm obs}=2$; la p-valeur vaut $1-\Phi(2)\simeq0{,}02275$. Sous $m\le20$, la moyenne conserve son écart-type $1$ et se déplace vers la gauche quand $m$ diminue; la probabilité de la queue de rejet est donc maximale en $m=20$. Le test contrôle ainsi le risque de première espèce sur tout $H_0$.
+
+Sous l'alternative $m=22$, $\overline X\sim\mathcal N(22,1)$ :
+$$
+\pi(22)=1-\Phi(21{,}6449-22)\simeq0{,}6388,\qquad
+\beta(22)=1-\pi(22)\simeq0{,}3612.
+$$
+La puissance se calcule sous l'alternative spécifiée; la p-valeur se calcule sous la frontière nulle.
+
+Passer à $\alpha=0{,}01$ augmente la frontière à $20+z_{0,99}\simeq22{,}3263$ et réduit la puissance en $22$ à environ $0{,}3721$. Au niveau initial de $5\,\%$, on rejette $H_0$; les observations soutiennent une moyenne supérieure à $20$ sous le modèle normal i.i.d. de variance connue. Elles ne donnent pas une probabilité a posteriori de cette affirmation.
+
+**Critères observables :**
+
+- Distinguer la loi nulle de la loi sous l'alternative.
+- Construire la région de rejet à partir du niveau.
+- Justifier le cas le plus défavorable du H0 composite.
+- Exprimer une conclusion contextualisée sans probabilité inversée.
+
+### Même question, deux calibrations {#L11-E03}
+
+<!-- ps1:solution id=L11-E03 -->
+
+```{r L11-E03}
+k <- 83
+n <- 120
+p0 <- 0.60
+p_hat <- k / n
+z <- (p_hat - p0) / sqrt(p0 * (1 - p0) / n)
+exact <- binom.test(k, n, p = p0, alternative = "greater")
+approx <- prop.test(k, n, p = p0, alternative = "greater", correct = FALSE)
+c(proportion = p_hat, ecart_cible = p_hat - p0,
+  p_exacte = exact$p.value, p_normale = pnorm(z, lower.tail = FALSE),
+  p_prop_test = approx$p.value)
+bilateral <- prop.test(k, n, p = p0, alternative = "two.sided", correct = FALSE)
+c(Z_carre = z^2, Pearson = unname(bilateral$statistic),
+  p_normale_bilaterale = 2 * pnorm(abs(z), lower.tail = FALSE),
+  p_Pearson_bilaterale = bilateral$p.value)
+stopifnot(isTRUE(all.equal(unname(bilateral$statistic), z^2)),
+          abs(approx$p.value - pnorm(z, lower.tail = FALSE)) < 1e-10)
+```
+
+$\widehat p_{\rm obs}=83/120\simeq0{,}6917$ : l'écart estimé à la cible est $0{,}0917$, soit $9{,}17$ points de pourcentage. La p-valeur exacte vaut environ $0{,}02391$; la p-valeur normale approchée vaut $0{,}02020$. Les deux tests rejettent au seuil de $5\,\%$. L'exact respecte la loi discrète; l'autre utilise une approximation continue. Les tests bilatéraux normal et Pearson sans correction coïncident parce que $Z^2$ a la loi $\chi^2_1$ lorsque $Z$ est normal standard; cela ne rend pas le test binomial exact identique.
+
+Sous le modèle Bernoulli i.i.d., les données soutiennent une probabilité supérieure à $0{,}60$. Elles ne garantissent pas la réussite de la prochaine demande, ni une amélioration causée par une intervention. La même probabilité et l'indépendance doivent être plausibles; des demandes répétées d'un même dossier pourraient violer le plan.
+
+**Critères observables :**
+
+- Fixer l'alternative dans les deux commandes.
+- Utiliser p0 dans l'erreur-type du test.
+- Comparer des procédures avec les mêmes options.
+- Séparer effet estimé, décision et prédiction individuelle.
+
+## Auto-correction
+
+Pour chaque exercice, comparer objets, hypothèses, méthode, calcul et conclusion. Nommer la première erreur qui explique les suivantes, puis refaire le passage concerné sans regarder. Garder distincts le travail autonome, les aides reçues et la correction.
+
+## Variantes, corrections à consulter après un nouvel essai
+
+### L11-V01 {#L11-V01}
+
+On teste $H_0:m\le8$ contre $m>8$, donc $H_0:\lambda\ge1/8$ contre $\lambda<1/8$. Une attente moyenne élevée produit une grande somme $S$. Sous la frontière, $S\sim\operatorname{Gamma}(n,\text{taux }1/8)$; la p-valeur est $P_{1/8}(S\ge s)$, queue droite. Pour les taux plus grands sous H0, la somme se déplace vers les petites valeurs, donc cette queue est plus faible.
+
+**Critères :**
+
+- Inverser le sens en passant de moyenne à taux.
+- Choisir la queue par la statistique observée.
+- Justifier la frontière du H0 composite.
+
+### L11-V02 {#L11-V02}
+
+Les 2000 lignes ne représentent pas 2000 unités indépendantes : les comptes répétés induisent une dépendance, éventuellement avec des réponses différentes dans le temps. Il faut les identifiants, les dates, la cible et le plan d'échantillonnage. Si la cible est une réponse unique au même instant, on peut constituer un échantillon d'unités uniques avec une règle justifiée; sinon il faut un modèle tenant compte des répétitions. Additionner les effectifs ne suffit pas à créer de l'information indépendante.
+
+**Critères :**
+
+- Identifier les unités répétées.
+- Ne pas proposer un nouvel effectif sans décrire le plan.
+- Relier méthode et cible de l'inférence.
+
+## Références et limites
+
+- `ctd05` (source non redistribuée), Exercice 1 Q7-Q9; Problème Q6-Q7 : Hypothèses, queues, p-valeur et relation avec les IC.
+- `st06_risque` (source non redistribuée), PDF pp.1-8, tableau p.2 et calculs pp.5-8 : Niveau, région de rejet et puissance; vocabulaire probabiliste clarifié.
+- `st06_tests` (source non redistribuée), PDF pp.2-3 : Identifier la loi utilisée pour chaque risque.
+- `st10_sondages` (source non redistribuée), PDF p.1 Temps3 Q1-Q3 : Test binomial et limites du regroupement d'échantillons.
+- Clarification externe consultée le 26/11/2026 : [Documentation officielle R : binom.test](https://stat.ethz.ch/R-manual/R-patched/library/stats/html/binom.test.html), Usage, Arguments, Details, Value. Syntaxe et garantie de couverture de l'intervalle de Clopper-Pearson.
+
+Les raisonnements de ce fichier sont des corrections originales dérivées. Une simulation illustre un résultat dans un modèle; elle n'en remplace pas la preuve. Les formules annoncées approchées conservent cette qualification dans les conclusions.
