@@ -9,7 +9,7 @@ Points observés : compris : 0, application : 2, autonome : 0, transfert : 0, a_
 Points P0 sans observation : 173 / 186.
 **Attention :** 9 min de déficit par rapport aux activités restantes. Ne pas ajouter de sondes; revoir la répartition avec le tuteur.
 
-**Prochaine activité :** L01 · R : environnement, données et vérification (30 min).
+**Prochaine activité :** L02 · Événements, conditionnement et prédiction (30 min).
 Mode : parcours normal.
 
 ## Erreurs à reprendre

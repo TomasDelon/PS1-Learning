@@ -1,0 +1,1 @@
+Cartes supplémentaires demandées par l’étudiant, non évaluées. Importer le TSV comme notes Basic, colonnes Recto/Verso, dans un sous-paquet PS1 L01. Le paquet original et son historique restent inchangés. L01-B04 existe déjà dans le paquet initial. Ne pas ajouter de temps au parcours pour ces cartes.

@@ -1,38 +1,19 @@
 {
   "version": "2.1.1",
   "active": {
-    "activity_id": "L01",
-    "lesson_id": "L01",
+    "activity_id": "L02",
+    "lesson_id": "L02",
     "kind": "stage",
-    "phase": "review",
-    "work_path": "prepared/L01/next-L01-v0001/L01_Travail.Rmd",
-    "correction_path": "prepared/L01/next-L01-v0001/L01_Corrige.Rmd",
+    "phase": "work",
+    "work_path": "prepared/L02/next-L02-v0001/L02_Travail.Rmd",
+    "correction_path": "prepared/L02/next-L02-v0001/L02_Corrige.Rmd",
     "task_ids": [
-      "L01-E01",
-      "L01-E02",
-      "L01-E03",
-      "L01-E04"
+      "L02-E01",
+      "L02-E02",
+      "L02-E03"
     ],
-    "started_at": "2026-11-27T13:52:11.182+00:00",
-    "correction_sha": "87ac30ba26019985fd8624a73b2adab8f39eb35b6e0a80fad64af0e4ddc542df",
-    "first_path": "first/L01/L01_Travail.Rmd",
-    "first_manifest": {
-      "schema_version": "1.0.0",
-      "kind": "first_attempt_snapshot",
-      "document": "L01_Travail.Rmd",
-      "image_references": [],
-      "files": [
-        {
-          "path": "L01_Travail.Rmd",
-          "size_bytes": 10711,
-          "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3"
-        }
-      ],
-      "learning_state_modified": false
-    },
-    "first_at": "2026-11-27T14:16:01.468+00:00",
-    "handoff_id": "attempt-l01",
-    "minutes": 30
+    "started_at": "2026-11-27T14:17:26.523+00:00",
+    "correction_sha": "a88c6faee88172e701f364dde928bd9cbdd9b90c440e3beb31b735a01392fd1e"
   },
   "budget": {
     "total": 1200,
@@ -46,12 +27,12 @@
     "overrun": 0
   },
   "next_stage": {
-    "id": "L01",
-    "title_fr": "R : environnement, données et vérification",
+    "id": "L02",
+    "title_fr": "Événements, conditionnement et prédiction",
     "minutes": 30,
     "mode": "parcours_complet",
-    "independent_point_evidence": 0,
-    "point_count": 15
+    "independent_point_evidence": 2,
+    "point_count": 14
   },
   "point_levels": {
     "kp.calculus_tools.check_critical_points": {

@@ -1,0 +1,11 @@
+#separator:tab
+#html:true
+#tags:PS1_L01_priorite
+Que renvoie x[-1] ?	Un nouveau vecteur sans son premier élément.
+Comment connaître la classe de x ?	<code>class(x)</code>
+Comment coder un vecteur logique en 0 et 1 ?	<code>as.integer(x)</code> : FALSE → 0, TRUE → 1; NA reste NA.
+Comment inspecter les noms, types et premières lignes de d ?	<code>names(d)</code>, <code>str(d)</code>, <code>head(d)</code>.
+Comment extraire une colonne et filtrer les lignes de d ?	<code>d$mesure</code> extrait la colonne; <code>d[condition, ]</code> sélectionne les lignes.
+Comment connaître les dimensions de d ?	<code>nrow(d)</code> : lignes; <code>ncol(d)</code> : colonnes.
+Que signifie x |> mean(na.rm=TRUE) ?	<code>mean(x, na.rm=TRUE)</code> : x devient le premier argument (R ≥ 4.1).
+Comment afficher la signature de mean ?	<code>args(mean)</code>

@@ -1,0 +1,151 @@
+{
+  "version": "2.1.1",
+  "activity_id": "L01",
+  "handoff_id": "attempt-l01",
+  "reviewer": "assistant",
+  "minutes": 30,
+  "observations": [
+    {
+      "task_id": "L01-E01",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Donner la longueur 4 et distinguer logique de numérique.",
+        "Identifier le test manquant sans le traiter comme faux.",
+        "Expliquer le recyclage et la différence entre donnée absente et valeur nulle."
+      ],
+      "eligible_points": {
+        "kp.r_recycling.check_vector_lengths": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "task_id": "L01-E02",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Énoncer les deux conditions du filtre.",
+        "Ne pas inventer l’effectif des vélos.",
+        "Limiter la conclusion aux observations conservées."
+      ],
+      "eligible_points": {
+        "kp.set_ops.translate_connectives": [
+          0
+        ]
+      }
+    },
+    {
+      "task_id": "L01-E03",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Importer le fichier livré et vérifier son schéma.",
+        "Compter les NA avant filtrage.",
+        "Produire un filtre sans indices NA et retrouver deux lignes.",
+        "Rapporter 13 ms avec l’effectif et la population exacte.",
+        "Vérifier na.rm dans l'aide de mean et expliquer son rôle dans le calcul demandé."
+      ],
+      "eligible_points": {
+        "kp.r_boolean.combine_filter_conditions": [
+          1,
+          2
+        ],
+        "kp.r_df.control_missing_and_types": [
+          0,
+          1,
+          2
+        ],
+        "kp.r_df.identify_observation_schema": [
+          0
+        ],
+        "kp.r_help.inspect_function_contract": [
+          4
+        ],
+        "kp.r_import.verify_imported_columns": [
+          0
+        ],
+        "kp.r_index.select_observations": [
+          2
+        ]
+      }
+    },
+    {
+      "task_id": "L01-E04",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Relire le fichier dans le script sans dépendre d’un objet de console.",
+        "Contrôler un effectif strictement positif.",
+        "Comparer les deux écritures et limiter la portée du contrôle."
+      ],
+      "eligible_points": {
+        "kp.r_console.execute_saved_commands": [
+          0
+        ],
+        "kp.r_functions.compose_pipeline": [
+          2
+        ],
+        "kp.r_rmd.execute_document_pipeline": [
+          0
+        ]
+      }
+    }
+  ],
+  "exit_criteria_verified": [],
+  "correction_reviewed": false,
+  "anki_reviewed": false,
+  "a4": [],
+  "adaptive_review": null,
+  "pilot_metrics": null,
+  "notes_fr": "Les deux instantanés sont identiques et les réponses aux quatre exercices sont vides. Aucun niveau, aucune confiance ni aide ne peuvent être déduits. Temps déclaré : 30 min. Les notions R sélectionnées par l’étudiant sont consignées séparément comme préférences de rappel, non comme erreurs."
+}
