@@ -1,0 +1,15 @@
+{
+  "automatic_image_grading": false,
+  "document": "L01_Corrige.Rmd",
+  "files": [
+    {
+      "path": "L01_Corrige.Rmd",
+      "sha256": "87ac30ba26019985fd8624a73b2adab8f39eb35b6e0a80fad64af0e4ddc542df",
+      "size_bytes": 7769
+    }
+  ],
+  "image_references": [],
+  "kind": "reference_snapshot",
+  "learning_state_modified": false,
+  "schema_version": "1.0.0"
+}

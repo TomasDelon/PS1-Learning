@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "first_attempt_snapshot",
+  "document": "L01_Travail.Rmd",
+  "image_references": [],
+  "files": [
+    {
+      "path": "L01_Travail.Rmd",
+      "size_bytes": 10711,
+      "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3"
+    }
+  ],
+  "learning_state_modified": false
+}

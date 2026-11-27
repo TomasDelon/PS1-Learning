@@ -1,0 +1,91 @@
+{
+  "attempt_signature": "4e69dda2442f934192f8c1ec93a10bb39ce6002bd036ab637e8809056b33dae5",
+  "automatic_image_grading": false,
+  "created_at": "2026-11-27T14:16:07.517566+00:00",
+  "files": [
+    {
+      "path": "snapshots/corrected/L01_Travail.Rmd",
+      "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3",
+      "size_bytes": 10711
+    },
+    {
+      "path": "snapshots/corrected/snapshot_manifest.json",
+      "sha256": "0c7e9537328c0cbdce7ff9fc2f08e9de084926885f236ff6f55cdfb7d827cf67",
+      "size_bytes": 368
+    },
+    {
+      "path": "snapshots/first/L01_Travail.Rmd",
+      "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3",
+      "size_bytes": 10711
+    },
+    {
+      "path": "snapshots/first/snapshot_manifest.json",
+      "sha256": "f48e52018fdb510f63d0cfea9ae2cd6d37dc10a295b6dc82d4a7efa61508ebdf",
+      "size_bytes": 364
+    },
+    {
+      "path": "snapshots/reference/L01_Corrige.Rmd",
+      "sha256": "87ac30ba26019985fd8624a73b2adab8f39eb35b6e0a80fad64af0e4ddc542df",
+      "size_bytes": 7769
+    },
+    {
+      "path": "snapshots/reference/snapshot_manifest.json",
+      "sha256": "08c8fef8559e49b31ecb890f730f299e004dfdb5d14e340ad6a174f5bd514068",
+      "size_bytes": 367
+    }
+  ],
+  "handoff_id": "attempt-l01",
+  "kind": "adaptive_handoff",
+  "learner_mastery_changed": false,
+  "lesson_id": "L01",
+  "reference_origin": "explicit_reference",
+  "schema_version": "2.0.0",
+  "snapshots": {
+    "corrected": {
+      "automatic_image_grading": false,
+      "document": "L01_Travail.Rmd",
+      "files": [
+        {
+          "path": "L01_Travail.Rmd",
+          "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3",
+          "size_bytes": 10711
+        }
+      ],
+      "image_references": [],
+      "kind": "corrected_snapshot",
+      "learning_state_modified": false,
+      "schema_version": "1.0.0"
+    },
+    "first": {
+      "automatic_image_grading": false,
+      "document": "L01_Travail.Rmd",
+      "files": [
+        {
+          "path": "L01_Travail.Rmd",
+          "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3",
+          "size_bytes": 10711
+        }
+      ],
+      "image_references": [],
+      "kind": "first_snapshot",
+      "learning_state_modified": false,
+      "schema_version": "1.0.0"
+    },
+    "reference": {
+      "automatic_image_grading": false,
+      "document": "L01_Corrige.Rmd",
+      "files": [
+        {
+          "path": "L01_Corrige.Rmd",
+          "sha256": "87ac30ba26019985fd8624a73b2adab8f39eb35b6e0a80fad64af0e4ddc542df",
+          "size_bytes": 7769
+        }
+      ],
+      "image_references": [],
+      "kind": "reference_snapshot",
+      "learning_state_modified": false,
+      "schema_version": "1.0.0"
+    }
+  },
+  "status": "AWAITING_REVIEW"
+}

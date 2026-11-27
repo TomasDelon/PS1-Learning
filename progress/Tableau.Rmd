@@ -4,7 +4,7 @@ lang: fr
 output: html_notebook
 ---
 
-**Temps déclaré : 69 / 1 200 min.** Restant : 1131 min; marge disponible : 0 min.
+**Temps déclaré : 99 / 1 200 min.** Restant : 1101 min; marge disponible : 0 min.
 Points observés : compris : 0, application : 2, autonome : 0, transfert : 0, a_revoir : 13.
 Points P0 sans observation : 173 / 186.
 **Attention :** 9 min de déficit par rapport aux activités restantes. Ne pas ajouter de sondes; revoir la répartition avec le tuteur.

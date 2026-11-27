@@ -1,0 +1,15 @@
+{
+  "automatic_image_grading": false,
+  "document": "L01_Travail.Rmd",
+  "files": [
+    {
+      "path": "L01_Travail.Rmd",
+      "sha256": "96da8561b9bc8ba4ce28fe781c3c3057e6094022a97a5a6173cfed2ca81801b3",
+      "size_bytes": 10711
+    }
+  ],
+  "image_references": [],
+  "kind": "corrected_snapshot",
+  "learning_state_modified": false,
+  "schema_version": "1.0.0"
+}

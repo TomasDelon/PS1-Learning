@@ -1,0 +1,183 @@
+---
+title: "L01 · R : environnement, données et vérification · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: L01
+  document_role: correction
+  content_status: authored_complete
+  minutes: 30
+  exercise_ids: ["L01-E01", "L01-E02", "L01-E03", "L01-E04"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### L01-E01 · Lire une sélection (3 min) {#L01-E01}
+
+<!-- ps1:solution id=L01-E01 -->
+
+La longueur est 4. `x > 3` est logique et vaut `FALSE, NA, TRUE, FALSE`.
+Le zéro est une mesure connue; NA est une absence d'information. Remplacer
+NA par zéro impute une valeur et peut modifier la moyenne. Le vecteur de
+longueur 2 est recyclé deux fois, donc sans avertissement. Il faut malgré tout
+justifier l'appariement : l'absence d'erreur informatique ne valide pas les données.
+
+**Critères observables :**
+
+- Donner la longueur 4 et distinguer logique de numérique.
+- Identifier le test manquant sans le traiter comme faux.
+- Expliquer le recyclage et la différence entre donnée absente et valeur nulle.
+
+### L01-E02 · Dire qui est décrit (3 min) {#L01-E02}
+
+<!-- ps1:solution id=L01-E02 -->
+
+On conserve les lignes dont le mode est « vélo » et dont la durée est
+renseignée. La moyenne calculée décrit les trajets en vélo observés avec durée
+connue. L'effectif doit être calculé, il ne vaut pas automatiquement 15.
+Sans hypothèse sur les durées manquantes et le mode de collecte, cette moyenne
+ne décrit pas nécessairement tous les trajets en vélo, ni une population générale.
+
+**Critères observables :**
+
+- Énoncer les deux conditions du filtre.
+- Ne pas inventer l’effectif des vélos.
+- Limiter la conclusion aux observations conservées.
+
+### L01-E03 · Importer et résumer les capteurs (11 min) {#L01-E03}
+
+<!-- ps1:solution id=L01-E03 -->
+
+Le fichier contient 8 mesures synthétiques, dont 2 manquantes.
+```{r L01-E03}
+d <- read.csv("data/mesures.csv", na.strings = "NA")
+names(d)
+str(d)
+nrow(d)
+sum(is.na(d$mesure))
+ok <- d$site == "B" & !is.na(d$mesure) & d$mesure > 0
+garde <- d[ok, ]
+effectif <- nrow(garde)
+moyenne <- mean(garde$mesure)
+c(effectif = effectif, moyenne = moyenne)
+stopifnot(effectif == 2, isTRUE(all.equal(moyenne, 13)))
+```
+Les deux mesures positives connues du site B ont une moyenne de 13 ms.
+Le zéro connu est exclu par le critère « strictement positive », pas parce
+qu'il serait manquant. L'aide confirme que `na.rm` vaut FALSE par défaut;
+l'omission de NA serait ici une autre stratégie, à annoncer explicitement.
+
+**Critères observables :**
+
+- Importer le fichier livré et vérifier son schéma.
+- Compter les NA avant filtrage.
+- Produire un filtre sans indices NA et retrouver deux lignes.
+- Rapporter 13 ms avec l’effectif et la population exacte.
+
+**Vérifications précises des étapes demandées :**
+
+- Vérifier na.rm dans l'aide de mean et expliquer son rôle dans le calcul demandé.
+
+### L01-E04 · Rejouer et vérifier (3 min) {#L01-E04}
+
+<!-- ps1:solution id=L01-E04 -->
+
+```{r L01-E04}
+d <- read.csv("data/mesures.csv", na.strings = "NA")
+ok <- d$site == "B" & !is.na(d$mesure) & d$mesure > 0
+stopifnot(sum(ok) > 0)
+m_pipe <- d$mesure[ok] |> mean()
+m_direct <- mean(d$mesure[ok])
+stopifnot(isTRUE(all.equal(m_pipe, m_direct)))
+m_pipe
+```
+Le script reconstruit ses données et son filtre. Le contrôle interdit ici
+une moyenne sur un ensemble vide. L'accord des deux écritures est un test
+sur ces données; il ne garantit ni la validité du capteur ni tous les formats CSV.
+
+**Critères observables :**
+
+- Relire le fichier dans le script sans dépendre d’un objet de console.
+- Contrôler un effectif strictement positif.
+- Comparer les deux écritures et limiter la portée du contrôle.
+
+### Complément personnalisé après D00
+
+Dans E03, une autre démarche est :
+
+```{r D00-reprise-filtre}
+d <- read.csv("data/mesures.csv", na.strings = "NA")
+b <- d[d$site == "B", ]
+ok_b <- !is.na(b$mesure) & b$mesure > 0
+stopifnot(length(ok_b) == nrow(b))
+garde_b <- b[ok_b, ]
+stopifnot(nrow(garde_b) == 2, mean(garde_b$mesure) == 13)
+```
+
+Le masque construit à partir de b doit indexer b, et non d. La fonction
+isTRUE teste une valeur logique unique; elle ne filtre pas un vecteur.
+La sélection combinée donne les mêmes lignes. L'effectif compte les
+observations sélectionnées, et non la longueur du tableau initial.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### L01-V01 (4 min) {#L01-V01}
+
+**Énoncé :** Sur 12 réservations, 9 statuts sont connus et 6 indiquent une présence. Quelle fréquence décrit les statuts connus ? Quelle quantité donnerait la division par 12 ? Rédiger sans décider arbitrairement du sort des trois absences d'information.
+
+**Correction :**
+
+La fréquence parmi les statuts connus est $6/9=2/3$. Le rapport $6/12=1/2$ est la proportion de présences documentées parmi toutes les réservations, pas la fréquence de présence réelle : les trois statuts manquants pourraient contenir d'autres présences. L'effectif et la restriction doivent figurer dans la conclusion.
+
+**Critères observables :**
+
+- Distinguer les dénominateurs 9 et 12.
+- Ne pas imputer des absences aux NA.
+- Nommer la population de chaque rapport.
+
+### L01-V02 (4 min) {#L01-V02}
+
+**Énoncé :** Après une sélection sur des températures strictement supérieures à 50 °C, aucune ligne ne reste. Un script affiche NaN. Un collègue propose de remplacer ce résultat par 0. Décider ce qu'il faut renvoyer et quel contrôle ajouter, puis justifier.
+
+**Correction :**
+
+Une moyenne sur zéro observation n'est pas définie; 0 °C serait une mesure inventée. Vérifier l'effectif avant le calcul, par exemple `stopifnot(sum(ok)>0)`, ou afficher explicitement « aucune observation répond au filtre ». Il faut distinguer absence d'observation et moyenne nulle.
+
+**Critères observables :**
+
+- Identifier une moyenne non définie.
+- Refuser la substitution par une valeur mesurée.
+- Proposer un contrôle de l’effectif et un message interprétable.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Préliminaire; Exercice 0 Q1-Q2; Exercice 2 Q1-Q3; Exercice 3; Exercice 4 Q1-Q3; Mise en œuvre Q1 : Importation, objets, sélection, aide, données manquantes.
+- `tp01` (source non redistribuée), Consignes; Introduction; Exercice 1 Q1-Q2 : Code expliqué, texte interprétatif et enchaînement reproductible.
+- `blocks_v2` (source non redistribuée), PS1-021, PS1-040, PS1-023, PS1-024, PS1-025, PS1-026, PS1-027, PS1-028, PS1-029, PS1-033, PS1-031, PS1-032, PS1-110, PS1-022 : Registre théorique audité; reformulation pédagogique, séparation des objets et hypothèses explicites.
+
