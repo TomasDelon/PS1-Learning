@@ -1,0 +1,99 @@
+{
+  "version": "2.1.1",
+  "project": "ps1-public-20h",
+  "active": {
+    "activity_id": "D00",
+    "lesson_id": "D00",
+    "kind": "stage",
+    "phase": "review",
+    "work_path": "activities/D00/D00_Travail.Rmd",
+    "correction_path": "activities/D00/D00_Corrige.Rmd",
+    "task_ids": [
+      "D00-E01",
+      "D00-E02",
+      "D00-E03",
+      "D00-E04",
+      "D00-E05",
+      "D00-E06",
+      "D00-E07",
+      "D00-E08"
+    ],
+    "started_at": "2026-11-27T12:39:59.746+00:00",
+    "correction_sha": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+    "first_path": "first/D00/D00_Travail.Rmd",
+    "first_manifest": {
+      "schema_version": "1.0.0",
+      "kind": "first_attempt_snapshot",
+      "document": "D00_Travail.Rmd",
+      "image_references": [
+        {
+          "target": "images/clipboard-1012749748.png",
+          "snapshot_path": "images/clipboard-1012749748.png"
+        },
+        {
+          "target": "images/clipboard-1157691210.png",
+          "snapshot_path": "images/clipboard-1157691210.png"
+        },
+        {
+          "target": "images/clipboard-1562335616.png",
+          "snapshot_path": "images/clipboard-1562335616.png"
+        },
+        {
+          "target": "images/clipboard-1879577160.png",
+          "snapshot_path": "images/clipboard-1879577160.png"
+        },
+        {
+          "target": "images/clipboard-3956268840.png",
+          "snapshot_path": "images/clipboard-3956268840.png"
+        },
+        {
+          "target": "images/clipboard-3962703552.png",
+          "snapshot_path": "images/clipboard-3962703552.png"
+        }
+      ],
+      "files": [
+        {
+          "path": "D00_Travail.Rmd",
+          "size_bytes": 9860,
+          "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73"
+        },
+        {
+          "path": "images/clipboard-1012749748.png",
+          "size_bytes": 51222,
+          "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e"
+        },
+        {
+          "path": "images/clipboard-1157691210.png",
+          "size_bytes": 43080,
+          "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1"
+        },
+        {
+          "path": "images/clipboard-1562335616.png",
+          "size_bytes": 84416,
+          "sha256": "59d83866371f8394aa93f08be298d332ef437d09adab9e0f1b19169d52be4ade"
+        },
+        {
+          "path": "images/clipboard-1879577160.png",
+          "size_bytes": 117753,
+          "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe"
+        },
+        {
+          "path": "images/clipboard-3956268840.png",
+          "size_bytes": 73739,
+          "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e"
+        },
+        {
+          "path": "images/clipboard-3962703552.png",
+          "size_bytes": 33586,
+          "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb"
+        }
+      ],
+      "learning_state_modified": false
+    },
+    "first_at": "2026-11-27T13:49:09.996+00:00",
+    "handoff_id": "attempt-d00",
+    "minutes": 69
+  },
+  "history": [],
+  "created_at": "2026-11-27T12:39:59.739+00:00"
+}

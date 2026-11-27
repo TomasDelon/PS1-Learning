@@ -1,0 +1,287 @@
+{
+  "lesson_id": "D00",
+  "minutes": 60,
+  "source_refs": [
+    {
+      "source_id": "ctd01",
+      "locator": "Exercices 0,2-4; Mise en œuvre Q1-Q4",
+      "use_fr": "Repères R, sélection et probabilités conditionnelles."
+    },
+    {
+      "source_id": "ctd02",
+      "locator": "Exercices 1-3",
+      "use_fr": "Variables, densités, transformations et moments."
+    },
+    {
+      "source_id": "ctd03",
+      "locator": "Exercice 1 Q0-Q3; Exercice 3 Q1-Q3",
+      "use_fr": "Moyennes, convergence et standardisation."
+    },
+    {
+      "source_id": "st01",
+      "locator": "PDF pp.6-13",
+      "use_fr": "Modélisation et distinction variable/loi."
+    },
+    {
+      "source_id": "blocks_v2",
+      "locator": "PS1-001 à PS1-004; PS1-017; PS1-041 à PS1-054; PS1-080 à PS1-094; PS1-102 à PS1-118",
+      "use_fr": "Questions originales de diagnostic sur les prérequis et notions fondamentales."
+    }
+  ],
+  "blocks": [],
+  "exercises": [
+    {
+      "id": "D00-E01",
+      "family": "diagnostic_calculus",
+      "minutes": 4,
+      "kind": "math",
+      "rubric_fr": [
+        "Utiliser une primitive et les bornes.",
+        "Appliquer la dérivation composée avec le signe correct.",
+        "Résoudre l’équation logarithmique et contrôler la positivité."
+      ],
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [
+        "calculus_tools",
+        "integral_tools",
+        "log_tools"
+      ],
+      "error_tags": [
+        "calculus",
+        "sign"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "D00-E02",
+      "family": "diagnostic_conditioning",
+      "minutes": 6,
+      "kind": "math",
+      "rubric_fr": [
+        "Nommer les événements.",
+        "Choisir 20 puis 6 comme dénominateurs.",
+        "Distinguer le sens des deux informations."
+      ],
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.conditional_direction",
+        "comp.ps1.conditional_probability"
+      ],
+      "topic_ids": [
+        "conditional_prob"
+      ],
+      "error_tags": [
+        "conditional_direction",
+        "denominator"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "D00-E03",
+      "family": "diagnostic_density_cdf",
+      "minutes": 6,
+      "kind": "math",
+      "rubric_fr": [
+        "Vérifier positivité et normalisation.",
+        "Distinguer probabilité ponctuelle et cumulée.",
+        "Donner la CDF hors du support.",
+        "Nommer les trois objets."
+      ],
+      "block_ids": [],
+      "competency_ids": [],
+      "topic_ids": [
+        "density",
+        "density_cdf",
+        "rv"
+      ],
+      "error_tags": [
+        "density_mass",
+        "support",
+        "object_type"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "D00-E04",
+      "family": "diagnostic_moments",
+      "minutes": 6,
+      "kind": "math",
+      "rubric_fr": [
+        "Calculer les moments avec leurs probabilités.",
+        "Utiliser E[X²] moins E[X]².",
+        "Mettre le coefficient au carré et ne pas ajouter la constante à la variance."
+      ],
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.transformed_moments"
+      ],
+      "topic_ids": [
+        "expectation",
+        "variance",
+        "variance_affine"
+      ],
+      "error_tags": [
+        "variance_linearity",
+        "coefficient_square"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "D00-E05",
+      "family": "diagnostic_independence",
+      "minutes": 5,
+      "kind": "proof",
+      "rubric_fr": [
+        "Donner des événements précis.",
+        "Comparer 1/3 et 1/9.",
+        "Si la covariance est traitée, ne pas inverser l’implication indépendance vers covariance nulle."
+      ],
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.covariance_expand",
+        "comp.ps1.association_explain"
+      ],
+      "topic_ids": [
+        "independent_rv",
+        "indep_cov"
+      ],
+      "error_tags": [
+        "converse",
+        "formal_language"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "D00-E06",
+      "family": "diagnostic_mean_clt",
+      "minutes": 6,
+      "kind": "math",
+      "rubric_fr": [
+        "Distinguer variance 1/4 et écart-type 1/2.",
+        "Standardiser avec racine de n.",
+        "Séparer l’hypothèse normale du TCL."
+      ],
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.clt_standardize",
+        "comp.ps1.variance_linear_combination"
+      ],
+      "topic_ids": [
+        "sample_mean",
+        "clt"
+      ],
+      "error_tags": [
+        "sqrt_n",
+        "exact_vs_approx"
+      ],
+      "has_r": false
+    },
+    {
+      "id": "D00-E07",
+      "family": "diagnostic_r_filter",
+      "minutes": 7,
+      "kind": "R",
+      "rubric_fr": [
+        "Créer un filtre logique sûr.",
+        "Retrouver deux mesures et une moyenne de 7.",
+        "Expliquer le rôle de is.na sans imputation arbitraire."
+      ],
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.r_filter",
+        "comp.ps1.r_data_clean",
+        "comp.ps1.r_code_explain"
+      ],
+      "topic_ids": [
+        "r_boolean",
+        "r_index",
+        "r_summaries"
+      ],
+      "error_tags": [
+        "missing_data",
+        "reproducibility"
+      ],
+      "has_r": true
+    },
+    {
+      "id": "D00-E08",
+      "family": "diagnostic_formal_writeup",
+      "minutes": 5,
+      "kind": "writing",
+      "rubric_fr": [
+        "Conserver une conclusion descriptive limitée aux 20 observations.",
+        "Refuser l’inférence causale sans justification.",
+        "Distinguer exécution du code et validité du modèle."
+      ],
+      "block_ids": [],
+      "competency_ids": [
+        "comp.ps1.statistical_writeup",
+        "comp.ps1.causal_distinction"
+      ],
+      "topic_ids": [],
+      "error_tags": [
+        "causality",
+        "generalization",
+        "formal_language"
+      ],
+      "has_r": false
+    }
+  ],
+  "variants": [
+    {
+      "id": "D00-V01",
+      "family": "diagnostic_changed_representation",
+      "for_exercise_ids": [
+        "D00-E02",
+        "D00-E08"
+      ],
+      "error_tags": [
+        "conditional_direction",
+        "formal_language"
+      ],
+      "prompt_md": "Une note affirme : « 80 % des alertes correspondent à un défaut, donc 80 % des défauts provoquent une alerte. » Sans inventer de données, expliquer si cette déduction est valide et proposer les marges nécessaires pour la vérifier.",
+      "correction_md": "La première quantité est $\\mathbb P(D\\mid A)$ et la seconde\n$\\mathbb P(A\\mid D)$. Leur numérateur conjoint est le même, mais leurs\ndénominateurs sont respectivement $\\mathbb P(A)$ et $\\mathbb P(D)$.\nIl faut connaître les nombres d'alertes, de défauts et d'alertes avec défaut.\nLa déduction n'est pas valide en général.",
+      "rubric_fr": [
+        "Traduire les deux phrases par des conditionnements.",
+        "Identifier les marges manquantes.",
+        "Ne pas fabriquer une probabilité inverse."
+      ],
+      "block_ids": [],
+      "minutes": 4,
+      "transfer": "Diagnostiquer une inférence dans du texte sans tableau numérique.",
+      "has_r": false
+    },
+    {
+      "id": "D00-V02",
+      "family": "diagnostic_dependence_mean",
+      "for_exercise_ids": [
+        "D00-E04",
+        "D00-E06"
+      ],
+      "error_tags": [
+        "independence",
+        "sqrt_n"
+      ],
+      "prompt_md": "Deux capteurs renvoient exactement le même bruit X, de moyenne 0 et variance 9. Leur moyenne a-t-elle une variance 9/2 ? Justifier sans appliquer automatiquement une formule d'échantillon indépendant.",
+      "correction_md": "La moyenne vaut $(X+X)/2=X$, donc sa variance vaut 9.\nLa formule $\\sigma^2/n$ exige l'annulation des covariances, ici absente :\n$\\operatorname{Cov}(X,X)=9$. Les deux nombres enregistrés ne constituent\npas deux observations indépendantes.",
+      "rubric_fr": [
+        "Simplifier la quantité aléatoire.",
+        "Identifier la dépendance et la covariance.",
+        "Refuser une formule hors de ses hypothèses."
+      ],
+      "block_ids": [],
+      "minutes": 4,
+      "transfer": "Reconnaître que deux mesures peuvent partager le même aléa, puis choisir un raisonnement direct.",
+      "has_r": false
+    }
+  ],
+  "verification": {
+    "status": "NOT_RUN",
+    "notes": [
+      "Source et mathématiques relues par l’auteur; voir authoring/probability_audit.md.",
+      "R et Rscript absents de ce runtime. Exécution R et RStudio à vérifier séparément par la coordination.",
+      "Aucun état personnel ni résultat de diagnostic créé."
+    ]
+  }
+}

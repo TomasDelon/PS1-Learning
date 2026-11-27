@@ -1,0 +1,273 @@
+{
+  "version": "2.1.1",
+  "activity_id": "D00",
+  "handoff_id": "attempt-d00",
+  "reviewer": "assistant",
+  "minutes": 69,
+  "observations": [
+    {
+      "task_id": "D00-E01",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Utiliser une primitive et les bornes.",
+        "Appliquer la dérivation composée avec le signe correct.",
+        "Résoudre l’équation logarithmique et contrôler la positivité."
+      ],
+      "eligible_points": {
+        "kp.calculus_tools.check_critical_points": [
+          1
+        ],
+        "kp.integral_tools.integrate_with_bounds": [
+          0
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E02",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Nommer les événements.",
+        "Choisir 20 puis 6 comme dénominateurs.",
+        "Distinguer le sens des deux informations."
+      ],
+      "eligible_points": {
+        "kp.conditional_prob.identify_conditioning_population": [
+          0,
+          1,
+          2
+        ],
+        "kp.conditional_prob.normalize_restricted_population": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E03",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Vérifier positivité et normalisation.",
+        "Distinguer probabilité ponctuelle et cumulée.",
+        "Donner la CDF hors du support.",
+        "Nommer les trois objets."
+      ],
+      "eligible_points": {
+        "kp.cdf.accumulate_probability": [
+          1,
+          2
+        ],
+        "kp.continuous_intervals.integrate_probability": [
+          0,
+          1
+        ],
+        "kp.density.verify_density_normalization": [
+          0
+        ],
+        "kp.density_cdf.integrate_distribution_function": [
+          0,
+          1,
+          2
+        ],
+        "kp.distribution.distinguish_law_variable": [
+          3
+        ],
+        "kp.rv.distinguish_variable_realization": [
+          3
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E04",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Calculer les moments avec leurs probabilités.",
+        "Utiliser E[X²] moins E[X]².",
+        "Mettre le coefficient au carré et ne pas ajouter la constante à la variance."
+      ],
+      "eligible_points": {
+        "kp.expectation.compute_from_distribution": [
+          0
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E05",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Donner des événements précis.",
+        "Comparer 1/3 et 1/9.",
+        "Si la covariance est traitée, ne pas inverser l’implication indépendance vers covariance nulle."
+      ],
+      "eligible_points": {
+        "kp.discrete_uniform.use_finite_equiprobability": [
+          0,
+          1
+        ],
+        "kp.indep_cov.reject_false_converse": [
+          2
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E06",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Distinguer variance 1/4 et écart-type 1/2.",
+        "Standardiser avec racine de n.",
+        "Séparer l’hypothèse normale du TCL."
+      ],
+      "eligible_points": {
+        "kp.clt.standardize_sample_mean": [
+          0,
+          1
+        ],
+        "kp.normal_law.distinguish_variance_sd": [
+          0
+        ],
+        "kp.sample_mean_moments.scale_average_variance": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E07",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Créer un filtre logique sûr.",
+        "Retrouver deux mesures et une moyenne de 7.",
+        "Expliquer le rôle de is.na sans imputation arbitraire."
+      ],
+      "eligible_points": {
+        "kp.r_boolean.combine_filter_conditions": [
+          0,
+          2
+        ],
+        "kp.r_index.select_observations": [
+          0
+        ]
+      }
+    },
+    {
+      "task_id": "D00-E08",
+      "outcome": "unassessed",
+      "confidence": null,
+      "assistance": "unknown",
+      "criteria_passed": [],
+      "point_ids": [],
+      "novel": false,
+      "method_choice": false,
+      "changed_context": false,
+      "explanation_verified": false,
+      "error_type": "unknown",
+      "error_tags": [],
+      "corrected_status": "not_evaluated",
+      "observation_fr": "",
+      "evidence": [],
+      "rubric_fr": [
+        "Conserver une conclusion descriptive limitée aux 20 observations.",
+        "Refuser l’inférence causale sans justification.",
+        "Distinguer exécution du code et validité du modèle."
+      ],
+      "eligible_points": {}
+    }
+  ],
+  "exit_criteria_verified": [],
+  "correction_reviewed": false,
+  "anki_reviewed": false,
+  "a4": [],
+  "adaptive_review": null,
+  "pilot_metrics": null,
+  "notes_fr": "Ne renseigner que les critères effectivement relus; consulter les pièces figées. Aucune preuve par défaut."
+}

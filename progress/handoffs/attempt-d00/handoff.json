@@ -1,0 +1,261 @@
+{
+  "attempt_signature": "673a48feab002a1b3e0de2d3f79fbf0bf313262b71e2077cff7c872d1a90cbcc",
+  "automatic_image_grading": false,
+  "created_at": "2026-11-27T13:49:29.354814+00:00",
+  "files": [
+    {
+      "path": "snapshots/corrected/D00_Travail.Rmd",
+      "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+      "size_bytes": 9860
+    },
+    {
+      "path": "snapshots/corrected/images/clipboard-1012749748.png",
+      "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e",
+      "size_bytes": 51222
+    },
+    {
+      "path": "snapshots/corrected/images/clipboard-1157691210.png",
+      "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1",
+      "size_bytes": 43080
+    },
+    {
+      "path": "snapshots/corrected/images/clipboard-1562335616.png",
+      "sha256": "59d83866371f8394aa93f08be298d332ef437d09adab9e0f1b19169d52be4ade",
+      "size_bytes": 84416
+    },
+    {
+      "path": "snapshots/corrected/images/clipboard-1879577160.png",
+      "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe",
+      "size_bytes": 117753
+    },
+    {
+      "path": "snapshots/corrected/images/clipboard-3956268840.png",
+      "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e",
+      "size_bytes": 73739
+    },
+    {
+      "path": "snapshots/corrected/images/clipboard-3962703552.png",
+      "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb",
+      "size_bytes": 33586
+    },
+    {
+      "path": "snapshots/corrected/snapshot_manifest.json",
+      "sha256": "efde6218ab3344092ff7431ceed42ba44dc027362f9c15c94693066b541af1a3",
+      "size_bytes": 2128
+    },
+    {
+      "path": "snapshots/first/D00_Travail.Rmd",
+      "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+      "size_bytes": 9860
+    },
+    {
+      "path": "snapshots/first/images/clipboard-1012749748.png",
+      "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e",
+      "size_bytes": 51222
+    },
+    {
+      "path": "snapshots/first/images/clipboard-1157691210.png",
+      "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1",
+      "size_bytes": 43080
+    },
+    {
+      "path": "snapshots/first/images/clipboard-1562335616.png",
+      "sha256": "59d83866371f8394aa93f08be298d332ef437d09adab9e0f1b19169d52be4ade",
+      "size_bytes": 84416
+    },
+    {
+      "path": "snapshots/first/images/clipboard-1879577160.png",
+      "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe",
+      "size_bytes": 117753
+    },
+    {
+      "path": "snapshots/first/images/clipboard-3956268840.png",
+      "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e",
+      "size_bytes": 73739
+    },
+    {
+      "path": "snapshots/first/images/clipboard-3962703552.png",
+      "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb",
+      "size_bytes": 33586
+    },
+    {
+      "path": "snapshots/first/snapshot_manifest.json",
+      "sha256": "f3192f2de538e9aa5b2f29f4c0f25ec983ab5643922e54a48f3177676f6f508f",
+      "size_bytes": 2124
+    },
+    {
+      "path": "snapshots/reference/D00_Corrige.Rmd",
+      "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+      "size_bytes": 8500
+    },
+    {
+      "path": "snapshots/reference/snapshot_manifest.json",
+      "sha256": "0d9ad115d1eb489cd9e4ec553b1aa9f446df3a06ee5020db8220d1f3b5bfcf27",
+      "size_bytes": 367
+    }
+  ],
+  "handoff_id": "attempt-d00",
+  "kind": "adaptive_handoff",
+  "learner_mastery_changed": false,
+  "lesson_id": "D00",
+  "reference_origin": "explicit_reference",
+  "schema_version": "2.0.0",
+  "snapshots": {
+    "corrected": {
+      "automatic_image_grading": false,
+      "document": "D00_Travail.Rmd",
+      "files": [
+        {
+          "path": "D00_Travail.Rmd",
+          "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+          "size_bytes": 9860
+        },
+        {
+          "path": "images/clipboard-1012749748.png",
+          "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e",
+          "size_bytes": 51222
+        },
+        {
+          "path": "images/clipboard-1157691210.png",
+          "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1",
+          "size_bytes": 43080
+        },
+        {
+          "path": "images/clipboard-1562335616.png",
+          "sha256": "59d83866371f8394aa93f08be298d332ef437d09adab9e0f1b19169d52be4ade",
+          "size_bytes": 84416
+        },
+        {
+          "path": "images/clipboard-1879577160.png",
+          "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe",
+          "size_bytes": 117753
+        },
+        {
+          "path": "images/clipboard-3956268840.png",
+          "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e",
+          "size_bytes": 73739
+        },
+        {
+          "path": "images/clipboard-3962703552.png",
+          "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb",
+          "size_bytes": 33586
+        }
+      ],
+      "image_references": [
+        {
+          "snapshot_path": "images/clipboard-1012749748.png",
+          "target": "images/clipboard-1012749748.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-1157691210.png",
+          "target": "images/clipboard-1157691210.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-1562335616.png",
+          "target": "images/clipboard-1562335616.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-1879577160.png",
+          "target": "images/clipboard-1879577160.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-3956268840.png",
+          "target": "images/clipboard-3956268840.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-3962703552.png",
+          "target": "images/clipboard-3962703552.png"
+        }
+      ],
+      "kind": "corrected_snapshot",
+      "learning_state_modified": false,
+      "schema_version": "1.0.0"
+    },
+    "first": {
+      "automatic_image_grading": false,
+      "document": "D00_Travail.Rmd",
+      "files": [
+        {
+          "path": "D00_Travail.Rmd",
+          "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+          "size_bytes": 9860
+        },
+        {
+          "path": "images/clipboard-1012749748.png",
+          "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e",
+          "size_bytes": 51222
+        },
+        {
+          "path": "images/clipboard-1157691210.png",
+          "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1",
+          "size_bytes": 43080
+        },
+        {
+          "path": "images/clipboard-1562335616.png",
+          "sha256": "59d83866371f8394aa93f08be298d332ef437d09adab9e0f1b19169d52be4ade",
+          "size_bytes": 84416
+        },
+        {
+          "path": "images/clipboard-1879577160.png",
+          "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe",
+          "size_bytes": 117753
+        },
+        {
+          "path": "images/clipboard-3956268840.png",
+          "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e",
+          "size_bytes": 73739
+        },
+        {
+          "path": "images/clipboard-3962703552.png",
+          "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb",
+          "size_bytes": 33586
+        }
+      ],
+      "image_references": [
+        {
+          "snapshot_path": "images/clipboard-1012749748.png",
+          "target": "images/clipboard-1012749748.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-1157691210.png",
+          "target": "images/clipboard-1157691210.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-1562335616.png",
+          "target": "images/clipboard-1562335616.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-1879577160.png",
+          "target": "images/clipboard-1879577160.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-3956268840.png",
+          "target": "images/clipboard-3956268840.png"
+        },
+        {
+          "snapshot_path": "images/clipboard-3962703552.png",
+          "target": "images/clipboard-3962703552.png"
+        }
+      ],
+      "kind": "first_snapshot",
+      "learning_state_modified": false,
+      "schema_version": "1.0.0"
+    },
+    "reference": {
+      "automatic_image_grading": false,
+      "document": "D00_Corrige.Rmd",
+      "files": [
+        {
+          "path": "D00_Corrige.Rmd",
+          "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+          "size_bytes": 8500
+        }
+      ],
+      "image_references": [],
+      "kind": "reference_snapshot",
+      "learning_state_modified": false,
+      "schema_version": "1.0.0"
+    }
+  },
+  "status": "AWAITING_REVIEW"
+}

@@ -1,0 +1,219 @@
+---
+title: "D00 · Diagnostic de départ · Corrigé"
+lang: fr
+output: html_notebook
+editor_options:
+  chunk_output_type: inline
+  markdown:
+    wrap: 80
+ps1:
+  template_version: "1.0.0"
+  lesson_id: D00
+  document_role: correction
+  content_status: authored_complete
+  minutes: 60
+  exercise_ids: ["D00-E01", "D00-E02", "D00-E03", "D00-E04", "D00-E05", "D00-E06", "D00-E07", "D00-E08"]
+  block_ids: []
+  learner_state: not_created
+---
+Consulter après une première tentative enregistrée. Les critères portent sur
+les objets, les hypothèses, la justification et la conclusion, pas sur une
+formulation à recopier mot pour mot. Ce corrigé ne contient aucune évaluation
+personnelle déjà réalisée.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=TRUE, message=FALSE)
+```
+
+### D00-E01 · Calcul préalable (4 min) {#D00-E01}
+
+<!-- ps1:solution id=D00-E01 -->
+
+Une primitive de $3x^2$ est $x^3$, donc l'intégrale vaut 1.
+La dérivée est $2e^{-2t}$. L'équation donne $e^{-2t}=1/2$,
+puis $-2t=-\log2$ et $t=\log2/2>0$.
+
+**Critères observables :**
+
+- Utiliser une primitive et les bornes.
+- Appliquer la dérivation composée avec le signe correct.
+- Résoudre l’équation logarithmique et contrôler la positivité.
+
+### D00-E02 · Conditionner sur la bonne population (6 min) {#D00-E02}
+
+<!-- ps1:solution id=D00-E02 -->
+
+Avec $E=$ « défaut » et $F=$ « atelier A »,
+$\mathbb P(E\mid F)=4/20=1/5$ tandis que
+$\mathbb P(F\mid E)=4/6=2/3$.
+Le premier univers conditionné contient les 20 pièces de A; le second,
+les 6 pièces défectueuses. L'intersection de 4 pièces est commune aux deux.
+
+**Critères observables :**
+
+- Nommer les événements.
+- Choisir 20 puis 6 comme dénominateurs.
+- Distinguer le sens des deux informations.
+
+### D00-E03 · Variable, loi et densité (6 min) {#D00-E03}
+
+<!-- ps1:solution id=D00-E03 -->
+
+f est mesurable et positive, et $\int_0^12x\,dx=1$.
+La loi a une densité, donc $\mathbb P(X=1/2)=0$; la probabilité cumulée vaut
+$\int_0^{1/2}2x\,dx=1/4$. La CDF vaut 0 pour $t<0$, $t^2$ sur $[0,1]$
+et 1 pour $t>1$. X est une variable aléatoire, x une réalisation numérique
+et f une fonction représentant la loi par intégration.
+
+**Critères observables :**
+
+- Vérifier positivité et normalisation.
+- Distinguer probabilité ponctuelle et cumulée.
+- Donner la CDF hors du support.
+- Nommer les trois objets.
+
+### D00-E04 · Espérance et transformation (6 min) {#D00-E04}
+
+<!-- ps1:solution id=D00-E04 -->
+
+X est bornée. $\mathbb E[X]=-1/4+9/4=2$ et
+$\mathbb E[X^2]=1/4+27/4=7$. König-Huygens donne
+$\mathbb V(X)=7-2^2=3$. La transformation affine de coefficient -1 donne
+$\mathbb V(2-X)=(-1)^2\,3=3$. La variance n'est pas linéaire.
+
+**Critères observables :**
+
+- Calculer les moments avec leurs probabilités.
+- Utiliser E[X²] moins E[X]².
+- Mettre le coefficient au carré et ne pas ajouter la constante à la variance.
+
+### D00-E05 · Indépendance et carré (5 min) {#D00-E05}
+
+<!-- ps1:solution id=D00-E05 -->
+
+Les événements $\{X=0\}$ et $\{Y=0\}$ sont identiques et de probabilité
+1/3. L'intersection vaut 1/3, alors que le produit des probabilités vaut 1/9 :
+l'indépendance est fausse. De plus $\mathbb E[X]=\mathbb E[X^3]=0$,
+$\mathbb E[Y]=2/3$, donc la covariance vaut 0.
+Une covariance nulle ne suffit pas à prouver l'indépendance.
+
+**Critères observables :**
+
+- Donner des événements précis.
+- Comparer 1/3 et 1/9.
+- Si la covariance est traitée, ne pas inverser l’implication indépendance vers covariance nulle.
+
+### D00-E06 · Moyenne et fluctuation (6 min) {#D00-E06}
+
+<!-- ps1:solution id=D00-E06 -->
+
+La moyenne a espérance 10, variance $16/64=1/4$ et écart-type 1/2.
+La variable standardisée est
+$Z=8(\overline X_{64}-10)/4=2(\overline X_{64}-10)$.
+Si les variables parentes sont normales indépendantes, Z suit exactement
+$\mathcal N(0,1)$. Sinon, sous les hypothèses i.i.d. et variance finie non nulle,
+le TCL donne une convergence en loi lorsque n tend vers l'infini, pas une
+égalité exacte à n=64.
+
+**Critères observables :**
+
+- Distinguer variance 1/4 et écart-type 1/2.
+- Standardiser avec racine de n.
+- Séparer l’hypothèse normale du TCL.
+
+### D00-E07 · Lire et corriger du R (7 min) {#D00-E07}
+
+<!-- ps1:solution id=D00-E07 -->
+
+```{r D00-E07}
+groupe <- c("A","B","B","A","B")
+x <- c(2, NA, 4, 8, 10)
+ok <- groupe == "B" & !is.na(x)
+c(effectif=sum(ok), moyenne=mean(x[ok]))
+stopifnot(sum(ok)==2, mean(x[ok])==7)
+```
+Les deux mesures connues du groupe B ont une moyenne de 7.
+`is.na` teste l'absence d'information; une comparaison ordinaire à NA renvoie
+elle-même un résultat manquant. Le filtre doit être construit sans indices NA.
+
+**Critères observables :**
+
+- Créer un filtre logique sûr.
+- Retrouver deux mesures et une moyenne de 7.
+- Expliquer le rôle de is.na sans imputation arbitraire.
+
+### D00-E08 · Réparer une conclusion (5 min) {#D00-E08}
+
+<!-- ps1:solution id=D00-E08 -->
+
+« Dans les 20 observations analysées, la fréquence de réussite est plus
+élevée pour A que pour B, selon le critère utilisé. Cette association observée
+n'établit pas une causalité; il faudrait connaître le plan de collecte et
+examiner les facteurs susceptibles d'expliquer l'écart. L'exécution du programme
+vérifie le calcul implémenté sur ces données, sans prouver que le modèle est vrai
+ni qu'il prédit correctement de nouveaux objets. »
+
+**Critères observables :**
+
+- Conserver une conclusion descriptive limitée aux 20 observations.
+- Refuser l’inférence causale sans justification.
+- Distinguer exécution du code et validité du modèle.
+
+## Reprises ciblées à sélectionner ultérieurement
+
+Chaque reprise remplace un créneau existant. Lire son énoncé, produire une
+nouvelle réponse sans consulter la correction, puis comparer avec les critères.
+Une simple variation numérique n’est pas considérée comme un transfert.
+
+### D00-V01 (4 min) {#D00-V01}
+
+**Énoncé :** Une note affirme : « 80 % des alertes correspondent à un défaut, donc 80 % des défauts provoquent une alerte. » Sans inventer de données, expliquer si cette déduction est valide et proposer les marges nécessaires pour la vérifier.
+
+**Correction :**
+
+La première quantité est $\mathbb P(D\mid A)$ et la seconde
+$\mathbb P(A\mid D)$. Leur numérateur conjoint est le même, mais leurs
+dénominateurs sont respectivement $\mathbb P(A)$ et $\mathbb P(D)$.
+Il faut connaître les nombres d'alertes, de défauts et d'alertes avec défaut.
+La déduction n'est pas valide en général.
+
+**Critères observables :**
+
+- Traduire les deux phrases par des conditionnements.
+- Identifier les marges manquantes.
+- Ne pas fabriquer une probabilité inverse.
+
+### D00-V02 (4 min) {#D00-V02}
+
+**Énoncé :** Deux capteurs renvoient exactement le même bruit X, de moyenne 0 et variance 9. Leur moyenne a-t-elle une variance 9/2 ? Justifier sans appliquer automatiquement une formule d'échantillon indépendant.
+
+**Correction :**
+
+La moyenne vaut $(X+X)/2=X$, donc sa variance vaut 9.
+La formule $\sigma^2/n$ exige l'annulation des covariances, ici absente :
+$\operatorname{Cov}(X,X)=9$. Les deux nombres enregistrés ne constituent
+pas deux observations indépendantes.
+
+**Critères observables :**
+
+- Simplifier la quantité aléatoire.
+- Identifier la dépendance et la covariance.
+- Refuser une formule hors de ses hypothèses.
+
+## Bilan de correction
+
+Nommer une erreur précise, retrouver le bloc utile et formuler la correction
+avec ses hypothèses. Ne pas attribuer de maîtrise à partir de la seule lecture.
+La prochaine vérification doit demander une décision sans annoncer la méthode.
+
+## Références et provenance
+
+Exercices et corrigés pédagogiques originaux, dérivés des sources ci-dessous.
+Ils ne constituent pas des corrigés officiels. Les originaux restent inchangés.
+
+- `ctd01` (source non redistribuée), Exercices 0,2-4; Mise en œuvre Q1-Q4 : Repères R, sélection et probabilités conditionnelles.
+- `ctd02` (source non redistribuée), Exercices 1-3 : Variables, densités, transformations et moments.
+- `ctd03` (source non redistribuée), Exercice 1 Q0-Q3; Exercice 3 Q1-Q3 : Moyennes, convergence et standardisation.
+- `st01` (source non redistribuée), PDF pp.6-13 : Modélisation et distinction variable/loi.
+- `blocks_v2` (source non redistribuée), PS1-001 à PS1-004; PS1-017; PS1-041 à PS1-054; PS1-080 à PS1-094; PS1-102 à PS1-118 : Questions originales de diagnostic sur les prérequis et notions fondamentales.
+
