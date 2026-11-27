@@ -1,0 +1,297 @@
+{
+  "automatic_grading": false,
+  "payload_sha256": "342dad41a1737df7770ca1c11b1e37d6afff31640a5cac1f2831b79c7755f8bb",
+  "received_at": "2026-11-27T13:52:10.949857+00:00",
+  "review": {
+    "findings": [
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "variance_linearity",
+          "coefficient_square"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E04 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-1879577160.png",
+            "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe",
+            "snapshot": "first",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E04 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-1879577160.png",
+            "sha256": "74654a5f9d78311e6c2d757df88de7773322628e8d6ce31aff8d281f8ce50cbe",
+            "snapshot": "corrected",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E04 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E04",
+        "finding_id": "finding-1",
+        "observation_fr": "Espérance erronée (50 %); la valeur est 2. Calcul de variance incomplet et transformation affine non traitée. Reprendre moments pondérés et carré centré.",
+        "status": "confirmed"
+      },
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "calculus",
+          "sign"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E01 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-1157691210.png",
+            "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1",
+            "snapshot": "first",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E01 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-1157691210.png",
+            "sha256": "7ca23fd8e2d13bf58a2a345d53e8dfb815ee6a1dfc14f6deb0209345327a99f1",
+            "snapshot": "corrected",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E01 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E01",
+        "finding_id": "finding-2",
+        "observation_fr": "Intégrale correcte. Dérivée absente; domaine t<0 annoncé alors que la solution positive ln(2)/2 est hors de ce domaine. Le logarithme exige un argument positif, pas -2t positif.",
+        "status": "confirmed"
+      },
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "support",
+          "object_type"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E03 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-3956268840.png",
+            "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e",
+            "snapshot": "first",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E03 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-3956268840.png",
+            "sha256": "eead6cedadc57594de68b40dac121f114be153849142854314bccbe905c0368e",
+            "snapshot": "corrected",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E03 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E03",
+        "finding_id": "finding-3",
+        "observation_fr": "Positivité, normalisation, masse ponctuelle et probabilité cumulée correctes. CDF inconnue; distinction X et x imprécise.",
+        "status": "confirmed"
+      },
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "converse",
+          "formal_language"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E05 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-3962703552.png",
+            "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb",
+            "snapshot": "first",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E05 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-3962703552.png",
+            "sha256": "d02b714882d7146866bde9c33959666469f0987ebf2f3eb08aa7d4656988bdbb",
+            "snapshot": "corrected",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E05 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E05",
+        "finding_id": "finding-4",
+        "observation_fr": "Bonne intuition de dépendance; P(Y=1)=2/3 et P(Y=1|X=1)=1. Comparer explicitement ces probabilités suffit. Covariance non calculée.",
+        "status": "confirmed"
+      },
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "sqrt_n",
+          "exact_vs_approx"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E06 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-1012749748.png",
+            "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e",
+            "snapshot": "first",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E06 : réponse manuscrite",
+            "medium": "image",
+            "path": "images/clipboard-1012749748.png",
+            "sha256": "dc1f2bd65df49202dd29c803f4dae2b92da35c8682d17cd8636f65bd4d0e374e",
+            "snapshot": "corrected",
+            "visually_reviewed": true
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E06 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E06",
+        "finding_id": "finding-5",
+        "observation_fr": "Espérance 10 correcte; variance de la moyenne confondue avec 16, écart-type et standardisation absents. Intuition asymptotique présente mais hypothèse normale mal formulée.",
+        "status": "confirmed"
+      },
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "missing_data"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E07 : section correspondante",
+            "medium": "text",
+            "path": "D00_Travail.Rmd",
+            "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+            "snapshot": "first",
+            "visually_reviewed": false
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E07 : section correspondante",
+            "medium": "text",
+            "path": "D00_Travail.Rmd",
+            "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+            "snapshot": "corrected",
+            "visually_reviewed": false
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E07 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E07",
+        "finding_id": "finding-6",
+        "observation_fr": "Bonne première sélection xB, détection des NA et effectif. isTRUE ne vectorise pas; masque de xB appliqué à x au lieu de xB. Moyenne non obtenue. Expliquer aussi pourquoi x==NA produit NA.",
+        "status": "confirmed"
+      },
+      {
+        "corrected_status": "still_present",
+        "error_tags": [
+          "causality",
+          "generalization",
+          "formal_language"
+        ],
+        "evidence": [
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E08 : section correspondante",
+            "medium": "text",
+            "path": "D00_Travail.Rmd",
+            "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+            "snapshot": "first",
+            "visually_reviewed": false
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E08 : section correspondante",
+            "medium": "text",
+            "path": "D00_Travail.Rmd",
+            "sha256": "cdaf730c306cd72b88d130797e8b9e634f099b0fd02e9919f3624108ec590e73",
+            "snapshot": "corrected",
+            "visually_reviewed": false
+          },
+          {
+            "certainty": "confirmed",
+            "locator_fr": "D00-E08 : section correspondante",
+            "medium": "text",
+            "path": "D00_Corrige.Rmd",
+            "sha256": "5971aa29be27804ec0d4a13e945e2f9dd8da6b743716b6e130f9ec79fcedb200",
+            "snapshot": "reference",
+            "visually_reviewed": false
+          }
+        ],
+        "exercise_id": "D00-E08",
+        "finding_id": "finding-7",
+        "observation_fr": "Distinction association/causalité reconnue; conclusion descriptive limitée aux 20 observations et distinction entre exécution et validité du modèle absentes.",
+        "status": "confirmed"
+      }
+    ],
+    "handoff_id": "attempt-d00",
+    "introduced_lesson_ids": [
+      "D00"
+    ],
+    "resume_after_lesson_id": "D00",
+    "review_id": "review-d00",
+    "reviewer": "assistant",
+    "schema_version": "2.0.0"
+  }
+}

@@ -5,19 +5,41 @@ output: html_notebook
 ---
 
 **Temps déclaré : 69 / 1 200 min.** Restant : 1131 min; marge disponible : 0 min.
-Points observés : compris : 0, application : 0, autonome : 0, transfert : 0, a_revoir : 0.
-Points P0 sans observation : 186 / 186.
+Points observés : compris : 0, application : 2, autonome : 0, transfert : 0, a_revoir : 13.
+Points P0 sans observation : 173 / 186.
 **Attention :** 9 min de déficit par rapport aux activités restantes. Ne pas ajouter de sondes; revoir la répartition avec le tuteur.
 
-**Prochaine activité :** D00 · Diagnostic de départ (60 min).
+**Prochaine activité :** L01 · R : environnement, données et vérification (30 min).
 Mode : parcours normal.
 
 ## Erreurs à reprendre
+- D00-E04 : Espérance erronée (50 %); la valeur est 2. Calcul de variance incomplet et transformation affine non traitée. Reprendre moments pondérés et carré centré.
+- D00-E01 : Intégrale correcte. Dérivée absente; domaine t<0 annoncé alors que la solution positive ln(2)/2 est hors de ce domaine. Le logarithme exige un argument positif, pas -2t positif.
+- D00-E03 : Positivité, normalisation, masse ponctuelle et probabilité cumulée correctes. CDF inconnue; distinction X et x imprécise.
+- D00-E05 : Bonne intuition de dépendance; P(Y=1)=2/3 et P(Y=1|X=1)=1. Comparer explicitement ces probabilités suffit. Covariance non calculée.
+- D00-E06 : Espérance 10 correcte; variance de la moyenne confondue avec 16, écart-type et standardisation absents. Intuition asymptotique présente mais hypothèse normale mal formulée.
+- D00-E07 : Bonne première sélection xB, détection des NA et effectif. isTRUE ne vectorise pas; masque de xB appliqué à x au lieu de xB. Moyenne non obtenue. Expliquer aussi pourquoi x==NA produit NA.
+- D00-E08 : Distinction association/causalité reconnue; conclusion descriptive limitée aux 20 observations et distinction entre exécution et validité du modèle absentes.
 
 ## Sondes facultatives (aucun corrigé ici)
 
 ## Anki : priorité aux cartes dues, puis aux cartes ciblées
+- L04-B09 · PS1::Parcours 20 h::L04
+- L04-B13 · PS1::Parcours 20 h::L04
+- L03-B01 · PS1::Parcours 20 h::L03
+- L03-B02 · PS1::Parcours 20 h::L03
+- L03-B06 · PS1::Parcours 20 h::L03
+- L04-B06 · PS1::Parcours 20 h::L04
+- L05-B05 · PS1::Parcours 20 h::L05
+- L06-B03 · PS1::Parcours 20 h::L06
 
 ## A4 : candidats à sélectionner, pas à recopier tous
+- [L04-B02](../lessons/L04/L04_Travail.Rmd#L04-B02) · Identité de König-Huygens (reconstruct). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
+- [L04-B03](../lessons/L04/L04_Travail.Rmd#L04-B03) · Variance et écart-type après changement d’échelle (memory). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
+- [L06-B03](../lessons/L06/L06_Travail.Rmd#L06-B03) · Moments de la moyenne (memory). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
+- [L01-B04](../lessons/L01/L01_Travail.Rmd#L01-B04) · Filtrer, compter et résumer sans confondre NA et zéro (apply). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
+- [L06-B10](../lessons/L06/L06_Travail.Rmd#L06-B10) · Théorème central limite (memory). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
+- [L01-B02](../lessons/L01/L01_Travail.Rmd#L01-B02) · Objets, vecteurs et opérations (reference). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
+- [L02-B01](../lessons/L02/L02_Travail.Rmd#L02-B01) · Modèle probabiliste et événements (reference). Sélectionner seulement si une consultation réduit une erreur ou un temps de reconstruction; garder les hypothèses.
 
 Le graphe v2 conserve son propre suivi; importer `graph_progress.json` dans une vue vierge pour reporter les activités relues (les minutes des sondes sont rattachées à leur leçon). Exporter d’abord tout suivi manuel à conserver. Aucune compétence globale n’est déduite des points.

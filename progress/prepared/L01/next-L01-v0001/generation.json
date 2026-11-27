@@ -1,0 +1,56 @@
+{
+  "allocation": {
+    "added_minutes": 0,
+    "inserted_review_minutes": 0,
+    "original_review_minutes": 6,
+    "policy_source": "unknown_allocation_all_protected",
+    "protected_current_review_minutes": 6,
+    "remaining_discretionary_minutes": 0,
+    "remaining_review_minutes": 6,
+    "replaceable_review_minutes": 0,
+    "total_lesson_minutes": 30
+  },
+  "correction_document": "L01_Corrige.Rmd",
+  "created_at": "2026-11-27T13:52:11.181483+00:00",
+  "files": [
+    {
+      "path": "L01_Corrige.Rmd",
+      "sha256": "87ac30ba26019985fd8624a73b2adab8f39eb35b6e0a80fad64af0e4ddc542df",
+      "size_bytes": 7769
+    },
+    {
+      "path": "L01_Travail.Rmd",
+      "sha256": "5955b93049deea5959cdf8b4e54d5ae2dedddcc54e8191a0658f987175e005f3",
+      "size_bytes": 10405
+    },
+    {
+      "path": "data/mesures.csv",
+      "sha256": "fe76c9aa8300f43e16747c66d9233de4454009d0ab4ab5b16734df975adc44d3",
+      "size_bytes": 68
+    },
+    {
+      "path": "lesson.json",
+      "sha256": "aba8a6761a229b8ee12a7ad4c1b3773e18ce0cb41b1663bcd0f5b0a2b61faf6c",
+      "size_bytes": 12641
+    }
+  ],
+  "generation_id": "next-L01-v0001",
+  "image_grading": "NOT_PERFORMED",
+  "input_fingerprint": "66d6fa21d858eee534bad2f54f30d1aad9b645da2f16693ac6579420f1b984b4",
+  "kind": "prepared_next_lesson",
+  "learner_mastery_changed": false,
+  "lesson_id": "L01",
+  "predecessor": null,
+  "prerequisites_are_mastery_claim": false,
+  "r_execution": "NOT_RUN",
+  "required_next_prerequisites": [
+    "D00"
+  ],
+  "schema_version": "2.0.0",
+  "source_folder": "lessons/L01",
+  "source_payload_sha256": "b13b2f3103993973e9d5b98a19d576d1d0e8ea0526e6af1996d9a534cf9e7cbf",
+  "status": "BASE_READY_REVIEW_PENDING",
+  "tasks": [],
+  "variant_snapshots": {},
+  "work_document": "L01_Travail.Rmd"
+}

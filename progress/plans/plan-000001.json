@@ -1,0 +1,114 @@
+{
+  "automatic_grading": false,
+  "findings": [
+    {
+      "error_id": "error-3d04d1587158e49db691",
+      "exercise_id": "D00-E04",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "DISTINCT_TRANSFER_VARIANT_REQUIRED",
+      "task_ids": [
+        "task-f30152eca68922e809b3-repair"
+      ]
+    },
+    {
+      "error_id": "error-86ec5db336f48acc123b",
+      "exercise_id": "D00-E01",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "AUTHORED_VARIANT_REQUIRED",
+      "task_ids": []
+    },
+    {
+      "error_id": "error-f5da5bbc55f4db54f84a",
+      "exercise_id": "D00-E03",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "AUTHORED_VARIANT_REQUIRED",
+      "task_ids": []
+    },
+    {
+      "error_id": "error-77877c35c2a8e64dbbdb",
+      "exercise_id": "D00-E05",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "AUTHORED_VARIANT_REQUIRED",
+      "task_ids": []
+    },
+    {
+      "error_id": "error-3ba84638643af72bed74",
+      "exercise_id": "D00-E06",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "DISTINCT_TRANSFER_VARIANT_REQUIRED",
+      "task_ids": [
+        "task-f30152eca68922e809b3-repair"
+      ]
+    },
+    {
+      "error_id": "error-fdebb6cc40157a569e65",
+      "exercise_id": "D00-E07",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "AUTHORED_VARIANT_REQUIRED",
+      "task_ids": []
+    },
+    {
+      "error_id": "error-34e8f77f886d47df9676",
+      "exercise_id": "D00-E08",
+      "handoff_id": "attempt-d00",
+      "review_id": "review-d00",
+      "status": "DISTINCT_TRANSFER_VARIANT_REQUIRED",
+      "task_ids": [
+        "task-4c9ec31cb221d167a52a-repair"
+      ]
+    }
+  ],
+  "kind": "adaptive_plan",
+  "learner_mastery_changed": false,
+  "policy_fr": "La reprise différée combine rappel non adjacent et décision nouvelle; seul un contrôle explicite de la tentative sans aide peut vérifier le transfert.",
+  "review_minutes_reserved": {
+    "L04": 4,
+    "L06": 4
+  },
+  "schema_version": "2.0.0",
+  "tasks": [
+    {
+      "assignment_status": "SCHEDULED",
+      "error_ids": [
+        "error-3d04d1587158e49db691",
+        "error-3ba84638643af72bed74"
+      ],
+      "human_verification_required": true,
+      "minutes": 4,
+      "origin_lesson_id": "D00",
+      "required_lesson_ids": [],
+      "reserved_minutes": 4,
+      "scheduled_lesson_id": "L04",
+      "semantic_transfer_review": "AUTHOR_DESIGN_NOT_AUTOMATIC_PROOF",
+      "spacing_kind": "repair",
+      "stage": "repair",
+      "task_id": "task-f30152eca68922e809b3-repair",
+      "transfer_design_fr": "Reconnaître que deux mesures peuvent partager le même aléa, puis choisir un raisonnement direct.",
+      "variant_id": "D00-V02"
+    },
+    {
+      "assignment_status": "SCHEDULED",
+      "error_ids": [
+        "error-34e8f77f886d47df9676"
+      ],
+      "human_verification_required": true,
+      "minutes": 4,
+      "origin_lesson_id": "D00",
+      "required_lesson_ids": [],
+      "reserved_minutes": 4,
+      "scheduled_lesson_id": "L06",
+      "semantic_transfer_review": "AUTHOR_DESIGN_NOT_AUTOMATIC_PROOF",
+      "spacing_kind": "repair",
+      "stage": "repair",
+      "task_id": "task-4c9ec31cb221d167a52a-repair",
+      "transfer_design_fr": "Diagnostiquer une inférence dans du texte sans tableau numérique.",
+      "variant_id": "D00-V01"
+    }
+  ]
+}
